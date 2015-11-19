@@ -3,5 +3,9 @@ node_js:
     - 'stable'
 
 before_install: cd tests
-install: npm install
+install:
+    -sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    -sudo apt-get update
+    -sudo apt-get install build-essential gcc-4.9 python2.7
+    -npm install
 script: npm test
