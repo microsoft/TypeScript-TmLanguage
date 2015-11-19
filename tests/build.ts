@@ -51,5 +51,8 @@ for (var file of fs.readdirSync('cases')) {
     var text = fs.readFileSync('cases/' + file, 'utf8');
     let outputFilename = file.slice(0, file.lastIndexOf('.'));
     let grammer = file.slice(file.indexOf('.tsx')) === '.tsx' ? tsReactGrammar : tsGrammar;
+    if (!fs.existsSync('./generated')){
+        fs.mkdirSync('generated');
+    }
     fs.writeFile('generated/' + outputFilename + '.txt', getScopesAtMarkers(text, grammer), "utf8");
 }
