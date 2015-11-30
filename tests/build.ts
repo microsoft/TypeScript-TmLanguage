@@ -2,6 +2,7 @@
 
 import * as vt from 'vscode-textmate/release/main';
 import fs = require('fs');
+import path = require('path');
 
 var register = new vt.Registry();
 var tsGrammar = register.loadGrammarFromPathSync("../TypeScript.tmLanguage");
@@ -26,7 +27,7 @@ function getMarkerLocations(str: string):  number[] {
 
 function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
     let oriLines = text.split('\n');
-    let ruleStack = undefined;
+    let ruleStack:vt.StackElement[] = undefined;
     let outputLines: string[] = [];
     for (let i in oriLines) {
         let oriLine = oriLines[i];
@@ -47,12 +48,13 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
     return outputLines.join('\n');
 }
 
-for (var file of fs.readdirSync('cases')) {
-    var text = fs.readFileSync('cases/' + file, 'utf8');
-    let outputFilename = file.slice(0, file.lastIndexOf('.'));
-    let grammer = file.slice(file.indexOf('.tsx')) === '.tsx' ? tsReactGrammar : tsGrammar;
+for (var fileName of fs.readdirSync('cases')) {
+    const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
+    let parsedFileName = path.parse(fileName);
+    let grammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
     if (!fs.existsSync('./generated')){
         fs.mkdirSync('generated');
     }
-    fs.writeFile('generated/' + outputFilename + '.txt', getScopesAtMarkers(text, grammer), "utf8");
+    let outputFileName = path.join('./generated', parsedFileName.name + '.txt');
+    fs.writeFile(outputFileName, getScopesAtMarkers(text, grammar), "utf8");
 }
