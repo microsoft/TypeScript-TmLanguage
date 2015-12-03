@@ -149,14 +149,15 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: storage.modifier.ts }
-      '3': { name: storage.type.property.ts }
-      '4': { name: keyword.operator.ts }
-      '5': { name: entity.name.function.ts }
-      '6': { name: keyword.operator.ts }
+      '3': { name: storage.modifier.ts }
+      '4': { name: storage.type.property.ts }
+      '5': { name: keyword.operator.ts }
+      '6': { name: entity.name.function.ts }
+      '7': { name: keyword.operator.ts }
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
@@ -197,11 +198,12 @@ repository:
       
   function-declaration:
     name: meta.function.ts
-    begin: \b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
+    begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     beginCaptures:
       '1': { name: storage.modifier.ts }
-      '2': { name: storage.type.function.ts }
-      '3': { name: entity.name.function.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: storage.type.function.ts }
+      '4': { name: entity.name.function.ts }
     end: (?=;|\})|(?<=\})
     patterns:
     - include: '#comment'
@@ -314,6 +316,10 @@ repository:
     - include: '#type'
     - include: '#function-type-parameters'
     
+  await-modifier:
+    name: storage.modifier.ts
+    match: 'await'
+    
   type-operator:
     name: keyword.operator.type.ts
     match: '[.|]'
@@ -403,6 +409,7 @@ repository:
   function-call:
     name: functioncall.expr.ts
     patterns:
+    - include: '#await-modifier'
     - include: '#type-parameters'
     - include: '#paren-expression'
 
@@ -412,7 +419,7 @@ repository:
     # If < is preceeded by 'return', 'throw', 'yield' its most likely a type assertion
     # An '=', '(', ',', ':', or '>' character followed by '<' is likely a type assertion, as otherwise its a syntax error
     # '<=' and '<<=' are definately not type assertions, as they are assignment operators.
-    begin: '(?:(?<=return|throw|yield|[=(,:>]))\s*(<)(?!<?\=)'
+    begin: '(?:(?<=return|throw|yield|await|[=(,:>]))\s*(<)(?!<?\=)'
     beginCaptures:
       '1': { name: meta.brace.angle.ts }
     end: '>'
