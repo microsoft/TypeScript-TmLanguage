@@ -142,7 +142,7 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.tsx
-    begin: '(?<!\()\s*\b([a-zA-Z_$][\w$]*)\s*(\?\s*)?(?=(=|:))'
+    begin: (?<!\()\s*((?:\b[a-zA-Z_$][\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
     beginCaptures:
       '1': { name: variable.tsx }
       '2': { name: keyword.operator.tsx }
