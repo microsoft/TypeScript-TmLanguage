@@ -14,7 +14,7 @@ patterns:
 repository:
   var-expr:
     name: meta.var.expr.tsx
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\s+([a-zA-Z_$][\w$]*) 
+    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\s+([a-zA-Z_$][\w$]*)
     beginCaptures:
       '1': { name: storage.type.tsx }
       '2': { name: variable.tsx }
@@ -28,7 +28,7 @@ repository:
     name: keyword.control.tsx
     match: (?<!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|switch|case)\b
 
-  switch-case: 
+  switch-case:
     name: case.expr.tsx
     begin: '(?<!\.)\b(case|default)\b'
     beginCaptures:
@@ -51,7 +51,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.other.tsx }
       '2': { name: storage.type.tsx }
-    end: (?=[,);>]|var|type|function|class|interface)
+    end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
       - include: '#type'
 
@@ -146,7 +146,7 @@ repository:
     beginCaptures:
       '1': { name: variable.tsx }
       '2': { name: keyword.operator.tsx }
-    end: '(?=\}|;|,)|(?<=\})'
+    end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#expression'
 
@@ -160,7 +160,7 @@ repository:
       '4': { name: keyword.operator.tsx }
       '5': { name: entity.name.function.tsx }
       '6': { name: keyword.operator.tsx }
-    end: '(?=\}|;|,)|(?<=\})'
+    end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
@@ -197,7 +197,7 @@ repository:
     match: ([a-zA-Z_$][\w$]*)(?=\:)
     captures:
       '1': { name: variable.parameter.tsx}
-      
+
   function-declaration:
     name: meta.function.tsx
     begin: \b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
@@ -316,7 +316,7 @@ repository:
     - include: '#comment'
     - include: '#type'
     - include: '#function-type-parameters'
-    
+
   type-operator:
     name: keyword.operator.type.tsx
     match: '[.|]'
@@ -354,7 +354,7 @@ repository:
     beginCaptures:
       '1': { name: entity.name.type.tsx }
       '2': { name: meta.brace.angle.tsx }
-    end: '(?=$)|(>)'  
+    end: '(?=$)|(>)'
     endCaptures:
       '2': { name: meta.brace.angle.tsx }
     patterns:
@@ -369,7 +369,7 @@ repository:
       '1': { name: keyword.operator.tsx }
     end: (?=$|[,);=])
     patterns:
-      - include: '#expression'  
+      - include: '#expression'
 
   expression:
     name: meta.expression.tsx
@@ -395,7 +395,7 @@ repository:
     - include: '#function-call'
     - include: '#switch-case'
     - include: '#control-statement'
-    
+
   for-in-simple:
     name: forin.expr.tsx
     match: (?<=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(in|of)\b
@@ -567,7 +567,7 @@ repository:
     - include: '#expression'
 
   numeric-literal:
-    name: constant.numeric.tsx 
+    name: constant.numeric.tsx
     match: \b(?<=[^$])((0(x|X)[0-9a-fA-F]+)|([0-9]+(\.[0-9]+)?))\b
 
   boolean-literal:
@@ -577,11 +577,11 @@ repository:
   null-literal:
     name: constant.language.null.tsx
     match: \b(null)\b
-  
+
   this-literal:
     name: constant.language.this.tsx
     match: \b(this)\b
-      
+
   undefined-literal:
     name: constant.language.tsx
     match: \b(undefined)\b
@@ -589,7 +589,7 @@ repository:
   access-modifier:
     name: storage.modifier.tsx
     match: \b(public|protected|private)\b
-    
+
   static-modifier:
     name: keyword.other.tsx
     match: \b(static)\b
