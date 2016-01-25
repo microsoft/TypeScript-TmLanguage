@@ -1,0 +1,15 @@
+# Test against this version of Node.js
+environment:
+  nodejs_version: "4"
+
+# Install scripts. (runs after repo cloning)
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - node --version
+  - npm --version
+  - cd tests
+  - npm install
+  - npm test
+
+# Don't actually build.
+build: off
