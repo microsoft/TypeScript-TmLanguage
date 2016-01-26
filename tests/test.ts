@@ -14,10 +14,15 @@ describe("Compare generated with baselines", () => {
     for (var file of fs.readdirSync('generated')) {
         var generatedText = fs.readFileSync('generated/' + file, 'utf8');
         var baselinesText = fs.readFileSync('baselines/' + file, 'utf8');
-        describe('Comparing ' + file, () => {
-            it('should be the same', () => {
-                chai.expect(compareText(generatedText, baselinesText)).to.true;
-            })
-        })
+
+        addTestCase(file, generatedText, baselinesText);
     }
 })
+
+function addTestCase(file: string, generatedText: string, baselinesText: string) {
+    describe('Comparing ' + file, () => {
+        it('should be the same', () => {
+            chai.expect(compareText(generatedText, baselinesText)).to.true;
+        })
+    })    
+}
