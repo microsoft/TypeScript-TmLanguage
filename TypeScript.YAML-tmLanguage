@@ -25,15 +25,6 @@ repository:
     name: keyword.control.ts
     match: (?<!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|case|default)\b
 
-  switch-case:
-    name: case.expr.ts
-    begin: '(?<!\.)\b(case|default)\b'
-    beginCaptures:
-      '1': { name: keyword.control.ts }
-    end: ':'
-    patterns:
-    - include: '#expression'
-
   declaration:
     name: meta.declaration.ts
     patterns:
@@ -158,7 +149,7 @@ repository:
       '5': { name: keyword.operator.ts }
       '6': { name: entity.name.function.ts }
       '7': { name: keyword.operator.ts }
-    end: '(?=\}|;|,|$)|(?<=\})'
+    end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
@@ -388,16 +379,50 @@ repository:
     - include: '#declaration'
     - include: '#cast'
     - include: '#new-expr'
+    - include: '#switch-expression'
     - include: '#block'
     - include: '#expression-operator'
     - include: '#relational-operator'
     - include: '#arithmetic-operator'
     - include: '#logic-operator'
     - include: '#assignment-operator'
+    - include: '#switch-case'
     - include: '#storage-keyword'
     - include: '#function-call'
-    - include: '#switch-case'
     - include: '#control-statement'
+
+  switch-variable:
+    name: switch-variable.expr.ts
+    begin: \b(switch)\b\s*\(
+    beginCaptures:
+      '1': { name: keyword.operator.ts }
+    end: \)
+    patterns:
+    - include: '#expression'
+
+  switch-block:
+    name: switch-block.expr.ts
+    begin: '{'
+    end: (?=\})
+    patterns:
+    - include: '#expression'
+
+  switch-case:
+    name: case.expr.ts
+    begin: '(?<!\.)\b(case|default)\b'
+    beginCaptures:
+      '1': { name: keyword.control.ts }
+    end: ':'
+    patterns:
+    - include: '#expression'
+
+  switch-expression:
+    name: switch-expr.expr.ts
+    begin: (?=\bswitch\b\s*\()
+    end: '}'
+    patterns:
+    - include: '#switch-variable'
+    - include: '#switch-block'
 
   for-in-simple:
     name: forin.expr.ts
