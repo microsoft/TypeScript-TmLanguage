@@ -1,5 +1,5 @@
 # Similar to TypeScript.YAML-tmLanguage except:
-#   - Remove type assertion (cast.expr.ts)
+#   - Remove type assertion (cast.expr.tsx)
 #   - Add the "as" keyword.
 #   - Add JSX expression (HTML-like expression).
 ---
@@ -389,32 +389,32 @@ repository:
     - include: '#control-statement'
 
   switch-variable:
-    name: switch-variable.expr.ts
+    name: switch-variable.expr.tsx
     begin: \b(switch)\b\s*\(
     beginCaptures:
-      '1': { name: keyword.operator.ts }
+      '1': { name: keyword.operator.tsx }
     end: \)
     patterns:
     - include: '#expression'
 
   switch-block:
-    name: switch-block.expr.ts
+    name: switch-block.expr.tsx
     begin: '{'
     end: (?=\})
     patterns:
     - include: '#expression'
 
   switch-case:
-    name: case.expr.ts
+    name: case.expr.tsx
     begin: '(?<!\.)\b(case|default)\b'
     beginCaptures:
-      '1': { name: keyword.control.ts }
+      '1': { name: keyword.control.tsx }
     end: ':'
     patterns:
     - include: '#expression'
 
   switch-expression:
-    name: switch-expr.expr.ts
+    name: switch-expr.expr.tsx
     begin: (?=\bswitch\b\s*\()
     end: '}'
     patterns:
