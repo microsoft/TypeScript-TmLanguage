@@ -984,6 +984,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#object-heritage</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-parameters</string>
 				</dict>
 				<dict>
@@ -1663,7 +1667,7 @@
 		<key>var-expr</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!\()\s*\b(var|let|const(?!\s+enum))\s+([a-zA-Z_$][\w$]*)</string>
+			<string>(?&lt;!\()\s*\b(var|let|const(?!\s+enum)\b)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1671,16 +1675,39 @@
 					<key>name</key>
 					<string>storage.type.ts</string>
 				</dict>
-				<key>2</key>
+			</dict>
+			<key>end</key>
+			<string>(?=$|;)</string>
+			<key>name</key>
+			<string>meta.var.expr.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#var-single-variable</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+			</array>
+		</dict>
+		<key>var-single-variable</key>
+		<dict>
+			<key>begin</key>
+			<string>\b([a-zA-Z_$][\w$]*)\s*(=?)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>variable.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|[;=\}\{])|(?&lt;=\})</string>
+			<string>(?=$|[;,])</string>
 			<key>name</key>
-			<string>meta.var.expr.ts</string>
+			<string>meta.var-single-variable.expr.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1694,6 +1721,10 @@
 				<dict>
 					<key>include</key>
 					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
 				</dict>
 			</array>
 		</dict>

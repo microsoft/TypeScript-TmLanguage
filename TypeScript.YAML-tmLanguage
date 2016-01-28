@@ -11,15 +11,25 @@ patterns:
 repository:
   var-expr:
     name: meta.var.expr.ts
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\s+([a-zA-Z_$][\w$]*)
+    begin: (?<!\()\s*\b(var|let|const(?!\s+enum)\b)
     beginCaptures:
       '1': { name: storage.type.ts }
-      '2': { name: variable.ts }
-    end: '(?=$|[;=\}\{])|(?<=\})'
+    end: (?=$|;)
+    patterns:
+    - include: '#var-single-variable'
+    - include: '#comment'
+
+  var-single-variable:
+    name: meta.var-single-variable.expr.ts
+    begin: \b([a-zA-Z_$][\w$]*)\s*(=?)
+    beginCaptures:
+      '1': { name: variable.ts }
+    end: (?=$|[;,])
     patterns:
     - include: '#type-annotation'
     - include: '#string'
     - include: '#comment'
+    - include: '#expression'
 
   control-statement:
     name: keyword.control.ts
@@ -93,6 +103,7 @@ repository:
       '1': { name: brace.curly.ts }
     patterns:
     - include: '#comment'
+    - include: '#object-heritage'
     - include: '#type-parameters'
     - include: '#object-heritage-parent'
 
