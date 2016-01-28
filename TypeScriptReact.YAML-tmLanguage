@@ -14,15 +14,25 @@ patterns:
 repository:
   var-expr:
     name: meta.var.expr.tsx
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\s+([a-zA-Z_$][\w$]*)
+    begin: (?<!\()\s*\b(var|let|const(?!\s+enum)\b)
     beginCaptures:
       '1': { name: storage.type.tsx }
-      '2': { name: variable.tsx }
-    end: '(?=$|[;=\}\{])|(?<=\})'
+    end: (?=$|;)
+    patterns:
+    - include: '#var-single-variable'
+    - include: '#comment'
+
+  var-single-variable:
+    name: meta.var-single-variable.expr.tsx
+    begin: \b([a-zA-Z_$][\w$]*)\s*(=?)
+    beginCaptures:
+      '1': { name: variable.tsx }
+    end: (?=$|[;,])
     patterns:
     - include: '#type-annotation'
     - include: '#string'
     - include: '#comment'
+    - include: '#expression'
 
   control-statement:
     name: keyword.control.tsx
@@ -87,6 +97,7 @@ repository:
       '1': { name: brace.curly.tsx }
     patterns:
     - include: '#comment'
+    - include: '#object-heritage'
     - include: '#type-parameters'
     - include: '#object-heritage-parent'
 
