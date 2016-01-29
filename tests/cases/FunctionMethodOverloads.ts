@@ -38,3 +38,13 @@ class testClass {
         ^throw new Error("")
     }
 }
+
+interface I {
+    ^foo(): number
+    ^bar(): string;
+}
+
+abstract class C {
+    ^abstract ^foo()
+    ^abstract ^bar()
+}
