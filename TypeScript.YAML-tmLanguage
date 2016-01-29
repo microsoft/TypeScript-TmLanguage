@@ -393,7 +393,7 @@ repository:
     - include: '#declaration'
     - include: '#cast'
     - include: '#new-expr'
-    - include: '#switch-expression'
+    - include: '#switch-statement'
     - include: '#block'
     - include: '#expression-operator'
     - include: '#relational-operator'
@@ -402,11 +402,11 @@ repository:
     - include: '#assignment-operator'
     - include: '#storage-keyword'
     - include: '#function-call'
-    - include: '#switch-case'
+    - include: '#case-clause'
     - include: '#control-statement'
 
-  switch-variable:
-    name: switch-variable.expr.ts
+  switch-expression:
+    name: switch-expression.expr.ts
     begin: \b(switch)\b\s*\(
     beginCaptures:
       '1': { name: keyword.operator.ts }
@@ -421,8 +421,8 @@ repository:
     patterns:
     - include: '#expression'
 
-  switch-case:
-    name: case.expr.ts
+  case-clause:
+    name: case-clause.expr.ts
     begin: '(?<!\.)\b(case|default)\b'
     beginCaptures:
       '1': { name: keyword.control.ts }
@@ -430,12 +430,12 @@ repository:
     patterns:
     - include: '#expression'
 
-  switch-expression:
-    name: switch-expr.expr.ts
+  switch-statement:
+    name: switch-statement.expr.ts
     begin: (?=\bswitch\b\s*\()
     end: '}'
     patterns:
-    - include: '#switch-variable'
+    - include: '#switch-expression'
     - include: '#switch-block'
 
   for-in-simple:

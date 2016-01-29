@@ -113,6 +113,30 @@
 			<key>name</key>
 			<string>constant.language.boolean.tsx</string>
 		</dict>
+		<key>case-clause</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;!\.)\b(case|default)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.tsx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>:</string>
+			<key>name</key>
+			<string>case-clause.expr.tsx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
 		<key>comment</key>
 		<dict>
 			<key>name</key>
@@ -298,7 +322,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#switch-expression</string>
+					<string>#switch-statement</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -334,7 +358,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#switch-case</string>
+					<string>#case-clause</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1586,51 +1610,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>switch-case</key>
-		<dict>
-			<key>begin</key>
-			<string>(?&lt;!\.)\b(case|default)\b</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.tsx</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>:</string>
-			<key>name</key>
-			<string>case.expr.tsx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#expression</string>
-				</dict>
-			</array>
-		</dict>
 		<key>switch-expression</key>
-		<dict>
-			<key>begin</key>
-			<string>(?=\bswitch\b\s*\()</string>
-			<key>end</key>
-			<string>}</string>
-			<key>name</key>
-			<string>switch-expr.expr.tsx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#switch-variable</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#switch-block</string>
-				</dict>
-			</array>
-		</dict>
-		<key>switch-variable</key>
 		<dict>
 			<key>begin</key>
 			<string>\b(switch)\b\s*\(</string>
@@ -1645,12 +1625,32 @@
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
-			<string>switch-variable.expr.tsx</string>
+			<string>switch-expression.expr.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
 					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
+		<key>switch-statement</key>
+		<dict>
+			<key>begin</key>
+			<string>(?=\bswitch\b\s*\()</string>
+			<key>end</key>
+			<string>}</string>
+			<key>name</key>
+			<string>switch-statement.expr.tsx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#switch-expression</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#switch-block</string>
 				</dict>
 			</array>
 		</dict>

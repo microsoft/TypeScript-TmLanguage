@@ -387,7 +387,7 @@ repository:
     - include: '#var-expr'
     - include: '#declaration'
     - include: '#new-expr'
-    - include: '#switch-expression'
+    - include: '#switch-statement'
     - include: '#block'
     - include: '#expression-operator'
     - include: '#relational-operator'
@@ -396,11 +396,11 @@ repository:
     - include: '#assignment-operator'
     - include: '#storage-keyword'
     - include: '#function-call'
-    - include: '#switch-case'
+    - include: '#case-clause'
     - include: '#control-statement'
 
-  switch-variable:
-    name: switch-variable.expr.tsx
+  switch-expression:
+    name: switch-expression.expr.tsx
     begin: \b(switch)\b\s*\(
     beginCaptures:
       '1': { name: keyword.operator.tsx }
@@ -415,8 +415,8 @@ repository:
     patterns:
     - include: '#expression'
 
-  switch-case:
-    name: case.expr.tsx
+  case-clause:
+    name: case-clause.expr.tsx
     begin: '(?<!\.)\b(case|default)\b'
     beginCaptures:
       '1': { name: keyword.control.tsx }
@@ -424,12 +424,12 @@ repository:
     patterns:
     - include: '#expression'
 
-  switch-expression:
-    name: switch-expr.expr.tsx
+  switch-statement:
+    name: switch-statement.expr.tsx
     begin: (?=\bswitch\b\s*\()
     end: '}'
     patterns:
-    - include: '#switch-variable'
+    - include: '#switch-expression'
     - include: '#switch-block'
 
 
