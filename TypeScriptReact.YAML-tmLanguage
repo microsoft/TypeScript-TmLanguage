@@ -1,5 +1,5 @@
 # Similar to TypeScript.YAML-tmLanguage except:
-#   - Remove type assertion (cast.expr.ts)
+#   - Remove type assertion (cast.expr.tsx)
 #   - Add the "as" keyword.
 #   - Add JSX expression (HTML-like expression).
 ---
@@ -37,15 +37,6 @@ repository:
   control-statement:
     name: keyword.control.tsx
     match: (?<!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|switch|case)\b
-
-  switch-case:
-    name: case.expr.tsx
-    begin: '(?<!\.)\b(case|default)\b'
-    beginCaptures:
-      '1': { name: keyword.control.tsx }
-    end: ':'
-    patterns:
-    - include: '#expression'
 
   declaration:
     name: meta.declaration.tsx
@@ -171,7 +162,7 @@ repository:
       '4': { name: keyword.operator.tsx }
       '5': { name: entity.name.function.tsx }
       '6': { name: keyword.operator.tsx }
-    end: '(?=\}|;|,|$)|(?<=\})'
+    end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
@@ -396,6 +387,7 @@ repository:
     - include: '#var-expr'
     - include: '#declaration'
     - include: '#new-expr'
+    - include: '#switch-statement'
     - include: '#block'
     - include: '#expression-operator'
     - include: '#relational-operator'
@@ -404,8 +396,42 @@ repository:
     - include: '#assignment-operator'
     - include: '#storage-keyword'
     - include: '#function-call'
-    - include: '#switch-case'
+    - include: '#case-clause'
     - include: '#control-statement'
+
+  switch-expression:
+    name: switch-expression.expr.tsx
+    begin: \b(switch)\b\s*\(
+    beginCaptures:
+      '1': { name: keyword.operator.tsx }
+    end: \)
+    patterns:
+    - include: '#expression'
+
+  switch-block:
+    name: switch-block.expr.tsx
+    begin: '{'
+    end: (?=\})
+    patterns:
+    - include: '#expression'
+
+  case-clause:
+    name: case-clause.expr.tsx
+    begin: '(?<!\.)\b(case|default)\b'
+    beginCaptures:
+      '1': { name: keyword.control.tsx }
+    end: ':'
+    patterns:
+    - include: '#expression'
+
+  switch-statement:
+    name: switch-statement.expr.tsx
+    begin: (?=\bswitch\b\s*\()
+    end: '}'
+    patterns:
+    - include: '#switch-expression'
+    - include: '#switch-block'
+
 
   for-in-simple:
     name: forin.expr.tsx

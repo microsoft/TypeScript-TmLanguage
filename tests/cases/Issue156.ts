@@ -1,5 +1,5 @@
 class Test {
-	^acid(^trip: ^string | ^{}, ^buttweasel: ^string) 
+	^mmm(^p1: ^string | ^{}, ^p2: ^string) 
 	{
         ^
 	}

@@ -35,15 +35,6 @@ repository:
     name: keyword.control.ts
     match: (?<!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|case|default)\b
 
-  switch-case:
-    name: case.expr.ts
-    begin: '(?<!\.)\b(case|default)\b'
-    beginCaptures:
-      '1': { name: keyword.control.ts }
-    end: ':'
-    patterns:
-    - include: '#expression'
-
   declaration:
     name: meta.declaration.ts
     patterns:
@@ -169,7 +160,7 @@ repository:
       '5': { name: keyword.operator.ts }
       '6': { name: entity.name.function.ts }
       '7': { name: keyword.operator.ts }
-    end: '(?=\}|;|,|$)|(?<=\})'
+    end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
@@ -180,12 +171,15 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.ts
-    match: '\b(?:(public|private|protected)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     captures:
       '1': { name: storage.modifier.ts }
-      '2': { name: keyword.operator.ts }
-      '3': { name: entity.name.function.ts }
-      '4': { name: keyword.operator.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: storage.modifier.ts }
+      '4': { name: storage.type.property.ts }
+      '5': { name: keyword.operator.ts }
+      '6': { name: entity.name.function.ts }
+      '7': { name: keyword.operator.ts }
 
   indexer-declaration:
     name: meta.indexer.declaration.ts
@@ -399,6 +393,7 @@ repository:
     - include: '#declaration'
     - include: '#cast'
     - include: '#new-expr'
+    - include: '#switch-statement'
     - include: '#block'
     - include: '#expression-operator'
     - include: '#relational-operator'
@@ -407,8 +402,41 @@ repository:
     - include: '#assignment-operator'
     - include: '#storage-keyword'
     - include: '#function-call'
-    - include: '#switch-case'
+    - include: '#case-clause'
     - include: '#control-statement'
+
+  switch-expression:
+    name: switch-expression.expr.ts
+    begin: \b(switch)\b\s*\(
+    beginCaptures:
+      '1': { name: keyword.operator.ts }
+    end: \)
+    patterns:
+    - include: '#expression'
+
+  switch-block:
+    name: switch-block.expr.ts
+    begin: '{'
+    end: (?=\})
+    patterns:
+    - include: '#expression'
+
+  case-clause:
+    name: case-clause.expr.ts
+    begin: '(?<!\.)\b(case|default)\b'
+    beginCaptures:
+      '1': { name: keyword.control.ts }
+    end: ':'
+    patterns:
+    - include: '#expression'
+
+  switch-statement:
+    name: switch-statement.expr.ts
+    begin: (?=\bswitch\b\s*\()
+    end: '}'
+    patterns:
+    - include: '#switch-expression'
+    - include: '#switch-block'
 
   for-in-simple:
     name: forin.expr.ts
