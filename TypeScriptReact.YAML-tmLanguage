@@ -35,7 +35,7 @@ repository:
 
   control-statement:
     name: keyword.control.tsx
-    match: (?<!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|switch|case)\b
+    match: (?<!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|case|default)\b
 
   declaration:
     name: meta.declaration.tsx
@@ -153,14 +153,15 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.tsx
-    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
       '1': { name: storage.modifier.tsx }
       '2': { name: storage.modifier.tsx }
-      '3': { name: storage.type.property.tsx }
-      '4': { name: keyword.operator.tsx }
-      '5': { name: entity.name.function.tsx }
-      '6': { name: keyword.operator.tsx }
+      '3': { name: storage.modifier.tsx }
+      '4': { name: storage.type.property.tsx }
+      '5': { name: keyword.operator.tsx }
+      '6': { name: entity.name.function.tsx }
+      '7': { name: keyword.operator.tsx }
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
@@ -172,12 +173,15 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.tsx
-    match: '\b(?:(public|private|protected)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     captures:
       '1': { name: storage.modifier.tsx }
-      '2': { name: keyword.operator.tsx }
-      '3': { name: entity.name.function.tsx }
-      '4': { name: keyword.operator.tsx }
+      '2': { name: storage.modifier.tsx }
+      '3': { name: storage.modifier.tsx }
+      '4': { name: storage.type.property.tsx }
+      '5': { name: keyword.operator.tsx }
+      '6': { name: entity.name.function.tsx }
+      '7': { name: keyword.operator.tsx }
 
   indexer-declaration:
     name: meta.indexer.declaration.tsx
@@ -201,11 +205,12 @@ repository:
 
   function-declaration:
     name: meta.function.tsx
-    begin: \b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
+    begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     beginCaptures:
       '1': { name: storage.modifier.tsx }
-      '2': { name: storage.type.function.tsx }
-      '3': { name: entity.name.function.tsx }
+      '2': { name: storage.modifier.tsx }
+      '3': { name: storage.type.function.tsx }
+      '4': { name: entity.name.function.tsx }
     end: (?=;|\})|(?<=\})
     patterns:
     - include: '#comment'
@@ -317,6 +322,10 @@ repository:
     - include: '#comment'
     - include: '#type'
     - include: '#function-type-parameters'
+
+  await-modifier:
+    name: storage.modifier.tsx
+    match: 'await'
 
   type-operator:
     name: keyword.operator.type.tsx
@@ -442,6 +451,7 @@ repository:
   function-call:
     name: functioncall.expr.tsx
     patterns:
+    - include: '#await-modifier'
     - include: '#type-parameters'
     - include: '#paren-expression'
 
@@ -454,6 +464,7 @@ repository:
     end: '(?=[(;]|$)'
     patterns:
     - include: '#type'
+    - include: '#comment'
 
   object-member:
     name: meta.object.member.tsx
