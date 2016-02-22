@@ -49,13 +49,13 @@ repository:
     beginCaptures:
       '1': { name: keyword.other.ts }
       '2': { name: storage.type.ts }
-    end: (?=$|[,);>]|var|type|function|class|interface)
+    end: (?=[,);>]|var|type|function|class|interface)
     patterns:
       - include: '#type-parameters'
       - name: keyword.operator.ts
         match: '=\s*'
       - include: '#type'
-
+      
   enum-declaration:
     name: meta.enum.declaration.ts
     match: (?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)
@@ -92,7 +92,9 @@ repository:
     begin: '(?:\b(extends|implements))'
     beginCaptures:
       '1': { name: keyword.other.ts }
-    end: \b
+    end: (?=\{)
+    endCaptures:
+      '1': { name: brace.curly.ts }
     patterns:
     - include: '#comment'
     - include: '#object-heritage'
@@ -504,7 +506,7 @@ repository:
 
   logic-operator:
     name: keyword.operator.arithmetic.ts
-    match: \!|&|~|\||&&|\|\|
+    match: \!|&|~|\^|\||&&|\|\|
 
   storage-keyword:
     name: storage.type.ts

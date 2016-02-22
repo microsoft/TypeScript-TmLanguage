@@ -704,7 +704,7 @@
 		<key>logic-operator</key>
 		<dict>
 			<key>match</key>
-			<string>\!|&amp;|~|\||&amp;&amp;|\|\|</string>
+			<string>\!|&amp;|~|\^|\||&amp;&amp;|\|\|</string>
 			<key>name</key>
 			<string>keyword.operator.arithmetic.ts</string>
 		</dict>
@@ -1008,7 +1008,15 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\b</string>
+			<string>(?=\{)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>brace.curly.ts</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.object.heritage.ts</string>
 			<key>patterns</key>
@@ -1493,7 +1501,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|[,);&gt;]|var|type|function|class|interface)</string>
+			<string>(?=[,);&gt;]|var|type|function|class|interface)</string>
 			<key>name</key>
 			<string>meta.type.declaration.ts</string>
 			<key>patterns</key>
