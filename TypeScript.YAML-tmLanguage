@@ -45,12 +45,15 @@ repository:
 
   type-declaration:
     name: meta.type.declaration.ts
-    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*=\s*
+    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
     beginCaptures:
       '1': { name: keyword.other.ts }
       '2': { name: storage.type.ts }
     end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
+      - include: '#type-parameters'
+      - name: keyword.operator.ts
+        match: '=\s*'
       - include: '#type'
 
   enum-declaration:
@@ -89,9 +92,7 @@ repository:
     begin: '(?:\b(extends|implements))'
     beginCaptures:
       '1': { name: keyword.other.ts }
-    end: (?=\{)
-    endCaptures:
-      '1': { name: brace.curly.ts }
+    end: \b
     patterns:
     - include: '#comment'
     - include: '#object-heritage'
