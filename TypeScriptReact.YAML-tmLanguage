@@ -46,16 +46,13 @@ repository:
      - include: '#enum-declaration'
 
   type-declaration:
-    name: meta.type.declaration.ts
-    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
+    name: meta.type.declaration.tsx
+    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*=\s*
     beginCaptures:
-      '1': { name: keyword.other.ts }
-      '2': { name: storage.type.ts }
-    end: (?=[,);>]|var|type|function|class|interface)
+      '1': { name: keyword.other.tsx }
+      '2': { name: storage.type.tsx }
+    end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
-      - include: '#type-parameters'
-      - name: keyword.operator.ts
-        match: '=\s*'
       - include: '#type'
 
   enum-declaration:

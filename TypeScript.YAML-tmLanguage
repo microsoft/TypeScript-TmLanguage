@@ -45,17 +45,14 @@ repository:
 
   type-declaration:
     name: meta.type.declaration.ts
-    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
+    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*=\s*
     beginCaptures:
       '1': { name: keyword.other.ts }
       '2': { name: storage.type.ts }
-    end: (?=[,);>]|var|type|function|class|interface)
+    end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
-      - include: '#type-parameters'
-      - name: keyword.operator.ts
-        match: '=\s*'
       - include: '#type'
-      
+
   enum-declaration:
     name: meta.enum.declaration.ts
     match: (?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)

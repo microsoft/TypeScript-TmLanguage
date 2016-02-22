@@ -1852,36 +1852,26 @@
 		<key>type-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*</string>
+			<string>\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*=\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.ts</string>
+					<string>keyword.other.tsx</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>storage.type.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=[,);&gt;]|var|type|function|class|interface)</string>
+			<string>(?=$|[,);&gt;]|var|type|function|class|interface)</string>
 			<key>name</key>
-			<string>meta.type.declaration.ts</string>
+			<string>meta.type.declaration.tsx</string>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>include</key>
-					<string>#type-parameters</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>=\s*</string>
-					<key>name</key>
-					<string>keyword.operator.ts</string>
-				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type</string>
