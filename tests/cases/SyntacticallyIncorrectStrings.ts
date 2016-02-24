@@ -1,8 +1,8 @@
 // Test for https://github.com/Microsoft/TypeScript-Sublime-Plugin/pull/307
 
 class SomeClass {
-    ^"some string"
+    ^^"some string"
 }
 
-var y ^"some string 2"
+var y ^^"some string 2"
 
