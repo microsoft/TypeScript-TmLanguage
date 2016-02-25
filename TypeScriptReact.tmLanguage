@@ -1867,7 +1867,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=[,);&gt;]|var|type|function|class|interface)</string>
+			<string>(?=$|[,);&gt;]|var|type|function|class|interface)</string>
 			<key>name</key>
 			<string>meta.type.declaration.tsx</string>
 			<key>patterns</key>
@@ -1877,14 +1877,14 @@
 					<string>#type-parameters</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#type</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>=\s*</string>
 					<key>name</key>
 					<string>keyword.operator.tsx</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type</string>
 				</dict>
 			</array>
 		</dict>

@@ -51,12 +51,12 @@ repository:
     beginCaptures:
       '1': { name: keyword.other.tsx }
       '2': { name: storage.type.tsx }
-    end: (?=[,);>]|var|type|function|class|interface)
+    end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
       - include: '#type-parameters'
+      - include: '#type'
       - name: keyword.operator.tsx
         match: '=\s*'
-      - include: '#type'
 
   enum-declaration:
     name: meta.enum.declaration.tsx
