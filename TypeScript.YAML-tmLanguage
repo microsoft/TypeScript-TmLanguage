@@ -89,7 +89,7 @@ repository:
 
   object-heritage:
     name: meta.object.heritage.ts
-    begin: '(?:\b(extends|implements))'
+    begin: '(?:\b(extends|implements)\b)'
     beginCaptures:
       '1': { name: keyword.other.ts }
     end: (?=\{)
@@ -99,11 +99,11 @@ repository:
     - include: '#comment'
     - include: '#object-heritage'
     - include: '#type-parameters'
-    - include: '#object-heritage-parent'
+    - include: '#object-heritage-type'
 
-  object-heritage-parent:
+  object-heritage-type:
     name: meta.object.heritage.parent.ts
-    match: '(?:\s*([a-zA-Z_$][\w$]*))'
+    match: '(?:\s*([a-zA-Z_$][\w$]*)\b)'
     captures:
       '1': { name: storage.type.ts }
 
