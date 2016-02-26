@@ -1486,7 +1486,7 @@
 		<key>type-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*=\s*</string>
+			<string>\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1508,7 +1508,17 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#type-parameters</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>=\s*</string>
+					<key>name</key>
+					<string>keyword.operator.ts</string>
 				</dict>
 			</array>
 		</dict>
