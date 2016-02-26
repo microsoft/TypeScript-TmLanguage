@@ -408,7 +408,7 @@
 		<key>expression-operator</key>
 		<dict>
 			<key>match</key>
-			<string>=&gt;|\b(delete|export|import|from|in|instanceof|module|namespace|new|typeof|void|as)\b</string>
+			<string>=&gt;|\b(delete|export|import|from|in|instanceof|new|typeof|void|as)\b</string>
 			<key>name</key>
 			<string>keyword.operator.ts</string>
 		</dict>
@@ -998,7 +998,7 @@
 		<key>object-heritage</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:\b(extends|implements))</string>
+			<string>(?:\b(extends|implements)\b)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1035,11 +1035,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#object-heritage-parent</string>
+					<string>#object-heritage-type</string>
 				</dict>
 			</array>
 		</dict>
-		<key>object-heritage-parent</key>
+		<key>object-heritage-type</key>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -1050,7 +1050,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:\s*([a-zA-Z_$][\w$]*))</string>
+			<string>(?:\s*([a-zA-Z_$][\w$]*)\b)</string>
 			<key>name</key>
 			<string>meta.object.heritage.parent.ts</string>
 		</dict>
@@ -1241,7 +1241,7 @@
 		<key>storage-keyword</key>
 		<dict>
 			<key>match</key>
-			<string>\b(number|boolean|string|any|var|let|function|const)\b</string>
+			<string>\b(number|boolean|string|any|var|let|function|const|module|namespace)\b</string>
 			<key>name</key>
 			<string>storage.type.ts</string>
 		</dict>

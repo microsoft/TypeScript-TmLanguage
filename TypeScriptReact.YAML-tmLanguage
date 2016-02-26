@@ -88,7 +88,7 @@ repository:
 
   object-heritage:
     name: meta.object.heritage.tsx
-    begin: '(?:\b(extends|implements))'
+    begin: '(?:\b(extends|implements)\b)'
     beginCaptures:
       '1': { name: keyword.other.tsx }
     end: (?=\{)
@@ -98,11 +98,11 @@ repository:
     - include: '#comment'
     - include: '#object-heritage'
     - include: '#type-parameters'
-    - include: '#object-heritage-parent'
+    - include: '#object-heritage-type'
 
-  object-heritage-parent:
+  object-heritage-type:
     name: meta.object.heritage.parent.tsx
-    match: '(?:\s*([a-zA-Z_$][\w$]*))'
+    match: '(?:\s*([a-zA-Z_$][\w$]*)\b)'
     captures:
       '1': { name: storage.type.tsx }
 
@@ -325,7 +325,7 @@ repository:
 
   await-modifier:
     name: storage.modifier.tsx
-    match: 'await'
+    match: '\bawait\b'
 
   type-operator:
     name: keyword.operator.type.tsx
@@ -475,7 +475,7 @@ repository:
 
   expression-operator:
     name: keyword.operator.tsx
-    match: =>|\b(delete|export|import|from|in|instanceof|module|namespace|new|typeof|void|as)\b
+    match: =>|\b(delete|export|import|from|in|instanceof|new|typeof|void|as)\b
 
   arithmetic-operator:
     name: keyword.operator.arithmetic.tsx
@@ -495,7 +495,7 @@ repository:
 
   storage-keyword:
     name: storage.type.tsx
-    match: \b(number|boolean|string|any|var|let|function|const)\b
+    match: \b(number|boolean|string|any|var|let|function|const|module|namespace)\b
 
   paren-expression:
     begin: \(
