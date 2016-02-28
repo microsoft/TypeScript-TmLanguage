@@ -4,9 +4,9 @@ let^^ variable;
 var^^iable;
 let^^ter;
 
-var ^^constenum = 10;
-^^constenum += 10;
-^^const ^^enumE { }
+var const^^enum^^ = 10;
+const^^enum^^ += 10;
+const^^ enum^^ E { }
 
-var ^^constable = "I am rrrrrroyal!";
-^^constable += " Royal, I say!"
+var const^^able^^ = "I am rrrrrroyal!";
+const^^able^^ += " Royal, I say!";
