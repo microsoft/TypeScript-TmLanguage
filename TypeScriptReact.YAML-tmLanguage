@@ -513,14 +513,14 @@ repository:
   qstring-double:
     name: string.double.tsx
     begin: '"'
-    end: '"|(?=$)'
+    end: '"|(?:[^\\\n]$)'
     patterns:
     - include: '#string-character-escape'
 
   qstring-single:
     name: string.single.tsx
     begin: "'"
-    end: "'|(?=$)"
+    end: \'|(?:[^\\\n]$)
     patterns:
     - include: '#string-character-escape'
 

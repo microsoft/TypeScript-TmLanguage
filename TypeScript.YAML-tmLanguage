@@ -525,14 +525,14 @@ repository:
   qstring-double:
     name: string.double.ts
     begin: '"'
-    end: '"|(?=$)'
+    end: '"|(?:[^\\\n]$)'
     patterns:
     - include: '#string-character-escape'
 
   qstring-single:
     name: string.single.ts
     begin: "'"
-    end: "'|(?=$)"
+    end: \'|(?:[^\\\n]$)
     patterns:
     - include: '#string-character-escape'
 
