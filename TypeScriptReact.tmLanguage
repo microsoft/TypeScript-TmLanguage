@@ -337,6 +337,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#import-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#expression-operator</string>
 				</dict>
 				<dict>
@@ -376,9 +380,9 @@
 		<key>expression-operator</key>
 		<dict>
 			<key>match</key>
-			<string>=&gt;|\b(delete|export|import|from|in|instanceof|new|typeof|void|as)\b</string>
+			<string>=&gt;|\b(delete|in|instanceof|new|typeof|as|is|of)\b</string>
 			<key>name</key>
-			<string>keyword.operator.tsx</string>
+			<string>keyword.others.tsx</string>
 		</dict>
 		<key>field-declaration</key>
 		<dict>
@@ -394,7 +398,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -421,7 +425,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -458,7 +462,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.tsx</string>
+					<string>storage.type.tsx</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -515,7 +519,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.tsx</string>
+					<string>storage.type.tsx</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -577,6 +581,13 @@
 				</dict>
 			</array>
 		</dict>
+		<key>import-operator</key>
+		<dict>
+			<key>match</key>
+			<string>\b(import|from)\b</string>
+			<key>name</key>
+			<string>keyword.control.import.include.tsx</string>
+		</dict>
 		<key>indexer-declaration</key>
 		<dict>
 			<key>begin</key>
@@ -601,7 +612,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -1103,7 +1114,7 @@
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 				<key>6</key>
 				<dict>
@@ -1113,7 +1124,7 @@
 				<key>7</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1175,7 +1186,7 @@
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 				<key>6</key>
 				<dict>
@@ -1185,7 +1196,7 @@
 				<key>7</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1202,7 +1213,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1312,7 +1323,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.tsx</string>
+					<string>storage.type.tsx</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1463,7 +1474,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -1473,7 +1484,7 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1607,7 +1618,7 @@
 		<key>storage-keyword</key>
 		<dict>
 			<key>match</key>
-			<string>\b(number|boolean|string|any|var|let|function|const|module|namespace)\b</string>
+			<string>\b(number|boolean|string|any|var|let|function|const|module|namespace|void|export)\b</string>
 			<key>name</key>
 			<string>storage.type.tsx</string>
 		</dict>
@@ -1659,7 +1670,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.control.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1755,7 +1766,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1765,7 +1776,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -1837,6 +1848,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#expression-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type</string>
 				</dict>
 				<dict>
@@ -1884,7 +1899,7 @@
 					<key>match</key>
 					<string>=\s*</string>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.operator.comparison.tsx</string>
 				</dict>
 			</array>
 		</dict>
@@ -1897,7 +1912,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2192,7 +2207,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.tsx</string>
+					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
