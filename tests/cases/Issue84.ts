@@ -3,9 +3,11 @@
 	Testing Issue 84
 */
 
-^^`^^
-^^`^^hello
-^^`^^hello world^^`
-^^`^^hello world \t Hello ${}
+var a = ^^"hello"
+var b = ^^"world"
+var c = ^^`^^b^^$^^{^^a ^^+ ^^b^^}^^`
 
-^^/* Testing comments */
+^^
+/*
+	Testing comment
+*/
