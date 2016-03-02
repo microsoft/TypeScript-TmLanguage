@@ -154,15 +154,16 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: storage.modifier.ts }
       '3': { name: storage.modifier.ts }
       '4': { name: storage.type.property.ts }
       '5': { name: keyword.operator.ts }
-      '6': { name: entity.name.function.ts }
-      '7': { name: keyword.operator.ts }
+      '6': { name: support.type.ts }
+      '7': { name: entity.name.function.ts }
+      '8': { name: keyword.operator.ts }
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
@@ -174,15 +175,16 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.ts
-    match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     captures:
       '1': { name: storage.modifier.ts }
       '2': { name: storage.modifier.ts }
       '3': { name: storage.modifier.ts }
       '4': { name: storage.type.property.ts }
       '5': { name: keyword.operator.ts }
-      '6': { name: entity.name.function.ts }
-      '7': { name: keyword.operator.ts }
+      '6': { name: support.type.ts }
+      '7': { name: entity.name.function.ts }
+      '8': { name: keyword.operator.ts }
 
   indexer-declaration:
     name: meta.indexer.declaration.ts
