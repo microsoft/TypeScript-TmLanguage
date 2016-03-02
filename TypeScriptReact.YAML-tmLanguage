@@ -13,7 +13,7 @@ patterns:
 repository:
   var-expr:
     name: meta.var.expr.tsx
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum)\b)
+    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\b
     beginCaptures:
       '1': { name: storage.type.tsx }
     end: (?=$|;)
