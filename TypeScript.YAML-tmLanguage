@@ -156,14 +156,14 @@ repository:
     name: meta.method.declaration.ts
     begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
-      '1': { name: storage.modifier.ts }
-      '2': { name: storage.modifier.ts }
-      '3': { name: storage.modifier.ts }
-      '4': { name: storage.type.property.ts }
-      '5': { name: keyword.operator.ts }
-      '6': { name: support.type.ts }
-      '7': { name: entity.name.function.ts }
-      '8': { name: keyword.operator.ts }
+      '1': { name: storage.modifier.ts } # captures keyword (abstract)
+      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected) 
+      '3': { name: storage.modifier.ts } # captures keyword (async)
+      '4': { name: storage.type.property.ts } # captures keyword (get|set)
+      '5': { name: keyword.operator.ts } # captures keyword (new)
+      '6': { name: support.type.ts } # captures keyword (constructor)
+      '7': { name: entity.name.function.ts } # captures method name ([a-zA-Z_$][\.\w$]*)
+      '8': { name: keyword.operator.ts } # captures (\??)
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
@@ -177,14 +177,14 @@ repository:
     name: meta.method.overload.declaration.ts
     match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     captures:
-      '1': { name: storage.modifier.ts }
-      '2': { name: storage.modifier.ts }
-      '3': { name: storage.modifier.ts }
-      '4': { name: storage.type.property.ts }
-      '5': { name: keyword.operator.ts }
-      '6': { name: support.type.ts }
-      '7': { name: entity.name.function.ts }
-      '8': { name: keyword.operator.ts }
+      '1': { name: storage.modifier.ts } # captures keyword (abstract)
+      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected) 
+      '3': { name: storage.modifier.ts } # captures keyword (async)
+      '4': { name: storage.type.property.ts } # captures keyword (get|set)
+      '5': { name: keyword.operator.ts } # captures keyword (new)
+      '6': { name: support.type.ts } # captures keyword (constructor)
+      '7': { name: entity.name.function.ts } # captures method name ([a-zA-Z_$][\.\w$]*)
+      '8': { name: keyword.operator.ts } # captures (\??)
 
   indexer-declaration:
     name: meta.indexer.declaration.ts
