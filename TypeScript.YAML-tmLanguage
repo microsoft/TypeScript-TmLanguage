@@ -11,7 +11,7 @@ patterns:
 repository:
   var-expr:
     name: meta.var.expr.ts
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum)\b)
+    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\b
     beginCaptures:
       '1': { name: storage.type.ts }
     end: (?=$|;)
@@ -48,7 +48,7 @@ repository:
     begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
     beginCaptures:
       '1': { name: keyword.other.ts }
-      '2': { name: storage.type.ts }
+      '2': { name: support.type.ts }
     end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
       - include: '#type-parameters'
@@ -105,7 +105,7 @@ repository:
     name: meta.object.heritage.parent.ts
     match: '(?:\s*([a-zA-Z_$][\w$]*)\b)'
     captures:
-      '1': { name: storage.type.ts }
+      '1': { name: support.type.ts }
 
   object-body:
     name: meta.object.body.ts
@@ -308,7 +308,7 @@ repository:
     name: meta.type.primitive.ts
     match: '\b(string|number|boolean|symbol|any|void)\b'
     captures:
-      '1': { name: storage.type.ts }
+      '1': { name: support.type.ts }
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -406,6 +406,7 @@ repository:
     - include: '#logic-operator'
     - include: '#assignment-operator'
     - include: '#storage-keyword'
+    - include: '#type-primitive'
     - include: '#function-call'
     - include: '#case-clause'
     - include: '#control-statement'
@@ -516,7 +517,7 @@ repository:
 
   storage-keyword:
     name: storage.type.ts
-    match: \b(number|boolean|string|any|var|let|function|const|module|namespace|void|export)\b
+    match: \b(var|let|function|const|module|namespace|void|export)\b
 
   paren-expression:
     begin: \(

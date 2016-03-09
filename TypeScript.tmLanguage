@@ -397,6 +397,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-primitive</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#function-call</string>
 				</dict>
 				<dict>
@@ -1057,7 +1061,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>support.type.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1252,7 +1256,7 @@
 		<key>storage-keyword</key>
 		<dict>
 			<key>match</key>
-			<string>\b(number|boolean|string|any|var|let|function|const|module|namespace|void|export)\b</string>
+			<string>\b(var|let|function|const|module|namespace|void|export)\b</string>
 			<key>name</key>
 			<string>storage.type.ts</string>
 		</dict>
@@ -1512,7 +1516,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>support.type.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1717,7 +1721,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>support.type.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1771,7 +1775,7 @@
 		<key>var-expr</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!\()\s*\b(var|let|const(?!\s+enum)\b)</string>
+			<string>(?&lt;!\()\s*\b(var|let|const(?!\s+enum))\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
