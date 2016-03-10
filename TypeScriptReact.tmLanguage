@@ -1092,7 +1092,7 @@
 		<key>method-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\&lt;)</string>
+			<string>\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\&lt;)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1123,9 +1123,14 @@
 				<key>6</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.tsx</string>
+					<string>support.type.tsx</string>
 				</dict>
 				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.tsx</string>
+				</dict>
+				<key>8</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.others.tsx</string>
@@ -1195,16 +1200,21 @@
 				<key>6</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.tsx</string>
+					<string>support.type.tsx</string>
 				</dict>
 				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.tsx</string>
+				</dict>
+				<key>8</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.others.tsx</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\&lt;)</string>
+			<string>\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\&lt;)</string>
 			<key>name</key>
 			<string>meta.method.overload.declaration.tsx</string>
 		</dict>
@@ -1246,7 +1256,7 @@
 		<key>numeric-literal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?&lt;=[^$])((0(x|X)[0-9a-fA-F]+)|([0-9]+(\.[0-9]+)?))\b</string>
+			<string>\b(?&lt;=[^$])((0(x|X)[0-9a-fA-F]+)|(([0-9]+(\.[0-9]+)?))([eE]([+-]?)[0-9]+(\.[0-9]+)?)?)\b</string>
 			<key>name</key>
 			<string>constant.numeric.tsx</string>
 		</dict>
@@ -1431,7 +1441,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:\s*([a-zA-Z_$][\w$]*)\b)</string>
+			<string>(?:\b([a-zA-Z_$][\w$]*)\b)</string>
 			<key>name</key>
 			<string>meta.object.heritage.parent.tsx</string>
 		</dict>

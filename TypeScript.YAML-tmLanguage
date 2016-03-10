@@ -103,7 +103,7 @@ repository:
 
   object-heritage-type:
     name: meta.object.heritage.parent.ts
-    match: '(?:\s*([a-zA-Z_$][\w$]*)\b)'
+    match: '(?:\b([a-zA-Z_$][\w$]*)\b)'
     captures:
       '1': { name: support.type.ts }
 
@@ -154,15 +154,16 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
-      '1': { name: storage.modifier.ts }
-      '2': { name: storage.modifier.ts }
-      '3': { name: storage.modifier.ts }
-      '4': { name: storage.type.property.ts }
-      '5': { name: keyword.others.ts }
-      '6': { name: entity.name.function.ts }
-      '7': { name: keyword.others.ts }
+      '1': { name: storage.modifier.ts } # captures keyword (abstract)
+      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected) 
+      '3': { name: storage.modifier.ts } # captures keyword (async)
+      '4': { name: storage.type.property.ts } # captures keyword (get|set)
+      '5': { name: keyword.operator.ts } # captures keyword (new)
+      '6': { name: support.type.ts } # captures keyword (constructor)
+      '7': { name: entity.name.function.ts } # captures method name ([a-zA-Z_$][\.\w$]*)
+      '8': { name: keyword.operator.ts } # captures (\??)
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
@@ -174,15 +175,16 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.ts
-    match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     captures:
-      '1': { name: storage.modifier.ts }
-      '2': { name: storage.modifier.ts }
-      '3': { name: storage.modifier.ts }
-      '4': { name: storage.type.property.ts }
-      '5': { name: keyword.others.ts }
-      '6': { name: entity.name.function.ts }
-      '7': { name: keyword.others.ts }
+      '1': { name: storage.modifier.ts } # captures keyword (abstract)
+      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected) 
+      '3': { name: storage.modifier.ts } # captures keyword (async)
+      '4': { name: storage.type.property.ts } # captures keyword (get|set)
+      '5': { name: keyword.operator.ts } # captures keyword (new)
+      '6': { name: support.type.ts } # captures keyword (constructor)
+      '7': { name: entity.name.function.ts } # captures method name ([a-zA-Z_$][\.\w$]*)
+      '8': { name: keyword.operator.ts } # captures (\??)
 
   indexer-declaration:
     name: meta.indexer.declaration.ts
@@ -637,7 +639,7 @@ repository:
 
   numeric-literal:
     name: constant.numeric.ts
-    match: \b(?<=[^$])((0(x|X)[0-9a-fA-F]+)|([0-9]+(\.[0-9]+)?))\b
+    match: \b(?<=[^$])((0(x|X)[0-9a-fA-F]+)|(([0-9]+(\.[0-9]+)?))([eE]([+-]?)[0-9]+(\.[0-9]+)?)?)\b
 
   boolean-literal:
     name: constant.language.boolean.ts
