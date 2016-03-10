@@ -89,7 +89,7 @@ repository:
 
   object-heritage:
     name: meta.object.heritage.ts
-    begin: '(?:\s*\b(extends|implements)\b)'
+    begin: '(?:\b(extends|implements)\b)'
     beginCaptures:
       '1': { name: keyword.other.ts }
     end: (?=\{)
@@ -103,7 +103,7 @@ repository:
 
   object-heritage-type:
     name: meta.object.heritage.parent.ts
-    match: '(?:\s*([a-zA-Z_$][\w$]*)\b)'
+    match: '(?:\b([a-zA-Z_$][\w$]*)\b)'
     captures:
       '1': { name: support.type.ts }
 
