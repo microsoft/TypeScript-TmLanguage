@@ -12,6 +12,8 @@ let number11 = ^^12E-10
 let number12 = ^^13.4e-14.2
 let number13 = ^^14.12
 let number14 = ^^10.2E+4
+let number6 = ^^5.00567789e+2
+let i = ^^1, j = ^^1e3
 
 /*
 ^^
