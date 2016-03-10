@@ -43,6 +43,26 @@ var m: ^^typeof M = M;
 var adder = ^^new Adder(3, 4);
 ^^delete (adder)
 
-var s = typeof {}
+var s = typeof {}git 
 interface I {}
 var j: I = {}
+
+
+^^module ^^Body {
+    ^^export ^^class ^^Cell {
+        ^^public ^^parent: ^^Cell;
+
+        ^^constructor(^^parent: ^^Cell) {
+            ^^this.parent = ^^parent;
+            if (^^typeof ^^parent ^^=== ^^'object' || ^^parent ^^instanceof ^^Error) {
+            	^^
+            }
+        }
+    }
+}
+
+/*
+^^
+  End of file
+
+*/
