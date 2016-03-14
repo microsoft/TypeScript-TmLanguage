@@ -341,7 +341,7 @@ repository:
     name: meta.type.function.return.tsx
     begin: '=>'
     beginCaptures:
-      '0': { name: keyword.others.tsx }
+      '0': { name: keyword.operator.tsx }
     end: (?=\s*[,\)\{=;>]|//|$)
     patterns:
     - include: '#type'
@@ -382,7 +382,7 @@ repository:
   variable-initializer:
     begin: (=)
     beginCaptures:
-      '1': { name: keyword.others.tsx }
+      '1': { name: keyword.operator.comparison.tsx }
     end: (?=$|[,);=])
     patterns:
       - include: '#expression'
@@ -405,6 +405,7 @@ repository:
     - include: '#block'
     - include: '#import-operator'
     - include: '#expression-operator'
+    - include: '#imply-operator'
     - include: '#relational-operator'
     - include: '#arithmetic-operator'
     - include: '#logic-operator'
@@ -483,7 +484,11 @@ repository:
 
   expression-operator:
     name: keyword.others.tsx
-    match: =>|\b(delete|in|instanceof|new|typeof|as|is|of)\b
+    match: \b(delete|in|instanceof|new|typeof|as|is|of)\b
+
+  imply-operator:
+    name: keyword.operator.tsx
+    match: =>
 
   import-operator:
     name: keyword.control.import.include.tsx
@@ -494,6 +499,7 @@ repository:
     match: \*|/|\-\-|\-|\+\+|\+|%
 
   relational-operator:
+
     name: keyword.operator.comparison.tsx
     match: ===|==|=|!=|!==|<=|>=|<>|<|>
 
