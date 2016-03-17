@@ -26,9 +26,16 @@ repository:
       '1': { name: variable.ts }
     end: (?=$|[;,])
     patterns:
+    - include: '#ternary-operator'
     - include: '#type-annotation'
     - include: '#string'
     - include: '#comment'
+    - include: '#expression'
+
+  ternary-operator:
+    begin: (\?)
+    end: (:)
+    patterns:
     - include: '#expression'
 
   control-statement:

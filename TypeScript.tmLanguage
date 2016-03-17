@@ -1448,6 +1448,20 @@
 				</dict>
 			</array>
 		</dict>
+		<key>ternary-operator</key>
+		<dict>
+			<key>begin</key>
+			<string>(\?)</string>
+			<key>end</key>
+			<string>(:)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
 		<key>this-literal</key>
 		<dict>
 			<key>match</key>
@@ -1839,6 +1853,10 @@
 			<string>meta.var-single-variable.expr.ts</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#ternary-operator</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type-annotation</string>
