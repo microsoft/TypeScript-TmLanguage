@@ -55,7 +55,7 @@ repository:
     patterns:
       - include: '#type-parameters'
       - include: '#type'
-      - name: keyword.operator.tsx
+      - name: keyword.operator.comparison.tsx
         match: '=\s*'
 
   enum-declaration:
@@ -70,7 +70,7 @@ repository:
     name: meta.declaration.object.tsx
     begin: '\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?<!\.)(class|interface)\b'
     beginCaptures:
-      '1': { name: storage.modifier.tsx }
+      '1': { name: storage.type.tsx }
       '2': { name: storage.modifier.tsx }
       '3': { name: storage.type.tsx }
     end: (?<=\})
@@ -149,7 +149,7 @@ repository:
     begin: (?<!\()\s*((?:\b[a-zA-Z_$][\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
     beginCaptures:
       '1': { name: variable.tsx }
-      '2': { name: keyword.operator.tsx }
+      '2': { name: keyword.others.tsx }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#expression'
@@ -163,7 +163,7 @@ repository:
       '3': { name: storage.modifier.tsx } # captures keyword (async)
       '4': { name: storage.type.property.tsx } # captures keyword (get|set)
       '5': { name: keyword.operator.tsx } # captures keyword (new)
-      '6': { name: support.type.tsx } # captures keyword (constructor)
+      '6': { name: storage.type.tsx } # captures keyword (constructor)
       '7': { name: entity.name.function.tsx } # captures method name ([a-zA-Z_$][\.\w$]*)
       '8': { name: keyword.operator.tsx } # captures (\??)
     end: '(?=\}|;|,)|(?<=\})'
@@ -184,7 +184,7 @@ repository:
       '3': { name: storage.modifier.tsx } # captures keyword (async)
       '4': { name: storage.type.property.tsx } # captures keyword (get|set)
       '5': { name: keyword.operator.tsx } # captures keyword (new)
-      '6': { name: support.type.tsx } # captures keyword (constructor)
+      '6': { name: storage.type.tsx } # captures keyword (constructor)
       '7': { name: entity.name.function.tsx } # captures method name ([a-zA-Z_$][\.\w$]*)
       '8': { name: keyword.operator.tsx } # captures (\??)
 
@@ -196,7 +196,7 @@ repository:
     end: (\])\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.tsx }
-      '2': { name: keyword.operator.tsx }
+      '2': { name: keyword.others.tsx }
     patterns:
     - include: '#type-annotation'
     - include: '#indexer-parameter'
@@ -212,7 +212,7 @@ repository:
     name: meta.function.tsx
     begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     beginCaptures:
-      '1': { name: storage.modifier.tsx }
+      '1': { name: storage.type.tsx }
       '2': { name: storage.modifier.tsx }
       '3': { name: storage.type.function.tsx }
       '4': { name: entity.name.function.tsx }
@@ -229,7 +229,7 @@ repository:
     name: meta.function.overload.tsx
     match: \b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     captures:
-      '1': { name: storage.modifier.tsx }
+      '1': { name: storage.type.tsx }
       '2': { name: storage.type.function.tsx }
       '3': { name: entity.name.function.tsx }
 
@@ -261,9 +261,9 @@ repository:
     match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.tsx }
-      '2': { name: keyword.operator.tsx }
+      '2': { name: keyword.others.tsx }
       '3': { name: variable.parameter.tsx }
-      '4': { name: keyword.operator.tsx }
+      '4': { name: keyword.others.tsx }
 
   return-type:
     name: meta.return.type.tsx
@@ -277,6 +277,7 @@ repository:
     begin: ":"
     end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[a-zA-Z_$])\s*(?=\{)
     patterns:
+    - include: '#expression-operator'
     - include: '#type'
     - include: '#string'
     - include: '#comment'
@@ -381,7 +382,7 @@ repository:
   variable-initializer:
     begin: (=)
     beginCaptures:
-      '1': { name: keyword.operator.tsx }
+      '1': { name: keyword.operator.comparison.tsx }
     end: (?=$|[,);=])
     patterns:
       - include: '#expression'
@@ -402,7 +403,9 @@ repository:
     - include: '#new-expr'
     - include: '#switch-statement'
     - include: '#block'
+    - include: '#import-operator'
     - include: '#expression-operator'
+    - include: '#imply-operator'
     - include: '#relational-operator'
     - include: '#arithmetic-operator'
     - include: '#logic-operator'
@@ -417,7 +420,7 @@ repository:
     name: switch-expression.expr.tsx
     begin: \b(switch)\b\s*\(
     beginCaptures:
-      '1': { name: keyword.operator.tsx }
+      '1': { name: keyword.control.tsx }
     end: \)
     patterns:
     - include: '#expression'
@@ -452,7 +455,7 @@ repository:
     match: (?<=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(in|of)\b
     captures:
       '1': { name: storage.type.tsx }
-      '3': { name: keyword.operator.tsx }
+      '3': { name: keyword.others.tsx }
 
   function-call:
     name: functioncall.expr.tsx
@@ -465,7 +468,7 @@ repository:
     name: new.expr.tsx
     begin: '\b(new)\b'
     beginCaptures:
-      '1': { name: keyword.operator.tsx }
+      '1': { name: keyword.others.tsx }
     # new-expr ends just before any type or call arguments. Type arguments will be picked up by #cast.
     end: '(?=[(;]|$)'
     patterns:
@@ -480,14 +483,23 @@ repository:
     - include: '#expression'
 
   expression-operator:
+    name: keyword.others.tsx
+    match: \b(delete|in|instanceof|new|typeof|as|is|of)\b
+
+  imply-operator:
     name: keyword.operator.tsx
-    match: =>|\b(delete|export|import|from|in|instanceof|new|typeof|void|as)\b
+    match: =>
+
+  import-operator:
+    name: keyword.control.import.include.tsx
+    match: \b(import|from)\b
 
   arithmetic-operator:
     name: keyword.operator.arithmetic.tsx
     match: \*|/|\-\-|\-|\+\+|\+|%
 
   relational-operator:
+
     name: keyword.operator.comparison.tsx
     match: ===|==|=|!=|!==|<=|>=|<>|<|>
 
@@ -501,7 +513,7 @@ repository:
 
   storage-keyword:
     name: storage.type.tsx
-    match: \b(var|let|function|const|module|namespace)\b
+    match: \b(var|let|function|const|module|namespace|void|export)\b
 
   paren-expression:
     begin: \(
@@ -570,10 +582,10 @@ repository:
     name: template.element.tsx
     begin: \$\{
     beginCaptures:
-      '0': {name: keyword.operator.tsx}
+      '0': {name: keyword.others.tsx}
     end: \}
     endCaptures:
-      '0': {name: keyword.operator.tsx}
+      '0': {name: keyword.others.tsx}
     patterns:
       - include: '#expression'
 
