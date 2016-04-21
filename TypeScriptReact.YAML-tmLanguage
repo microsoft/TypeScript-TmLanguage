@@ -159,7 +159,7 @@ repository:
     begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
-      '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected) 
+      '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
       '3': { name: storage.modifier.tsx } # captures keyword (async)
       '4': { name: storage.type.property.tsx } # captures keyword (get|set)
       '5': { name: keyword.operator.tsx } # captures keyword (new)
@@ -180,7 +180,7 @@ repository:
     match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     captures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
-      '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected) 
+      '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
       '3': { name: storage.modifier.tsx } # captures keyword (async)
       '4': { name: storage.type.property.tsx } # captures keyword (get|set)
       '5': { name: keyword.operator.tsx } # captures keyword (new)
@@ -501,15 +501,15 @@ repository:
   relational-operator:
 
     name: keyword.operator.comparison.tsx
-    match: ===|==|=|!=|!==|<=|>=|<>|<|>
+    match: ===|!==|==|!=|<=|>=|<>|=|<|>
 
   assignment-operator:
     name: keyword.operator.assignment.tsx
-    match: <<=|>>=|>>>=|\*=|(?<!\()/=|%=|\+=|\-=|&=|\^=
+    match: <<=|>>>=|>>=|\*=|(?<!\()/=|%=|\+=|\-=|&=|\^=
 
   logic-operator:
     name: keyword.operator.arithmetic.tsx
-    match: \!|&|~|\^|\||&&|\|\|
+    match: \!|&&|&|~|\^|\|\||\|
 
   storage-keyword:
     name: storage.type.tsx
