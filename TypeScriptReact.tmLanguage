@@ -1814,6 +1814,96 @@
 				</dict>
 			</array>
 		</dict>
+		<key>ternary-expression</key>
+		<dict>
+			<key>begin</key>
+			<string>(?=\?)</string>
+			<key>end</key>
+			<string>(?=$|[;,])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#ternary-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ternary-expression-type</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ternary-expression-type</key>
+		<dict>
+			<key>name</key>
+			<string>meta.expression.tsx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#regex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#template</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#paren-expression</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ternary-expression</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#import-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#imply-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#relational-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#arithmetic-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#logic-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#assignment-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-primitive</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#function-call</string>
+				</dict>
+			</array>
+		</dict>
 		<key>ternary-operator</key>
 		<dict>
 			<key>begin</key>
@@ -1824,7 +1914,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#expression</string>
+					<string>#ternary-expression-type</string>
 				</dict>
 			</array>
 		</dict>
@@ -2221,7 +2311,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#ternary-operator</string>
+					<string>#ternary-expression</string>
 				</dict>
 				<dict>
 					<key>include</key>

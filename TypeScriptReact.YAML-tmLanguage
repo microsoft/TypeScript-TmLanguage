@@ -28,17 +28,44 @@ repository:
       '1': { name: variable.tsx }
     end: (?=$|[;,])
     patterns:
-    - include: '#ternary-operator'
+    - include: '#ternary-expression'
     - include: '#type-annotation'
     - include: '#string'
     - include: '#comment'
     - include: '#expression'
 
+  ternary-expression:
+    begin: (?=\?)
+    end: (?=$|[;,])
+    patterns:
+    - include: '#ternary-operator'
+    - include: '#ternary-expression-type' 
+
   ternary-operator:
     begin: (\?)
     end: (:)
     patterns:
-    - include: '#expression'
+    - include: '#ternary-expression-type' 
+
+  ternary-expression-type:
+    name: meta.expression.tsx
+    patterns:
+    - include: '#string'
+    - include: '#regex'
+    - include: '#template'
+    - include: '#comment'
+    - include: '#literal'
+    - include: '#paren-expression'
+    - include: '#ternary-expression'
+    - include: '#import-operator'
+    - include: '#expression-operator'
+    - include: '#imply-operator'
+    - include: '#relational-operator'
+    - include: '#arithmetic-operator'
+    - include: '#logic-operator'
+    - include: '#assignment-operator'
+    - include: '#type-primitive'
+    - include: '#function-call' 
 
   control-statement:
     name: keyword.control.tsx
