@@ -50,7 +50,7 @@ repository:
     begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
     beginCaptures:
       '1': { name: keyword.other.tsx }
-      '2': { name: support.type.tsx }
+      '2': { name: entity.name.class.tsx }
     end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
       - include: '#type-parameters'
