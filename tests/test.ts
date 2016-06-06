@@ -24,5 +24,5 @@ function addTestCase(file: string, generatedText: string, baselinesText: string)
         it('should be the same', () => {
             chai.expect(compareText(generatedText, baselinesText)).to.true;
         })
-    })    
+    })
 }
