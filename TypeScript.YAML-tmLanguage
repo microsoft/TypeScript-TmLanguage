@@ -571,7 +571,7 @@ repository:
     begin: '`'
     beginCaptures:
       '0': { name: string.template.ts}
-    end: '`'
+    end: '`|(?=$)'
     endCaptures:
       '0': { name: string.template.ts}
     patterns:
@@ -581,7 +581,7 @@ repository:
   template-string-contents:
     name: string.template.ts
     begin: '.*?'
-    end: (?=(\$\{|`))
+    end: (?=(\$\{|`|$))
     patterns:
     - include: '#string-character-escape'
 
