@@ -81,13 +81,13 @@ repository:
 
   type-declaration:
     name: meta.type.declaration.tsx
-    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
+    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)
     beginCaptures:
       '1': { name: keyword.other.tsx }
       '2': { name: entity.name.class.tsx }
     end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
-      - include: '#type-parameters'
+      - include: '#known-type-parameters'
       - include: '#type'
       - name: keyword.operator.comparison.tsx
         match: '=\s*'
@@ -114,7 +114,7 @@ repository:
     - include: '#comment'
     - include: '#object-heritage' # Must be before object-name to consume the "extends" keyword.
     - include: '#object-name'
-    - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
+    - include: '#know-type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
     - include: '#object-body'
 
   object-name:
@@ -320,7 +320,7 @@ repository:
     name: meta.type.tsx
     patterns:
     - include: '#type-primitive'
-    - include: '#type-parameters'
+    - include: '#known-type-parameters'
     - include: '#type-tuple'
     - include: '#type-object'
     - include: '#type-operator'
@@ -400,7 +400,7 @@ repository:
 
   type-parameters:
     name: meta.type.parameters.tsx
-    begin: '([a-zA-Z_$][\w$]*)?(<)'
+    begin: '([a-zA-Z_$][\w$]*)?\s*(<)(?=[^<]*(<[^<>]*>)*>\s*[(])'
     beginCaptures:
       '1': { name: entity.name.type.tsx }
       '2': { name: meta.brace.angle.tsx }
@@ -409,6 +409,20 @@ repository:
       '2': { name: meta.brace.angle.tsx }
     patterns:
     - name: keyword.other.tsx
+      match: '\b(extends)\b'
+    - include: '#comment'
+    - include: '#type'
+
+  known-type-parameters:
+    name: meta.known.type.parameters.ts
+    begin: '(<)'
+    beginCaptures:
+      '1': { name: meta.brace.angle.tsx }
+    end: '(?=$)|(>)'
+    endCaptures:
+      '2': { name: meta.brace.angle.tsx }
+    patterns:
+    - name: keyword.other.ts
       match: '\b(extends)\b'
     - include: '#comment'
     - include: '#type'

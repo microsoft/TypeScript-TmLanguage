@@ -10,7 +10,7 @@ class Test {
 /**
  * Verify comments
  */
-^^export ^^function isFile(path: string): ^^Promise<boolean> {
+^^export ^^function isFile(path: string): ^^Promise^^<boolean> {
 	^^return stat(path).then(stat => stat.isFile(), () => false)
 }
 
