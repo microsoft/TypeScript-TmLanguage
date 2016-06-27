@@ -418,60 +418,60 @@ repository:
   
   literal-constructor:
     patterns:
-    - name: meta.instance.constructor.js
+    - name: meta.instance.constructor.ts
       begin: (new)\s+(?=[_$a-zA-Z][$\w.]*)
       beginCaptures:
-        '1': {name: keyword.operator.new.js}
+        '1': {name: keyword.operator.new.ts}
       end: (?![_$a-zA-Z][$\w.]*)
       patterns:
       - include: '#support-class'
       - include: '#support-other'
       - match: ([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)
         captures:
-          '2': {name: variable.function.constructor.js}
+          '2': {name: variable.function.constructor.ts}
 
   # https://github.com/wycats/javascript-decorators
   es7-decorators:
     patterns:
-    - name: tag.decorator.js
+    - name: tag.decorator.ts
       match: >-
         (?x)
           (@)([_$a-zA-Z][$\w]*)\b
       captures:
-        '1': {name: punctuation.definition.tag.js}
-        '2': {name: entity.name.tag.js}
+        '1': {name: punctuation.definition.tag.ts}
+        '2': {name: entity.name.tag.ts}
 
   literal-class:
     patterns:
     # e.g. class MyClass {  }
-    - name: meta.class.js
+    - name: meta.class.ts
       begin: (?<!\.)\b(?:(class)|(interface))\b
       beginCaptures:
-        '1': {name: storage.type.class.js}
-        '2': {name: storage.type.interface.flowtype.js}
+        '1': {name: storage.type.class.ts}
+        '2': {name: storage.type.interface.flowtype.ts}
       end: \}
       endCaptures:
-        '0': {name: meta.brace.curly.end.js}
+        '0': {name: meta.brace.curly.end.ts}
       patterns:
       - include: '#comments'
       - begin: ([_$a-zA-Z][$\w]*)
         beginCaptures:
-          '0': {name: entity.name.class.js}
+          '0': {name: entity.name.class.ts}
         end: (?={)
         patterns:
         - include: '#comments'
         - include: '#flowtype-polymorph'
-        - name: meta.class.extends.js
+        - name: meta.class.extends.ts
           begin: (?<!\.)\b(extends)\b
           beginCaptures:
-            '0': {name: storage.type.extends.js}
+            '0': {name: storage.type.extends.ts}
           end: (?={)
           patterns:
           - include: '#flowtype-polymorph'
           - include: '#expression'
       - begin: \{
         beginCaptures:
-          '0': {name: meta.brace.curly.begin.js}
+          '0': {name: meta.brace.curly.begin.ts}
         end: (?=})
         patterns:
         - include: '#es7-decorators'
@@ -487,10 +487,10 @@ repository:
     # e.g. static (o: ?void): {[key: any]: any};
     # e.g. return<R>(value: R): { done: true, value: R };
     # e.g. <T: Object>(o: T): T;
-    - name: meta.short-method.flowtype.js
+    - name: meta.short-method.flowtype.ts
       begin: (@@[_$a-zA-Z][$\w]*|static|return)(?=\s*[<(])|(?=\s*<)
       beginCaptures:
-        '1': {name: keyword.operator.flowtype.js}
+        '1': {name: keyword.operator.flowtype.ts}
       end: (?=\s*[;{])
       patterns:
       - include: '#flowtype-polymorph'
@@ -503,7 +503,7 @@ repository:
     # or start square-bracket is for a method - it may be a computed property.
     # For multi-line quoted short methods and computed property methods, only
     # the polymorphism constraints and parameters are matched.
-    - name: meta.class-method.computed.js
+    - name: meta.class-method.computed.ts
       begin: (?<=[]"'])\s*(?=[<(])
       end: (?=\s*[;{])
       patterns:
@@ -513,7 +513,7 @@ repository:
       - include: '#comments'
       - include: '#curly-brackets'
 
-    - name: meta.class-accessor.js
+    - name: meta.class-accessor.ts
       begin: >-
         (?x)
           ((?>get|set)\s+)
@@ -523,17 +523,17 @@ repository:
             (([_$a-zA-Z][$\w]*|\d+))
           )(?=\s*[<(])
       beginCaptures:
-        '1': {name: storage.type.js}
-        '2': {name: string.quoted.js}
-        '3': {name: punctuation.definition.string.begin.js}
-        '4': {name: entity.name.function.js}
-        '5': {name: punctuation.definition.string.end.js}
-        '6': {name: string.quoted.js}
-        '7': {name: punctuation.definition.string.begin.js}
-        '8': {name: entity.name.function.js}
-        '9': {name: punctuation.definition.string.end.js}
-        '10': {name: string.unquoted.js}
-        '11': {name: entity.name.function.js}
+        '1': {name: storage.type.ts}
+        '2': {name: string.quoted.ts}
+        '3': {name: punctuation.definition.string.begin.ts}
+        '4': {name: entity.name.function.ts}
+        '5': {name: punctuation.definition.string.end.ts}
+        '6': {name: string.quoted.ts}
+        '7': {name: punctuation.definition.string.begin.ts}
+        '8': {name: entity.name.function.ts}
+        '9': {name: punctuation.definition.string.end.ts}
+        '10': {name: string.unquoted.ts}
+        '11': {name: entity.name.function.ts}
       end: (?=\s*[;{])
       patterns:
       - include: '#flowtype-polymorph'
@@ -542,7 +542,7 @@ repository:
       - include: '#comments'
       - include: '#curly-brackets'
 
-    - name: meta.class-method.js
+    - name: meta.class-method.ts
       begin: >-
         (?x)
           (?>
@@ -551,16 +551,16 @@ repository:
             (([_$a-zA-Z][$\w]*|\d+))
           )(?=\s*[<(])
       beginCaptures:
-        '1': {name: string.quoted.js}
-        '2': {name: punctuation.definition.string.begin.js}
-        '3': {name: entity.name.function.js}
-        '4': {name: punctuation.definition.string.end.js}
-        '5': {name: string.quoted.js}
-        '6': {name: punctuation.definition.string.begin.js}
-        '7': {name: entity.name.function.js}
-        '8': {name: punctuation.definition.string.end.js}
-        '9': {name: string.unquoted.js}
-        '10': {name: entity.name.function.js}
+        '1': {name: string.quoted.ts}
+        '2': {name: punctuation.definition.string.begin.ts}
+        '3': {name: entity.name.function.ts}
+        '4': {name: punctuation.definition.string.end.ts}
+        '5': {name: string.quoted.ts}
+        '6': {name: punctuation.definition.string.begin.ts}
+        '7': {name: entity.name.function.ts}
+        '8': {name: punctuation.definition.string.end.ts}
+        '9': {name: string.unquoted.ts}
+        '10': {name: entity.name.function.ts}
       end: (?=\s*[;{])
       patterns:
       - include: '#flowtype-polymorph'
@@ -571,24 +571,24 @@ repository:
 
   class-method-storage:
     patterns:
-    - name: storage.modifier.js
+    - name: storage.modifier.ts
       match: (?<!\.)\b(?>static|declare)\b
 
-    - name: storage.type.js
+    - name: storage.type.ts
       match: (?<!\.)\b(async)\b
 
-    - name: storage.type.js
+    - name: storage.type.ts
       match: (?<!\.)\b(get|set)\b(?!\s*\()
 
-    - name: keyword.generator.asterisk.js
+    - name: keyword.generator.asterisk.ts
       match: \*
 
   class-properties:
     patterns:
-    - name: meta.class.property.js
+    - name: meta.class.property.ts
       begin: ([_$a-zA-Z][$\w]*)(?=\s*[:=])
       beginCaptures:
-        '1': {name: variable.other.property.js}
+        '1': {name: variable.other.property.ts}
       end: (?=\s*[;}])
       patterns:
       - include: '#flowtype-annotation'
