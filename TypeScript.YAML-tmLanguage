@@ -447,7 +447,7 @@ repository:
     - include: '#function-call'
     - include: '#case-clause'
     - include: '#control-statement'
-    - include: '#es7-decorators'
+    - include: '#decorator'
     - include: '#literal-class'
     - include: '#literal-constructor'
 
@@ -713,7 +713,7 @@ repository:
     match: \b(get|set)\b
 
   # https://github.com/wycats/javascript-decorators
-  es7-decorators:
+  decorator:
     patterns:
     - name: tag.decorator.ts
       match: >-
@@ -756,7 +756,7 @@ repository:
           '0': {name: meta.brace.curly.begin.ts}
         end: (?=})
         patterns:
-        - include: '#es7-decorators'
+        - include: '#decorator'
         - include: '#class-properties'
         - include: '#class-method-definition'
         - include: '#class-method-storage'
