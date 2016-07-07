@@ -449,7 +449,6 @@ repository:
     - include: '#control-statement'
     - include: '#decorator'
     - include: '#literal-class'
-    - include: '#literal-constructor'
 
   switch-expression:
     name: switch-expression.expr.ts
@@ -712,6 +711,8 @@ repository:
     name: storage.type.property.ts
     match: \b(get|set)\b
 
+  # adpoted decorators rules 
+  # from Babel - https://github.com/babel/babel-sublime/blob/master/JavaScript%20(Babel).YAML-tmLanguage
   # https://github.com/wycats/javascript-decorators
   decorator:
     patterns:
@@ -730,7 +731,6 @@ repository:
       begin: (?<!\.)\b(?:(class)|(interface))\b
       beginCaptures:
         '1': {name: storage.type.class.ts}
-        '2': {name: storage.type.interface.flowtype.ts}
       end: \}
       endCaptures:
         '0': {name: meta.brace.curly.end.ts}
@@ -742,14 +742,12 @@ repository:
         end: (?={)
         patterns:
         - include: '#comments'
-        - include: '#flowtype-polymorph'
         - name: meta.class.extends.ts
           begin: (?<!\.)\b(extends)\b
           beginCaptures:
             '0': {name: storage.type.extends.ts}
           end: (?={)
           patterns:
-          - include: '#flowtype-polymorph'
           - include: '#expression'
       - begin: \{
         beginCaptures:
@@ -762,26 +760,10 @@ repository:
         - include: '#class-method-storage'
         - include: '#brackets'
         - include: '#comments'
-  
+
   class-method-definition:
     patterns:
-    # e,g. @@iterator(): Iterator<[K, V]>;
-    # e.g. static (o: ?void): {[key: any]: any};
-    # e.g. return<R>(value: R): { done: true, value: R };
-    # e.g. <T: Object>(o: T): T;
-    - name: meta.short-method.flowtype.ts
-      begin: (@@[_$a-zA-Z][$\w]*|static|return)(?=\s*[<(])|(?=\s*<)
-      beginCaptures:
-        '1': {name: keyword.operator.flowtype.ts}
-      end: (?=\s*[;{])
-      patterns:
-      - include: '#flowtype-polymorph'
-      - include: '#function-declaration-parameters'
-      - include: '#flowtype-annotation'
-      - include: '#comments'
-      - include: '#curly-brackets'
-
-    # In objects and flow annotations it can't be assumed that a start quote
+    # In objects it can't be assumed that a start quote
     # or start square-bracket is for a method - it may be a computed property.
     # For multi-line quoted short methods and computed property methods, only
     # the polymorphism constraints and parameters are matched.
@@ -789,9 +771,7 @@ repository:
       begin: (?<=[]"'])\s*(?=[<(])
       end: (?=\s*[;{])
       patterns:
-      - include: '#flowtype-polymorph'
       - include: '#function-declaration-parameters'
-      - include: '#flowtype-annotation'
       - include: '#comments'
       - include: '#curly-brackets'
 
@@ -818,9 +798,7 @@ repository:
         '11': {name: entity.name.function.ts}
       end: (?=\s*[;{])
       patterns:
-      - include: '#flowtype-polymorph'
       - include: '#function-declaration-parameters'
-      - include: '#flowtype-annotation'
       - include: '#comments'
       - include: '#curly-brackets'
 
@@ -845,9 +823,7 @@ repository:
         '10': {name: entity.name.function.ts}
       end: (?=\s*[;{])
       patterns:
-      - include: '#flowtype-polymorph'
       - include: '#function-declaration-parameters'
-      - include: '#flowtype-annotation'
       - include: '#comments'
       - include: '#curly-brackets'
 
@@ -873,7 +849,6 @@ repository:
         '1': {name: variable.other.property.ts}
       end: (?=\s*[;}])
       patterns:
-      - include: '#flowtype-annotation'
       - include: '#expression'
 
   switch-expression:

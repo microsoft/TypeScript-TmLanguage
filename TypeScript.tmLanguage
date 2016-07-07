@@ -182,45 +182,6 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(@@[_$a-zA-Z][$\w]*|static|return)(?=\s*[&lt;(])|(?=\s*&lt;)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.flowtype.ts</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=\s*[;{])</string>
-					<key>name</key>
-					<string>meta.short-method.flowtype.ts</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#flowtype-polymorph</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#function-declaration-parameters</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#flowtype-annotation</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#comments</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#curly-brackets</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
 					<string>(?&lt;=[]"'])\s*(?=[&lt;(])</string>
 					<key>end</key>
 					<string>(?=\s*[;{])</string>
@@ -230,15 +191,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#flowtype-polymorph</string>
-						</dict>
-						<dict>
-							<key>include</key>
 							<string>#function-declaration-parameters</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#flowtype-annotation</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -325,15 +278,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#flowtype-polymorph</string>
-						</dict>
-						<dict>
-							<key>include</key>
 							<string>#function-declaration-parameters</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#flowtype-annotation</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -414,15 +359,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#flowtype-polymorph</string>
-						</dict>
-						<dict>
-							<key>include</key>
 							<string>#function-declaration-parameters</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#flowtype-annotation</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -487,10 +424,6 @@
 					<string>meta.class.property.ts</string>
 					<key>patterns</key>
 					<array>
-						<dict>
-							<key>include</key>
-							<string>#flowtype-annotation</string>
-						</dict>
 						<dict>
 							<key>include</key>
 							<string>#expression</string>
@@ -607,32 +540,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>enum-declaration</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.modifier.ts</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.ts</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.class.ts</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)</string>
-			<key>name</key>
-			<string>meta.enum.declaration.ts</string>
-		</dict>
-		<key>es7-decorators</key>
+		<key>decorator</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -657,6 +565,31 @@
 					<string>tag.decorator.ts</string>
 				</dict>
 			</array>
+		</dict>
+		<key>enum-declaration</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.modifier.ts</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.ts</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.class.ts</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)</string>
+			<key>name</key>
+			<string>meta.enum.declaration.ts</string>
 		</dict>
 		<key>expression</key>
 		<dict>
@@ -766,15 +699,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#es7-decorators</string>
+					<string>#decorator</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#literal-class</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#literal-constructor</string>
 				</dict>
 			</array>
 		</dict>
@@ -1102,11 +1031,6 @@
 							<key>name</key>
 							<string>storage.type.class.ts</string>
 						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.interface.flowtype.ts</string>
-						</dict>
 					</dict>
 					<key>end</key>
 					<string>\}</string>
@@ -1146,10 +1070,6 @@
 									<string>#comments</string>
 								</dict>
 								<dict>
-									<key>include</key>
-									<string>#flowtype-polymorph</string>
-								</dict>
-								<dict>
 									<key>begin</key>
 									<string>(?&lt;!\.)\b(extends)\b</string>
 									<key>beginCaptures</key>
@@ -1166,10 +1086,6 @@
 									<string>meta.class.extends.ts</string>
 									<key>patterns</key>
 									<array>
-										<dict>
-											<key>include</key>
-											<string>#flowtype-polymorph</string>
-										</dict>
 										<dict>
 											<key>include</key>
 											<string>#expression</string>
@@ -1195,7 +1111,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#es7-decorators</string>
+									<string>#decorator</string>
 								</dict>
 								<dict>
 									<key>include</key>
