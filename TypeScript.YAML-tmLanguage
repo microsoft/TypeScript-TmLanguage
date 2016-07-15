@@ -466,7 +466,7 @@ repository:
 
   case-clause:
     name: case-clause.expr.ts
-    begin: '(?<!\.)\b(case|default)\b'
+    begin: '(?<!\.)\b(case|default(?=:))\b'
     beginCaptures:
       '1': { name: keyword.control.ts }
     end: ':'
