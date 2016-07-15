@@ -6,6 +6,7 @@ environment:
 install:
   - ps: Install-Product node $env:nodejs_version
   - node --version
+  - npm install -g npm@next
   - npm --version
   - cd tests
   - npm install
