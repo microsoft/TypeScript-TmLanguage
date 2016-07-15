@@ -447,6 +447,8 @@ repository:
     - include: '#function-call'
     - include: '#case-clause'
     - include: '#control-statement'
+    - include: '#decorator'
+    - include: '#literal-class'
 
   switch-expression:
     name: switch-expression.expr.ts
@@ -618,6 +620,7 @@ repository:
     end: (?=(\$\{|`))
     patterns:
     - include: '#string-character-escape'
+    - include: 'text.html.basic'
 
   string-character-escape:
     name: constant.character.escape
@@ -707,5 +710,170 @@ repository:
   property-accessor:
     name: storage.type.property.ts
     match: \b(get|set)\b
+
+  # adpoted decorators rules 
+  # from Babel - https://github.com/babel/babel-sublime/blob/master/JavaScript%20(Babel).YAML-tmLanguage
+  # https://github.com/wycats/javascript-decorators
+  decorator:
+    patterns:
+    - name: tag.decorator.ts
+      match: >-
+        (?x)
+          (@)([_$a-zA-Z][$\w]*)\b
+      captures:
+        '1': {name: punctuation.definition.tag.ts}
+        '2': {name: entity.name.tag.ts}
+
+  literal-class:
+    patterns:
+    # e.g. class MyClass {  }
+    - name: meta.class.ts
+      begin: (?<!\.)\b(?:(class)|(interface))\b
+      beginCaptures:
+        '1': {name: storage.type.class.ts}
+      end: \}
+      endCaptures:
+        '0': {name: meta.brace.curly.end.ts}
+      patterns:
+      - include: '#comments'
+      - begin: ([_$a-zA-Z][$\w]*)
+        beginCaptures:
+          '0': {name: entity.name.class.ts}
+        end: (?={)
+        patterns:
+        - include: '#comments'
+        - name: meta.class.extends.ts
+          begin: (?<!\.)\b(extends)\b
+          beginCaptures:
+            '0': {name: storage.type.extends.ts}
+          end: (?={)
+          patterns:
+          - include: '#expression'
+      - begin: \{
+        beginCaptures:
+          '0': {name: meta.brace.curly.begin.ts}
+        end: (?=})
+        patterns:
+        - include: '#decorator'
+        - include: '#class-properties'
+        - include: '#class-method-definition'
+        - include: '#class-method-storage'
+        - include: '#brackets'
+        - include: '#comments'
+
+  class-method-definition:
+    patterns:
+    # In objects it can't be assumed that a start quote
+    # or start square-bracket is for a method - it may be a computed property.
+    # For multi-line quoted short methods and computed property methods, only
+    # the polymorphism constraints and parameters are matched.
+    - name: meta.class-method.computed.ts
+      begin: (?<=[]"'])\s*(?=[<(])
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#function-declaration-parameters'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    - name: meta.class-accessor.ts
+      begin: >-
+        (?x)
+          ((?>get|set)\s+)
+          (?>
+            ((')((?>[^'\\]|\\.)*)('))|
+            ((")((?>[^"\\]|\\.)*)("))|
+            (([_$a-zA-Z][$\w]*|\d+))
+          )(?=\s*[<(])
+      beginCaptures:
+        '1': {name: storage.type.ts}
+        '2': {name: string.quoted.ts}
+        '3': {name: punctuation.definition.string.begin.ts}
+        '4': {name: entity.name.function.ts}
+        '5': {name: punctuation.definition.string.end.ts}
+        '6': {name: string.quoted.ts}
+        '7': {name: punctuation.definition.string.begin.ts}
+        '8': {name: entity.name.function.ts}
+        '9': {name: punctuation.definition.string.end.ts}
+        '10': {name: string.unquoted.ts}
+        '11': {name: entity.name.function.ts}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#function-declaration-parameters'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    - name: meta.class-method.ts
+      begin: >-
+        (?x)
+          (?>
+            ((')((?>[^'\\]|\\.)*)('))|
+            ((")((?>[^"\\]|\\.)*)("))|
+            (([_$a-zA-Z][$\w]*|\d+))
+          )(?=\s*[<(])
+      beginCaptures:
+        '1': {name: string.quoted.ts}
+        '2': {name: punctuation.definition.string.begin.ts}
+        '3': {name: entity.name.function.ts}
+        '4': {name: punctuation.definition.string.end.ts}
+        '5': {name: string.quoted.ts}
+        '6': {name: punctuation.definition.string.begin.ts}
+        '7': {name: entity.name.function.ts}
+        '8': {name: punctuation.definition.string.end.ts}
+        '9': {name: string.unquoted.ts}
+        '10': {name: entity.name.function.ts}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#function-declaration-parameters'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+  class-method-storage:
+    patterns:
+    - name: storage.modifier.ts
+      match: (?<!\.)\b(?>static|declare)\b
+
+    - name: storage.type.ts
+      match: (?<!\.)\b(async)\b
+
+    - name: storage.type.ts
+      match: (?<!\.)\b(get|set)\b(?!\s*\()
+
+    - name: keyword.generator.asterisk.ts
+      match: \*
+
+  class-properties:
+    patterns:
+    - name: meta.class.property.ts
+      begin: ([_$a-zA-Z][$\w]*)(?=\s*[:=])
+      beginCaptures:
+        '1': {name: variable.other.property.ts}
+      end: (?=\s*[;}])
+      patterns:
+      - include: '#expression'
+
+  switch-expression:
+    name: switch-expression.expr.ts
+    begin: \b(switch)\b\s*\(
+    beginCaptures:
+      '1': { name: keyword.control.ts }
+    end: \)
+    patterns:
+    - include: '#expression'
+
+  switch-block:
+    name: switch-block.expr.ts
+    begin: '{'
+    end: (?=\})
+    patterns:
+    - include: '#expression'
+
+  case-clause:
+    name: case-clause.expr.ts
+    begin: '(?<!\.)\b(case|default)\b'
+    beginCaptures:
+      '1': { name: keyword.control.ts }
+    end: ':'
+    patterns:
+    - include: '#expression'
 
 ...
