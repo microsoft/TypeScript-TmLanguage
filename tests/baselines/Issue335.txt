@@ -53,23 +53,94 @@ class A4 {
 }
 -----------------------------------
 
-[4, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts 
-[7, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
-[7, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
-[14, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts 
-[17, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
-[17, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
-[24, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
-[25, 13]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-expression.expr.ts 
-[26, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[27, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[28, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[33, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
-[33, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
-[40, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
-[41, 13]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-expression.expr.ts 
-[42, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[43, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[44, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[49, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
-[49, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
+>class A1 {
+>	b() {
+>		let d;
+>		d.default = 1;
+ ^^^^^^^^^^^^
+ [4, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts 
+>	}
+>
+>	private static c() {
+  ^^^^^^^
+  [7, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
+          ^^^^^^
+          [7, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
+>	}
+>}
+>
+>class A2 {
+>	b() {
+>		let d;
+>		d.case = 1
+ ^^^^^^^^^
+ [14, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts 
+>	}
+>
+>	private static c() {
+  ^^^^^^^
+  [17, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
+          ^^^^^^
+          [17, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
+>	}
+>}
+>
+>class A3 {
+>	b() {
+>		let d
+>		d.default = 1
+ ^^^^^^^^^^^^
+ [24, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
+>		switch (d.default) {
+           ^^^^^^^^^
+           [25, 13]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-expression.expr.ts 
+>			case 1:
+    ^^^^
+    [26, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
+>			case 2:
+    ^^^^
+    [27, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
+>			default:
+    ^^^^^^^
+    [28, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
+>				break;
+>		}
+>	}
+>
+>	private static c() {
+  ^^^^^^^
+  [33, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
+          ^^^^^^
+          [33, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
+>	}
+>}
+>
+>class A4 {
+>	b() {
+>		let d
+>		d.case = 1
+ ^^^^^^^^^
+ [40, 5]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
+>		switch (d.default) {
+           ^^^^^^^^^
+           [41, 13]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-expression.expr.ts 
+>			case 1:
+    ^^^^
+    [42, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
+>			case 2:
+    ^^^^
+    [43, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
+>			default:
+    ^^^^^^^
+    [44, 4]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
+>				break;
+>		}
+>	}
+>
+>	private static c() {
+  ^^^^^^^
+  [49, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
+          ^^^^^^
+          [49, 10]: source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts 
+>	}
+>}

@@ -33,25 +33,78 @@ class testClass {
 }
 -----------------------------------
 
-[3, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[4, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[5, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[6, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[7, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[8, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[9, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[10, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[11, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[12, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[13, 5]: source.ts meta.function.ts meta.decl.block.ts keyword.control.ts 
-[19, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[20, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[21, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[22, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[23, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[24, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[25, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[26, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[27, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[28, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[29, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.control.ts 
+>/* Function parameter tests */
+>function testFunctionParamType(
+>    m1: string, 
+     ^^
+     [3, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m2: {},
+     ^^
+     [4, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m3: any [],
+     ^^
+     [5, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m4: {a: A, b: B},
+     ^^
+     [6, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m5: () => void,
+     ^^
+     [7, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m6: (x:(string), y:[number, string]) => number,
+     ^^
+     [8, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m7: Array<number>,
+     ^^
+     [9, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m8: [number, number],
+     ^^
+     [10, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m9: {a: A, b: B} | [number, number], 
+     ^^
+     [11, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    m10: (() => void) | string[]): number {
+     ^^^
+     [12, 5]: source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>    return m6.length;
+     ^^^^^^
+     [13, 5]: source.ts meta.function.ts meta.decl.block.ts keyword.control.ts 
+>}
+>
+>class testClass {
+>    /* method param type tests */
+>    public testMethodParamType(
+>        m1: string, 
+         ^^
+         [19, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m2: {},
+         ^^
+         [20, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m3: any [],
+         ^^
+         [21, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m4: {a: A, b: B},
+         ^^
+         [22, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m5: () => void,
+         ^^
+         [23, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m6: (x:(string), y:[number, string]) => number,
+         ^^
+         [24, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m7: Array<number>,
+         ^^
+         [25, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m8: [number, number],
+         ^^
+         [26, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m9: {a: A, b: B} | [number, number], 
+         ^^
+         [27, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        m10: (() => void) | string[]): number {
+         ^^^
+         [28, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
+>        return m6.length;
+         ^^^^^^
+         [29, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.control.ts 
+>    }
+>}

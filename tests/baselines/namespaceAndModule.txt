@@ -7,8 +7,18 @@ declare ^^module ts {}
 declare ^^module "x" {}
 -----------------------------------
 
-[1, 1]: source.ts storage.type.ts 
-[2, 1]: source.ts storage.type.ts 
-[3, 9]: source.ts storage.type.ts 
-[4, 9]: source.ts storage.type.ts 
-[5, 9]: source.ts storage.type.ts 
+>namespace ts { }
+ ^^^^^^^^^
+ [1, 1]: source.ts storage.type.ts 
+>module ts { }
+ ^^^^^^
+ [2, 1]: source.ts storage.type.ts 
+>declare namespace ts {}
+         ^^^^^^^^^
+         [3, 9]: source.ts storage.type.ts 
+>declare module ts {}
+         ^^^^^^
+         [4, 9]: source.ts storage.type.ts 
+>declare module "x" {}
+         ^^^^^^
+         [5, 9]: source.ts storage.type.ts 

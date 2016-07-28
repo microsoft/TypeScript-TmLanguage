@@ -14,17 +14,43 @@ var const^^able^^ = "I am rrrrrroyal!";
 const^^able^^ += " Royal, I say!";
 -----------------------------------
 
-[1, 4]: source.ts meta.var.expr.ts 
-[2, 4]: source.ts meta.var.expr.ts 
-[4, 4]: source.ts 
-[5, 4]: source.ts 
-[7, 10]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
-[7, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
-[8, 6]: source.ts 
-[8, 10]: source.ts 
-[9, 6]: source.ts meta.enum.declaration.ts 
-[9, 11]: source.ts meta.enum.declaration.ts 
-[11, 10]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
-[11, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
-[12, 6]: source.ts 
-[12, 10]: source.ts 
+>var letter;
+    ^
+    [1, 4]: source.ts meta.var.expr.ts 
+>let variable;
+    ^
+    [2, 4]: source.ts meta.var.expr.ts 
+>
+>variable;
+ ^^^^^^^^^^
+ [4, 4]: source.ts 
+>letter;
+ ^^^^^^^^
+ [5, 4]: source.ts 
+>
+>var constenum = 10;
+     ^^^^^^^^^
+     [7, 10]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+              ^^
+              [7, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
+>constenum += 10;
+ ^^^^^^^^^^
+ [8, 6]: source.ts 
+ ^^^^^^^^^^
+ [8, 10]: source.ts 
+>const enum E { }
+      ^
+      [9, 6]: source.ts meta.enum.declaration.ts 
+           ^
+           [9, 11]: source.ts meta.enum.declaration.ts 
+>
+>var constable = "I am rrrrrroyal!";
+     ^^^^^^^^^
+     [11, 10]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+              ^^
+              [11, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
+>constable += " Royal, I say!";
+ ^^^^^^^^^^
+ [12, 6]: source.ts 
+ ^^^^^^^^^^
+ [12, 10]: source.ts 

@@ -26,14 +26,49 @@ return^^Name+=1;
 
 -----------------------------------
 
-[4, 10]: source.ts meta.function.ts entity.name.function.ts 
-[6, 27]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts 
-[9, 17]: source.ts meta.function.ts entity.name.function.ts 
-[11, 35]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts 
-[14, 13]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
-[15, 9]: source.ts 
-[17, 20]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
-[19, 11]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
-[20, 7]: source.ts 
-[22, 11]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
-[23, 7]: source.ts 
+>// Issue 288: "function" in "functionName" gets highlighted.
+>// Fixed in pull request #289.
+>
+>function Name(){
+          ^^^^
+          [4, 10]: source.ts meta.function.ts entity.name.function.ts 
+>}
+>var AnotherName = function(){
+                           ^
+                           [6, 27]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts 
+>}
+>
+>export function eName(){
+                 ^^^^^
+                 [9, 17]: source.ts meta.function.ts entity.name.function.ts 
+>}
+>export var eAnotherName = function(){
+                                   ^
+                                   [11, 35]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts 
+>}
+>
+>var functionName=1;
+     ^^^^^^^^^^^^
+     [14, 13]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+>functionName=1;
+ ^^^^^^^^^^^^
+ [15, 9]: source.ts 
+>
+>export var functionName2=1;
+            ^^^^^^^^^^^^^
+            [17, 20]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+>
+>var exportName="hello";
+     ^^^^^^^^^^
+     [19, 11]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+>exportName2="hello";
+ ^^^^^^^^^^^
+ [20, 7]: source.ts 
+>
+>var returnName=1;
+     ^^^^^^^^^^
+     [22, 11]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+>returnName+=1;
+ ^^^^^^^^^^
+ [23, 7]: source.ts 
+>

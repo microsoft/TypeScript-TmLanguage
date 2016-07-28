@@ -42,16 +42,31 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
         let lineTokens = grammar.tokenizeLine(line, ruleStack);
         ruleStack = lineTokens.ruleStack;
 
+        outputLines.push(">" + line);
         for (let token of lineTokens.tokens) {
             for (let markerLocation of markerLocations) {
                 if (token.startIndex <= markerLocation && markerLocation < token.endIndex) {
-                    outputLines.push('[' + (parseInt(i) + 1) + ', ' + (markerLocation + 1) + ']: ' + token.scopes.join(' ') + ' ');
+                    writeTokenLine(token, '[' + (parseInt(i) + 1) + ', ' + (markerLocation + 1) + ']: ', ' ', outputLines);
                 }
             }
         }
     }
 
     return getInputFile(oriLines) + outputLines.join('\n');
+}
+
+function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForToken: string, outputLines: string[]) {
+    let startingSpaces = " ";
+    for (let j = 0; j < token.startIndex; j++) {
+        startingSpaces += " ";
+    }
+
+    let locatingString = "";
+    for (let j = token.startIndex; j < token.endIndex; j++) {
+        locatingString += "^";
+    }
+    outputLines.push(startingSpaces + locatingString);
+    outputLines.push(startingSpaces + preTextForToken + token.scopes.join(' ') + postTextForToken);
 }
 
 function baselineWholeFile(text: string, grammar: vt.IGrammar): string {
@@ -67,17 +82,7 @@ function baselineWholeFile(text: string, grammar: vt.IGrammar): string {
 
         outputLines.push(">" + line);
         for (let token of lineTokens.tokens) {
-            let startingSpaces = " ";
-            for (let j = 0; j < token.startIndex; j++) {
-                startingSpaces += " ";
-            }
-
-            let locatingString = "";
-            for (let j = token.startIndex; j < token.endIndex; j++) {
-                locatingString += "^";
-            }
-            outputLines.push(startingSpaces + locatingString);
-            outputLines.push(startingSpaces + token.scopes.join(' '));
+            writeTokenLine(token, "", "", outputLines);
         }
     }
 

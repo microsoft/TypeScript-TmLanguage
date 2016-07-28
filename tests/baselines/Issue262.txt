@@ -7,8 +7,18 @@ for (^^let a = 1; a ^^< 10; a++) {
 }
 -----------------------------------
 
-[1, 6]: source.ts storage.type.ts 
-[1, 19]: source.ts keyword.operator.comparison.ts 
-[2, 5]: source.ts meta.block.ts keyword.control.ts 
-[2, 10]: source.ts meta.block.ts storage.type.ts 
-[3, 9]: source.ts meta.block.ts meta.block.ts 
+>for (let a = 1; a < 10; a++) {
+      ^^^
+      [1, 6]: source.ts storage.type.ts 
+                   ^
+                   [1, 19]: source.ts keyword.operator.comparison.ts 
+>    for (let b = 1; b < a; b++) {
+     ^^^
+     [2, 5]: source.ts meta.block.ts keyword.control.ts 
+          ^^^
+          [2, 10]: source.ts meta.block.ts storage.type.ts 
+>        
+ ^^^^^^^^^
+ [3, 9]: source.ts meta.block.ts meta.block.ts 
+>    }
+>}
