@@ -188,7 +188,7 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:(\[*)(`|'|"*)(.*)(`|'|"*)(\]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (abstract)
       '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
@@ -196,7 +196,7 @@ repository:
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
       '5': { name: keyword.operator.ts } # captures keyword (new)
       '6': { name: storage.type.ts } # captures keyword (constructor)
-      '7': { name: entity.name.function.ts } # captures method name ([a-zA-Z_$][\.\w$]*)
+      '7': { name: entity.name.function.ts } # captures method name (\[*)(`|'|"*)(.*)(`|'|"*)(\]*)
       '8': { name: keyword.operator.ts } # captures (\??)
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
