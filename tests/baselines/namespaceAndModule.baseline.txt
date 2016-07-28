@@ -1,0 +1,77 @@
+>namespace ts { }
+ ^^^^^^^^^
+ source.ts storage.type.ts
+          ^^^^
+          source.ts
+              ^
+              source.ts meta.block.ts meta.brace.curly.ts
+               ^
+               source.ts meta.block.ts
+                ^
+                source.ts meta.block.ts meta.brace.curly.ts
+                 ^^
+                 source.ts
+>module ts { }
+ ^^^^^^
+ source.ts storage.type.ts
+       ^^^^
+       source.ts
+           ^
+           source.ts meta.block.ts meta.brace.curly.ts
+            ^
+            source.ts meta.block.ts
+             ^
+             source.ts meta.block.ts meta.brace.curly.ts
+              ^^
+              source.ts
+>declare namespace ts {}
+ ^^^^^^^
+ source.ts keyword.control.ts
+        ^
+        source.ts
+         ^^^^^^^^^
+         source.ts storage.type.ts
+                  ^^^^
+                  source.ts
+                      ^
+                      source.ts meta.block.ts meta.brace.curly.ts
+                       ^
+                       source.ts meta.block.ts meta.brace.curly.ts
+                        ^^
+                        source.ts
+>declare module ts {}
+ ^^^^^^^
+ source.ts keyword.control.ts
+        ^
+        source.ts
+         ^^^^^^
+         source.ts storage.type.ts
+               ^^^^
+               source.ts
+                   ^
+                   source.ts meta.block.ts meta.brace.curly.ts
+                    ^
+                    source.ts meta.block.ts meta.brace.curly.ts
+                     ^^
+                     source.ts
+>declare module "x" {}
+ ^^^^^^^
+ source.ts keyword.control.ts
+        ^
+        source.ts
+         ^^^^^^
+         source.ts storage.type.ts
+               ^
+               source.ts
+                ^
+                source.ts string.double.ts
+                 ^
+                 source.ts string.double.ts
+                  ^
+                  source.ts string.double.ts
+                   ^
+                   source.ts
+                    ^
+                    source.ts meta.block.ts meta.brace.curly.ts
+                     ^
+                     source.ts meta.block.ts meta.brace.curly.ts

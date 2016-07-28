@@ -1,0 +1,79 @@
+>for (let a = 1; a < 10; a++) {
+ ^^^
+ source.ts keyword.control.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.paren.ts
+      ^^^
+      source.ts storage.type.ts
+         ^^^
+         source.ts
+            ^
+            source.ts keyword.operator.comparison.ts
+             ^
+             source.ts
+              ^
+              source.ts constant.numeric.ts
+               ^^^^
+               source.ts
+                   ^
+                   source.ts keyword.operator.comparison.ts
+                    ^
+                    source.ts
+                     ^^
+                     source.ts constant.numeric.ts
+                       ^^^
+                       source.ts
+                          ^^
+                          source.ts keyword.operator.arithmetic.ts
+                            ^
+                            source.ts meta.brace.paren.ts
+                             ^
+                             source.ts
+                              ^
+                              source.ts meta.block.ts meta.brace.curly.ts
+>    for (let b = 1; b < a; b++) {
+ ^^^^
+ source.ts meta.block.ts
+     ^^^
+     source.ts meta.block.ts keyword.control.ts
+        ^
+        source.ts meta.block.ts
+         ^
+         source.ts meta.block.ts meta.brace.paren.ts
+          ^^^
+          source.ts meta.block.ts storage.type.ts
+             ^^^
+             source.ts meta.block.ts
+                ^
+                source.ts meta.block.ts keyword.operator.comparison.ts
+                 ^
+                 source.ts meta.block.ts
+                  ^
+                  source.ts meta.block.ts constant.numeric.ts
+                   ^^^^
+                   source.ts meta.block.ts
+                       ^
+                       source.ts meta.block.ts keyword.operator.comparison.ts
+                        ^^^^^
+                        source.ts meta.block.ts
+                             ^^
+                             source.ts meta.block.ts keyword.operator.arithmetic.ts
+                               ^
+                               source.ts meta.block.ts meta.brace.paren.ts
+                                ^
+                                source.ts meta.block.ts
+                                 ^
+                                 source.ts meta.block.ts meta.block.ts meta.brace.curly.ts
+>        
+ ^^^^^^^^^
+ source.ts meta.block.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.block.ts meta.block.ts
+     ^
+     source.ts meta.block.ts meta.block.ts meta.brace.curly.ts
+>}
+ ^
+ source.ts meta.block.ts meta.brace.curly.ts

@@ -1,0 +1,250 @@
+>var someVar = new Thing<number, string>('data');
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+            ^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.others.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts
+                   ^^^^^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts entity.name.type.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                         ^^^^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                               ^^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts
+                                 ^^^^^^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                          ^^^^
+                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                                ^^
+                                                source.ts
+>var someVar = makeThing<number, string>('data');
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+            ^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^^^^^^^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts entity.name.type.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                         ^^^^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                               ^^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                 ^^^^^^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                          ^^^^
+                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                                ^^
+                                                source.ts
+>
+ ^
+ source.ts
+>class MyClass {
+ ^^^^^
+ source.ts meta.declaration.object.ts storage.type.ts
+      ^
+      source.ts meta.declaration.object.ts
+       ^^^^^^^
+       source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts
+              ^
+              source.ts meta.declaration.object.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+>    static someProp = new Thing<number, string>('data');
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+     ^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts
+           ^
+           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+            ^^^^^^^^
+            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+                    ^
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                     ^
+                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+                      ^
+                      source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                       ^^^
+                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts keyword.others.ts
+                          ^
+                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts
+                           ^^^^^
+                           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts entity.name.type.ts
+                                ^
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                                 ^^^^^^
+                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                       ^^
+                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
+                                         ^^^^^^
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                               ^
+                                               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
+                                                ^
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                 ^
+                                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                  ^^^^
+                                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                      ^
+                                                      source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                       ^
+                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                        ^^
+                                                        source.ts meta.declaration.object.ts meta.object.body.ts
+>    static someProp = makeThing<number, string>('data');
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+     ^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts
+           ^
+           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+            ^^^^^^^^
+            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+                    ^
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                     ^
+                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+                      ^
+                      source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                       ^^^^^^^^^
+                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                                ^
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.brace.angle.ts
+                                 ^^^^^^
+                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                       ^^
+                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
+                                         ^^^^^^
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                               ^
+                                               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
+                                                ^
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                 ^
+                                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                  ^^^^
+                                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                      ^
+                                                      source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                       ^
+                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                        ^^
+                                                        source.ts meta.declaration.object.ts meta.object.body.ts
+>
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+>    someProp = new Thing<number, string>('data');
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+     ^^^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                ^^^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts keyword.others.ts
+                   ^
+                   source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts
+                    ^^^^^
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts entity.name.type.ts
+                         ^
+                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                          ^^^^^^
+                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                ^^
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
+                                  ^^^^^^
+                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                        ^
+                                        source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
+                                         ^
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                          ^
+                                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                           ^^^^
+                                           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                               ^
+                                               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                ^
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                 ^^
+                                                 source.ts meta.declaration.object.ts meta.object.body.ts
+>    someProp = makeThing<number, string>('data');
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+     ^^^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                ^^^^^^^^^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                         ^
+                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.brace.angle.ts
+                          ^^^^^^
+                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                ^^
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
+                                  ^^^^^^
+                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                        ^
+                                        source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
+                                         ^
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                          ^
+                                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                           ^^^^
+                                           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                               ^
+                                               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.single.ts
+                                                ^
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                 ^^
+                                                 source.ts meta.declaration.object.ts meta.object.body.ts
+>}
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts

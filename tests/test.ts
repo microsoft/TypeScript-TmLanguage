@@ -19,6 +19,15 @@ describe("Compare generated with baselines", () => {
     }
 })
 
+describe("Compare generatedBaselines with baselines", () => {
+    for (var file of fs.readdirSync('generatedBaselines')) {
+        var generatedText = fs.readFileSync('generatedBaselines/' + file, 'utf8');
+        var baselinesText = fs.readFileSync('baselines/' + file, 'utf8');
+
+        addTestCase(file, generatedText, baselinesText);
+    }
+})
+
 function addTestCase(file: string, generatedText: string, baselinesText: string) {
     describe('Comparing ' + file, () => {
         it('should be the same', () => {

@@ -48,6 +48,36 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
     return outputLines.join('\n');
 }
 
+function baselineWholeFile(text: string, grammar: vt.IGrammar): string {
+    let oriLines = text.split('\n');
+    let ruleStack: vt.StackElement[] = undefined;
+    let outputLines: string[] = [];
+    for (let i in oriLines) {
+        let oriLine = oriLines[i];
+        let markerLocations = getMarkerLocations(oriLine);
+        let line = oriLine.split(marker).join('');
+        let lineTokens = grammar.tokenizeLine(line, ruleStack);
+        ruleStack = lineTokens.ruleStack;
+
+        outputLines.push(">" + line);
+        for (let token of lineTokens.tokens) {
+            let startingSpaces = " ";
+            for (let j = 0; j < token.startIndex; j++) {
+                startingSpaces += " ";
+            }
+
+            let locatingString = "";
+            for (let j = token.startIndex; j < token.endIndex; j++) {
+                locatingString += "^";
+            }
+            outputLines.push(startingSpaces + locatingString);
+            outputLines.push(startingSpaces + token.scopes.join(' '));
+        }
+    }
+
+    return outputLines.join('\n');
+}
+
 for (var fileName of fs.readdirSync('cases')) {
     const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
     let parsedFileName = path.parse(fileName);
@@ -55,6 +85,12 @@ for (var fileName of fs.readdirSync('cases')) {
     if (!fs.existsSync('./generated')){
         fs.mkdirSync('generated');
     }
+    if (!fs.existsSync('./generatedBaselines')) {
+        fs.mkdirSync('generatedBaselines');
+    }
     let outputFileName = path.join('./generated', parsedFileName.name + '.txt');
     fs.writeFile(outputFileName, getScopesAtMarkers(text, grammar), "utf8");
+
+    let outputBaselineName = path.join('./generatedBaselines', parsedFileName.name + '.baseline.txt');
+    fs.writeFile(outputBaselineName, baselineWholeFile(text, grammar), "utf8");
 }

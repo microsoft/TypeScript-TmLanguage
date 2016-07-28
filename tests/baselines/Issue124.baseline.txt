@@ -1,0 +1,244 @@
+>/*
+ ^^
+ source.ts comment.block.ts
+>	Solving Issue #124, #80, #81
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.ts
+>	Adding capability of ternary strings.
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.ts
+>*/
+ ^^
+ source.ts comment.block.ts
+>
+ ^
+ source.ts
+>let a = true ? true : true;  
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+      ^^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^^^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^^^^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts
+                           ^^^^
+                           source.ts
+>let b = true ? true : `this is ${} highlighted`
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+      ^^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^^^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                        ^^^^^^^^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                                ^^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts keyword.others.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts keyword.others.ts
+                                   ^^^^^^^^^^^^
+                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+>let c = true ? `hello` : `this ${DEPENDENCY_SEPARATOR}${moduleName} is highlighted`;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+      ^^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                 ^^^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                           ^^^^^
+                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                                ^^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts keyword.others.ts
+                                  ^^^^^^^^^^^^^^^^^^^^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts
+                                                      ^
+                                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts keyword.others.ts
+                                                       ^^
+                                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts keyword.others.ts
+                                                         ^^^^^^^^^^
+                                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts
+                                                                   ^
+                                                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts keyword.others.ts
+                                                                    ^^^^^^^^^^^^^^^
+                                                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                                                                                   ^
+                                                                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                                                                                    ^^
+                                                                                    source.ts
+>
+ ^
+ source.ts
+>var newVar = a ? (b == `hello`) : true;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+           ^^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                   ^^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                     ^^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.comparison.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                         ^^^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                   ^^^^
+                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts
+                                       ^^
+                                       source.ts
+>
+ ^
+ source.ts
+>var debArch = arch === 'x64' ? 'amd64' : 'i386';
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+            ^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^^^^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.comparison.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                         ^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                 ^^^^^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                           ^^^^
+                                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.single.ts
+                                                ^^
+                                                source.ts
+>
+ ^
+ source.ts
+>/*
+ ^^
+ source.ts comment.block.ts
+>	Comment
+ ^^^^^^^^^
+ source.ts comment.block.ts
+>*/
+ ^^
+ source.ts comment.block.ts

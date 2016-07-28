@@ -1,0 +1,116 @@
+>var letter;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+           ^^
+           source.ts
+>let variable;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+             ^^
+             source.ts
+>
+ ^
+ source.ts
+>variable;
+ ^^^^^^^^^^
+ source.ts
+>letter;
+ ^^^^^^^^
+ source.ts
+>
+ ^
+ source.ts
+>var constenum = 10;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+              ^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.ts
+                   ^^
+                   source.ts
+>constenum += 10;
+ ^^^^^^^^^^
+ source.ts
+           ^
+           source.ts keyword.operator.arithmetic.ts
+            ^
+            source.ts keyword.operator.comparison.ts
+             ^
+             source.ts
+              ^^
+              source.ts constant.numeric.ts
+                ^^
+                source.ts
+>const enum E { }
+ ^^^^^
+ source.ts meta.enum.declaration.ts storage.modifier.ts
+      ^
+      source.ts meta.enum.declaration.ts
+       ^^^^
+       source.ts meta.enum.declaration.ts storage.type.ts
+           ^
+           source.ts meta.enum.declaration.ts
+            ^
+            source.ts meta.enum.declaration.ts entity.name.class.ts
+             ^
+             source.ts
+              ^
+              source.ts meta.block.ts meta.brace.curly.ts
+               ^
+               source.ts meta.block.ts
+                ^
+                source.ts meta.block.ts meta.brace.curly.ts
+>
+ ^
+ source.ts
+>var constable = "I am rrrrrroyal!";
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+              ^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.double.ts
+                  ^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.double.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.double.ts
+                                   ^^
+                                   source.ts
+>constable += " Royal, I say!";
+ ^^^^^^^^^^
+ source.ts
+           ^
+           source.ts keyword.operator.arithmetic.ts
+            ^
+            source.ts keyword.operator.comparison.ts
+             ^
+             source.ts
+              ^
+              source.ts string.double.ts
+               ^^^^^^^^^^^^^^
+               source.ts string.double.ts
+                             ^
+                             source.ts string.double.ts
+                              ^^
+                              source.ts

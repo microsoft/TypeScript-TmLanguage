@@ -1,0 +1,53 @@
+>// Test for https://github.com/Microsoft/TypeScript-Sublime-Plugin/pull/307
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.line.ts
+>
+ ^
+ source.ts
+>class SomeClass {
+ ^^^^^
+ source.ts meta.declaration.object.ts storage.type.ts
+      ^
+      source.ts meta.declaration.object.ts
+       ^^^^^^^^^
+       source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts
+                ^
+                source.ts meta.declaration.object.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+>    "some string"
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+     ^
+     source.ts meta.declaration.object.ts meta.object.body.ts string.double.ts
+      ^^^^^^^^^^^
+      source.ts meta.declaration.object.ts meta.object.body.ts string.double.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts string.double.ts
+>}
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+>
+ ^
+ source.ts
+>var y "some string 2"
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.double.ts
+        ^^^^^^^^^^^^^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.double.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.double.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts
