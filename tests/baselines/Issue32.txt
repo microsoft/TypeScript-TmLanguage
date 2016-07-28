@@ -1,3 +1,28 @@
+original file
+-----------------------------------
+/*
+	Testing Isuue 32: Adding constructor as a support.type keword
+*/
+
+^^interface ^^NewInterface{
+	^^currentData: Data;
+	^^setVal(d: Data)
+}
+
+
+^^class NewClass implements NewInterface {
+	^^currentData: Data;
+	^^setVal(d: Data){
+		^^this.currentData = d;
+	}
+	^^constructor(^^m: ^^number, ^^n: ^^string){}
+}
+^^
+/*
+	Testing comments
+*/
+-----------------------------------
+
 [5, 1]: source.ts meta.declaration.object.ts storage.type.ts 
 [5, 11]: source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts 
 [6, 2]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts 

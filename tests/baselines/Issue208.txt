@@ -1,3 +1,17 @@
+original file
+-----------------------------------
+var someVar = ^^new ^^Thing<^^number, ^^string>('^^data'^^);
+var someVar = ^^makeThing<^^number, ^^string>('^^data'^^);
+
+class MyClass {
+    static ^^someProp = new ^^Thing<^^number, ^^string>('data');
+    static ^^someProp = ^^makeThing<^^number, ^^string>('data');
+
+    someProp = new ^^Thing<^^number, ^^string>('data');
+    someProp = ^^makeThing<^^number, ^^string>('data');
+}
+-----------------------------------
+
 [1, 15]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.others.ts 
 [1, 19]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts entity.name.type.ts 
 [1, 25]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts 

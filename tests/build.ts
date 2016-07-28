@@ -25,6 +25,12 @@ function getMarkerLocations(str: string):  number[] {
     return locations;
 }
 
+function getInputFile(oriLines: string[]): string {
+    return "original file\n-----------------------------------\n" +
+        oriLines.join("\n") + 
+        "\n-----------------------------------\n\n";
+}
+
 function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
     let oriLines = text.split('\n');
     let ruleStack:vt.StackElement[] = undefined;
@@ -45,7 +51,7 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
         }
     }
 
-    return outputLines.join('\n');
+    return getInputFile(oriLines) + outputLines.join('\n');
 }
 
 function baselineWholeFile(text: string, grammar: vt.IGrammar): string {
@@ -75,7 +81,7 @@ function baselineWholeFile(text: string, grammar: vt.IGrammar): string {
         }
     }
 
-    return outputLines.join('\n');
+    return getInputFile(oriLines) + outputLines.join('\n');
 }
 
 for (var fileName of fs.readdirSync('cases')) {

@@ -1,3 +1,31 @@
+original file
+-----------------------------------
+// Issue 288: "function" in "functionName" gets highlighted.
+// Fixed in pull request #289.
+
+function ^^Name(){
+}
+var AnotherName = function^^(){
+}
+
+export function ^^eName(){
+}
+export var eAnotherName = function^^(){
+}
+
+var function^^Name=1;
+function^^Name=1;
+
+export var function^^Name2=1;
+
+var export^^Name="hello";
+export^^Name2="hello";
+
+var return^^Name=1;
+return^^Name+=1;
+
+-----------------------------------
+
 [4, 10]: source.ts meta.function.ts entity.name.function.ts 
 [6, 27]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts 
 [9, 17]: source.ts meta.function.ts entity.name.function.ts 
