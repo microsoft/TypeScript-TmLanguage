@@ -82,8 +82,7 @@ repository:
     begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
     beginCaptures:
       '1': { name: keyword.other.ts }
-      '2': { name: entity.name.class.ts }
-    end: (?=$|[,);>]|var|type|function|class|interface)
+    end: (?=$|[,);>]|var|type|function)
     patterns:
       - include: '#type-parameters'
       - include: '#type'
@@ -100,7 +99,7 @@ repository:
 
   object-declaration:
     name: meta.declaration.object.ts
-    begin: '\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?<!\.)(class|interface)\b'
+    begin: '\b(?:\s+)?\b(?:(abstract)\s+)?\b(?<!\.)(class|interface)\b'
     beginCaptures:
       '1': { name: storage.type.ts }
       '2': { name: storage.modifier.ts }
@@ -188,7 +187,7 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b()\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (abstract)
       '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
@@ -228,7 +227,7 @@ repository:
     end: (\])\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.ts }
-      '2': { name: keyword.others.ts }
+      '2': { name: keyword.operator.ts }
     patterns:
     - include: '#type-annotation'
     - include: '#indexer-parameter'
@@ -242,7 +241,7 @@ repository:
 
   function-declaration:
     name: meta.function.ts
-    begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
+    begin: \b(?:\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     beginCaptures:
       '1': { name: storage.type.ts }
       '2': { name: storage.modifier.ts }
@@ -259,7 +258,7 @@ repository:
 
   function-overload-declaration:
     name: meta.function.overload.ts
-    match: \b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
+    match: \b(?:\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     captures:
       '1': { name: storage.type.ts }
       '2': { name: storage.type.function.ts }
@@ -447,6 +446,187 @@ repository:
     - include: '#function-call'
     - include: '#case-clause'
     - include: '#control-statement'
+    - include: '#es7-decorators'
+    - include: '#literal-class'
+    - include: '#literal-constructor'
+  
+  literal-constructor:
+    patterns:
+    - name: meta.instance.constructor.ts
+      begin: (new)\s+(?=[_$a-zA-Z][$\w.]*)
+      beginCaptures:
+        '1': {name: keyword.operator.new.ts}
+      end: (?![_$a-zA-Z][$\w.]*)
+      patterns:
+      - include: '#support-class'
+      - include: '#support-other'
+      - match: ([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)
+        captures:
+          '2': {name: variable.function.constructor.ts}
+
+  # https://github.com/wycats/javascript-decorators
+  es7-decorators:
+    patterns:
+    - name: tag.decorator.ts
+      match: >-
+        (?x)
+          (@)([_$a-zA-Z][$\w]*)\b
+      captures:
+        '1': {name: punctuation.definition.tag.ts}
+        '2': {name: entity.name.tag.ts}
+
+  literal-class:
+    patterns:
+    # e.g. class MyClass {  }
+    - name: meta.class.ts
+      begin: (?<!\.)\b(?:(class)|(interface))\b
+      beginCaptures:
+        '1': {name: storage.type.class.ts}
+        '2': {name: storage.type.interface.flowtype.ts}
+      end: \}
+      endCaptures:
+        '0': {name: meta.brace.curly.end.ts}
+      patterns:
+      - include: '#comments'
+      - begin: ([_$a-zA-Z][$\w]*)
+        beginCaptures:
+          '0': {name: entity.name.class.ts}
+        end: (?={)
+        patterns:
+        - include: '#comments'
+        - include: '#flowtype-polymorph'
+        - name: meta.class.extends.ts
+          begin: (?<!\.)\b(extends)\b
+          beginCaptures:
+            '0': {name: storage.type.extends.ts}
+          end: (?={)
+          patterns:
+          - include: '#flowtype-polymorph'
+          - include: '#expression'
+      - begin: \{
+        beginCaptures:
+          '0': {name: meta.brace.curly.begin.ts}
+        end: (?=})
+        patterns:
+        - include: '#es7-decorators'
+        - include: '#class-properties'
+        - include: '#class-method-definition'
+        - include: '#class-method-storage'
+        - include: '#brackets'
+        - include: '#comments'
+  
+  class-method-definition:
+    patterns:
+    # e,g. @@iterator(): Iterator<[K, V]>;
+    # e.g. static (o: ?void): {[key: any]: any};
+    # e.g. return<R>(value: R): { done: true, value: R };
+    # e.g. <T: Object>(o: T): T;
+    - name: meta.short-method.flowtype.ts
+      begin: (@@[_$a-zA-Z][$\w]*|static|return)(?=\s*[<(])|(?=\s*<)
+      beginCaptures:
+        '1': {name: keyword.operator.flowtype.ts}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    # In objects and flow annotations it can't be assumed that a start quote
+    # or start square-bracket is for a method - it may be a computed property.
+    # For multi-line quoted short methods and computed property methods, only
+    # the polymorphism constraints and parameters are matched.
+    - name: meta.class-method.computed.ts
+      begin: (?<=[]"'])\s*(?=[<(])
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    - name: meta.class-accessor.ts
+      begin: >-
+        (?x)
+          ((?>get|set)\s+)
+          (?>
+            ((')((?>[^'\\]|\\.)*)('))|
+            ((")((?>[^"\\]|\\.)*)("))|
+            (([_$a-zA-Z][$\w]*|\d+))
+          )(?=\s*[<(])
+      beginCaptures:
+        '1': {name: storage.type.ts}
+        '2': {name: string.quoted.ts}
+        '3': {name: punctuation.definition.string.begin.ts}
+        '4': {name: entity.name.function.ts}
+        '5': {name: punctuation.definition.string.end.ts}
+        '6': {name: string.quoted.ts}
+        '7': {name: punctuation.definition.string.begin.ts}
+        '8': {name: entity.name.function.ts}
+        '9': {name: punctuation.definition.string.end.ts}
+        '10': {name: string.unquoted.ts}
+        '11': {name: entity.name.function.ts}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    - name: meta.class-method.ts
+      begin: >-
+        (?x)
+          (?>
+            ((')((?>[^'\\]|\\.)*)('))|
+            ((")((?>[^"\\]|\\.)*)("))|
+            (([_$a-zA-Z][$\w]*|\d+))
+          )(?=\s*[<(])
+      beginCaptures:
+        '1': {name: string.quoted.ts}
+        '2': {name: punctuation.definition.string.begin.ts}
+        '3': {name: entity.name.function.ts}
+        '4': {name: punctuation.definition.string.end.ts}
+        '5': {name: string.quoted.ts}
+        '6': {name: punctuation.definition.string.begin.ts}
+        '7': {name: entity.name.function.ts}
+        '8': {name: punctuation.definition.string.end.ts}
+        '9': {name: string.unquoted.ts}
+        '10': {name: entity.name.function.ts}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+  class-method-storage:
+    patterns:
+    - name: storage.modifier.ts
+      match: (?<!\.)\b(?>static|declare)\b
+
+    - name: storage.type.ts
+      match: (?<!\.)\b(async)\b
+
+    - name: storage.type.ts
+      match: (?<!\.)\b(get|set)\b(?!\s*\()
+
+    - name: keyword.generator.asterisk.ts
+      match: \*
+
+  class-properties:
+    patterns:
+    - name: meta.class.property.ts
+      begin: ([_$a-zA-Z][$\w]*)(?=\s*[:=])
+      beginCaptures:
+        '1': {name: variable.other.property.ts}
+      end: (?=\s*[;}])
+      patterns:
+      - include: '#flowtype-annotation'
+      - include: '#expression'
 
   switch-expression:
     name: switch-expression.expr.ts
@@ -529,8 +709,8 @@ repository:
     - include: '#expression'
 
   expression-operator:
-    name: keyword.others.ts
-    match: \b(delete|in|instanceof|new|typeof|as|is|of)\b
+    name: keyword.operator.ts
+    match: \b(delete|in|instanceof|new|typeof|is|of)\b
 
   imply-operator:
     name: keyword.operator.ts
@@ -538,7 +718,7 @@ repository:
 
   import-operator:
     name: keyword.control.import.include.ts
-    match: \b(import|from)\b
+    match: \b(import|export|default|as|from)\b
 
   arithmetic-operator:
     name: keyword.operator.arithmetic.ts
@@ -558,7 +738,7 @@ repository:
 
   storage-keyword:
     name: storage.type.ts
-    match: \b(var|let|function|const|module|namespace|void|export)\b
+    match: \b(var|let|function|const|module|namespace|void)\b
 
   paren-expression:
     begin: \(
@@ -707,5 +887,3 @@ repository:
   property-accessor:
     name: storage.type.property.ts
     match: \b(get|set)\b
-
-...

@@ -449,7 +449,187 @@ repository:
     - include: '#function-call'
     - include: '#case-clause'
     - include: '#control-statement'
+    - include: '#es7-decorators'
+    - include: '#literal-class'
+    - include: '#literal-constructor'
+  literal-constructor:
+    patterns:
+    - name: meta.instance.constructor.tsx
+      begin: (new)\s+(?=[_$a-zA-Z][$\w.]*)
+      beginCaptures:
+        '1': {name: keyword.operator.new.tsx}
+      end: (?![_$a-zA-Z][$\w.]*)
+      patterns:
+      - include: '#support-class'
+      - include: '#support-other'
+      - match: ([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)
+        captures:
+          '2': {name: variable.function.constructor.tsx}
 
+  # https://github.com/wycats/javascript-decorators
+  es7-decorators:
+    patterns:
+    - name: tag.decorator.tsx
+      match: >-
+        (?x)
+          (@)([_$a-zA-Z][$\w]*)\b
+      captures:
+        '1': {name: punctuation.definition.tag.tsx}
+        '2': {name: entity.name.tag.tsx}
+
+  literal-class:
+    patterns:
+    # e.g. class MyClass {  }
+    - name: meta.class.tsx
+      begin: (?<!\.)\b(?:(class)|(interface))\b
+      beginCaptures:
+        '1': {name: storage.type.class.tsx}
+        '2': {name: storage.type.interface.flowtype.tsx}
+      end: \}
+      endCaptures:
+        '0': {name: meta.brace.curly.end.tsx}
+      patterns:
+      - include: '#comments'
+      - begin: ([_$a-zA-Z][$\w]*)
+        beginCaptures:
+          '0': {name: entity.name.class.tsx}
+        end: (?={)
+        patterns:
+        - include: '#comments'
+        - include: '#flowtype-polymorph'
+        - name: meta.class.extends.tsx
+          begin: (?<!\.)\b(extends)\b
+          beginCaptures:
+            '0': {name: storage.type.extends.tsx}
+          end: (?={)
+          patterns:
+          - include: '#flowtype-polymorph'
+          - include: '#expression'
+      - begin: \{
+        beginCaptures:
+          '0': {name: meta.brace.curly.begin.tsx}
+        end: (?=})
+        patterns:
+        - include: '#es7-decorators'
+        - include: '#class-properties'
+        - include: '#class-method-definition'
+        - include: '#class-method-storage'
+        - include: '#brackets'
+        - include: '#comments'
+
+  class-method-definition:
+    patterns:
+    # e,g. @@iterator(): Iterator<[K, V]>;
+    # e.g. static (o: ?void): {[key: any]: any};
+    # e.g. return<R>(value: R): { done: true, value: R };
+    # e.g. <T: Object>(o: T): T;
+    - name: meta.short-method.flowtype.tsx
+      begin: (@@[_$a-zA-Z][$\w]*|static|return)(?=\s*[<(])|(?=\s*<)
+      beginCaptures:
+        '1': {name: keyword.operator.flowtype.tsx}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    # In objects and flow annotations it can't be assumed that a start quote
+    # or start square-bracket is for a method - it may be a computed property.
+    # For multi-line quoted short methods and computed property methods, only
+    # the polymorphism constraints and parameters are matched.
+    - name: meta.class-method.computed.tsx
+      begin: (?<=[]"'])\s*(?=[<(])
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    - name: meta.class-accessor.tsx
+      begin: >-
+        (?x)
+          ((?>get|set)\s+)
+          (?>
+            ((')((?>[^'\\]|\\.)*)('))|
+            ((")((?>[^"\\]|\\.)*)("))|
+            (([_$a-zA-Z][$\w]*|\d+))
+          )(?=\s*[<(])
+      beginCaptures:
+        '1': {name: storage.type.tsx}
+        '2': {name: string.quoted.tsx}
+        '3': {name: punctuation.definition.string.begin.tsx}
+        '4': {name: entity.name.function.tsx}
+        '5': {name: punctuation.definition.string.end.tsx}
+        '6': {name: string.quoted.tsx}
+        '7': {name: punctuation.definition.string.begin.tsx}
+        '8': {name: entity.name.function.tsx}
+        '9': {name: punctuation.definition.string.end.tsx}
+        '10': {name: string.unquoted.tsx}
+        '11': {name: entity.name.function.tsx}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+    - name: meta.class-method.tsx
+      begin: >-
+        (?x)
+          (?>
+            ((')((?>[^'\\]|\\.)*)('))|
+            ((")((?>[^"\\]|\\.)*)("))|
+            (([_$a-zA-Z][$\w]*|\d+))
+          )(?=\s*[<(])
+      beginCaptures:
+        '1': {name: string.quoted.tsx}
+        '2': {name: punctuation.definition.string.begin.tsx}
+        '3': {name: entity.name.function.tsx}
+        '4': {name: punctuation.definition.string.end.tsx}
+        '5': {name: string.quoted.tsx}
+        '6': {name: punctuation.definition.string.begin.tsx}
+        '7': {name: entity.name.function.tsx}
+        '8': {name: punctuation.definition.string.end.tsx}
+        '9': {name: string.unquoted.tsx}
+        '10': {name: entity.name.function.tsx}
+      end: (?=\s*[;{])
+      patterns:
+      - include: '#flowtype-polymorph'
+      - include: '#function-declaration-parameters'
+      - include: '#flowtype-annotation'
+      - include: '#comments'
+      - include: '#curly-brackets'
+
+  class-method-storage:
+    patterns:
+    - name: storage.modifier.tsx
+      match: (?<!\.)\b(?>static|declare)\b
+
+    - name: storage.type.tsx
+      match: (?<!\.)\b(async)\b
+
+    - name: storage.type.tsx
+      match: (?<!\.)\b(get|set)\b(?!\s*\()
+
+    - name: keyword.generator.asterisk.tsx
+      match: \*
+
+  class-properties:
+    patterns:
+    - name: meta.class.property.tsx
+      begin: ([_$a-zA-Z][$\w]*)(?=\s*[:=])
+      beginCaptures:
+        '1': {name: variable.other.property.tsx}
+      end: (?=\s*[;}])
+      patterns:
+      - include: '#flowtype-annotation'
+      - include: '#expression'
+      
   switch-expression:
     name: switch-expression.expr.tsx
     begin: \b(switch)\b\s*\(

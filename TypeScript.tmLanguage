@@ -176,6 +176,329 @@
 				</dict>
 			</array>
 		</dict>
+		<key>class-method-definition</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(@@[_$a-zA-Z][$\w]*|static|return)(?=\s*[&lt;(])|(?=\s*&lt;)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.flowtype.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\s*[;{])</string>
+					<key>name</key>
+					<string>meta.short-method.flowtype.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-polymorph</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-annotation</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#curly-brackets</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=[]"'])\s*(?=[&lt;(])</string>
+					<key>end</key>
+					<string>(?=\s*[;{])</string>
+					<key>name</key>
+					<string>meta.class-method.computed.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-polymorph</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-annotation</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#curly-brackets</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+  ((?&gt;get|set)\s+)
+  (?&gt;
+    ((')((?&gt;[^'\\]|\\.)*)('))|
+    ((")((?&gt;[^"\\]|\\.)*)("))|
+    (([_$a-zA-Z][$\w]*|\d+))
+  )(?=\s*[&lt;(])</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.ts</string>
+						</dict>
+						<key>10</key>
+						<dict>
+							<key>name</key>
+							<string>string.unquoted.ts</string>
+						</dict>
+						<key>11</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.ts</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.ts</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.ts</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.ts</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.ts</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.ts</string>
+						</dict>
+						<key>8</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.ts</string>
+						</dict>
+						<key>9</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\s*[;{])</string>
+					<key>name</key>
+					<string>meta.class-accessor.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-polymorph</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-annotation</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#curly-brackets</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)
+  (?&gt;
+    ((')((?&gt;[^'\\]|\\.)*)('))|
+    ((")((?&gt;[^"\\]|\\.)*)("))|
+    (([_$a-zA-Z][$\w]*|\d+))
+  )(?=\s*[&lt;(])</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.ts</string>
+						</dict>
+						<key>10</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.ts</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.ts</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.ts</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.ts</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.ts</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.ts</string>
+						</dict>
+						<key>8</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.ts</string>
+						</dict>
+						<key>9</key>
+						<dict>
+							<key>name</key>
+							<string>string.unquoted.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\s*[;{])</string>
+					<key>name</key>
+					<string>meta.class-method.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-polymorph</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#function-declaration-parameters</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-annotation</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#curly-brackets</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>class-method-storage</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(?&gt;static|declare)\b</string>
+					<key>name</key>
+					<string>storage.modifier.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(async)\b</string>
+					<key>name</key>
+					<string>storage.type.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(get|set)\b(?!\s*\()</string>
+					<key>name</key>
+					<string>storage.type.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\*</string>
+					<key>name</key>
+					<string>keyword.generator.asterisk.ts</string>
+				</dict>
+			</array>
+		</dict>
+		<key>class-properties</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>([_$a-zA-Z][$\w]*)(?=\s*[:=])</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.property.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\s*[;}])</string>
+					<key>name</key>
+					<string>meta.class.property.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#flowtype-annotation</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>comment</key>
 		<dict>
 			<key>name</key>
@@ -309,6 +632,32 @@
 			<key>name</key>
 			<string>meta.enum.declaration.ts</string>
 		</dict>
+		<key>es7-decorators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.ts</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?x)
+  (@)([_$a-zA-Z][$\w]*)\b</string>
+					<key>name</key>
+					<string>tag.decorator.ts</string>
+				</dict>
+			</array>
+		</dict>
 		<key>expression</key>
 		<dict>
 			<key>name</key>
@@ -415,14 +764,26 @@
 					<key>include</key>
 					<string>#control-statement</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#es7-decorators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-class</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#literal-constructor</string>
+				</dict>
 			</array>
 		</dict>
 		<key>expression-operator</key>
 		<dict>
 			<key>match</key>
-			<string>\b(delete|in|instanceof|new|typeof|as|is|of)\b</string>
+			<string>\b(delete|in|instanceof|new|typeof|is|of)\b</string>
 			<key>name</key>
-			<string>keyword.others.ts</string>
+			<string>keyword.operator.ts</string>
 		</dict>
 		<key>expression-type</key>
 		<dict>
@@ -568,7 +929,7 @@
 		<key>function-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*</string>
+			<string>\b(?:\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -645,7 +1006,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*</string>
+			<string>\b(?:\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*</string>
 			<key>name</key>
 			<string>meta.function.overload.ts</string>
 		</dict>
@@ -703,7 +1064,7 @@
 		<key>import-operator</key>
 		<dict>
 			<key>match</key>
-			<string>\b(import|from)\b</string>
+			<string>\b(import|export|default|as|from)\b</string>
 			<key>name</key>
 			<string>keyword.control.import.include.ts</string>
 		</dict>
@@ -731,7 +1092,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.ts</string>
+					<string>keyword.operator.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -799,6 +1160,186 @@
 				</dict>
 			</array>
 		</dict>
+		<key>literal-class</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!\.)\b(?:(class)|(interface))\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.class.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.interface.flowtype.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.brace.curly.end.ts</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.class.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>([_$a-zA-Z][$\w]*)</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.class.ts</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?={)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#comments</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#flowtype-polymorph</string>
+								</dict>
+								<dict>
+									<key>begin</key>
+									<string>(?&lt;!\.)\b(extends)\b</string>
+									<key>beginCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>storage.type.extends.ts</string>
+										</dict>
+									</dict>
+									<key>end</key>
+									<string>(?={)</string>
+									<key>name</key>
+									<string>meta.class.extends.ts</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#flowtype-polymorph</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#expression</string>
+										</dict>
+									</array>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\{</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>meta.brace.curly.begin.ts</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=})</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#es7-decorators</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#class-properties</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#class-method-definition</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#class-method-storage</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#brackets</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#comments</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>literal-constructor</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(new)\s+(?=[_$a-zA-Z][$\w.]*)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.new.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?![_$a-zA-Z][$\w.]*)</string>
+					<key>name</key>
+					<string>meta.instance.constructor.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#support-class</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#support-other</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>variable.function.constructor.ts</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>([_$a-zA-Z][$\w.]*\.)?([_$a-zA-Z][$\w]*)</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>logic-operator</key>
 		<dict>
 			<key>match</key>
@@ -809,7 +1350,7 @@
 		<key>method-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\&lt;)</string>
+			<string>\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b()\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\&lt;)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1048,7 +1589,7 @@
 		<key>object-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?&lt;!\.)(class|interface)\b</string>
+			<string>\b(?:\s+)?\b(?:(abstract)\s+)?\b(?&lt;!\.)(class|interface)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1349,7 +1890,7 @@
 		<key>storage-keyword</key>
 		<dict>
 			<key>match</key>
-			<string>\b(var|let|function|const|module|namespace|void|export)\b</string>
+			<string>\b(var|let|function|const|module|namespace|void)\b</string>
 			<key>name</key>
 			<string>storage.type.ts</string>
 		</dict>
@@ -1638,14 +2179,9 @@
 					<key>name</key>
 					<string>keyword.other.ts</string>
 				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.class.ts</string>
-				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|[,);&gt;]|var|type|function|class|interface)</string>
+			<string>(?=$|[,);&gt;]|var|type|function)</string>
 			<key>name</key>
 			<string>meta.type.declaration.ts</string>
 			<key>patterns</key>
