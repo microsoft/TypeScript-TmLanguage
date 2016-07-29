@@ -28,11 +28,23 @@ repository:
       '1': { name: variable.tsx }
     end: (?=$|[;,])
     patterns:
+    - include: '#var-expr-block'
     - include: '#ternary-expression'
     - include: '#type-annotation'
     - include: '#string'
     - include: '#comment'
     - include: '#expression'
+
+  var-expr-block:
+    name: meta.var.block.tsx
+    begin: '{'
+    end: '}'
+    patterns:
+    - include: '#method-declaration'
+    - include: '#method-overload-declaration'
+    - include: '#object-member'
+    - include: '#expression'
+
 
   ternary-expression:
     begin: (?=\?)
