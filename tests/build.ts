@@ -96,12 +96,9 @@ for (var fileName of fs.readdirSync('cases')) {
     if (!fs.existsSync('./generated')){
         fs.mkdirSync('generated');
     }
-    if (!fs.existsSync('./generatedBaselines')) {
-        fs.mkdirSync('generatedBaselines');
-    }
     let outputFileName = path.join('./generated', parsedFileName.name + '.txt');
     fs.writeFile(outputFileName, getScopesAtMarkers(text, grammar), "utf8");
 
-    let outputBaselineName = path.join('./generatedBaselines', parsedFileName.name + '.baseline.txt');
+    let outputBaselineName = path.join('./generated', parsedFileName.name + '.baseline.txt');
     fs.writeFile(outputBaselineName, baselineWholeFile(text, grammar), "utf8");
 }
