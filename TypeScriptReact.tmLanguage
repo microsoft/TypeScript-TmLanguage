@@ -111,6 +111,14 @@
 					<key>include</key>
 					<string>#expression</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#method-declaration</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#method-overload-declaration</string>
+				</dict>
 			</array>
 		</dict>
 		<key>boolean-literal</key>
@@ -2291,6 +2299,34 @@
 				</dict>
 			</array>
 		</dict>
+		<key>var-expr-block</key>
+		<dict>
+			<key>begin</key>
+			<string>{</string>
+			<key>end</key>
+			<string>}</string>
+			<key>name</key>
+			<string>meta.var.block.tsx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#method-declaration</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#method-overload-declaration</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#object-member</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
 		<key>var-single-variable</key>
 		<dict>
 			<key>begin</key>
@@ -2309,6 +2345,10 @@
 			<string>meta.var-single-variable.expr.tsx</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#var-expr-block</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#ternary-expression</string>
