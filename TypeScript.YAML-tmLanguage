@@ -571,16 +571,26 @@ repository:
     - include: '#expression'
 
   qstring-double:
-    name: string.double.ts
+    name: string.quoted.double.ts
     begin: '"'
-    end: '"|(?:[^\\\n]$)'
+    beginCaptures:
+      '0': { name: punctuation.definition.string.begin.ts }
+    end: '(")|((?:[^\\\n])$)'
+    endCaptures:
+      '1': { name: punctuation.definition.string.end.ts }
+      '2': { name: invalid.illegal.newline.ts }
     patterns:
     - include: '#string-character-escape'
 
   qstring-single:
-    name: string.single.ts
+    name: string.quoted.single.ts
     begin: "'"
-    end: \'|(?:[^\\\n]$)
+    beginCaptures:
+      '0': { name: punctuation.definition.string.begin.ts }
+    end: (\')|((?:[^\\\n])$)
+    endCaptures:
+      '1': { name: punctuation.definition.string.end.ts }
+      '2': { name: invalid.illegal.newline.ts }
     patterns:
     - include: '#string-character-escape'
 
@@ -601,36 +611,30 @@ repository:
     - include: '#qstring-double'
 
   template:
-    name: meta.template.ts
-    begin: '`'
+    name: string.template.ts
+    begin: '(?:\b([a-zA-Z_$][a-zA-Z_$0-9]*)\b)?(`)'
     beginCaptures:
-      '0': { name: string.template.ts}
+      '1': { name: entity.name.function.tagged-template.ts }
+      '2': { name: punctuation.definition.string.template.begin.ts }
     end: '`'
     endCaptures:
-      '0': { name: string.template.ts}
+      '0': { name: punctuation.definition.string.template.end.ts}
     patterns:
      - include: '#template-substitution-element'
-     - include: '#template-string-contents'
-
-  template-string-contents:
-    name: string.template.ts
-    begin: '.*?'
-    end: (?=(\$\{|`))
-    patterns:
-    - include: '#string-character-escape'
+     - include: '#string-character-escape'
 
   string-character-escape:
-    name: constant.character.escape
-    match: \\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)
+    name: constant.character.escape.ts
+    match: \\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)
 
   template-substitution-element:
-    name: template.element.ts
+    name: meta.template.expression.ts
     begin: \$\{
     beginCaptures:
-      '0': {name: keyword.others.ts}
+      '0': { name: punctuation.definition.template-expression.begin.ts }
     end: \}
     endCaptures:
-      '0': {name: keyword.others.ts}
+      '0': { name: punctuation.definition.template-expression.end.ts }
     patterns:
       - include: '#expression'
 

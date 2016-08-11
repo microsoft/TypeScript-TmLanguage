@@ -1804,10 +1804,31 @@
 		<dict>
 			<key>begin</key>
 			<string>"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.tsx</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>"|(?:[^\\\n]$)</string>
+			<string>(")|((?:[^\\\n])$)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.tsx</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>invalid.illegal.newline.tsx</string>
+				</dict>
+			</dict>
 			<key>name</key>
-			<string>string.double.tsx</string>
+			<string>string.quoted.double.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1820,10 +1841,31 @@
 		<dict>
 			<key>begin</key>
 			<string>'</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.tsx</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>\'|(?:[^\\\n]$)</string>
+			<string>(\')|((?:[^\\\n])$)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.tsx</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>invalid.illegal.newline.tsx</string>
+				</dict>
+			</dict>
 			<key>name</key>
-			<string>string.single.tsx</string>
+			<string>string.quoted.single.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1912,9 +1954,9 @@
 		<key>string-character-escape</key>
 		<dict>
 			<key>match</key>
-			<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)</string>
+			<string>\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)</string>
 			<key>name</key>
-			<string>constant.character.escape</string>
+			<string>constant.character.escape.tsx</string>
 		</dict>
 		<key>switch-block</key>
 		<dict>
@@ -1979,13 +2021,18 @@
 		<key>template</key>
 		<dict>
 			<key>begin</key>
-			<string>`</string>
+			<string>(?:\b([a-zA-Z_$][a-zA-Z_$0-9]*)\b)?(`)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>string.template.tsx</string>
+					<string>entity.name.function.tagged-template.tsx</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.template.begin.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1995,33 +2042,17 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>string.template.tsx</string>
+					<string>punctuation.definition.string.template.end.tsx</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>meta.template.tsx</string>
+			<string>string.template.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
 					<string>#template-substitution-element</string>
 				</dict>
-				<dict>
-					<key>include</key>
-					<string>#template-string-contents</string>
-				</dict>
-			</array>
-		</dict>
-		<key>template-string-contents</key>
-		<dict>
-			<key>begin</key>
-			<string>.*?</string>
-			<key>end</key>
-			<string>(?=(\$\{|`))</string>
-			<key>name</key>
-			<string>string.template.tsx</string>
-			<key>patterns</key>
-			<array>
 				<dict>
 					<key>include</key>
 					<string>#string-character-escape</string>
@@ -2037,7 +2068,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.tsx</string>
+					<string>punctuation.definition.template-expression.begin.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2047,11 +2078,11 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.tsx</string>
+					<string>punctuation.definition.template-expression.end.tsx</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>template.element.tsx</string>
+			<string>meta.template.expression.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
