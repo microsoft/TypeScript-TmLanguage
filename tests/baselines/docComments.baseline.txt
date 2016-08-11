@@ -1,0 +1,104 @@
+original file
+-----------------------------------
+/**
+ * This function takes two parameters
+ * @param {string} param1 Some string param.
+ * @param {number} param2  Some number param.
+ * some other contents
+ */
+function foo(param1: string, param2: number) {
+}
+-----------------------------------
+
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts comment.block.documentation.ts
+> * This function takes two parameters
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+> * @param {string} param1 Some string param.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+          ^
+          source.ts comment.block.documentation.ts
+           ^^^^^^^^
+           source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                   ^
+                   source.ts comment.block.documentation.ts other.meta.jsdoc
+                    ^^^^^^
+                    source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                          ^
+                          source.ts comment.block.documentation.ts other.meta.jsdoc
+                           ^^^^^^^^^^^^^^^^^^^
+                           source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> * @param {number} param2  Some number param.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+          ^
+          source.ts comment.block.documentation.ts
+           ^^^^^^^^
+           source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                   ^
+                   source.ts comment.block.documentation.ts other.meta.jsdoc
+                    ^^^^^^
+                    source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                          ^^
+                          source.ts comment.block.documentation.ts other.meta.jsdoc
+                            ^^^^^^^^^^^^^^^^^^^
+                            source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> * some other contents
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts
+>function foo(param1: string, param2: number) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts
+              ^^^^^^
+              source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts
+                    ^
+                    source.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts
+                     ^
+                     source.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts
+                      ^^^^^^
+                      source.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts meta.type.primitive.ts support.type.ts
+                            ^
+                            source.ts meta.function.ts meta.function.type.parameter.ts
+                             ^
+                             source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts
+                              ^^^^^^
+                              source.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts
+                                    ^
+                                    source.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts
+                                     ^
+                                     source.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts
+                                      ^^^^^^
+                                      source.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts meta.type.primitive.ts support.type.ts
+                                            ^
+                                            source.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts
+                                             ^
+                                             source.ts meta.function.ts
+                                              ^
+                                              source.ts meta.function.ts meta.decl.block.ts meta.brace.curly.ts
+                                               ^^
+                                               source.ts meta.function.ts meta.decl.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.decl.block.ts meta.brace.curly.ts

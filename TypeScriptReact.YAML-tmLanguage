@@ -624,25 +624,40 @@ repository:
       - include: '#expression'
 
   comment:
-    name: comment.tsx
     patterns:
-    - include: '#comment-block-doc'
-    - include: '#comment-block'
-    - include: '#comment-line'
+    - name: comment.block.documentation.tsx
+      begin: /\*\*(?!/)
+      end: \*/
+      captures:
+        '0': {name: punctuation.definition.comment.tsx}
+      patterns:
+      - include: '#docblock'
+    - name: comment.block.tsx
+      begin: /\*
+      end: \*/
+      captures:
+        '0': {name: punctuation.definition.comment.tsx}
+    - begin: (^[ \t]+)?(?=//)
+      beginCaptures:
+        '1': {name: punctuation.whitespace.comment.leading.tsx}
+      end: (?!\G)
+      patterns:
+      - name: comment.line.double-slash.tsx
+        begin: //
+        beginCaptures:
+          '0': {name: punctuation.definition.comment.tsx}
+        end: \n
 
-  comment-block-doc:
-    name: comment.block.documentation.tsx
-    begin: /\*\*(?!/)
-    end: \*/
-
-  comment-block:
-    name: comment.block.tsx
-    begin: /\*
-    end: \*/
-
-  comment-line:
-    name: comment.line.tsx
-    match: (//).*$\n?
+  docblock:
+    patterns:
+    - name: storage.type.class.jsdoc
+      match: (?<!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b
+    - match: ({\b(?:[a-zA-Z_$][a-zA-Z_$0-9]*)\b})\s\b([a-zA-Z_$][a-zA-Z_$0-9]*)\b\s*((?:(?!\*\/).)*)
+      captures:
+        '0': {name: other.meta.jsdoc}
+        '1': {name: entity.name.type.instance.jsdoc}
+        '2': {name: variable.other.jsdoc}
+        '3': {name: other.description.jsdoc}
 
   literal:
     name: literal.tsx
