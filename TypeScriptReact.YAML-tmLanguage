@@ -667,6 +667,7 @@ repository:
     - include: '#boolean-literal'
     - include: '#null-literal'
     - include: '#undefined-literal'
+    - include: '#numericConstant-literal'
     - include: '#array-literal'
     - include: '#this-literal'
 
@@ -711,20 +712,30 @@ repository:
         '6': {name: meta.delimiter.decimal.period.tsx}
 
   boolean-literal:
-    name: constant.language.boolean.tsx
-    match: \b(false|true)\b
+    patterns:
+    - name: constant.language.boolean.true.tsx
+      match: \btrue\b
+    - name: constant.language.boolean.false.tsx
+      match: \bfalse\b
 
   null-literal:
     name: constant.language.null.tsx
-    match: \b(null)\b
+    match: \bnull\b
 
   this-literal:
     name: constant.language.this.tsx
-    match: \b(this)\b
+    match: \bthis\b
 
   undefined-literal:
-    name: constant.language.tsx
-    match: \b(undefined)\b
+    name: constant.language.undefined.tsx
+    match: \bundefined\b
+
+  numericConstant-literal:
+    patterns:
+    - name: constant.language.nan.tsx
+      match: \bNaN\b
+    - name: constant.language.infinity.tsx
+      match: \bInfinity\b
 
   access-modifier:
     name: storage.modifier.tsx

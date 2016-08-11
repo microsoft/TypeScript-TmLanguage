@@ -25,16 +25,16 @@ var ^^debArch = ^^arch ^^=== ^^'x64' ^^? ^^'amd64' ^^: ^^'i386';
 >
 >let a = true ? true : true;  
          ^^^^
-         [6, 9]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts 
+         [6, 9]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
                 ^^^^
-                [6, 16]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts 
+                [6, 16]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
                        ^^^^
-                       [6, 23]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts 
+                       [6, 23]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
 >let b = true ? true : `this is ${} highlighted`
          ^^^^
-         [7, 9]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts 
+         [7, 9]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
                 ^^^^
-                [7, 16]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts 
+                [7, 16]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
                        ^
                        [7, 23]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts 
                         ^^^^^^^^
@@ -43,7 +43,7 @@ var ^^debArch = ^^arch ^^=== ^^'x64' ^^? ^^'amd64' ^^: ^^'i386';
                                 [7, 32]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts template.element.ts keyword.others.ts 
 >let c = true ? `hello` : `this ${DEPENDENCY_SEPARATOR}${moduleName} is highlighted`;
          ^^^^
-         [8, 9]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts 
+         [8, 9]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
                 ^
                 [8, 16]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.template.ts string.template.ts 
                  ^^^^^
@@ -63,7 +63,7 @@ var ^^debArch = ^^arch ^^=== ^^'x64' ^^? ^^'amd64' ^^: ^^'i386';
                   ^
                   [10, 18]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts 
                                    ^^^^
-                                   [10, 35]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.ts 
+                                   [10, 35]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
 >
 >var debArch = arch === 'x64' ? 'amd64' : 'i386';
      ^^^^^^^

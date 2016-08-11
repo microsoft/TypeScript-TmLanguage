@@ -115,10 +115,21 @@
 		</dict>
 		<key>boolean-literal</key>
 		<dict>
-			<key>match</key>
-			<string>\b(false|true)\b</string>
-			<key>name</key>
-			<string>constant.language.boolean.tsx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\btrue\b</string>
+					<key>name</key>
+					<string>constant.language.boolean.true.tsx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bfalse\b</string>
+					<key>name</key>
+					<string>constant.language.boolean.false.tsx</string>
+				</dict>
+			</array>
 		</dict>
 		<key>case-clause</key>
 		<dict>
@@ -1229,6 +1240,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#numericConstant-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#array-literal</string>
 				</dict>
 				<dict>
@@ -1404,7 +1419,7 @@
 		<key>null-literal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(null)\b</string>
+			<string>\bnull\b</string>
 			<key>name</key>
 			<string>constant.language.null.tsx</string>
 		</dict>
@@ -1481,6 +1496,24 @@
   (?:\B(\.)[0-9]+\b)|                      # .1
   (?:\b[0-9]+\b(?!\.))                     # 1
 )(?!\$)</string>
+				</dict>
+			</array>
+		</dict>
+		<key>numericConstant-literal</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\bNaN\b</string>
+					<key>name</key>
+					<string>constant.language.nan.tsx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bInfinity\b</string>
+					<key>name</key>
+					<string>constant.language.infinity.tsx</string>
 				</dict>
 			</array>
 		</dict>
@@ -2062,7 +2095,7 @@
 		<key>this-literal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(this)\b</string>
+			<string>\bthis\b</string>
 			<key>name</key>
 			<string>constant.language.this.tsx</string>
 		</dict>
@@ -2400,9 +2433,9 @@
 		<key>undefined-literal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(undefined)\b</string>
+			<string>\bundefined\b</string>
 			<key>name</key>
-			<string>constant.language.tsx</string>
+			<string>constant.language.undefined.tsx</string>
 		</dict>
 		<key>var-expr</key>
 		<dict>
