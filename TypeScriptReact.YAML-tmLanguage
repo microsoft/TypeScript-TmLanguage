@@ -1,3 +1,4 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
 # Similar to TypeScript.YAML-tmLanguage except:
 #   - Remove type assertion (cast.expr.tsx)
 #   - Add JSX expression (HTML-like expression).
@@ -681,8 +682,33 @@ repository:
     - include: '#expression'
 
   numeric-literal:
-    name: constant.numeric.tsx
-    match: \b(?<=[^$])((0(x|X)[0-9a-fA-F]+)|(0(o|O)[0-7]+)|(0(b|B)(0|1)+)|(([0-9]+(\.[0-9]+)?))([eE]([+-]?)[0-9]+(\.[0-9]+)?)?)\b
+    patterns:
+    - name: constant.numeric.hex.tsx
+      match: \b(?<!\$)0(x|X)[0-9a-fA-F]+\b(?!\$)
+    - name: constant.numeric.binary.tsx
+      match: \b(?<!\$)0(b|B)[01]+\b(?!\$)
+    - name: constant.numeric.octal.tsx
+      match: \b(?<!\$)0(o|O)?[0-7]+\b(?!\$)
+    - match: |-
+        (?x)
+        (?<!\$)(?:
+          (?:\b[0-9]+(\.)[0-9]+[eE][+-]?[0-9]+\b)| # 1.1E+3
+          (?:\b[0-9]+(\.)[eE][+-]?[0-9]+\b)|       # 1.E+3
+          (?:\B(\.)[0-9]+[eE][+-]?[0-9]+\b)|       # .1E+3
+          (?:\b[0-9]+[eE][+-]?[0-9]+\b)|            # 1E+3
+          (?:\b[0-9]+(\.)[0-9]+\b)|                # 1.1
+          (?:\b[0-9]+(\.)\B)|                      # 1.
+          (?:\B(\.)[0-9]+\b)|                      # .1
+          (?:\b[0-9]+\b(?!\.))                     # 1
+        )(?!\$)
+      captures:
+        '0': {name: constant.numeric.decimal.tsx}
+        '1': {name: meta.delimiter.decimal.period.tsx}
+        '2': {name: meta.delimiter.decimal.period.tsx}
+        '3': {name: meta.delimiter.decimal.period.tsx}
+        '4': {name: meta.delimiter.decimal.period.tsx}
+        '5': {name: meta.delimiter.decimal.period.tsx}
+        '6': {name: meta.delimiter.decimal.period.tsx}
 
   boolean-literal:
     name: constant.language.boolean.tsx
