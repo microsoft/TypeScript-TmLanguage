@@ -35,9 +35,11 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
     let oriLines = text.split('\n');
     let ruleStack:vt.StackElement[] = undefined;
     let outputLines: string[] = [];
+    let markers = 0;
     for (let i in oriLines) {
         let oriLine = oriLines[i];
         let markerLocations = getMarkerLocations(oriLine);
+        markers += markerLocations.length;
         let line = oriLine.split(marker).join('');
         let lineTokens = grammar.tokenizeLine(line, ruleStack);
         ruleStack = lineTokens.ruleStack;
@@ -52,7 +54,7 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
         }
     }
 
-    return getInputFile(oriLines) + outputLines.join('\n');
+    return markers ? (getInputFile(oriLines) + outputLines.join('\n')) : null;
 }
 
 function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForToken: string, outputLines: string[]) {
@@ -97,7 +99,10 @@ for (var fileName of fs.readdirSync('cases')) {
         fs.mkdirSync('generated');
     }
     let outputFileName = path.join('./generated', parsedFileName.name + '.txt');
-    fs.writeFile(outputFileName, getScopesAtMarkers(text, grammar), "utf8");
+    let scopesFileText = getScopesAtMarkers(text, grammar);
+    if (scopesFileText) {
+        fs.writeFile(outputFileName, getScopesAtMarkers(text, grammar), "utf8");
+    }
 
     let outputBaselineName = path.join('./generated', parsedFileName.name + '.baseline.txt');
     fs.writeFile(outputBaselineName, baselineWholeFile(text, grammar), "utf8");
