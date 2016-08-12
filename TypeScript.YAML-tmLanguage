@@ -37,13 +37,13 @@ repository:
     end: (?=$|[;,])
     patterns:
     - include: '#ternary-operator'
-    - include: '#expression-type' 
+    - include: '#expression-type'
 
   ternary-operator:
     begin: (\?)
     end: (:)
     patterns:
-    - include: '#expression-type' 
+    - include: '#expression-type'
 
   expression-type:
     name: meta.expression.ts
@@ -63,7 +63,7 @@ repository:
     - include: '#logic-operator'
     - include: '#assignment-operator'
     - include: '#type-primitive'
-    - include: '#function-call' 
+    - include: '#function-call'
 
   control-statement:
     name: keyword.control.ts
@@ -307,7 +307,7 @@ repository:
   type-annotation:
     name: meta.type.annotation.ts
     begin: ":"
-    end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[a-zA-Z_$])\s*(?=\{)
+    end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[\w$])\s*(?=\{)
     patterns:
     - include: '#expression-operator'
     - include: '#type'
