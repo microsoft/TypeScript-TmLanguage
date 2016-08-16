@@ -18,29 +18,29 @@ class MyClass {
     ^
     source.ts meta.var.expr.ts
      ^^^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
             ^^
             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
               ^
               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                ^^^
-               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.others.ts
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.operator.new.ts
                   ^
                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts
                    ^^^^^
                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts entity.name.type.ts
                         ^
-                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
                          ^^^^^^
-                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                ^^
                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts
                                  ^^^^^^
-                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                        ^
                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts
                                         ^
-                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                                          ^
                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
                                           ^^^^
@@ -48,7 +48,7 @@ class MyClass {
                                               ^
                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                ^
-                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                                                 ^^
                                                 source.ts
 >var someVar = makeThing<number, string>('data');
@@ -57,7 +57,7 @@ class MyClass {
     ^
     source.ts meta.var.expr.ts
      ^^^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
             ^^
             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
               ^
@@ -65,17 +65,17 @@ class MyClass {
                ^^^^^^^^^
                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts entity.name.type.ts
                         ^
-                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
                          ^^^^^^
-                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                ^^
                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
                                  ^^^^^^
-                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                        ^
                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
                                         ^
-                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                                          ^
                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
                                           ^^^^
@@ -83,7 +83,7 @@ class MyClass {
                                               ^
                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                ^
-                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                                                 ^^
                                                 source.ts
 >
@@ -91,7 +91,7 @@ class MyClass {
  source.ts
 >class MyClass {
  ^^^^^
- source.ts meta.declaration.object.ts storage.type.ts
+ source.ts meta.declaration.object.ts storage.type.class.ts
       ^
       source.ts meta.declaration.object.ts
        ^^^^^^^
@@ -99,40 +99,40 @@ class MyClass {
               ^
               source.ts meta.declaration.object.ts
                ^
-               source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+               source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >    static someProp = new Thing<number, string>('data');
  ^^^^
  source.ts meta.declaration.object.ts meta.object.body.ts
      ^^^^^^
-     source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts
+     source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts
            ^
            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
             ^^^^^^^^
-            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
                     ^
                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                      ^
-                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.relational.ts
                       ^
                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                        ^^^
-                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts keyword.others.ts
+                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts keyword.operator.new.ts
                           ^
                           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts
                            ^^^^^
                            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts entity.name.type.ts
                                 ^
-                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
                                  ^^^^^^
-                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                        ^^
                                        source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
                                          ^^^^^^
-                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                                ^
                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
                                                 ^
-                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                                  ^
                                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
                                                   ^^^^
@@ -140,38 +140,38 @@ class MyClass {
                                                       ^
                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                        ^
-                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                                         ^^
                                                         source.ts meta.declaration.object.ts meta.object.body.ts
 >    static someProp = makeThing<number, string>('data');
  ^^^^
  source.ts meta.declaration.object.ts meta.object.body.ts
      ^^^^^^
-     source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts
+     source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts
            ^
            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
             ^^^^^^^^
-            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+            source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
                     ^
                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                      ^
-                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.relational.ts
                       ^
                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                        ^^^^^^^^^
                        source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts entity.name.type.ts
                                 ^
-                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.brace.angle.ts
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
                                  ^^^^^^
-                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                        ^^
                                        source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
                                          ^^^^^^
-                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                                ^
                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
                                                 ^
-                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                                  ^
                                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
                                                   ^^^^
@@ -179,7 +179,7 @@ class MyClass {
                                                       ^
                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                        ^
-                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                       source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                                         ^^
                                                         source.ts meta.declaration.object.ts meta.object.body.ts
 >
@@ -189,31 +189,31 @@ class MyClass {
  ^^^^
  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
      ^^^^^^^^
-     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
              ^
              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
               ^
-              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.relational.ts
                ^
                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                 ^^^
-                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts keyword.others.ts
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts keyword.operator.new.ts
                    ^
                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts
                     ^^^^^
                     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts entity.name.type.ts
                          ^
-                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.brace.angle.ts
+                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
                           ^^^^^^
-                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                 ^^
                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
                                   ^^^^^^
-                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                         ^
                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts
                                          ^
-                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                           ^
                                           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
                                            ^^^^
@@ -221,34 +221,34 @@ class MyClass {
                                                ^
                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                 ^
-                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                                  ^^
                                                  source.ts meta.declaration.object.ts meta.object.body.ts
 >    someProp = makeThing<number, string>('data');
  ^^^^
  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
      ^^^^^^^^
-     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
              ^
              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
               ^
-              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.relational.ts
                ^
                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                 ^^^^^^^^^
                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts entity.name.type.ts
                          ^
-                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.brace.angle.ts
+                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
                           ^^^^^^
-                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                 ^^
                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
                                   ^^^^^^
-                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts
+                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts
                                         ^
                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.parameters.ts
                                          ^
-                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                           ^
                                           source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
                                            ^^^^
@@ -256,9 +256,9 @@ class MyClass {
                                                ^
                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                 ^
-                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.paren.ts
+                                                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.brace.round.ts
                                                  ^^
                                                  source.ts meta.declaration.object.ts meta.object.body.ts
 >}
  ^
- source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts

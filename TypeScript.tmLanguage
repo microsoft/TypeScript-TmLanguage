@@ -24,13 +24,6 @@
 			<key>name</key>
 			<string>storage.modifier.ts</string>
 		</dict>
-		<key>arithmetic-operator</key>
-		<dict>
-			<key>match</key>
-			<string>\*|/|\-\-|\-|\+\+|\+|%</string>
-			<key>name</key>
-			<string>keyword.operator.arithmetic.ts</string>
-		</dict>
 		<key>array-literal</key>
 		<dict>
 			<key>begin</key>
@@ -63,19 +56,12 @@
 				</dict>
 			</array>
 		</dict>
-		<key>assignment-operator</key>
-		<dict>
-			<key>match</key>
-			<string>&lt;&lt;=|&gt;&gt;&gt;=|&gt;&gt;=|\*=|(?&lt;!\()/=|%=|\+=|\-=|&amp;=|\^=</string>
-			<key>name</key>
-			<string>keyword.operator.assignment.ts</string>
-		</dict>
 		<key>await-modifier</key>
 		<dict>
 			<key>match</key>
 			<string>\bawait\b</string>
 			<key>name</key>
-			<string>storage.modifier.ts</string>
+			<string>storage.modifier.await.ts</string>
 		</dict>
 		<key>block</key>
 		<dict>
@@ -86,7 +72,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -96,7 +82,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -140,7 +126,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.ts</string>
+					<string>keyword.control.switch.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -267,10 +253,57 @@
 		</dict>
 		<key>control-statement</key>
 		<dict>
-			<key>match</key>
-			<string>(?&lt;!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|case|default|yield)\b</string>
-			<key>name</key>
-			<string>keyword.control.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(catch|finally|throw|try)\b</string>
+					<key>name</key>
+					<string>keyword.control.trycatch.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(break|continue|do|for|goto|while)\b</string>
+					<key>name</key>
+					<string>keyword.control.loop.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(await|return|yield)\b</string>
+					<key>name</key>
+					<string>keyword.control.flow.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(case|default|switch)\b</string>
+					<key>name</key>
+					<string>keyword.control.switch.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(else|if)\b</string>
+					<key>name</key>
+					<string>keyword.control.conditional.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(with)\b</string>
+					<key>name</key>
+					<string>keyword.control.with.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(debugger)\b</string>
+					<key>name</key>
+					<string>keyword.other.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(declare)\b</string>
+					<key>name</key>
+					<string>storage.modifier.ts</string>
+				</dict>
+			</array>
 		</dict>
 		<key>decl-block</key>
 		<dict>
@@ -281,7 +314,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -291,7 +324,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -379,12 +412,12 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>storage.type.enum.ts</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.class.ts</string>
+					<string>entity.name.type.enum.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -464,19 +497,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#relational-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#arithmetic-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#logic-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#assignment-operator</string>
+					<string>#operators</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -502,10 +523,63 @@
 		</dict>
 		<key>expression-operator</key>
 		<dict>
-			<key>match</key>
-			<string>\b(delete|in|instanceof|new|typeof|as|is|of)\b</string>
-			<key>name</key>
-			<string>keyword.others.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\bdelete\b</string>
+					<key>name</key>
+					<string>keyword.operator.delete.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bin\b</string>
+					<key>name</key>
+					<string>keyword.operator.in.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bof\b</string>
+					<key>name</key>
+					<string>keyword.operator.of.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\binstanceof\b</string>
+					<key>name</key>
+					<string>keyword.operator.instanceof.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bnew\b</string>
+					<key>name</key>
+					<string>keyword.operator.new.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\btypeof\b</string>
+					<key>name</key>
+					<string>keyword.operator.typeof.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bvoid\b</string>
+					<key>name</key>
+					<string>keyword.operator.void.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bas\b</string>
+					<key>name</key>
+					<string>keyword.control.as.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bis\b</string>
+					<key>name</key>
+					<string>keyword.operator.is.ts</string>
+				</dict>
+			</array>
 		</dict>
 		<key>expression-type</key>
 		<dict>
@@ -555,19 +629,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#relational-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#arithmetic-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#logic-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#assignment-operator</string>
+					<string>#operators</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -588,12 +650,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>variable.ts</string>
+					<string>variable.object.property.ts</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.ts</string>
+					<string>keyword.operator.optional.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -617,14 +679,24 @@
 					<key>name</key>
 					<string>storage.type.ts</string>
 				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.other.readwrite.ts</string>
+				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.ts</string>
+					<string>keyword.operator.in.ts</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.of.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(in|of)\b</string>
+			<string>(?&lt;=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(?:(in)|(of))\b</string>
 			<key>name</key>
 			<string>forin.expr.ts</string>
 		</dict>
@@ -657,12 +729,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>keyword.control.export.ts</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.ts</string>
+					<string>storage.modifier.async.ts</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -714,7 +786,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>keyword.control.export.ts</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -741,7 +813,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.round.ts</string>
+					<string>punctuation.definition.parameters.begin.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -751,7 +823,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.round.ts</string>
+					<string>punctuation.definition.parameters.end.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -781,14 +853,25 @@
 			<key>match</key>
 			<string>=&gt;</string>
 			<key>name</key>
-			<string>keyword.operator.ts</string>
+			<string>storage.type.function.arrow.ts</string>
 		</dict>
 		<key>import-operator</key>
 		<dict>
-			<key>match</key>
-			<string>\b(import|from)\b</string>
-			<key>name</key>
-			<string>keyword.control.import.include.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\bimport\b</string>
+					<key>name</key>
+					<string>keyword.control.import.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bfrom\b</string>
+					<key>name</key>
+					<string>keyword.control.from.ts</string>
+				</dict>
+			</array>
 		</dict>
 		<key>indexer-declaration</key>
 		<dict>
@@ -814,7 +897,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.ts</string>
+					<string>keyword.operator.optional.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -884,14 +967,11 @@
 					<key>include</key>
 					<string>#this-literal</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#super-literal</string>
+				</dict>
 			</array>
-		</dict>
-		<key>logic-operator</key>
-		<dict>
-			<key>match</key>
-			<string>\!|&amp;&amp;|&amp;|~|\^|\|\||\|</string>
-			<key>name</key>
-			<string>keyword.operator.arithmetic.ts</string>
 		</dict>
 		<key>method-declaration</key>
 		<dict>
@@ -912,7 +992,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.ts</string>
+					<string>storage.modifier.async.ts</string>
 				</dict>
 				<key>4</key>
 				<dict>
@@ -922,7 +1002,7 @@
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.ts</string>
+					<string>keyword.operator.new.ts</string>
 				</dict>
 				<key>6</key>
 				<dict>
@@ -937,7 +1017,7 @@
 				<key>8</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.ts</string>
+					<string>keyword.operator.optional.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1004,7 +1084,7 @@
 				<key>6</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>entity.name.function.constructor.ts</string>
 				</dict>
 				<key>7</key>
 				<dict>
@@ -1014,7 +1094,7 @@
 				<key>8</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.ts</string>
+					<string>keyword.operator.optional.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1031,7 +1111,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.ts</string>
+					<string>keyword.operator.new.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1160,7 +1240,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1170,7 +1250,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -1222,13 +1302,13 @@
 		<key>object-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?&lt;!\.)(class|interface)\b</string>
+			<string>\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?&lt;!\.)(?:(class)|(interface))\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>keyword.control.export.ts</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -1238,7 +1318,12 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.ts</string>
+					<string>storage.type.class.ts</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.interface.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1248,7 +1333,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -1286,7 +1371,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.ts</string>
+					<string>storage.modifier.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1296,7 +1381,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -1328,7 +1413,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.type.ts</string>
+					<string>entity.other.inherited-class.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1367,6 +1452,72 @@
 			<key>name</key>
 			<string>meta.object.name.ts</string>
 		</dict>
+		<key>operators</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\*=|(?&lt;!\()/=|%=|\+=|\-=</string>
+					<key>name</key>
+					<string>keyword.operator.assignment.compound.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\&amp;=|\^=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|\|=</string>
+					<key>name</key>
+					<string>keyword.operator.assignment.compound.bitwise.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>===|!==|==|!=</string>
+					<key>name</key>
+					<string>keyword.operator.comparison.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>&lt;=|&gt;=|&lt;&gt;|=|&lt;|&gt;</string>
+					<key>name</key>
+					<string>keyword.operator.relational.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\!|&amp;&amp;|\|\|</string>
+					<key>name</key>
+					<string>keyword.operator.logical.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\&amp;|~|\^|\|</string>
+					<key>name</key>
+					<string>keyword.operator.bitwise.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\=</string>
+					<key>name</key>
+					<string>keyword.operator.assignment.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>--</string>
+					<key>name</key>
+					<string>keyword.operator.decrement.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\+\+</string>
+					<key>name</key>
+					<string>keyword.operator.increment.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>%|\*|/|-|\+</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.ts</string>
+				</dict>
+			</array>
+		</dict>
 		<key>parameter-name</key>
 		<dict>
 			<key>captures</key>
@@ -1379,7 +1530,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.ts</string>
+					<string>keyword.operator.spread.ts</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -1389,7 +1540,7 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.others.ts</string>
+					<string>keyword.operator.optional.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1406,7 +1557,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.paren.ts</string>
+					<string>meta.brace.round.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1416,7 +1567,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.paren.ts</string>
+					<string>meta.brace.round.ts</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -1766,13 +1917,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>relational-operator</key>
-		<dict>
-			<key>match</key>
-			<string>===|!==|==|!=|&lt;=|&gt;=|&lt;&gt;|=|&lt;|&gt;</string>
-			<key>name</key>
-			<string>keyword.operator.comparison.ts</string>
-		</dict>
 		<key>return-type</key>
 		<dict>
 			<key>begin</key>
@@ -1794,7 +1938,7 @@
 			<key>match</key>
 			<string>\b(static)\b</string>
 			<key>name</key>
-			<string>keyword.other.ts</string>
+			<string>storage.modifier.ts</string>
 		</dict>
 		<key>storage-keyword</key>
 		<dict>
@@ -1826,10 +1970,25 @@
 			<key>name</key>
 			<string>constant.character.escape.ts</string>
 		</dict>
+		<key>super-literal</key>
+		<dict>
+			<key>match</key>
+			<string>\bsuper\b</string>
+			<key>name</key>
+			<string>variable.language.super.ts</string>
+		</dict>
 		<key>switch-block</key>
 		<dict>
 			<key>begin</key>
 			<string>{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.ts</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>(?=\})</string>
 			<key>name</key>
@@ -1851,7 +2010,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.ts</string>
+					<string>keyword.control.switch.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1872,6 +2031,14 @@
 			<string>(?=\bswitch\b\s*\()</string>
 			<key>end</key>
 			<string>}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.ts</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>switch-statement.expr.ts</string>
 			<key>patterns</key>
@@ -1996,7 +2163,7 @@
 			<key>match</key>
 			<string>\bthis\b</string>
 			<key>name</key>
-			<string>constant.language.this.ts</string>
+			<string>variable.language.this.ts</string>
 		</dict>
 		<key>type</key>
 		<dict>
@@ -2075,12 +2242,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.ts</string>
+					<string>storage.type.type.ts</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.class.ts</string>
+					<string>entity.name.type.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2101,7 +2268,7 @@
 					<key>match</key>
 					<string>=\s*</string>
 					<key>name</key>
-					<string>keyword.operator.comparison.ts</string>
+					<string>keyword.operator.assignment.ts</string>
 				</dict>
 			</array>
 		</dict>
@@ -2114,7 +2281,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.ts</string>
+					<string>storage.type.function.arrow.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2153,7 +2320,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2163,7 +2330,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.ts</string>
+					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -2213,7 +2380,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.angle.ts</string>
+					<string>punctuation.definition.typeparameters.begin.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2223,7 +2390,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.angle.ts</string>
+					<string>punctuation.definition.typeparameters.end.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -2234,7 +2401,7 @@
 					<key>match</key>
 					<string>\b(extends)\b</string>
 					<key>name</key>
-					<string>keyword.other.ts</string>
+					<string>storage.modifier.ts</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2249,17 +2416,30 @@
 		<key>type-paren-or-function-type-parameters</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:\b(new)\b)?\s*\(</string>
+			<string>(?:\b(new)\b)?\s*(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.ts</string>
+					<string>keyword.control.new.ts</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.ts</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.type.paren.cover.ts</string>
 			<key>patterns</key>
@@ -2285,11 +2465,11 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.type.ts</string>
+					<string>support.type.primitive.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(string|number|boolean|symbol|any|void)\b</string>
+			<string>\b(string|number|boolean|symbol|any|void|never)\b</string>
 			<key>name</key>
 			<string>meta.type.primitive.ts</string>
 		</dict>
@@ -2373,7 +2553,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>variable.ts</string>
+					<string>variable.other.readwrite.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2413,7 +2593,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.comparison.ts</string>
+					<string>keyword.operator.assignment.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>

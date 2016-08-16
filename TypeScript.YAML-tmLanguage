@@ -23,7 +23,7 @@ repository:
     name: meta.var-single-variable.expr.ts
     begin: \b([a-zA-Z_$][\w$]*)\s*(=?)
     beginCaptures:
-      '1': { name: variable.ts }
+      '1': { name: variable.other.readwrite.ts }
     end: (?=$|[;,])
     patterns:
     - include: '#ternary-expression'
@@ -58,16 +58,28 @@ repository:
     - include: '#import-operator'
     - include: '#expression-operator'
     - include: '#imply-operator'
-    - include: '#relational-operator'
-    - include: '#arithmetic-operator'
-    - include: '#logic-operator'
-    - include: '#assignment-operator'
+    - include: '#operators'
     - include: '#type-primitive'
     - include: '#function-call' 
 
   control-statement:
-    name: keyword.control.ts
-    match: (?<!\.)\b(break|catch|continue|debugger|declare|do|else|finally|for|if|return|switch|throw|try|while|with|super|case|default|yield)\b
+    patterns:
+    - name: keyword.control.trycatch.ts
+      match: (?<!\.)\b(catch|finally|throw|try)\b
+    - name: keyword.control.loop.ts
+      match: (?<!\.)\b(break|continue|do|for|goto|while)\b
+    - name: keyword.control.flow.ts
+      match: (?<!\.)\b(await|return|yield)\b
+    - name: keyword.control.switch.ts
+      match: (?<!\.)\b(case|default|switch)\b
+    - name: keyword.control.conditional.ts
+      match: (?<!\.)\b(else|if)\b
+    - name: keyword.control.with.ts
+      match: (?<!\.)\b(with)\b
+    - name: keyword.other.ts
+      match: (?<!\.)\b(debugger)\b
+    - name: storage.modifier.ts
+      match: (?<!\.)\b(declare)\b
 
   declaration:
     name: meta.declaration.ts
@@ -81,13 +93,13 @@ repository:
     name: meta.type.declaration.ts
     begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
     beginCaptures:
-      '1': { name: keyword.other.ts }
-      '2': { name: entity.name.class.ts }
+      '1': { name: storage.type.type.ts }
+      '2': { name: entity.name.type.ts }
     end: (?=$|[,);>]|var|type|function|class|interface)
     patterns:
       - include: '#type-parameters'
       - include: '#type'
-      - name: keyword.operator.comparison.ts
+      - name: keyword.operator.assignment.ts
         match: '=\s*'
 
   enum-declaration:
@@ -95,19 +107,20 @@ repository:
     match: (?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)
     captures:
       '1': { name: storage.modifier.ts}
-      '2': { name: storage.type.ts }
-      '3': { name: entity.name.class.ts }
+      '2': { name: storage.type.enum.ts }
+      '3': { name: entity.name.type.enum.ts }
 
   object-declaration:
     name: meta.declaration.object.ts
-    begin: '\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?<!\.)(class|interface)\b'
+    begin: '\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?<!\.)(?:(class)|(interface))\b'
     beginCaptures:
-      '1': { name: storage.type.ts }
+      '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts }
-      '3': { name: storage.type.ts }
+      '3': { name: storage.type.class.ts }
+      '4': { name: storage.type.interface.ts }
     end: (?<=\})
     endCaptures:
-      '1': { name: brace.curly.ts }
+      '1': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#comment'
     - include: '#object-heritage' # Must be before object-name to consume the "extends" keyword.
@@ -125,10 +138,10 @@ repository:
     name: meta.object.heritage.ts
     begin: '(?:\b(extends|implements)\b)'
     beginCaptures:
-      '1': { name: keyword.other.ts }
+      '1': { name: storage.modifier.ts }
     end: (?=\{)
     endCaptures:
-      '1': { name: brace.curly.ts }
+      '1': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#comment'
     - include: '#object-heritage'
@@ -139,16 +152,16 @@ repository:
     name: meta.object.heritage.parent.ts
     match: '(?:\b([a-zA-Z_$][\w$]*)\b)'
     captures:
-      '1': { name: support.type.ts }
+      '1': { name: entity.other.inherited-class.ts }
 
   object-body:
     name: meta.object.body.ts
     begin: \{
     beginCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     end: \}
     endCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     patterns:
     - include: "#string"
     - include: '#comment'
@@ -165,10 +178,10 @@ repository:
     name: meta.object.type.ts
     begin: \{
     beginCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     end: \}
     endCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#comment'
     - include: '#field-declaration'
@@ -180,8 +193,8 @@ repository:
     name: meta.field.declaration.ts
     begin: (?<!\()\s*((?:\b[a-zA-Z_$][\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
     beginCaptures:
-      '1': { name: variable.ts }
-      '2': { name: keyword.others.ts }
+      '1': { name: variable.object.property.ts }
+      '2': { name: keyword.operator.optional.ts }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#expression'
@@ -192,12 +205,12 @@ repository:
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (abstract)
       '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
-      '3': { name: storage.modifier.ts } # captures keyword (async)
+      '3': { name: storage.modifier.async.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
-      '5': { name: keyword.operator.ts } # captures keyword (new)
+      '5': { name: keyword.operator.new.ts } # captures keyword (new)
       '6': { name: storage.type.ts } # captures keyword (constructor)
       '7': { name: entity.name.function.ts } # captures method name ([a-zA-Z_$][\.\w$]*)
-      '8': { name: keyword.operator.ts } # captures (\??)
+      '8': { name: keyword.operator.optional.ts } # captures (\??)
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#comment'
@@ -216,9 +229,9 @@ repository:
       '3': { name: storage.modifier.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
       '5': { name: keyword.operator.ts } # captures keyword (new)
-      '6': { name: storage.type.ts } # captures keyword (constructor)
+      '6': { name: entity.name.function.constructor.ts } # captures keyword (constructor)
       '7': { name: entity.name.function.ts } # captures method name ([a-zA-Z_$][\.\w$]*)
-      '8': { name: keyword.operator.ts } # captures (\??)
+      '8': { name: keyword.operator.optional.ts } # captures (\??)
 
   indexer-declaration:
     name: meta.indexer.declaration.ts
@@ -228,7 +241,7 @@ repository:
     end: (\])\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.ts }
-      '2': { name: keyword.others.ts }
+      '2': { name: keyword.operator.optional.ts }
     patterns:
     - include: '#type-annotation'
     - include: '#indexer-parameter'
@@ -244,8 +257,8 @@ repository:
     name: meta.function.ts
     begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     beginCaptures:
-      '1': { name: storage.type.ts }
-      '2': { name: storage.modifier.ts }
+      '1': { name: keyword.control.export.ts }
+      '2': { name: storage.modifier.async.ts }
       '3': { name: storage.type.function.ts }
       '4': { name: entity.name.function.ts }
     end: (?=;|\})|(?<=\})
@@ -261,7 +274,7 @@ repository:
     name: meta.function.overload.ts
     match: \b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
     captures:
-      '1': { name: storage.type.ts }
+      '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.function.ts }
       '3': { name: entity.name.function.ts }
 
@@ -269,10 +282,10 @@ repository:
     name: meta.block.ts
     begin: \{
     beginCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     end: \}
     endCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#object-member'
     - include: '#expression'
@@ -281,10 +294,10 @@ repository:
     name: meta.decl.block.ts
     begin: \{
     beginCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     end: \}
     endCaptures:
-      '0': { name: meta.brace.curly.ts }
+      '0': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#expression'
 
@@ -293,9 +306,9 @@ repository:
     match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.ts }
-      '2': { name: keyword.others.ts }
+      '2': { name: keyword.operator.spread.ts }
       '3': { name: variable.parameter.ts }
-      '4': { name: keyword.others.ts }
+      '4': { name: keyword.operator.optional.ts }
 
   return-type:
     name: meta.return.type.ts
@@ -330,10 +343,10 @@ repository:
     name: meta.function.type.parameter.ts
     begin: \(
     beginCaptures:
-      '0': { name: meta.brace.round.ts }
+      '0': { name: punctuation.definition.parameters.begin.ts }
     end: \)
     endCaptures:
-      '0': { name: meta.brace.round.ts }
+      '0': { name: punctuation.definition.parameters.end.ts }
     patterns:
     - include: '#comment'
     - include: '#parameter-name'
@@ -342,9 +355,9 @@ repository:
 
   type-primitive:
     name: meta.type.primitive.ts
-    match: '\b(string|number|boolean|symbol|any|void)\b'
+    match: '\b(string|number|boolean|symbol|any|void|never)\b'
     captures:
-      '1': { name: support.type.ts }
+      '1': { name: support.type.primitive.ts }
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -352,17 +365,20 @@ repository:
   # (number | (param: number, param2: string) => void)
   type-paren-or-function-type-parameters:
     name: meta.type.paren.cover.ts
-    begin: '(?:\b(new)\b)?\s*\('
+    begin: '(?:\b(new)\b)?\s*(\()'
     beginCaptures:
-      '1': { name: keyword.control.ts }
+      '1': { name: keyword.control.new.ts }
+      '2': { name: meta.brace.round.ts }
     end: '\)'
+    endCaptures:
+      '0': { name: meta.brace.round.ts }
     patterns:
     - include: '#comment'
     - include: '#type'
     - include: '#function-type-parameters'
 
   await-modifier:
-    name: storage.modifier.ts
+    name: storage.modifier.await.ts
     match: '\bawait\b'
 
   type-operator:
@@ -373,7 +389,7 @@ repository:
     name: meta.type.function.return.ts
     begin: '=>'
     beginCaptures:
-      '0': { name: keyword.operator.ts }
+      '0': { name: storage.type.function.arrow.ts }
     end: (?=\s*[,\)\{=;>]|//|$)
     patterns:
     - include: '#type'
@@ -401,12 +417,12 @@ repository:
     begin: '([a-zA-Z_$][\w$]*)?(<)'
     beginCaptures:
       '1': { name: entity.name.type.ts }
-      '2': { name: meta.brace.angle.ts }
+      '2': { name: punctuation.definition.typeparameters.begin.ts }
     end: '(?=$)|(>)'
     endCaptures:
-      '2': { name: meta.brace.angle.ts }
+      '2': { name: punctuation.definition.typeparameters.end.ts }
     patterns:
-    - name: keyword.other.ts
+    - name: storage.modifier.ts
       match: '\b(extends)\b'
     - include: '#comment'
     - include: '#type'
@@ -414,7 +430,7 @@ repository:
   variable-initializer:
     begin: (=)
     beginCaptures:
-      '1': { name: keyword.operator.comparison.ts }
+      '1': { name: keyword.operator.assignment.ts }
     end: (?=$|[,);=])
     patterns:
       - include: '#expression'
@@ -438,10 +454,7 @@ repository:
     - include: '#import-operator'
     - include: '#expression-operator'
     - include: '#imply-operator'
-    - include: '#relational-operator'
-    - include: '#arithmetic-operator'
-    - include: '#logic-operator'
-    - include: '#assignment-operator'
+    - include: '#operators'
     - include: '#storage-keyword'
     - include: '#type-primitive'
     - include: '#function-call'
@@ -452,7 +465,7 @@ repository:
     name: switch-expression.expr.ts
     begin: \b(switch)\b\s*\(
     beginCaptures:
-      '1': { name: keyword.control.ts }
+      '1': { name: keyword.control.switch.ts }
     end: \)
     patterns:
     - include: '#expression'
@@ -460,6 +473,8 @@ repository:
   switch-block:
     name: switch-block.expr.ts
     begin: '{'
+    beginCaptures:
+      '0': { name: punctuation.definition.block.ts }
     end: (?=\})
     patterns:
     - include: '#expression'
@@ -468,7 +483,7 @@ repository:
     name: case-clause.expr.ts
     begin: '(?<!\.)\b(case|default(?=:))\b'
     beginCaptures:
-      '1': { name: keyword.control.ts }
+      '1': { name: keyword.control.switch.ts }
     end: ':'
     patterns:
     - include: '#expression-type'
@@ -477,16 +492,20 @@ repository:
     name: switch-statement.expr.ts
     begin: (?=\bswitch\b\s*\()
     end: '}'
+    endCaptures:
+      '0': {name: punctuation.definition.block.ts}      
     patterns:
     - include: '#switch-expression'
     - include: '#switch-block'
 
   for-in-simple:
     name: forin.expr.ts
-    match: (?<=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(in|of)\b
+    match: (?<=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(?:(in)|(of))\b
     captures:
       '1': { name: storage.type.ts }
-      '3': { name: keyword.others.ts }
+      '2': { name: variable.other.readwrite.ts }
+      '3': { name: keyword.operator.in.ts }
+      '4': { name: keyword.operator.of.ts }
 
   function-call:
     name: functioncall.expr.ts
@@ -514,7 +533,7 @@ repository:
     name: new.expr.ts
     begin: '\b(new)\b'
     beginCaptures:
-      '1': { name: keyword.others.ts }
+      '1': { name: keyword.operator.new.ts }
     # new-expr ends just before any type or call arguments. Type arguments will be picked up by #cast.
     end: '(?=[(;]|$)'
     patterns:
@@ -529,32 +548,59 @@ repository:
     - include: '#expression'
 
   expression-operator:
-    name: keyword.others.ts
-    match: \b(delete|in|instanceof|new|typeof|as|is|of)\b
+    patterns:
+    - name: keyword.operator.delete.ts
+      match: \bdelete\b
+    - name: keyword.operator.in.ts
+      match: \bin\b
+    - name: keyword.operator.of.ts
+      match: \bof\b
+    - name: keyword.operator.instanceof.ts
+      match: \binstanceof\b
+    - name: keyword.operator.new.ts
+      match: \bnew\b
+    - name: keyword.operator.typeof.ts
+      match: \btypeof\b
+    - name: keyword.operator.void.ts
+      match: \bvoid\b
+    - name: keyword.control.as.ts
+      match: \bas\b
+    - name: keyword.operator.is.ts
+      match: \bis\b
 
   imply-operator:
-    name: keyword.operator.ts
+    name: storage.type.function.arrow.ts
     match: =>
 
   import-operator:
-    name: keyword.control.import.include.ts
-    match: \b(import|from)\b
+    patterns:
+    - name: keyword.control.import.ts
+      match: \bimport\b
+    - name: keyword.control.from.ts
+      match: \bfrom\b
 
-  arithmetic-operator:
-    name: keyword.operator.arithmetic.ts
-    match: \*|/|\-\-|\-|\+\+|\+|%
-
-  relational-operator:
-    name: keyword.operator.comparison.ts
-    match: ===|!==|==|!=|<=|>=|<>|=|<|>
-
-  assignment-operator:
-    name: keyword.operator.assignment.ts
-    match: <<=|>>>=|>>=|\*=|(?<!\()/=|%=|\+=|\-=|&=|\^=
-
-  logic-operator:
-    name: keyword.operator.arithmetic.ts
-    match: \!|&&|&|~|\^|\|\||\|
+  operators:
+    patterns:
+    - name: keyword.operator.assignment.compound.ts
+      match: \*=|(?<!\()/=|%=|\+=|\-=
+    - name: keyword.operator.assignment.compound.bitwise.ts
+      match: \&=|\^=|<<=|>>=|>>>=|\|=
+    - name: keyword.operator.comparison.ts
+      match: ===|!==|==|!=
+    - name: keyword.operator.relational.ts
+      match: <=|>=|<>|=|<|>
+    - name: keyword.operator.logical.ts
+      match: \!|&&|\|\|
+    - name: keyword.operator.bitwise.ts
+      match: \&|~|\^|\|
+    - name: keyword.operator.assignment.ts
+      match: \=
+    - name: keyword.operator.decrement.ts
+      match: --
+    - name: keyword.operator.increment.ts
+      match: \+\+
+    - name: keyword.operator.arithmetic.ts
+      match: '%|\*|/|-|\+'
 
   storage-keyword:
     name: storage.type.ts
@@ -563,10 +609,10 @@ repository:
   paren-expression:
     begin: \(
     beginCaptures:
-      '0': {name: meta.brace.paren.ts }
+      '0': {name: meta.brace.round.ts }
     end: \)
     endCaptures:
-      '0': {name: meta.brace.paren.ts }
+      '0': {name: meta.brace.round.ts }
     patterns:
     - include: '#expression'
 
@@ -751,6 +797,7 @@ repository:
     - include: '#numericConstant-literal'
     - include: '#array-literal'
     - include: '#this-literal'
+    - include: '#super-literal'
 
   array-literal:
     name: meta.array.literal.ts
@@ -804,8 +851,12 @@ repository:
     match: \bnull\b
 
   this-literal:
-    name: constant.language.this.ts
+    name: variable.language.this.ts
     match: \bthis\b
+
+  super-literal:
+    name: variable.language.super.ts
+    match: \bsuper\b  
 
   undefined-literal:
     name: constant.language.undefined.ts
@@ -823,7 +874,7 @@ repository:
     match: \b(public|protected|private)\b
 
   static-modifier:
-    name: keyword.other.ts
+    name: storage.modifier.ts
     match: \b(static)\b
 
   property-accessor:

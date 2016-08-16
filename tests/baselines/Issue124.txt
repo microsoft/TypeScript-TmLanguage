@@ -55,19 +55,19 @@ var ^^debArch = ^^arch ^^=== ^^'x64' ^^? ^^'amd64' ^^: ^^'i386';
 >
 >var newVar = a ? (b == `hello`) : true;
      ^^^^^^
-     [10, 5]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+     [10, 5]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts 
              ^^^
              [10, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
                 ^
                 [10, 16]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
                   ^
-                  [10, 18]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts 
+                  [10, 18]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts 
                                    ^^^^
                                    [10, 35]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.language.boolean.true.ts 
 >
 >var debArch = arch === 'x64' ? 'amd64' : 'i386';
      ^^^^^^^
-     [12, 5]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+     [12, 5]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts 
               ^^^^^^
               [12, 15]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
                     ^^^

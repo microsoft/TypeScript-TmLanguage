@@ -20,7 +20,7 @@ const^^able^^ += " Royal, I say!";
     ^
     source.ts meta.var.expr.ts
      ^^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
            ^^
            source.ts
 >let variable;
@@ -29,7 +29,7 @@ const^^able^^ += " Royal, I say!";
     ^
     source.ts meta.var.expr.ts
      ^^^^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
              ^^
              source.ts
 >
@@ -50,7 +50,7 @@ const^^able^^ += " Royal, I say!";
     ^
     source.ts meta.var.expr.ts
      ^^^^^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
               ^^
               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                 ^
@@ -62,10 +62,8 @@ const^^able^^ += " Royal, I say!";
 >constenum += 10;
  ^^^^^^^^^^
  source.ts
-           ^
-           source.ts keyword.operator.arithmetic.ts
-            ^
-            source.ts keyword.operator.comparison.ts
+           ^^
+           source.ts keyword.operator.assignment.compound.ts
              ^
              source.ts
               ^^
@@ -78,19 +76,19 @@ const^^able^^ += " Royal, I say!";
       ^
       source.ts meta.enum.declaration.ts
        ^^^^
-       source.ts meta.enum.declaration.ts storage.type.ts
+       source.ts meta.enum.declaration.ts storage.type.enum.ts
            ^
            source.ts meta.enum.declaration.ts
             ^
-            source.ts meta.enum.declaration.ts entity.name.class.ts
+            source.ts meta.enum.declaration.ts entity.name.type.enum.ts
              ^
              source.ts
               ^
-              source.ts meta.block.ts meta.brace.curly.ts
+              source.ts meta.block.ts punctuation.definition.block.ts
                ^
                source.ts meta.block.ts
                 ^
-                source.ts meta.block.ts meta.brace.curly.ts
+                source.ts meta.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts
@@ -100,7 +98,7 @@ const^^able^^ += " Royal, I say!";
     ^
     source.ts meta.var.expr.ts
      ^^^^^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
               ^^
               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                 ^
@@ -116,10 +114,8 @@ const^^able^^ += " Royal, I say!";
 >constable += " Royal, I say!";
  ^^^^^^^^^^
  source.ts
-           ^
-           source.ts keyword.operator.arithmetic.ts
-            ^
-            source.ts keyword.operator.comparison.ts
+           ^^
+           source.ts keyword.operator.assignment.compound.ts
              ^
              source.ts
               ^

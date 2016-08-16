@@ -80,7 +80,7 @@ var j: I = {}
  source.ts
 >import * as req from "./Required"
  ^^^^^^
- source.ts keyword.control.import.include.ts
+ source.ts keyword.control.import.ts
        ^
        source.ts
         ^
@@ -88,11 +88,11 @@ var j: I = {}
          ^
          source.ts
           ^^
-          source.ts keyword.others.ts
+          source.ts keyword.control.as.ts
             ^^^^^
             source.ts
                  ^^^^
-                 source.ts keyword.control.import.include.ts
+                 source.ts keyword.control.from.ts
                      ^
                      source.ts
                       ^
@@ -103,19 +103,19 @@ var j: I = {}
                                  source.ts string.quoted.double.ts punctuation.definition.string.end.ts
 >import { Scale } from "./scale";
  ^^^^^^
- source.ts keyword.control.import.include.ts
+ source.ts keyword.control.import.ts
        ^
        source.ts
         ^
-        source.ts meta.block.ts meta.brace.curly.ts
+        source.ts meta.block.ts punctuation.definition.block.ts
          ^^^^^^^
          source.ts meta.block.ts
                 ^
-                source.ts meta.block.ts meta.brace.curly.ts
+                source.ts meta.block.ts punctuation.definition.block.ts
                  ^
                  source.ts
                   ^^^^
-                  source.ts keyword.control.import.include.ts
+                  source.ts keyword.control.from.ts
                       ^
                       source.ts
                        ^
@@ -131,36 +131,36 @@ var j: I = {}
  source.ts
 >if (object.instanceof(ClassNew)) {
  ^^
- source.ts keyword.control.ts
+ source.ts keyword.control.conditional.ts
    ^
    source.ts
     ^
-    source.ts meta.brace.paren.ts
+    source.ts meta.brace.round.ts
      ^^^^^^^
      source.ts
             ^^^^^^^^^^
-            source.ts keyword.others.ts
+            source.ts keyword.operator.instanceof.ts
                       ^
-                      source.ts meta.brace.paren.ts
+                      source.ts meta.brace.round.ts
                        ^^^^^^^^
                        source.ts
                                ^
-                               source.ts meta.brace.paren.ts
+                               source.ts meta.brace.round.ts
                                 ^
-                                source.ts meta.brace.paren.ts
+                                source.ts meta.brace.round.ts
                                  ^
                                  source.ts
                                   ^
-                                  source.ts meta.block.ts meta.brace.curly.ts
+                                  source.ts meta.block.ts punctuation.definition.block.ts
 >}
  ^
- source.ts meta.block.ts meta.brace.curly.ts
+ source.ts meta.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts
 >class class1(){
  ^^^^^
- source.ts meta.declaration.object.ts storage.type.ts
+ source.ts meta.declaration.object.ts storage.type.class.ts
       ^
       source.ts meta.declaration.object.ts
        ^^^^^^
@@ -168,22 +168,22 @@ var j: I = {}
              ^^
              source.ts meta.declaration.object.ts
                ^
-               source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+               source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >	static functioname(){
  ^
  source.ts meta.declaration.object.ts meta.object.body.ts
   ^^^^^^
-  source.ts meta.declaration.object.ts meta.object.body.ts keyword.other.ts
+  source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts
         ^
         source.ts meta.declaration.object.ts meta.object.body.ts
          ^^^^^^^^^^^
          source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts entity.name.function.ts
                     ^
-                    source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts meta.brace.round.ts
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.begin.ts
                      ^
-                     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts meta.brace.round.ts
+                     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.end.ts
                       ^
-                      source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.curly.ts
+                      source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
@@ -191,20 +191,20 @@ var j: I = {}
  ^
  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
   ^
-  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.curly.ts
+  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts punctuation.definition.block.ts
 >}
  ^
- source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >
  ^
  source.ts
 >export class className(){
  ^^^^^^
- source.ts meta.declaration.object.ts storage.type.ts
+ source.ts meta.declaration.object.ts keyword.control.export.ts
        ^
        source.ts meta.declaration.object.ts
         ^^^^^
-        source.ts meta.declaration.object.ts storage.type.ts
+        source.ts meta.declaration.object.ts storage.type.class.ts
              ^
              source.ts meta.declaration.object.ts
               ^^^^^^^^^
@@ -212,7 +212,7 @@ var j: I = {}
                        ^^
                        source.ts meta.declaration.object.ts
                          ^
-                         source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+                         source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >	private state = { }
  ^
  source.ts meta.declaration.object.ts meta.object.body.ts
@@ -221,36 +221,36 @@ var j: I = {}
          ^
          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
           ^^^^^
-          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+          source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
                ^
                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                 ^
-                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.comparison.ts
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.relational.ts
                  ^
                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                   ^
-                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.block.ts meta.brace.curly.ts
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.block.ts punctuation.definition.block.ts
                    ^
                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.block.ts
                     ^
-                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.block.ts meta.brace.curly.ts
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.block.ts punctuation.definition.block.ts
 >}
  ^
- source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >
  ^
  source.ts
 >void newFunctionName(){
  ^^^^
- source.ts storage.type.ts
+ source.ts keyword.operator.void.ts
      ^^^^^^^^^^^^^^^^
      source.ts
                      ^
-                     source.ts meta.brace.paren.ts
+                     source.ts meta.brace.round.ts
                       ^
-                      source.ts meta.brace.paren.ts
+                      source.ts meta.brace.round.ts
                        ^
-                       source.ts meta.block.ts meta.brace.curly.ts
+                       source.ts meta.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts meta.block.ts
@@ -262,7 +262,7 @@ var j: I = {}
      ^
      source.ts meta.block.ts meta.var.expr.ts
       ^
-      source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+      source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
        ^^
        source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
          ^^^
@@ -280,7 +280,7 @@ var j: I = {}
  ^
  source.ts meta.block.ts
   ^^^^^^
-  source.ts meta.block.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.ts
+  source.ts meta.block.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.switch.ts
         ^^
         source.ts meta.block.ts switch-statement.expr.ts switch-expression.expr.ts
           ^^^^^^^
@@ -290,12 +290,12 @@ var j: I = {}
                   ^
                   source.ts meta.block.ts switch-statement.expr.ts
                    ^
-                   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
+                   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts punctuation.definition.block.ts
 >		case 1: break;
  ^^
  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
    ^^^^
-   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts
+   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts
        ^
        source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
         ^
@@ -305,14 +305,14 @@ var j: I = {}
           ^
           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
            ^^^^^
-           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.ts
+           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.loop.ts
                 ^^
                 source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
 >		case 2: break;
  ^^
  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
    ^^^^
-   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts
+   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts
        ^
        source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
         ^
@@ -322,27 +322,27 @@ var j: I = {}
           ^
           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
            ^^^^^
-           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.ts
+           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.loop.ts
                 ^^
                 source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
 >		default: break;
  ^^
  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
    ^^^^^^^
-   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts
+   source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts
           ^
           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
            ^
            source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
             ^^^^^
-            source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.ts
+            source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.loop.ts
                  ^^
                  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
 >	} 
  ^
  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
   ^
-  source.ts meta.block.ts switch-statement.expr.ts
+  source.ts meta.block.ts switch-statement.expr.ts punctuation.definition.block.ts
    ^^
    source.ts meta.block.ts
 >
@@ -350,7 +350,7 @@ var j: I = {}
  source.ts meta.block.ts
 >}
  ^
- source.ts meta.block.ts meta.brace.curly.ts
+ source.ts meta.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts
@@ -374,12 +374,12 @@ var j: I = {}
        ^^^
        source.ts
           ^
-          source.ts meta.block.ts meta.brace.curly.ts
+          source.ts meta.block.ts punctuation.definition.block.ts
 >    export function myFun(x: number) {
  ^^^^
  source.ts meta.block.ts
      ^^^^^^
-     source.ts meta.block.ts meta.function.ts storage.type.ts
+     source.ts meta.block.ts meta.function.ts keyword.control.export.ts
            ^
            source.ts meta.block.ts meta.function.ts
             ^^^^^^^^
@@ -389,7 +389,7 @@ var j: I = {}
                      ^^^^^
                      source.ts meta.block.ts meta.function.ts entity.name.function.ts
                           ^
-                          source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts
+                          source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts punctuation.definition.parameters.begin.ts
                            ^
                            source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts
                             ^
@@ -397,28 +397,28 @@ var j: I = {}
                              ^
                              source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts
                               ^^^^^^
-                              source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts meta.type.primitive.ts support.type.ts
+                              source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts meta.type.annotation.ts meta.type.primitive.ts support.type.primitive.ts
                                     ^
-                                    source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts meta.brace.round.ts
+                                    source.ts meta.block.ts meta.function.ts meta.function.type.parameter.ts punctuation.definition.parameters.end.ts
                                      ^
                                      source.ts meta.block.ts meta.function.ts
                                       ^
-                                      source.ts meta.block.ts meta.function.ts meta.decl.block.ts meta.brace.curly.ts
+                                      source.ts meta.block.ts meta.function.ts meta.decl.block.ts punctuation.definition.block.ts
 >        return x;
  ^^^^^^^^
  source.ts meta.block.ts meta.function.ts meta.decl.block.ts
          ^^^^^^
-         source.ts meta.block.ts meta.function.ts meta.decl.block.ts keyword.control.ts
+         source.ts meta.block.ts meta.function.ts meta.decl.block.ts keyword.control.flow.ts
                ^^^^
                source.ts meta.block.ts meta.function.ts meta.decl.block.ts
 >    }
  ^^^^
  source.ts meta.block.ts meta.function.ts meta.decl.block.ts
      ^
-     source.ts meta.block.ts meta.function.ts meta.decl.block.ts meta.brace.curly.ts
+     source.ts meta.block.ts meta.function.ts meta.decl.block.ts punctuation.definition.block.ts
 >}
  ^
- source.ts meta.block.ts meta.brace.curly.ts
+ source.ts meta.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts
@@ -428,13 +428,13 @@ var j: I = {}
     ^
     source.ts meta.var.expr.ts
      ^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
       ^
       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
        ^
        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
         ^^^^^^
-        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.others.ts
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.typeof.ts
               ^
               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
                ^
@@ -442,7 +442,7 @@ var j: I = {}
                 ^
                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
                  ^
-                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.comparison.ts
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.relational.ts
                   ^^
                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                     ^^
@@ -456,19 +456,19 @@ var j: I = {}
     ^
     source.ts meta.var.expr.ts
      ^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
           ^^
           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
             ^
             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
              ^^^
-             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.others.ts
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.operator.new.ts
                 ^
                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts
                  ^^^^^
                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.name.ts
                       ^
-                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                        ^
                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
                         ^^
@@ -476,20 +476,20 @@ var j: I = {}
                           ^
                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
                            ^
-                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.paren.ts
+                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                             ^^
                             source.ts
 >delete (adder)
  ^^^^^^
- source.ts keyword.others.ts
+ source.ts keyword.operator.delete.ts
        ^
        source.ts
         ^
-        source.ts meta.brace.paren.ts
+        source.ts meta.brace.round.ts
          ^^^^^
          source.ts
               ^
-              source.ts meta.brace.paren.ts
+              source.ts meta.brace.round.ts
 >
  ^
  source.ts
@@ -499,24 +499,24 @@ var j: I = {}
     ^
     source.ts meta.var.expr.ts
      ^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
       ^^
       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
         ^
         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
          ^^^^^^
-         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.others.ts
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.typeof.ts
                ^
                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                 ^
-                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts meta.brace.curly.ts
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts punctuation.definition.block.ts
                  ^
-                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts meta.brace.curly.ts
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts punctuation.definition.block.ts
                   ^^^^
                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
 >interface I {}
  ^^^^^^^^^
- source.ts meta.declaration.object.ts storage.type.ts
+ source.ts meta.declaration.object.ts storage.type.interface.ts
           ^
           source.ts meta.declaration.object.ts
            ^
@@ -524,16 +524,16 @@ var j: I = {}
             ^
             source.ts meta.declaration.object.ts
              ^
-             source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+             source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
               ^
-              source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+              source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >var j: I = {}
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
     ^
     source.ts meta.var.expr.ts
      ^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
       ^
       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
        ^
@@ -543,13 +543,13 @@ var j: I = {}
          ^
          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
           ^
-          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.comparison.ts
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.relational.ts
            ^
            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
             ^
-            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts meta.brace.curly.ts
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts punctuation.definition.block.ts
              ^
-             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts meta.brace.curly.ts
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts
@@ -562,16 +562,16 @@ var j: I = {}
        ^^^^^^
        source.ts
              ^
-             source.ts meta.block.ts meta.brace.curly.ts
+             source.ts meta.block.ts punctuation.definition.block.ts
 >    export class Cell {
  ^^^^
  source.ts meta.block.ts
      ^^^^^^
-     source.ts meta.block.ts meta.declaration.object.ts storage.type.ts
+     source.ts meta.block.ts meta.declaration.object.ts keyword.control.export.ts
            ^
            source.ts meta.block.ts meta.declaration.object.ts
             ^^^^^
-            source.ts meta.block.ts meta.declaration.object.ts storage.type.ts
+            source.ts meta.block.ts meta.declaration.object.ts storage.type.class.ts
                  ^
                  source.ts meta.block.ts meta.declaration.object.ts
                   ^^^^
@@ -579,7 +579,7 @@ var j: I = {}
                       ^
                       source.ts meta.block.ts meta.declaration.object.ts
                        ^
-                       source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+                       source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >        public parent: Cell;
  ^^^^^^^^
  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts
@@ -588,7 +588,7 @@ var j: I = {}
                ^
                source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                 ^^^^^^
-                source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts
+                source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
                       ^^^^^^
                       source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
                             ^^
@@ -602,7 +602,7 @@ var j: I = {}
          ^^^^^^^^^^^
          source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts storage.type.ts
                     ^
-                    source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts meta.brace.round.ts
+                    source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.begin.ts
                      ^^^^^^
                      source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts
                            ^
@@ -612,33 +612,33 @@ var j: I = {}
                              ^^^^
                              source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts meta.type.annotation.ts meta.type.name.ts
                                  ^
-                                 source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts meta.brace.round.ts
+                                 source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.end.ts
                                   ^
                                   source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts
                                    ^
-                                   source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.curly.ts
+                                   source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts punctuation.definition.block.ts
 >            this.parent = parent;
  ^^^^^^^^^^^^
  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
              ^^^^
-             source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts constant.language.this.ts
+             source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts variable.language.this.ts
                  ^^^^^^^^
                  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
                          ^
-                         source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.operator.comparison.ts
+                         source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.operator.relational.ts
                           ^^^^^^^^^
                           source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
 >            if (typeof parent === 'object' || parent instanceof Error) {
  ^^^^^^^^^^^^
  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
              ^^
-             source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.control.ts
+             source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.control.conditional.ts
                ^
                source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
                 ^
-                source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.paren.ts
+                source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.round.ts
                  ^^^^^^
-                 source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.others.ts
+                 source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.operator.typeof.ts
                        ^^^^^^^^
                        source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
                                ^^^
@@ -654,19 +654,19 @@ var j: I = {}
                                            ^
                                            source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
                                             ^^
-                                            source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.operator.arithmetic.ts
+                                            source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.operator.logical.ts
                                               ^^^^^^^^
                                               source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
                                                       ^^^^^^^^^^
-                                                      source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.others.ts
+                                                      source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts keyword.operator.instanceof.ts
                                                                 ^^^^^^
                                                                 source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
                                                                       ^
-                                                                      source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.paren.ts
+                                                                      source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.round.ts
                                                                        ^
                                                                        source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
                                                                         ^
-                                                                        source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.block.ts meta.brace.curly.ts
+                                                                        source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.block.ts punctuation.definition.block.ts
 >            	
  ^^^^^^^^^^^^^^
  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.block.ts
@@ -674,20 +674,20 @@ var j: I = {}
  ^^^^^^^^^^^^
  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.block.ts
              ^
-             source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.block.ts meta.brace.curly.ts
+             source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.block.ts punctuation.definition.block.ts
 >        }
  ^^^^^^^^
  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts
          ^
-         source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts meta.brace.curly.ts
+         source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts punctuation.definition.block.ts
 >    }
  ^^^^
  source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts
      ^
-     source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts
+     source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
 >}
  ^
- source.ts meta.block.ts meta.brace.curly.ts
+ source.ts meta.block.ts punctuation.definition.block.ts
 >
  ^
  source.ts

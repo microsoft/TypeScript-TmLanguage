@@ -28,47 +28,47 @@ class Test {
   ^^^^^^^
   [2, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
           ^^^^
-          [2, 10]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts 
+          [2, 10]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts 
 >	private options: TemplateOptions = {}
   ^^^^^^^
   [3, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
           ^^^^^^^
-          [3, 10]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts 
+          [3, 10]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts 
 >	private state = {}
   ^^^^^^^
   [4, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
           ^^^^^
-          [4, 10]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts 
+          [4, 10]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts 
 >}
 >
 >export type Stats = fs.Stats
  ^^^^^^
  [7, 1]: source.ts storage.type.ts 
         ^^^^
-        [7, 8]: source.ts meta.type.declaration.ts keyword.other.ts 
+        [7, 8]: source.ts meta.type.declaration.ts storage.type.type.ts 
              ^^^^^
-             [7, 13]: source.ts meta.type.declaration.ts entity.name.class.ts 
+             [7, 13]: source.ts meta.type.declaration.ts entity.name.type.ts 
 >export const touch = thenify(tch)
  ^^^^^^
  [8, 1]: source.ts storage.type.ts 
         ^^^^^
         [8, 8]: source.ts meta.var.expr.ts storage.type.ts 
               ^^^^^
-              [8, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.ts 
+              [8, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts 
 >
 >/**
 > * Verify comments
 > */
 >export function isFile(path: string): Promise<boolean> {
  ^^^^^^
- [13, 1]: source.ts meta.function.ts storage.type.ts 
+ [13, 1]: source.ts meta.function.ts keyword.control.export.ts 
         ^^^^^^^^
         [13, 8]: source.ts meta.function.ts storage.type.function.ts 
                                        ^^^^^^^
                                        [13, 39]: source.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts entity.name.type.ts 
 >	return stat(path).then(stat => stat.isFile(), () => false)
   ^^^^^^
-  [14, 2]: source.ts meta.function.ts meta.decl.block.ts keyword.control.ts 
+  [14, 2]: source.ts meta.function.ts meta.decl.block.ts keyword.control.flow.ts 
 >}
 >
 >
@@ -78,13 +78,13 @@ class Test {
         ^^^^^
         [18, 8]: source.ts meta.var.expr.ts storage.type.ts 
                                  ^^^^^^
-                                 [18, 33]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts 
+                                 [18, 33]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts 
 >export const writeFile = thenify<string, string | Buffer, void>(fs.writeFile)
  ^^^^^^
  [19, 1]: source.ts storage.type.ts 
         ^^^^^
         [19, 8]: source.ts meta.var.expr.ts storage.type.ts 
                                   ^^^^^^
-                                  [19, 34]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.ts 
+                                  [19, 34]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts meta.type.primitive.ts support.type.primitive.ts 
 >
 >
