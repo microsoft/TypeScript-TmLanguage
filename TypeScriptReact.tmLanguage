@@ -940,6 +940,37 @@
 				</dict>
 			</array>
 		</dict>
+		<key>jsx-attributeValue-entities</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.entity.jsxAttributeValue.tsx</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.entity.jsxAttributeValue.tsx</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(&amp;)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)</string>
+					<key>name</key>
+					<string>constant.character.entity.jsxAttributeValue.tsx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>&amp;</string>
+					<key>name</key>
+					<string>invalid.illegal.bad-ampersand.jsxAttributeValue.tsx</string>
+				</dict>
+			</array>
+		</dict>
 		<key>jsx-children</key>
 		<dict>
 			<key>patterns</key>
@@ -1042,7 +1073,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.tsx</string>
+					<string>punctuation.definition.string.jsxAttributeValue.begin.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1052,16 +1083,16 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.tsx</string>
+					<string>punctuation.definition.string.jsxAttributeValue.end.tsx</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.double.tsx</string>
+			<string>string.jsxAttributeValue.quoted.double.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#jsx-entities</string>
+					<string>#jsx-attributeValue-entities</string>
 				</dict>
 			</array>
 		</dict>
@@ -1074,7 +1105,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.tsx</string>
+					<string>punctuation.definition.string.jsxAttributeValue.begin.tsx</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1084,16 +1115,16 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.tsx</string>
+					<string>punctuation.definition.string.jsxAttributeValue.end.tsx</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.single.tsx</string>
+			<string>string.jsxAttributeValue.quoted.single.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#jsx-entities</string>
+					<string>#jsx-attributeValue-entities</string>
 				</dict>
 			</array>
 		</dict>

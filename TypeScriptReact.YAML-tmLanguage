@@ -894,26 +894,26 @@ repository:
     match: =(?=\s*(?:'|"|{|/\*|//|\n))
 
   jsx-string-double-quoted:
-    name: string.quoted.double.tsx
+    name: string.jsxAttributeValue.quoted.double.tsx
     begin: '"'
     end: '"'
     beginCaptures:
-      '0': {name: punctuation.definition.string.begin.tsx}
+      '0': {name: punctuation.definition.string.jsxAttributeValue.begin.tsx}
     endCaptures:
-      '0': {name: punctuation.definition.string.end.tsx}
+      '0': {name: punctuation.definition.string.jsxAttributeValue.end.tsx}
     patterns:
-    - include: '#jsx-entities'
+    - include: '#jsx-attributeValue-entities'
 
   jsx-string-single-quoted:
-    name: string.quoted.single.tsx
+    name: string.jsxAttributeValue.quoted.single.tsx
     begin: "'"
     end: "'"
     beginCaptures:
-      '0': {name: punctuation.definition.string.begin.tsx}
+      '0': {name: punctuation.definition.string.jsxAttributeValue.begin.tsx}
     endCaptures:
-      '0': {name: punctuation.definition.string.end.tsx}
+      '0': {name: punctuation.definition.string.jsxAttributeValue.end.tsx}
     patterns:
-    - include: '#jsx-entities'
+    - include: '#jsx-attributeValue-entities'
 
   jsx-entities:
     patterns:
@@ -923,6 +923,16 @@ repository:
         '1': {name: punctuation.definition.entity.tsx}
         '3': {name: punctuation.definition.entity.tsx}
     - name: invalid.illegal.bad-ampersand.tsx
+      match: '&'
+
+  jsx-attributeValue-entities:
+    patterns:
+    - name: constant.character.entity.jsxAttributeValue.tsx
+      match: (&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)
+      captures:
+        '1': {name: punctuation.definition.entity.jsxAttributeValue.tsx}
+        '3': {name: punctuation.definition.entity.jsxAttributeValue.tsx}
+    - name: invalid.illegal.bad-ampersand.jsxAttributeValue.tsx
       match: '&'
 
   jsx-evaluated-code:
