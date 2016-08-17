@@ -403,8 +403,18 @@ repository:
     begin: '=>'
     beginCaptures:
       '0': { name: storage.type.function.arrow.ts }
-    end: (?=\s*[,\)\{=;>]|//|$)
+    end: (?=[,\]\)\{=;>]|//|$)
     patterns:
+    # Handle returning of object type specifically here so as to not confuse it with the start of function block
+    - name: meta.object.type.ts
+      begin: (?<==>)\s*(\{)
+      beginCaptures:
+        '1': { name: punctuation.definition.block.ts }
+      end: \}
+      endCaptures:
+        '0': { name: punctuation.definition.block.ts }
+      patterns:
+      - include: '#type-object-members'
     - include: '#type'
 
   type-tuple:

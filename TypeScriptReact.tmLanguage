@@ -2719,11 +2719,42 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=\s*[,\)\{=;&gt;]|//|$)</string>
+			<string>(?=[,\]\)\{=;&gt;]|//|$)</string>
 			<key>name</key>
 			<string>meta.type.function.return.tsx</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;==&gt;)\s*(\{)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.block.tsx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.block.tsx</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.object.type.tsx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#type-object-members</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type</string>
