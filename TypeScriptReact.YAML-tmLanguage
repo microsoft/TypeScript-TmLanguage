@@ -103,8 +103,9 @@ repository:
     beginCaptures:
       '1': { name: storage.type.type.tsx }
       '2': { name: entity.name.type.tsx }
-    end: (?=$|[,);>]|var|type|function|class|interface)
+    end: (?=$|[,);>]|var|type|function|class|interface|namespace|enum|declare|export)
     patterns:
+      - include: '#comment'
       - include: '#type-parameters'
       - include: '#type'
       - name: keyword.operator.assignment.tsx

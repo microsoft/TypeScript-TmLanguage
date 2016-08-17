@@ -1,0 +1,36 @@
+original file
+-----------------------------------
+export type Test = string // wrong comment color
+                          // should be this
+-----------------------------------
+
+>export type Test = string // wrong comment color
+ ^^^^^^
+ source.ts storage.type.ts
+       ^
+       source.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^
+             source.ts meta.type.declaration.ts entity.name.type.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                    ^^^^^^
+                    source.ts meta.type.declaration.ts support.type.primitive.ts
+                          ^
+                          source.ts meta.type.declaration.ts
+                           ^^
+                           source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                             ^^^^^^^^^^^^^^^^^^^^^
+                             source.ts meta.type.declaration.ts comment.line.double-slash.ts
+>                          // should be this
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.type.declaration.ts punctuation.whitespace.comment.leading.ts
+                           ^^
+                           source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                             ^^^^^^^^^^^^^^^
+                             source.ts meta.type.declaration.ts comment.line.double-slash.ts

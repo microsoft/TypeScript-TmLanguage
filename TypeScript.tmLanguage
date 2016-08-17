@@ -2304,11 +2304,15 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|[,);&gt;]|var|type|function|class|interface)</string>
+			<string>(?=$|[,);&gt;]|var|type|function|class|interface|namespace|enum|declare|export)</string>
 			<key>name</key>
 			<string>meta.type.declaration.ts</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type-parameters</string>
