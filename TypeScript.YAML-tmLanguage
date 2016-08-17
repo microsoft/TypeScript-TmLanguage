@@ -183,6 +183,10 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.block.ts }
     patterns:
+    - include: '#type-object-members'
+
+  type-object-members:
+    patterns:
     - include: '#comment'
     - include: '#field-declaration'
     - include: '#method-declaration'
@@ -197,6 +201,8 @@ repository:
       '2': { name: keyword.operator.optional.ts }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
+    - include: '#ternary-expression'
+    - include: '#type-annotation'
     - include: '#expression'
 
   method-declaration:
@@ -216,7 +222,7 @@ repository:
     - include: '#comment'
     - include: '#type-parameters'
     - include: '#function-type-parameters'
-    - include: '#type-annotation'
+    - include: '#return-type'
     - include: '#method-overload-declaration'
     - include: '#decl-block'
 
@@ -302,7 +308,6 @@ repository:
     - include: '#expression'
 
   parameter-name:
-    name: parameter.name.ts
     match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.ts }
@@ -315,6 +320,16 @@ repository:
     begin: '(?<=\))\s*:'
     end: (?=$)|(?=\{|;|//)
     patterns:
+    # Handle returning of object type specifically here so as to not confuse it with the start of function block
+    - name: meta.object.type.ts
+      begin: (?<=:)\s*(\{)
+      beginCaptures:
+        '1': { name: punctuation.definition.block.ts }
+      end: \}
+      endCaptures:
+        '0': { name: punctuation.definition.block.ts }
+      patterns:
+      - include: '#type-object-members'
     - include: '#type'
 
   type-annotation:

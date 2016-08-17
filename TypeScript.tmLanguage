@@ -666,6 +666,14 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#ternary-expression</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-annotation</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#expression</string>
 				</dict>
 			</array>
@@ -1040,7 +1048,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-annotation</string>
+					<string>#return-type</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1545,8 +1553,6 @@
 			</dict>
 			<key>match</key>
 			<string>(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)</string>
-			<key>name</key>
-			<string>parameter.name.ts</string>
 		</dict>
 		<key>paren-expression</key>
 		<dict>
@@ -1927,6 +1933,37 @@
 			<string>meta.return.type.ts</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=:)\s*(\{)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.block.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.block.ts</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.object.type.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#type-object-members</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type</string>
@@ -2327,6 +2364,16 @@
 			</dict>
 			<key>name</key>
 			<string>meta.object.type.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#type-object-members</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-object-members</key>
+		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
