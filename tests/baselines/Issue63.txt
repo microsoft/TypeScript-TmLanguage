@@ -22,7 +22,7 @@ type Callback = ^^(error: Error, value: T) => ^^any
       ^^^^^^^^
       [1, 6]: source.ts meta.type.declaration.ts entity.name.type.ts 
                 ^
-                [1, 16]: source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.name.ts 
+                [1, 16]: source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts 
                      ^
                      [1, 21]: source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts 
 >
@@ -36,13 +36,13 @@ type Callback = ^^(error: Error, value: T) => ^^any
                                               ^^
                                               [3, 46]: source.ts meta.type.declaration.ts meta.type.function.return.ts storage.type.function.arrow.ts 
                                                  ^^^
-                                                 [3, 49]: source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.primitive.ts support.type.primitive.ts 
+                                                 [3, 49]: source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts 
 >
 >type Callback = (error: Error, value: T) => any
                  ^
                  [5, 17]: source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts 
                                              ^^^
-                                             [5, 45]: source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.primitive.ts support.type.primitive.ts 
+                                             [5, 45]: source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts 
 >
 >type Callback<string | (a: number, b: string) => void> = (error: Error, value: T) => any
  ^^^^
@@ -56,11 +56,11 @@ type Callback = ^^(error: Error, value: T) => ^^any
                         ^
                         [7, 24]: source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts meta.brace.round.ts 
                                                   ^^^^
-                                                  [7, 50]: source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.function.return.ts meta.type.primitive.ts support.type.primitive.ts 
+                                                  [7, 50]: source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.function.return.ts support.type.primitive.ts 
                                                           ^
                                                           [7, 58]: source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts 
                                                                                       ^^^
-                                                                                      [7, 86]: source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.primitive.ts support.type.primitive.ts 
+                                                                                      [7, 86]: source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts 
 >
 > type Foo <T > = {
  ^
@@ -68,7 +68,7 @@ type Callback = ^^(error: Error, value: T) => ^^any
        ^^^
        [9, 7]: source.ts meta.type.declaration.ts entity.name.type.ts 
             ^
-            [9, 12]: source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.name.ts 
+            [9, 12]: source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts 
                   ^
                   [9, 18]: source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts 
 >
@@ -81,7 +81,7 @@ type Callback = ^^(error: Error, value: T) => ^^any
   ^^^
   [12, 2]: source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts 
        ^^^^^^
-       [12, 7]: source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.primitive.ts support.type.primitive.ts 
+       [12, 7]: source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts support.type.primitive.ts 
 >
 >}
  ^

@@ -354,10 +354,8 @@ repository:
     - include: '#variable-initializer'
 
   type-primitive:
-    name: meta.type.primitive.ts
+    name: support.type.primitive.ts
     match: '\b(string|number|boolean|symbol|any|void|never)\b'
-    captures:
-      '1': { name: support.type.primitive.ts }
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -407,10 +405,8 @@ repository:
     - include: '#comment'
 
   type-name:
-    name: meta.type.name.ts
+    name: entity.name.type.ts
     match: '[a-zA-Z_$][.\w$]*'
-    captures:
-      '1': { name: entity.name.type.ts }
 
   type-parameters:
     name: meta.type.parameters.ts
