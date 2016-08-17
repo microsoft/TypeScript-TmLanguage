@@ -41,7 +41,11 @@ repository:
 
   ternary-operator:
     begin: (\?)
+    beginCaptures:
+      '0': { name: keyword.operator.ternary.ts }
     end: (:)
+    endCaptures:
+      '0': { name: keyword.operator.ternary.ts }      
     patterns:
     - include: '#expression-type' 
 

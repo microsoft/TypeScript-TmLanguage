@@ -557,6 +557,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#jsx</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#string</string>
 				</dict>
 				<dict>
@@ -2582,8 +2586,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(\?)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.ternary.tsx</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>(:)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.ternary.tsx</string>
+				</dict>
+			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>

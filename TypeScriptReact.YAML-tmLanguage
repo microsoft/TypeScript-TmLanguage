@@ -44,13 +44,18 @@ repository:
 
   ternary-operator:
     begin: (\?)
+    beginCaptures:
+      '0': { name: keyword.operator.ternary.tsx }
     end: (:)
+    endCaptures:
+      '0': { name: keyword.operator.ternary.tsx }      
     patterns:
     - include: '#expression-type' 
 
   expression-type:
     name: meta.expression.tsx
     patterns:
+    - include: '#jsx'
     - include: '#string'
     - include: '#regex'
     - include: '#template'
