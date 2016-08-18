@@ -323,7 +323,7 @@ repository:
   return-type:
     name: meta.return.type.ts
     begin: '(?<=\))\s*:'
-    end: (?=$)|(?=\{|;|//)
+    end: (?<!:)((?=$)|(?=\{|;|//))
     patterns:
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
     - name: meta.object.type.ts
@@ -408,7 +408,7 @@ repository:
     begin: '=>'
     beginCaptures:
       '0': { name: storage.type.function.arrow.ts }
-    end: (?=[,\]\)\{=;>]|//|$)
+    end: (?<!=>)(?=[,\]\)\{\}=;>]|//|$)
     patterns:
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
     - name: meta.object.type.ts
