@@ -583,12 +583,81 @@ repository:
     - include: '#object-member' 
 
   parameter-name:
-    match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)'
+    match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*(?<!=|:)([a-zA-Z_$][\w$]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.tsx }
       '2': { name: keyword.operator.spread.tsx }
       '3': { name: variable.parameter.tsx }
       '4': { name: keyword.operator.optional.tsx }
+
+  destructuring-parameter:
+    patterns:
+    - name: meta.parameter.object-binding-pattern.tsx
+      begin: (?<!=|:)\s*(\{)
+      beginCaptures:
+        '1': { name: punctuation.definition.binding-pattern.object.tsx }
+      end: \}
+      endCaptures:
+        '0': { name: punctuation.definition.binding-pattern.object.tsx }
+      patterns:
+      - include: '#parameter-object-binding-element'
+    - name: meta.paramter.array-binding-pattern.tsx
+      begin: (?<!=|:)\s*(\[)
+      beginCaptures:
+        '1': { name: punctuation.definition.binding-pattern.array.tsx }
+      end: \]
+      endCaptures:
+        '0': { name: punctuation.definition.binding-pattern.array.tsx }
+      patterns:
+      - include: '#parameter-array-binding-element'
+
+  parameter-object-binding-element:
+    patterns:
+    - include: '#comment'
+    - begin: \b([a-zA-Z_$][\w$]*)\s*(:)
+      beginCaptures:
+        '1': { name: variable.object.property.tsx }
+        '2': { name: punctuation.destructuring.tsx }
+      end: (?=,|\})
+      patterns:
+      - include: '#parameter-object-binding-pattern'
+      - include: '#parameter-array-binding-pattern'
+      - name: variable.parameter.tsx
+        match: \b([a-zA-Z_$][\w$]*)\b
+    - name: variable.parameter.tsx
+      match: \b([a-zA-Z_$][\w$]*)\b
+    - name: meta.delimiter.object.comma.tsx
+      match: ','
+
+  parameter-array-binding-element:
+    patterns:
+    - include: '#comment'
+    - include: '#parameter-object-binding-pattern'
+    - include: '#parameter-array-binding-pattern'
+    - name: variable.parameter.tsx
+      match: \b([a-zA-Z_$][\w$]*)\b
+    - name: meta.delimiter.object.comma.tsx
+      match: ','
+
+  parameter-object-binding-pattern:
+    begin: \{
+    beginCaptures:
+      '0': { name: punctuation.definition.binding-pattern.object.tsx }
+    end: \}
+    endCaptures:
+      '0': { name: punctuation.definition.binding-pattern.object.tsx }
+    patterns:
+    - include: '#parameter-object-binding-element'
+
+  parameter-array-binding-pattern:
+    begin: \[
+    beginCaptures:
+      '0': { name: punctuation.definition.binding-pattern.array.tsx }
+    end: \]
+    endCaptures:
+      '0': { name: punctuation.definition.binding-pattern.array.tsx }
+    patterns:
+    - include: '#parameter-array-binding-element'
 
   return-type:
     name: meta.return.type.tsx
@@ -639,6 +708,7 @@ repository:
       '0': { name: punctuation.definition.parameters.end.tsx }
     patterns:
     - include: '#comment'
+    - include: '#destructuring-parameter'
     - include: '#parameter-name'
     - include: '#type-annotation'
     - include: '#variable-initializer'
