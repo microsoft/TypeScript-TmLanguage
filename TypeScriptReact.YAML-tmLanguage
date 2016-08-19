@@ -30,9 +30,10 @@ repository:
 
   var-expr:
     name: meta.var.expr.tsx
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
+    begin: (?:(\bexport)\s+)?(?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
     beginCaptures:
-      '1': { name: storage.type.tsx }
+      '1': { name: keyword.control.export.tsx }
+      '2': { name: storage.type.tsx }
     end: (?=$|;)
     patterns:
     - include: '#var-single-variable'
@@ -124,10 +125,11 @@ repository:
 
   type-declaration:
     name: meta.type.declaration.tsx
-    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
+    begin: (?:(\bexport)\s+)?\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
     beginCaptures:
-      '1': { name: storage.type.type.tsx }
-      '2': { name: entity.name.type.tsx }
+      '1': { name: keyword.control.export.tsx }
+      '2': { name: storage.type.type.tsx }
+      '3': { name: entity.name.type.tsx }
     end: (?=$|[,);>]|var|type|function|class|interface|namespace|enum|declare|export)
     patterns:
       - include: '#comment'
@@ -138,11 +140,12 @@ repository:
 
   enum-declaration:
     name: meta.enum.declaration.tsx
-    match: (?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)
+    match: (?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)
     captures:
-      '1': { name: storage.modifier.tsx}
-      '2': { name: storage.type.enum.tsx }
-      '3': { name: entity.name.type.enum.tsx }
+      '1': { name: keyword.control.export.tsx }
+      '2': { name: storage.modifier.tsx}
+      '3': { name: storage.type.enum.tsx }
+      '4': { name: entity.name.type.enum.tsx }
 
   class-or-interface-declaration:
     name: meta.declaration.object.tsx

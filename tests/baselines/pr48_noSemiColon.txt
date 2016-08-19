@@ -43,14 +43,14 @@ class Test {
 >
 >export type Stats = fs.Stats
  ^^^^^^
- [7, 1]: source.ts storage.type.ts 
+ [7, 1]: source.ts meta.type.declaration.ts keyword.control.export.ts 
         ^^^^
         [7, 8]: source.ts meta.type.declaration.ts storage.type.type.ts 
              ^^^^^
              [7, 13]: source.ts meta.type.declaration.ts entity.name.type.ts 
 >export const touch = thenify(tch)
  ^^^^^^
- [8, 1]: source.ts storage.type.ts 
+ [8, 1]: source.ts meta.var.expr.ts keyword.control.export.ts 
         ^^^^^
         [8, 8]: source.ts meta.var.expr.ts storage.type.ts 
               ^^^^^
@@ -74,14 +74,14 @@ class Test {
 >
 >export const readFile = thenify<string, string, string>(fs.readFile)
  ^^^^^^
- [18, 1]: source.ts storage.type.ts 
+ [18, 1]: source.ts meta.var.expr.ts keyword.control.export.ts 
         ^^^^^
         [18, 8]: source.ts meta.var.expr.ts storage.type.ts 
                                  ^^^^^^
                                  [18, 33]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts support.type.primitive.ts 
 >export const writeFile = thenify<string, string | Buffer, void>(fs.writeFile)
  ^^^^^^
- [19, 1]: source.ts storage.type.ts 
+ [19, 1]: source.ts meta.var.expr.ts keyword.control.export.ts 
         ^^^^^
         [19, 8]: source.ts meta.var.expr.ts storage.type.ts 
                                   ^^^^^^

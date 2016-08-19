@@ -26,9 +26,10 @@ repository:
 
   var-expr:
     name: meta.var.expr.ts
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
+    begin: (?:(\bexport)\s+)?(?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
     beginCaptures:
-      '1': { name: storage.type.ts }
+      '1': { name: keyword.control.export.ts }
+      '2': { name: storage.type.ts }
     end: (?=$|;)
     patterns:
     - include: '#var-single-variable'
@@ -120,10 +121,11 @@ repository:
 
   type-declaration:
     name: meta.type.declaration.ts
-    begin: \b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
+    begin: (?:(\bexport)\s+)?\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
     beginCaptures:
-      '1': { name: storage.type.type.ts }
-      '2': { name: entity.name.type.ts }
+      '1': { name: keyword.control.export.ts }
+      '2': { name: storage.type.type.ts }
+      '3': { name: entity.name.type.ts }
     end: (?=$|[,);>]|var|type|function|class|interface|namespace|enum|declare|export)
     patterns:
       - include: '#comment'
@@ -134,11 +136,12 @@ repository:
 
   enum-declaration:
     name: meta.enum.declaration.ts
-    match: (?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)
+    match: (?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)
     captures:
-      '1': { name: storage.modifier.ts}
-      '2': { name: storage.type.enum.ts }
-      '3': { name: entity.name.type.enum.ts }
+      '1': { name: keyword.control.export.ts }
+      '2': { name: storage.modifier.ts}
+      '3': { name: storage.type.enum.ts }
+      '4': { name: entity.name.type.enum.ts }
 
   class-or-interface-declaration:
     name: meta.declaration.object.ts

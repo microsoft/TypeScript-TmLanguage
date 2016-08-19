@@ -588,21 +588,26 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.modifier.ts</string>
+					<string>keyword.control.export.ts</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.enum.ts</string>
+					<string>storage.modifier.ts</string>
 				</dict>
 				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.enum.ts</string>
+				</dict>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.type.enum.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)</string>
+			<string>(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)</string>
 			<key>name</key>
 			<string>meta.enum.declaration.ts</string>
 		</dict>
@@ -2259,15 +2264,20 @@
 		<key>type-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*</string>
+			<string>(?:(\bexport)\s+)?\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.type.ts</string>
+					<string>keyword.control.export.ts</string>
 				</dict>
 				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.type.ts</string>
+				</dict>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.type.ts</string>
@@ -2571,10 +2581,15 @@
 		<key>var-expr</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!\()\s*\b(var|let|const(?!\s+enum\b))\b</string>
+			<string>(?:(\bexport)\s+)?(?&lt;!\()\s*\b(var|let|const(?!\s+enum\b))\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.export.ts</string>
+				</dict>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>storage.type.ts</string>
