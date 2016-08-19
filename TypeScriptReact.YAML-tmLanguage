@@ -9,12 +9,28 @@ fileTypes: [tsx]
 uuid: 805375ec-d614-41f5-8993-5843fe63ea82
 
 patterns:
-- include: '#expression'
+- include: '#statements'
 
 repository:
+  statements:
+    patterns:
+    - include: '#jsx'
+    - include: '#for-in-simple'
+    - include: '#string'
+    - include: '#regex'
+    - include: '#template'
+    - include: '#comment'
+    - include: '#literal'
+    - include: '#declaration'
+    - include: '#switch-statement'
+    - include: '#decl-block'
+    - include: '#control-statement'
+    # add label
+    - include: '#expression'
+
   var-expr:
     name: meta.var.expr.tsx
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\b
+    begin: (?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
     beginCaptures:
       '1': { name: storage.type.tsx }
     end: (?=$|;)
@@ -24,23 +40,25 @@ repository:
 
   var-single-variable:
     name: meta.var-single-variable.expr.tsx
-    begin: \b([a-zA-Z_$][\w$]*)\s*(=?)
+    begin: \b([a-zA-Z_$][\w$]*)\b
     beginCaptures:
       '1': { name: variable.other.readwrite.tsx }
     end: (?=$|[;,])
     patterns:
-    - include: '#ternary-expression'
-    - include: '#type-annotation'
-    - include: '#string'
-    - include: '#comment'
-    - include: '#expression'
+    - include: '#variable-initializer'
+    - begin: \G
+      end: (?!\G)(?=$|[;,=])
+      patterns:
+      - include: '#type-annotation'
+      - include: '#string'
+      - include: '#comment'
 
   ternary-expression:
     begin: (?=\?)
-    end: (?=$|[;,])
+    end: (?=$|[;,}])
     patterns:
     - include: '#ternary-operator'
-    - include: '#expression-type' 
+    - include: '#expression' 
 
   ternary-operator:
     begin: (\?)
@@ -50,9 +68,9 @@ repository:
     endCaptures:
       '0': { name: keyword.operator.ternary.tsx }      
     patterns:
-    - include: '#expression-type' 
+    - include: '#expression' 
 
-  expression-type:
+  expression:
     name: meta.expression.tsx
     patterns:
     - include: '#jsx'
@@ -61,16 +79,18 @@ repository:
     - include: '#template'
     - include: '#comment'
     - include: '#literal'
+    - include: '#function-declaration'
     - include: '#paren-expression'
     - include: '#ternary-expression'
-    - include: '#import-operator'
+    - include: '#new-expr'
+    - include: '#object-literal'
     - include: '#expression-operator'
     - include: '#imply-operator'
     - include: '#operators'
-    - include: '#type-primitive'
-    - include: '#function-call' 
+    - include: '#function-call'
 
   control-statement:
+    # TODO: convert this to actual statements instead
     patterns:
     - name: keyword.control.trycatch.tsx
       match: (?<!\.)\b(catch|finally|throw|try)\b
@@ -92,10 +112,15 @@ repository:
   declaration:
     name: meta.declaration.tsx
     patterns:
+     - include: '#var-expr'
      - include: '#function-declaration'
-     - include: '#object-declaration'
+     - include: '#class-or-interface-declaration'
      - include: '#type-declaration'
      - include: '#enum-declaration'
+     # Todo: to change this to import declaration
+     - include: '#import-operator'
+     # TODO: change this to actual declarations of export, import, namespace
+     - include: '#storage-keyword'
 
   type-declaration:
     name: meta.type.declaration.tsx
@@ -117,9 +142,9 @@ repository:
     captures:
       '1': { name: storage.modifier.tsx}
       '2': { name: storage.type.enum.tsx }
-      '3': { name: entity.name.type.class.tsx }
+      '3': { name: entity.name.type.enum.tsx }
 
-  object-declaration:
+  class-or-interface-declaration:
     name: meta.declaration.object.tsx
     begin: '\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?<!\.)(?:(class)|(interface))\b'
     beginCaptures:
@@ -132,18 +157,18 @@ repository:
       '1': { name: punctuation.definition.block.tsx }
     patterns:
     - include: '#comment'
-    - include: '#object-heritage' # Must be before object-name to consume the "extends" keyword.
-    - include: '#object-name'
+    - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
+    - include: '#class-or-interface-name'
     - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
-    - include: '#object-body'
+    - include: '#class-or-interface-body'
 
-  object-name:
+  class-or-interface-name:
     name: meta.object.name.tsx
     match: '[a-zA-Z_$][\w$]*'
     captures:
       '0': { name: 'entity.name.class.tsx' }
 
-  object-heritage:
+  class-or-interface-heritage:
     name: meta.object.heritage.tsx
     begin: '(?:\b(extends|implements)\b)'
     beginCaptures:
@@ -153,17 +178,17 @@ repository:
       '1': { name: punctuation.definition.block.tsx }
     patterns:
     - include: '#comment'
-    - include: '#object-heritage'
+    - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
-    - include: '#object-heritage-type'
+    - include: '#class-or-interface-heritage-type'
 
-  object-heritage-type:
+  class-or-interface-heritage-type:
     name: meta.object.heritage.parent.tsx
     match: '(?:\b([a-zA-Z_$][\w$]*)\b)'
     captures:
       '1': { name: entity.other.inherited-class.tsx }
 
-  object-body:
+  class-or-interface-body:
     name: meta.object.body.tsx
     begin: \{
     beginCaptures:
@@ -260,7 +285,6 @@ repository:
     patterns:
     - include: '#type-annotation'
     - include: '#indexer-parameter'
-    - include: '#expression'
 
   indexer-parameter:
     name: meta.indexer.parameter.tsx
@@ -293,7 +317,7 @@ repository:
       '2': { name: storage.type.function.tsx }
       '3': { name: entity.name.function.tsx }
 
-  block:
+  object-literal:
     name: meta.block.tsx
     begin: \{
     beginCaptures:
@@ -303,7 +327,6 @@ repository:
       '0': { name: punctuation.definition.block.tsx }
     patterns:
     - include: '#object-member'
-    - include: '#expression'
 
   decl-block:
     name: meta.decl.block.tsx
@@ -314,7 +337,7 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.block.tsx }
     patterns:
-    - include: '#expression'
+    - include: '#statements'
 
   parameter-name:
     match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)'
@@ -458,38 +481,12 @@ repository:
     - include: '#type'
 
   variable-initializer:
-    begin: (=)
+    begin: (?<!=|!)(=)(?!=)
     beginCaptures:
       '1': { name: keyword.operator.assignment.tsx }
-    end: (?=$|[,);=])
+    end: (?=$|[,);])
     patterns:
       - include: '#expression'
-
-  expression:
-    name: meta.expression.tsx
-    patterns:
-    - include: '#jsx'
-    - include: '#for-in-simple'
-    - include: '#string'
-    - include: '#regex'
-    - include: '#template'
-    - include: '#comment'
-    - include: '#literal'
-    - include: '#paren-expression'
-    - include: '#var-expr'
-    - include: '#declaration'
-    - include: '#new-expr'
-    - include: '#switch-statement'
-    - include: '#block'
-    - include: '#import-operator'
-    - include: '#expression-operator'
-    - include: '#imply-operator'
-    - include: '#operators'
-    - include: '#storage-keyword'
-    - include: '#type-primitive'
-    - include: '#function-call'
-    - include: '#case-clause'
-    - include: '#control-statement'
 
   switch-expression:
     name: switch-expression.expr.tsx
@@ -507,7 +504,8 @@ repository:
       '0': { name: punctuation.definition.block.tsx }
     end: (?=\})
     patterns:
-    - include: '#expression'
+    - include: '#case-clause'
+    - include: '#statements'
 
   case-clause:
     name: case-clause.expr.tsx
@@ -516,7 +514,7 @@ repository:
       '1': { name: keyword.control.switch.tsx }
     end: ':'
     patterns:
-    - include: '#expression-type'
+    - include: '#expression'
 
   switch-statement:
     name: switch-statement.expr.tsx
@@ -620,7 +618,7 @@ repository:
 
   storage-keyword:
     name: storage.type.tsx
-    match: \b(var|let|function|const|module|namespace|void|export)\b
+    match: \b(var|let|function|const|module|namespace)\b
 
   paren-expression:
     begin: \(

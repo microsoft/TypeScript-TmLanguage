@@ -6,12 +6,27 @@ fileTypes: [ts]
 uuid: ef98eb90-bf9b-11e4-bb52-0800200c9a66
 
 patterns:
-- include: '#expression'
+- include: '#statements'
 
 repository:
+  statements:
+    patterns:
+    - include: '#for-in-simple'
+    - include: '#string'
+    - include: '#regex'
+    - include: '#template'
+    - include: '#comment'
+    - include: '#literal'
+    - include: '#declaration'
+    - include: '#switch-statement'
+    - include: '#decl-block'
+    - include: '#control-statement'
+    # add label
+    - include: '#expression'
+
   var-expr:
     name: meta.var.expr.ts
-    begin: (?<!\()\s*\b(var|let|const(?!\s+enum))\b
+    begin: (?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
     beginCaptures:
       '1': { name: storage.type.ts }
     end: (?=$|;)
@@ -21,23 +36,25 @@ repository:
 
   var-single-variable:
     name: meta.var-single-variable.expr.ts
-    begin: \b([a-zA-Z_$][\w$]*)\s*(=?)
+    begin: \b([a-zA-Z_$][\w$]*)\b
     beginCaptures:
       '1': { name: variable.other.readwrite.ts }
     end: (?=$|[;,])
     patterns:
-    - include: '#ternary-expression'
-    - include: '#type-annotation'
-    - include: '#string'
-    - include: '#comment'
-    - include: '#expression'
+    - include: '#variable-initializer'
+    - begin: \G
+      end: (?!\G)(?=$|[;,=])
+      patterns:
+      - include: '#type-annotation'
+      - include: '#string'
+      - include: '#comment'
 
   ternary-expression:
     begin: (?=\?)
-    end: (?=$|[;,])
+    end: (?=$|[;,}])
     patterns:
     - include: '#ternary-operator'
-    - include: '#expression-type' 
+    - include: '#expression' 
 
   ternary-operator:
     begin: (\?)
@@ -47,9 +64,9 @@ repository:
     endCaptures:
       '0': { name: keyword.operator.ternary.ts }      
     patterns:
-    - include: '#expression-type' 
+    - include: '#expression' 
 
-  expression-type:
+  expression:
     name: meta.expression.ts
     patterns:
     - include: '#string'
@@ -57,16 +74,19 @@ repository:
     - include: '#template'
     - include: '#comment'
     - include: '#literal'
+    - include: '#function-declaration'
     - include: '#paren-expression'
     - include: '#ternary-expression'
-    - include: '#import-operator'
+    - include: '#cast'
+    - include: '#new-expr'
+    - include: '#object-literal'
     - include: '#expression-operator'
     - include: '#imply-operator'
     - include: '#operators'
-    - include: '#type-primitive'
-    - include: '#function-call' 
+    - include: '#function-call'
 
   control-statement:
+    # TODO: convert this to actual statements instead
     patterns:
     - name: keyword.control.trycatch.ts
       match: (?<!\.)\b(catch|finally|throw|try)\b
@@ -88,10 +108,15 @@ repository:
   declaration:
     name: meta.declaration.ts
     patterns:
+     - include: '#var-expr'
      - include: '#function-declaration'
-     - include: '#object-declaration'
+     - include: '#class-or-interface-declaration'
      - include: '#type-declaration'
      - include: '#enum-declaration'
+     # Todo: to change this to import declaration
+     - include: '#import-operator'
+     # TODO: change this to actual declarations of export, import, namespace
+     - include: '#storage-keyword'
 
   type-declaration:
     name: meta.type.declaration.ts
@@ -115,7 +140,7 @@ repository:
       '2': { name: storage.type.enum.ts }
       '3': { name: entity.name.type.enum.ts }
 
-  object-declaration:
+  class-or-interface-declaration:
     name: meta.declaration.object.ts
     begin: '\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?<!\.)(?:(class)|(interface))\b'
     beginCaptures:
@@ -128,18 +153,18 @@ repository:
       '1': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#comment'
-    - include: '#object-heritage' # Must be before object-name to consume the "extends" keyword.
-    - include: '#object-name'
+    - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
+    - include: '#class-or-interface-name'
     - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
-    - include: '#object-body'
+    - include: '#class-or-interface-body'
 
-  object-name:
+  class-or-interface-name:
     name: meta.object.name.ts
     match: '[a-zA-Z_$][\w$]*'
     captures:
       '0': { name: 'entity.name.class.ts' }
 
-  object-heritage:
+  class-or-interface-heritage:
     name: meta.object.heritage.ts
     begin: '(?:\b(extends|implements)\b)'
     beginCaptures:
@@ -149,17 +174,17 @@ repository:
       '1': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#comment'
-    - include: '#object-heritage'
+    - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
-    - include: '#object-heritage-type'
+    - include: '#class-or-interface-heritage-type'
 
-  object-heritage-type:
+  class-or-interface-heritage-type:
     name: meta.object.heritage.parent.ts
     match: '(?:\b([a-zA-Z_$][\w$]*)\b)'
     captures:
       '1': { name: entity.other.inherited-class.ts }
 
-  object-body:
+  class-or-interface-body:
     name: meta.object.body.ts
     begin: \{
     beginCaptures:
@@ -256,7 +281,6 @@ repository:
     patterns:
     - include: '#type-annotation'
     - include: '#indexer-parameter'
-    - include: '#expression'
 
   indexer-parameter:
     name: meta.indexer.parameter.ts
@@ -289,7 +313,7 @@ repository:
       '2': { name: storage.type.function.ts }
       '3': { name: entity.name.function.ts }
 
-  block:
+  object-literal:
     name: meta.block.ts
     begin: \{
     beginCaptures:
@@ -299,7 +323,6 @@ repository:
       '0': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#object-member'
-    - include: '#expression'
 
   decl-block:
     name: meta.decl.block.ts
@@ -310,7 +333,7 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.block.ts }
     patterns:
-    - include: '#expression'
+    - include: '#statements'
 
   parameter-name:
     match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)'
@@ -454,38 +477,12 @@ repository:
     - include: '#type'
 
   variable-initializer:
-    begin: (=)
+    begin: (?<!=|!)(=)(?!=)
     beginCaptures:
       '1': { name: keyword.operator.assignment.ts }
-    end: (?=$|[,);=])
+    end: (?=$|[,);])
     patterns:
       - include: '#expression'
-
-  expression:
-    name: meta.expression.ts
-    patterns:
-    - include: '#for-in-simple'
-    - include: '#string'
-    - include: '#regex'
-    - include: '#template'
-    - include: '#comment'
-    - include: '#literal'
-    - include: '#paren-expression'
-    - include: '#var-expr'
-    - include: '#declaration'
-    - include: '#cast'
-    - include: '#new-expr'
-    - include: '#switch-statement'
-    - include: '#block'
-    - include: '#import-operator'
-    - include: '#expression-operator'
-    - include: '#imply-operator'
-    - include: '#operators'
-    - include: '#storage-keyword'
-    - include: '#type-primitive'
-    - include: '#function-call'
-    - include: '#case-clause'
-    - include: '#control-statement'
 
   switch-expression:
     name: switch-expression.expr.ts
@@ -503,7 +500,8 @@ repository:
       '0': { name: punctuation.definition.block.ts }
     end: (?=\})
     patterns:
-    - include: '#expression'
+    - include: '#case-clause'
+    - include: '#statements'
 
   case-clause:
     name: case-clause.expr.ts
@@ -512,7 +510,7 @@ repository:
       '1': { name: keyword.control.switch.ts }
     end: ':'
     patterns:
-    - include: '#expression-type'
+    - include: '#expression'
 
   switch-statement:
     name: switch-statement.expr.ts
@@ -630,7 +628,7 @@ repository:
 
   storage-keyword:
     name: storage.type.ts
-    match: \b(var|let|function|const|module|namespace|void|export)\b
+    match: \b(var|let|function|const|module|namespace)\b
 
   paren-expression:
     begin: \(
