@@ -437,10 +437,6 @@ repository:
     - include: '#type'
     - include: '#function-type-parameters'
 
-  await-modifier:
-    name: storage.modifier.await.tsx
-    match: '\bawait\b'
-
   type-operator:
     name: keyword.operator.type.tsx
     match: '[.|]'
@@ -554,7 +550,6 @@ repository:
   function-call:
     name: functioncall.expr.tsx
     patterns:
-    - include: '#await-modifier'
     - include: '#type-parameters'
     - include: '#paren-expression'
 
