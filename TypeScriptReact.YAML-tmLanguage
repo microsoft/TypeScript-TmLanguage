@@ -23,6 +23,7 @@ repository:
     - include: '#literal'
     - include: '#declaration'
     - include: '#switch-statement'
+    - include: '#for-loop'
     - include: '#decl-block'
     - include: '#control-statement'
     # add label
@@ -30,7 +31,7 @@ repository:
 
   var-expr:
     name: meta.var.expr.tsx
-    begin: (?:(\bexport)\s+)?(?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
+    begin: (?:(\bexport)\s+)?(?<!\.)\b(var|let|const(?!\s+enum\b))\b
     beginCaptures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.type.tsx }
@@ -97,7 +98,7 @@ repository:
     - name: keyword.control.trycatch.tsx
       match: (?<!\.)\b(catch|finally|throw|try)\b
     - name: keyword.control.loop.tsx
-      match: (?<!\.)\b(break|continue|do|for|goto|while)\b
+      match: (?<!\.)\b(break|continue|do|goto|while)\b
     - name: keyword.control.flow.tsx
       match: (?<!\.)\b(await|return|yield)\b
     - name: keyword.control.switch.tsx
@@ -499,12 +500,27 @@ repository:
     patterns:
       - include: '#expression'
 
+  for-loop:
+    begin: (?<!\.)\b(for)\s*(\()
+    beginCaptures:
+      '1': { name: keyword.control.loop.tsx }
+      '2': { name: meta.brace.round.tsx }
+    end: \)
+    endCaptures:
+      '0': { name: meta.brace.round.tsx }
+    patterns:
+    - include: '#var-expr'
+    - include: '#expression'
+
   switch-expression:
     name: switch-expression.expr.tsx
-    begin: \b(switch)\b\s*\(
+    begin: \b(switch)\b\s*(\()
     beginCaptures:
       '1': { name: keyword.control.switch.tsx }
+      '2': { name: meta.brace.round.tsx }
     end: \)
+    endCaptures:
+      '0': { name: meta.brace.round.tsx }
     patterns:
     - include: '#expression'
 

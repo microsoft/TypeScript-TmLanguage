@@ -19,6 +19,7 @@ repository:
     - include: '#literal'
     - include: '#declaration'
     - include: '#switch-statement'
+    - include: '#for-loop'
     - include: '#decl-block'
     - include: '#control-statement'
     # add label
@@ -26,7 +27,7 @@ repository:
 
   var-expr:
     name: meta.var.expr.ts
-    begin: (?:(\bexport)\s+)?(?<!\()\s*\b(var|let|const(?!\s+enum\b))\b
+    begin: (?:(\bexport)\s+)?(?<!\.)\b(var|let|const(?!\s+enum\b))\b
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.ts }
@@ -93,7 +94,7 @@ repository:
     - name: keyword.control.trycatch.ts
       match: (?<!\.)\b(catch|finally|throw|try)\b
     - name: keyword.control.loop.ts
-      match: (?<!\.)\b(break|continue|do|for|goto|while)\b
+      match: (?<!\.)\b(break|continue|do|goto|while)\b
     - name: keyword.control.flow.ts
       match: (?<!\.)\b(await|return|yield)\b
     - name: keyword.control.switch.ts
@@ -495,12 +496,27 @@ repository:
     patterns:
       - include: '#expression'
 
+  for-loop:
+    begin: (?<!\.)\b(for)\s*(\()
+    beginCaptures:
+      '1': { name: keyword.control.loop.ts }
+      '2': { name: meta.brace.round.ts }
+    end: \)
+    endCaptures:
+      '0': { name: meta.brace.round.ts }
+    patterns:
+    - include: '#var-expr'
+    - include: '#expression'
+
   switch-expression:
     name: switch-expression.expr.ts
-    begin: \b(switch)\b\s*\(
+    begin: \b(switch)\b\s*(\()
     beginCaptures:
       '1': { name: keyword.control.switch.ts }
+      '2': { name: meta.brace.round.ts }
     end: \)
+    endCaptures:
+      '0': { name: meta.brace.round.ts }
     patterns:
     - include: '#expression'
 

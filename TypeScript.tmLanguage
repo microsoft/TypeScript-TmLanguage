@@ -457,7 +457,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(break|continue|do|for|goto|while)\b</string>
+					<string>(?&lt;!\.)\b(break|continue|do|goto|while)\b</string>
 					<key>name</key>
 					<string>keyword.control.loop.ts</string>
 				</dict>
@@ -834,6 +834,45 @@
 			<string>(?&lt;=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(?:(in)|(of))\b</string>
 			<key>name</key>
 			<string>forin.expr.ts</string>
+		</dict>
+		<key>for-loop</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;!\.)\b(for)\s*(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.loop.ts</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.ts</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.ts</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#var-expr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
 		</dict>
 		<key>function-call</key>
 		<dict>
@@ -1954,6 +1993,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#for-loop</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#decl-block</string>
 				</dict>
 				<dict>
@@ -2041,7 +2084,7 @@
 		<key>switch-expression</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(switch)\b\s*\(</string>
+			<string>\b(switch)\b\s*(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2049,9 +2092,22 @@
 					<key>name</key>
 					<string>keyword.control.switch.ts</string>
 				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.ts</string>
+				</dict>
 			</dict>
 			<key>end</key>
 			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.ts</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>switch-expression.expr.ts</string>
 			<key>patterns</key>
@@ -2606,7 +2662,7 @@
 		<key>var-expr</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:(\bexport)\s+)?(?&lt;!\()\s*\b(var|let|const(?!\s+enum\b))\b</string>
+			<string>(?:(\bexport)\s+)?(?&lt;!\.)\b(var|let|const(?!\s+enum\b))\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
