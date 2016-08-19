@@ -20,6 +20,7 @@ repository:
     - include: '#declaration'
     - include: '#switch-statement'
     - include: '#for-loop'
+    - include: '#after-operator-block'
     - include: '#decl-block'
     - include: '#control-statement'
     # add label
@@ -350,6 +351,17 @@ repository:
       '0': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#statements'
+
+  after-operator-block:
+    name: meta.block.ts
+    begin: (?<=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&&|\|\|)\s*(\{)
+    beginCaptures:
+      '1': { name: punctuation.definition.block.ts }
+    end: \}
+    endCaptures:
+      '0': { name: punctuation.definition.block.ts }
+    patterns:
+    - include: '#object-member' 
 
   parameter-name:
     match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*([a-zA-Z_$][\w$]*)\s*(\??)'

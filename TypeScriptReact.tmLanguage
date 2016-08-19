@@ -24,6 +24,38 @@
 			<key>name</key>
 			<string>storage.modifier.tsx</string>
 		</dict>
+		<key>after-operator-block</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\|)\s*(\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.tsx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.tsx</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.block.tsx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#object-member</string>
+				</dict>
+			</array>
+		</dict>
 		<key>array-literal</key>
 		<dict>
 			<key>begin</key>
@@ -2395,6 +2427,10 @@
 				<dict>
 					<key>include</key>
 					<string>#for-loop</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#after-operator-block</string>
 				</dict>
 				<dict>
 					<key>include</key>
