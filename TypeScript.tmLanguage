@@ -56,6 +56,66 @@
 				</dict>
 			</array>
 		</dict>
+		<key>array-binding-element</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#object-binding-pattern</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#array-binding-pattern</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b([a-zA-Z_$][\w$]*)\b</string>
+					<key>name</key>
+					<string>variable.other.readwrite.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>meta.delimiter.object.comma.ts</string>
+				</dict>
+			</array>
+		</dict>
+		<key>array-binding-pattern</key>
+		<dict>
+			<key>begin</key>
+			<string>\[</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.binding-pattern.array.ts</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\]</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.binding-pattern.array.ts</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#array-binding-element</string>
+				</dict>
+			</array>
+		</dict>
 		<key>array-literal</key>
 		<dict>
 			<key>begin</key>
@@ -604,6 +664,134 @@
 				<dict>
 					<key>include</key>
 					<string>#export-declaration</string>
+				</dict>
+			</array>
+		</dict>
+		<key>destructuring-variable</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!=|:)\s*(\{)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.binding-pattern.object.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=$|[;,])</string>
+					<key>name</key>
+					<string>meta.object-binding-pattern-variable.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#variable-initializer</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\G</string>
+							<key>end</key>
+							<string>(?!\G)(?=$|[;,=])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>\G</string>
+									<key>end</key>
+									<string>\}</string>
+									<key>endCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.definition.binding-pattern.object.ts</string>
+										</dict>
+									</dict>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#object-binding-element</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#type-annotation</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#comment</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!=|:)\s*(\[)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.binding-pattern.array.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=$|[;,])</string>
+					<key>name</key>
+					<string>meta.array-binding-pattern-variable.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#variable-initializer</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\G</string>
+							<key>end</key>
+							<string>(?!\G)(?=$|[;,=])</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>\G</string>
+									<key>end</key>
+									<string>\]</string>
+									<key>endCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.definition.binding-pattern.array.ts</string>
+										</dict>
+									</dict>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#array-binding-element</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#type-annotation</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#comment</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -1846,6 +2034,94 @@
 				</dict>
 			</array>
 		</dict>
+		<key>object-binding-element</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b([a-zA-Z_$][\w$]*)\s*(:)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.object.property.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.destructuring.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=,|\})</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#object-binding-pattern</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#array-binding-pattern</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\b([a-zA-Z_$][\w$]*)\b</string>
+							<key>name</key>
+							<string>variable.other.readwrite.ts</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b([a-zA-Z_$][\w$]*)\b</string>
+					<key>name</key>
+					<string>variable.other.readwrite.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>meta.delimiter.object.comma.ts</string>
+				</dict>
+			</array>
+		</dict>
+		<key>object-binding-pattern</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.binding-pattern.object.ts</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.binding-pattern.object.ts</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#object-binding-element</string>
+				</dict>
+			</array>
+		</dict>
 		<key>object-literal</key>
 		<dict>
 			<key>begin</key>
@@ -2959,7 +3235,7 @@
 		<key>type-operator</key>
 		<dict>
 			<key>match</key>
-			<string>[.|]</string>
+			<string>[&amp;|]</string>
 			<key>name</key>
 			<string>keyword.operator.type.ts</string>
 		</dict>
@@ -3128,6 +3404,10 @@
 			<string>meta.var.expr.ts</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#destructuring-variable</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#var-single-variable</string>
