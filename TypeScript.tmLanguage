@@ -2228,17 +2228,30 @@
 		</dict>
 		<key>object-member</key>
 		<dict>
-			<key>begin</key>
-			<string>[a-zA-Z_$][\w$]*\s*:</string>
-			<key>end</key>
-			<string>(?=,|\})</string>
-			<key>name</key>
-			<string>meta.object.member.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#expression</string>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#method-declaration</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>[a-zA-Z_$][\w$]*\s*:</string>
+					<key>end</key>
+					<string>(?=,|\})</string>
+					<key>name</key>
+					<string>meta.object.member.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>

@@ -888,11 +888,14 @@ repository:
     - include: '#comment'
 
   object-member:
-    name: meta.object.member.ts
-    begin: '[a-zA-Z_$][\w$]*\s*:'
-    end: (?=,|\})
     patterns:
-    - include: '#expression'
+    - include: '#comment'
+    - include: '#method-declaration'
+    - name: meta.object.member.ts
+      begin: '[a-zA-Z_$][\w$]*\s*:'
+      end: (?=,|\})
+      patterns:
+      - include: '#expression'
 
   expression-operator:
     patterns:
