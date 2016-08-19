@@ -324,7 +324,7 @@ repository:
       '3': { name: entity.name.function.tsx }
 
   object-literal:
-    name: meta.block.tsx
+    name: meta.object-literal.tsx
     begin: \{
     beginCaptures:
       '0': { name: punctuation.definition.block.tsx }
@@ -357,7 +357,7 @@ repository:
     - include: '#statements'
 
   after-operator-block:
-    name: meta.block.tsx
+    name: meta.object-literal.tsx
     begin: (?<=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&&|\|\|)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.tsx }
