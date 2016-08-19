@@ -56,6 +56,38 @@
 				</dict>
 			</array>
 		</dict>
+		<key>arrow-body</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;==&gt;)\s*(\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.ts</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.ts</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.decl.block.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#statements</string>
+				</dict>
+			</array>
+		</dict>
 		<key>await-modifier</key>
 		<dict>
 			<key>match</key>
@@ -656,6 +688,10 @@
 				<dict>
 					<key>include</key>
 					<string>#new-expr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#arrow-body</string>
 				</dict>
 				<dict>
 					<key>include</key>

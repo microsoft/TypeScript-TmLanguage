@@ -80,6 +80,7 @@ repository:
     - include: '#ternary-expression'
     - include: '#cast'
     - include: '#new-expr'
+    - include: '#arrow-body'
     - include: '#object-literal'
     - include: '#expression-operator'
     - include: '#imply-operator'
@@ -332,6 +333,17 @@ repository:
     begin: \{
     beginCaptures:
       '0': { name: punctuation.definition.block.ts }
+    end: \}
+    endCaptures:
+      '0': { name: punctuation.definition.block.ts }
+    patterns:
+    - include: '#statements'
+
+  arrow-body:
+    name: meta.decl.block.ts
+    begin: (?<==>)\s*(\{)
+    beginCaptures:
+      '1': { name: punctuation.definition.block.ts }
     end: \}
     endCaptures:
       '0': { name: punctuation.definition.block.ts }

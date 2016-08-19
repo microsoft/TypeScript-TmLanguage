@@ -84,6 +84,7 @@ repository:
     - include: '#paren-expression'
     - include: '#ternary-expression'
     - include: '#new-expr'
+    - include: '#arrow-body'
     - include: '#object-literal'
     - include: '#expression-operator'
     - include: '#imply-operator'
@@ -336,6 +337,17 @@ repository:
     begin: \{
     beginCaptures:
       '0': { name: punctuation.definition.block.tsx }
+    end: \}
+    endCaptures:
+      '0': { name: punctuation.definition.block.tsx }
+    patterns:
+    - include: '#statements'
+
+  arrow-body:
+    name: meta.decl.block.tsx
+    begin: (?<==>)\s*(\{)
+    beginCaptures:
+      '1': { name: punctuation.definition.block.tsx }
     end: \}
     endCaptures:
       '0': { name: punctuation.definition.block.tsx }
