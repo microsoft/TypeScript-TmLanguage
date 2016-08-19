@@ -78,6 +78,7 @@ repository:
     - include: '#comment'
     - include: '#literal'
     - include: '#function-declaration'
+    - include: '#class-or-interface-declaration'
     - include: '#paren-expression'
     - include: '#ternary-expression'
     - include: '#cast'
@@ -119,6 +120,7 @@ repository:
      - include: '#enum-declaration'
      - include: '#import-equals-declaration'
      - include: '#import-declaration'
+     - include: '#export-declaration'
      # TODO: change this to actual declarations of export, import, namespace
      - include: '#storage-keyword'
 
@@ -129,7 +131,7 @@ repository:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.type.ts }
       '3': { name: entity.name.type.ts }
-    end: (?=$|[,);>]|var|type|function|class|interface|namespace|enum|declare|export)
+    end: (?=$|[,);>]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)
     patterns:
       - include: '#comment'
       - include: '#type-parameters'
@@ -175,27 +177,56 @@ repository:
         - include: '#comment'
         - match: \b([a-zA-Z_$][\w$]*)\s*(\.)
           captures:
-            '1': { name: entity.name.module.ts }
+            '1': { name: entity.name.type.module.ts }
             '2': { name: punctuation.accessor.ts }
         - name: variable.other.readwrite.ts
           match: \b([a-zA-Z_$][\w$]*)\b
 
   import-declaration:
     name: meta.import.ts
-    begin: (?:(\bexport)\s+)?(?<!\.)\b(import)(?!\s*:)\b
+    begin: (?:(\bexport)\s+)?\b(?<!\.)(import)(?!\s*:)\b
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: keyword.control.import.ts }
     end: (?=;|$)
     patterns:
+    - include: '#import-export-declaration'
+
+  export-declaration:
+    patterns:
+    - match: \b(?<!\.)(export)\s+(as)\s+(namespace)\s+([a-zA-Z_$][\w$]*)
+      captures:
+        '1': { name: keyword.control.export.ts }
+        '2': { name: keyword.control.as.ts }
+        '3': { name: storage.type.namespace.ts }
+        '4': { name: entity.name.type.module.ts }
+    - name: meta.export.default.ts
+      begin: \b(?<!\.)(export)(?:(?:\s*(=))|(?:\s+(default)\s+))
+      beginCaptures:
+        '1': { name: keyword.control.export.ts }
+        '2': { name: keyword.operator.assignment.ts }
+        '3': { name: keyword.control.default.ts }
+      end: (?=;|\bexport\b|\bfunction\b|\bclass\b|\binterface\b|\blet\b|\bvar\b|\bconst\b|\bimport\b|\benum\b|\bnamespace\b|\bmodule\b|\btype\b|\babstract\b|\bdeclare\b|\basync\b|$)
+      patterns:
+      - include: '#expression'
+    - name: meta.export.ts
+      begin: \b(?<!\.)(export)(?!\s*:)\b
+      beginCaptures:
+        '0': { name: keyword.control.export.ts }
+      end: (?=;|\bexport\b|\bfunction\b|\bclass\b|\binterface\b|\blet\b|\bvar\b|\bconst\b|\bimport\b|\benum\b|\bnamespace\b|\bmodule\b|\btype\b|\babstract\b|\bdeclare\b|\basync\b|$)
+      patterns:
+      - include: '#import-export-declaration'
+  
+  import-export-declaration:
+    patterns:
     - include: '#comment'
     - include: '#string'
-    - include: '#import-block'
+    - include: '#import-export-block'
     - name: keyword.control.from.ts
       match: \bfrom\b
-    - include: '#import-clause'
+    - include: '#import-export-clause'
 
-  import-block:
+  import-export-block:
     name: meta.block.ts
     begin: \{
     beginCaptures:
@@ -204,9 +235,9 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.block.ts }
     patterns:
-    - include: '#import-clause'
+    - include: '#import-export-clause'
 
-  import-clause:
+  import-export-clause:
     patterns:
     - include: '#comment'
     - comment: (default|*|name) as alias
@@ -214,14 +245,14 @@ repository:
         as \b) \s* (?: (\b default \b | \*) | \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b)'
       captures:
         '1': { name: keyword.control.default.ts }
-        '2': { name: constant.language.import-all.ts }
+        '2': { name: constant.language.import-export-all.ts }
         '3': { name: variable.other.readwrite.ts }
         '4': { name: keyword.control.as.ts }
         '5': { name: invalid.illegal.ts }
         '6': { name: variable.other.readwrite.alias.ts }
     - name: meta.delimiter.object.comma.ts
       match: ','
-    - name: constant.language.import-all.ts
+    - name: constant.language.import-export-all.ts
       match: \*
     - name: keyword.control.default.ts
       match: \b(default)\b
@@ -741,7 +772,7 @@ repository:
 
   storage-keyword:
     name: storage.type.ts
-    match: \b(var|let|function|const|module|namespace)\b
+    match: \b(module|namespace)\b
 
   paren-expression:
     begin: \(

@@ -567,6 +567,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#export-declaration</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#storage-keyword</string>
 				</dict>
 			</array>
@@ -640,6 +644,95 @@
 			<key>name</key>
 			<string>meta.enum.declaration.tsx</string>
 		</dict>
+		<key>export-declaration</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.export.tsx</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.as.tsx</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.namespace.tsx</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type.module.tsx</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(?&lt;!\.)(export)\s+(as)\s+(namespace)\s+([a-zA-Z_$][\w$]*)</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(?&lt;!\.)(export)(?:(?:\s*(=))|(?:\s+(default)\s+))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.export.tsx</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.tsx</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.default.tsx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=;|\bexport\b|\bfunction\b|\bclass\b|\binterface\b|\blet\b|\bvar\b|\bconst\b|\bimport\b|\benum\b|\bnamespace\b|\bmodule\b|\btype\b|\babstract\b|\bdeclare\b|\basync\b|$)</string>
+					<key>name</key>
+					<string>meta.export.default.tsx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(?&lt;!\.)(export)(?!\s*:)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.export.tsx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=;|\bexport\b|\bfunction\b|\bclass\b|\binterface\b|\blet\b|\bvar\b|\bconst\b|\bimport\b|\benum\b|\bnamespace\b|\bmodule\b|\btype\b|\babstract\b|\bdeclare\b|\basync\b|$)</string>
+					<key>name</key>
+					<string>meta.export.tsx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#import-export-declaration</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>expression</key>
 		<dict>
 			<key>name</key>
@@ -673,6 +766,10 @@
 				<dict>
 					<key>include</key>
 					<string>#function-declaration</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#class-or-interface-declaration</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1029,115 +1126,10 @@
 			<key>name</key>
 			<string>storage.type.function.arrow.tsx</string>
 		</dict>
-		<key>import-block</key>
-		<dict>
-			<key>begin</key>
-			<string>\{</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.block.tsx</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\}</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.block.tsx</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.block.tsx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#import-clause</string>
-				</dict>
-			</array>
-		</dict>
-		<key>import-clause</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.default.tsx</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>constant.language.import-all.tsx</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.tsx</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.as.tsx</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>invalid.illegal.tsx</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.alias.tsx</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>(default|*|name) as alias</string>
-					<key>match</key>
-					<string>(?x) (?: \b(default)\b | (\*) | \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b) \s* (\b as \b) \s* (?: (\b default \b | \*) | \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b)</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>,</string>
-					<key>name</key>
-					<string>meta.delimiter.object.comma.tsx</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\*</string>
-					<key>name</key>
-					<string>constant.language.import-all.tsx</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(default)\b</string>
-					<key>name</key>
-					<string>keyword.control.default.tsx</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b([a-zA-Z_$][a-zA-Z_$0-9]*)\b</string>
-					<key>name</key>
-					<string>variable.other.readwrite.alias.tsx</string>
-				</dict>
-			</array>
-		</dict>
 		<key>import-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:(\bexport)\s+)?(?&lt;!\.)\b(import)(?!\s*:)\b</string>
+			<string>(?:(\bexport)\s+)?\b(?&lt;!\.)(import)(?!\s*:)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1159,25 +1151,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#import-block</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\bfrom\b</string>
-					<key>name</key>
-					<string>keyword.control.from.tsx</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#import-clause</string>
+					<string>#import-export-declaration</string>
 				</dict>
 			</array>
 		</dict>
@@ -1287,7 +1261,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.module.tsx</string>
+									<string>entity.name.type.module.tsx</string>
 								</dict>
 								<key>2</key>
 								<dict>
@@ -1305,6 +1279,139 @@
 							<string>variable.other.readwrite.tsx</string>
 						</dict>
 					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>import-export-block</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.tsx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.block.tsx</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.block.tsx</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#import-export-clause</string>
+				</dict>
+			</array>
+		</dict>
+		<key>import-export-clause</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.default.tsx</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.import-export-all.tsx</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.tsx</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.as.tsx</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>invalid.illegal.tsx</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.alias.tsx</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>(default|*|name) as alias</string>
+					<key>match</key>
+					<string>(?x) (?: \b(default)\b | (\*) | \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b) \s* (\b as \b) \s* (?: (\b default \b | \*) | \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b)</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>,</string>
+					<key>name</key>
+					<string>meta.delimiter.object.comma.tsx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\*</string>
+					<key>name</key>
+					<string>constant.language.import-export-all.tsx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(default)\b</string>
+					<key>name</key>
+					<string>keyword.control.default.tsx</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b([a-zA-Z_$][a-zA-Z_$0-9]*)\b</string>
+					<key>name</key>
+					<string>variable.other.readwrite.alias.tsx</string>
+				</dict>
+			</array>
+		</dict>
+		<key>import-export-declaration</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#import-export-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bfrom\b</string>
+					<key>name</key>
+					<string>keyword.control.from.tsx</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#import-export-clause</string>
 				</dict>
 			</array>
 		</dict>
@@ -2721,7 +2828,7 @@
 		<key>storage-keyword</key>
 		<dict>
 			<key>match</key>
-			<string>\b(var|let|function|const|module|namespace)\b</string>
+			<string>\b(module|namespace)\b</string>
 			<key>name</key>
 			<string>storage.type.tsx</string>
 		</dict>
@@ -3067,7 +3174,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|[,);&gt;]|var|type|function|class|interface|namespace|enum|declare|export)</string>
+			<string>(?=$|[,);&gt;]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)</string>
 			<key>name</key>
 			<string>meta.type.declaration.tsx</string>
 			<key>patterns</key>
