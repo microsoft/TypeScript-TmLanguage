@@ -591,6 +591,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#namespace-declaration</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#import-equals-declaration</string>
 				</dict>
 				<dict>
@@ -600,10 +604,6 @@
 				<dict>
 					<key>include</key>
 					<string>#export-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#storage-keyword</string>
 				</dict>
 			</array>
 		</dict>
@@ -1672,6 +1672,51 @@
 			<key>name</key>
 			<string>meta.method.overload.declaration.ts</string>
 		</dict>
+		<key>namespace-declaration</key>
+		<dict>
+			<key>begin</key>
+			<string>(?:(\bexport)\s+)?\b(?&lt;!\.)(namespace|module)\s+</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.export.ts</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.namespace.ts</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=$|\{)</string>
+			<key>name</key>
+			<string>meta.namespace.declaration.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b([a-zA-Z_$][\w$]*)\b</string>
+					<key>name</key>
+					<string>entity.name.type.module.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\.</string>
+					<key>name</key>
+					<string>punctuation.accessor.ts</string>
+				</dict>
+			</array>
+		</dict>
 		<key>new-expr</key>
 		<dict>
 			<key>begin</key>
@@ -2423,13 +2468,6 @@
 			<string>\b(static)\b</string>
 			<key>name</key>
 			<string>storage.modifier.ts</string>
-		</dict>
-		<key>storage-keyword</key>
-		<dict>
-			<key>match</key>
-			<string>\b(module|namespace)\b</string>
-			<key>name</key>
-			<string>storage.type.ts</string>
 		</dict>
 		<key>string</key>
 		<dict>
