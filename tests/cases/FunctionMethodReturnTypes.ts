@@ -28,7 +28,7 @@ class TestClass {
     ^^public ^^testMethodReturnType11(): number | string { ^^return 1 }
     ^^public ^^testMethodReturnType12(): number | string [] { ^^return }
     ^^public ^^testMethodReturnType13(): [number, number] | string [] { ^^return [""] }
-    ^^public ^^testMethodReturnType14(): EndsWithDigit1 { ^^return 123 }
+    ^^public ^^testMethodReturnType14(): EndsWithDigit1 { ^^return ^^123 ^^}
 }
 
 type EndsWithDigit1 = number;
