@@ -201,6 +201,7 @@ repository:
   declaration:
     name: meta.declaration.ts
     patterns:
+     - include: '#decorator'
      - include: '#var-expr'
      - include: '#function-declaration'
      - include: '#class-or-interface-declaration'
@@ -210,6 +211,15 @@ repository:
      - include: '#import-equals-declaration'
      - include: '#import-declaration'
      - include: '#export-declaration'
+
+  decorator:
+    name: meta.decorator.ts
+    begin: \@
+    beginCaptures:
+      '0': { name: punctuation.decorator.ts }
+    end: (?=\s)
+    patterns:
+    - include: '#expression'
 
   type-declaration:
     name: meta.type.declaration.ts
@@ -416,6 +426,7 @@ repository:
     patterns:
     - include: "#string"
     - include: '#comment'
+    - include: '#decorator'
     - include: '#field-declaration'
     - include: '#method-declaration'
     - include: '#indexer-declaration'
@@ -704,6 +715,7 @@ repository:
       '0': { name: punctuation.definition.parameters.end.ts }
     patterns:
     - include: '#comment'
+    - include: '#decorator'
     - include: '#destructuring-parameter'
     - include: '#parameter-name'
     - include: '#type-annotation'

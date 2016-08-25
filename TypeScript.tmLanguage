@@ -290,6 +290,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#decorator</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#field-declaration</string>
 				</dict>
 				<dict>
@@ -631,6 +635,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#decorator</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#var-expr</string>
 				</dict>
 				<dict>
@@ -664,6 +672,30 @@
 				<dict>
 					<key>include</key>
 					<string>#export-declaration</string>
+				</dict>
+			</array>
+		</dict>
+		<key>decorator</key>
+		<dict>
+			<key>begin</key>
+			<string>\@</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.decorator.ts</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=\s)</string>
+			<key>name</key>
+			<string>meta.decorator.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
 				</dict>
 			</array>
 		</dict>
@@ -1392,6 +1424,10 @@
 				<dict>
 					<key>include</key>
 					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#decorator</string>
 				</dict>
 				<dict>
 					<key>include</key>

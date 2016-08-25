@@ -1,0 +1,310 @@
+original file
+-----------------------------------
+import {Component, HostListener, Directive} from 'angular2/core';
+
+@Directive({selector: 'button[counting]'})
+class CountClicks {
+  numberOfClicks = 0;
+  @HostListener('click', ['$event.target']) onClick(btn) {
+    console.log("button", btn, "number of clicks:", this.numberOfClicks++);
+  }
+}
+@Component({
+  selector: 'my-app',
+  template: `<button counting>Increment</button>`,
+  directives: [CountClicks]
+})
+export class AppComponent {
+  constructor() { console.clear(); }
+}
+-----------------------------------
+
+>import {Component, HostListener, Directive} from 'angular2/core';
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^^^^^^^^^
+         source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                  ^
+                  source.ts meta.import.ts meta.block.ts meta.delimiter.object.comma.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts
+                    ^^^^^^^^^^^^
+                    source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                                ^
+                                source.ts meta.import.ts meta.block.ts meta.delimiter.object.comma.ts
+                                 ^
+                                 source.ts meta.import.ts meta.block.ts
+                                  ^^^^^^^^^
+                                  source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                                           ^
+                                           source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                                            ^
+                                            source.ts meta.import.ts
+                                             ^^^^
+                                             source.ts meta.import.ts keyword.control.from.ts
+                                                 ^
+                                                 source.ts meta.import.ts
+                                                  ^
+                                                  source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                   ^^^^^^^^^^^^^
+                                                   source.ts meta.import.ts string.quoted.single.ts
+                                                                ^
+                                                                source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                 ^^^
+                                                                 source.ts
+>
+ ^^
+ source.ts
+>@Directive({selector: 'button[counting]'})
+ ^
+ source.ts meta.decorator.ts punctuation.decorator.ts
+  ^^^^^^^^^
+  source.ts meta.decorator.ts
+           ^
+           source.ts meta.decorator.ts meta.brace.round.ts
+            ^
+            source.ts meta.decorator.ts meta.object-literal.ts punctuation.definition.block.ts
+             ^^^^^^^^^
+             source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+                      ^
+                      source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+                       ^
+                       source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                        ^^^^^^^^^^^^^^^^
+                        source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts
+                                        ^
+                                        source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts meta.decorator.ts meta.object-literal.ts punctuation.definition.block.ts
+                                          ^
+                                          source.ts meta.decorator.ts meta.brace.round.ts
+                                           ^^
+                                           source.ts
+>class CountClicks {
+ ^^^^^
+ source.ts meta.declaration.object.ts storage.type.class.ts
+      ^
+      source.ts meta.declaration.object.ts
+       ^^^^^^^^^^^
+       source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts
+                  ^
+                  source.ts meta.declaration.object.ts
+                   ^
+                   source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts meta.declaration.object.ts meta.object.body.ts
+>  numberOfClicks = 0;
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+   ^^^^^^^^^^^^^^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                  ^
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                    ^
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                     ^^^
+                     source.ts meta.declaration.object.ts meta.object.body.ts
+>  @HostListener('click', ['$event.target']) onClick(btn) {
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+   ^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts punctuation.decorator.ts
+    ^^^^^^^^^^^^
+    source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts meta.brace.round.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                  ^^^^^
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts string.quoted.single.ts
+                       ^
+                       source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                        ^^
+                        source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts
+                          ^
+                          source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts meta.array.literal.ts meta.brace.square.ts
+                           ^
+                           source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                            ^^^^^^^^^^^^^
+                            source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts meta.array.literal.ts string.quoted.single.ts
+                                         ^
+                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                          ^
+                                          source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts meta.array.literal.ts meta.brace.square.ts
+                                           ^
+                                           source.ts meta.declaration.object.ts meta.object.body.ts meta.decorator.ts meta.brace.round.ts
+                                            ^
+                                            source.ts meta.declaration.object.ts meta.object.body.ts
+                                             ^^^^^^^
+                                             source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts entity.name.function.ts
+                                                    ^
+                                                    source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.begin.ts
+                                                     ^^^
+                                                     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts variable.parameter.ts
+                                                        ^
+                                                        source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.end.ts
+                                                         ^
+                                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts
+                                                          ^
+                                                          source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                                           ^^
+                                                           source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+>    console.log("button", btn, "number of clicks:", this.numberOfClicks++);
+ ^^^^^^^^^^^^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                  ^^^^^^
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts
+                        ^
+                        source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                         ^^^^^^^
+                         source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+                                ^
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                 ^^^^^^^^^^^^^^^^^
+                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts
+                                                  ^
+                                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                   ^^
+                                                   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+                                                     ^^^^
+                                                     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
+                                                         ^^^^^^^^^^^^^^^
+                                                         source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+                                                                        ^^
+                                                                        source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts keyword.operator.increment.ts
+                                                                          ^
+                                                                          source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                                                           ^^^
+                                                                           source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+   ^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.declaration.object.ts meta.object.body.ts
+>}
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>@Component({
+ ^
+ source.ts meta.decorator.ts punctuation.decorator.ts
+  ^^^^^^^^^
+  source.ts meta.decorator.ts
+           ^
+           source.ts meta.decorator.ts meta.brace.round.ts
+            ^
+            source.ts meta.decorator.ts meta.object-literal.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.decorator.ts meta.object-literal.ts
+>  selector: 'my-app',
+ ^^
+ source.ts meta.decorator.ts meta.object-literal.ts
+   ^^^^^^^^^
+   source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+            ^
+            source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+             ^
+             source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+              ^^^^^^
+              source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts
+                    ^
+                    source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                     ^^^
+                     source.ts meta.decorator.ts meta.object-literal.ts
+>  template: `<button counting>Increment</button>`,
+ ^^
+ source.ts meta.decorator.ts meta.object-literal.ts
+   ^^^^^^^^^
+   source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+            ^
+            source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+             ^
+             source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.template.ts punctuation.definition.string.template.begin.ts
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.template.ts
+                                                 ^
+                                                 source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                  ^^^
+                                                  source.ts meta.decorator.ts meta.object-literal.ts
+>  directives: [CountClicks]
+ ^^
+ source.ts meta.decorator.ts meta.object-literal.ts
+   ^^^^^^^^^^^
+   source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+              ^
+              source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+               ^
+               source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.brace.square.ts
+                ^^^^^^^^^^^
+                source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts
+                           ^
+                           source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.brace.square.ts
+                            ^^
+                            source.ts meta.decorator.ts meta.object-literal.ts meta.object.member.ts
+>})
+ ^
+ source.ts meta.decorator.ts meta.object-literal.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.decorator.ts meta.brace.round.ts
+   ^^
+   source.ts
+>export class AppComponent {
+ ^^^^^^
+ source.ts meta.declaration.object.ts keyword.control.export.ts
+       ^
+       source.ts meta.declaration.object.ts
+        ^^^^^
+        source.ts meta.declaration.object.ts storage.type.class.ts
+             ^
+             source.ts meta.declaration.object.ts
+              ^^^^^^^^^^^^
+              source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts
+                          ^
+                          source.ts meta.declaration.object.ts
+                           ^
+                           source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+                            ^^
+                            source.ts meta.declaration.object.ts meta.object.body.ts
+>  constructor() { console.clear(); }
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+   ^^^^^^^^^^^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts storage.type.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                  ^^^^^^^^^^^^^^
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+                                ^
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                 ^
+                                 source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                  ^^
+                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+                                    ^
+                                    source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                     ^^
+                                     source.ts meta.declaration.object.ts meta.object.body.ts
+>}
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
