@@ -473,18 +473,15 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.tsx
-    begin: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
+    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
       '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
       '3': { name: storage.modifier.async.tsx } # captures keyword (async)
       '4': { name: storage.type.property.tsx } # captures keyword (get|set)
-      '5': { name: keyword.operator.new.tsx } # captures keyword (new)
-      '6': { name: storage.type.tsx } # captures keyword (constructor)
-      '7': { name: entity.name.function.tsx } # captures method name ([a-zA-Z_$][\.\w$]*)
-      '8': { name: keyword.operator.optional.tsx } # captures (\??)
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
+    - include: '#method-declaration-name'
     - include: '#comment'
     - include: '#type-parameters'
     - include: '#function-type-parameters'
@@ -494,17 +491,31 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.tsx
-    match: '\b(?:(abstract)\s+)?\b(?:(public|private|protected)\s+)?\b(?:(async)\s+)?(?:(get|set)\s+)?(?:(new)|(?:\b(constructor)\b)|(?:([a-zA-Z_$][\.\w$]*)\s*(\??)))?\s*(?=\(|\<)'
-    captures:
+    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
+    beginCaptures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
       '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
       '3': { name: storage.modifier.tsx } # captures keyword (async)
       '4': { name: storage.type.property.tsx } # captures keyword (get|set)
-      '5': { name: keyword.operator.tsx } # captures keyword (new)
-      '6': { name: entity.name.function.constructor.tsx } # captures keyword (constructor)
-      '7': { name: entity.name.function.tsx } # captures method name ([a-zA-Z_$][\.\w$]*)
-      '8': { name: keyword.operator.optional.tsx } # captures (\??)
+    end: (?=\(|\<)
+    patterns:
+    - include: '#method-declaration-name'
 
+  method-declaration-name:
+    begin: \G
+    end: (?=\(|\<)
+    patterns:
+    - include: '#string'
+    - include: '#array-literal'
+    - name: keyword.operator.new.tsx
+      match: \bnew(?=\s*[\(\<])
+    - name: storage.type.tsx
+      match: \bconstructor\b(?=\s*[\(\<])
+    - name: entity.name.function.tsx
+      match: \b[a-zA-Z_$][\.\w$]*
+    - name: keyword.operator.optional.tsx
+      match: \?
+    
   indexer-declaration:
     name: meta.indexer.declaration.tsx
     begin: \[

@@ -1842,7 +1842,7 @@
 		<key>method-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\bnew)|(?:\b(constructor)\b)|(?:((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*(?=\(|\&lt;)</string>
+			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1865,37 +1865,6 @@
 					<key>name</key>
 					<string>storage.type.property.ts</string>
 				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.new.ts</string>
-				</dict>
-				<key>6</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.ts</string>
-				</dict>
-				<key>7</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.ts</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#string</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#array-literal</string>
-						</dict>
-					</array>
-				</dict>
-				<key>8</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.optional.ts</string>
-				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?=\}|;|,)|(?&lt;=\})</string>
@@ -1903,6 +1872,10 @@
 			<string>meta.method.declaration.ts</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#method-declaration-name</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#comment</string>
@@ -1929,9 +1902,53 @@
 				</dict>
 			</array>
 		</dict>
+		<key>method-declaration-name</key>
+		<dict>
+			<key>begin</key>
+			<string>\G</string>
+			<key>end</key>
+			<string>(?=\(|\&lt;)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#array-literal</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bnew(?=\s*[\(\&lt;])</string>
+					<key>name</key>
+					<string>keyword.operator.new.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bconstructor\b(?=\s*[\(\&lt;])</string>
+					<key>name</key>
+					<string>storage.type.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b[a-zA-Z_$][\.\w$]*</string>
+					<key>name</key>
+					<string>entity.name.function.ts</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\?</string>
+					<key>name</key>
+					<string>keyword.operator.optional.ts</string>
+				</dict>
+			</array>
+		</dict>
 		<key>method-overload-declaration</key>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -1953,42 +1970,18 @@
 					<key>name</key>
 					<string>storage.type.property.ts</string>
 				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.ts</string>
-				</dict>
-				<key>6</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.constructor.ts</string>
-				</dict>
-				<key>7</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.ts</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#string</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#array-literal</string>
-						</dict>
-					</array>
-				</dict>
-				<key>8</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.optional.ts</string>
-				</dict>
 			</dict>
-			<key>match</key>
-			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\bnew)|(?:\b(constructor)\b)|(?:((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*(?=\(|\&lt;)</string>
+			<key>end</key>
+			<string>(?=\(|\&lt;)</string>
 			<key>name</key>
 			<string>meta.method.overload.declaration.ts</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#method-declaration-name</string>
+				</dict>
+			</array>
 		</dict>
 		<key>namespace-declaration</key>
 		<dict>
