@@ -7,6 +7,9 @@ original file
 function Функция_Main(s: string)
 {
 }
+
+let item = "value1";
+let элемент = "value2";
 -----------------------------------
 
 >﻿function Main_Функция(s: string)
@@ -74,3 +77,50 @@ function Функция_Main(s: string)
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>let item = "value1";
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+             ^^^^^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                    ^^^
+                    source.ts
+>let элемент = "value2";
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                ^^^^^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                       ^^
+                       source.ts
