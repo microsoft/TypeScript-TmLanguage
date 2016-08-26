@@ -44,7 +44,7 @@ repository:
 
   var-single-variable:
     name: meta.var-single-variable.expr.tsx
-    begin: \b([a-zA-Z_$][\w$]*)\b
+    begin: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     beginCaptures:
       '1': { name: variable.other.readwrite.tsx }
     end: (?=$|[;,])
@@ -99,7 +99,7 @@ repository:
   object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: \b([a-zA-Z_$][\w$]*)\s*(:)
+    - begin: \b([_$[:alpha:]][_$[:alnum:]]*)\s*(:)
       beginCaptures:
         '1': { name: variable.object.property.tsx }
         '2': { name: punctuation.destructuring.tsx }
@@ -108,9 +108,9 @@ repository:
       - include: '#object-binding-pattern'
       - include: '#array-binding-pattern'
       - name: variable.other.readwrite.tsx
-        match: \b([a-zA-Z_$][\w$]*)\b
+        match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     - name: variable.other.readwrite.tsx
-      match: \b([a-zA-Z_$][\w$]*)\b
+      match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     - name: meta.delimiter.object.comma.tsx
       match: ','
 
@@ -120,7 +120,7 @@ repository:
     - include: '#object-binding-pattern'
     - include: '#array-binding-pattern'
     - name: variable.other.readwrite.tsx
-      match: \b([a-zA-Z_$][\w$]*)\b
+      match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     - name: meta.delimiter.object.comma.tsx
       match: ','
 
@@ -227,7 +227,7 @@ repository:
 
   type-declaration:
     name: meta.type.declaration.tsx
-    begin: (?:(\bexport)\s+)?\b(type)\b\s+([a-zA-Z_$][\w$]*)\s*
+    begin: (?:(\bexport)\s+)?\b(type)\b\s+([_$[:alpha:]][_$[:alnum:]]*)\s*
     beginCaptures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.type.type.tsx }
@@ -242,7 +242,7 @@ repository:
 
   enum-declaration:
     name: meta.enum.declaration.tsx
-    match: (?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([a-zA-Z_$][\w$]*)
+    match: (?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)
     captures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.modifier.tsx}
@@ -260,14 +260,14 @@ repository:
     - include: '#comment'
     - include: '#string'
     - name: entity.name.type.module.tsx
-      match: \b([a-zA-Z_$][\w$]*)\b
+      match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     - name: punctuation.accessor.tsx
       match: \.      
 
   import-equals-declaration: 
     patterns:
     - name: meta.import-equals.external.tsx
-      begin: (?:(\bexport)\s+)?\b(?<!\.)(import)\s+([a-zA-Z_$][\w$]*)\s*(=)\s*(require)\s*(\()
+      begin: (?:(\bexport)\s+)?\b(?<!\.)(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(require)\s*(\()
       beginCaptures:
         '1': { name: keyword.control.export.tsx }
         '2': { name: keyword.control.import.tsx }
@@ -282,7 +282,7 @@ repository:
         - include: '#comment'
         - include: '#string'
     - name: meta.import-equals.internal.tsx
-      begin: (?:(\bexport)\s+)?\b(?<!\.)(import)\s+([a-zA-Z_$][\w$]*)\s*(=)\s*(?!require\b)
+      begin: (?:(\bexport)\s+)?\b(?<!\.)(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(?!require\b)
       beginCaptures:
         '1': { name: keyword.control.export.tsx }
         '2': { name: keyword.control.import.tsx }
@@ -291,12 +291,12 @@ repository:
       end: (?=;|$)
       patterns:
         - include: '#comment'
-        - match: \b([a-zA-Z_$][\w$]*)\s*(\.)
+        - match: \b([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
           captures:
             '1': { name: entity.name.type.module.tsx }
             '2': { name: punctuation.accessor.tsx }
         - name: variable.other.readwrite.tsx
-          match: \b([a-zA-Z_$][\w$]*)\b
+          match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
 
   import-declaration:
     name: meta.import.tsx
@@ -310,7 +310,7 @@ repository:
 
   export-declaration:
     patterns:
-    - match: \b(?<!\.)(export)\s+(as)\s+(namespace)\s+([a-zA-Z_$][\w$]*)
+    - match: \b(?<!\.)(export)\s+(as)\s+(namespace)\s+([_$[:alpha:]][_$[:alnum:]]*)
       captures:
         '1': { name: keyword.control.export.tsx }
         '2': { name: keyword.control.as.tsx }
@@ -357,8 +357,8 @@ repository:
     patterns:
     - include: '#comment'
     - comment: (default|*|name) as alias
-      match: '(?x) (?: \b(default)\b | (\*) | \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b) \s* (\b 
-        as \b) \s* (?: (\b default \b | \*) | \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b)'
+      match: '(?x) (?: \b(default)\b | (\*) | \b([_$[:alpha:]][_$[:alnum:]]*)\b) \s* (\b 
+        as \b) \s* (?: (\b default \b | \*) | \b([_$[:alpha:]][_$[:alnum:]]*)\b)'
       captures:
         '1': { name: keyword.control.default.tsx }
         '2': { name: constant.language.import-export-all.tsx }
@@ -373,7 +373,7 @@ repository:
     - name: keyword.control.default.tsx
       match: \b(default)\b
     - name: variable.other.readwrite.alias.tsx
-      match: \b([a-zA-Z_$][a-zA-Z_$0-9]*)\b
+      match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
 
   class-or-interface-declaration:
     name: meta.declaration.object.tsx
@@ -395,7 +395,7 @@ repository:
 
   class-or-interface-name:
     name: meta.object.name.tsx
-    match: '[a-zA-Z_$][\w$]*'
+    match: '[_$[:alpha:]][_$[:alnum:]]*'
     captures:
       '0': { name: 'entity.name.class.tsx' }
 
@@ -415,7 +415,7 @@ repository:
 
   class-or-interface-heritage-type:
     name: meta.object.heritage.parent.tsx
-    match: '(?:\b([a-zA-Z_$][\w$]*)\b)'
+    match: '(?:\b([_$[:alpha:]][_$[:alnum:]]*)\b)'
     captures:
       '1': { name: entity.other.inherited-class.tsx }
 
@@ -461,7 +461,7 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.tsx
-    begin: (?<!\()\s*((?:\b[a-zA-Z_$][\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
+    begin: (?<!\()\s*((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
     beginCaptures:
       '1': { name: variable.object.property.tsx }
       '2': { name: keyword.operator.optional.tsx }
@@ -473,7 +473,7 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.tsx
-    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
+    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
       '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
@@ -491,7 +491,7 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.tsx
-    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[a-zA-Z_$][\.\w$]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
+    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
       '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
@@ -512,7 +512,7 @@ repository:
     - name: storage.type.tsx
       match: \bconstructor\b(?=\s*[\(\<])
     - name: entity.name.function.tsx
-      match: \b[a-zA-Z_$][\.\w$]*
+      match: \b[_$[:alpha:]][_$[:alnum:]]*
     - name: keyword.operator.optional.tsx
       match: \?
     
@@ -531,13 +531,13 @@ repository:
 
   indexer-parameter:
     name: meta.indexer.parameter.tsx
-    match: ([a-zA-Z_$][\w$]*)(?=\:)
+    match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\:)
     captures:
       '1': { name: variable.parameter.tsx}
 
   function-declaration:
     name: meta.function.tsx
-    begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
+    begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([_$[:alpha:]][_$[:alnum:]]*))?\s*
     beginCaptures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.modifier.async.tsx }
@@ -554,7 +554,7 @@ repository:
 
   function-overload-declaration:
     name: meta.function.overload.tsx
-    match: \b(?:(export)\s+)?(function\b)(?:\s+([a-zA-Z_$][\w$]*))?\s*
+    match: \b(?:(export)\s+)?(function\b)(?:\s+([_$[:alpha:]][_$[:alnum:]]*))?\s*
     captures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.type.function.tsx }
@@ -605,7 +605,7 @@ repository:
     - include: '#object-member' 
 
   parameter-name:
-    match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*(?<!=|:)([a-zA-Z_$][\w$]*)\s*(\??)'
+    match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.tsx }
       '2': { name: keyword.operator.spread.tsx }
@@ -636,7 +636,7 @@ repository:
   parameter-object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: \b([a-zA-Z_$][\w$]*)\s*(:)
+    - begin: \b([_$[:alpha:]][_$[:alnum:]]*)\s*(:)
       beginCaptures:
         '1': { name: variable.object.property.tsx }
         '2': { name: punctuation.destructuring.tsx }
@@ -645,9 +645,9 @@ repository:
       - include: '#parameter-object-binding-pattern'
       - include: '#parameter-array-binding-pattern'
       - name: variable.parameter.tsx
-        match: \b([a-zA-Z_$][\w$]*)\b
+        match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     - name: variable.parameter.tsx
-      match: \b([a-zA-Z_$][\w$]*)\b
+      match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     - name: meta.delimiter.object.comma.tsx
       match: ','
 
@@ -657,7 +657,7 @@ repository:
     - include: '#parameter-object-binding-pattern'
     - include: '#parameter-array-binding-pattern'
     - name: variable.parameter.tsx
-      match: \b([a-zA-Z_$][\w$]*)\b
+      match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     - name: meta.delimiter.object.comma.tsx
       match: ','
 
@@ -794,12 +794,17 @@ repository:
     - include: '#comment'
 
   type-name:
-    name: entity.name.type.tsx
-    match: '[a-zA-Z_$][.\w$]*'
+    patterns:
+    - match: \b([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
+      captures:
+        '1': { name: entity.name.type.module.tsx }
+        '2': { name: punctuation.accessor.tsx }
+    - name: entity.name.type.tsx
+      match: '[_$[:alpha:]][_$[:alnum:]]*'
 
   type-parameters:
     name: meta.type.parameters.tsx
-    begin: '([a-zA-Z_$][\w$]*)?(<)'
+    begin: '([_$[:alpha:]][_$[:alnum:]]*)?(<)'
     beginCaptures:
       '1': { name: entity.name.type.tsx }
       '2': { name: punctuation.definition.typeparameters.begin.tsx }
@@ -876,7 +881,7 @@ repository:
 
   for-in-simple:
     name: forin.expr.tsx
-    match: (?<=\()\s*\b(var|let|const)\s+([a-zA-Z_$][\w$]*)\s+(?:(in)|(of))\b
+    match: (?<=\()\s*\b(var|let|const)\s+([_$[:alpha:]][_$[:alnum:]]*)\s+(?:(in)|(of))\b
     captures:
       '1': { name: storage.type.tsx }
       '2': { name: variable.other.readwrite.tsx }
@@ -905,7 +910,7 @@ repository:
     - include: '#comment'
     - include: '#method-declaration'
     - name: meta.object.member.tsx
-      begin: '[a-zA-Z_$][\w$]*\s*:'
+      begin: '[_$[:alpha:]][_$[:alnum:]]*\s*:'
       end: (?=,|\})
       patterns:
       - include: '#expression'
@@ -1077,7 +1082,7 @@ repository:
 
   template:
     name: string.template.tsx
-    begin: '(?:\b([a-zA-Z_$][a-zA-Z_$0-9]*)\b)?(`)'
+    begin: '(?:\b([_$[:alpha:]][_$[:alnum:]]*)\b)?(`)'
     beginCaptures:
       '1': { name: entity.name.function.tagged-template.tsx }
       '2': { name: punctuation.definition.string.template.begin.tsx }
@@ -1132,7 +1137,7 @@ repository:
     patterns:
     - name: storage.type.class.jsdoc
       match: (?<!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b
-    - match: ({\b(?:[a-zA-Z_$][a-zA-Z_$0-9]*)\b})\s\b([a-zA-Z_$][a-zA-Z_$0-9]*)\b\s*((?:(?!\*\/).)*)
+    - match: ({\b(?:[_$[:alpha:]][_$[:alnum:]]*)\b})\s\b([_$[:alpha:]][_$[:alnum:]]*)\b\s*((?:(?!\*\/).)*)
       captures:
         '0': {name: other.meta.jsdoc}
         '1': {name: entity.name.type.instance.jsdoc}
