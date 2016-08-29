@@ -480,7 +480,7 @@ repository:
     - include: '#method-declaration-name'
     - include: '#comment'
     - include: '#type-parameters'
-    - include: '#function-type-parameters'
+    - include: '#function-parameters'
     - include: '#return-type'
     - include: '#method-overload-declaration'
     - include: '#decl-block'
@@ -543,7 +543,7 @@ repository:
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
-    - include: '#function-type-parameters'
+    - include: '#function-parameters'
     - include: '#return-type'
     - include: '#function-overload-declaration'
     - include: '#decl-block'
@@ -712,12 +712,12 @@ repository:
     - include: '#type-tuple'
     - include: '#type-object'
     - include: '#type-operator'
-    - include: '#type-paren-or-function-type-parameters'
+    - include: '#type-paren-or-function-parameters'
     - include: '#type-function-return-type'
     - include: '#type-name'
 
-  function-type-parameters:
-    name: meta.function.type.parameter.ts
+  function-parameters:
+    name: meta.parameters.ts
     begin: \(
     beginCaptures:
       '0': { name: punctuation.definition.parameters.begin.ts }
@@ -740,7 +740,7 @@ repository:
   # (number | string) or (param: number, param2: string)
   # and it can be nested, for example
   # (number | (param: number, param2: string) => void)
-  type-paren-or-function-type-parameters:
+  type-paren-or-function-parameters:
     name: meta.type.paren.cover.ts
     begin: '(?:\b(new)\b)?\s*(\()'
     beginCaptures:
@@ -752,7 +752,7 @@ repository:
     patterns:
     - include: '#comment'
     - include: '#type'
-    - include: '#function-type-parameters'
+    - include: '#function-parameters'
 
   type-operator:
     name: keyword.operator.type.ts
