@@ -148,38 +148,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>arrow-body</key>
-		<dict>
-			<key>begin</key>
-			<string>(?&lt;==&gt;)\s*(\{)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.block.ts</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\}</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.block.ts</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.block.ts</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#statements</string>
-				</dict>
-			</array>
-		</dict>
 		<key>arrow-function</key>
 		<dict>
 			<key>patterns</key>
@@ -206,30 +174,17 @@
 							<key>name</key>
 							<string>variable.parameter.ts</string>
 						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.arrow.ts</string>
-						</dict>
 					</dict>
 					<key>match</key>
-					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(=&gt;)</string>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
 					<key>name</key>
 					<string>meta.arrow.ts</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(,:&gt;])\s*(?=\(([^()]+|\([^()]*\))*\)\s*=&gt;)</string>
+					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(,:&gt;])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
 					<key>end</key>
-					<string>=&gt;</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function.arrow.ts</string>
-						</dict>
-					</dict>
+					<string>(?==&gt;)</string>
 					<key>name</key>
 					<string>meta.arrow.ts</string>
 					<key>patterns</key>
@@ -238,17 +193,54 @@
 							<key>include</key>
 							<string>#function-parameters</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#arrow-return-type</string>
+						</dict>
 					</array>
 				</dict>
 				<dict>
-					<key>match</key>
+					<key>begin</key>
 					<string>=&gt;</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\})|((?!\{)(?=\S))</string>
 					<key>name</key>
-					<string>storage.type.function.arrow.ts</string>
+					<string>meta.arrow.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#decl-block</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
 				</dict>
+			</array>
+		</dict>
+		<key>arrow-return-type</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=\))\s*:</string>
+			<key>end</key>
+			<string>(?&lt;!:)((?=$)|(?==&gt;|;|//))</string>
+			<key>name</key>
+			<string>meta.return.type.arrow.ts</string>
+			<key>patterns</key>
+			<array>
 				<dict>
 					<key>include</key>
-					<string>#arrow-body</string>
+					<string>#type</string>
 				</dict>
 			</array>
 		</dict>
@@ -1282,15 +1274,28 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#ternary-expression</string>
+					<string>#variable-initializer</string>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#type-annotation</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression</string>
+					<key>begin</key>
+					<string>\G</string>
+					<key>end</key>
+					<string>(?!\G)(?=[};,=]|$)|(?&lt;=\})</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#type-annotation</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#string</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>

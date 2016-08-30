@@ -466,9 +466,13 @@ repository:
       '2': { name: keyword.operator.optional.tsx }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
-    - include: '#ternary-expression'
-    - include: '#type-annotation'
-    - include: '#expression'
+    - include: '#variable-initializer'
+    - begin: \G
+      end: (?!\G)(?=[};,=]|$)|(?<=\})
+      patterns:
+      - include: '#type-annotation'
+      - include: '#string'
+      - include: '#comment'
 
   method-declaration:
     name: meta.method.declaration.tsx
@@ -575,17 +579,6 @@ repository:
     begin: \{
     beginCaptures:
       '0': { name: punctuation.definition.block.tsx }
-    end: \}
-    endCaptures:
-      '0': { name: punctuation.definition.block.tsx }
-    patterns:
-    - include: '#statements'
-
-  arrow-body:
-    name: meta.block.tsx
-    begin: (?<==>)\s*(\{)
-    beginCaptures:
-      '1': { name: punctuation.definition.block.tsx }
     end: \}
     endCaptures:
       '0': { name: punctuation.definition.block.tsx }
@@ -961,29 +954,39 @@ repository:
   arrow-function:
     patterns:
     # TODO: type parameter of arrow
-    - name: meta.arrow.ts
+    - name: meta.arrow.tsx
       match: (\basync)(?=\s*[<(])
       captures:
         '1': { name: storage.modifier.async.tsx }
     # paramters of the arrow
     - name: meta.arrow.tsx
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(=>)
+      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
       captures:
         '1': { name: variable.parameter.tsx }
-        '2': { name: storage.type.function.arrow.tsx }
     - name: meta.arrow.tsx
-      begin: (?x)(?<=return|throw|yield|await|async|[=(,:>])\s*(?=\(([^()]+|\([^()]*\))*\)\s*=>)
-      end: =>
-      endCaptures:
-        '0': { name: storage.type.function.arrow.tsx }
+      begin: (?x)(?<=return|throw|yield|await|async|[=(,:>])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+      end: (?==>)
       patterns:
       - include: '#function-parameters'
-      # TODO: return type of the arrow
-    # arrow operator for anything that doesnt get captured by above regex
-    - name: storage.type.function.arrow.tsx
-      match: =>
-    # body
-    - include: '#arrow-body'
+      # return type of the arrow
+      - include: '#arrow-return-type'
+    # arrow operator
+    - name: meta.arrow.tsx
+      begin: =>
+      beginCaptures:
+        '0': { name: storage.type.function.arrow.tsx }
+      end: (?<=\})|((?!\{)(?=\S))
+      patterns:
+      - include: '#decl-block'
+      - include: '#expression'
+
+  arrow-return-type:
+    name: meta.return.type.arrow.tsx
+    begin: '(?<=\))\s*:'
+    end: (?<!:)((?=$)|(?==>|;|//))
+    patterns:
+    # TODO: handle the fn and constructor type specifically.
+    - include: '#type'
 
   paren-expression:
     begin: \(
