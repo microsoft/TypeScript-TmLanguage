@@ -31,10 +31,11 @@ function getInputFile(oriLines: string[]): string {
         "\n-----------------------------------\n\n";
 }
 
-function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
+function getScopesAtMarkers(text: string, grammar: vt.IGrammar): { markerScopes: string, wholeBaseline: string } {
     let oriLines = text.split('\n');
     let ruleStack:vt.StackElement[] = undefined;
     let outputLines: string[] = [];
+    let baselineLines: string[] = [];
     let markers = 0;
     for (let i in oriLines) {
         let oriLine = oriLines[i];
@@ -45,16 +46,23 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): string {
         ruleStack = lineTokens.ruleStack;
 
         outputLines.push(">" + line);
+        baselineLines.push(">" + line);
         for (let token of lineTokens.tokens) {
             for (let markerLocation of markerLocations) {
                 if (token.startIndex <= markerLocation && markerLocation < token.endIndex) {
                     writeTokenLine(token, '[' + (parseInt(i) + 1) + ', ' + (markerLocation + 1) + ']: ', ' ', outputLines);
                 }
             }
+
+            writeTokenLine(token, "", "", baselineLines);
         }
     }
 
-    return markers ? (getInputFile(oriLines) + outputLines.join('\n')) : null;
+    const oriLineText = getInputFile(oriLines);
+    return {
+        markerScopes: markers ? (oriLineText + outputLines.join('\n')) : null,
+        wholeBaseline: oriLineText + baselineLines.join('\n')
+    };
 }
 
 function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForToken: string, outputLines: string[]) {
@@ -71,26 +79,6 @@ function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForTo
     outputLines.push(startingSpaces + preTextForToken + token.scopes.join(' ') + postTextForToken);
 }
 
-function baselineWholeFile(text: string, grammar: vt.IGrammar): string {
-    let oriLines = text.split('\n');
-    let ruleStack: vt.StackElement[] = undefined;
-    let outputLines: string[] = [];
-    for (let i in oriLines) {
-        let oriLine = oriLines[i];
-        let markerLocations = getMarkerLocations(oriLine);
-        let line = oriLine.split(marker).join('');
-        let lineTokens = grammar.tokenizeLine(line, ruleStack);
-        ruleStack = lineTokens.ruleStack;
-
-        outputLines.push(">" + line);
-        for (let token of lineTokens.tokens) {
-            writeTokenLine(token, "", "", outputLines);
-        }
-    }
-
-    return getInputFile(oriLines) + outputLines.join('\n');
-}
-
 for (var fileName of fs.readdirSync('cases')) {
     const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
     let parsedFileName = path.parse(fileName);
@@ -99,11 +87,11 @@ for (var fileName of fs.readdirSync('cases')) {
         fs.mkdirSync('generated');
     }
     let outputFileName = path.join('./generated', parsedFileName.name + '.txt');
-    let scopesFileText = getScopesAtMarkers(text, grammar);
-    if (scopesFileText) {
-        fs.writeFile(outputFileName, getScopesAtMarkers(text, grammar), "utf8");
+    const { markerScopes, wholeBaseline } = getScopesAtMarkers(text, grammar);
+    if (markerScopes) {
+        fs.writeFile(outputFileName, markerScopes, "utf8");
     }
 
     let outputBaselineName = path.join('./generated', parsedFileName.name + '.baseline.txt');
-    fs.writeFile(outputBaselineName, baselineWholeFile(text, grammar), "utf8");
+    fs.writeFile(outputBaselineName, wholeBaseline, "utf8");
 }
