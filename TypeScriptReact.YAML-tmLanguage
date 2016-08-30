@@ -172,13 +172,12 @@ repository:
     - include: '#literal'
     - include: '#function-declaration'
     - include: '#class-or-interface-declaration'
+    - include: '#arrow-function'
     - include: '#paren-expression'
     - include: '#ternary-expression'
     - include: '#new-expr'
-    - include: '#arrow-body'
     - include: '#object-literal'
     - include: '#expression-operator'
-    - include: '#imply-operator'
     - include: '#operators'
     - include: '#function-call'
 
@@ -701,7 +700,7 @@ repository:
   type-annotation:
     name: meta.type.annotation.tsx
     begin: ":"
-    end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[a-zA-Z_$])\s*(?=\{)
+    end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)
     patterns:
     - include: '#expression-operator'
     - include: '#type'
@@ -936,10 +935,6 @@ repository:
     - name: keyword.operator.is.tsx
       match: \bis\b
 
-  imply-operator:
-    name: storage.type.function.arrow.tsx
-    match: =>
-
   operators:
     patterns:
     - name: keyword.operator.assignment.compound.tsx
@@ -962,6 +957,33 @@ repository:
       match: \+\+
     - name: keyword.operator.arithmetic.tsx
       match: '%|\*|/|-|\+'
+
+  arrow-function:
+    patterns:
+    # TODO: type parameter of arrow
+    - name: meta.arrow.ts
+      match: (\basync)(?=\s*[<(])
+      captures:
+        '1': { name: storage.modifier.async.tsx }
+    # paramters of the arrow
+    - name: meta.arrow.tsx
+      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(=>)
+      captures:
+        '1': { name: variable.parameter.tsx }
+        '2': { name: storage.type.function.arrow.tsx }
+    - name: meta.arrow.tsx
+      begin: (?x)(?<=return|throw|yield|await|async|[=(,:>])\s*(?=\(([^()]+|\([^()]*\))*\)\s*=>)
+      end: =>
+      endCaptures:
+        '0': { name: storage.type.function.arrow.tsx }
+      patterns:
+      - include: '#function-parameters'
+      # TODO: return type of the arrow
+    # arrow operator for anything that doesnt get captured by above regex
+    - name: storage.type.function.arrow.tsx
+      match: =>
+    # body
+    - include: '#arrow-body'
 
   paren-expression:
     begin: \(

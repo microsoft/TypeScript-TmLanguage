@@ -180,6 +180,78 @@
 				</dict>
 			</array>
 		</dict>
+		<key>arrow-function</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.async.tsx</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(\basync)(?=\s*[&lt;(])</string>
+					<key>name</key>
+					<string>meta.arrow.ts</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.tsx</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.tsx</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(=&gt;)</string>
+					<key>name</key>
+					<string>meta.arrow.tsx</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(,:&gt;])\s*(?=\(([^()]+|\([^()]*\))*\)\s*=&gt;)</string>
+					<key>end</key>
+					<string>=&gt;</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.tsx</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.arrow.tsx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>=&gt;</string>
+					<key>name</key>
+					<string>storage.type.function.arrow.tsx</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#arrow-body</string>
+				</dict>
+			</array>
+		</dict>
 		<key>boolean-literal</key>
 		<dict>
 			<key>patterns</key>
@@ -1061,6 +1133,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#arrow-function</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#paren-expression</string>
 				</dict>
 				<dict>
@@ -1073,19 +1149,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#arrow-body</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#object-literal</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#expression-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#imply-operator</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1414,13 +1482,6 @@
 					<string>#variable-initializer</string>
 				</dict>
 			</array>
-		</dict>
-		<key>imply-operator</key>
-		<dict>
-			<key>match</key>
-			<string>=&gt;</string>
-			<key>name</key>
-			<string>storage.type.function.arrow.tsx</string>
 		</dict>
 		<key>import-declaration</key>
 		<dict>
@@ -3726,7 +3787,7 @@
 			<key>begin</key>
 			<string>:</string>
 			<key>end</key>
-			<string>(?=$|[,);\}\]]|//)|(?==[^&gt;])|(?&lt;=[\}&gt;\]\)]|[a-zA-Z_$])\s*(?=\{)</string>
+			<string>(?=$|[,);\}\]]|//)|(?==[^&gt;])|(?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)</string>
 			<key>name</key>
 			<string>meta.type.annotation.tsx</string>
 			<key>patterns</key>

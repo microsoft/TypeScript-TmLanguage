@@ -167,14 +167,13 @@ repository:
     - include: '#literal'
     - include: '#function-declaration'
     - include: '#class-or-interface-declaration'
+    - include: '#cast'
+    - include: '#arrow-function'
     - include: '#paren-expression'
     - include: '#ternary-expression'
-    - include: '#cast'
     - include: '#new-expr'
-    - include: '#arrow-body'
     - include: '#object-literal'
     - include: '#expression-operator'
-    - include: '#imply-operator'
     - include: '#operators'
     - include: '#function-call'
 
@@ -946,10 +945,6 @@ repository:
     - name: keyword.operator.is.ts
       match: \bis\b
 
-  imply-operator:
-    name: storage.type.function.arrow.ts
-    match: =>
-
   operators:
     patterns:
     - name: keyword.operator.assignment.compound.ts
@@ -972,6 +967,33 @@ repository:
       match: \+\+
     - name: keyword.operator.arithmetic.ts
       match: '%|\*|/|-|\+'
+
+  arrow-function:
+    patterns:
+    # TODO: type parameter of arrow
+    - name: meta.arrow.ts
+      match: (\basync)(?=\s*[<(])
+      captures:
+        '1': { name: storage.modifier.async.ts }
+    # paramters of the arrow
+    - name: meta.arrow.ts
+      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(=>)
+      captures:
+        '1': { name: variable.parameter.ts }
+        '2': { name: storage.type.function.arrow.ts }
+    - name: meta.arrow.ts
+      begin: (?x)(?<=return|throw|yield|await|async|[=(,:>])\s*(?=\(([^()]+|\([^()]*\))*\)\s*=>)
+      end: =>
+      endCaptures:
+        '0': { name: storage.type.function.arrow.ts }
+      patterns:
+      - include: '#function-parameters'
+      # TODO: return type of the arrow
+    # arrow operator for anything that doesnt get captured by above regex
+    - name: storage.type.function.arrow.ts
+      match: =>
+    # body
+    - include: '#arrow-body'
 
   paren-expression:
     begin: \(

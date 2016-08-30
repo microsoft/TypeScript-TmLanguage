@@ -180,6 +180,78 @@
 				</dict>
 			</array>
 		</dict>
+		<key>arrow-function</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.async.ts</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(\basync)(?=\s*[&lt;(])</string>
+					<key>name</key>
+					<string>meta.arrow.ts</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.ts</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(=&gt;)</string>
+					<key>name</key>
+					<string>meta.arrow.ts</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(,:&gt;])\s*(?=\(([^()]+|\([^()]*\))*\)\s*=&gt;)</string>
+					<key>end</key>
+					<string>=&gt;</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function.arrow.ts</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.arrow.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>=&gt;</string>
+					<key>name</key>
+					<string>storage.type.function.arrow.ts</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#arrow-body</string>
+				</dict>
+			</array>
+		</dict>
 		<key>boolean-literal</key>
 		<dict>
 			<key>patterns</key>
@@ -1089,6 +1161,14 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#cast</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#arrow-function</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#paren-expression</string>
 				</dict>
 				<dict>
@@ -1097,15 +1177,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#cast</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#new-expr</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#arrow-body</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1114,10 +1186,6 @@
 				<dict>
 					<key>include</key>
 					<string>#expression-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#imply-operator</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1446,13 +1514,6 @@
 					<string>#variable-initializer</string>
 				</dict>
 			</array>
-		</dict>
-		<key>imply-operator</key>
-		<dict>
-			<key>match</key>
-			<string>=&gt;</string>
-			<key>name</key>
-			<string>storage.type.function.arrow.ts</string>
 		</dict>
 		<key>import-declaration</key>
 		<dict>
