@@ -1,0 +1,3 @@
+@dec<{}>()
+class Test {
+}
