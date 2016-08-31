@@ -1368,35 +1368,39 @@ repository:
     patterns:
     - include: '#jsx-children'
 
-  jsx-tag-open:
-    name: meta.tag.open.tsx
+  jsx-tag:
     begin: >-
       (?x)
         (<)
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
         (?=\s+(?!\?)|/?>)
-    end: (/?>)
     beginCaptures:
-      '1': {name: punctuation.definition.tag.begin.tsx}
-      '2': {name: entity.name.tag.tsx}
+      '0': { name: meta.tag.open.tsx }
+      '1': { name: punctuation.definition.tag.begin.tsx }
+      '2': { name: entity.name.tag.tsx }
+    end: (/>)|(?:(</)([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>))
     endCaptures:
-      '1': {name: punctuation.definition.tag.end.tsx}
+      '0': { name: meta.tag.close.tsx }
+      '1': { name: punctuation.definition.tag.end.tsx }
+      '2': { name: punctuation.definition.tag.begin.tsx }
+      '3': { name: entity.name.tag.tsx }
+      '4': { name: punctuation.definition.tag.end.tsx }
     patterns:
-    - include: '#comment'
-    - include: '#jsx-tag-attributes'
-    - include: '#jsx-tag-attributes-illegal'
-
-  jsx-tag-close:
-    name: meta.tag.close.tsx
-    begin: (</)([_$a-zA-Z][-$\w.]*(?<!\.|-))
-    end: (>)
-    beginCaptures:
-      '1': {name: punctuation.definition.tag.begin.tsx}
-      '2': {name: entity.name.tag.tsx}
-    endCaptures:
-      '1': {name: punctuation.definition.tag.end.tsx}
-    patterns:
-    - include: '#comment'
+    - name: meta.tag.open.tsx
+      begin: \G
+      end: (?=[/]?>)
+      patterns:
+      - include: '#comment'
+      - include: '#jsx-tag-attributes'
+      - include: '#jsx-tag-attributes-illegal'
+    - begin: (>)
+      beginCaptures:
+        '0': { name: meta.tag.open.tsx }
+        '1': { name: punctuation.definition.tag.end.tsx }
+      end: (?=</)
+      contentName: meta.jsx.children.tsx
+      patterns:
+      - include: '#jsx-children'
 
   jsx-tag-invalid:
     name: invalid.illegal.tag.incomplete.tsx
@@ -1405,8 +1409,7 @@ repository:
   jsx-children:
     patterns:
     - include: '#jsx-tag-without-attributes'
-    - include: '#jsx-tag-open'
-    - include: '#jsx-tag-close'
+    - include: '#jsx-tag'
     - include: '#jsx-tag-invalid'
     - include: '#jsx-evaluated-code'
     - include: '#jsx-entities'
@@ -1415,14 +1418,7 @@ repository:
     name: meta.jsx.tsx
     patterns:
     - include: '#jsx-tag-without-attributes'
-    - include: '#jsx-tag-open'
-    - include: '#jsx-tag-close'
+    - include: '#jsx-tag'
     - include: '#jsx-tag-invalid'
-
-    - name: meta.jsx.children.tsx
-      begin: (?<=(?:'|"|})>)
-      end: (?=</)
-      patterns:
-      - include: '#jsx-children'
 
 ...

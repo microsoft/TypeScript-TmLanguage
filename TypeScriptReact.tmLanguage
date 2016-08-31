@@ -1877,30 +1877,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#jsx-tag-open</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx-tag-close</string>
+					<string>#jsx-tag</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#jsx-tag-invalid</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?&lt;=(?:'|"|})&gt;)</string>
-					<key>end</key>
-					<string>(?=&lt;/)</string>
-					<key>name</key>
-					<string>meta.jsx.children.tsx</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#jsx-children</string>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
@@ -1945,11 +1926,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#jsx-tag-open</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx-tag-close</string>
+					<string>#jsx-tag</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2092,6 +2069,116 @@
 				</dict>
 			</array>
 		</dict>
+		<key>jsx-tag</key>
+		<dict>
+			<key>begin</key>
+			<string>(?x)
+  (&lt;)
+  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
+  (?=\s+(?!\?)|/?&gt;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.tag.open.tsx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.tag.begin.tsx</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.tsx</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(/&gt;)|(?:(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.tag.close.tsx</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.tag.end.tsx</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.tag.begin.tsx</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.tsx</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.tag.end.tsx</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\G</string>
+					<key>end</key>
+					<string>(?=[/]?&gt;)</string>
+					<key>name</key>
+					<string>meta.tag.open.tsx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#jsx-tag-attributes</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#jsx-tag-attributes-illegal</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(&gt;)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.open.tsx</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.end.tsx</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>meta.jsx.children.tsx</string>
+					<key>end</key>
+					<string>(?=&lt;/)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#jsx-children</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>jsx-tag-attribute-assignment</key>
 		<dict>
 			<key>match</key>
@@ -2201,29 +2288,8 @@
   (&lt;)
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.begin.tsx</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.tsx</string>
-				</dict>
-			</dict>
 			<key>end</key>
 			<string>(/?&gt;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.end.tsx</string>
-				</dict>
-			</dict>
 			<key>name</key>
 			<string>meta.tag.open.tsx</string>
 			<key>patterns</key>
