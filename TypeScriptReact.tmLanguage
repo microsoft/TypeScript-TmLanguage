@@ -182,7 +182,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(,:&gt;*])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
+					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(\[,:&gt;*])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
 					<key>end</key>
 					<string>(?==&gt;)</string>
 					<key>name</key>
@@ -2537,7 +2537,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=[(;]|$)</string>
+			<string>(?=[(;),]|$)</string>
 			<key>name</key>
 			<string>new.expr.tsx</string>
 			<key>patterns</key>
