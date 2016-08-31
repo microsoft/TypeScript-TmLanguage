@@ -36,7 +36,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.type.tsx }
-    end: (?=$|;)
+    end: (?=$|;|})
     patterns:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
@@ -47,11 +47,11 @@ repository:
     begin: \b([_$[:alpha:]][_$[:alnum:]]*)\b
     beginCaptures:
       '1': { name: variable.other.readwrite.tsx }
-    end: (?=$|[;,])
+    end: (?=$|[;,}])
     patterns:
     - include: '#variable-initializer'
     - begin: \G
-      end: (?!\G)(?=$|[;,=])
+      end: (?!\G)(?=$|[;,=}])
       patterns:
       - include: '#type-annotation'
       - include: '#string'
@@ -63,11 +63,11 @@ repository:
       begin: (?<!=|:)\s*(\{)
       beginCaptures:
         '1': { name: punctuation.definition.binding-pattern.object.tsx }
-      end: (?=$|[;,])
+      end: (?=$|[;,}])
       patterns:
       - include: '#variable-initializer'
       - begin: \G
-        end: (?!\G)(?=$|[;,=])
+        end: (?!\G)(?=$|[;,=}])
         patterns:
         - begin: \G
           end: \}
@@ -81,11 +81,11 @@ repository:
       begin: (?<!=|:)\s*(\[)
       beginCaptures:
         '1': { name: punctuation.definition.binding-pattern.array.tsx }
-      end: (?=$|[;,])
+      end: (?=$|[;,}])
       patterns:
       - include: '#variable-initializer'
       - begin: \G
-        end: (?!\G)(?=$|[;,=])
+        end: (?!\G)(?=$|[;,=}])
         patterns:
         - begin: \G
           end: \]
@@ -823,7 +823,7 @@ repository:
     begin: (?<!=|!)(=)(?!=)
     beginCaptures:
       '1': { name: keyword.operator.assignment.tsx }
-    end: (?=$|[,);])
+    end: (?=$|[,);}])
     patterns:
       - include: '#expression'
 
