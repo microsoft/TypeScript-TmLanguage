@@ -27,7 +27,7 @@
 		<key>after-operator-block</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\|)\s*(\{)</string>
+			<string>(?&lt;=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -182,7 +182,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(,:&gt;])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
+					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(,:&gt;*])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
 					<key>end</key>
 					<string>(?==&gt;)</string>
 					<key>name</key>
@@ -591,9 +591,26 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;!\.)\b(await|return|yield)\b</string>
+					<string>(?&lt;!\.)\b(await|return)\b</string>
 					<key>name</key>
 					<string>keyword.control.flow.tsx</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.flow.tsx</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.tsx</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\.)\b(yield)\b(?:\s*(\*))?</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -1355,7 +1372,7 @@
 		<key>function-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
+			<string>\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1376,7 +1393,12 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.tsx</string>
+					<string>keyword.generator.asterisk.tsx</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1423,16 +1445,26 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.function.tsx</string>
+					<string>storage.modifier.async.tsx</string>
 				</dict>
 				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.tsx</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.generator.asterisk.tsx</string>
+				</dict>
+				<key>5</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.function.tsx</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(?:(export)\s+)?(function\b)(?:\s+([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
+			<string>\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
 			<key>name</key>
 			<string>meta.function.overload.tsx</string>
 		</dict>
@@ -2305,7 +2337,7 @@
 		<key>method-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
+			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2374,6 +2406,18 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.generator.asterisk.tsx</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(\*)\s*</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#string</string>
 				</dict>
@@ -2410,7 +2454,7 @@
 		<key>method-overload-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
+			<string>(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -4033,7 +4077,7 @@
 			<string>(?=$)|(&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>2</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.definition.typeparameters.end.tsx</string>

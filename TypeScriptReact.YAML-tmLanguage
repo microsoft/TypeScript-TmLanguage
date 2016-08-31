@@ -189,7 +189,11 @@ repository:
     - name: keyword.control.loop.tsx
       match: (?<!\.)\b(break|continue|do|goto|while)\b
     - name: keyword.control.flow.tsx
-      match: (?<!\.)\b(await|return|yield)\b
+      match: (?<!\.)\b(await|return)\b
+    - match: (?<!\.)\b(yield)\b(?:\s*(\*))?
+      captures:
+        '1': { name: keyword.control.flow.tsx }
+        '2': { name: keyword.generator.asterisk.tsx }
     - name: keyword.control.switch.tsx
       match: (?<!\.)\b(case|default|switch)\b
     - name: keyword.control.conditional.tsx
@@ -476,7 +480,7 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.tsx
-    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
+    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
       '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
@@ -494,7 +498,7 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.tsx
-    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|(((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
+    begin: (?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:\b[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.tsx } # captures keyword (abstract)
       '2': { name: storage.modifier.tsx } # captures keyword (public or private or protected)
@@ -508,6 +512,9 @@ repository:
     begin: \G
     end: (?=\(|\<)
     patterns:
+    - match: (\*)\s*
+      captures:
+        '1': { name: keyword.generator.asterisk.tsx }
     - include: '#string'
     - include: '#array-literal'
     - name: keyword.operator.new.tsx
@@ -540,12 +547,13 @@ repository:
 
   function-declaration:
     name: meta.function.tsx
-    begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s+([_$[:alpha:]][_$[:alnum:]]*))?\s*
+    begin: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*
     beginCaptures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.modifier.async.tsx }
       '3': { name: storage.type.function.tsx }
-      '4': { name: entity.name.function.tsx }
+      '4': { name: keyword.generator.asterisk.tsx }
+      '5': { name: entity.name.function.ts }
     end: (?=;|\})|(?<=\})
     patterns:
     - include: '#comment'
@@ -557,11 +565,13 @@ repository:
 
   function-overload-declaration:
     name: meta.function.overload.tsx
-    match: \b(?:(export)\s+)?(function\b)(?:\s+([_$[:alpha:]][_$[:alnum:]]*))?\s*
+    match: \b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*
     captures:
       '1': { name: keyword.control.export.tsx }
-      '2': { name: storage.type.function.tsx }
-      '3': { name: entity.name.function.tsx }
+      '2': { name: storage.modifier.async.tsx }
+      '3': { name: storage.type.function.tsx }
+      '4': { name: keyword.generator.asterisk.tsx }
+      '5': { name: entity.name.function.tsx }
 
   object-literal:
     name: meta.object-literal.tsx
@@ -587,7 +597,7 @@ repository:
 
   after-operator-block:
     name: meta.object-literal.tsx
-    begin: (?<=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&&|\|\|)\s*(\{)
+    begin: (?<=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&&|\|\||\*)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.tsx }
     end: \}
@@ -802,7 +812,7 @@ repository:
       '2': { name: punctuation.definition.typeparameters.begin.tsx }
     end: '(?=$)|(>)'
     endCaptures:
-      '2': { name: punctuation.definition.typeparameters.end.tsx }
+      '1': { name: punctuation.definition.typeparameters.end.tsx }
     patterns:
     - name: storage.modifier.tsx
       match: '\b(extends)\b'
@@ -964,7 +974,7 @@ repository:
       captures:
         '1': { name: variable.parameter.tsx }
     - name: meta.arrow.tsx
-      begin: (?x)(?<=return|throw|yield|await|async|[=(,:>])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)(?<=return|throw|yield|await|async|[=(,:>*])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#function-parameters'

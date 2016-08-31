@@ -1,0 +1,110 @@
+original file
+-----------------------------------
+function foo() {
+    return 'bar';
+}
+
+function* foo() {
+    yield 'bar';
+    yield* ['bar'];
+}
+-----------------------------------
+
+>function foo() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.function.ts
+                ^
+                source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts meta.function.ts meta.block.ts
+>    return 'bar';
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts
+            ^
+            source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+             ^^^
+             source.ts meta.function.ts meta.block.ts string.quoted.single.ts
+                ^
+                source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                 ^^^
+                 source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>function* foo() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts keyword.generator.asterisk.ts
+          ^
+          source.ts meta.function.ts
+           ^^^
+           source.ts meta.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.function.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                  ^^
+                  source.ts meta.function.ts meta.block.ts
+>    yield 'bar';
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+          ^
+          source.ts meta.function.ts meta.block.ts
+           ^
+           source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+            ^^^
+            source.ts meta.function.ts meta.block.ts string.quoted.single.ts
+               ^
+               source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                ^^^
+                source.ts meta.function.ts meta.block.ts
+>    yield* ['bar'];
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+          ^
+          source.ts meta.function.ts meta.block.ts keyword.generator.asterisk.ts
+           ^
+           source.ts meta.function.ts meta.block.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+              ^^^
+              source.ts meta.function.ts meta.block.ts meta.array.literal.ts string.quoted.single.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                   ^^^
+                   source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
