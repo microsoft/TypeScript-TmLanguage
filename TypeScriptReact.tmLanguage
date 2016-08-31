@@ -2078,11 +2078,6 @@
   (?=\s+(?!\?)|/?&gt;)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.tag.open.tsx</string>
-				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
@@ -2098,11 +2093,6 @@
 			<string>(/&gt;)|(?:(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;))</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.tag.close.tsx</string>
-				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
@@ -2124,6 +2114,8 @@
 					<string>punctuation.definition.tag.end.tsx</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>meta.tag.tsx</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -2131,8 +2123,6 @@
 					<string>\G</string>
 					<key>end</key>
 					<string>(?=[/]?&gt;)</string>
-					<key>name</key>
-					<string>meta.tag.open.tsx</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -2154,11 +2144,6 @@
 					<string>(&gt;)</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>meta.tag.open.tsx</string>
-						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -2237,76 +2222,12 @@
 			<key>name</key>
 			<string>invalid.illegal.attribute.tsx</string>
 		</dict>
-		<key>jsx-tag-close</key>
-		<dict>
-			<key>begin</key>
-			<string>(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.begin.tsx</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.tsx</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(&gt;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.end.tsx</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.tag.close.tsx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-			</array>
-		</dict>
 		<key>jsx-tag-invalid</key>
 		<dict>
 			<key>match</key>
 			<string>&lt;\s*&gt;</string>
 			<key>name</key>
 			<string>invalid.illegal.tag.incomplete.tsx</string>
-		</dict>
-		<key>jsx-tag-open</key>
-		<dict>
-			<key>begin</key>
-			<string>(?x)
-  (&lt;)
-  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
-  (?=\s+(?!\?)|/?&gt;)</string>
-			<key>end</key>
-			<string>(/?&gt;)</string>
-			<key>name</key>
-			<string>meta.tag.open.tsx</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx-tag-attributes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#jsx-tag-attributes-illegal</string>
-				</dict>
-			</array>
 		</dict>
 		<key>jsx-tag-without-attributes</key>
 		<dict>

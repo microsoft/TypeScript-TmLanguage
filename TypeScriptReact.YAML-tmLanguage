@@ -1369,25 +1369,23 @@ repository:
     - include: '#jsx-children'
 
   jsx-tag:
+    name: meta.tag.tsx
     begin: >-
       (?x)
         (<)
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
         (?=\s+(?!\?)|/?>)
     beginCaptures:
-      '0': { name: meta.tag.open.tsx }
       '1': { name: punctuation.definition.tag.begin.tsx }
       '2': { name: entity.name.tag.tsx }
     end: (/>)|(?:(</)([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>))
     endCaptures:
-      '0': { name: meta.tag.close.tsx }
       '1': { name: punctuation.definition.tag.end.tsx }
       '2': { name: punctuation.definition.tag.begin.tsx }
       '3': { name: entity.name.tag.tsx }
       '4': { name: punctuation.definition.tag.end.tsx }
     patterns:
-    - name: meta.tag.open.tsx
-      begin: \G
+    - begin: \G
       end: (?=[/]?>)
       patterns:
       - include: '#comment'
@@ -1395,7 +1393,6 @@ repository:
       - include: '#jsx-tag-attributes-illegal'
     - begin: (>)
       beginCaptures:
-        '0': { name: meta.tag.open.tsx }
         '1': { name: punctuation.definition.tag.end.tsx }
       end: (?=</)
       contentName: meta.jsx.children.tsx
