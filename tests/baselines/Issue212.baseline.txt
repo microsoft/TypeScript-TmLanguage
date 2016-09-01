@@ -1,0 +1,140 @@
+original file
+-----------------------------------
+let from = neki;
+from = a; // is a variable and should be in white color like other variables
+
+exports.myVar = async (ctx, next) => {} // this is all in white but exports and async should be e.g. in red or blue
+
+t.me = 1;
+t.is = 2; // `is` is in blue but should be the same color as the above (1)
+t.in = 3; // `in` is in blue but should be the same color as the above (1)
+t.of = 4; // `of` is in blue but should be the same color as the above (1)
+-----------------------------------
+
+>let from = neki;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+           ^^^^^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^^^
+                source.ts
+>from = a; // is a variable and should be in white color like other variables
+ ^^^^^
+ source.ts
+      ^
+      source.ts keyword.operator.assignment.ts
+       ^^^^
+       source.ts
+           ^^
+           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts comment.line.double-slash.ts
+>
+ ^^
+ source.ts
+>exports.myVar = async (ctx, next) => {} // this is all in white but exports and async should be e.g. in red or blue
+ ^^^^^^^^^^^^^^
+ source.ts
+               ^
+               source.ts keyword.operator.assignment.ts
+                ^
+                source.ts
+                 ^^^^^
+                 source.ts meta.arrow.ts storage.modifier.async.ts
+                      ^
+                      source.ts meta.arrow.ts
+                       ^
+                       source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                        ^^^
+                        source.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                           ^
+                           source.ts meta.arrow.ts meta.parameters.ts
+                            ^
+                            source.ts meta.arrow.ts meta.parameters.ts
+                             ^^^^
+                             source.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                                 ^
+                                 source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                  ^
+                                  source.ts meta.arrow.ts
+                                   ^^
+                                   source.ts meta.arrow.ts storage.type.function.arrow.ts
+                                     ^
+                                     source.ts meta.arrow.ts
+                                      ^
+                                      source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                       ^
+                                       source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                        ^
+                                        source.ts
+                                         ^^
+                                         source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           source.ts comment.line.double-slash.ts
+>
+ ^^
+ source.ts
+>t.me = 1;
+ ^^^^^
+ source.ts
+      ^
+      source.ts keyword.operator.assignment.ts
+       ^
+       source.ts
+        ^
+        source.ts constant.numeric.decimal.ts
+         ^^^
+         source.ts
+>t.is = 2; // `is` is in blue but should be the same color as the above (1)
+ ^^^^^
+ source.ts
+      ^
+      source.ts keyword.operator.assignment.ts
+       ^
+       source.ts
+        ^
+        source.ts constant.numeric.decimal.ts
+         ^^
+         source.ts
+           ^^
+           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts comment.line.double-slash.ts
+>t.in = 3; // `in` is in blue but should be the same color as the above (1)
+ ^^^^^
+ source.ts
+      ^
+      source.ts keyword.operator.assignment.ts
+       ^
+       source.ts
+        ^
+        source.ts constant.numeric.decimal.ts
+         ^^
+         source.ts
+           ^^
+           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts comment.line.double-slash.ts
+>t.of = 4; // `of` is in blue but should be the same color as the above (1)
+ ^^^^^
+ source.ts
+      ^
+      source.ts keyword.operator.assignment.ts
+       ^
+       source.ts
+        ^
+        source.ts constant.numeric.decimal.ts
+         ^^
+         source.ts
+           ^^
+           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts comment.line.double-slash.ts

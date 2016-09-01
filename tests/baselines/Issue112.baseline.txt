@@ -1,0 +1,72 @@
+original file
+-----------------------------------
+return new vscode.Variable(property.name, displayValue, variablesReference);
+angular.module('app')
+this._connections.delete(connection.id);
+this._waitingConnections.delete(connection);
+-----------------------------------
+
+>return new vscode.Variable(property.name, displayValue, variablesReference);
+ ^^^^^^
+ source.ts keyword.control.flow.ts
+       ^
+       source.ts
+        ^^^
+        source.ts new.expr.ts keyword.operator.new.ts
+           ^
+           source.ts new.expr.ts
+            ^^^^^^
+            source.ts new.expr.ts entity.name.type.module.ts
+                  ^
+                  source.ts new.expr.ts punctuation.accessor.ts
+                   ^^^^^^^^
+                   source.ts new.expr.ts entity.name.type.ts
+                           ^
+                           source.ts meta.brace.round.ts
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            source.ts
+                                                                           ^
+                                                                           source.ts meta.brace.round.ts
+                                                                            ^^^
+                                                                            source.ts
+>angular.module('app')
+ ^^^^^^^^^^^^^^
+ source.ts
+               ^
+               source.ts meta.brace.round.ts
+                ^
+                source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^^
+                 source.ts string.quoted.single.ts
+                    ^
+                    source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                     ^
+                     source.ts meta.brace.round.ts
+                      ^^
+                      source.ts
+>this._connections.delete(connection.id);
+ ^^^^
+ source.ts variable.language.this.ts
+     ^^^^^^^^^^^^^^^^^^^^
+     source.ts
+                         ^
+                         source.ts meta.brace.round.ts
+                          ^^^^^^^^^^^^^
+                          source.ts
+                                       ^
+                                       source.ts meta.brace.round.ts
+                                        ^^^
+                                        source.ts
+>this._waitingConnections.delete(connection);
+ ^^^^
+ source.ts variable.language.this.ts
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     source.ts
+                                ^
+                                source.ts meta.brace.round.ts
+                                 ^^^^^^^^^^
+                                 source.ts
+                                           ^
+                                           source.ts meta.brace.round.ts
+                                            ^^
+                                            source.ts

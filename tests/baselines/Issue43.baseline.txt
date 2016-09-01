@@ -1,0 +1,42 @@
+original file
+-----------------------------------
+var $this = $(this);
+$this.addClass("hehe");
+-----------------------------------
+
+>var $this = $(this);
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+            ^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+               ^^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.language.this.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                    ^^^
+                    source.ts
+>$this.addClass("hehe");
+ ^^^^^^^^^^^^^^
+ source.ts
+               ^
+               source.ts meta.brace.round.ts
+                ^
+                source.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                 ^^^^
+                 source.ts string.quoted.double.ts
+                     ^
+                     source.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                      ^
+                      source.ts meta.brace.round.ts
+                       ^^
+                       source.ts

@@ -1,0 +1,34 @@
+original file
+-----------------------------------
+foo.namespace
+foo.any
+var number, string;
+number
+string
+-----------------------------------
+
+>foo.namespace
+ ^^^^^^^^^^^^^^^
+ source.ts
+>foo.any
+ ^^^^^^^^^
+ source.ts
+>var number, string;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+           ^^
+           source.ts meta.var.expr.ts
+             ^^^^^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                   ^^^
+                   source.ts
+>number
+ ^^^^^^^^
+ source.ts
+>string
+ ^^^^^^^
+ source.ts
