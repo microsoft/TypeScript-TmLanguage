@@ -499,18 +499,42 @@
 		</dict>
 		<key>class-or-interface-heritage-type</key>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
+			<key>patterns</key>
+			<array>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type.module.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.accessor.ts</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)</string>
 					<key>name</key>
-					<string>entity.other.inherited-class.ts</string>
+					<string>meta.object.heritage.parent.ts</string>
 				</dict>
-			</dict>
-			<key>match</key>
-			<string>(?:\b([_$[:alpha:]][_$[:alnum:]]*)\b)</string>
-			<key>name</key>
-			<string>meta.object.heritage.parent.ts</string>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.inherited-class.ts</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?:\b([_$[:alpha:]][_$[:alnum:]]*)\b)</string>
+					<key>name</key>
+					<string>meta.object.heritage.parent.ts</string>
+				</dict>
+			</array>
 		</dict>
 		<key>class-or-interface-name</key>
 		<dict>
@@ -1392,8 +1416,44 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#type-parameters</string>
+					<key>begin</key>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)(&lt;)(?=(([^&lt;&gt;]+)|(\&lt;[^&lt;&gt;]\&gt;))*&gt;\s*\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.typeparameters.begin.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.typeparameters.end.ts</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.type.parameters.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3658,15 +3718,10 @@
 		<key>type-parameters</key>
 		<dict>
 			<key>begin</key>
-			<string>([_$[:alpha:]][_$[:alnum:]]*)?(&lt;)</string>
+			<string>(&lt;)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.type.ts</string>
-				</dict>
-				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.definition.typeparameters.begin.ts</string>
