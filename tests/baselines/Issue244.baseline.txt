@@ -1,0 +1,138 @@
+original file
+-----------------------------------
+a.withLatestFrom(axis === 'x' ? initialX : initialY)
+ .map(x => undefined)
+ .switch()
+ .publish().refCount();
+
+const targetX = targetSideObs('x');
+const targetY = targetSideObs('y');
+-----------------------------------
+
+>a.withLatestFrom(axis === 'x' ? initialX : initialY)
+ ^^^^^^^^^^^^^^^^
+ source.ts
+                 ^
+                 source.ts meta.brace.round.ts
+                  ^^^^^
+                  source.ts
+                       ^^^
+                       source.ts keyword.operator.comparison.ts
+                          ^
+                          source.ts
+                           ^
+                           source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                            ^
+                            source.ts string.quoted.single.ts
+                             ^
+                             source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                              ^
+                              source.ts
+                               ^
+                               source.ts keyword.operator.ternary.ts
+                                ^^^^^^^^^^
+                                source.ts
+                                          ^
+                                          source.ts keyword.operator.ternary.ts
+                                           ^^^^^^^^^
+                                           source.ts
+                                                    ^
+                                                    source.ts meta.brace.round.ts
+                                                     ^^
+                                                     source.ts
+> .map(x => undefined)
+ ^^^^^
+ source.ts
+      ^
+      source.ts meta.brace.round.ts
+       ^
+       source.ts meta.arrow.ts variable.parameter.ts
+        ^
+        source.ts meta.arrow.ts
+         ^^
+         source.ts meta.arrow.ts storage.type.function.arrow.ts
+           ^
+           source.ts meta.arrow.ts
+            ^^^^^^^^^
+            source.ts constant.language.undefined.ts
+                     ^
+                     source.ts meta.brace.round.ts
+                      ^^
+                      source.ts
+> .switch()
+ ^^^^^^^^
+ source.ts
+         ^
+         source.ts meta.brace.round.ts
+          ^
+          source.ts meta.brace.round.ts
+           ^^
+           source.ts
+> .publish().refCount();
+ ^^^^^^^^^
+ source.ts
+          ^
+          source.ts meta.brace.round.ts
+           ^
+           source.ts meta.brace.round.ts
+            ^^^^^^^^^
+            source.ts
+                     ^
+                     source.ts meta.brace.round.ts
+                      ^
+                      source.ts meta.brace.round.ts
+                       ^^^
+                       source.ts
+>
+ ^^
+ source.ts
+>const targetX = targetSideObs('x');
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                ^^^^^^^^^^^^^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                                   ^^^
+                                   source.ts
+>const targetY = targetSideObs('y');
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                ^^^^^^^^^^^^^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                                   ^^
+                                   source.ts
