@@ -1,0 +1,238 @@
+original file
+-----------------------------------
+if (typeof oSettings.aanFeatures.f != 'undefined')
+{
+    var n = oSettings.aanFeatures.f;
+    for ( i=0, iLen=n.length ; i<iLen ; i++ )
+    {
+        $('input', n[i]).val( '' );
+    }
+}
+
+/* some comment
+ *
+ */
+for ( i=0, iLen=oSettings.aoPreSearchCols.length ; i<iLen ; i++)
+{
+    oSetttings.something = "";
+}
+
+/* redraw */
+-----------------------------------
+
+>if (typeof oSettings.aanFeatures.f != 'undefined')
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^^^^^^
+     source.ts keyword.operator.typeof.ts
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+           source.ts
+                                    ^^
+                                    source.ts keyword.operator.comparison.ts
+                                      ^
+                                      source.ts
+                                       ^
+                                       source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                        ^^^^^^^^^
+                                        source.ts string.quoted.single.ts
+                                                 ^
+                                                 source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                  ^
+                                                  source.ts meta.brace.round.ts
+                                                   ^^
+                                                   source.ts
+>{
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.block.ts
+>    var n = oSettings.aanFeatures.f;
+ ^^^^
+ source.ts meta.block.ts
+     ^^^
+     source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                    ^^^
+                                    source.ts meta.block.ts
+>    for ( i=0, iLen=n.length ; i<iLen ; i++ )
+ ^^^^
+ source.ts meta.block.ts
+     ^^^
+     source.ts meta.block.ts keyword.control.loop.ts
+        ^
+        source.ts meta.block.ts
+         ^
+         source.ts meta.block.ts meta.brace.round.ts
+          ^^
+          source.ts meta.block.ts
+            ^
+            source.ts meta.block.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.block.ts constant.numeric.decimal.ts
+              ^^^^^^
+              source.ts meta.block.ts
+                    ^
+                    source.ts meta.block.ts keyword.operator.assignment.ts
+                     ^^^^^^^^^^^^
+                     source.ts meta.block.ts
+                                 ^
+                                 source.ts meta.block.ts keyword.operator.relational.ts
+                                  ^^^^^^^^
+                                  source.ts meta.block.ts
+                                          ^^
+                                          source.ts meta.block.ts keyword.operator.increment.ts
+                                            ^
+                                            source.ts meta.block.ts
+                                             ^
+                                             source.ts meta.block.ts meta.brace.round.ts
+                                              ^^
+                                              source.ts meta.block.ts
+>    {
+ ^^^^
+ source.ts meta.block.ts
+     ^
+     source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.block.ts meta.block.ts
+>        $('input', n[i]).val( '' );
+ ^^^^^^^^^
+ source.ts meta.block.ts meta.block.ts
+          ^
+          source.ts meta.block.ts meta.block.ts meta.brace.round.ts
+           ^
+           source.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+            ^^^^^
+            source.ts meta.block.ts meta.block.ts string.quoted.single.ts
+                 ^
+                 source.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                  ^^^
+                  source.ts meta.block.ts meta.block.ts
+                     ^
+                     source.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                      ^
+                      source.ts meta.block.ts meta.block.ts meta.array.literal.ts
+                       ^
+                       source.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                         ^^^^
+                         source.ts meta.block.ts meta.block.ts
+                             ^
+                             source.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                              ^
+                              source.ts meta.block.ts meta.block.ts
+                               ^
+                               source.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                ^
+                                source.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                 ^
+                                 source.ts meta.block.ts meta.block.ts
+                                  ^
+                                  source.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                   ^^^
+                                   source.ts meta.block.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.block.ts meta.block.ts
+     ^
+     source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.block.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>/* some comment
+ ^^
+ source.ts comment.block.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^
+   source.ts comment.block.ts
+> *
+ ^^^^
+ source.ts comment.block.ts
+> */
+ ^
+ source.ts comment.block.ts
+  ^^
+  source.ts comment.block.ts punctuation.definition.comment.ts
+    ^^
+    source.ts
+>for ( i=0, iLen=oSettings.aoPreSearchCols.length ; i<iLen ; i++)
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^
+      source.ts
+        ^
+        source.ts keyword.operator.assignment.ts
+         ^
+         source.ts constant.numeric.decimal.ts
+          ^^^^^^
+          source.ts
+                ^
+                source.ts keyword.operator.assignment.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts
+                                                     ^
+                                                     source.ts keyword.operator.relational.ts
+                                                      ^^^^^^^^
+                                                      source.ts
+                                                              ^^
+                                                              source.ts keyword.operator.increment.ts
+                                                                ^
+                                                                source.ts meta.brace.round.ts
+                                                                 ^^
+                                                                 source.ts
+>{
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.block.ts
+>    oSetttings.something = "";
+ ^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.block.ts
+                          ^
+                          source.ts meta.block.ts keyword.operator.assignment.ts
+                           ^
+                           source.ts meta.block.ts
+                            ^
+                            source.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                             ^
+                             source.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                              ^^^
+                              source.ts meta.block.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>/* redraw */
+ ^^
+ source.ts comment.block.ts punctuation.definition.comment.ts
+   ^^^^^^^^
+   source.ts comment.block.ts
+           ^^
+           source.ts comment.block.ts punctuation.definition.comment.ts

@@ -27,7 +27,7 @@
 		<key>after-operator-block</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=[=(:,\[?+!]|^|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
+			<string>(?&lt;=[=(:,\[?+!]|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1417,7 +1417,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>([_$[:alpha:]][_$[:alnum:]]*)(&lt;)(?=(([^&lt;&gt;]+)|(\&lt;[^&lt;&gt;]\&gt;))*&gt;\s*\()</string>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;)(?=[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

@@ -1,0 +1,86 @@
+original file
+-----------------------------------
+for (var i=0; i<10; i++) {
+    var x = 1;
+    var p = "";
+}
+-----------------------------------
+
+>for (var i=0; i<10; i++) {
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^
+      source.ts meta.var.expr.ts storage.type.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+             ^^^
+             source.ts
+                ^
+                source.ts keyword.operator.relational.ts
+                 ^^
+                 source.ts constant.numeric.decimal.ts
+                   ^^^
+                   source.ts
+                      ^^
+                      source.ts keyword.operator.increment.ts
+                        ^
+                        source.ts meta.brace.round.ts
+                         ^
+                         source.ts
+                          ^
+                          source.ts meta.block.ts punctuation.definition.block.ts
+                           ^^
+                           source.ts meta.block.ts
+>    var x = 1;
+ ^^^^
+ source.ts meta.block.ts
+     ^^^
+     source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+              ^^^
+              source.ts meta.block.ts
+>    var p = "";
+ ^^^^
+ source.ts meta.block.ts
+     ^^^
+     source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+              ^
+              source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+               ^^^
+               source.ts meta.block.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
