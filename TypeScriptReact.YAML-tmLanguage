@@ -995,7 +995,7 @@ repository:
       captures:
         '1': { name: variable.parameter.tsx }
     - name: meta.arrow.tsx
-      begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=\(([^()]+|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#function-parameters'
