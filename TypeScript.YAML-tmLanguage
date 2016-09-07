@@ -11,7 +11,6 @@ patterns:
 repository:
   statements:
     patterns:
-    - include: '#for-in-simple'
     - include: '#string'
     - include: '#regex'
     - include: '#template'
@@ -32,7 +31,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.ts }
-    end: (?=$|;|})
+    end: (?=$|;|}|(\s+(of|in)\s+))
     patterns:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
@@ -43,11 +42,11 @@ repository:
     begin: ([_$[:alpha:]][_$[:alnum:]]*)
     beginCaptures:
       '1': { name: variable.other.readwrite.ts }
-    end: (?=$|[;,}])
+    end: (?=$|[;,}]|(\s+(of|in)\s+))
     patterns:
     - include: '#variable-initializer'
     - begin: \G
-      end: (?!\G)(?=$|[;,=}])
+      end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#type-annotation'
       - include: '#string'
@@ -56,14 +55,14 @@ repository:
   destructuring-variable:
     patterns:
     - name: meta.object-binding-pattern-variable.ts
-      begin: (?<!=|:)\s*(\{)
+      begin: (?<!=|:|of|in)\s*(\{)
       beginCaptures:
         '1': { name: punctuation.definition.binding-pattern.object.ts }
-      end: (?=$|[;,}])
+      end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
       - begin: \G
-        end: (?!\G)(?=$|[;,=}])
+        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
         - begin: \G
           end: \}
@@ -74,14 +73,14 @@ repository:
         - include: '#type-annotation'
         - include: '#comment'
     - name: meta.array-binding-pattern-variable.ts
-      begin: (?<!=|:)\s*(\[)
+      begin: (?<!=|:|of|in)\s*(\[)
       beginCaptures:
         '1': { name: punctuation.definition.binding-pattern.array.ts }
-      end: (?=$|[;,}])
+      end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
       - begin: \G
-        end: (?!\G)(?=$|[;,=}])
+        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
         - begin: \G
           end: \]
@@ -259,7 +258,7 @@ repository:
     - include: '#comment'
     - include: '#string'
     - name: entity.name.type.module.ts
-      match: \b([_$[:alpha:]][_$[:alnum:]]*)\b
+      match: ([_$[:alpha:]][_$[:alnum:]]*)
     - name: punctuation.accessor.ts
       match: \.      
 
@@ -880,15 +879,6 @@ repository:
     patterns:
     - include: '#switch-expression'
     - include: '#switch-block'
-
-  for-in-simple:
-    name: forin.expr.ts
-    match: (?<=\()\s*\b(var|let|const)\s+([_$[:alpha:]][_$[:alnum:]]*)\s+(?:(in)|(of))\b(?!\$)
-    captures:
-      '1': { name: storage.type.ts }
-      '2': { name: variable.other.readwrite.ts }
-      '3': { name: keyword.operator.in.ts }
-      '4': { name: keyword.operator.of.ts }
 
   function-call:
     name: functioncall.expr.ts

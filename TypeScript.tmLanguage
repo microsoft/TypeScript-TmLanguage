@@ -878,7 +878,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;!=|:)\s*(\{)</string>
+					<string>(?&lt;!=|:|of|in)\s*(\{)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -888,7 +888,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=$|[;,}])</string>
+					<string>(?=$|[;,}]|(\s+(of|in)\s+))</string>
 					<key>name</key>
 					<string>meta.object-binding-pattern-variable.ts</string>
 					<key>patterns</key>
@@ -901,7 +901,7 @@
 							<key>begin</key>
 							<string>\G</string>
 							<key>end</key>
-							<string>(?!\G)(?=$|[;,=}])</string>
+							<string>(?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -939,7 +939,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;!=|:)\s*(\[)</string>
+					<string>(?&lt;!=|:|of|in)\s*(\[)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -949,7 +949,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=$|[;,}])</string>
+					<string>(?=$|[;,}]|(\s+(of|in)\s+))</string>
 					<key>name</key>
 					<string>meta.array-binding-pattern-variable.ts</string>
 					<key>patterns</key>
@@ -962,7 +962,7 @@
 							<key>begin</key>
 							<string>\G</string>
 							<key>end</key>
-							<string>(?!\G)(?=$|[;,=}])</string>
+							<string>(?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1339,36 +1339,6 @@
 					</array>
 				</dict>
 			</array>
-		</dict>
-		<key>for-in-simple</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.ts</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>variable.other.readwrite.ts</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.in.ts</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.of.ts</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(?&lt;=\()\s*\b(var|let|const)\s+([_$[:alpha:]][_$[:alnum:]]*)\s+(?:(in)|(of))\b(?!\$)</string>
-			<key>name</key>
-			<string>forin.expr.ts</string>
 		</dict>
 		<key>for-loop</key>
 		<dict>
@@ -2186,7 +2156,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b([_$[:alpha:]][_$[:alnum:]]*)\b</string>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)</string>
 					<key>name</key>
 					<string>entity.name.type.module.ts</string>
 				</dict>
@@ -3140,10 +3110,6 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#for-in-simple</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#string</string>
 				</dict>
 				<dict>
@@ -3870,7 +3836,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|;|})</string>
+			<string>(?=$|;|}|(\s+(of|in)\s+))</string>
 			<key>name</key>
 			<string>meta.var.expr.ts</string>
 			<key>patterns</key>
@@ -3902,7 +3868,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|[;,}])</string>
+			<string>(?=$|[;,}]|(\s+(of|in)\s+))</string>
 			<key>name</key>
 			<string>meta.var-single-variable.expr.ts</string>
 			<key>patterns</key>
@@ -3915,7 +3881,7 @@
 					<key>begin</key>
 					<string>\G</string>
 					<key>end</key>
-					<string>(?!\G)(?=$|[;,=}])</string>
+					<string>(?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))</string>
 					<key>patterns</key>
 					<array>
 						<dict>

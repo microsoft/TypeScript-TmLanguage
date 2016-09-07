@@ -15,7 +15,6 @@ repository:
   statements:
     patterns:
     - include: '#jsx'
-    - include: '#for-in-simple'
     - include: '#string'
     - include: '#regex'
     - include: '#template'
@@ -36,7 +35,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.type.tsx }
-    end: (?=$|;|})
+    end: (?=$|;|}|(\s+(of|in)\s+))
     patterns:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
@@ -47,11 +46,11 @@ repository:
     begin: ([_$[:alpha:]][_$[:alnum:]]*)
     beginCaptures:
       '1': { name: variable.other.readwrite.tsx }
-    end: (?=$|[;,}])
+    end: (?=$|[;,}]|(\s+(of|in)\s+))
     patterns:
     - include: '#variable-initializer'
     - begin: \G
-      end: (?!\G)(?=$|[;,=}])
+      end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#type-annotation'
       - include: '#string'
@@ -60,14 +59,14 @@ repository:
   destructuring-variable:
     patterns:
     - name: meta.object-binding-pattern-variable.tsx
-      begin: (?<!=|:)\s*(\{)
+      begin: (?<!=|:|of|in)\s*(\{)
       beginCaptures:
         '1': { name: punctuation.definition.binding-pattern.object.tsx }
-      end: (?=$|[;,}])
+      end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
       - begin: \G
-        end: (?!\G)(?=$|[;,=}])
+        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
         - begin: \G
           end: \}
@@ -78,14 +77,14 @@ repository:
         - include: '#type-annotation'
         - include: '#comment'
     - name: meta.array-binding-pattern-variable.tsx
-      begin: (?<!=|:)\s*(\[)
+      begin: (?<!=|:|of|in)\s*(\[)
       beginCaptures:
         '1': { name: punctuation.definition.binding-pattern.array.tsx }
-      end: (?=$|[;,}])
+      end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
       - begin: \G
-        end: (?!\G)(?=$|[;,=}])
+        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
         - begin: \G
           end: \]
@@ -884,16 +883,6 @@ repository:
     patterns:
     - include: '#switch-expression'
     - include: '#switch-block'
-
-
-  for-in-simple:
-    name: forin.expr.tsx
-    match: (?<=\()\s*\b(var|let|const)\s+([_$[:alpha:]][_$[:alnum:]]*)\s+(?:(in)|(of))\b(?!\$)
-    captures:
-      '1': { name: storage.type.tsx }
-      '2': { name: variable.other.readwrite.tsx }
-      '3': { name: keyword.operator.in.tsx }
-      '4': { name: keyword.operator.of.tsx }
 
   function-call:
     name: functioncall.expr.tsx
