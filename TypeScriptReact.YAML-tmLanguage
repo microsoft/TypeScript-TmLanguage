@@ -693,6 +693,7 @@ repository:
     begin: '(?<=\))\s*:'
     end: (?<!:)((?=$)|(?=\{|;|//))
     patterns:
+    - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
     - name: meta.object.type.tsx
       begin: (?<=:)\s*(\{)
@@ -710,13 +711,14 @@ repository:
     begin: ":"
     end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)
     patterns:
+    - include: '#comment'
     - include: '#expression-operator'
     - include: '#type'
-    - include: '#comment'
 
   type:
     name: meta.type.tsx
     patterns:
+    - include: '#comment'
     - include: '#string'
     - include: '#type-primitive'
     - include: '#type-parameters'
@@ -761,7 +763,6 @@ repository:
     endCaptures:
       '0': { name: meta.brace.round.tsx }
     patterns:
-    - include: '#comment'
     - include: '#type'
     - include: '#function-parameters'
 
@@ -776,6 +777,7 @@ repository:
       '0': { name: storage.type.function.arrow.tsx }
     end: (?<!=>)(?=[,\]\)\{\}=;>]|//|$)
     patterns:
+    - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
     - name: meta.object.type.tsx
       begin: (?<==>)\s*(\{)
@@ -798,7 +800,6 @@ repository:
       '0': { name: meta.brace.square.tsx }
     patterns:
     - include: '#type'
-    - include: '#comment'
 
   type-name:
     patterns:
@@ -818,9 +819,9 @@ repository:
     endCaptures:
       '1': { name: punctuation.definition.typeparameters.end.tsx }
     patterns:
+    - include: '#comment'
     - name: storage.modifier.tsx
       match: '(?<!\.|\$)\b(extends)\b(?!\$)'
-    - include: '#comment'
     - include: '#type'
 
   variable-initializer:
@@ -900,7 +901,6 @@ repository:
       endCaptures:
         '1': { name: punctuation.definition.typeparameters.end.tsx }
       patterns:
-      - include: '#comment'
       - include: '#type'
     #TODO: Scope function names and method names
     #TODO: Scope function call arguments better?
@@ -915,7 +915,6 @@ repository:
     end: '(?=[(;),]|$)'
     patterns:
     - include: '#type'
-    - include: '#comment'
 
   object-member:
     patterns:
@@ -987,6 +986,7 @@ repository:
       begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
+      - include: '#comment'
       - include: '#function-parameters'
       # return type of the arrow
       - include: '#arrow-return-type'

@@ -1,0 +1,128 @@
+original file
+-----------------------------------
+class Foo() {
+  get something(): any/*Something*/ {
+    throw new Error('Error...');
+  }
+
+  foo() {
+    'string';
+  }
+}
+-----------------------------------
+
+>class Foo() {
+ ^^^^^
+ source.ts meta.declaration.object.ts storage.type.class.ts
+      ^
+      source.ts meta.declaration.object.ts
+       ^^^
+       source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts
+          ^^^
+          source.ts meta.declaration.object.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+              ^^
+              source.ts meta.declaration.object.ts meta.object.body.ts
+>  get something(): any/*Something*/ {
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+   ^^^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts storage.type.property.ts
+      ^
+      source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts
+       ^^^^^^^^^
+       source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts entity.name.function.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                  ^
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.return.type.ts
+                   ^
+                   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.return.type.ts
+                    ^^^
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                       ^^
+                       source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.return.type.ts comment.block.ts punctuation.definition.comment.ts
+                         ^^^^^^^^^
+                         source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.return.type.ts comment.block.ts
+                                  ^^
+                                  source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.return.type.ts comment.block.ts punctuation.definition.comment.ts
+                                    ^
+                                    source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.return.type.ts
+                                     ^
+                                     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                      ^^
+                                      source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+>    throw new Error('Error...');
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+     ^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts keyword.control.trycatch.ts
+          ^
+          source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+           ^^^
+           source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts new.expr.ts
+               ^^^^^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts new.expr.ts entity.name.type.ts
+                    ^
+                    source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                     ^
+                     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                      ^^^^^^^^
+                      source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts
+                              ^
+                              source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                               ^
+                               source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                ^^^
+                                source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+   ^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.declaration.object.ts meta.object.body.ts
+>
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+>  foo() {
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+   ^^^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts entity.name.function.ts
+      ^
+      source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+       ^
+       source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+        ^
+        source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts
+         ^
+         source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+>    'string';
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+      ^^^^^^
+      source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts
+            ^
+            source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+             ^^^
+             source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts
+   ^
+   source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.declaration.object.ts meta.object.body.ts
+>}
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
