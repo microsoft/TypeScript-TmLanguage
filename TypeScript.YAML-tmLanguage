@@ -465,10 +465,11 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?<!\()\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
+    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
     beginCaptures:
-      '1': { name: variable.object.property.ts }
-      '2': { name: keyword.operator.optional.ts }
+      '1': { name: storage.modifier.ts }
+      '2': { name: variable.object.property.ts }
+      '3': { name: keyword.operator.optional.ts }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#variable-initializer'
@@ -529,9 +530,10 @@ repository:
     
   indexer-declaration:
     name: meta.indexer.declaration.ts
-    begin: \[
+    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)
     beginCaptures:
-      '0': { name: meta.brace.square.ts }
+      '1': { name: storage.modifier.ts }
+      '2': { name: meta.brace.square.ts }
     end: (\])\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.ts }
@@ -1284,7 +1286,7 @@ repository:
 
   access-modifier:
     name: storage.modifier.ts
-    match: (?<!\.|\$)\b(public|protected|private)\b(?!\$)
+    match: (?<!\.|\$)\b(public|protected|private|readonly)\b(?!\$)
 
   static-modifier:
     name: storage.modifier.ts

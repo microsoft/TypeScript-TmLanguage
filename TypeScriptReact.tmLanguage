@@ -20,7 +20,7 @@
 		<key>access-modifier</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\.|\$)\b(public|protected|private)\b(?!\$)</string>
+			<string>(?&lt;!\.|\$)\b(public|protected|private|readonly)\b(?!\$)</string>
 			<key>name</key>
 			<string>storage.modifier.tsx</string>
 		</dict>
@@ -1265,15 +1265,20 @@
 		<key>field-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!\()\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))</string>
+			<string>(?&lt;!\()(?:(?&lt;!\.|\$)\b(readonly)\s+)?\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>variable.object.property.tsx</string>
+					<string>storage.modifier.tsx</string>
 				</dict>
 				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.object.property.tsx</string>
+				</dict>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.optional.tsx</string>
@@ -1842,10 +1847,15 @@
 		<key>indexer-declaration</key>
 		<dict>
 			<key>begin</key>
-			<string>\[</string>
+			<string>(?:(?&lt;!\.|\$)\b(readonly)\s*)?(\[)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.modifier.tsx</string>
+				</dict>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>meta.brace.square.tsx</string>

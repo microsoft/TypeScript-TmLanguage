@@ -1,0 +1,218 @@
+original file
+-----------------------------------
+interface X {
+    readonly a: number;
+    readonly b?: number;
+}
+
+class C {
+    readonly a: number;
+    readonly b = 1;
+}
+
+var p: { readonly a: number, b: number }
+let xx: { readonly [x: string]: string };
+-----------------------------------
+
+>interface X {
+ ^^^^^^^^^
+ source.ts meta.declaration.object.ts storage.type.interface.ts
+          ^
+          source.ts meta.declaration.object.ts
+           ^
+           source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts
+            ^
+            source.ts meta.declaration.object.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+              ^^
+              source.ts meta.declaration.object.ts meta.object.body.ts
+>    readonly a: number;
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+     ^^^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^^^
+                       source.ts meta.declaration.object.ts meta.object.body.ts
+>    readonly b?: number;
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+     ^^^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.optional.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^^^
+                        source.ts meta.declaration.object.ts meta.object.body.ts
+>}
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>class C {
+ ^^^^^
+ source.ts meta.declaration.object.ts storage.type.class.ts
+      ^
+      source.ts meta.declaration.object.ts
+       ^
+       source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts
+        ^
+        source.ts meta.declaration.object.ts
+         ^
+         source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.declaration.object.ts meta.object.body.ts
+>    readonly a: number;
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+     ^^^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^^^
+                       source.ts meta.declaration.object.ts meta.object.body.ts
+>    readonly b = 1;
+ ^^^^
+ source.ts meta.declaration.object.ts meta.object.body.ts
+     ^^^^^^^^
+     source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+              ^
+              source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                ^
+                source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts
+                  ^
+                  source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                   ^^^
+                   source.ts meta.declaration.object.ts meta.object.body.ts
+>}
+ ^
+ source.ts meta.declaration.object.ts meta.object.body.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>var p: { readonly a: number, b: number }
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts
+          ^^^^^^^^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts storage.modifier.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                      ^^^^^^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                 ^^^^^^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+>let xx: { readonly [x: string]: string };
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts
+           ^^^^^^^^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts storage.modifier.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.indexer.parameter.ts variable.parameter.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts
+                        ^^^^^^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts
+                                 ^^^^^^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                         ^^
+                                         source.ts

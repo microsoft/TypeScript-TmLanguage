@@ -469,10 +469,11 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.tsx
-    begin: (?<!\()\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
+    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
     beginCaptures:
-      '1': { name: variable.object.property.tsx }
-      '2': { name: keyword.operator.optional.tsx }
+      '1': { name: storage.modifier.tsx }
+      '2': { name: variable.object.property.tsx }
+      '3': { name: keyword.operator.optional.tsx }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#variable-initializer'
@@ -533,9 +534,10 @@ repository:
     
   indexer-declaration:
     name: meta.indexer.declaration.tsx
-    begin: \[
+    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)
     beginCaptures:
-      '0': { name: meta.brace.square.tsx }
+      '1': { name: storage.modifier.tsx }
+      '2': { name: meta.brace.square.tsx }
     end: (\])\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.tsx }
@@ -1273,7 +1275,7 @@ repository:
 
   access-modifier:
     name: storage.modifier.tsx
-    match: (?<!\.|\$)\b(public|protected|private)\b(?!\$)
+    match: (?<!\.|\$)\b(public|protected|private|readonly)\b(?!\$)
 
   static-modifier:
     name: storage.modifier.tsx
