@@ -582,7 +582,15 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?!\G)</string>
+					<string>\n</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>comment.line.double-slash.tsx</string>
+						</dict>
+					</dict>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -597,7 +605,7 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>\n</string>
+							<string>(?=\n)</string>
 							<key>name</key>
 							<string>comment.line.double-slash.tsx</string>
 						</dict>
@@ -2171,7 +2179,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\G</string>
+					<string>\G(?![/]?&gt;)</string>
 					<key>end</key>
 					<string>(?=[/]?&gt;)</string>
 					<key>patterns</key>
@@ -2440,7 +2448,7 @@
 		<key>method-declaration-name</key>
 		<dict>
 			<key>begin</key>
-			<string>\G</string>
+			<string>\G(?!\(|\&lt;)</string>
 			<key>end</key>
 			<string>(?=\(|\&lt;)</string>
 			<key>patterns</key>

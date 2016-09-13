@@ -511,7 +511,7 @@ repository:
     - include: '#method-declaration-name'
 
   method-declaration-name:
-    begin: \G
+    begin: \G(?!\(|\<)
     end: (?=\(|\<)
     patterns:
     - match: (\*)\s*
@@ -1200,13 +1200,15 @@ repository:
     - begin: (^[ \t]+)?(?=//)
       beginCaptures:
         '1': {name: punctuation.whitespace.comment.leading.ts}
-      end: (?!\G)
+      end: \n
+      endCaptures:
+        '0': { name: comment.line.double-slash.ts }
       patterns:
       - name: comment.line.double-slash.ts
         begin: //
         beginCaptures:
           '0': {name: punctuation.definition.comment.ts}
-        end: \n
+        end: (?=\n)
 
   docblock:
     patterns:

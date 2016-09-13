@@ -515,7 +515,7 @@ repository:
     - include: '#method-declaration-name'
 
   method-declaration-name:
-    begin: \G
+    begin: \G(?!\(|\<)
     end: (?=\(|\<)
     patterns:
     - match: (\*)\s*
@@ -1189,13 +1189,15 @@ repository:
     - begin: (^[ \t]+)?(?=//)
       beginCaptures:
         '1': {name: punctuation.whitespace.comment.leading.tsx}
-      end: (?!\G)
+      end: \n
+      endCaptures:
+        '0': { name: comment.line.double-slash.tsx }
       patterns:
       - name: comment.line.double-slash.tsx
         begin: //
         beginCaptures:
           '0': {name: punctuation.definition.comment.tsx}
-        end: \n
+        end: (?=\n)
 
   docblock:
     patterns:
@@ -1415,7 +1417,7 @@ repository:
       '3': { name: entity.name.tag.tsx }
       '4': { name: punctuation.definition.tag.end.tsx }
     patterns:
-    - begin: \G
+    - begin: \G(?![/]?>)
       end: (?=[/]?>)
       patterns:
       - include: '#comment'
