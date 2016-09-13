@@ -954,8 +954,12 @@ repository:
     - include: '#typeof-operator'
     - name: keyword.operator.void.tsx
       match: (?<!\.|\$)\bvoid\b(?!\$)
-    - name: keyword.control.as.tsx
-      match: (?<!\.|\$)\bas\b(?!\$)
+    - begin: (?<!\.|\$)\bas\b(?!\$)
+      beginCaptures:
+        '0': { name: keyword.control.as.tsx }
+      end: (?=$|[;,})\]])
+      patterns:
+      - include: '#type'
 
   typeof-operator:
     name: keyword.operator.typeof.tsx

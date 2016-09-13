@@ -1251,10 +1251,25 @@
 					<string>keyword.operator.void.tsx</string>
 				</dict>
 				<dict>
-					<key>match</key>
+					<key>begin</key>
 					<string>(?&lt;!\.|\$)\bas\b(?!\$)</string>
-					<key>name</key>
-					<string>keyword.control.as.tsx</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.as.tsx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=$|[;,})\]])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#type</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>

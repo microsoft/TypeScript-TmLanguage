@@ -965,8 +965,12 @@ repository:
     - include: '#typeof-operator'
     - name: keyword.operator.void.ts
       match: (?<!\.|\$)\bvoid\b(?!\$)
-    - name: keyword.control.as.ts
-      match: (?<!\.|\$)\bas\b(?!\$)
+    - begin: (?<!\.|\$)\bas\b(?!\$)
+      beginCaptures:
+        '0': { name: keyword.control.as.ts }
+      end: (?=$|[;,})\]])
+      patterns:
+      - include: '#type'
 
   typeof-operator:
     name: keyword.operator.typeof.ts

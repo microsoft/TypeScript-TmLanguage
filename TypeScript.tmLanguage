@@ -1283,10 +1283,25 @@
 					<string>keyword.operator.void.ts</string>
 				</dict>
 				<dict>
-					<key>match</key>
+					<key>begin</key>
 					<string>(?&lt;!\.|\$)\bas\b(?!\$)</string>
-					<key>name</key>
-					<string>keyword.control.as.ts</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.as.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=$|[;,})\]])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#type</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
