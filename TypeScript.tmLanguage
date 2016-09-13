@@ -3446,6 +3446,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-builtin-literals</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-parameters</string>
 				</dict>
 				<dict>
@@ -3497,6 +3501,13 @@
 					<string>#type</string>
 				</dict>
 			</array>
+		</dict>
+		<key>type-builtin-literals</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\.|\$)\b(this|true|false|undefined|null)\b(?!\$)</string>
+			<key>name</key>
+			<string>support.type.builtin.ts</string>
 		</dict>
 		<key>type-declaration</key>
 		<dict>

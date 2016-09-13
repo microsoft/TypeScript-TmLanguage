@@ -719,6 +719,7 @@ repository:
     - include: '#comment'
     - include: '#string'
     - include: '#type-primitive'
+    - include: '#type-builtin-literals'
     - include: '#type-parameters'
     - include: '#type-tuple'
     - include: '#type-object'
@@ -746,6 +747,10 @@ repository:
   type-primitive:
     name: support.type.primitive.ts
     match: '(?<!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$)'
+
+  type-builtin-literals:
+    name: support.type.builtin.ts
+    match: '(?<!\.|\$)\b(this|true|false|undefined|null)\b(?!\$)'
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
