@@ -913,7 +913,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.operator.new.tsx }
     # new-expr ends just before any type or call arguments. Type arguments will be picked up by #cast.
-    end: '(?=[(;),]|$)'
+    end: '(?=[(;),]|$|((?<!\.|\$)\bnew\b(?!\$)))'
     patterns:
     - include: '#type'
 
