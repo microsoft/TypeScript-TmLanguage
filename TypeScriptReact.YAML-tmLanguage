@@ -706,7 +706,12 @@ repository:
         '0': { name: punctuation.definition.block.tsx }
       patterns:
       - include: '#type-object-members'
+    - include: '#type-predicate-operator'
     - include: '#type'
+
+  type-predicate-operator:
+    name: keyword.operator.is.tsx
+    match: (?<!\.|\$)\bis\b(?!\$)
 
   type-annotation:
     name: meta.type.annotation.tsx
@@ -714,7 +719,6 @@ repository:
     end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)
     patterns:
     - include: '#comment'
-    - include: '#expression-operator'
     - include: '#type'
 
   type:
@@ -724,6 +728,7 @@ repository:
     - include: '#string'
     - include: '#type-primitive'
     - include: '#type-builtin-literals'
+    - include: '#typeof-operator'
     - include: '#type-parameters'
     - include: '#type-tuple'
     - include: '#type-object'
@@ -795,6 +800,7 @@ repository:
         '0': { name: punctuation.definition.block.tsx }
       patterns:
       - include: '#type-object-members'
+    - include: '#type-predicate-operator'
     - include: '#type'
 
   type-tuple:
@@ -945,14 +951,15 @@ repository:
       match: (?<!\.|\$)\binstanceof\b(?!\$)
     - name: keyword.operator.new.tsx
       match: (?<!\.|\$)\bnew\b(?!\$)
-    - name: keyword.operator.typeof.tsx
-      match: (?<!\.|\$)\btypeof\b(?!\$)
+    - include: '#typeof-operator'
     - name: keyword.operator.void.tsx
       match: (?<!\.|\$)\bvoid\b(?!\$)
     - name: keyword.control.as.tsx
       match: (?<!\.|\$)\bas\b(?!\$)
-    - name: keyword.operator.is.tsx
-      match: (?<!\.|\$)\bis\b(?!\$)
+
+  typeof-operator:
+    name: keyword.operator.typeof.tsx
+    match: (?<!\.|\$)\btypeof\b(?!\$)
 
   operators:
     patterns:
@@ -1013,6 +1020,7 @@ repository:
     end: (?<!:)((?=$)|(?==>|;|//))
     patterns:
     # TODO: handle the fn and constructor type specifically.
+    - include: '#type-predicate-operator'
     - include: '#type'
 
   paren-expression:

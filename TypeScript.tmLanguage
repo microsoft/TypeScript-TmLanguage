@@ -244,6 +244,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#type-predicate-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type</string>
 				</dict>
 			</array>
@@ -1269,10 +1273,8 @@
 					<string>keyword.operator.new.ts</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.|\$)\btypeof\b(?!\$)</string>
-					<key>name</key>
-					<string>keyword.operator.typeof.ts</string>
+					<key>include</key>
+					<string>#typeof-operator</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -1285,12 +1287,6 @@
 					<string>(?&lt;!\.|\$)\bas\b(?!\$)</string>
 					<key>name</key>
 					<string>keyword.control.as.ts</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?&lt;!\.|\$)\bis\b(?!\$)</string>
-					<key>name</key>
-					<string>keyword.operator.is.ts</string>
 				</dict>
 			</array>
 		</dict>
@@ -3110,6 +3106,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-predicate-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type</string>
 				</dict>
 			</array>
@@ -3450,6 +3450,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#typeof-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-parameters</string>
 				</dict>
 				<dict>
@@ -3491,10 +3495,6 @@
 				<dict>
 					<key>include</key>
 					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression-operator</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3609,6 +3609,10 @@
 							<string>#type-object-members</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-predicate-operator</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3793,6 +3797,13 @@
 				</dict>
 			</array>
 		</dict>
+		<key>type-predicate-operator</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\.|\$)\bis\b(?!\$)</string>
+			<key>name</key>
+			<string>keyword.operator.is.ts</string>
+		</dict>
 		<key>type-primitive</key>
 		<dict>
 			<key>match</key>
@@ -3831,6 +3842,13 @@
 					<string>#type</string>
 				</dict>
 			</array>
+		</dict>
+		<key>typeof-operator</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\.|\$)\btypeof\b(?!\$)</string>
+			<key>name</key>
+			<string>keyword.operator.typeof.ts</string>
 		</dict>
 		<key>undefined-literal</key>
 		<dict>
