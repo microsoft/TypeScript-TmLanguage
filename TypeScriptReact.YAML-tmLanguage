@@ -938,8 +938,7 @@ repository:
       begin: (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
         (async\s+)|(function\s+)|
         ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
-        (\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)|
-        (<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>))))
+        ((<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>))))
       beginCaptures:
         '0': { name: meta.object-literal.key.tsx }
         '1': { name: entity.name.function.tsx }
@@ -1012,21 +1011,22 @@ repository:
 
   arrow-function:
     patterns:
-    # TODO: type parameter of arrow
-    - name: meta.arrow.tsx
+    - name: meta.arrow.ts
       match: (?<!\.|\$)(\basync)(?=\s*[<(])
       captures:
         '1': { name: storage.modifier.async.tsx }
     # paramters of the arrow
     - name: meta.arrow.tsx
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
+      match: (?:(?<!\.|\$)(\basync)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
       captures:
-        '1': { name: variable.parameter.tsx }
+        '1': { name: storage.modifier.async.tsx }
+        '2': { name: variable.parameter.tsx }
     - name: meta.arrow.tsx
-      begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=(<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#comment'
+      - include: '#type-parameters'
       - include: '#function-parameters'
       # return type of the arrow
       - include: '#arrow-return-type'

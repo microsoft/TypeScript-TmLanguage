@@ -172,17 +172,22 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
+							<string>storage.modifier.async.ts</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
 							<string>variable.parameter.ts</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
+					<string>(?:(?&lt;!\.|\$)(\basync)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
 					<key>name</key>
 					<string>meta.arrow.ts</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(\[,:&gt;*])\s*(?=\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
+					<string>(?x)(?&lt;=return|throw|yield|await|async|[=(\[,:&gt;*])\s*(?=(&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
 					<key>end</key>
 					<string>(?==&gt;)</string>
 					<key>name</key>
@@ -192,6 +197,10 @@
 						<dict>
 							<key>include</key>
 							<string>#comment</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type-parameters</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -1185,11 +1194,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#cast</string>
+					<string>#arrow-function</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#arrow-function</string>
+					<string>#cast</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2473,7 +2482,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*( (async\s+)|(function\s+)| ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)| (\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;)| (&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
+					<string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*( (async\s+)|(function\s+)| ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)| ((&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>

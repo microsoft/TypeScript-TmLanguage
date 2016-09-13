@@ -166,8 +166,8 @@ repository:
     - include: '#literal'
     - include: '#function-declaration'
     - include: '#class-or-interface-declaration'
-    - include: '#cast'
     - include: '#arrow-function'
+    - include: '#cast'
     - include: '#paren-expression'
     - include: '#ternary-expression'
     - include: '#new-expr'
@@ -949,8 +949,7 @@ repository:
       begin: (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
         (async\s+)|(function\s+)|
         ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
-        (\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)|
-        (<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>))))
+        ((<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>))))
       beginCaptures:
         '0': { name: meta.object-literal.key.ts }
         '1': { name: entity.name.function.ts }
@@ -1023,21 +1022,22 @@ repository:
 
   arrow-function:
     patterns:
-    # TODO: type parameter of arrow
     - name: meta.arrow.ts
       match: (?<!\.|\$)(\basync)(?=\s*[<(])
       captures:
         '1': { name: storage.modifier.async.ts }
     # paramters of the arrow
     - name: meta.arrow.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
+      match: (?:(?<!\.|\$)(\basync)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
       captures:
-        '1': { name: variable.parameter.ts }
+        '1': { name: storage.modifier.async.ts }
+        '2': { name: variable.parameter.ts }
     - name: meta.arrow.ts
-      begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=(<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#comment'
+      - include: '#type-parameters'
       - include: '#function-parameters'
       # return type of the arrow
       - include: '#arrow-return-type'
