@@ -2817,7 +2817,67 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>[_$[:alpha:]][_$[:alnum:]]*\s*:</string>
+					<string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)</string>
+					<key>end</key>
+					<string>(?=,|\})</string>
+					<key>name</key>
+					<string>meta.object.member.tsx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\G(?&lt;!:)</string>
+							<key>end</key>
+							<string>:</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.separator.key-value.tsx</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.object-literal.key.tsx</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#string</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#array-literal</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*( (async\s+)|(function\s+)| ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)| (\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;)| (&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.object-literal.key.tsx</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.tsx</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.key-value.tsx</string>
+						</dict>
+					</dict>
 					<key>end</key>
 					<string>(?=,|\})</string>
 					<key>name</key>
@@ -2829,6 +2889,53 @@
 							<string>#expression</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(:)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.object-literal.key.tsx</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type.attribute-name.tsx</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.key-value.tsx</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=,|\})</string>
+					<key>name</key>
+					<string>meta.object.member.tsx</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.tsx</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\})</string>
+					<key>name</key>
+					<string>meta.object.member.tsx</string>
 				</dict>
 			</array>
 		</dict>
