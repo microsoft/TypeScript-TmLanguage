@@ -348,8 +348,6 @@
 					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>meta.object.body.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -436,7 +434,7 @@
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>meta.declaration.object.ts</string>
+			<string>meta.class.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -448,8 +446,16 @@
 					<string>#class-or-interface-heritage</string>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#class-or-interface-name</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.class.ts</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>[_$[:alpha:]][_$[:alnum:]]*</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -483,8 +489,6 @@
 					<string>punctuation.definition.block.ts</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>meta.object.heritage.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -499,16 +503,6 @@
 					<key>include</key>
 					<string>#type-parameters</string>
 				</dict>
-				<dict>
-					<key>include</key>
-					<string>#class-or-interface-heritage-type</string>
-				</dict>
-			</array>
-		</dict>
-		<key>class-or-interface-heritage-type</key>
-		<dict>
-			<key>patterns</key>
-			<array>
 				<dict>
 					<key>captures</key>
 					<dict>
@@ -525,8 +519,6 @@
 					</dict>
 					<key>match</key>
 					<string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)</string>
-					<key>name</key>
-					<string>meta.object.heritage.parent.ts</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -539,25 +531,8 @@
 					</dict>
 					<key>match</key>
 					<string>([_$[:alpha:]][_$[:alnum:]]*)</string>
-					<key>name</key>
-					<string>meta.object.heritage.parent.ts</string>
 				</dict>
 			</array>
-		</dict>
-		<key>class-or-interface-name</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.class.ts</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>[_$[:alpha:]][_$[:alnum:]]*</string>
-			<key>name</key>
-			<string>meta.object.name.ts</string>
 		</dict>
 		<key>comment</key>
 		<dict>

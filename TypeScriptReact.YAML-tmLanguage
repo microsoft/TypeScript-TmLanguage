@@ -378,7 +378,7 @@ repository:
       match: ([_$[:alpha:]][_$[:alnum:]]*)
 
   class-or-interface-declaration:
-    name: meta.declaration.object.tsx
+    name: meta.class.tsx
     begin: '(?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b'
     beginCaptures:
       '1': { name: keyword.control.export.tsx }
@@ -391,18 +391,13 @@ repository:
     patterns:
     - include: '#comment'
     - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
-    - include: '#class-or-interface-name'
+    - match: '[_$[:alpha:]][_$[:alnum:]]*'
+      captures:
+        '0': { name: 'entity.name.class.tsx' }
     - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
     - include: '#class-or-interface-body'
 
-  class-or-interface-name:
-    name: meta.object.name.tsx
-    match: '[_$[:alpha:]][_$[:alnum:]]*'
-    captures:
-      '0': { name: 'entity.name.class.tsx' }
-
   class-or-interface-heritage:
-    name: meta.object.heritage.tsx
     begin: '(?<!\.|\$)(?:\b(extends|implements)\b)(?!\$)'
     beginCaptures:
       '1': { name: storage.modifier.tsx }
@@ -413,22 +408,15 @@ repository:
     - include: '#comment'
     - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
-    - include: '#class-or-interface-heritage-type'
-
-  class-or-interface-heritage-type:
-    patterns:
-    - name: meta.object.heritage.parent.tsx
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
+    - match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
       captures:
         '1': { name: entity.name.type.module.tsx }
         '2': { name: punctuation.accessor.tsx }
-    - name: meta.object.heritage.parent.tsx
-      match: '([_$[:alpha:]][_$[:alnum:]]*)'
+    - match: '([_$[:alpha:]][_$[:alnum:]]*)'
       captures:
         '1': { name: entity.other.inherited-class.tsx }
 
   class-or-interface-body:
-    name: meta.object.body.tsx
     begin: \{
     beginCaptures:
       '0': { name: punctuation.definition.block.tsx }

@@ -374,7 +374,7 @@ repository:
       match: ([_$[:alpha:]][_$[:alnum:]]*)
 
   class-or-interface-declaration:
-    name: meta.declaration.object.ts
+    name: meta.class.ts
     begin: '(?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
@@ -387,18 +387,13 @@ repository:
     patterns:
     - include: '#comment'
     - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
-    - include: '#class-or-interface-name'
+    - match: '[_$[:alpha:]][_$[:alnum:]]*'
+      captures:
+        '0': { name: 'entity.name.class.ts' }
     - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
     - include: '#class-or-interface-body'
 
-  class-or-interface-name:
-    name: meta.object.name.ts
-    match: '[_$[:alpha:]][_$[:alnum:]]*'
-    captures:
-      '0': { name: 'entity.name.class.ts' }
-
   class-or-interface-heritage:
-    name: meta.object.heritage.ts
     begin: '(?<!\.|\$)(?:\b(extends|implements)\b)(?!\$)'
     beginCaptures:
       '1': { name: storage.modifier.ts }
@@ -409,22 +404,15 @@ repository:
     - include: '#comment'
     - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
-    - include: '#class-or-interface-heritage-type'
-
-  class-or-interface-heritage-type:
-    patterns:
-    - name: meta.object.heritage.parent.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
+    - match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
       captures:
         '1': { name: entity.name.type.module.ts }
         '2': { name: punctuation.accessor.ts }
-    - name: meta.object.heritage.parent.ts
-      match: '([_$[:alpha:]][_$[:alnum:]]*)'
+    - match: '([_$[:alpha:]][_$[:alnum:]]*)'
       captures:
         '1': { name: entity.other.inherited-class.ts }
 
   class-or-interface-body:
-    name: meta.object.body.ts
     begin: \{
     beginCaptures:
       '0': { name: punctuation.definition.block.ts }

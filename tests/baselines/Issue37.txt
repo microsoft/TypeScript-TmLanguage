@@ -92,28 +92,28 @@ var j: I = {}
 >
 >class class1(){
  ^^^^^
- [9, 1]: source.ts meta.declaration.object.ts storage.type.class.ts 
+ [9, 1]: source.ts meta.class.ts storage.type.class.ts 
        ^^^^^^
-       [9, 7]: source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts 
+       [9, 7]: source.ts meta.class.ts entity.name.class.ts 
 >	static functioname(){
   ^^^^^^
-  [10, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
+  [10, 2]: source.ts meta.class.ts storage.modifier.ts 
          ^^^^^^^^^^^
-         [10, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts entity.name.function.ts 
+         [10, 9]: source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts 
 >
 >	}
 >}
 >
 >export class className(){
  ^^^^^^
- [15, 1]: source.ts meta.declaration.object.ts keyword.control.export.ts 
+ [15, 1]: source.ts meta.class.ts keyword.control.export.ts 
         ^^^^^
-        [15, 8]: source.ts meta.declaration.object.ts storage.type.class.ts 
+        [15, 8]: source.ts meta.class.ts storage.type.class.ts 
 >	private state = { }
   ^^^^^^^
-  [16, 2]: source.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
+  [16, 2]: source.ts meta.class.ts storage.modifier.ts 
           ^^^^^
-          [16, 10]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts 
+          [16, 10]: source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts 
 >}
 >
 >void newFunctionName(){
@@ -181,49 +181,49 @@ var j: I = {}
         [51, 8]: source.ts meta.namespace.declaration.ts entity.name.type.module.ts 
 >    export class Cell {
      ^^^^^^
-     [52, 5]: source.ts meta.block.ts meta.declaration.object.ts keyword.control.export.ts 
+     [52, 5]: source.ts meta.block.ts meta.class.ts keyword.control.export.ts 
             ^^^^^
-            [52, 12]: source.ts meta.block.ts meta.declaration.object.ts storage.type.class.ts 
+            [52, 12]: source.ts meta.block.ts meta.class.ts storage.type.class.ts 
                   ^^^^
-                  [52, 18]: source.ts meta.block.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts 
+                  [52, 18]: source.ts meta.block.ts meta.class.ts entity.name.class.ts 
 >        public parent: Cell;
          ^^^^^^
-         [53, 9]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts storage.modifier.ts 
+         [53, 9]: source.ts meta.block.ts meta.class.ts storage.modifier.ts 
                 ^^^^^^
-                [53, 16]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.object.property.ts 
+                [53, 16]: source.ts meta.block.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts 
                         ^^^^
-                        [53, 24]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts 
+                        [53, 24]: source.ts meta.block.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts 
 >
 >        constructor(parent: Cell) {
          ^^^^^^^^^^^
-         [55, 9]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts storage.type.ts 
+         [55, 9]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts storage.type.ts 
                      ^^^^^^
-                     [55, 21]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts 
+                     [55, 21]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts 
                              ^^^^
-                             [55, 29]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts 
+                             [55, 29]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts 
 >            this.parent = parent;
              ^^^^
-             [56, 13]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts 
+             [56, 13]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts 
                           ^^^^^^^^^
-                          [56, 27]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts 
+                          [56, 27]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts 
 >            if (typeof parent === 'object' || parent instanceof Error) {
                  ^^^^^^
-                 [57, 17]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts keyword.operator.typeof.ts 
+                 [57, 17]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.typeof.ts 
                        ^^^^^^^^
-                       [57, 24]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts 
+                       [57, 24]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts 
                                ^^^
-                               [57, 31]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts 
+                               [57, 31]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts 
                                    ^
-                                   [57, 35]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts 
+                                   [57, 35]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts 
                                               ^^^^^^^^
-                                              [57, 47]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts 
+                                              [57, 47]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts 
                                                       ^^^^^^^^^^
-                                                      [57, 54]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts keyword.operator.instanceof.ts 
+                                                      [57, 54]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.instanceof.ts 
                                                                 ^^^^^^
-                                                                [57, 65]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts 
+                                                                [57, 65]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts 
 >            	
  ^^^^^^^^^^^^^^
- [58, 14]: source.ts meta.block.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.block.ts meta.block.ts 
+ [58, 14]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts 
 >            }
 >        }
 >    }
