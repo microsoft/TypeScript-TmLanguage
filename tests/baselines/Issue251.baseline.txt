@@ -23,8 +23,10 @@ for(var j=0; (j<rows && l<num); j++) {
           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
            ^
            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
-            ^^
-            source.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^
+             source.ts
               ^
               source.ts meta.brace.round.ts
                ^
@@ -43,8 +45,10 @@ for(var j=0; (j<rows && l<num); j++) {
                            source.ts
                               ^
                               source.ts meta.brace.round.ts
-                               ^^^
-                               source.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+                                ^^
+                                source.ts
                                   ^^
                                   source.ts keyword.operator.increment.ts
                                     ^
@@ -76,8 +80,10 @@ for(var j=0; (j<rows && l<num); j++) {
               source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                ^
                source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
-                ^^
-                source.ts meta.block.ts
+                ^
+                source.ts meta.block.ts punctuation.terminator.statement.ts
+                 ^
+                 source.ts meta.block.ts
                   ^
                   source.ts meta.block.ts meta.brace.round.ts
                    ^
@@ -96,8 +102,10 @@ for(var j=0; (j<rows && l<num); j++) {
                                source.ts meta.block.ts
                                   ^
                                   source.ts meta.block.ts meta.brace.round.ts
-                                   ^^^
-                                   source.ts meta.block.ts
+                                   ^
+                                   source.ts meta.block.ts punctuation.terminator.statement.ts
+                                    ^^
+                                    source.ts meta.block.ts
                                       ^^
                                       source.ts meta.block.ts keyword.operator.increment.ts
                                         ^
@@ -167,15 +175,19 @@ for(var j=0; (j<rows && l<num); j++) {
                                                         source.ts meta.block.ts meta.block.ts meta.object-literal.ts punctuation.definition.block.ts
                                                          ^
                                                          source.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                                                          ^^^
-                                                          source.ts meta.block.ts meta.block.ts
+                                                          ^
+                                                          source.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                           ^^
+                                                           source.ts meta.block.ts meta.block.ts
 >    l++;
  ^^^^^
  source.ts meta.block.ts meta.block.ts
       ^^
       source.ts meta.block.ts meta.block.ts keyword.operator.increment.ts
-        ^^^
-        source.ts meta.block.ts meta.block.ts
+        ^
+        source.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+         ^^
+         source.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.block.ts meta.block.ts

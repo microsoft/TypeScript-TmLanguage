@@ -40,8 +40,10 @@ function* foo() {
              source.ts meta.function.ts meta.block.ts string.quoted.single.ts
                 ^
                 source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
-                 ^^^
-                 source.ts meta.function.ts meta.block.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                  ^^
+                  source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
@@ -82,8 +84,10 @@ function* foo() {
             source.ts meta.function.ts meta.block.ts string.quoted.single.ts
                ^
                source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
-                ^^^
-                source.ts meta.function.ts meta.block.ts
+                ^
+                source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.function.ts meta.block.ts
 >    yield* ['bar'];
  ^^^^
  source.ts meta.function.ts meta.block.ts
@@ -103,8 +107,10 @@ function* foo() {
                  source.ts meta.function.ts meta.block.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.end.ts
                   ^
                   source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
-                   ^^^
-                   source.ts meta.function.ts meta.block.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                    ^^
+                    source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

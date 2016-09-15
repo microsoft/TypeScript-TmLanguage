@@ -51,8 +51,10 @@ let value2 = a / b / c * a + b / a / b / c;
                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                        ^
                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
-                        ^^^
-                        source.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts
 >let value = a / b
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -75,8 +77,12 @@ let value2 = a / b / c * a + b / a / b / c;
  source.ts
      ^
      source.ts keyword.operator.arithmetic.ts
-      ^^^^^
+      ^^
       source.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+         ^^
+         source.ts
 >let value2 = a / b
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -119,8 +125,12 @@ let value2 = a / b / c * a + b / a / b / c;
                       source.ts
                          ^
                          source.ts keyword.operator.arithmetic.ts
-                          ^^^^^
+                          ^^
                           source.ts
+                            ^
+                            source.ts punctuation.terminator.statement.ts
+                             ^^
+                             source.ts
 >let value2 = a / b / c * a + b / a / b / c;
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -162,5 +172,5 @@ let value2 = a / b / c * a + b / a / b / c;
                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.arithmetic.ts
                                          ^^
                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
-                                           ^^
-                                           source.ts
+                                           ^
+                                           source.ts punctuation.terminator.statement.ts

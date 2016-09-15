@@ -17,8 +17,10 @@ for(var i; i< 45;i++) {
     source.ts meta.var.expr.ts
      ^^^^
      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
-         ^^^
-         source.ts
+         ^
+         source.ts punctuation.terminator.statement.ts
+          ^^
+          source.ts
 >for(var i; i< 45;i++) {
  ^^^
  source.ts keyword.control.loop.ts
@@ -30,16 +32,20 @@ for(var i; i< 45;i++) {
         source.ts meta.var.expr.ts
          ^
          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
-          ^^^
-          source.ts
+          ^
+          source.ts punctuation.terminator.statement.ts
+           ^^
+           source.ts
              ^
              source.ts keyword.operator.relational.ts
               ^
               source.ts
                ^^
                source.ts constant.numeric.decimal.ts
-                 ^^
-                 source.ts
+                 ^
+                 source.ts punctuation.terminator.statement.ts
+                  ^
+                  source.ts
                    ^^
                    source.ts keyword.operator.increment.ts
                      ^
@@ -59,8 +65,10 @@ for(var i; i< 45;i++) {
            source.ts meta.block.ts
             ^^^
             source.ts meta.block.ts constant.numeric.decimal.ts
-               ^^^
-               source.ts meta.block.ts
+               ^
+               source.ts meta.block.ts punctuation.terminator.statement.ts
+                ^^
+                source.ts meta.block.ts
 >
  ^^
  source.ts meta.block.ts
@@ -73,8 +81,10 @@ for(var i; i< 45;i++) {
              source.ts meta.block.ts
               ^^^
               source.ts meta.block.ts constant.numeric.decimal.ts
-                 ^^^
-                 source.ts meta.block.ts
+                 ^
+                 source.ts meta.block.ts punctuation.terminator.statement.ts
+                  ^^
+                  source.ts meta.block.ts
 >    node.b += 122;
  ^^^^^^^^^^^
  source.ts meta.block.ts
@@ -84,8 +94,10 @@ for(var i; i< 45;i++) {
               source.ts meta.block.ts
                ^^^
                source.ts meta.block.ts constant.numeric.decimal.ts
-                  ^^^
-                  source.ts meta.block.ts
+                  ^
+                  source.ts meta.block.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.block.ts
 >    node.b += '1'+1+'2';
  ^^^^^^^^^^^
  source.ts meta.block.ts
@@ -111,8 +123,10 @@ for(var i; i< 45;i++) {
                       source.ts meta.block.ts string.quoted.single.ts
                        ^
                        source.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
-                        ^^^
-                        source.ts meta.block.ts
+                        ^
+                        source.ts meta.block.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.block.ts
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts

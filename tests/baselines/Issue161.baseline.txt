@@ -33,8 +33,10 @@ if (isViaPage) {
                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx meta.type.parameters.tsx meta.object.type.tsx punctuation.definition.block.tsx
                                 ^
                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
-                                 ^^^
-                                 source.tsx
+                                 ^
+                                 source.tsx punctuation.terminator.statement.tsx
+                                  ^^
+                                  source.tsx
 >let page: PageName;
  ^^^
  source.tsx meta.var.expr.tsx storage.type.tsx
@@ -48,8 +50,10 @@ if (isViaPage) {
           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx
            ^^^^^^^^
            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx entity.name.type.tsx
-                   ^^^
-                   source.tsx
+                   ^
+                   source.tsx punctuation.terminator.statement.tsx
+                    ^^
+                    source.tsx
 >if (isViaPage) {
  ^^
  source.tsx keyword.control.conditional.tsx
@@ -80,8 +84,10 @@ if (isViaPage) {
            source.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx
                   ^^
                   source.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
-                    ^^^
-                    source.tsx meta.block.tsx
+                    ^
+                    source.tsx meta.block.tsx punctuation.terminator.statement.tsx
+                     ^^
+                     source.tsx meta.block.tsx
 >  page = 'via';
  ^^^^^^^
  source.tsx meta.block.tsx
@@ -95,8 +101,10 @@ if (isViaPage) {
            source.tsx meta.block.tsx string.quoted.single.tsx
               ^
               source.tsx meta.block.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
-               ^^^
-               source.tsx meta.block.tsx
+               ^
+               source.tsx meta.block.tsx punctuation.terminator.statement.tsx
+                ^^
+                source.tsx meta.block.tsx
 >}
  ^
  source.tsx meta.block.tsx punctuation.definition.block.tsx

@@ -129,8 +129,8 @@ var x = new ^^/* comments */ String();
                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
                                      ^
                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                                      ^^
-                                      source.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
 >var x /* comment */: string = "yahoo";
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -164,8 +164,8 @@ var x = new ^^/* comments */ String();
                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
                                      ^
                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                                      ^^
-                                      source.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
 >var x: /* comment */ string = "yahoo";
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -199,8 +199,8 @@ var x = new ^^/* comments */ String();
                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
                                      ^
                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                                      ^^
-                                      source.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
 >var x: string /* comment */ = "yahoo";
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -234,8 +234,8 @@ var x = new ^^/* comments */ String();
                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
                                      ^
                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                                      ^^
-                                      source.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
 >var x: string = /* comment */ "yahoo";
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -269,8 +269,8 @@ var x = new ^^/* comments */ String();
                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
                                      ^
                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                                      ^^
-                                      source.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
 >var x: string = "yahoo" /* comment */;
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -304,8 +304,8 @@ var x = new ^^/* comments */ String();
                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts
                                     ^^
                                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts
-                                      ^^
-                                      source.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
 >var x: string = "yahoo"; /* comment */
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -331,8 +331,10 @@ var x = new ^^/* comments */ String();
                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
                        ^
                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                        ^^
-                        source.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+                         ^
+                         source.ts
                           ^^
                           source.ts comment.block.ts punctuation.definition.comment.ts
                             ^^^^^^^^^
@@ -1454,16 +1456,20 @@ var x = new ^^/* comments */ String();
                                                            source.ts meta.class.ts meta.type.annotation.ts
                                                             ^
                                                             source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                             ^^^
-                                                             source.ts meta.class.ts
+                                                             ^
+                                                             source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                              ^^
+                                                              source.ts meta.class.ts
                                                                 ^
                                                                 source.ts meta.class.ts meta.type.annotation.ts
                                                                  ^
                                                                  source.ts meta.class.ts meta.type.annotation.ts
                                                                   ^
                                                                   source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                                   ^^
-                                                                   source.ts meta.class.ts
+                                                                   ^
+                                                                   source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                                    ^
+                                                                    source.ts meta.class.ts
                                                                      ^
                                                                      source.ts meta.class.ts punctuation.definition.block.ts
 >interface KeyValuePair<K, V>/**/extends Array<K | V> { 0: K; 1: V; }
@@ -1521,16 +1527,20 @@ var x = new ^^/* comments */ String();
                                                           source.ts meta.class.ts meta.type.annotation.ts
                                                            ^
                                                            source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                            ^^^
-                                                            source.ts meta.class.ts
+                                                            ^
+                                                            source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                             ^^
+                                                             source.ts meta.class.ts
                                                                ^
                                                                source.ts meta.class.ts meta.type.annotation.ts
                                                                 ^
                                                                 source.ts meta.class.ts meta.type.annotation.ts
                                                                  ^
                                                                  source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                                  ^^
-                                                                  source.ts meta.class.ts
+                                                                  ^
+                                                                  source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                                   ^
+                                                                   source.ts meta.class.ts
                                                                     ^
                                                                     source.ts meta.class.ts punctuation.definition.block.ts
 >interface KeyValuePair<K, V> extends/**/Array<K | V> { 0: K; 1: V; }
@@ -1588,16 +1598,20 @@ var x = new ^^/* comments */ String();
                                                           source.ts meta.class.ts meta.type.annotation.ts
                                                            ^
                                                            source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                            ^^^
-                                                            source.ts meta.class.ts
+                                                            ^
+                                                            source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                             ^^
+                                                             source.ts meta.class.ts
                                                                ^
                                                                source.ts meta.class.ts meta.type.annotation.ts
                                                                 ^
                                                                 source.ts meta.class.ts meta.type.annotation.ts
                                                                  ^
                                                                  source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                                  ^^
-                                                                  source.ts meta.class.ts
+                                                                  ^
+                                                                  source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                                   ^
+                                                                   source.ts meta.class.ts
                                                                     ^
                                                                     source.ts meta.class.ts punctuation.definition.block.ts
 >interface KeyValuePair<K, V> extends Array/**/<K | V> { 0: K; 1: V; }
@@ -1657,16 +1671,20 @@ var x = new ^^/* comments */ String();
                                                            source.ts meta.class.ts meta.type.annotation.ts
                                                             ^
                                                             source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                             ^^^
-                                                             source.ts meta.class.ts
+                                                             ^
+                                                             source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                              ^^
+                                                              source.ts meta.class.ts
                                                                 ^
                                                                 source.ts meta.class.ts meta.type.annotation.ts
                                                                  ^
                                                                  source.ts meta.class.ts meta.type.annotation.ts
                                                                   ^
                                                                   source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                                   ^^
-                                                                   source.ts meta.class.ts
+                                                                   ^
+                                                                   source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                                    ^
+                                                                    source.ts meta.class.ts
                                                                      ^
                                                                      source.ts meta.class.ts punctuation.definition.block.ts
 >interface KeyValuePair<K, V> extends Array<K | V>/**/{ 0: K; 1: V; }
@@ -1724,16 +1742,20 @@ var x = new ^^/* comments */ String();
                                                           source.ts meta.class.ts meta.type.annotation.ts
                                                            ^
                                                            source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                            ^^^
-                                                            source.ts meta.class.ts
+                                                            ^
+                                                            source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                             ^^
+                                                             source.ts meta.class.ts
                                                                ^
                                                                source.ts meta.class.ts meta.type.annotation.ts
                                                                 ^
                                                                 source.ts meta.class.ts meta.type.annotation.ts
                                                                  ^
                                                                  source.ts meta.class.ts meta.type.annotation.ts entity.name.type.ts
-                                                                  ^^
-                                                                  source.ts meta.class.ts
+                                                                  ^
+                                                                  source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                                   ^
+                                                                   source.ts meta.class.ts
                                                                     ^
                                                                     source.ts meta.class.ts punctuation.definition.block.ts
 >
@@ -1811,8 +1833,8 @@ var x = new ^^/* comments */ String();
                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
                            ^
                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
-                            ^^
-                            source.ts meta.class.ts
+                            ^
+                            source.ts meta.class.ts punctuation.terminator.statement.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
@@ -1886,8 +1908,8 @@ var x = new ^^/* comments */ String();
                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
                            ^
                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
-                            ^^
-                            source.ts meta.class.ts
+                            ^
+                            source.ts meta.class.ts punctuation.terminator.statement.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
@@ -1961,8 +1983,8 @@ var x = new ^^/* comments */ String();
                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
                            ^
                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
-                            ^^
-                            source.ts meta.class.ts
+                            ^
+                            source.ts meta.class.ts punctuation.terminator.statement.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
@@ -1994,8 +2016,8 @@ var x = new ^^/* comments */ String();
                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                               ^
                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                               ^^
-                               source.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
 >var x=/*comments*/new String();
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -2021,8 +2043,8 @@ var x = new ^^/* comments */ String();
                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                               ^
                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                               ^^
-                               source.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
 >var x= new/*comments*/String();
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -2048,8 +2070,8 @@ var x = new ^^/* comments */ String();
                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                               ^
                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                               ^^
-                               source.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
 >
  ^
  source.ts
@@ -2084,8 +2106,8 @@ var x = new ^^/* comments */ String();
                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                                    ^
                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                                    ^^
-                                    source.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
 >var x = /* comments */ new String();
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -2117,8 +2139,8 @@ var x = new ^^/* comments */ String();
                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                                    ^
                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                                    ^^
-                                    source.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
 >var x = new /* comments */ String();
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -2150,5 +2172,5 @@ var x = new ^^/* comments */ String();
                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
                                    ^
                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                                    ^^
-                                    source.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts

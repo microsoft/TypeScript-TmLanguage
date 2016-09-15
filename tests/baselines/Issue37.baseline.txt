@@ -132,8 +132,8 @@ var j: I = {}
                         source.ts meta.import.ts string.quoted.double.ts
                                ^
                                source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                                ^^
-                                source.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
 >
  ^
  source.ts
@@ -283,8 +283,8 @@ var j: I = {}
             source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.arithmetic.ts
              ^^
              source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
-               ^^
-               source.ts meta.block.ts
+               ^
+               source.ts meta.block.ts punctuation.terminator.statement.ts
 >
  ^
  source.ts meta.block.ts
@@ -320,8 +320,8 @@ var j: I = {}
           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
            ^^^^^
            source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.loop.ts
-                ^^
-                source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
+                ^
+                source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts punctuation.terminator.statement.ts
 >		case 2: break;
  ^^
  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
@@ -337,8 +337,8 @@ var j: I = {}
           source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
            ^^^^^
            source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.loop.ts
-                ^^
-                source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
+                ^
+                source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts punctuation.terminator.statement.ts
 >		default: break;
  ^^
  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
@@ -350,8 +350,8 @@ var j: I = {}
            source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
             ^^^^^
             source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts keyword.control.loop.ts
-                 ^^
-                 source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
+                 ^
+                 source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts punctuation.terminator.statement.ts
 >	} 
  ^
  source.ts meta.block.ts switch-statement.expr.ts switch-block.expr.ts
@@ -427,8 +427,10 @@ var j: I = {}
  source.ts meta.block.ts meta.function.ts meta.block.ts
          ^^^^^^
          source.ts meta.block.ts meta.function.ts meta.block.ts keyword.control.flow.ts
-               ^^^^
+               ^^
                source.ts meta.block.ts meta.function.ts meta.block.ts
+                 ^
+                 source.ts meta.block.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
 >    }
  ^^^^
  source.ts meta.block.ts meta.function.ts meta.block.ts
@@ -463,8 +465,8 @@ var j: I = {}
                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
                   ^^
                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
-                    ^^
-                    source.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
 >
  ^
  source.ts
@@ -499,8 +501,8 @@ var j: I = {}
                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
                            ^
                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                            ^^
-                            source.ts
+                            ^
+                            source.ts punctuation.terminator.statement.ts
 >delete (adder)
  ^^^^^^
  source.ts keyword.operator.delete.ts
@@ -623,8 +625,8 @@ var j: I = {}
                        source.ts meta.block.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
                         ^^^^
                         source.ts meta.block.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
-                            ^^
-                            source.ts meta.block.ts meta.class.ts
+                            ^
+                            source.ts meta.block.ts meta.class.ts punctuation.terminator.statement.ts
 >
  ^
  source.ts meta.block.ts meta.class.ts
@@ -658,8 +660,10 @@ var j: I = {}
                  source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                          ^
                          source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.assignment.ts
-                          ^^^^^^^^^
+                          ^^^^^^^
                           source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                 ^
+                                 source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
 >            if (typeof parent === 'object' || parent instanceof Error) {
  ^^^^^^^^^^^^
  source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts

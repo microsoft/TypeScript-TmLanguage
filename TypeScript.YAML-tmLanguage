@@ -24,6 +24,7 @@ repository:
     - include: '#control-statement'
     # add label
     - include: '#expression'
+    - include: '#punctuation-semicolon'
 
   var-expr:
     name: meta.var.expr.ts
@@ -433,6 +434,8 @@ repository:
     - include: '#access-modifier'
     - include: '#static-modifier'
     - include: '#property-accessor'
+    - include: '#punctuation-comma'
+    - include: '#punctuation-semicolon'
 
   type-object:
     name: meta.object.type.ts
@@ -453,6 +456,7 @@ repository:
     - include: '#indexer-declaration'
     - include: '#type-annotation'
     - include: '#punctuation-comma'
+    - include: '#punctuation-semicolon'
 
   field-declaration:
     name: meta.field.declaration.ts
@@ -847,6 +851,7 @@ repository:
     patterns:
     - include: '#var-expr'
     - include: '#expression'
+    - include: '#punctuation-semicolon'
 
   switch-expression:
     name: switch-expression.expr.ts
@@ -1073,6 +1078,10 @@ repository:
   punctuation-comma:
     name: punctuation.separator.comma.ts
     match: ','
+
+  punctuation-semicolon:
+    name: punctuation.terminator.statement.ts
+    match: ';'
 
   paren-expression:
     begin: \(
