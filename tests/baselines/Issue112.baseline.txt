@@ -23,8 +23,12 @@ this._waitingConnections.delete(connection);
                    source.ts new.expr.ts entity.name.type.ts
                            ^
                            source.ts meta.brace.round.ts
-                            ^^^^^^^^^^^^^
+                            ^^^^^^^^
                             source.ts
+                                    ^
+                                    source.ts punctuation.accessor.ts
+                                     ^^^^
+                                     source.ts
                                          ^
                                          source.ts punctuation.separator.comma.ts
                                           ^^^^^^^^^^^^^
@@ -40,8 +44,10 @@ this._waitingConnections.delete(connection);
                                                                              ^^
                                                                              source.ts
 >angular.module('app')
- ^^^^^^^^
+ ^^^^^^^
  source.ts
+        ^
+        source.ts punctuation.accessor.ts
          ^^^^^^
          source.ts entity.name.function.ts
                ^
@@ -59,14 +65,22 @@ this._waitingConnections.delete(connection);
 >this._connections.delete(connection.id);
  ^^^^
  source.ts variable.language.this.ts
-     ^^^^^^^^^^^^^^
-     source.ts
+     ^
+     source.ts punctuation.accessor.ts
+      ^^^^^^^^^^^^
+      source.ts
+                  ^
+                  source.ts punctuation.accessor.ts
                    ^^^^^^
                    source.ts entity.name.function.ts
                          ^
                          source.ts meta.brace.round.ts
-                          ^^^^^^^^^^^^^
+                          ^^^^^^^^^^
                           source.ts
+                                    ^
+                                    source.ts punctuation.accessor.ts
+                                     ^^
+                                     source.ts
                                        ^
                                        source.ts meta.brace.round.ts
                                         ^
@@ -76,8 +90,12 @@ this._waitingConnections.delete(connection);
 >this._waitingConnections.delete(connection);
  ^^^^
  source.ts variable.language.this.ts
-     ^^^^^^^^^^^^^^^^^^^^^
-     source.ts
+     ^
+     source.ts punctuation.accessor.ts
+      ^^^^^^^^^^^^^^^^^^^
+      source.ts
+                         ^
+                         source.ts punctuation.accessor.ts
                           ^^^^^^
                           source.ts entity.name.function.ts
                                 ^

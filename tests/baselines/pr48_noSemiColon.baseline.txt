@@ -228,7 +228,7 @@ class Test {
                   ^
                   source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                    ^
-                   source.ts meta.function.ts meta.block.ts
+                   source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
                     ^^^^
                     source.ts meta.function.ts meta.block.ts entity.name.function.ts
                         ^
@@ -241,8 +241,10 @@ class Test {
                               source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
                                 ^
                                 source.ts meta.function.ts meta.block.ts meta.arrow.ts
-                                 ^^^^^
+                                 ^^^^
                                  source.ts meta.function.ts meta.block.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
                                       ^^^^^^
                                       source.ts meta.function.ts meta.block.ts entity.name.function.ts
                                             ^
@@ -315,8 +317,12 @@ class Test {
                                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
                                                         ^
                                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                                                         ^^^^^^^^^^^
+                                                         ^^
                                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                                           ^
+                                                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts punctuation.accessor.ts
+                                                            ^^^^^^^^
+                                                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                                                                     ^
                                                                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
 >export const writeFile = thenify<string, string | Buffer, void>(fs.writeFile)
@@ -366,8 +372,12 @@ class Test {
                                                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
                                                                 ^
                                                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
-                                                                 ^^^^^^^^^^^^
+                                                                 ^^
                                                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                                                   ^
+                                                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts punctuation.accessor.ts
+                                                                    ^^^^^^^^^
+                                                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                                                                              ^
                                                                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
 >

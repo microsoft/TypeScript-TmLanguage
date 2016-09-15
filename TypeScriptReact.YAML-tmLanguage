@@ -182,6 +182,7 @@ repository:
     - include: '#function-call'
     - include: '#paren-expression'
     - include: '#punctuation-comma'
+    - include: '#punctuation-accessor'
 
   control-statement:
     # TODO: convert this to actual statements instead
@@ -1071,6 +1072,10 @@ repository:
   punctuation-semicolon:
     name: punctuation.terminator.statement.tsx
     match: ';'
+
+  punctuation-accessor:
+    name: punctuation.accessor.tsx
+    match: '\.'
 
   paren-expression:
     begin: \(

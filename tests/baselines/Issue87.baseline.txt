@@ -15,8 +15,16 @@ if (!req.body.new) {
     source.ts meta.brace.round.ts
      ^
      source.ts keyword.operator.logical.ts
-      ^^^^^^^^^^^^
+      ^^^
       source.ts
+         ^
+         source.ts punctuation.accessor.ts
+          ^^^^
+          source.ts
+              ^
+              source.ts punctuation.accessor.ts
+               ^^^
+               source.ts
                   ^
                   source.ts meta.brace.round.ts
                    ^
@@ -37,8 +45,10 @@ if (!req.body.new) {
  source.ts meta.block.ts
      ^^^^^^
      source.ts meta.block.ts keyword.control.flow.ts
-           ^^^^^
+           ^^^^
            source.ts meta.block.ts
+               ^
+               source.ts meta.block.ts punctuation.accessor.ts
                 ^^^^^^
                 source.ts meta.block.ts entity.name.function.ts
                       ^
@@ -48,7 +58,7 @@ if (!req.body.new) {
                           ^
                           source.ts meta.block.ts meta.brace.round.ts
                            ^
-                           source.ts meta.block.ts
+                           source.ts meta.block.ts punctuation.accessor.ts
                             ^^^^
                             source.ts meta.block.ts entity.name.function.ts
                                 ^
