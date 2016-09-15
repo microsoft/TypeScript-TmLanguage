@@ -15,12 +15,18 @@ res.download = function download(path, filename, fn) {
  source.ts
               ^
               source.ts keyword.operator.assignment.ts
-               ^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^
                source.ts
+                          ^^^^^^^^
+                          source.ts entity.name.function.ts
                                   ^
                                   source.ts meta.brace.round.ts
-                                   ^^^^^^^^^^^^^^^
+                                   ^^^^^^^^^^^^
                                    source.ts
+                                               ^
+                                               source.ts punctuation.separator.comma.ts
+                                                ^^
+                                                source.ts
 >  'res.sendfile: Use res.sendFile instead');
  ^^
  source.ts
@@ -63,13 +69,13 @@ res.download = function download(path, filename, fn) {
                                   ^^^^
                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
                                       ^
-                                      source.ts meta.function.ts meta.parameters.ts
+                                      source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
                                        ^
                                        source.ts meta.function.ts meta.parameters.ts
                                         ^^^^^^^^
                                         source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
                                                 ^
-                                                source.ts meta.function.ts meta.parameters.ts
+                                                source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
                                                  ^
                                                  source.ts meta.function.ts meta.parameters.ts
                                                   ^^

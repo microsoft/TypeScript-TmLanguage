@@ -45,7 +45,7 @@ const qux = {
             ^^^
             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
                ^
-               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
                 ^
                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
                  ^
@@ -94,7 +94,7 @@ const qux = {
                  ^^^
                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
                     ^
-                    source.ts meta.function.ts meta.parameters.ts
+                    source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
                      ^
                      source.ts meta.function.ts meta.parameters.ts
                       ^
@@ -148,7 +148,7 @@ const qux = {
                           ^^^
                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
                              ^
-                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
                               ^
                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts
                                ^
@@ -198,7 +198,7 @@ const qux = {
                  ^^^
                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
                     ^
-                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.parameters.ts
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.parameters.ts punctuation.separator.parameter.ts
                      ^
                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.parameters.ts
                       ^
@@ -261,7 +261,7 @@ const qux = {
             ^^^
             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
                ^
-               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.method.declaration.ts meta.parameters.ts
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
                 ^
                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.method.declaration.ts meta.parameters.ts
                  ^
@@ -282,8 +282,10 @@ const qux = {
                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.method.declaration.ts meta.block.ts
                               ^
                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                               ^^^
-                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.separator.comma.ts
+                                ^^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
 >    set bar2(x: string) { }
  ^^^^
  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts

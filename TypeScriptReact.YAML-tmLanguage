@@ -40,6 +40,7 @@ repository:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
     - include: '#comment'
+    - include: '#punctuation-comma'
 
   var-single-variable:
     name: meta.var-single-variable.expr.tsx
@@ -172,13 +173,14 @@ repository:
     - include: '#function-declaration'
     - include: '#class-or-interface-declaration'
     - include: '#arrow-function'
-    - include: '#paren-expression'
     - include: '#ternary-expression'
     - include: '#new-expr'
     - include: '#object-literal'
     - include: '#expression-operator'
     - include: '#operators'
     - include: '#function-call'
+    - include: '#paren-expression'
+    - include: '#punctuation-comma'
 
   control-statement:
     # TODO: convert this to actual statements instead
@@ -454,6 +456,7 @@ repository:
     - include: '#method-declaration'
     - include: '#indexer-declaration'
     - include: '#type-annotation'
+    - include: '#punctuation-comma'
 
   field-declaration:
     name: meta.field.declaration.tsx
@@ -740,6 +743,8 @@ repository:
     - include: '#parameter-name'
     - include: '#type-annotation'
     - include: '#variable-initializer'
+    - name: punctuation.separator.parameter.tsx
+      match: ','
 
   type-primitive:
     name: support.type.primitive.tsx
@@ -801,6 +806,7 @@ repository:
       '0': { name: meta.brace.square.tsx }
     patterns:
     - include: '#type'
+    - include: '#punctuation-comma'
 
   type-name:
     patterns:
@@ -824,6 +830,7 @@ repository:
     - name: storage.modifier.tsx
       match: '(?<!\.|\$)\b(extends)\b(?!\$)'
     - include: '#type'
+    - include: '#punctuation-comma'
 
   variable-initializer:
     begin: (?<!=|!)(=)(?!=)
@@ -887,25 +894,27 @@ repository:
     - include: '#switch-block'
 
   function-call:
-    name: functioncall.expr.tsx
+    #TODO: Scope function names and method names
+    # Ideal expression that can give us arbitary number of another level of type argument allowed is:
+    # (<)(?=(([^<>]+)|(\<[^<>]+\>))+>\s*\()
+    # But this takes really long time and sometimes infinite time to parse negative cases like below:
+    # if (this.PListCells.length<value && (!this.ListList || !this.DelayedUpdate))
+    begin: '([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\()'
+    beginCaptures:
+      '1': { name: entity.name.function.tsx }
+    end: (?=\()
     patterns:
+    - include: '#comment'
     - name: meta.type.parameters.tsx
-      # Ideal expression that can give us arbitary number of another level of type argument allowed is:
-      # (<)(?=(([^<>]+)|(\<[^<>]+\>))+>\s*\()
-      # But this takes really long time and sometimes infinite time to parse negative cases like below:
-      # if (this.PListCells.length<value && (!this.ListList || !this.DelayedUpdate))
-      begin: '([_$[:alpha:]][_$[:alnum:]]*)\s*(<)(?=[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*\()'
+      begin: \<
       beginCaptures:
-        '1': { name: entity.name.function.tsx }
-        '2': { name: punctuation.definition.typeparameters.begin.tsx }
-      end: '(>)'
+        '0': { name: punctuation.definition.typeparameters.begin.tsx }
+      end: \>
       endCaptures:
-        '1': { name: punctuation.definition.typeparameters.end.tsx }
+        '0': { name: punctuation.definition.typeparameters.end.tsx }
       patterns:
       - include: '#type'
-    #TODO: Scope function names and method names
-    #TODO: Scope function call arguments better?
-    - include: '#paren-expression'
+      - include: '#punctuation-comma'
 
   new-expr:
     name: new.expr.tsx
@@ -959,6 +968,7 @@ repository:
       match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\})
       captures:
         '1': { name: variable.other.readwrite.tsx }
+    - include: '#punctuation-comma'
 
   expression-operator:
     patterns:
@@ -1049,6 +1059,10 @@ repository:
     - include: '#type-predicate-operator'
     - include: '#type'
 
+  punctuation-comma:
+    name: punctuation.separator.comma.tsx
+    match: ','
+
   paren-expression:
     begin: \(
     beginCaptures:
@@ -1058,6 +1072,7 @@ repository:
       '0': {name: meta.brace.round.tsx }
     patterns:
     - include: '#expression'
+    - include: '#punctuation-comma'
 
   qstring-double:
     name: string.quoted.double.tsx
@@ -1254,6 +1269,7 @@ repository:
       '0': { name: meta.brace.square.tsx }
     patterns:
     - include: '#expression'
+    - include: '#punctuation-comma'
 
   numeric-literal:
     patterns:

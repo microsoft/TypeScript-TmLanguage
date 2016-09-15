@@ -60,8 +60,10 @@ class testClass {
         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
          ^^^^^^
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
-               ^^^
-               source.ts meta.function.ts meta.parameters.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                ^^
+                source.ts meta.function.ts meta.parameters.ts
 >    m2: {},
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -75,8 +77,8 @@ class testClass {
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
           ^
           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
-           ^^
-           source.ts meta.function.ts meta.parameters.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
 >    m3: any [],
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -94,8 +96,8 @@ class testClass {
              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
               ^
               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
-               ^^
-               source.ts meta.function.ts meta.parameters.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
 >    m4: {a: A, b: B},
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -116,7 +118,7 @@ class testClass {
              ^
              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
               ^
-              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
                ^
                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
                 ^
@@ -129,8 +131,8 @@ class testClass {
                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
                     ^
                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
-                     ^^
-                     source.ts meta.function.ts meta.parameters.ts
+                     ^
+                     source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
 >    m5: () => void,
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -152,8 +154,8 @@ class testClass {
               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts
                ^^^^
                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts support.type.primitive.ts
-                   ^^
-                   source.ts meta.function.ts meta.parameters.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
 >    m6: (x:(string), y:[number, string]) => number,
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -185,8 +187,10 @@ class testClass {
                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts meta.brace.square.ts
                          ^^^^^^
                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts support.type.primitive.ts
-                               ^^
-                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                ^
+                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts
                                  ^^^^^^
                                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts support.type.primitive.ts
                                        ^
@@ -201,8 +205,8 @@ class testClass {
                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts
                                              ^^^^^^
                                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts support.type.primitive.ts
-                                                   ^^
-                                                   source.ts meta.function.ts meta.parameters.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
 >    m7: Array<number>,
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -220,8 +224,8 @@ class testClass {
                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.parameters.ts support.type.primitive.ts
                      ^
                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
-                      ^^
-                      source.ts meta.function.ts meta.parameters.ts
+                      ^
+                      source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
 >    m8: [number, number],
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -235,14 +239,16 @@ class testClass {
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
           ^^^^^^
           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
-                ^^
-                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
                   ^^^^^^
                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
                         ^
                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
-                         ^^
-                         source.ts meta.function.ts meta.parameters.ts
+                         ^
+                         source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
 >    m9: {a: A, b: B} | [number, number], 
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -263,7 +269,7 @@ class testClass {
              ^
              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
               ^
-              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
                ^
                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
                 ^
@@ -286,14 +292,18 @@ class testClass {
                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
                          ^^^^^^
                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
-                               ^^
-                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                ^
+                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
                                  ^^^^^^
                                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
                                        ^
                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
-                                        ^^^
-                                        source.ts meta.function.ts meta.parameters.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                         ^^
+                                         source.ts meta.function.ts meta.parameters.ts
 >    m10: (() => void) | string[]): number {
  ^^^^
  source.ts meta.function.ts meta.parameters.ts
@@ -398,8 +408,10 @@ class testClass {
             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
              ^^^^^^
              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
-                   ^^^
-                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                    ^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
 >        m2: {},
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -413,8 +425,8 @@ class testClass {
              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
               ^
               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
-               ^^
-               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
 >        m3: any [],
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -432,8 +444,8 @@ class testClass {
                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
                   ^
                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
-                   ^^
-                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
 >        m4: {a: A, b: B},
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -454,7 +466,7 @@ class testClass {
                  ^
                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
                   ^
-                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
                    ^
                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
                     ^
@@ -467,8 +479,8 @@ class testClass {
                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
                         ^
                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
-                         ^^
-                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
 >        m5: () => void,
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -490,8 +502,8 @@ class testClass {
                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts
                    ^^^^
                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts support.type.primitive.ts
-                       ^^
-                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
 >        m6: (x:(string), y:[number, string]) => number,
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -523,8 +535,10 @@ class testClass {
                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts meta.brace.square.ts
                              ^^^^^^
                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts support.type.primitive.ts
-                                   ^^
-                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts
                                      ^^^^^^
                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.type.tuple.ts support.type.primitive.ts
                                            ^
@@ -539,8 +553,8 @@ class testClass {
                                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts
                                                  ^^^^^^
                                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts support.type.primitive.ts
-                                                       ^^
-                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
 >        m7: Array<number>,
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -558,8 +572,8 @@ class testClass {
                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.parameters.ts support.type.primitive.ts
                          ^
                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
-                          ^^
-                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
 >        m8: [number, number],
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -573,14 +587,16 @@ class testClass {
              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
               ^^^^^^
               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
-                    ^^
-                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
                       ^^^^^^
                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
                             ^
                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
-                             ^^
-                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
 >        m9: {a: A, b: B} | [number, number], 
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
@@ -601,7 +617,7 @@ class testClass {
                  ^
                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
                   ^
-                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
                    ^
                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
                     ^
@@ -624,14 +640,18 @@ class testClass {
                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
                              ^^^^^^
                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
-                                   ^^
-                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
                                      ^^^^^^
                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
                                            ^
                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
-                                            ^^^
-                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                             ^^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
 >        m10: (() => void) | string[]): number {
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts

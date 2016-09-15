@@ -35,8 +35,10 @@ new new Proxy(function fn() {
                               ^^
                               source.ts meta.function.ts meta.block.ts
 >    console.log(this.constructor.name);
- ^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts
+             ^^^
+             source.ts meta.function.ts meta.block.ts entity.name.function.ts
                 ^
                 source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                  ^^^^
@@ -50,8 +52,10 @@ new new Proxy(function fn() {
 >}, {});
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
+  ^
+  source.ts punctuation.separator.comma.ts
+   ^
+   source.ts
     ^
     source.ts meta.object-literal.ts punctuation.definition.block.ts
      ^

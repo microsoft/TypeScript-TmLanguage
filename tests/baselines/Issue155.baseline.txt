@@ -17,14 +17,18 @@ matchQuery.find().then(function (results) {
 -----------------------------------
 
 >matchQuery.find().then(function (results) {
- ^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^
  source.ts
+            ^^^^
+            source.ts entity.name.function.ts
                 ^
                 source.ts meta.brace.round.ts
                  ^
                  source.ts meta.brace.round.ts
-                  ^^^^^
+                  ^
                   source.ts
+                   ^^^^
+                   source.ts entity.name.function.ts
                        ^
                        source.ts meta.brace.round.ts
                         ^^^^^^^^
@@ -73,14 +77,18 @@ matchQuery.find().then(function (results) {
                                         ^^
                                         source.ts meta.function.ts meta.block.ts meta.block.ts
 >            notificationQuery.find().then(function (notifications){
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts
+                               ^^^^
+                               source.ts meta.function.ts meta.block.ts meta.block.ts entity.name.function.ts
                                    ^
                                    source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                     ^
                                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                                     ^^^^^
+                                     ^
                                      source.ts meta.function.ts meta.block.ts meta.block.ts
+                                      ^^^^
+                                      source.ts meta.function.ts meta.block.ts meta.block.ts entity.name.function.ts
                                           ^
                                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                            ^^^^^^^^
@@ -138,8 +146,10 @@ matchQuery.find().then(function (results) {
                                                       ^^
                                                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts
 >                    console.log('safeDeleteRoute notification result'+j);
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts
+                             ^^^
+                             source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts entity.name.function.ts
                                 ^
                                 source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                  ^
@@ -165,8 +175,10 @@ matchQuery.find().then(function (results) {
                                    source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts
                                     ^
                                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
-                                     ^^^^^^^^
+                                     ^
                                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts
+                                      ^^^^^^^
+                                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts entity.name.function.ts
                                              ^
                                              source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                               ^
@@ -181,8 +193,10 @@ matchQuery.find().then(function (results) {
                   ^^
                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
 >                res.destroy();
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
+                     ^^^^^^^
+                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts entity.name.function.ts
                             ^
                             source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.brace.round.ts
                              ^
@@ -211,7 +225,7 @@ matchQuery.find().then(function (results) {
      ^
      source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
       ^
-      source.ts
+      source.ts punctuation.separator.comma.ts
        ^^^^^^^^
        source.ts meta.function.ts storage.type.function.ts
                ^
@@ -225,8 +239,10 @@ matchQuery.find().then(function (results) {
                        ^^
                        source.ts meta.function.ts meta.block.ts
 >        alert("Error: "+error.code + " " + error.message);
- ^^^^^^^^^^^^^
+ ^^^^^^^^
  source.ts meta.function.ts meta.block.ts
+         ^^^^^
+         source.ts meta.function.ts meta.block.ts entity.name.function.ts
               ^
               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                ^
