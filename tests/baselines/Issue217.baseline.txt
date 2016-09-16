@@ -1,0 +1,192 @@
+original file
+-----------------------------------
+export class StatusSelector {
+  @Output() select = new EventEmitter()
+  statuses = ["started", "completed"]
+}
+
+export class StatusSelector2 {
+  @Output() select = new EventEmitter();
+  statuses = ["started", "completed"]
+}
+-----------------------------------
+
+>export class StatusSelector {
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^^^^^^^^^^^^^^
+              source.ts meta.class.ts entity.name.class.ts
+                            ^
+                            source.ts meta.class.ts
+                             ^
+                             source.ts meta.class.ts punctuation.definition.block.ts
+                              ^^
+                              source.ts meta.class.ts
+>  @Output() select = new EventEmitter()
+ ^^
+ source.ts meta.class.ts
+   ^
+   source.ts meta.class.ts meta.decorator.ts punctuation.decorator.ts
+    ^^^^^^
+    source.ts meta.class.ts meta.decorator.ts variable.function.ts
+          ^
+          source.ts meta.class.ts meta.decorator.ts meta.brace.round.ts
+           ^
+           source.ts meta.class.ts meta.decorator.ts meta.brace.round.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts
+                      ^^^
+                      source.ts meta.class.ts meta.field.declaration.ts new.expr.ts keyword.operator.new.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts new.expr.ts
+                          ^^^^^^^^^^^^
+                          source.ts meta.class.ts meta.field.declaration.ts new.expr.ts entity.name.type.ts
+                                      ^
+                                      source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                       ^
+                                       source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                        ^
+                                        source.ts meta.class.ts meta.field.declaration.ts
+>  statuses = ["started", "completed"]
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts
+   ^^^^^^^^
+   source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                ^^^^^^^
+                source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                           ^^^^^^^^^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts
+                                    ^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                      ^
+                                      source.ts meta.class.ts meta.field.declaration.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>export class StatusSelector2 {
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^^^^^^^^^^^^^^^
+              source.ts meta.class.ts entity.name.class.ts
+                             ^
+                             source.ts meta.class.ts
+                              ^
+                              source.ts meta.class.ts punctuation.definition.block.ts
+                               ^^
+                               source.ts meta.class.ts
+>  @Output() select = new EventEmitter();
+ ^^
+ source.ts meta.class.ts
+   ^
+   source.ts meta.class.ts meta.decorator.ts punctuation.decorator.ts
+    ^^^^^^
+    source.ts meta.class.ts meta.decorator.ts variable.function.ts
+          ^
+          source.ts meta.class.ts meta.decorator.ts meta.brace.round.ts
+           ^
+           source.ts meta.class.ts meta.decorator.ts meta.brace.round.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts
+                      ^^^
+                      source.ts meta.class.ts meta.field.declaration.ts new.expr.ts keyword.operator.new.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts new.expr.ts
+                          ^^^^^^^^^^^^
+                          source.ts meta.class.ts meta.field.declaration.ts new.expr.ts entity.name.type.ts
+                                      ^
+                                      source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                       ^
+                                       source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                        ^
+                                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                                         ^^
+                                         source.ts meta.class.ts
+>  statuses = ["started", "completed"]
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts
+   ^^^^^^^^
+   source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                ^^^^^^^
+                source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                           ^^^^^^^^^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts
+                                    ^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                      ^
+                                      source.ts meta.class.ts meta.field.declaration.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

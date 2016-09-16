@@ -1,0 +1,150 @@
+original file
+-----------------------------------
+class TestCase {
+    ['foo']() {
+        this.registerComponent('foo-bar');
+    }
+}
+
+class TestCase2 {
+    foo() {
+        this.registerComponent('foo-bar');
+    }
+}
+-----------------------------------
+
+>class TestCase {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^^
+       source.ts meta.class.ts entity.name.class.ts
+               ^
+               source.ts meta.class.ts
+                ^
+                source.ts meta.class.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts meta.class.ts
+>    ['foo']() {
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+       ^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts string.quoted.single.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        this.registerComponent('foo-bar');
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.accessor.ts
+              ^^^^^^^^^^^^^^^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.function.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                 ^^^^^^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                          ^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                                           ^^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>class TestCase2 {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^^^
+       source.ts meta.class.ts entity.name.class.ts
+                ^
+                source.ts meta.class.ts
+                 ^
+                 source.ts meta.class.ts punctuation.definition.block.ts
+                  ^^
+                  source.ts meta.class.ts
+>    foo() {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        this.registerComponent('foo-bar');
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.accessor.ts
+              ^^^^^^^^^^^^^^^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.function.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                 ^^^^^^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                          ^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                                           ^^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

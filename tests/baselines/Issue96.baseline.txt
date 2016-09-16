@@ -1,0 +1,136 @@
+original file
+-----------------------------------
+var^^ letter;
+let^^ variable;
+
+var^^iable;
+let^^ter;
+
+var const^^enum^^ = 10;
+const^^enum^^ += 10;
+const^^ enum^^ E { }
+
+var const^^able^^ = "I am rrrrrroyal!";
+const^^able^^ += " Royal, I say!";
+-----------------------------------
+
+>var letter;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+           ^
+           source.ts punctuation.terminator.statement.ts
+>let variable;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+             ^
+             source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>variable;
+ ^^^^^^^^
+ source.ts
+         ^
+         source.ts punctuation.terminator.statement.ts
+>letter;
+ ^^^^^^
+ source.ts
+       ^
+       source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>var constenum = 10;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>constenum += 10;
+ ^^^^^^^^^^
+ source.ts
+           ^^
+           source.ts keyword.operator.assignment.compound.ts
+             ^
+             source.ts
+              ^^
+              source.ts constant.numeric.decimal.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+>const enum E { }
+ ^^^^^
+ source.ts meta.enum.declaration.ts storage.modifier.ts
+      ^
+      source.ts meta.enum.declaration.ts
+       ^^^^
+       source.ts meta.enum.declaration.ts storage.type.enum.ts
+           ^
+           source.ts meta.enum.declaration.ts
+            ^
+            source.ts meta.enum.declaration.ts entity.name.type.enum.ts
+             ^
+             source.ts
+              ^
+              source.ts meta.block.ts punctuation.definition.block.ts
+               ^
+               source.ts meta.block.ts
+                ^
+                source.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>var constable = "I am rrrrrroyal!";
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                  ^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                   ^
+                                   source.ts punctuation.terminator.statement.ts
+>constable += " Royal, I say!";
+ ^^^^^^^^^^
+ source.ts
+           ^^
+           source.ts keyword.operator.assignment.compound.ts
+             ^
+             source.ts
+              ^
+              source.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+               ^^^^^^^^^^^^^^
+               source.ts string.quoted.double.ts
+                             ^
+                             source.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                              ^
+                              source.ts punctuation.terminator.statement.ts

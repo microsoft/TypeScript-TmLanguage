@@ -1,0 +1,96 @@
+original file
+-----------------------------------
+const a = new Array<{}>();
+// syntax highlighting wrong from here on out, due to '{}'
+
+class Thing {
+    render() {
+
+    }
+}
+-----------------------------------
+
+>const a = new Array<{}>();
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+           ^^^
+           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx new.expr.tsx keyword.operator.new.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx new.expr.tsx
+               ^^^^^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx new.expr.tsx entity.name.type.tsx
+                    ^
+                    source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx new.expr.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+                     ^
+                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx new.expr.tsx meta.type.parameters.tsx meta.object.type.tsx punctuation.definition.block.tsx
+                      ^
+                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx new.expr.tsx meta.type.parameters.tsx meta.object.type.tsx punctuation.definition.block.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx new.expr.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.brace.round.tsx
+                         ^
+                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.brace.round.tsx
+                          ^
+                          source.tsx punctuation.terminator.statement.tsx
+                           ^^
+                           source.tsx
+>// syntax highlighting wrong from here on out, due to '{}'
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>
+ ^^
+ source.tsx
+>class Thing {
+ ^^^^^
+ source.tsx meta.class.tsx storage.type.class.tsx
+      ^
+      source.tsx meta.class.tsx
+       ^^^^^
+       source.tsx meta.class.tsx entity.name.class.tsx
+            ^
+            source.tsx meta.class.tsx
+             ^
+             source.tsx meta.class.tsx punctuation.definition.block.tsx
+              ^^
+              source.tsx meta.class.tsx
+>    render() {
+ ^^^^
+ source.tsx meta.class.tsx
+     ^^^^^^
+     source.tsx meta.class.tsx meta.method.declaration.tsx entity.name.function.tsx
+           ^
+           source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+            ^
+            source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+             ^
+             source.tsx meta.class.tsx meta.method.declaration.tsx
+              ^
+              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+               ^^
+               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+>
+ ^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+>    }
+ ^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+     ^
+     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+      ^^
+      source.tsx meta.class.tsx
+>}
+ ^
+ source.tsx meta.class.tsx punctuation.definition.block.tsx

@@ -1,0 +1,238 @@
+original file
+-----------------------------------
+// Issue 288: "function" in "functionName" gets highlighted.
+// Fixed in pull request #289.
+
+function ^^Name(){
+}
+var AnotherName = function^^(){
+}
+
+export function ^^eName(){
+}
+export var eAnotherName = function^^(){
+}
+
+var function^^Name=1;
+function^^Name=1;
+
+export var function^^Name2=1;
+
+var export^^Name="hello";
+export^^Name2="hello";
+
+var return^^Name=1;
+return^^Name+=1;
+
+-----------------------------------
+
+>// Issue 288: "function" in "functionName" gets highlighted.
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>// Fixed in pull request #289.
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts
+>function Name(){
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^
+          source.ts meta.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>var AnotherName = function(){
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^^^^^^^^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts storage.type.function.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>export function eName(){
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                      ^
+                      source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                       ^
+                       source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>export var eAnotherName = function(){
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^
+        source.ts meta.var.expr.ts storage.type.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^^^^^^^^^^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                           ^^^^^^^^
+                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts storage.type.function.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>var functionName=1;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>functionName=1;
+ ^^^^^^^^^^^^
+ source.ts
+             ^
+             source.ts keyword.operator.assignment.ts
+              ^
+              source.ts constant.numeric.decimal.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>export var functionName2=1;
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^
+        source.ts meta.var.expr.ts storage.type.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^^^^^^^^^^^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                           ^
+                           source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>var exportName="hello";
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                 ^^^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+>exportName2="hello";
+ ^^^^^^^^^^^
+ source.ts
+            ^
+            source.ts keyword.operator.assignment.ts
+             ^
+             source.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+              ^^^^^
+              source.ts string.quoted.double.ts
+                   ^
+                   source.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>var returnName=1;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                 ^
+                 source.ts punctuation.terminator.statement.ts
+>returnName+=1;
+ ^^^^^^^^^^
+ source.ts
+           ^^
+           source.ts keyword.operator.assignment.compound.ts
+             ^
+             source.ts constant.numeric.decimal.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts

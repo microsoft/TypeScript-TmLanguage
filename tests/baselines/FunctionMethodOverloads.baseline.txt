@@ -1,0 +1,1180 @@
+original file
+-----------------------------------
+/* Function overload tests */
+^^export function ^^testFunctionOverload(p: number): new() => any
+^^export function ^^testFunctionOverload(p: string)
+^^export function ^^testFunctionOverload(p: string [])
+^^export function ^^testFunctionOverload(p: {})
+^^export function ^^testFunctionOverload(p: {a: A, b:B} | string [])
+^^export function ^^testFunctionOverload(p: any): new() => any {
+    ^^throw new Error("")
+}
+
+^^export function ^^testFunctionOverloadWithSemicolon(p: number): new () => any;
+^^export function ^^testFunctionOverloadWithSemicolon(p: string);
+^^export function ^^testFunctionOverloadWithSemicolon(p: string[]);
+^^export function ^^testFunctionOverloadWithSemicolon(p: {});
+^^export function ^^testFunctionOverloadWithSemicolon(p: { a: A, b: B } | string[]);
+^^export function ^^testFunctionOverloadWithSemicolon(p: any): new () => any {
+    ^^throw new Error("")
+}
+
+
+class testClass {
+    /* Function overload tests */
+    ^^public ^^testMethodOverload(p: number): new() => any
+    ^^public ^^testMethodOverload(p: string)
+    ^^public ^^testMethodOverload(p: string [])
+    ^^public ^^testMethodOverload(p: {})
+    ^^public ^^testMethodOverload(p: {a: A, b:B} | string [])
+    ^^public ^^testMethodOverload(p: any): new() => any {
+        ^^throw new Error("")
+    }
+
+    ^^public ^^testMethodOverloadWithSemicolon(p: number): new () => any;
+    ^^public ^^testMethodOverloadWithSemicolon(p: string);
+    ^^public ^^testMethodOverloadWithSemicolon(p: string[]);
+    ^^public ^^testMethodOverloadWithSemicolon(p: {});
+    ^^public ^^testMethodOverloadWithSemicolon(p: { a: A, b: B } | string[]);
+    ^^public ^^testMethodOverloadWithSemicolon(p: any): new () => any {
+        ^^throw new Error("")
+    }
+}
+
+interface I {
+    ^^foo(): number
+    ^^bar(): string;
+}
+
+abstract class C {
+    ^^abstract ^^foo()
+    ^^abstract ^^bar()
+}
+-----------------------------------
+
+>/* Function overload tests */
+ ^^
+ source.ts comment.block.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.block.ts
+                            ^^
+                            source.ts comment.block.ts punctuation.definition.comment.ts
+>export function testFunctionOverload(p: number): new() => any
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^^^^^^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                ^
+                                                source.ts meta.function.ts meta.return.type.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.return.type.ts
+                                                  ^^^
+                                                  source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.return.type.ts
+                                                        ^^
+                                                        source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                           ^^^
+                                                           source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+>export function testFunctionOverload(p: string)
+ ^^^^^^
+ source.ts meta.function.ts meta.function.overload.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts meta.function.overload.ts
+        ^^^^^^^^
+        source.ts meta.function.ts meta.function.overload.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts meta.function.overload.ts
+                 ^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.function.overload.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^^^^^^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>export function testFunctionOverload(p: string [])
+ ^^^^^^
+ source.ts meta.function.ts meta.function.overload.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts meta.function.overload.ts
+        ^^^^^^^^
+        source.ts meta.function.ts meta.function.overload.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts meta.function.overload.ts
+                 ^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.function.overload.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^^^^^^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                ^
+                                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>export function testFunctionOverload(p: {})
+ ^^^^^^
+ source.ts meta.function.ts meta.function.overload.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts meta.function.overload.ts
+        ^^^^^^^^
+        source.ts meta.function.ts meta.function.overload.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts meta.function.overload.ts
+                 ^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.function.overload.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                          ^
+                                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                           ^
+                                           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>export function testFunctionOverload(p: {a: A, b:B} | string [])
+ ^^^^^^
+ source.ts meta.function.ts meta.function.overload.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts meta.function.overload.ts
+        ^^^^^^^^
+        source.ts meta.function.ts meta.function.overload.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts meta.function.overload.ts
+                 ^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.function.overload.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                          ^
+                                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                           ^
+                                           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                            ^
+                                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                             ^
+                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                              ^
+                                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
+                                               ^
+                                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                                                ^
+                                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                       ^^^^^^
+                                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                ^
+                                                                source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>export function testFunctionOverload(p: any): new() => any {
+ ^^^^^^
+ source.ts meta.function.ts meta.function.overload.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts meta.function.overload.ts
+        ^^^^^^^^
+        source.ts meta.function.ts meta.function.overload.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts meta.function.overload.ts
+                 ^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.function.overload.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^^^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                            ^
+                                            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                             ^
+                                             source.ts meta.function.ts meta.return.type.ts
+                                              ^
+                                              source.ts meta.function.ts meta.return.type.ts
+                                               ^^^
+                                               source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.return.type.ts
+                                                     ^^
+                                                     source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                        ^^^
+                                                        source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    throw new Error("")
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.trycatch.ts
+          ^
+          source.ts meta.function.ts meta.block.ts
+           ^^^
+           source.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.function.ts meta.block.ts new.expr.ts
+               ^^^^^
+               source.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>export function testFunctionOverloadWithSemicolon(p: number): new () => any;
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^^^^^^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.return.type.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.return.type.ts
+                                                               ^^^
+                                                               source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                                                  ^
+                                                                  source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts
+                                                                   ^
+                                                                   source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                                    ^
+                                                                    source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.return.type.ts
+                                                                      ^^
+                                                                      source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                                        ^
+                                                                        source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                                         ^^^
+                                                                         source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+                                                                            ^
+                                                                            source.ts punctuation.terminator.statement.ts
+>export function testFunctionOverloadWithSemicolon(p: string);
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^^^^^^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                             ^
+                                                             source.ts punctuation.terminator.statement.ts
+>export function testFunctionOverloadWithSemicolon(p: string[]);
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^^^^^^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                               ^
+                                                               source.ts punctuation.terminator.statement.ts
+>export function testFunctionOverloadWithSemicolon(p: {});
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                        ^
+                                                        source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                         ^
+                                                         source.ts punctuation.terminator.statement.ts
+>export function testFunctionOverloadWithSemicolon(p: { a: A, b: B } | string[]);
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                                                        ^
+                                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                                ^
+                                                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                                 ^
+                                                                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                                  ^
+                                                                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                                   ^
+                                                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                                    ^
+                                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                                                                      ^
+                                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                                       ^^^^^^
+                                                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                                             ^
+                                                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                              ^
+                                                                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                               ^
+                                                                               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                                ^
+                                                                                source.ts punctuation.terminator.statement.ts
+>export function testFunctionOverloadWithSemicolon(p: any): new () => any {
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^^^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.return.type.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.return.type.ts
+                                                            ^^^
+                                                            source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts
+                                                                ^
+                                                                source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                                 ^
+                                                                 source.ts meta.function.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                                  ^
+                                                                  source.ts meta.function.ts meta.return.type.ts
+                                                                   ^^
+                                                                   source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                                      ^^^
+                                                                      source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                                          ^
+                                                                          source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    throw new Error("")
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.trycatch.ts
+          ^
+          source.ts meta.function.ts meta.block.ts
+           ^^^
+           source.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.function.ts meta.block.ts new.expr.ts
+               ^^^^^
+               source.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts
+>class testClass {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^^^
+       source.ts meta.class.ts entity.name.class.ts
+                ^
+                source.ts meta.class.ts
+                 ^
+                 source.ts meta.class.ts punctuation.definition.block.ts
+>    /* Function overload tests */
+ ^^^^
+ source.ts meta.class.ts
+     ^^
+     source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+       source.ts meta.class.ts comment.block.ts
+                                ^^
+                                source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+>    public testMethodOverload(p: number): new() => any
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                  ^^^^^^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                          ^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                           ^^^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                               ^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                ^
+                                                source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                 ^^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts
+                                                    ^^^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+>    public testMethodOverload(p: string)
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts
+            ^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts entity.name.function.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                  ^^^^^^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>    public testMethodOverload(p: string [])
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts
+            ^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts entity.name.function.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                  ^^^^^^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                          ^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>    public testMethodOverload(p: {})
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts
+            ^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts entity.name.function.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>    public testMethodOverload(p: {a: A, b:B} | string [])
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts
+            ^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts entity.name.function.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                          ^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                                               ^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                                ^^^^^^
+                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                      ^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                         ^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>    public testMethodOverload(p: any): new() => any {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts
+            ^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts entity.name.function.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                  ^^^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                        ^^^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                              ^^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                ^
+                                                source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts
+                                                 ^^^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+                                                    ^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        throw new Error("")
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.trycatch.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+               ^^^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts
+                   ^^^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts entity.name.type.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts meta.class.ts
+>    public testMethodOverloadWithSemicolon(p: number): new () => any;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                               ^^^^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                      ^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                        ^^^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                                           ^
+                                                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                             ^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                              ^
+                                                              source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                               ^^
+                                                               source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                                 ^
+                                                                 source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts
+                                                                  ^^^
+                                                                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+                                                                     ^
+                                                                     source.ts meta.class.ts punctuation.terminator.statement.ts
+>    public testMethodOverloadWithSemicolon(p: string);
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                               ^^^^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                      ^
+                                                      source.ts meta.class.ts punctuation.terminator.statement.ts
+>    public testMethodOverloadWithSemicolon(p: string[]);
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                               ^^^^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                      ^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                        ^
+                                                        source.ts meta.class.ts punctuation.terminator.statement.ts
+>    public testMethodOverloadWithSemicolon(p: {});
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                               ^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                ^
+                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                 ^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                  ^
+                                                  source.ts meta.class.ts punctuation.terminator.statement.ts
+>    public testMethodOverloadWithSemicolon(p: { a: A, b: B } | string[]);
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                               ^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                ^
+                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                                                 ^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                    ^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.separator.comma.ts
+                                                      ^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                         ^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                          ^
+                                                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                           ^
+                                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                             ^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                                              ^
+                                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                                                               ^
+                                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                                                ^^^^^^
+                                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                                      ^
+                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                       ^
+                                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                        ^
+                                                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                         ^
+                                                                         source.ts meta.class.ts punctuation.terminator.statement.ts
+>    public testMethodOverloadWithSemicolon(p: any): new () => any {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                            ^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                               ^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                    ^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                     ^^^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts keyword.control.new.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts
+                                                         ^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                          ^
+                                                          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                           ^
+                                                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                            ^^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                              ^
+                                                              source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts
+                                                               ^^^
+                                                               source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+                                                                  ^
+                                                                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.type.function.return.ts
+                                                                   ^
+                                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        throw new Error("")
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.trycatch.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+               ^^^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts
+                   ^^^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts entity.name.type.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>interface I {
+ ^^^^^^^^^
+ source.ts meta.class.ts storage.type.interface.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts entity.name.class.ts
+            ^
+            source.ts meta.class.ts
+             ^
+             source.ts meta.class.ts punctuation.definition.block.ts
+>    foo(): number
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+            ^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+>    bar(): string;
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+            ^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>abstract class C {
+ ^^^^^^^^
+ source.ts meta.class.ts storage.modifier.ts
+         ^
+         source.ts meta.class.ts
+          ^^^^^
+          source.ts meta.class.ts storage.type.class.ts
+               ^
+               source.ts meta.class.ts
+                ^
+                source.ts meta.class.ts entity.name.class.ts
+                 ^
+                 source.ts meta.class.ts
+                  ^
+                  source.ts meta.class.ts punctuation.definition.block.ts
+>    abstract foo()
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts
+              ^^^
+              source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>    abstract bar()
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts
+              ^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.method.overload.declaration.ts entity.name.function.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

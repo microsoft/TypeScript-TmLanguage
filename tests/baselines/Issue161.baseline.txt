@@ -1,0 +1,110 @@
+original file
+-----------------------------------
+let root: React.ReactElement<{}>;
+let page: PageName;
+if (isViaPage) {
+  root = <ViaView/>;
+  page = 'via';
+}
+-----------------------------------
+
+>let root: React.ReactElement<{}>;
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx
+           ^^^^^
+           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx entity.name.type.module.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx punctuation.accessor.tsx
+                 ^^^^^^^^^^^^
+                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx entity.name.type.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx meta.type.parameters.tsx meta.object.type.tsx punctuation.definition.block.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx meta.type.parameters.tsx meta.object.type.tsx punctuation.definition.block.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                                 ^
+                                 source.tsx punctuation.terminator.statement.tsx
+                                  ^^
+                                  source.tsx
+>let page: PageName;
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx
+           ^^^^^^^^
+           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.type.annotation.tsx entity.name.type.tsx
+                   ^
+                   source.tsx punctuation.terminator.statement.tsx
+                    ^^
+                    source.tsx
+>if (isViaPage) {
+ ^^
+ source.tsx keyword.control.conditional.tsx
+   ^
+   source.tsx
+    ^
+    source.tsx meta.brace.round.tsx
+     ^^^^^^^^^
+     source.tsx
+              ^
+              source.tsx meta.brace.round.tsx
+               ^
+               source.tsx
+                ^
+                source.tsx meta.block.tsx punctuation.definition.block.tsx
+                 ^^
+                 source.tsx meta.block.tsx
+>  root = <ViaView/>;
+ ^^^^^^^
+ source.tsx meta.block.tsx
+        ^
+        source.tsx meta.block.tsx keyword.operator.assignment.tsx
+         ^
+         source.tsx meta.block.tsx
+          ^
+          source.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+           ^^^^^^^
+           source.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx
+                  ^^
+                  source.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                    ^
+                    source.tsx meta.block.tsx punctuation.terminator.statement.tsx
+                     ^^
+                     source.tsx meta.block.tsx
+>  page = 'via';
+ ^^^^^^^
+ source.tsx meta.block.tsx
+        ^
+        source.tsx meta.block.tsx keyword.operator.assignment.tsx
+         ^
+         source.tsx meta.block.tsx
+          ^
+          source.tsx meta.block.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+           ^^^
+           source.tsx meta.block.tsx string.quoted.single.tsx
+              ^
+              source.tsx meta.block.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+               ^
+               source.tsx meta.block.tsx punctuation.terminator.statement.tsx
+                ^^
+                source.tsx meta.block.tsx
+>}
+ ^
+ source.tsx meta.block.tsx punctuation.definition.block.tsx

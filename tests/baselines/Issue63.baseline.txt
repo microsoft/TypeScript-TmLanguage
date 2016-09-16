@@ -1,0 +1,290 @@
+original file
+-----------------------------------
+^^type ^^Callback <^^T> = ^^(error: Error, value: T) => any
+
+^^type Callback^^<T > = ^^(error: Error, value: T) ^^=> ^^any
+
+type Callback = ^^(error: Error, value: T) => ^^any
+
+^^type ^^Callback^^<string ^^| ^^(a: number, b: string) => ^^void> = ^^(error: Error, value: T) => ^^any
+
+^^ type ^^Foo <^^T > = ^^{
+
+	^^foo: ^^T,
+	^^bar: ^^number
+
+^^}
+-----------------------------------
+
+>type Callback <T> = (error: Error, value: T) => any
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^^
+                   source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                      ^^^^^
+                      source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                           ^^
+                           source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                             ^^^^^
+                             source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                  ^^
+                                  source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                    ^^^^^
+                                    source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                         ^^
+                                         source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts
+                                              ^^
+                                              source.ts meta.type.declaration.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts meta.type.function.return.ts
+                                                 ^^^
+                                                 source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts
+>
+ ^
+ source.ts
+>type Callback<T > = (error: Error, value: T) => any
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^^
+                   source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                      ^^^^^
+                      source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                           ^^
+                           source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                             ^^^^^
+                             source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                  ^^
+                                  source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                    ^^^^^
+                                    source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                         ^^
+                                         source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts
+                                              ^^
+                                              source.ts meta.type.declaration.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts meta.type.function.return.ts
+                                                 ^^^
+                                                 source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts
+>
+ ^
+ source.ts
+>type Callback = (error: Error, value: T) => any
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts
+               ^^
+               source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                  ^^^^^
+                  source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                       ^^
+                       source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                         ^^^^^
+                         source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                              ^^
+                              source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                ^^^^^
+                                source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                     ^^
+                                     source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts
+                                          ^^
+                                          source.ts meta.type.declaration.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.type.function.return.ts
+                                             ^^^
+                                             source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts
+>
+ ^
+ source.ts
+>type Callback<string | (a: number, b: string) => void> = (error: Error, value: T) => any
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+               ^^^^^^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.type.parameters.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.type.parameters.ts keyword.operator.type.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts entity.name.type.ts
+                          ^^
+                          source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts
+                            ^^^^^^
+                            source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts support.type.primitive.ts
+                                  ^^
+                                  source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts entity.name.type.ts
+                                     ^^
+                                     source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts
+                                       ^^^^^^
+                                       source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts support.type.primitive.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                              ^
+                                              source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                               ^^
+                                               source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                 ^
+                                                 source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.function.return.ts
+                                                  ^^^^
+                                                  source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.function.return.ts support.type.primitive.ts
+                                                      ^
+                                                      source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                       ^
+                                                       source.ts meta.type.declaration.ts
+                                                        ^^
+                                                        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                                                          ^
+                                                          source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                           ^^^^^
+                                                           source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                                                ^^
+                                                                source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                                                  ^^^^^
+                                                                  source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                                                       ^^
+                                                                       source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                                                         ^^^^^
+                                                                         source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                                                              ^^
+                                                                              source.ts meta.type.declaration.ts meta.type.paren.cover.ts
+                                                                                ^
+                                                                                source.ts meta.type.declaration.ts meta.type.paren.cover.ts entity.name.type.ts
+                                                                                 ^
+                                                                                 source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
+                                                                                  ^
+                                                                                  source.ts meta.type.declaration.ts
+                                                                                   ^^
+                                                                                   source.ts meta.type.declaration.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                                                     ^
+                                                                                     source.ts meta.type.declaration.ts meta.type.function.return.ts
+                                                                                      ^^^
+                                                                                      source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts
+>
+ ^
+ source.ts
+> type Foo <T > = {
+ ^
+ source.ts
+  ^^^^
+  source.ts meta.type.declaration.ts storage.type.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^^^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+               ^
+               source.ts meta.type.declaration.ts
+                ^^
+                source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+>	foo: T,
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts
+  ^^^
+  source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts meta.object.type.ts punctuation.separator.comma.ts
+>	bar: number
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts
+  ^^^
+  source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+       ^^^^^^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+>
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts

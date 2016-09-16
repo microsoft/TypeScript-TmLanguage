@@ -1,0 +1,124 @@
+original file
+-----------------------------------
+class MyType
+{
+    public myFunction = (): void =>
+    {
+        // From this point on the syntax highlighting will be confused as to where it is.
+        var myVar = 5;
+        console.log("Hello there!");
+    }
+}
+-----------------------------------
+
+>class MyType
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^
+       source.ts meta.class.ts entity.name.class.ts
+             ^^
+             source.ts meta.class.ts
+>{
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.class.ts
+>    public myFunction = (): void =>
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^^^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.return.type.arrow.ts
+                            ^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.return.type.arrow.ts
+                             ^^^^
+                             source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.return.type.arrow.ts support.type.primitive.ts
+                                 ^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.return.type.arrow.ts
+                                  ^^
+                                  source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+                                    ^^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+>    {
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+>        // From this point on the syntax highlighting will be confused as to where it is.
+ ^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+         ^^
+         source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
+>        var myVar = 5;
+ ^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+         ^^^
+         source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+             ^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                       ^^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+>        console.log("Hello there!");
+ ^^^^^^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+                 ^^^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts variable.function.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                      ^^^^^^^^^^^^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts string.quoted.double.ts
+                                  ^
+                                  source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                   ^
+                                   source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                    ^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                                     ^^
+                                     source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

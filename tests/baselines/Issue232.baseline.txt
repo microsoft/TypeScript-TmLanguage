@@ -1,0 +1,86 @@
+original file
+-----------------------------------
+for( let [k, component] of this.components){
+    let bounds = component.view.getBounds(); /// <= not highlighted, nor anything after this
+}
+-----------------------------------
+
+>for( let [k, component] of this.components){
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^
+     source.ts
+      ^^^
+      source.ts meta.var.expr.ts storage.type.ts
+         ^
+         source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+          ^
+          source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+           ^
+           source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+             ^
+             source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+              ^^^^^^^^^
+              source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                        ^
+                        source.ts
+                         ^^
+                         source.ts keyword.operator.of.ts
+                           ^
+                           source.ts
+                            ^^^^
+                            source.ts variable.language.this.ts
+                                ^
+                                source.ts punctuation.accessor.ts
+                                 ^^^^^^^^^^
+                                 source.ts
+                                           ^
+                                           source.ts meta.brace.round.ts
+                                            ^
+                                            source.ts meta.block.ts punctuation.definition.block.ts
+                                             ^^
+                                             source.ts meta.block.ts
+>    let bounds = component.view.getBounds(); /// <= not highlighted, nor anything after this
+ ^^^^
+ source.ts meta.block.ts
+     ^^^
+     source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                 ^^^^^^^^^^
+                 source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                           ^
+                           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts punctuation.accessor.ts
+                            ^^^^
+                            source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                ^
+                                source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts punctuation.accessor.ts
+                                 ^^^^^^^^^
+                                 source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.function.ts
+                                          ^
+                                          source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                                           ^
+                                           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                                            ^
+                                            source.ts meta.block.ts punctuation.terminator.statement.ts
+                                             ^
+                                             source.ts meta.block.ts
+                                              ^^
+                                              source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                source.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts

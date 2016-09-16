@@ -1,2 +1,12 @@
-[1, 1]: source.ts storage.modifier.ts 
-[2, 1]: source.ts 
+original file
+-----------------------------------
+^^await 1;
+^^awaiting 1;
+-----------------------------------
+
+>await 1;
+ ^^^^^
+ [1, 1]: source.ts keyword.control.flow.ts 
+>awaiting 1;
+ ^^^^^^^^^
+ [2, 1]: source.ts 

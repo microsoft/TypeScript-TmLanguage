@@ -1,0 +1,336 @@
+original file
+-----------------------------------
+/** Meta-part that defins a Form */
+export class FormType extends Type {
+
+  /** @internal Original FormType instance */
+  static Original = function () {
+    let type = new FormType;
+
+    // define embed field
+    type.defineField(DesignID.Embed, new BooleanAtom(false));
+
+    // define plan choice
+    type.defineField(DesignID.Plan, PlanChoice.Original);
+
+    // define fields list
+    let fields =
+      type.defineField(DesignID.Fields, new Ordering(new FieldDesign));
+    // embed field list
+    fields.embed = true;
+
+    return type;
+  } ();
+}
+-----------------------------------
+
+>/** Meta-part that defins a Form */
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    source.ts comment.block.documentation.ts
+                                  ^^
+                                  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+                                    ^^
+                                    source.ts
+>export class FormType extends Type {
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^^^^^^^^
+              source.ts meta.class.ts entity.name.class.ts
+                      ^
+                      source.ts meta.class.ts
+                       ^^^^^^^
+                       source.ts meta.class.ts storage.modifier.ts
+                              ^
+                              source.ts meta.class.ts
+                               ^^^^
+                               source.ts meta.class.ts entity.other.inherited-class.ts
+                                   ^
+                                   source.ts meta.class.ts
+                                    ^
+                                    source.ts meta.class.ts punctuation.definition.block.ts
+                                     ^^
+                                     source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>  /** @internal Original FormType instance */
+ ^^
+ source.ts meta.class.ts
+   ^^^
+   source.ts meta.class.ts comment.block.documentation.ts punctuation.definition.comment.ts
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      source.ts meta.class.ts comment.block.documentation.ts
+                                            ^^
+                                            source.ts meta.class.ts comment.block.documentation.ts punctuation.definition.comment.ts
+                                              ^^
+                                              source.ts meta.class.ts
+>  static Original = function () {
+ ^^
+ source.ts meta.class.ts
+   ^^^^^^
+   source.ts meta.class.ts storage.modifier.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^^^^^^^^
+          source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts
+                     ^^^^^^^^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts storage.type.function.ts
+                             ^
+                             source.ts meta.class.ts meta.field.declaration.ts meta.function.ts
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^
+                               source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.function.ts
+                                 ^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                  ^^
+                                  source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>    let type = new FormType;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+     ^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts
+         ^^^^
+         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^^^
+                source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.operator.new.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts
+                    ^^^^^^^^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts entity.name.type.ts
+                            ^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                             ^^
+                             source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>    // define embed field
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^^^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
+>    type.defineField(DesignID.Embed, new BooleanAtom(false));
+ ^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+          ^^^^^^^^^^^
+          source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts variable.function.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                      ^^^^^^^^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                               ^^^^^
+                               source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                    ^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                     ^
+                                     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                      ^^^
+                                      source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                                         ^
+                                         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts
+                                          ^^^^^^^^^^^
+                                          source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                      ^^^^^
+                                                      source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts constant.language.boolean.false.ts
+                                                           ^
+                                                           source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                             ^
+                                                             source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                              ^^
+                                                              source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>    // define plan choice
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^^^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
+>    type.defineField(DesignID.Plan, PlanChoice.Original);
+ ^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+          ^^^^^^^^^^^
+          source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts variable.function.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                      ^^^^^^^^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                               ^^^^
+                               source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                   ^
+                                   source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                    ^^^^^^^^^^^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                               ^
+                                               source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                                ^^^^^^^^
+                                                source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                         ^
+                                                         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                          ^^
+                                                          source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>    // define fields list
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^^^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
+>    let fields =
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+     ^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^
+         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+>      type.defineField(DesignID.Fields, new Ordering(new FieldDesign));
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+            ^^^^^^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts variable.function.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                        ^^^^^^^^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                 ^^^^^^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                       ^
+                                       source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                                         ^^^
+                                         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                                            ^
+                                            source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts
+                                             ^^^^^^^^
+                                             source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                      ^^^
+                                                      source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                                                         ^
+                                                         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts
+                                                          ^^^^^^^^^^^
+                                                          source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                                                     ^
+                                                                     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                                      ^
+                                                                      source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                                       ^
+                                                                       source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                        ^^
+                                                                        source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>    // embed field list
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
+>    fields.embed = true;
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+            ^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                    ^^^^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts constant.language.boolean.true.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>    return type;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+>  } ();
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts
+   ^
+   source.ts meta.class.ts meta.field.declaration.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+    ^
+    source.ts meta.class.ts meta.field.declaration.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+       ^
+       source.ts meta.class.ts punctuation.terminator.statement.ts
+        ^^
+        source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

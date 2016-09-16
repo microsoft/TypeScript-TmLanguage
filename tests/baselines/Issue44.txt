@@ -1,7 +1,38 @@
-[2, 1]: source.ts meta.declaration.object.ts storage.type.ts 
-[2, 11]: source.ts meta.declaration.object.ts meta.object.name.ts entity.name.class.ts 
-[3, 3]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts variable.ts 
-[3, 12]: source.ts meta.declaration.object.ts meta.object.body.ts meta.field.declaration.ts meta.type.primitive.ts support.type.ts 
-[4, 3]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts entity.name.function.ts 
-[4, 15]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.type.annotation.ts meta.type.primitive.ts support.type.ts 
-[5, 1]: source.ts meta.declaration.object.ts meta.object.body.ts meta.brace.curly.ts 
+original file
+-----------------------------------
+
+^^interface ^^TestInterface {
+  ^^testvar: ^^string;
+  ^^testfunc(): ^^string;
+^^}
+
+/*
+	Testing Comments
+*/
+
+-----------------------------------
+
+>
+>interface TestInterface {
+ ^^^^^^^^^
+ [2, 1]: source.ts meta.class.ts storage.type.interface.ts 
+           ^^^^^^^^^^^^^
+           [2, 11]: source.ts meta.class.ts entity.name.class.ts 
+>  testvar: string;
+   ^^^^^^^
+   [3, 3]: source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts 
+            ^^^^^^
+            [3, 12]: source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts 
+>  testfunc(): string;
+   ^^^^^^^^
+   [4, 3]: source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts 
+               ^^^^^^
+               [4, 15]: source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts 
+>}
+ ^
+ [5, 1]: source.ts meta.class.ts punctuation.definition.block.ts 
+>
+>/*
+>	Testing Comments
+>*/
+>

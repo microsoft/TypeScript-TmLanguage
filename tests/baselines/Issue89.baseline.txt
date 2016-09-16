@@ -1,0 +1,238 @@
+original file
+-----------------------------------
+export ^^class ^^A ^^extends /* ^^ */^^B ^^implements/**/ ^^C{
+	^^	
+}
+^^
+
+
+export class ^^D ^^implements/**/ ^^ F ^^extends /**/^^G ^^ {
+	^^	
+}
+^^
+
+export class ^^E ^^extends /**/^^H ^^ implements/*^^*/ ^^One, ^^Two, ^^Three{
+	^^	
+}
+^^
+
+^^class ^^className ^^extends ^^class1 ^^implements ^^class2 {
+    ^^
+}
+
+/*
+	Checking comments ^^
+*/
+
+-----------------------------------
+
+>export class A extends /*  */B implements/**/ C{
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^
+              source.ts meta.class.ts entity.name.class.ts
+               ^
+               source.ts meta.class.ts
+                ^^^^^^^
+                source.ts meta.class.ts storage.modifier.ts
+                       ^
+                       source.ts meta.class.ts
+                        ^^
+                        source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                          ^^
+                          source.ts meta.class.ts comment.block.ts
+                            ^^
+                            source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                              ^
+                              source.ts meta.class.ts entity.other.inherited-class.ts
+                               ^
+                               source.ts meta.class.ts
+                                ^^^^^^^^^^
+                                source.ts meta.class.ts storage.modifier.ts
+                                          ^^
+                                          source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                                            ^^
+                                            source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                                              ^
+                                              source.ts meta.class.ts
+                                               ^
+                                               source.ts meta.class.ts entity.other.inherited-class.ts
+                                                ^
+                                                source.ts meta.class.ts punctuation.definition.block.ts
+>		
+ ^^^
+ source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts
+>export class D implements/**/  F extends /**/G  {
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^
+              source.ts meta.class.ts entity.name.class.ts
+               ^
+               source.ts meta.class.ts
+                ^^^^^^^^^^
+                source.ts meta.class.ts storage.modifier.ts
+                          ^^
+                          source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                            ^^
+                            source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                              ^^
+                              source.ts meta.class.ts
+                                ^
+                                source.ts meta.class.ts entity.other.inherited-class.ts
+                                 ^
+                                 source.ts meta.class.ts
+                                  ^^^^^^^
+                                  source.ts meta.class.ts storage.modifier.ts
+                                         ^
+                                         source.ts meta.class.ts
+                                          ^^
+                                          source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                                            ^^
+                                            source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                                              ^
+                                              source.ts meta.class.ts entity.other.inherited-class.ts
+                                               ^^
+                                               source.ts meta.class.ts
+                                                 ^
+                                                 source.ts meta.class.ts punctuation.definition.block.ts
+>		
+ ^^^
+ source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts
+>export class E extends /**/H  implements/**/ One, Two, Three{
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^
+              source.ts meta.class.ts entity.name.class.ts
+               ^
+               source.ts meta.class.ts
+                ^^^^^^^
+                source.ts meta.class.ts storage.modifier.ts
+                       ^
+                       source.ts meta.class.ts
+                        ^^
+                        source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                          ^^
+                          source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                            ^
+                            source.ts meta.class.ts entity.other.inherited-class.ts
+                             ^^
+                             source.ts meta.class.ts
+                               ^^^^^^^^^^
+                               source.ts meta.class.ts storage.modifier.ts
+                                         ^^
+                                         source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                                           ^^
+                                           source.ts meta.class.ts comment.block.ts punctuation.definition.comment.ts
+                                             ^
+                                             source.ts meta.class.ts
+                                              ^^^
+                                              source.ts meta.class.ts entity.other.inherited-class.ts
+                                                 ^^
+                                                 source.ts meta.class.ts
+                                                   ^^^
+                                                   source.ts meta.class.ts entity.other.inherited-class.ts
+                                                      ^^
+                                                      source.ts meta.class.ts
+                                                        ^^^^^
+                                                        source.ts meta.class.ts entity.other.inherited-class.ts
+                                                             ^
+                                                             source.ts meta.class.ts punctuation.definition.block.ts
+>		
+ ^^^
+ source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts
+>class className extends class1 implements class2 {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^^^
+       source.ts meta.class.ts entity.name.class.ts
+                ^
+                source.ts meta.class.ts
+                 ^^^^^^^
+                 source.ts meta.class.ts storage.modifier.ts
+                        ^
+                        source.ts meta.class.ts
+                         ^^^^^^
+                         source.ts meta.class.ts entity.other.inherited-class.ts
+                               ^
+                               source.ts meta.class.ts
+                                ^^^^^^^^^^
+                                source.ts meta.class.ts storage.modifier.ts
+                                          ^
+                                          source.ts meta.class.ts
+                                           ^^^^^^
+                                           source.ts meta.class.ts entity.other.inherited-class.ts
+                                                 ^
+                                                 source.ts meta.class.ts
+                                                  ^
+                                                  source.ts meta.class.ts punctuation.definition.block.ts
+>    
+ ^^^^^
+ source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>/*
+ ^^
+ source.ts comment.block.ts punctuation.definition.comment.ts
+>	Checking comments 
+ ^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.ts
+>*/
+ ^^
+ source.ts comment.block.ts punctuation.definition.comment.ts
+>
+ ^
+ source.ts

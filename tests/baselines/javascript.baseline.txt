@@ -1,0 +1,96 @@
+original file
+-----------------------------------
+^^switch (x) {
+    ^^case 0:
+    ^^default:
+}
+^^typeof x;
+^^void x;
+^^delete x.y;
+x ^^instanceof y;
+-----------------------------------
+
+>switch (x) {
+ ^^^^^^
+ source.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.switch.ts
+       ^
+       source.ts switch-statement.expr.ts switch-expression.expr.ts
+        ^
+        source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
+         ^
+         source.ts switch-statement.expr.ts switch-expression.expr.ts
+          ^
+          source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
+           ^
+           source.ts switch-statement.expr.ts
+            ^
+            source.ts switch-statement.expr.ts switch-block.expr.ts punctuation.definition.block.ts
+             ^^
+             source.ts switch-statement.expr.ts switch-block.expr.ts
+>    case 0:
+ ^^^^
+ source.ts switch-statement.expr.ts switch-block.expr.ts
+     ^^^^
+     source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts
+         ^
+         source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
+          ^
+          source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts constant.numeric.decimal.ts
+           ^
+           source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
+            ^^
+            source.ts switch-statement.expr.ts switch-block.expr.ts
+>    default:
+ ^^^^
+ source.ts switch-statement.expr.ts switch-block.expr.ts
+     ^^^^^^^
+     source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts
+            ^
+            source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
+             ^^
+             source.ts switch-statement.expr.ts switch-block.expr.ts
+>}
+ ^
+ source.ts switch-statement.expr.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>typeof x;
+ ^^^^^^
+ source.ts keyword.operator.typeof.ts
+       ^^
+       source.ts
+         ^
+         source.ts punctuation.terminator.statement.ts
+          ^^
+          source.ts
+>void x;
+ ^^^^
+ source.ts keyword.operator.void.ts
+     ^^
+     source.ts
+       ^
+       source.ts punctuation.terminator.statement.ts
+        ^^
+        source.ts
+>delete x.y;
+ ^^^^^^
+ source.ts keyword.operator.delete.ts
+       ^^
+       source.ts
+         ^
+         source.ts punctuation.accessor.ts
+          ^
+          source.ts
+           ^
+           source.ts punctuation.terminator.statement.ts
+            ^^
+            source.ts
+>x instanceof y;
+ ^^
+ source.ts
+   ^^^^^^^^^^
+   source.ts keyword.operator.instanceof.ts
+             ^^
+             source.ts
+               ^
+               source.ts punctuation.terminator.statement.ts

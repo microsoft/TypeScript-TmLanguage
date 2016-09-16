@@ -1,7 +1,34 @@
-[1, 1]: source.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.ts 
-[2, 5]: source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[3, 5]: source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.ts 
-[5, 1]: source.ts keyword.others.ts 
-[6, 1]: source.ts storage.type.ts 
-[7, 1]: source.ts keyword.others.ts 
-[8, 3]: source.ts keyword.others.ts 
+original file
+-----------------------------------
+^^switch (x) {
+    ^^case 0:
+    ^^default:
+}
+^^typeof x;
+^^void x;
+^^delete x.y;
+x ^^instanceof y;
+-----------------------------------
+
+>switch (x) {
+ ^^^^^^
+ [1, 1]: source.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.switch.ts 
+>    case 0:
+     ^^^^
+     [2, 5]: source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts 
+>    default:
+     ^^^^^^^
+     [3, 5]: source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts 
+>}
+>typeof x;
+ ^^^^^^
+ [5, 1]: source.ts keyword.operator.typeof.ts 
+>void x;
+ ^^^^
+ [6, 1]: source.ts keyword.operator.void.ts 
+>delete x.y;
+ ^^^^^^
+ [7, 1]: source.ts keyword.operator.delete.ts 
+>x instanceof y;
+   ^^^^^^^^^^
+   [8, 3]: source.ts keyword.operator.instanceof.ts 

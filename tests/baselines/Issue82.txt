@@ -1,7 +1,34 @@
-[3, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[3, 15]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts meta.type.annotation.ts meta.type.primitive.ts support.type.ts 
-[3, 25]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts comment.line.ts 
-[4, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts parameter.name.ts variable.parameter.ts 
-[4, 31]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts meta.type.annotation.ts meta.type.paren.cover.ts 
-[4, 44]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.function.type.parameter.ts comment.line.ts 
-[6, 9]: source.ts meta.declaration.object.ts meta.object.body.ts meta.method.declaration.ts meta.decl.block.ts 
+original file
+-----------------------------------
+class Foo {
+    constructor(
+        ^^test: ^^number, //^^ foo bar,
+        ^^exitEditModeCallback: ^^() => void //^^ Used to re-enable View updates.
+    ) {
+        ^^
+    }
+}
+-----------------------------------
+
+>class Foo {
+>    constructor(
+>        test: number, // foo bar,
+         ^^^^
+         [3, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts 
+               ^^^^^^
+               [3, 15]: source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts 
+                         ^^^^^^^^^
+                         [3, 25]: source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts comment.line.double-slash.ts 
+>        exitEditModeCallback: () => void // Used to re-enable View updates.
+         ^^^^^^^^^^^^^^^^^^^^
+         [4, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts 
+                               ^
+                               [4, 31]: source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.paren.cover.ts meta.brace.round.ts 
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                            [4, 44]: source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts comment.line.double-slash.ts 
+>    ) {
+>        
+ ^^^^^^^^^
+ [6, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts 
+>    }
+>}

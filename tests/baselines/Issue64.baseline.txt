@@ -1,0 +1,116 @@
+original file
+-----------------------------------
+res.sendfile = deprecate.function(res.sendfile,
+  'res.sendfile: Use res.sendFile instead');
+
+// some comment
+
+res.download = function download(path, filename, fn) {
+  // something
+}
+-----------------------------------
+
+>res.sendfile = deprecate.function(res.sendfile,
+ ^^^
+ source.ts
+    ^
+    source.ts punctuation.accessor.ts
+     ^^^^^^^^^
+     source.ts
+              ^
+              source.ts keyword.operator.assignment.ts
+               ^^^^^^^^^^
+               source.ts
+                         ^
+                         source.ts punctuation.accessor.ts
+                          ^^^^^^^^
+                          source.ts variable.function.ts
+                                  ^
+                                  source.ts meta.brace.round.ts
+                                   ^^^
+                                   source.ts
+                                      ^
+                                      source.ts punctuation.accessor.ts
+                                       ^^^^^^^^
+                                       source.ts
+                                               ^
+                                               source.ts punctuation.separator.comma.ts
+                                                ^^
+                                                source.ts
+>  'res.sendfile: Use res.sendFile instead');
+ ^^
+ source.ts
+   ^
+   source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    source.ts string.quoted.single.ts
+                                          ^
+                                          source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                           ^
+                                           source.ts meta.brace.round.ts
+                                            ^
+                                            source.ts punctuation.terminator.statement.ts
+                                             ^^
+                                             source.ts
+>
+ ^^
+ source.ts
+>// some comment
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>
+ ^^
+ source.ts
+>res.download = function download(path, filename, fn) {
+ ^^^
+ source.ts
+    ^
+    source.ts punctuation.accessor.ts
+     ^^^^^^^^^
+     source.ts
+              ^
+              source.ts keyword.operator.assignment.ts
+               ^
+               source.ts
+                ^^^^^^^^
+                source.ts meta.function.ts storage.type.function.ts
+                        ^
+                        source.ts meta.function.ts
+                         ^^^^^^^^
+                         source.ts meta.function.ts entity.name.function.ts
+                                 ^
+                                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                  ^^^^
+                                  source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts
+                                        ^^^^^^^^
+                                        source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                ^
+                                                source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.parameters.ts
+                                                  ^^
+                                                  source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                     ^
+                                                     source.ts meta.function.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                                       ^^
+                                                       source.ts meta.function.ts meta.block.ts
+>  // something
+ ^^
+ source.ts meta.function.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+     ^^^^^^^^^^^
+     source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

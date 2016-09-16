@@ -1,0 +1,82 @@
+original file
+-----------------------------------
+const items = new Set<string>([ 'foo', 'bar' ]);
+items.delete('foo');
+-----------------------------------
+
+>const items = new Set<string>([ 'foo', 'bar' ]);
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.operator.new.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts
+                   ^^^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts entity.name.type.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                       ^^^^^^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts meta.brace.square.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                  ^^^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts string.quoted.single.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts punctuation.separator.comma.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                         ^^^
+                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts string.quoted.single.ts
+                                            ^
+                                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                             ^
+                                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.array.literal.ts meta.brace.square.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                                                ^
+                                                source.ts punctuation.terminator.statement.ts
+                                                 ^^
+                                                 source.ts
+>items.delete('foo');
+ ^^^^^
+ source.ts
+      ^
+      source.ts punctuation.accessor.ts
+       ^^^^^^
+       source.ts variable.function.ts
+             ^
+             source.ts meta.brace.round.ts
+              ^
+              source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+               ^^^
+               source.ts string.quoted.single.ts
+                  ^
+                  source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                   ^
+                   source.ts meta.brace.round.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts

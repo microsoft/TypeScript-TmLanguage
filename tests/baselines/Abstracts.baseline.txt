@@ -1,0 +1,272 @@
+original file
+-----------------------------------
+^^abstract class Animal {
+	  public age: number;
+	  public yearsLeft() { return 20 - this.age; }
+	  ^^abstract makeSound(): string;
+}
+
+class Cow extends Animal {
+	  makeSound() { return "Moo"; }
+}
+
+class Cat extends Animal {
+	  makeSound() { return "Meow"; }
+}
+
+let cow = new Cow();
+cow.makeSound();
+-----------------------------------
+
+>abstract class Animal {
+ ^^^^^^^^
+ source.ts meta.class.ts storage.modifier.ts
+         ^
+         source.ts meta.class.ts
+          ^^^^^
+          source.ts meta.class.ts storage.type.class.ts
+               ^
+               source.ts meta.class.ts
+                ^^^^^^
+                source.ts meta.class.ts entity.name.class.ts
+                      ^
+                      source.ts meta.class.ts
+                       ^
+                       source.ts meta.class.ts punctuation.definition.block.ts
+>	  public age: number;
+ ^^^
+ source.ts meta.class.ts
+    ^^^^^^
+    source.ts meta.class.ts storage.modifier.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^^^
+           source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                ^^^^^^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                      ^
+                      source.ts meta.class.ts punctuation.terminator.statement.ts
+>	  public yearsLeft() { return 20 - this.age; }
+ ^^^
+ source.ts meta.class.ts
+    ^^^^^^
+    source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts
+           ^^^^^^^^^
+           source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                         ^^^^^^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                ^^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.arithmetic.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                     ^^^^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.accessor.ts
+                                          ^^^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                               ^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>	  abstract makeSound(): string;
+ ^^^
+ source.ts meta.class.ts
+    ^^^^^^^^
+    source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts
+             ^^^^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                          ^^^^^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                                ^
+                                source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>class Cow extends Animal {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.class.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                  ^
+                  source.ts meta.class.ts
+                   ^^^^^^
+                   source.ts meta.class.ts entity.other.inherited-class.ts
+                         ^
+                         source.ts meta.class.ts
+                          ^
+                          source.ts meta.class.ts punctuation.definition.block.ts
+>	  makeSound() { return "Moo"; }
+ ^^^
+ source.ts meta.class.ts
+    ^^^^^^^^^
+    source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>class Cat extends Animal {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.class.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                  ^
+                  source.ts meta.class.ts
+                   ^^^^^^
+                   source.ts meta.class.ts entity.other.inherited-class.ts
+                         ^
+                         source.ts meta.class.ts
+                          ^
+                          source.ts meta.class.ts punctuation.definition.block.ts
+>	  makeSound() { return "Meow"; }
+ ^^^
+ source.ts meta.class.ts
+    ^^^^^^^^^
+    source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^^^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>let cow = new Cow();
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^^^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts
+               ^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts entity.name.type.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
+>cow.makeSound();
+ ^^^
+ source.ts
+    ^
+    source.ts punctuation.accessor.ts
+     ^^^^^^^^^
+     source.ts variable.function.ts
+              ^
+              source.ts meta.brace.round.ts
+               ^
+               source.ts meta.brace.round.ts
+                ^
+                source.ts punctuation.terminator.statement.ts

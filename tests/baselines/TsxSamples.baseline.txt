@@ -1,0 +1,924 @@
+original file
+-----------------------------------
+class MyComponent extends React.Component<Props, State>{
+    render() {
+        return ^^<^^div ^^onClick={^^this.stop}>
+            ^^This is a test: {this.state.count}
+        </div>
+    }
+}
+
+// JSX in Depth
+// http://facebook.github.io/react/docs/jsx-in-depth.html
+var App =
+    ^^<^^Form>
+        ^^<^^FormRow>
+            ^^<^^FormLabel ^^data="^^1" />
+            ^^<^^FormInput ^^data="^^2" />
+        ^^</^^FormRow>
+    ^^</^^Form>
+
+var App2 = (
+    ^^<^^Form>
+        ^^<^^FormRow>
+            ^^<^^FormLabel ^^data='^^1' />
+            ^^<^^FormInput ^^data='^^2' />
+        ^^</^^FormRow>
+      ^^</^^Form>
+)
+
+var content = (
+    ^^<^^Nav>
+        {/* child comment, put {} around */}
+        ^^<^^Person ^^name={^^window.isLoggedIn ? window.name : ''}
+        ^^/>
+    ^^</Nav>
+);
+
+// JSX Spread Attributes
+// http://facebook.github.io/react/docs/jsx-spread.html
+var props = {};
+props.foo = x;
+props.bar = y;
+var component = ^^<^^Component {^^...props} ^^/>;
+
+var props2 = { foo: 'default' }
+var component2 = ^^<^^Component {^^...props} foo={'override'} ^^/>
+
+// JSX Gotchas
+// http://facebook.github.io/react/docs/jsx-gotchas.html
+var a = <div>{^^'First \u00b7 Second'}</div>
+var b = <div>{'First ' + ^^String.fromCharCode(183) + ' Second'}</div>
+var c = <div>{['First ', ^^<span>&middot;</span>, ' Second']}</div>
+var d = <div dangerouslySetInnerHTML={{^^__html: ^^'First &middot; Second'}} />
+var e = <div data-custom-attribute="^^foo" />
+
+-----------------------------------
+
+>class MyComponent extends React.Component<Props, State>{
+ ^^^^^
+ source.tsx meta.class.tsx storage.type.class.tsx
+      ^
+      source.tsx meta.class.tsx
+       ^^^^^^^^^^^
+       source.tsx meta.class.tsx entity.name.class.tsx
+                  ^
+                  source.tsx meta.class.tsx
+                   ^^^^^^^
+                   source.tsx meta.class.tsx storage.modifier.tsx
+                          ^
+                          source.tsx meta.class.tsx
+                           ^^^^^
+                           source.tsx meta.class.tsx entity.name.type.module.tsx
+                                ^
+                                source.tsx meta.class.tsx punctuation.accessor.tsx
+                                 ^^^^^^^^^
+                                 source.tsx meta.class.tsx entity.other.inherited-class.tsx
+                                          ^
+                                          source.tsx meta.class.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+                                           ^^^^^
+                                           source.tsx meta.class.tsx meta.type.parameters.tsx entity.name.type.tsx
+                                                ^
+                                                source.tsx meta.class.tsx meta.type.parameters.tsx punctuation.separator.comma.tsx
+                                                 ^
+                                                 source.tsx meta.class.tsx meta.type.parameters.tsx
+                                                  ^^^^^
+                                                  source.tsx meta.class.tsx meta.type.parameters.tsx entity.name.type.tsx
+                                                       ^
+                                                       source.tsx meta.class.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                                                        ^
+                                                        source.tsx meta.class.tsx punctuation.definition.block.tsx
+>    render() {
+ ^^^^
+ source.tsx meta.class.tsx
+     ^^^^^^
+     source.tsx meta.class.tsx meta.method.declaration.tsx entity.name.function.tsx
+           ^
+           source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+            ^
+            source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+             ^
+             source.tsx meta.class.tsx meta.method.declaration.tsx
+              ^
+              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+>        return <div onClick={this.stop}>
+ ^^^^^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+         ^^^^^^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx keyword.control.flow.tsx
+               ^
+               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+                ^
+                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                 ^^^
+                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx
+                    ^
+                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+                     ^^^^^^^
+                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                            ^
+                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                             ^
+                             source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                              ^^^^
+                              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx variable.language.this.tsx
+                                  ^
+                                  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                   ^^^^
+                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx
+                                       ^
+                                       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                        ^
+                                        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>            This is a test: {this.state.count}
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+                             ^
+                             source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                              ^^^^
+                              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx variable.language.this.tsx
+                                  ^
+                                  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                   ^^^^^
+                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                                        ^
+                                        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                         ^^^^^
+                                         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                                              ^
+                                              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+>        </div>
+ ^^^^^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+         ^^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+           ^^^
+           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx
+              ^
+              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>    }
+ ^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+     ^
+     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+>}
+ ^
+ source.tsx meta.class.tsx punctuation.definition.block.tsx
+>
+ ^
+ source.tsx
+>// JSX in Depth
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>// http://facebook.github.io/react/docs/jsx-in-depth.html
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>var App =
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+>    <Form>
+ ^^^^
+ source.tsx
+     ^
+     source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+      ^^^^
+      source.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+          ^
+          source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>        <FormRow>
+ ^^^^^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+         ^
+         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+          ^^^^^^^
+          source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                 ^
+                 source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>            <FormLabel data="1" />
+ ^^^^^^^^^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+             ^
+             source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+              ^^^^^^^^^
+              source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx entity.name.tag.tsx
+                       ^
+                       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+                        ^^^^
+                        source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                            ^
+                            source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                             ^
+                             source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx punctuation.definition.string.jsxAttributeValue.begin.tsx
+                              ^
+                              source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx
+                               ^
+                               source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx punctuation.definition.string.jsxAttributeValue.end.tsx
+                                ^
+                                source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx
+                                 ^^
+                                 source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>            <FormInput data="2" />
+ ^^^^^^^^^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+             ^
+             source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+              ^^^^^^^^^
+              source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx entity.name.tag.tsx
+                       ^
+                       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+                        ^^^^
+                        source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                            ^
+                            source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                             ^
+                             source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx punctuation.definition.string.jsxAttributeValue.begin.tsx
+                              ^
+                              source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx
+                               ^
+                               source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx punctuation.definition.string.jsxAttributeValue.end.tsx
+                                ^
+                                source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx
+                                 ^^
+                                 source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>        </FormRow>
+ ^^^^^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+         ^^
+         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+           ^^^^^^^
+           source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                  ^
+                  source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>    </Form>
+ ^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+     ^^
+     source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+       ^^^^
+       source.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+           ^
+           source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>
+ ^
+ source.tsx
+>var App2 = (
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+           ^
+           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+            ^
+            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.brace.round.tsx
+>    <Form>
+ ^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+      ^^^^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>        <FormRow>
+ ^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+          ^^^^^^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>            <FormLabel data='1' />
+ ^^^^^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+              ^^^^^^^^^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx entity.name.tag.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+                        ^^^^
+                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                            ^
+                            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.single.tsx punctuation.definition.string.jsxAttributeValue.begin.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.single.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.single.tsx punctuation.definition.string.jsxAttributeValue.end.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx
+                                 ^^
+                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>            <FormInput data='2' />
+ ^^^^^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+              ^^^^^^^^^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx entity.name.tag.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+                        ^^^^
+                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                            ^
+                            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.single.tsx punctuation.definition.string.jsxAttributeValue.begin.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.single.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx string.jsxAttributeValue.quoted.single.tsx punctuation.definition.string.jsxAttributeValue.end.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx
+                                 ^^
+                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>        </FormRow>
+ ^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+         ^^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+           ^^^^^^^
+           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>      </Form>
+ ^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+       ^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+         ^^^^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>)
+ ^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.brace.round.tsx
+>
+ ^
+ source.tsx
+>var content = (
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+            ^
+            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.brace.round.tsx
+>    <Nav>
+ ^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+      ^^^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>        {/* child comment, put {} around */}
+ ^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+          ^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx comment.block.tsx punctuation.definition.comment.tsx
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx comment.block.tsx
+                                          ^^
+                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx comment.block.tsx punctuation.definition.comment.tsx
+                                            ^
+                                            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+>        <Person name={window.isLoggedIn ? window.name : ''}
+ ^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+          ^^^^^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx entity.name.tag.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+                 ^^^^
+                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                     ^
+                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                      ^
+                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                       ^^^^^^
+                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                              ^^^^^^^^^^^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx
+                                         ^
+                                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx keyword.operator.ternary.tsx
+                                          ^^^^^^^
+                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx
+                                                 ^
+                                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                                  ^^^^^
+                                                  source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx
+                                                       ^
+                                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx keyword.operator.ternary.tsx
+                                                        ^
+                                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx
+                                                         ^
+                                                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                                                          ^
+                                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                                                           ^
+                                                           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+>        />
+ ^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx
+         ^^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>    </Nav>
+ ^^^^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+     ^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+       ^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>);
+ ^
+ source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.brace.round.tsx
+  ^
+  source.tsx punctuation.terminator.statement.tsx
+>
+ ^
+ source.tsx
+>// JSX Spread Attributes
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>// http://facebook.github.io/react/docs/jsx-spread.html
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>var props = {};
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+           ^
+           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+            ^
+            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx punctuation.definition.block.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx punctuation.definition.block.tsx
+               ^
+               source.tsx punctuation.terminator.statement.tsx
+>props.foo = x;
+ ^^^^^
+ source.tsx
+      ^
+      source.tsx punctuation.accessor.tsx
+       ^^^^
+       source.tsx
+           ^
+           source.tsx keyword.operator.assignment.tsx
+            ^^
+            source.tsx
+              ^
+              source.tsx punctuation.terminator.statement.tsx
+>props.bar = y;
+ ^^^^^
+ source.tsx
+      ^
+      source.tsx punctuation.accessor.tsx
+       ^^^^
+       source.tsx
+           ^
+           source.tsx keyword.operator.assignment.tsx
+            ^^
+            source.tsx
+              ^
+              source.tsx punctuation.terminator.statement.tsx
+>var component = <Component {...props} />;
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^^^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                  ^^^^^^^^^
+                  source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx entity.name.tag.tsx
+                           ^
+                           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx
+                            ^
+                            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                ^^^^^
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx
+                                     ^
+                                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                      ^
+                                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx
+                                       ^^
+                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                                         ^
+                                         source.tsx punctuation.terminator.statement.tsx
+>
+ ^
+ source.tsx
+>var props2 = { foo: 'default' }
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+           ^
+           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+            ^
+            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx punctuation.definition.block.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx
+                ^^^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx meta.object.member.tsx meta.object-literal.key.tsx entity.name.type.attribute-name.tsx
+                   ^
+                   source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx meta.object.member.tsx meta.object-literal.key.tsx punctuation.separator.key-value.tsx
+                    ^
+                    source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx meta.object.member.tsx
+                     ^
+                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx meta.object.member.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                      ^^^^^^^
+                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx meta.object.member.tsx string.quoted.single.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx meta.object.member.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx meta.object.member.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.object-literal.tsx punctuation.definition.block.tsx
+>var component2 = <Component {...props} foo={'override'} />
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^^^^^^^^^^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                   ^^^^^^^^^
+                   source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx entity.name.tag.tsx
+                            ^
+                            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                 ^^^^^
+                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx
+                                      ^
+                                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                       ^
+                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+                                        ^^^
+                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                                           ^
+                                           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                                            ^
+                                            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                                             ^
+                                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                                              ^^^^^^^^
+                                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx string.quoted.single.tsx
+                                                      ^
+                                                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                                                       ^
+                                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                                        ^
+                                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx
+                                                         ^^
+                                                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>
+ ^
+ source.tsx
+>// JSX Gotchas
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>// http://facebook.github.io/react/docs/jsx-gotchas.html
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>var a = <div>{'First \u00b7 Second'}</div>
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                ^^^^^^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx
+                      ^^
+                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx constant.character.escape.tsx
+                        ^^^^^^^^^^^
+                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx
+                                   ^
+                                   source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                                    ^
+                                    source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                     ^^
+                                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                       ^^^
+                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                          ^
+                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>var b = <div>{'First ' + String.fromCharCode(183) + ' Second'}</div>
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                ^^^^^^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx
+                      ^
+                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx keyword.operator.arithmetic.tsx
+                         ^^^^^^^
+                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.accessor.tsx
+                                 ^^^^^^^^^^^^
+                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx variable.function.tsx
+                                             ^
+                                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.brace.round.tsx
+                                              ^^^
+                                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx constant.numeric.decimal.tsx
+                                                 ^
+                                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.brace.round.tsx
+                                                  ^
+                                                  source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                                                   ^
+                                                   source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx keyword.operator.arithmetic.tsx
+                                                    ^
+                                                    source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                                                     ^
+                                                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                                                      ^^^^^^^
+                                                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx
+                                                             ^
+                                                             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                                                              ^
+                                                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                                               ^^
+                                                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                                                 ^^^
+                                                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                                                    ^
+                                                                    source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>var c = <div>{['First ', <span>&middot;</span>, ' Second']}</div>
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.brace.square.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                 ^^^^^^
+                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx string.quoted.single.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx punctuation.separator.comma.tsx
+                         ^
+                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx
+                          ^
+                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                           ^^^^
+                           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx constant.character.entity.tsx punctuation.definition.entity.tsx
+                                 ^^^^^^
+                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx constant.character.entity.tsx
+                                       ^
+                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx constant.character.entity.tsx punctuation.definition.entity.tsx
+                                        ^^
+                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                          ^^^^
+                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                              ^
+                                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                               ^
+                                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx punctuation.separator.comma.tsx
+                                                ^
+                                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx
+                                                 ^
+                                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                                                  ^^^^^^^
+                                                  source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx string.quoted.single.tsx
+                                                         ^
+                                                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                                                          ^
+                                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx meta.array.literal.tsx meta.brace.square.tsx
+                                                           ^
+                                                           source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                                            ^^
+                                                            source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                                              ^^^
+                                                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                                                 ^
+                                                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>var d = <div dangerouslySetInnerHTML={{__html: 'First &middot; Second'}} />
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx entity.name.tag.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+              ^^^^^^^^^^^^^^^^^^^^^^^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                                     ^
+                                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                                      ^
+                                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                                       ^
+                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx punctuation.definition.block.tsx
+                                        ^^^^^^
+                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx meta.object.member.tsx meta.object-literal.key.tsx entity.name.type.attribute-name.tsx
+                                              ^
+                                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx meta.object.member.tsx meta.object-literal.key.tsx punctuation.separator.key-value.tsx
+                                               ^
+                                               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx meta.object.member.tsx
+                                                ^
+                                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx meta.object.member.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+                                                 ^^^^^^^^^^^^^^^^^^^^^
+                                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx meta.object.member.tsx string.quoted.single.tsx
+                                                                      ^
+                                                                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx meta.object.member.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+                                                                       ^
+                                                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx meta.object-literal.tsx punctuation.definition.block.tsx
+                                                                        ^
+                                                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+                                                                         ^
+                                                                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx
+                                                                          ^^
+                                                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>var e = <div data-custom-attribute="foo" />
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx entity.name.tag.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+              ^^^^^^^^^^^^^^^^^^^^^
+              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+                                   ^
+                                   source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx keyword.operator.assignment.tsx
+                                    ^
+                                    source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx punctuation.definition.string.jsxAttributeValue.begin.tsx
+                                     ^^^
+                                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx
+                                        ^
+                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx string.jsxAttributeValue.quoted.double.tsx punctuation.definition.string.jsxAttributeValue.end.tsx
+                                         ^
+                                         source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx
+                                          ^^
+                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>
+ ^
+ source.tsx

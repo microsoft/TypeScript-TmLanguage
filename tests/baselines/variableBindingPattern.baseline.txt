@@ -1,0 +1,818 @@
+original file
+-----------------------------------
+function foo() {
+    return {
+        x: {
+            a: 10,
+            b: 20
+        },
+        y: {
+            c: "hello",
+            d: "world"
+        },
+        z: <[number, { hello: string }]>[10, { hello: "Hello" }]
+    };
+}
+
+var {x: k, y: { c: d}, z: [e, { hello }], x } = foo();
+var {x: k, y: { c: d}, z: [e, { hello }], x }: {
+    x: {
+        a: number;
+        b: number;
+    };
+    y: {
+        c: string;
+        d: string;
+    };
+    z: [number, {
+        hello: string;
+    }];
+} = foo();
+
+function bar() {
+    return <[{ hello: string },string]>[{ hello: "Hello" }, "world"];
+}
+
+var [{hello}, world] = bar();
+var [{hello}, world]: [{ hello: string }, string] = bar();
+-----------------------------------
+
+>function foo() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.function.ts
+                ^
+                source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts meta.function.ts meta.block.ts
+>    return {
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.object-literal.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.object-literal.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts
+>        x: {
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+>            a: 10,
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+                ^^
+                source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts constant.numeric.decimal.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts punctuation.separator.comma.ts
+                   ^^
+                   source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+>            b: 20
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+                ^^
+                source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts constant.numeric.decimal.ts
+                  ^^
+                  source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+>        },
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.object-literal.ts punctuation.separator.comma.ts
+           ^^
+           source.ts meta.function.ts meta.block.ts meta.object-literal.ts
+>        y: {
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+>            c: "hello",
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                 ^^^^^
+                 source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts punctuation.separator.comma.ts
+                        ^^
+                        source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+>            d: "world"
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                 ^^^^^
+                 source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                       ^^
+                       source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+>        },
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts meta.object.member.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.object-literal.ts punctuation.separator.comma.ts
+           ^^
+           source.ts meta.function.ts meta.block.ts meta.object-literal.ts
+>        z: <[number, { hello: string }]>[10, { hello: "Hello" }]
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.brace.angle.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.brace.square.ts
+              ^^^^^^
+              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts support.type.primitive.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
+                        ^^^^^
+                        source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                               ^^^^^^
+                               source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.brace.square.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts cast.expr.ts meta.brace.angle.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.brace.square.ts
+                                          ^^
+                                          source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts constant.numeric.decimal.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts punctuation.separator.comma.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts punctuation.definition.block.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts
+                                                ^^^^^
+                                                source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                        ^^^^^
+                                                        source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.object-literal.ts punctuation.definition.block.ts
+                                                                ^
+                                                                source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.array.literal.ts meta.brace.square.ts
+                                                                 ^^
+                                                                 source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+>    };
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+     ^
+     source.ts meta.function.ts meta.block.ts meta.object-literal.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+       ^^
+       source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>var {x: k, y: { c: d}, z: [e, { hello }], x } = foo();
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+       ^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+        ^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+         ^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+            ^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+             ^
+             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+              ^
+              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+               ^
+               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                ^
+                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                 ^^^^^
+                                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                           ^
+                                           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                                            ^
+                                            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                             ^
+                                             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts keyword.operator.assignment.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                                 ^^^
+                                                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.function.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.brace.round.ts
+                                                     ^
+                                                     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.brace.round.ts
+                                                      ^
+                                                      source.ts punctuation.terminator.statement.ts
+                                                       ^^
+                                                       source.ts
+>var {x: k, y: { c: d}, z: [e, { hello }], x }: {
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+       ^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+        ^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+         ^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+            ^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+             ^
+             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+              ^
+              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+               ^
+               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                ^
+                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                 ^^^^^
+                                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                           ^
+                                           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                                            ^
+                                            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                             ^
+                                             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                 ^^
+                                                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts
+>    x: {
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+       ^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+         ^^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+>        a: number;
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+         ^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+            ^^^^^^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+>        b: number;
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+         ^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+            ^^^^^^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+>    };
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+       ^^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts
+>    y: {
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+       ^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+         ^^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+>        c: string;
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+         ^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+            ^^^^^^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+>        d: string;
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+         ^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+            ^^^^^^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+>    };
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+       ^^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts
+>    z: [number, {
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+       ^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+         ^^^^^^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+               ^
+               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                ^
+                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+                  ^^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts
+>        hello: string;
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
+         ^^^^^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+              ^
+              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                ^^^^^^
+                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts punctuation.terminator.statement.ts
+                       ^^
+                       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts
+>    }];
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+       ^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+        ^^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts
+>} = foo();
+ ^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts
+   ^
+   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts keyword.operator.assignment.ts
+    ^
+    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.brace.round.ts
+         ^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.brace.round.ts
+          ^
+          source.ts punctuation.terminator.statement.ts
+           ^^
+           source.ts
+>
+ ^^
+ source.ts
+>function bar() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.function.ts
+                ^
+                source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts meta.function.ts meta.block.ts
+>    return <[{ hello: string },string]>[{ hello: "Hello" }, "world"];
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts cast.expr.ts
+            ^
+            source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+             ^
+             source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.brace.square.ts
+              ^
+              source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+               ^
+               source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
+                ^^^^^
+                source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                       ^^^^^^
+                       source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                ^^^^^^
+                                source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.brace.square.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts punctuation.definition.block.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts
+                                           ^^^^^
+                                           source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                   ^^^^^
+                                                   source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts
+                                                        ^
+                                                        source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts meta.object.member.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.object-literal.ts punctuation.definition.block.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.block.ts meta.array.literal.ts punctuation.separator.comma.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.block.ts meta.array.literal.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                              ^^^^^
+                                                              source.ts meta.function.ts meta.block.ts meta.array.literal.ts string.quoted.double.ts
+                                                                   ^
+                                                                   source.ts meta.function.ts meta.block.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                                    ^
+                                                                    source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                      ^^
+                                                                      source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>var [{hello}, world] = bar();
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+     ^
+     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+      ^
+      source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+             ^
+             source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+              ^
+              source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+               ^^^^^
+               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts keyword.operator.assignment.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+                        ^^^
+                        source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.function.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.brace.round.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.brace.round.ts
+                             ^
+                             source.ts punctuation.terminator.statement.ts
+                              ^^
+                              source.ts
+>var [{hello}, world]: [{ hello: string }, string] = bar();
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+     ^
+     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+      ^
+      source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+             ^
+             source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.delimiter.object.comma.ts
+              ^
+              source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+               ^^^^^
+               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
+                          ^^^^^
+                          source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                 ^^^^^^
+                                 source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts
+                                           ^^^^^^
+                                           source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.type.annotation.ts
+                                                   ^
+                                                   source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts keyword.operator.assignment.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+                                                     ^^^
+                                                     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.function.ts
+                                                        ^
+                                                        source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.brace.round.ts
+                                                         ^
+                                                         source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.brace.round.ts
+                                                          ^
+                                                          source.ts punctuation.terminator.statement.ts

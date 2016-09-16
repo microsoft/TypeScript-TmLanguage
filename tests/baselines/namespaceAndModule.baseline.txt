@@ -1,0 +1,102 @@
+original file
+-----------------------------------
+^^namespace ts { }
+^^module ts { }
+declare ^^namespace ts {}
+declare ^^module ts {}
+declare ^^module "x" {}
+-----------------------------------
+
+>namespace ts { }
+ ^^^^^^^^^
+ source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+          ^
+          source.ts meta.namespace.declaration.ts
+           ^^
+           source.ts meta.namespace.declaration.ts entity.name.type.module.ts
+             ^
+             source.ts meta.namespace.declaration.ts
+              ^
+              source.ts meta.block.ts punctuation.definition.block.ts
+               ^
+               source.ts meta.block.ts
+                ^
+                source.ts meta.block.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts
+>module ts { }
+ ^^^^^^
+ source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+       ^
+       source.ts meta.namespace.declaration.ts
+        ^^
+        source.ts meta.namespace.declaration.ts entity.name.type.module.ts
+          ^
+          source.ts meta.namespace.declaration.ts
+           ^
+           source.ts meta.block.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.block.ts
+             ^
+             source.ts meta.block.ts punctuation.definition.block.ts
+              ^^
+              source.ts
+>declare namespace ts {}
+ ^^^^^^^
+ source.ts storage.modifier.ts
+        ^
+        source.ts
+         ^^^^^^^^^
+         source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+                  ^
+                  source.ts meta.namespace.declaration.ts
+                   ^^
+                   source.ts meta.namespace.declaration.ts entity.name.type.module.ts
+                     ^
+                     source.ts meta.namespace.declaration.ts
+                      ^
+                      source.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.block.ts punctuation.definition.block.ts
+                        ^^
+                        source.ts
+>declare module ts {}
+ ^^^^^^^
+ source.ts storage.modifier.ts
+        ^
+        source.ts
+         ^^^^^^
+         source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+               ^
+               source.ts meta.namespace.declaration.ts
+                ^^
+                source.ts meta.namespace.declaration.ts entity.name.type.module.ts
+                  ^
+                  source.ts meta.namespace.declaration.ts
+                   ^
+                   source.ts meta.block.ts punctuation.definition.block.ts
+                    ^
+                    source.ts meta.block.ts punctuation.definition.block.ts
+                     ^^
+                     source.ts
+>declare module "x" {}
+ ^^^^^^^
+ source.ts storage.modifier.ts
+        ^
+        source.ts
+         ^^^^^^
+         source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+               ^
+               source.ts meta.namespace.declaration.ts
+                ^
+                source.ts meta.namespace.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                 ^
+                 source.ts meta.namespace.declaration.ts string.quoted.double.ts
+                  ^
+                  source.ts meta.namespace.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                   ^
+                   source.ts meta.namespace.declaration.ts
+                    ^
+                    source.ts meta.block.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.block.ts punctuation.definition.block.ts

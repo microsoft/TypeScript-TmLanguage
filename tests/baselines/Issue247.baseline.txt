@@ -1,0 +1,48 @@
+original file
+-----------------------------------
+@dec<{}>()
+class Test {
+}
+
+-----------------------------------
+
+>@dec<{}>()
+ ^
+ source.tsx meta.decorator.tsx punctuation.decorator.tsx
+  ^^^
+  source.tsx meta.decorator.tsx variable.function.tsx
+     ^
+     source.tsx meta.decorator.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+      ^
+      source.tsx meta.decorator.tsx meta.type.parameters.tsx meta.object.type.tsx punctuation.definition.block.tsx
+       ^
+       source.tsx meta.decorator.tsx meta.type.parameters.tsx meta.object.type.tsx punctuation.definition.block.tsx
+        ^
+        source.tsx meta.decorator.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+         ^
+         source.tsx meta.decorator.tsx meta.brace.round.tsx
+          ^
+          source.tsx meta.decorator.tsx meta.brace.round.tsx
+           ^^
+           source.tsx
+>class Test {
+ ^^^^^
+ source.tsx meta.class.tsx storage.type.class.tsx
+      ^
+      source.tsx meta.class.tsx
+       ^^^^
+       source.tsx meta.class.tsx entity.name.class.tsx
+           ^
+           source.tsx meta.class.tsx
+            ^
+            source.tsx meta.class.tsx punctuation.definition.block.tsx
+             ^^
+             source.tsx meta.class.tsx
+>}
+ ^
+ source.tsx meta.class.tsx punctuation.definition.block.tsx
+  ^^
+  source.tsx
+>
+ ^
+ source.tsx

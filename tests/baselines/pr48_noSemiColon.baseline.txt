@@ -1,0 +1,388 @@
+original file
+-----------------------------------
+class Test {
+	^^private ^^data: TemplateData[] = []
+	^^private ^^options: TemplateOptions = {}
+	^^private ^^state = {}
+}
+
+^^export ^^type ^^Stats = fs.Stats
+^^export ^^const ^^touch = thenify(tch)
+
+/**
+ * Verify comments
+ */
+^^export ^^function isFile(path: string): ^^Promise<boolean> {
+	^^return stat(path).then(stat => stat.isFile(), () => false)
+}
+
+
+^^export ^^const readFile = thenify<^^string, string, string>(fs.readFile)
+^^export ^^const writeFile = thenify<^^string, string | Buffer, void>(fs.writeFile)
+
+
+-----------------------------------
+
+>class Test {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^
+       source.ts meta.class.ts entity.name.class.ts
+           ^
+           source.ts meta.class.ts
+            ^
+            source.ts meta.class.ts punctuation.definition.block.ts
+>	private data: TemplateData[] = []
+ ^
+ source.ts meta.class.ts
+  ^^^^^^^
+  source.ts meta.class.ts storage.modifier.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^^^^
+          source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                ^^^^^^^^^^^^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                            ^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                               ^
+                               source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts
+                                 ^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                  ^
+                                  source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+>	private options: TemplateOptions = {}
+ ^
+ source.ts meta.class.ts
+  ^^^^^^^
+  source.ts meta.class.ts storage.modifier.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^^^^^^^
+          source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                   ^^^^^^^^^^^^^^^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                  ^
+                                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                                   ^
+                                   source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                                    ^
+                                    source.ts meta.class.ts meta.field.declaration.ts
+                                     ^
+                                     source.ts meta.class.ts meta.field.declaration.ts meta.object-literal.ts punctuation.definition.block.ts
+                                      ^
+                                      source.ts meta.class.ts meta.field.declaration.ts meta.object-literal.ts punctuation.definition.block.ts
+>	private state = {}
+ ^
+ source.ts meta.class.ts
+  ^^^^^^^
+  source.ts meta.class.ts storage.modifier.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^^^^^
+          source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.object-literal.ts punctuation.definition.block.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.object-literal.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>export type Stats = fs.Stats
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^^
+                   source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                     ^^
+                     source.ts meta.type.declaration.ts entity.name.type.module.ts
+                       ^
+                       source.ts meta.type.declaration.ts punctuation.accessor.ts
+                        ^^^^^
+                        source.ts meta.type.declaration.ts entity.name.type.ts
+>export const touch = thenify(tch)
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^^^
+        source.ts meta.var.expr.ts storage.type.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                      ^^^^^^^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.function.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                              ^^^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+> * Verify comments
+ ^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>export function isFile(path: string): Promise<boolean> {
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^
+                 source.ts meta.function.ts entity.name.function.ts
+                       ^
+                       source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                        ^^^^
+                        source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                            ^
+                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                             ^
+                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                              ^^^^^^
+                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                    ^
+                                    source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                     ^
+                                     source.ts meta.function.ts meta.return.type.ts
+                                      ^
+                                      source.ts meta.function.ts meta.return.type.ts
+                                       ^^^^^^^
+                                       source.ts meta.function.ts meta.return.type.ts entity.name.type.ts
+                                              ^
+                                              source.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                               ^^^^^^^
+                                               source.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts support.type.primitive.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.return.type.ts
+                                                        ^
+                                                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>	return stat(path).then(stat => stat.isFile(), () => false)
+ ^
+ source.ts meta.function.ts meta.block.ts
+  ^^^^^^
+  source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+        ^
+        source.ts meta.function.ts meta.block.ts
+         ^^^^
+         source.ts meta.function.ts meta.block.ts variable.function.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+              ^^^^
+              source.ts meta.function.ts meta.block.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                    ^^^^
+                    source.ts meta.function.ts meta.block.ts variable.function.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                         ^^^^
+                         source.ts meta.function.ts meta.block.ts meta.arrow.ts variable.parameter.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                              ^^
+                              source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                 ^^^^
+                                 source.ts meta.function.ts meta.block.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                      ^^^^^^
+                                      source.ts meta.function.ts meta.block.ts variable.function.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                   ^^
+                                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                      ^^^^^
+                                                      source.ts meta.function.ts meta.block.ts constant.language.boolean.false.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts
+>export const readFile = thenify<string, string, string>(fs.readFile)
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^^^
+        source.ts meta.var.expr.ts storage.type.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^^^^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                         ^^^^^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.function.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                 ^^^^^^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                         ^^^^^^
+                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                                 ^^^^^^
+                                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                                       ^
+                                                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                        ^
+                                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                                                         ^^
+                                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                                           ^
+                                                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts punctuation.accessor.ts
+                                                            ^^^^^^^^
+                                                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                                                    ^
+                                                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+>export const writeFile = thenify<string, string | Buffer, void>(fs.writeFile)
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^^^
+        source.ts meta.var.expr.ts storage.type.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^^^^^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                          ^^^^^^^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.function.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                  ^^^^^^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                          ^^^^^^
+                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts keyword.operator.type.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                                   ^^^^^^
+                                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts entity.name.type.ts
+                                                         ^
+                                                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                                          ^
+                                                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts
+                                                           ^^^^
+                                                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                                               ^
+                                                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                ^
+                                                                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+                                                                 ^^
+                                                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                                                   ^
+                                                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts punctuation.accessor.ts
+                                                                    ^^^^^^^^^
+                                                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                                                             ^
+                                                                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts

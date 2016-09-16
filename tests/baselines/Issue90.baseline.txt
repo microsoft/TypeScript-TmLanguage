@@ -1,0 +1,74 @@
+original file
+-----------------------------------
+^^ var a = 0;
+^^ var ^^b = ^^1;
+^^ var ^^c = ^^a ^^^ ^^b;
+^^
+
+-----------------------------------
+
+> var a = 0;
+ ^
+ source.ts
+  ^^^
+  source.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.var.expr.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+           ^
+           source.ts punctuation.terminator.statement.ts
+> var b = 1;
+ ^
+ source.ts
+  ^^^
+  source.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.var.expr.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+           ^
+           source.ts punctuation.terminator.statement.ts
+> var c = a ^ b;
+ ^
+ source.ts
+  ^^^
+  source.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.var.expr.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+         ^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.bitwise.ts
+             ^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts

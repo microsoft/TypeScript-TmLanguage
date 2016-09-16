@@ -1,0 +1,1112 @@
+original file
+-----------------------------------
+import {Vector3, Vector} from 'vectors';
+
+/**
+ * A simple 3x3 matrix structure.
+ * 
+ * @export
+ * @class Matrix3x3
+ */
+class Matrix {
+    public M11 : number;
+    public M12 : number;
+    public M13 : number;
+    public M21 : number;
+    public M22 : number;
+    public M23 : number;
+    public M31 : number;
+    public M32 : number;
+    public M33 : number;
+
+
+    /**
+     * Gets a column as a new vector.
+     * 
+     * @param {number} index The index of the column (0 .. 2).
+     * @returns {Vector3} A vector representing the column.
+     */
+    public getColumn_Breaks(index : number) : Vector3 {
+        if (index == 0) {
+            return new Vector3(this.M11, this.M21, this.M31);
+        } else if (index == 1) {
+            return new Vector3(this.M12, this.M22, this.M32);
+        } else if (index == 2) {
+            return new Vector3(this.M13, this.M23, this.M33);
+        } else {
+            throw new RangeError('Invalid matrix 3x3 column index: ' + index);
+        }
+    }
+
+    /**
+     * Gets a column as a new vector.
+     * 
+     * @param {number} index The index of the column (0 .. 2).
+     * @returns {Vector3} A vector representing the column.
+     */
+    public getColumn_Works(index : number) : Vector {
+        if (index == 0) {
+            return new Vector(this.M11, this.M21, this.M31);
+        } else if (index == 1) {
+            return new Vector(this.M12, this.M22, this.M32);
+        } else if (index == 2) {
+            return new Vector(this.M13, this.M23, this.M33);
+        } else {
+            throw new RangeError('Invalid matrix 3x3 column index: ' + index);
+        }
+    }
+
+}
+-----------------------------------
+
+>import {Vector3, Vector} from 'vectors';
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^^^^^^^
+         source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.import.ts meta.block.ts meta.delimiter.object.comma.ts
+                 ^
+                 source.ts meta.import.ts meta.block.ts
+                  ^^^^^^
+                  source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                        ^
+                        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.import.ts
+                          ^^^^
+                          source.ts meta.import.ts keyword.control.from.ts
+                              ^
+                              source.ts meta.import.ts
+                               ^
+                               source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                ^^^^^^^
+                                source.ts meta.import.ts string.quoted.single.ts
+                                       ^
+                                       source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                        ^
+                                        source.ts punctuation.terminator.statement.ts
+                                         ^^
+                                         source.ts
+>
+ ^^
+ source.ts
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts comment.block.documentation.ts
+> * A simple 3x3 matrix structure.
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+> * 
+ ^^^^^
+ source.ts comment.block.documentation.ts
+> * @export
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+           ^^
+           source.ts comment.block.documentation.ts
+> * @class Matrix3x3
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+          ^^^^^^^^^^^^
+          source.ts comment.block.documentation.ts
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts
+>class Matrix {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^
+       source.ts meta.class.ts entity.name.class.ts
+             ^
+             source.ts meta.class.ts
+              ^
+              source.ts meta.class.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.class.ts
+>    public M11 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M12 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M13 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M21 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M22 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M23 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M31 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M32 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>    public M33 : number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>    /**
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^
+        source.ts meta.class.ts comment.block.documentation.ts
+>     * Gets a column as a new vector.
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+>     * 
+ ^^^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+>     * @param {number} index The index of the column (0 .. 2).
+ ^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+        ^^^^^^
+        source.ts meta.class.ts comment.block.documentation.ts storage.type.class.jsdoc
+              ^
+              source.ts meta.class.ts comment.block.documentation.ts
+               ^^^^^^^^
+               source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                       ^
+                       source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^
+                        source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                             ^
+                             source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                              source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+>     * @returns {Vector3} A vector representing the column.
+ ^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+        ^^^^^^^^
+        source.ts meta.class.ts comment.block.documentation.ts storage.type.class.jsdoc
+                ^
+                source.ts meta.class.ts comment.block.documentation.ts
+                 ^^^^^^^^^
+                 source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                          ^
+                          source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                           ^
+                           source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                            ^
+                            source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+>     */
+ ^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+      ^^
+      source.ts meta.class.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^
+        source.ts meta.class.ts
+>    public getColumn_Breaks(index : number) : Vector3 {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^^^^^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                     ^^^^^^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                           ^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                            ^^
+                                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                               ^^^^^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+                                                      ^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                                        ^^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        if (index == 0) {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                          ^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            return new Vector3(this.M11, this.M21, this.M31);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                        ^^^^^^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                ^^^^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                     ^^^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                          ^^^^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                               ^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                    ^^^^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                                         ^^^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                             ^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                              ^^
+                                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        } else if (index == 1) {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+           ^^^^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                    ^^^^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                          ^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                 ^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            return new Vector3(this.M12, this.M22, this.M32);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                        ^^^^^^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                ^^^^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                     ^^^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                          ^^^^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                               ^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                    ^^^^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                                         ^^^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                             ^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                              ^^
+                                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        } else if (index == 2) {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+           ^^^^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                    ^^^^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                          ^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                 ^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            return new Vector3(this.M13, this.M23, this.M33);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                        ^^^^^^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                ^^^^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                     ^^^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                          ^^^^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                               ^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                    ^^^^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                                         ^^^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                             ^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                              ^^
+                                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        } else {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+           ^^^^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            throw new RangeError('Invalid matrix 3x3 column index: ' + index);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.trycatch.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                   ^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                       ^^^^^^^^^^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts
+                                                                    ^
+                                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                     ^
+                                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                                      ^
+                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.operator.arithmetic.ts
+                                                                       ^^^^^^
+                                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                                             ^
+                                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                                              ^
+                                                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                               ^^
+                                                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        }
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>    /**
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^
+        source.ts meta.class.ts comment.block.documentation.ts
+>     * Gets a column as a new vector.
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+>     * 
+ ^^^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+>     * @param {number} index The index of the column (0 .. 2).
+ ^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+        ^^^^^^
+        source.ts meta.class.ts comment.block.documentation.ts storage.type.class.jsdoc
+              ^
+              source.ts meta.class.ts comment.block.documentation.ts
+               ^^^^^^^^
+               source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                       ^
+                       source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^
+                        source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                             ^
+                             source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                              source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+>     * @returns {Vector3} A vector representing the column.
+ ^^^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+        ^^^^^^^^
+        source.ts meta.class.ts comment.block.documentation.ts storage.type.class.jsdoc
+                ^
+                source.ts meta.class.ts comment.block.documentation.ts
+                 ^^^^^^^^^
+                 source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                          ^
+                          source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                           ^
+                           source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                            ^
+                            source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             source.ts meta.class.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+>     */
+ ^^^^^
+ source.ts meta.class.ts comment.block.documentation.ts
+      ^^
+      source.ts meta.class.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^
+        source.ts meta.class.ts
+>    public getColumn_Works(index : number) : Vector {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                            ^^^^^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                    ^^^^^^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                          ^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                           ^^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                              ^^^^^^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+                                                    ^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                                      ^^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        if (index == 0) {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                          ^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            return new Vector(this.M11, this.M21, this.M31);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                        ^^^^^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                               ^^^^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                    ^^^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                         ^^^^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                              ^^^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                 ^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                   ^^^^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                                        ^^^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                           ^
+                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                             ^^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        } else if (index == 1) {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+           ^^^^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                    ^^^^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                          ^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                 ^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            return new Vector(this.M12, this.M22, this.M32);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                        ^^^^^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                               ^^^^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                    ^^^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                         ^^^^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                              ^^^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                 ^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                   ^^^^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                                        ^^^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                           ^
+                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                             ^^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        } else if (index == 2) {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+           ^^^^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                    ^^^^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                          ^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                 ^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            return new Vector(this.M13, this.M23, this.M33);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                        ^^^^^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                               ^^^^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                    ^^^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                         ^^^^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                              ^^^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                 ^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                   ^^^^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.language.this.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+                                                        ^^^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                           ^
+                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                            ^
+                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                             ^^
+                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        } else {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+           ^^^^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>            throw new RangeError('Invalid matrix 3x3 column index: ' + index);
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.trycatch.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                   ^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts
+                       ^^^^^^^^^^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts
+                                                                    ^
+                                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                     ^
+                                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                                      ^
+                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.operator.arithmetic.ts
+                                                                       ^^^^^^
+                                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+                                                                             ^
+                                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                                              ^
+                                                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                               ^^
+                                                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+>        }
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

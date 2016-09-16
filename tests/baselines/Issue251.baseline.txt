@@ -1,0 +1,206 @@
+original file
+-----------------------------------
+for(var j=0; (j<rows && l<num); j++) {
+  for(var k = 0; (k<cols && l<num); k++){
+    output.push( {h, w, x: k*w, y: h*j, file: file.file});
+    l++;
+  }
+}
+-----------------------------------
+
+>for(var j=0; (j<rows && l<num); j++) {
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^^^
+     source.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^
+             source.ts
+              ^
+              source.ts meta.brace.round.ts
+               ^
+               source.ts
+                ^
+                source.ts keyword.operator.relational.ts
+                 ^^^^^
+                 source.ts
+                      ^^
+                      source.ts keyword.operator.logical.ts
+                        ^^
+                        source.ts
+                          ^
+                          source.ts keyword.operator.relational.ts
+                           ^^^
+                           source.ts
+                              ^
+                              source.ts meta.brace.round.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+                                ^^
+                                source.ts
+                                  ^^
+                                  source.ts keyword.operator.increment.ts
+                                    ^
+                                    source.ts meta.brace.round.ts
+                                     ^
+                                     source.ts
+                                      ^
+                                      source.ts meta.block.ts punctuation.definition.block.ts
+                                       ^^
+                                       source.ts meta.block.ts
+>  for(var k = 0; (k<cols && l<num); k++){
+ ^^
+ source.ts meta.block.ts
+   ^^^
+   source.ts meta.block.ts keyword.control.loop.ts
+      ^
+      source.ts meta.block.ts meta.brace.round.ts
+       ^^^
+       source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.block.ts meta.var.expr.ts
+           ^
+           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                ^
+                source.ts meta.block.ts punctuation.terminator.statement.ts
+                 ^
+                 source.ts meta.block.ts
+                  ^
+                  source.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.block.ts
+                    ^
+                    source.ts meta.block.ts keyword.operator.relational.ts
+                     ^^^^^
+                     source.ts meta.block.ts
+                          ^^
+                          source.ts meta.block.ts keyword.operator.logical.ts
+                            ^^
+                            source.ts meta.block.ts
+                              ^
+                              source.ts meta.block.ts keyword.operator.relational.ts
+                               ^^^
+                               source.ts meta.block.ts
+                                  ^
+                                  source.ts meta.block.ts meta.brace.round.ts
+                                   ^
+                                   source.ts meta.block.ts punctuation.terminator.statement.ts
+                                    ^^
+                                    source.ts meta.block.ts
+                                      ^^
+                                      source.ts meta.block.ts keyword.operator.increment.ts
+                                        ^
+                                        source.ts meta.block.ts meta.brace.round.ts
+                                         ^
+                                         source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                          ^^
+                                          source.ts meta.block.ts meta.block.ts
+>    output.push( {h, w, x: k*w, y: h*j, file: file.file});
+ ^^^^^^^^^^
+ source.ts meta.block.ts meta.block.ts
+           ^
+           source.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+            ^^^^
+            source.ts meta.block.ts meta.block.ts variable.function.ts
+                ^
+                source.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                 ^
+                 source.ts meta.block.ts meta.block.ts
+                  ^
+                  source.ts meta.block.ts meta.block.ts meta.object-literal.ts punctuation.definition.block.ts
+                   ^
+                   source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.block.ts meta.block.ts meta.object-literal.ts punctuation.separator.comma.ts
+                     ^
+                     source.ts meta.block.ts meta.block.ts meta.object-literal.ts
+                      ^
+                      source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.block.ts meta.block.ts meta.object-literal.ts punctuation.separator.comma.ts
+                        ^
+                        source.ts meta.block.ts meta.block.ts meta.object-literal.ts
+                         ^
+                         source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+                          ^
+                          source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                           ^^
+                           source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+                             ^
+                             source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts keyword.operator.arithmetic.ts
+                              ^
+                              source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+                               ^
+                               source.ts meta.block.ts meta.block.ts meta.object-literal.ts punctuation.separator.comma.ts
+                                ^
+                                source.ts meta.block.ts meta.block.ts meta.object-literal.ts
+                                 ^
+                                 source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+                                  ^
+                                  source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                   ^^
+                                   source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+                                     ^
+                                     source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts keyword.operator.arithmetic.ts
+                                      ^
+                                      source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+                                       ^
+                                       source.ts meta.block.ts meta.block.ts meta.object-literal.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.block.ts meta.block.ts meta.object-literal.ts
+                                         ^^^^
+                                         source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+                                             ^
+                                             source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                              ^^^^^
+                                              source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+                                                   ^
+                                                   source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts punctuation.accessor.ts
+                                                    ^^^^
+                                                    source.ts meta.block.ts meta.block.ts meta.object-literal.ts meta.object.member.ts
+                                                        ^
+                                                        source.ts meta.block.ts meta.block.ts meta.object-literal.ts punctuation.definition.block.ts
+                                                         ^
+                                                         source.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                          ^
+                                                          source.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                           ^^
+                                                           source.ts meta.block.ts meta.block.ts
+>    l++;
+ ^^^^^
+ source.ts meta.block.ts meta.block.ts
+      ^^
+      source.ts meta.block.ts meta.block.ts keyword.operator.increment.ts
+        ^
+        source.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+         ^^
+         source.ts meta.block.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.block.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
