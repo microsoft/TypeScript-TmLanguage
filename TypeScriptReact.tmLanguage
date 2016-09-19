@@ -4136,7 +4136,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=$|[,);&gt;]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)</string>
+			<string>(?=[};]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)</string>
 			<key>name</key>
 			<string>meta.type.declaration.tsx</string>
 			<key>patterns</key>
@@ -4154,10 +4154,16 @@
 					<string>#type</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.tsx</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>=\s*</string>
-					<key>name</key>
-					<string>keyword.operator.assignment.tsx</string>
+					<string>(=)\s*</string>
 				</dict>
 			</array>
 		</dict>

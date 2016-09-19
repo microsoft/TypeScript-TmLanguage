@@ -238,13 +238,14 @@ repository:
       '1': { name: keyword.control.export.tsx }
       '2': { name: storage.type.type.tsx }
       '3': { name: entity.name.type.tsx }
-    end: (?=$|[,);>]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)
+    end: (?=[};]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)
     patterns:
       - include: '#comment'
       - include: '#type-parameters'
       - include: '#type'
-      - name: keyword.operator.assignment.tsx
-        match: '=\s*'
+      - match: '(=)\s*'
+        captures:
+          '1': { name: keyword.operator.assignment.tsx }
 
   enum-declaration:
     name: meta.enum.declaration.tsx
