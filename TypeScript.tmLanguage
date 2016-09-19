@@ -3656,6 +3656,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-fn-type-parameters</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-paren-or-function-parameters</string>
 				</dict>
 				<dict>
@@ -3740,6 +3744,79 @@
 					<string>=\s*</string>
 					<key>name</key>
 					<string>keyword.operator.assignment.ts</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-fn-type-parameters</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.new.ts</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\.|\$)\b(new)\b(?=\s*\&lt;)</string>
+					<key>name</key>
+					<string>meta.type.constructor.ts</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!\.|\$)\b(new)\b\s*(?=\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.new.ts</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>name</key>
+					<string>meta.type.constructor.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=\&gt;)\s*(?=\()</string>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>name</key>
+					<string>meta.type.function.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-parameters</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?x)( \s* (?= [(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ) ) )</string>
+					<key>end</key>
+					<string>(?&lt;=\))</string>
+					<key>name</key>
+					<string>meta.type.function.ts</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#function-parameters</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -3957,15 +4034,10 @@
 		<key>type-paren-or-function-parameters</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:(?&lt;!\.|\$)\b(new)\b)?\s*(\()</string>
+			<string>\s*(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.new.ts</string>
-				</dict>
-				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>meta.brace.round.ts</string>
