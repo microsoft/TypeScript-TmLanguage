@@ -248,7 +248,15 @@
 		<key>arrow-return-type</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=\))\s*:</string>
+			<string>(?&lt;=\))\s*(:)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.type.annotation.tsx</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>(?&lt;!:)((?=$)|(?==&gt;|;|//))</string>
 			<key>name</key>
@@ -3630,7 +3638,15 @@
 		<key>return-type</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=\))\s*:</string>
+			<string>(?&lt;=\))\s*(:)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.type.annotation.tsx</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>(?&lt;!:)((?=$)|(?=\{|;|//))</string>
 			<key>name</key>
@@ -4066,6 +4082,14 @@
 		<dict>
 			<key>begin</key>
 			<string>:</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.type.annotation.tsx</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>(?=$|[,);\}\]]|//)|(?==[^&gt;])|(?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)</string>
 			<key>name</key>

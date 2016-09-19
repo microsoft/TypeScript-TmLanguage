@@ -684,7 +684,9 @@ repository:
 
   return-type:
     name: meta.return.type.ts
-    begin: '(?<=\))\s*:'
+    begin: '(?<=\))\s*(:)'
+    beginCaptures:
+      '1': { name: keyword.operator.type.annotation.ts }
     end: (?<!:)((?=$)|(?=\{|;|//))
     patterns:
     - include: '#comment'
@@ -708,6 +710,8 @@ repository:
   type-annotation:
     name: meta.type.annotation.ts
     begin: ":"
+    beginCaptures:
+      '0': { name: keyword.operator.type.annotation.ts }
     end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)
     patterns:
     - include: '#comment'
@@ -1108,7 +1112,9 @@ repository:
 
   arrow-return-type:
     name: meta.return.type.arrow.ts
-    begin: '(?<=\))\s*:'
+    begin: '(?<=\))\s*(:)'
+    beginCaptures:
+      '1': { name: keyword.operator.type.annotation.ts }    
     end: (?<!:)((?=$)|(?==>|;|//))
     patterns:
     # TODO: handle the fn and constructor type specifically.
