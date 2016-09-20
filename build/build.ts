@@ -59,7 +59,7 @@ function changeToTsxGrammar(grammar: any) {
     return grammar;
 }
 
-function build() {
+function buildGrammar() {
     const tsGrammar = readYamlGrammar("../TypeScript.YAML-tmLanguage");
 
     // Write TypeScript.tmLanguage
@@ -70,4 +70,12 @@ function build() {
     writePlistFile(tsxGrammar, "../TypeScriptReact.tmLanguage");
 }
 
-build();
+function buildTheme() {
+    const tsTheme = readYamlGrammar("../TypeScript.YAML-tmTheme");
+
+    // Write TypeScript.tmTheme
+    writePlistFile(tsTheme, "../TypeScript.tmTheme");
+}
+
+buildGrammar();
+buildTheme();
