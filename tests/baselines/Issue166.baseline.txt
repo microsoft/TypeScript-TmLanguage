@@ -1,0 +1,296 @@
+original file
+-----------------------------------
+type x = string | "aaa" | "bbb" | "ccc" | number;
+type x1 = string |
+    "aaa" |
+    "bbb" | "ccc" | number;
+type x2 = string | /*comment*/ "aaa" | "bbb" | "ccc" | number; /*comment*/
+type x3 = string | "aaa" | //comment
+    "bbb" | "ccc" | number; //comment
+-----------------------------------
+
+>type x = string | "aaa" | "bbb" | "ccc" | number;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^^^^^^
+          source.ts meta.type.declaration.ts support.type.primitive.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts keyword.operator.type.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                    ^^^
+                    source.ts meta.type.declaration.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                        ^
+                        source.ts meta.type.declaration.ts
+                         ^
+                         source.ts meta.type.declaration.ts keyword.operator.type.ts
+                          ^
+                          source.ts meta.type.declaration.ts
+                           ^
+                           source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                            ^^^
+                            source.ts meta.type.declaration.ts string.quoted.double.ts
+                               ^
+                               source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                ^
+                                source.ts meta.type.declaration.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts keyword.operator.type.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                    ^^^
+                                    source.ts meta.type.declaration.ts string.quoted.double.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts keyword.operator.type.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts
+                                           ^^^^^^
+                                           source.ts meta.type.declaration.ts support.type.primitive.ts
+                                                 ^
+                                                 source.ts punctuation.terminator.statement.ts
+                                                  ^^
+                                                  source.ts
+>type x1 = string |
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^^^^^^
+           source.ts meta.type.declaration.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.type.ts
+                   ^^
+                   source.ts meta.type.declaration.ts
+>    "aaa" |
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+      ^^^
+      source.ts meta.type.declaration.ts string.quoted.double.ts
+         ^
+         source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts keyword.operator.type.ts
+            ^^
+            source.ts meta.type.declaration.ts
+>    "bbb" | "ccc" | number;
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+      ^^^
+      source.ts meta.type.declaration.ts string.quoted.double.ts
+         ^
+         source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts keyword.operator.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^
+             source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+              ^^^
+              source.ts meta.type.declaration.ts string.quoted.double.ts
+                 ^
+                 source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts keyword.operator.type.ts
+                    ^
+                    source.ts meta.type.declaration.ts
+                     ^^^^^^
+                     source.ts meta.type.declaration.ts support.type.primitive.ts
+                           ^
+                           source.ts punctuation.terminator.statement.ts
+                            ^^
+                            source.ts
+>type x2 = string | /*comment*/ "aaa" | "bbb" | "ccc" | number; /*comment*/
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^^^^^^
+           source.ts meta.type.declaration.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.type.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^^
+                    source.ts meta.type.declaration.ts comment.block.ts punctuation.definition.comment.ts
+                      ^^^^^^^
+                      source.ts meta.type.declaration.ts comment.block.ts
+                             ^^
+                             source.ts meta.type.declaration.ts comment.block.ts punctuation.definition.comment.ts
+                               ^
+                               source.ts meta.type.declaration.ts
+                                ^
+                                source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                 ^^^
+                                 source.ts meta.type.declaration.ts string.quoted.double.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts keyword.operator.type.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                         ^^^
+                                         source.ts meta.type.declaration.ts string.quoted.double.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts
+                                              ^
+                                              source.ts meta.type.declaration.ts keyword.operator.type.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                 ^^^
+                                                 source.ts meta.type.declaration.ts string.quoted.double.ts
+                                                    ^
+                                                    source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                     ^
+                                                     source.ts meta.type.declaration.ts
+                                                      ^
+                                                      source.ts meta.type.declaration.ts keyword.operator.type.ts
+                                                       ^
+                                                       source.ts meta.type.declaration.ts
+                                                        ^^^^^^
+                                                        source.ts meta.type.declaration.ts support.type.primitive.ts
+                                                              ^
+                                                              source.ts punctuation.terminator.statement.ts
+                                                               ^
+                                                               source.ts
+                                                                ^^
+                                                                source.ts comment.block.ts punctuation.definition.comment.ts
+                                                                  ^^^^^^^
+                                                                  source.ts comment.block.ts
+                                                                         ^^
+                                                                         source.ts comment.block.ts punctuation.definition.comment.ts
+                                                                           ^^
+                                                                           source.ts
+>type x3 = string | "aaa" | //comment
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^^^^^^
+           source.ts meta.type.declaration.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.type.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^
+                    source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                     ^^^
+                     source.ts meta.type.declaration.ts string.quoted.double.ts
+                        ^
+                        source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                         ^
+                         source.ts meta.type.declaration.ts
+                          ^
+                          source.ts meta.type.declaration.ts keyword.operator.type.ts
+                           ^
+                           source.ts meta.type.declaration.ts
+                            ^^
+                            source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                              ^^^^^^^^
+                              source.ts meta.type.declaration.ts comment.line.double-slash.ts
+>    "bbb" | "ccc" | number; //comment
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+      ^^^
+      source.ts meta.type.declaration.ts string.quoted.double.ts
+         ^
+         source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts keyword.operator.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^
+             source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+              ^^^
+              source.ts meta.type.declaration.ts string.quoted.double.ts
+                 ^
+                 source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts keyword.operator.type.ts
+                    ^
+                    source.ts meta.type.declaration.ts
+                     ^^^^^^
+                     source.ts meta.type.declaration.ts support.type.primitive.ts
+                           ^
+                           source.ts punctuation.terminator.statement.ts
+                            ^
+                            source.ts
+                             ^^
+                             source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                               ^^^^^^^
+                               source.ts comment.line.double-slash.ts

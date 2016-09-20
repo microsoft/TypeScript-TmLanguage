@@ -1,0 +1,614 @@
+original file
+-----------------------------------
+interface A {}
+interface B {}
+interface C {}
+
+type D = A | B | C
+type D1 = A
+    | B
+    | C
+type D3 = 
+      A
+    | B
+    | C
+type D2
+    = A
+    | B
+    | C
+
+type E = 'e1' | 'e2' | 'e3'
+type E1 = 'e1' 
+    | 'e2' 
+    | 'e3'
+type E2 = 
+      'e1' 
+    | 'e2' 
+    | 'e3'
+type E3 
+    = 'e1' 
+    | 'e2' 
+    | 'e3'
+
+type F = A & B & C
+type F1 = A
+    & B
+    & C
+type F2 =
+      A
+    & B
+    & C
+type F3
+    = A
+    & B
+    & C
+-----------------------------------
+
+>interface A {}
+ ^^^^^^^^^
+ source.ts meta.class.ts storage.type.interface.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts entity.name.class.ts
+            ^
+            source.ts meta.class.ts
+             ^
+             source.ts meta.class.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.class.ts punctuation.definition.block.ts
+               ^^
+               source.ts
+>interface B {}
+ ^^^^^^^^^
+ source.ts meta.class.ts storage.type.interface.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts entity.name.class.ts
+            ^
+            source.ts meta.class.ts
+             ^
+             source.ts meta.class.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.class.ts punctuation.definition.block.ts
+               ^^
+               source.ts
+>interface C {}
+ ^^^^^^^^^
+ source.ts meta.class.ts storage.type.interface.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts entity.name.class.ts
+            ^
+            source.ts meta.class.ts
+             ^
+             source.ts meta.class.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.class.ts punctuation.definition.block.ts
+               ^^
+               source.ts
+>
+ ^^
+ source.ts
+>type D = A | B | C
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^
+          source.ts meta.type.declaration.ts entity.name.type.ts
+           ^
+           source.ts meta.type.declaration.ts
+            ^
+            source.ts meta.type.declaration.ts keyword.operator.type.ts
+             ^
+             source.ts meta.type.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts
+                ^
+                source.ts meta.type.declaration.ts keyword.operator.type.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts entity.name.type.ts
+                   ^^
+                   source.ts meta.type.declaration.ts
+>type D1 = A
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts entity.name.type.ts
+            ^^
+            source.ts meta.type.declaration.ts
+>    | B
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    | C
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>type D3 = 
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^^^
+          source.ts meta.type.declaration.ts
+>      A
+ ^^^^^^
+ source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    | B
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    | C
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>type D2
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    = A
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    | B
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    | C
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>
+ ^^
+ source.ts meta.type.declaration.ts
+>type E = 'e1' | 'e2' | 'e3'
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+           ^^
+           source.ts meta.type.declaration.ts string.quoted.single.ts
+             ^
+             source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+              ^
+              source.ts meta.type.declaration.ts
+               ^
+               source.ts meta.type.declaration.ts keyword.operator.type.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                  ^^
+                  source.ts meta.type.declaration.ts string.quoted.single.ts
+                    ^
+                    source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                     ^
+                     source.ts meta.type.declaration.ts
+                      ^
+                      source.ts meta.type.declaration.ts keyword.operator.type.ts
+                       ^
+                       source.ts meta.type.declaration.ts
+                        ^
+                        source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                         ^^
+                         source.ts meta.type.declaration.ts string.quoted.single.ts
+                           ^
+                           source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                            ^^
+                            source.ts meta.type.declaration.ts
+>type E1 = 'e1' 
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+            ^^
+            source.ts meta.type.declaration.ts string.quoted.single.ts
+              ^
+              source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+               ^^^
+               source.ts meta.type.declaration.ts
+>    | 'e2' 
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^^
+           source.ts meta.type.declaration.ts
+>    | 'e3'
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^
+           source.ts meta.type.declaration.ts
+>type E2 = 
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^^^
+          source.ts meta.type.declaration.ts
+>      'e1' 
+ ^^^^^^
+ source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^^
+           source.ts meta.type.declaration.ts
+>    | 'e2' 
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^^
+           source.ts meta.type.declaration.ts
+>    | 'e3'
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^
+           source.ts meta.type.declaration.ts
+>type E3 
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^^
+        source.ts meta.type.declaration.ts
+>    = 'e1' 
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^^
+           source.ts meta.type.declaration.ts
+>    | 'e2' 
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^^
+           source.ts meta.type.declaration.ts
+>    | 'e3'
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^^
+        source.ts meta.type.declaration.ts string.quoted.single.ts
+          ^
+          source.ts meta.type.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+           ^^
+           source.ts meta.type.declaration.ts
+>
+ ^^
+ source.ts meta.type.declaration.ts
+>type F = A & B & C
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^
+          source.ts meta.type.declaration.ts entity.name.type.ts
+           ^
+           source.ts meta.type.declaration.ts
+            ^
+            source.ts meta.type.declaration.ts keyword.operator.type.ts
+             ^
+             source.ts meta.type.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts
+                ^
+                source.ts meta.type.declaration.ts keyword.operator.type.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts entity.name.type.ts
+                   ^^
+                   source.ts meta.type.declaration.ts
+>type F1 = A
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts entity.name.type.ts
+            ^^
+            source.ts meta.type.declaration.ts
+>    & B
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    & C
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>type F2 =
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^^
+          source.ts meta.type.declaration.ts
+>      A
+ ^^^^^^
+ source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    & B
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    & C
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>type F3
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    = A
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    & B
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts
+        ^^
+        source.ts meta.type.declaration.ts
+>    & C
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts keyword.operator.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^
+       source.ts meta.type.declaration.ts entity.name.type.ts

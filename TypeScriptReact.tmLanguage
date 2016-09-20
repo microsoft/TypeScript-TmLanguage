@@ -745,7 +745,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|[,);&gt;]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)</string>
+        <string>(?=[};]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -761,10 +761,16 @@
             <string>#type</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>keyword.operator.assignment.tsx</string>
             <key>match</key>
-            <string>=\s*</string>
+            <string>(=)\s*</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.tsx</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>
@@ -2219,7 +2225,15 @@
         <key>name</key>
         <string>meta.return.type.tsx</string>
         <key>begin</key>
-        <string>(?&lt;=\))\s*:</string>
+        <string>(?&lt;=\))\s*(:)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.type.annotation.tsx</string>
+          </dict>
+        </dict>
         <key>end</key>
         <string>(?&lt;!:)((?=$)|(?=\{|;|//))</string>
         <key>patterns</key>
@@ -2282,6 +2296,14 @@
         <string>meta.type.annotation.tsx</string>
         <key>begin</key>
         <string>:</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.type.annotation.tsx</string>
+          </dict>
+        </dict>
         <key>end</key>
         <string>(?=$|[,);\}\]]|//)|(?==[^&gt;])|(?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)</string>
         <key>patterns</key>
@@ -2337,6 +2359,10 @@
           <dict>
             <key>include</key>
             <string>#type-operator</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#type-fn-type-parameters</string>
           </dict>
           <dict>
             <key>include</key>
@@ -2429,15 +2455,10 @@
         <key>name</key>
         <string>meta.type.paren.cover.tsx</string>
         <key>begin</key>
-        <string>(?:(?&lt;!\.|\$)\b(new)\b)?\s*(\()</string>
+        <string>\s*(\()</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.new.tsx</string>
-          </dict>
-          <key>2</key>
           <dict>
             <key>name</key>
             <string>meta.brace.round.tsx</string>
@@ -2462,6 +2483,79 @@
           <dict>
             <key>include</key>
             <string>#function-parameters</string>
+          </dict>
+        </array>
+      </dict>
+      <key>type-fn-type-parameters</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>meta.type.constructor.tsx</string>
+            <key>match</key>
+            <string>(?&lt;!\.|\$)\b(new)\b(?=\s*\&lt;)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.new.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.type.constructor.tsx</string>
+            <key>begin</key>
+            <string>(?&lt;!\.|\$)\b(new)\b\s*(?=\()</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.new.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;=\))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#function-parameters</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.type.function.tsx</string>
+            <key>begin</key>
+            <string>(?&lt;=\&gt;)\s*(?=\()</string>
+            <key>end</key>
+            <string>(?&lt;=\))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#function-parameters</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.type.function.tsx</string>
+            <key>begin</key>
+            <string>(?x)( \s* (?= [(]\s*( ([)]) |  (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ) ) )</string>
+            <key>end</key>
+            <string>(?&lt;=\))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#function-parameters</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
@@ -3297,7 +3391,15 @@
         <key>name</key>
         <string>meta.return.type.arrow.tsx</string>
         <key>begin</key>
-        <string>(?&lt;=\))\s*:</string>
+        <string>(?&lt;=\))\s*(:)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.type.annotation.tsx</string>
+          </dict>
+        </dict>
         <key>end</key>
         <string>(?&lt;!:)((?=$)|(?==&gt;|;|//))</string>
         <key>patterns</key>
