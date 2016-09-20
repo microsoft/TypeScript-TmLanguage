@@ -6,7 +6,7 @@
   "main": "test.ts",
   "scripts": {
     "postinstall": "tsd install",
-    "pretest": "tsc && node ./build.js",
+    "pretest": "node ../build/build.js && tsc && node ./build.js",
     "test": "mocha test.js"
   },
   "dependencies": {
