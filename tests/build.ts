@@ -4,9 +4,12 @@ import * as vt from 'vscode-textmate/release/main';
 import fs = require('fs');
 import path = require('path');
 
-var register = new vt.Registry();
-var tsGrammar = register.loadGrammarFromPathSync("../TypeScript.tmLanguage");
-var tsReactGrammar = register.loadGrammarFromPathSync("../TypeScriptReact.tmLanguage");
+const tsGrammarFileName = "TypeScript.tmLanguage"
+const tsReactGrammarFileName = "TypeScriptReact.tmLanguage"
+
+const register = new vt.Registry();
+const tsGrammar = register.loadGrammarFromPathSync("../" + tsGrammarFileName);
+const tsReactGrammar = register.loadGrammarFromPathSync("../" + tsReactGrammarFileName);
 
 const marker = '^^';
 
@@ -31,13 +34,20 @@ function getInputFile(oriLines: string[]): string {
         "\n-----------------------------------\n\n";
 }
 
+function getGrammarInfo(grammarFileName: string) {
+    return "Grammar: " + grammarFileName + "\n-----------------------------------\n";
+}
+
+const tsGrammarInfo = getGrammarInfo(tsGrammarFileName);
+const tsReactGrammarInfo = getGrammarInfo(tsReactGrammarFileName);
+
 function getScopesAtMarkers(text: string, grammar: vt.IGrammar): { markerScopes: string, wholeBaseline: string } {
-    let oriLines = text.split('\n');
+    const oriLines = text.split('\n');
     let ruleStack:vt.StackElement[] = undefined;
     let outputLines: string[] = [];
     let baselineLines: string[] = [];
     let markers = 0;
-    for (let i in oriLines) {
+    for (const i in oriLines) {
         let oriLine = oriLines[i];
         let markerLocations = getMarkerLocations(oriLine);
         markers += markerLocations.length;
@@ -59,9 +69,10 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): { markerScopes:
     }
 
     const oriLineText = getInputFile(oriLines);
+    const grammarInfo = grammar === tsGrammar ? tsGrammarInfo : tsReactGrammarInfo;
     return {
-        markerScopes: markers ? (oriLineText + outputLines.join('\n')) : null,
-        wholeBaseline: oriLineText + baselineLines.join('\n')
+        markerScopes: markers ? (oriLineText + grammarInfo + outputLines.join('\n')) : null,
+        wholeBaseline: oriLineText + grammarInfo + baselineLines.join('\n')
     };
 }
 
@@ -79,19 +90,33 @@ function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForTo
     outputLines.push(startingSpaces + preTextForToken + token.scopes.join(' ') + postTextForToken);
 }
 
+const generatedFolder = "generated";
+
+function ensureCleanGeneratedFolder() {
+    if (fs.existsSync(generatedFolder)) {
+        for (const fileName of fs.readdirSync(generatedFolder)) {
+            fs.unlinkSync(path.join(generatedFolder, fileName));
+        }
+        fs.rmdirSync(generatedFolder);
+    }
+    fs.mkdirSync(generatedFolder);
+}
+
+// Ensure generated folder
+ensureCleanGeneratedFolder();
+
+// Generate the new baselines
 for (var fileName of fs.readdirSync('cases')) {
     const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
-    let parsedFileName = path.parse(fileName);
-    let grammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
-    if (!fs.existsSync('./generated')){
-        fs.mkdirSync('generated');
-    }
-    let outputFileName = path.join('./generated', parsedFileName.name + '.txt');
+    const parsedFileName = path.parse(fileName);
+    const grammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
+
+    const outputFileName = path.join(generatedFolder, parsedFileName.name + '.txt');
     const { markerScopes, wholeBaseline } = getScopesAtMarkers(text, grammar);
     if (markerScopes) {
         fs.writeFile(outputFileName, markerScopes, "utf8");
     }
 
-    let outputBaselineName = path.join('./generated', parsedFileName.name + '.baseline.txt');
+    const outputBaselineName = path.join(generatedFolder, parsedFileName.name + '.baseline.txt');
     fs.writeFile(outputBaselineName, wholeBaseline, "utf8");
 }
