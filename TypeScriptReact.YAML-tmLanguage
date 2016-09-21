@@ -120,35 +120,47 @@ repository:
     - include: '#jsx-children'
 
   jsx-tag:
-    name: meta.tag.tsx
+    # We need to differentiate between the relational '<' operator and the beginning of a tag using the surrounding context.
     begin: >-
       (?x)
-        (<)
+        (?<=[({\[,?=>]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+        (?!(<)([_$a-zA-Z][-$\w.]*(?<!\.|-))(>)) #look ahead is not start of tag without attributes
+        (?!<[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
+        (?=(<)
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
-        (?=\s+(?!\?)|/?>)
-    beginCaptures:
-      '1': { name: punctuation.definition.tag.begin.tsx }
-      '2': { name: entity.name.tag.tsx }
+        (?=\s+(?!\?)|/?>))
     end: (/>)|(?:(</)([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>))
     endCaptures:
+      '0': { name: meta.tag.tsx }
       '1': { name: punctuation.definition.tag.end.tsx }
       '2': { name: punctuation.definition.tag.begin.tsx }
       '3': { name: entity.name.tag.tsx }
       '4': { name: punctuation.definition.tag.end.tsx }
     patterns:
-    - begin: \G(?![/]?>)
-      end: (?=[/]?>)
-      patterns:
-      - include: '#comment'
-      - include: '#jsx-tag-attributes'
-      - include: '#jsx-tag-attributes-illegal'
-    - begin: (>)
+    - name: meta.tag.tsx
+      begin: >-
+        (?x)
+          (<)
+          ([_$a-zA-Z][-$\w.]*(?<!\.|-))
+          (?=\s+(?!\?)|/?>)
       beginCaptures:
-        '1': { name: punctuation.definition.tag.end.tsx }
-      end: (?=</)
-      contentName: meta.jsx.children.tsx
+        '1': { name: punctuation.definition.tag.begin.tsx }
+        '2': { name: entity.name.tag.tsx }
+      end: (?=(/>)|(?:(</)([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
       patterns:
-      - include: '#jsx-children'
+      - begin: \G(?![/]?>)
+        end: (?=[/]?>)
+        patterns:
+        - include: '#comment'
+        - include: '#jsx-tag-attributes'
+        - include: '#jsx-tag-attributes-illegal'
+      - begin: (>)
+        beginCaptures:
+          '1': { name: punctuation.definition.tag.end.tsx }
+        end: (?=</)
+        contentName: meta.jsx.children.tsx
+        patterns:
+        - include: '#jsx-children'
 
   jsx-tag-invalid:
     name: invalid.illegal.tag.incomplete.tsx

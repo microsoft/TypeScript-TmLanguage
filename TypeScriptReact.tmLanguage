@@ -4527,30 +4527,23 @@
       </dict>
       <key>jsx-tag</key>
       <dict>
-        <key>name</key>
-        <string>meta.tag.tsx</string>
         <key>begin</key>
         <string>(?x)
-  (&lt;)
+  (?&lt;=[({\[,?=&gt;]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+  (?!(&lt;)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))(&gt;)) #look ahead is not start of tag without attributes
+  (?!&lt;[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
+  (?=(&lt;)
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
-  (?=\s+(?!\?)|/?&gt;)</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.tag.begin.tsx</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>entity.name.tag.tsx</string>
-          </dict>
-        </dict>
+  (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
         <string>(/&gt;)|(?:(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>meta.tag.tsx</string>
+          </dict>
           <key>1</key>
           <dict>
             <key>name</key>
@@ -4575,46 +4568,73 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>name</key>
+            <string>meta.tag.tsx</string>
             <key>begin</key>
-            <string>\G(?![/]?&gt;)</string>
-            <key>end</key>
-            <string>(?=[/]?&gt;)</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#jsx-tag-attributes</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#jsx-tag-attributes-illegal</string>
-              </dict>
-            </array>
-          </dict>
-          <dict>
-            <key>begin</key>
-            <string>(&gt;)</string>
+            <string>(?x)
+  (&lt;)
+  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
+  (?=\s+(?!\?)|/?&gt;)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>punctuation.definition.tag.end.tsx</string>
+                <string>punctuation.definition.tag.begin.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.tag.tsx</string>
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=&lt;/)</string>
-            <key>contentName</key>
-            <string>meta.jsx.children.tsx</string>
+            <string>(?=(/&gt;)|(?:(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)))</string>
             <key>patterns</key>
             <array>
               <dict>
-                <key>include</key>
-                <string>#jsx-children</string>
+                <key>begin</key>
+                <string>\G(?![/]?&gt;)</string>
+                <key>end</key>
+                <string>(?=[/]?&gt;)</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#comment</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#jsx-tag-attributes</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#jsx-tag-attributes-illegal</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>begin</key>
+                <string>(&gt;)</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.tag.end.tsx</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?=&lt;/)</string>
+                <key>contentName</key>
+                <string>meta.jsx.children.tsx</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#jsx-children</string>
+                  </dict>
+                </array>
               </dict>
             </array>
           </dict>
