@@ -45,6 +45,7 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): { markerScopes:
     const oriLines = text.split('\n');
     let ruleStack:vt.StackElement[] = undefined;
     let outputLines: string[] = [];
+    let cleanLines: string[] = [];
     let baselineLines: string[] = [];
     let markers = 0;
     for (const i in oriLines) {
@@ -55,6 +56,7 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): { markerScopes:
         let lineTokens = grammar.tokenizeLine(line, ruleStack);
         ruleStack = lineTokens.ruleStack;
 
+        cleanLines.push(line);
         outputLines.push(">" + line);
         baselineLines.push(">" + line);
         for (let token of lineTokens.tokens) {
@@ -68,11 +70,10 @@ function getScopesAtMarkers(text: string, grammar: vt.IGrammar): { markerScopes:
         }
     }
 
-    const oriLineText = getInputFile(oriLines);
     const grammarInfo = grammar === tsGrammar ? tsGrammarInfo : tsReactGrammarInfo;
     return {
-        markerScopes: markers ? (oriLineText + grammarInfo + outputLines.join('\n')) : null,
-        wholeBaseline: oriLineText + grammarInfo + baselineLines.join('\n')
+        markerScopes: markers ? (getInputFile(oriLines)+ grammarInfo + outputLines.join('\n')) : null,
+        wholeBaseline: getInputFile(cleanLines)+ grammarInfo + baselineLines.join('\n')
     };
 }
 
