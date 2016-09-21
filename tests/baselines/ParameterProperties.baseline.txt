@@ -1,7 +1,7 @@
 original file
 -----------------------------------
 class A {
-	constructor(^^private a: string, ^^protected b: string, ^^public c: string) {
+	constructor(private a: string, protected b: string, public c: string) {
 	}
 	foo() {
 		return this.a + this.b + this.c;
@@ -9,6 +9,8 @@ class A {
 }
 -----------------------------------
 
+Grammar: TypeScript.tmLanguage
+-----------------------------------
 >class A {
  ^^^^^
  source.ts meta.class.ts storage.type.class.ts

@@ -1,3 +1,4 @@
+// @onlyOwnGrammar - As this has jsx
 function foo() {
  return (
      <div className="panel panel-default">

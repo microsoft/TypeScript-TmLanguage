@@ -4,25 +4,27 @@ original file
 	Testing Isuue 32: Adding constructor as a support.type keword
 */
 
-^^interface ^^NewInterface{
-	^^currentData: Data;
-	^^setVal(d: Data)
+interface NewInterface{
+	currentData: Data;
+	setVal(d: Data)
 }
 
 
-^^class NewClass implements NewInterface {
-	^^currentData: Data;
-	^^setVal(d: Data){
-		^^this.currentData = d;
+class NewClass implements NewInterface {
+	currentData: Data;
+	setVal(d: Data){
+		this.currentData = d;
 	}
-	^^constructor(^^m: ^^number, ^^n: ^^string){}
+	constructor(m: number, n: string){}
 }
-^^
+
 /*
 	Testing comments
 */
 -----------------------------------
 
+Grammar: TypeScript.tmLanguage
+-----------------------------------
 >/*
  ^^
  source.ts comment.block.ts punctuation.definition.comment.ts

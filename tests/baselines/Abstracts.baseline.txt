@@ -1,9 +1,9 @@
 original file
 -----------------------------------
-^^abstract class Animal {
+abstract class Animal {
 	  public age: number;
 	  public yearsLeft() { return 20 - this.age; }
-	  ^^abstract makeSound(): string;
+	  abstract makeSound(): string;
 }
 
 class Cow extends Animal {
@@ -18,6 +18,8 @@ let cow = new Cow();
 cow.makeSound();
 -----------------------------------
 
+Grammar: TypeScript.tmLanguage
+-----------------------------------
 >abstract class Animal {
  ^^^^^^^^
  source.ts meta.class.ts storage.modifier.ts

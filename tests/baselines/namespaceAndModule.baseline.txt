@@ -1,12 +1,14 @@
 original file
 -----------------------------------
-^^namespace ts { }
-^^module ts { }
-declare ^^namespace ts {}
-declare ^^module ts {}
-declare ^^module "x" {}
+namespace ts { }
+module ts { }
+declare namespace ts {}
+declare module ts {}
+declare module "x" {}
 -----------------------------------
 
+Grammar: TypeScript.tmLanguage
+-----------------------------------
 >namespace ts { }
  ^^^^^^^^^
  source.ts meta.namespace.declaration.ts storage.type.namespace.ts

@@ -1,5 +1,6 @@
 original file
 -----------------------------------
+// @onlyOwnGrammar - As this has jsx
 function foo() {
  return (
      <div className="panel panel-default">
@@ -12,6 +13,13 @@ function foo() {
 }
 -----------------------------------
 
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
 >function foo() {
  ^^^^^^^^
  source.tsx meta.function.tsx storage.type.function.tsx

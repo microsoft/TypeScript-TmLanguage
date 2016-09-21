@@ -1,3 +1,4 @@
+// @onlyOwnGrammar - As this has jsx
 class MyComponent extends React.Component<Props, State>{
     render() {
         return ^^<^^div ^^onClick={^^this.stop}>

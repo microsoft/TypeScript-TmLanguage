@@ -1,5 +1,6 @@
 original file
 -----------------------------------
+// @onlyOwnGrammar - As this has type assertion
 // trailing part of some real code...
 
 null, <{[key]: () => any}> null
@@ -15,6 +16,13 @@ null, <{[key]: () =>{a: number}}> null
 function foo() { }
 -----------------------------------
 
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has type assertion
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
 >// trailing part of some real code...
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts

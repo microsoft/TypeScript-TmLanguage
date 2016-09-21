@@ -1,0 +1,58 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+<List>
+  <div >
+  </div>
+</List >
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+><List>
+ ^
+ source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+  ^^^^
+  source.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+      ^
+      source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+       ^^
+       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+>  <div >
+ ^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+   ^
+   source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+    ^^^
+    source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+       ^
+       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx
+        ^
+        source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+         ^^
+         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+>  </div>
+ ^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+   ^^
+   source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+     ^^^
+     source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+        ^
+        source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+         ^^
+         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+></List >
+ ^^
+ source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+   ^^^^
+   source.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+       ^
+       source.tsx meta.tag.without-attributes.tsx
+        ^
+        source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
