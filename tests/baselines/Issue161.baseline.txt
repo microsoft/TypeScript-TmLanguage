@@ -1,5 +1,6 @@
 original file
 -----------------------------------
+// @onlyOwnGrammar - As this has jsx
 let root: React.ReactElement<{}>;
 let page: PageName;
 if (isViaPage) {
@@ -10,6 +11,11 @@ if (isViaPage) {
 
 Grammar: TypeScriptReact.tmLanguage
 -----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
 >let root: React.ReactElement<{}>;
  ^^^
  source.tsx meta.var.expr.tsx storage.type.tsx

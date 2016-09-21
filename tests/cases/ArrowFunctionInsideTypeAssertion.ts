@@ -1,3 +1,4 @@
+// @onlyOwnGrammar - As this has type assertion
 // Issue: https://github.com/Microsoft/TypeScript-Sublime-Plugin/issues/292
 
 var object = {

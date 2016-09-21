@@ -1,3 +1,4 @@
+// @onlyOwnGrammar - As this has type assertion
 // trailing part of some real code...
 
 null, <{[key]: () => any}> null

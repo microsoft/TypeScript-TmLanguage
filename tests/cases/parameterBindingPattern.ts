@@ -1,3 +1,4 @@
+// @onlyOwnGrammar - As this has type assertion
 function foo() {
     return {
         x: {

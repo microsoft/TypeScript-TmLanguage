@@ -1,5 +1,6 @@
 original file
 -----------------------------------
+// @onlyOwnGrammar - As this has type assertion
 function foo() {
     return {
         x: {
@@ -43,6 +44,11 @@ function bar3([{hello}, world]: [{ hello: string }, string] = bar()) {
 
 Grammar: TypeScript.tmLanguage
 -----------------------------------
+>// @onlyOwnGrammar - As this has type assertion
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
 >function foo() {
  ^^^^^^^^
  source.ts meta.function.ts storage.type.function.ts

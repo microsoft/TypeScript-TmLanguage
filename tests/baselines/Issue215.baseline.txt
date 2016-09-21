@@ -142,3 +142,110 @@ Grammar: TypeScript.tmLanguage
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
+
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>function test() {
+>    for (var i=0 ; i<l ; ++i) {
+ ^^^^
+ source.tsx meta.function.tsx meta.block.tsx
+     ^^^
+     source.tsx meta.function.tsx meta.block.tsx keyword.control.loop.tsx
+        ^
+        source.tsx meta.function.tsx meta.block.tsx
+         ^
+         source.tsx meta.function.tsx meta.block.tsx meta.brace.round.tsx
+          ^^^
+          source.tsx meta.function.tsx meta.block.tsx meta.var.expr.tsx storage.type.tsx
+             ^
+             source.tsx meta.function.tsx meta.block.tsx meta.var.expr.tsx
+              ^
+              source.tsx meta.function.tsx meta.block.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx variable.other.readwrite.tsx
+               ^
+               source.tsx meta.function.tsx meta.block.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx keyword.operator.assignment.tsx
+                ^
+                source.tsx meta.function.tsx meta.block.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx constant.numeric.decimal.tsx
+                 ^
+                 source.tsx meta.function.tsx meta.block.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                  ^
+                  source.tsx meta.function.tsx meta.block.tsx punctuation.terminator.statement.tsx
+                   ^^
+                   source.tsx meta.function.tsx meta.block.tsx
+                     ^
+                     source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                      ^
+                      source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx
+                       ^
+                       source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+                        ^
+                        source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+                         ^
+                         source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+                          ^^^^
+                          source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+                              ^
+                              source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+                               ^
+                               source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                                ^^
+                                source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx
+>
+ ^^
+ source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx
+>    }
+ ^^^^
+ source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx
+     ^
+     source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
+      ^^
+      source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+>}
+ ^
+ source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+  ^^
+  source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+>
+ ^^
+ source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+>for (var i=0 ; i<l ; ++i) {
+ ^^^
+ source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+    ^
+    source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+     ^^^^
+     source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+         ^
+         source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.tag.attribute-name.tsx
+          ^
+          source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.tag.attribute-name.tsx entity.other.attribute-name.tsx
+           ^^
+           source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+             ^
+             source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+              ^
+              source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+               ^
+               source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+                ^^^
+                source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+                   ^
+                   source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+                    ^
+                    source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+                     ^
+                     source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+                      ^^^^
+                      source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx invalid.illegal.attribute.tsx
+                          ^
+                          source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx
+                           ^
+                           source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.start.tsx
+                            ^^
+                            source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx
+>
+ ^^
+ source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx
+>}
+ ^
+ source.tsx meta.function.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
