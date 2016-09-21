@@ -4476,9 +4476,9 @@
         <key>name</key>
         <string>meta.tag.without-attributes.tsx</string>
         <key>begin</key>
-        <string>(&lt;)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))(&gt;)</string>
+        <string>(&lt;)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)</string>
         <key>end</key>
-        <string>(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))(&gt;)</string>
+        <string>(&lt;/)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -4530,13 +4530,13 @@
         <key>begin</key>
         <string>(?x)
   (?&lt;=[({\[,?=&gt;]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
-  (?!(&lt;)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))(&gt;)) #look ahead is not start of tag without attributes
-  (?!&lt;[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
-  (?=(&lt;)
+  (?!(&lt;)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)) #look ahead is not start of tag without attributes
+  (?!&lt;\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
+  (?=(&lt;)\s*
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -4572,7 +4572,7 @@
             <string>meta.tag.tsx</string>
             <key>begin</key>
             <string>(?x)
-  (&lt;)
+  (&lt;)\s*
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;)</string>
             <key>beginCaptures</key>
@@ -4589,7 +4589,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=(/&gt;)|(?:(&lt;/)([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)))</string>
+            <string>(?=(/&gt;)|(?:(&lt;/)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)))</string>
             <key>patterns</key>
             <array>
               <dict>

@@ -105,8 +105,8 @@ repository:
 
   jsx-tag-without-attributes:
     name: meta.tag.without-attributes.tsx
-    begin: (<)([_$a-zA-Z][-$\w.]*(?<!\.|-))(>)
-    end: (</)([_$a-zA-Z][-$\w.]*(?<!\.|-))(>)
+    begin: (<)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)
+    end: (</)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)
     beginCaptures:
       '1': {name: punctuation.definition.tag.begin.tsx}
       '2': {name: entity.name.tag.tsx}
@@ -124,12 +124,12 @@ repository:
     begin: >-
       (?x)
         (?<=[({\[,?=>]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
-        (?!(<)([_$a-zA-Z][-$\w.]*(?<!\.|-))(>)) #look ahead is not start of tag without attributes
-        (?!<[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
-        (?=(<)
+        (?!(<)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)) #look ahead is not start of tag without attributes
+        (?!<\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
+        (?=(<)\s*
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
         (?=\s+(?!\?)|/?>))
-    end: (/>)|(?:(</)([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>))
+    end: (/>)|(?:(</)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>))
     endCaptures:
       '0': { name: meta.tag.tsx }
       '1': { name: punctuation.definition.tag.end.tsx }
@@ -140,13 +140,13 @@ repository:
     - name: meta.tag.tsx
       begin: >-
         (?x)
-          (<)
+          (<)\s*
           ([_$a-zA-Z][-$\w.]*(?<!\.|-))
           (?=\s+(?!\?)|/?>)
       beginCaptures:
         '1': { name: punctuation.definition.tag.begin.tsx }
         '2': { name: entity.name.tag.tsx }
-      end: (?=(/>)|(?:(</)([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
+      end: (?=(/>)|(?:(</)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
       patterns:
       - begin: \G(?![/]?>)
         end: (?=[/]?>)
