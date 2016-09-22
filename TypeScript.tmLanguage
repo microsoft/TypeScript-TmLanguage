@@ -2917,7 +2917,7 @@
       <key>function-call</key>
       <dict>
         <key>begin</key>
-        <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*)?\()</string>
+        <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3085,7 +3085,7 @@
             <key>name</key>
             <string>meta.object.member.ts</string>
             <key>begin</key>
-            <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*( (async\s+)|(function\s+)| ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)| ((&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
+            <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*( (async\s+)|(function\s+)| ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)| ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -3348,7 +3348,7 @@
             <key>name</key>
             <string>meta.arrow.ts</string>
             <key>begin</key>
-            <string>(?x)(?&lt;=return|throw|yield|await|async|default|[=(\[,:&gt;*])\s*(?=(&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
+            <string>(?x)(?&lt;=return|throw|yield|await|async|default|[=(\[,:&gt;*])\s*(?=(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
             <key>end</key>
             <string>(?==&gt;)</string>
             <key>patterns</key>

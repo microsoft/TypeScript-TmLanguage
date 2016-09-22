@@ -941,11 +941,7 @@ repository:
 
   function-call:
     #TODO: Scope function names and method names
-    # Ideal expression that can give us arbitary number of another level of type argument allowed is:
-    # (<)(?=(([^<>]+)|(\<[^<>]+\>))+>\s*\()
-    # But this takes really long time and sometimes infinite time to parse negative cases like below:
-    # if (this.PListCells.length<value && (!this.ListList || !this.DelayedUpdate))
-    begin: '([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\()'
+    begin: '([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\()'
     beginCaptures:
       '1': { name: variable.function.ts }
     end: (?=\()
@@ -1008,7 +1004,7 @@ repository:
       begin: (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
         (async\s+)|(function\s+)|
         ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
-        ((<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>))))
+        ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))))
       beginCaptures:
         '0': { name: meta.object-literal.key.ts }
         '1': { name: entity.name.function.ts }
@@ -1093,7 +1089,7 @@ repository:
         '1': { name: storage.modifier.async.ts }
         '2': { name: variable.parameter.ts }
     - name: meta.arrow.ts
-      begin: (?x)(?<=return|throw|yield|await|async|default|[=(\[,:>*])\s*(?=(<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)(?<=return|throw|yield|await|async|default|[=(\[,:>*])\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#comment'
