@@ -628,7 +628,7 @@
           </dict>
           <dict>
             <key>name</key>
-            <string>keyword.other.ts</string>
+            <string>keyword.other.debugger.ts</string>
             <key>match</key>
             <string>(?&lt;!\.|\$)\b(debugger)\b(?!\$)</string>
           </dict>
@@ -3562,7 +3562,7 @@
         <key>name</key>
         <string>string.regex.ts</string>
         <key>begin</key>
-        <string>(?&lt;=[=(:,\[?+!]|return|case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(/)(?![/*+{}?])(?=.*/)</string>
+        <string>(?&lt;=[=(:,\[?+!]|return|case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(/)(?![/*+?])(?=.*/)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3793,7 +3793,7 @@
             <key>name</key>
             <string>constant.other.character-class.regexp</string>
             <key>match</key>
-            <string>\\[wWsSdD]|\.</string>
+            <string>\\[wWsSdDtrnvf]|\.</string>
           </dict>
           <dict>
             <key>name</key>
@@ -4009,7 +4009,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>({\b(?:[_$[:alpha:]][_$[:alnum:]]*)\b})\s\b([_$[:alpha:]][_$[:alnum:]]*)\b\s*((?:(?!\*\/).)*)</string>
+            <string>({\b(?:[_$[:alpha:]][_$[:alnum:]]*)\b})\s+\b([_$[:alpha:]][_$[:alnum:]]*)\b\s*((?:(?!\*\/).)*)</string>
             <key>captures</key>
             <dict>
               <key>0</key>

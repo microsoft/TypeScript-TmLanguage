@@ -199,7 +199,7 @@ repository:
       match: (?<!\.|\$)\b(else|if)\b(?!\$)
     - name: keyword.control.with.ts
       match: (?<!\.|\$)\b(with)\b(?!\$)
-    - name: keyword.other.ts
+    - name: keyword.other.debugger.ts
       match: (?<!\.|\$)\b(debugger)\b(?!\$)
     - name: storage.modifier.ts
       match: (?<!\.|\$)\b(declare)\b(?!\$)
@@ -1171,7 +1171,7 @@ repository:
 
   regex:
     name: string.regex.ts
-    begin: (?<=[=(:,\[?+!]|return|case|=>|&&|\|\||\*\/)\s*(/)(?![/*+{}?])(?=.*/)
+    begin: (?<=[=(:,\[?+!]|return|case|=>|&&|\|\||\*\/)\s*(/)(?![/*+?])(?=.*/)
     beginCaptures:
       '1': {name: punctuation.definition.string.begin.ts}
     end: (/)([gimuy]*)
@@ -1238,7 +1238,7 @@ repository:
   regex-character-class:
     patterns:
     - name: constant.other.character-class.regexp
-      match: \\[wWsSdD]|\.
+      match: \\[wWsSdDtrnvf]|\.
     - name: constant.character.numeric.regexp
       match: \\([0-7]{3}|x\h\h|u\h\h\h\h)
     - name: constant.character.control.regexp
@@ -1311,7 +1311,7 @@ repository:
     patterns:
     - name: storage.type.class.jsdoc
       match: (?<!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b
-    - match: ({\b(?:[_$[:alpha:]][_$[:alnum:]]*)\b})\s\b([_$[:alpha:]][_$[:alnum:]]*)\b\s*((?:(?!\*\/).)*)
+    - match: ({\b(?:[_$[:alpha:]][_$[:alnum:]]*)\b})\s+\b([_$[:alpha:]][_$[:alnum:]]*)\b\s*((?:(?!\*\/).)*)
       captures:
         '0': {name: other.meta.jsdoc}
         '1': {name: entity.name.type.instance.jsdoc}
