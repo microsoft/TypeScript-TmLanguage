@@ -320,7 +320,7 @@ repository:
         '3': { name: storage.type.namespace.ts }
         '4': { name: entity.name.type.module.ts }
     - name: meta.export.default.ts
-      begin: (?<!\.|\$)\b(export)(?:(?:\s*(=))|(?:\s+(default)\s+))
+      begin: (?<!\.|\$)\b(export)(?:(?:\s*(=))|(?:\s+(default)(?=\s+)))
       beginCaptures:
         '1': { name: keyword.control.export.ts }
         '2': { name: keyword.operator.assignment.ts }
@@ -968,7 +968,7 @@ repository:
     # If '<' is preceeded by 'return', 'throw', 'yield', or 'await', it's most likely a type assertion
     # If '=', '(', ',', ':', or '>' are followed by a '<', it is also likely a type assertion as otherwise it would be a syntax error
     # '<=' and '<<=' are cannot be type assertions, as they are assignment operators.
-    begin: '(?:(?<=return|throw|yield|await|[=(,:>*]))\s*(<)(?!<?\=)'
+    begin: '(?:(?<=return|throw|yield|await|default|[=(,:>*]))\s*(<)(?!<?\=)'
     beginCaptures:
       '1': { name: meta.brace.angle.ts }
     end: '>'
@@ -1093,7 +1093,7 @@ repository:
         '1': { name: storage.modifier.async.ts }
         '2': { name: variable.parameter.ts }
     - name: meta.arrow.ts
-      begin: (?x)(?<=return|throw|yield|await|async|[=(\[,:>*])\s*(?=(<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)(?<=return|throw|yield|await|async|default|[=(\[,:>*])\s*(?=(<[^<>]*(\<[^<>]+\>)*[^<>]*(\<[^<>]+\>)*[^<>]*>\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#comment'

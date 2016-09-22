@@ -1036,7 +1036,7 @@
             <key>name</key>
             <string>meta.export.default.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\b(export)(?:(?:\s*(=))|(?:\s+(default)\s+))</string>
+            <string>(?&lt;!\.|\$)\b(export)(?:(?:\s*(=))|(?:\s+(default)(?=\s+)))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -3330,7 +3330,7 @@
             <key>name</key>
             <string>meta.arrow.tsx</string>
             <key>begin</key>
-            <string>(?x)(?&lt;=return|throw|yield|await|async|[=(\[,:&gt;*])\s*(?=(&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
+            <string>(?x)(?&lt;=return|throw|yield|await|async|default|[=(\[,:&gt;*])\s*(?=(&lt;[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*(\&lt;[^&lt;&gt;]+\&gt;)*[^&lt;&gt;]*&gt;\s*)?\([^()]*(\([^()]*\))*[^()]*(\([^()]*\))*[^()]*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
             <key>end</key>
             <string>(?==&gt;)</string>
             <key>patterns</key>
