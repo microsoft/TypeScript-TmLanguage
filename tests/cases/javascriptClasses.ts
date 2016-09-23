@@ -1,0 +1,2 @@
+MyClass.prototype.method = function () {
+}

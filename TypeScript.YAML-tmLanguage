@@ -1230,6 +1230,9 @@ repository:
 
   identifiers:
     patterns:
+    # class
+    - name: support.class.ts
+      match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))
     # object properties
     - match: |-
         (?x)(\.)\s*(?:

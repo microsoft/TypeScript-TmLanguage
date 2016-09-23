@@ -1,0 +1,42 @@
+original file
+-----------------------------------
+MyClass.prototype.method = function () {
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>MyClass.prototype.method = function () {
+ ^^^^^^^
+ source.ts support.class.ts
+        ^
+        source.ts punctuation.accessor.ts
+         ^^^^^^^^^
+         source.ts support.variable.property.ts
+                  ^
+                  source.ts punctuation.accessor.ts
+                   ^^^^^^
+                   source.ts support.variable.property.dom.ts
+                         ^
+                         source.ts
+                          ^
+                          source.ts keyword.operator.assignment.ts
+                           ^
+                           source.ts
+                            ^^^^^^^^
+                            source.ts meta.function.ts storage.type.function.ts
+                                    ^
+                                    source.ts meta.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                       ^
+                                       source.ts meta.function.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                         ^^
+                                         source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
