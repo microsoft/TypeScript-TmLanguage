@@ -20,7 +20,7 @@ Grammar: TypeScript.tmLanguage
 -----------------------------------
 >matchQuery.find().then(function (results) {
  ^^^^^^^^^^
- source.ts
+ source.ts variable.other.object.ts
            ^
            source.ts punctuation.accessor.ts
             ^^^^
@@ -32,7 +32,7 @@ Grammar: TypeScript.tmLanguage
                   ^
                   source.ts punctuation.accessor.ts
                    ^^^^
-                   source.ts variable.function.ts
+                   source.ts entity.name.function.ts
                        ^
                        source.ts meta.brace.round.ts
                         ^^^^^^^^
@@ -61,7 +61,7 @@ Grammar: TypeScript.tmLanguage
              ^
              source.ts meta.function.ts meta.block.ts meta.brace.round.ts
               ^
-              source.ts meta.function.ts meta.block.ts
+              source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                ^
                source.ts meta.function.ts meta.block.ts keyword.operator.assignment.ts
                 ^
@@ -69,11 +69,11 @@ Grammar: TypeScript.tmLanguage
                  ^
                  source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
                   ^
-                  source.ts meta.function.ts meta.block.ts
+                  source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                    ^
                    source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
                     ^^^^^^^
-                    source.ts meta.function.ts meta.block.ts
+                    source.ts meta.function.ts meta.block.ts variable.other.object.ts
                            ^
                            source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
                             ^^^^^^
@@ -81,7 +81,7 @@ Grammar: TypeScript.tmLanguage
                                   ^
                                   source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
                                    ^
-                                   source.ts meta.function.ts meta.block.ts
+                                   source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                                     ^^
                                     source.ts meta.function.ts meta.block.ts keyword.operator.increment.ts
                                       ^
@@ -91,8 +91,10 @@ Grammar: TypeScript.tmLanguage
                                         ^^
                                         source.ts meta.function.ts meta.block.ts meta.block.ts
 >            notificationQuery.find().then(function (notifications){
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts
+             ^^^^^^^^^^^^^^^^^
+             source.ts meta.function.ts meta.block.ts meta.block.ts variable.other.object.ts
                               ^
                               source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.accessor.ts
                                ^^^^
@@ -104,7 +106,7 @@ Grammar: TypeScript.tmLanguage
                                      ^
                                      source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.accessor.ts
                                       ^^^^
-                                      source.ts meta.function.ts meta.block.ts meta.block.ts variable.function.ts
+                                      source.ts meta.function.ts meta.block.ts meta.block.ts entity.name.function.ts
                                           ^
                                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                            ^^^^^^^^
@@ -144,7 +146,7 @@ Grammar: TypeScript.tmLanguage
                      ^
                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.brace.round.ts
                       ^
-                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
+                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                        ^
                        source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.assignment.ts
                         ^
@@ -152,11 +154,11 @@ Grammar: TypeScript.tmLanguage
                          ^
                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
                           ^
-                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
+                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                            ^
                            source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
                             ^^^^^^^^^^^^^
-                            source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
+                            source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts variable.other.object.ts
                                          ^
                                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts punctuation.accessor.ts
                                           ^^^^^^
@@ -164,7 +166,7 @@ Grammar: TypeScript.tmLanguage
                                                 ^
                                                 source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
                                                  ^
-                                                 source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
+                                                 source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                                                   ^^
                                                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.increment.ts
                                                     ^
@@ -193,7 +195,7 @@ Grammar: TypeScript.tmLanguage
                                                                       ^
                                                                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts keyword.operator.arithmetic.ts
                                                                        ^
-                                                                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts
+                                                                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
                                                                         ^
                                                                         source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                                                          ^
@@ -201,18 +203,20 @@ Grammar: TypeScript.tmLanguage
                                                                           ^^
                                                                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts
 >                    notifications[j].destroy();
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts
+                     ^^^^^^^^^^^^^
+                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
                                   ^
                                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
                                    ^
-                                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts
+                                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
                                     ^
                                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
                                      ^
                                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts punctuation.accessor.ts
                                       ^^^^^^^
-                                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts variable.function.ts
+                                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts entity.name.function.ts
                                              ^
                                              source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                               ^
@@ -229,12 +233,14 @@ Grammar: TypeScript.tmLanguage
                   ^^
                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
 >                res.destroy();
- ^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts
+                 ^^^
+                 source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts variable.other.object.ts
                     ^
                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts punctuation.accessor.ts
                      ^^^^^^^
-                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts variable.function.ts
+                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts entity.name.function.ts
                             ^
                             source.ts meta.function.ts meta.block.ts meta.block.ts meta.function.ts meta.block.ts meta.brace.round.ts
                              ^
@@ -284,7 +290,7 @@ Grammar: TypeScript.tmLanguage
  ^^^^^^^^
  source.ts meta.function.ts meta.block.ts
          ^^^^^
-         source.ts meta.function.ts meta.block.ts variable.function.ts
+         source.ts meta.function.ts meta.block.ts entity.name.function.ts
               ^
               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                ^
@@ -296,7 +302,7 @@ Grammar: TypeScript.tmLanguage
                         ^
                         source.ts meta.function.ts meta.block.ts keyword.operator.arithmetic.ts
                          ^^^^^
-                         source.ts meta.function.ts meta.block.ts
+                         source.ts meta.function.ts meta.block.ts variable.other.object.ts
                               ^
                               source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
                                ^^^^
@@ -317,12 +323,14 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.function.ts meta.block.ts
                                           ^
                                           source.ts meta.function.ts meta.block.ts keyword.operator.arithmetic.ts
-                                           ^^^^^^
+                                           ^
                                            source.ts meta.function.ts meta.block.ts
+                                            ^^^^^
+                                            source.ts meta.function.ts meta.block.ts variable.other.object.ts
                                                  ^
                                                  source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
                                                   ^^^^^^^
-                                                  source.ts meta.function.ts meta.block.ts
+                                                  source.ts meta.function.ts meta.block.ts variable.other.property.ts
                                                          ^
                                                          source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                                                           ^

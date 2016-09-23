@@ -24,19 +24,25 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
           ^
           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
-           ^^^^^
+           ^
            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^^^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
                 ^
                 source.ts punctuation.terminator.statement.ts
                  ^^
                  source.ts
 >from = a; // is a variable and should be in white color like other variables
- ^^^^^
- source.ts
+ ^^^^
+ source.ts variable.other.readwrite.ts
+     ^
+     source.ts
       ^
       source.ts keyword.operator.assignment.ts
-       ^^
+       ^
        source.ts
+        ^
+        source.ts variable.other.readwrite.ts
          ^
          source.ts punctuation.terminator.statement.ts
           ^
@@ -53,8 +59,10 @@ Grammar: TypeScript.tmLanguage
  source.ts support.type.object.module.ts
         ^
         source.ts punctuation.accessor.ts
-         ^^^^^^
-         source.ts
+         ^^^^^
+         source.ts entity.name.function.ts
+              ^
+              source.ts
                ^
                source.ts keyword.operator.assignment.ts
                 ^
@@ -96,11 +104,13 @@ Grammar: TypeScript.tmLanguage
  source.ts
 >t.me = 1;
  ^
- source.ts
+ source.ts variable.other.object.ts
   ^
   source.ts punctuation.accessor.ts
-   ^^^
-   source.ts
+   ^^
+   source.ts variable.other.property.ts
+     ^
+     source.ts
       ^
       source.ts keyword.operator.assignment.ts
        ^
@@ -113,11 +123,13 @@ Grammar: TypeScript.tmLanguage
           source.ts
 >t.is = 2; // `is` is in blue but should be the same color as the above (1)
  ^
- source.ts
+ source.ts variable.other.object.ts
   ^
   source.ts punctuation.accessor.ts
-   ^^^
-   source.ts
+   ^^
+   source.ts variable.other.property.ts
+     ^
+     source.ts
       ^
       source.ts keyword.operator.assignment.ts
        ^
@@ -134,11 +146,13 @@ Grammar: TypeScript.tmLanguage
              source.ts comment.line.double-slash.ts
 >t.in = 3; // `in` is in blue but should be the same color as the above (1)
  ^
- source.ts
+ source.ts variable.other.object.ts
   ^
   source.ts punctuation.accessor.ts
-   ^^^
-   source.ts
+   ^^
+   source.ts variable.other.property.ts
+     ^
+     source.ts
       ^
       source.ts keyword.operator.assignment.ts
        ^
@@ -155,11 +169,13 @@ Grammar: TypeScript.tmLanguage
              source.ts comment.line.double-slash.ts
 >t.of = 4; // `of` is in blue but should be the same color as the above (1)
  ^
- source.ts
+ source.ts variable.other.object.ts
   ^
   source.ts punctuation.accessor.ts
-   ^^^
-   source.ts
+   ^^
+   source.ts variable.other.property.ts
+     ^
+     source.ts
       ^
       source.ts keyword.operator.assignment.ts
        ^

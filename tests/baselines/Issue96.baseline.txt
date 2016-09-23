@@ -39,12 +39,12 @@ Grammar: TypeScript.tmLanguage
  source.ts
 >variable;
  ^^^^^^^^
- source.ts
+ source.ts variable.other.readwrite.ts
          ^
          source.ts punctuation.terminator.statement.ts
 >letter;
  ^^^^^^
- source.ts
+ source.ts variable.other.readwrite.ts
        ^
        source.ts punctuation.terminator.statement.ts
 >
@@ -68,8 +68,10 @@ Grammar: TypeScript.tmLanguage
                    ^
                    source.ts punctuation.terminator.statement.ts
 >constenum += 10;
- ^^^^^^^^^^
- source.ts
+ ^^^^^^^^^
+ source.ts variable.other.readwrite.ts
+          ^
+          source.ts
            ^^
            source.ts keyword.operator.assignment.compound.ts
              ^
@@ -122,8 +124,10 @@ Grammar: TypeScript.tmLanguage
                                    ^
                                    source.ts punctuation.terminator.statement.ts
 >constable += " Royal, I say!";
- ^^^^^^^^^^
- source.ts
+ ^^^^^^^^^
+ source.ts variable.other.readwrite.ts
+          ^
+          source.ts
            ^^
            source.ts keyword.operator.assignment.compound.ts
              ^

@@ -133,7 +133,7 @@ Grammar: TypeScriptReact.tmLanguage
                                   ^
                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
                                    ^^^^
-                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx
+                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx variable.other.property.tsx
                                        ^
                                        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
                                         ^
@@ -148,11 +148,11 @@ Grammar: TypeScriptReact.tmLanguage
                                   ^
                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.accessor.tsx
                                    ^^^^^
-                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx variable.other.object.property.tsx
                                         ^
                                         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.accessor.tsx
                                          ^^^^^
-                                         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx
+                                         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx variable.other.property.tsx
                                               ^
                                               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
 >        </div>
@@ -440,8 +440,10 @@ Grammar: TypeScriptReact.tmLanguage
                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx support.variable.dom.tsx
                              ^
                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
-                              ^^^^^^^^^^^
-                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx
+                              ^^^^^^^^^^
+                              source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx variable.other.property.tsx
+                                        ^
+                                        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx
                                          ^
                                          source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.tsx meta.brace.curly.tsx keyword.operator.ternary.tsx
                                           ^
@@ -517,28 +519,36 @@ Grammar: TypeScriptReact.tmLanguage
                source.tsx punctuation.terminator.statement.tsx
 >props.foo = x;
  ^^^^^
- source.tsx
+ source.tsx variable.other.object.tsx
       ^
       source.tsx punctuation.accessor.tsx
-       ^^^^
-       source.tsx
+       ^^^
+       source.tsx variable.other.property.tsx
+          ^
+          source.tsx
            ^
            source.tsx keyword.operator.assignment.tsx
-            ^^
+            ^
             source.tsx
+             ^
+             source.tsx variable.other.readwrite.tsx
               ^
               source.tsx punctuation.terminator.statement.tsx
 >props.bar = y;
  ^^^^^
- source.tsx
+ source.tsx variable.other.object.tsx
       ^
       source.tsx punctuation.accessor.tsx
-       ^^^^
-       source.tsx
+       ^^^
+       source.tsx variable.other.property.tsx
+          ^
+          source.tsx
            ^
            source.tsx keyword.operator.assignment.tsx
-            ^^
+            ^
             source.tsx
+             ^
+             source.tsx variable.other.readwrite.tsx
               ^
               source.tsx punctuation.terminator.statement.tsx
 >var component = <Component {...props} />;
@@ -569,7 +579,7 @@ Grammar: TypeScriptReact.tmLanguage
                                ^
                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
                                 ^^^^^
-                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx
+                                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx variable.other.property.tsx
                                      ^
                                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
                                       ^
@@ -642,7 +652,7 @@ Grammar: TypeScriptReact.tmLanguage
                                 ^
                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.accessor.tsx
                                  ^^^^^
-                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx
+                                 source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx variable.other.property.tsx
                                       ^
                                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.tag.tsx meta.brace.curly.tsx punctuation.definition.brace.curly.end.tsx
                                        ^

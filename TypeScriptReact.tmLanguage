@@ -565,6 +565,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#identifiers</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#paren-expression</string>
           </dict>
           <dict>
@@ -3368,13 +3372,18 @@
       <key>function-call</key>
       <dict>
         <key>begin</key>
-        <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>variable.function.tsx</string>
+            <string>punctuation.accessor.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function.tsx</string>
           </dict>
         </dict>
         <key>end</key>
@@ -3419,6 +3428,120 @@
                 <string>#punctuation-comma</string>
               </dict>
             </array>
+          </dict>
+        </array>
+      </dict>
+      <key>identifiers</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>match</key>
+            <string>(?x)(\.)\s*(?:
+  ([[:upper:]][_$[:digit:][:upper:]]*) |
+  ([_$[:alpha:]][_$[:alnum:]]*)
+)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.other.object.property.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.object.property.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*( (async\s+)|(function\s+)| ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)| ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(\.)\s*([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.other.property.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(\.)\s*([_$[:alpha:]][_$[:alnum:]]*)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.property.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(?:
+  ([[:upper:]][_$[:digit:][:upper:]]*) |
+  ([_$[:alpha:]][_$[:alnum:]]*)
+)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>constant.other.object.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.object.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>constant.other.tsx</string>
+            <key>match</key>
+            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>variable.other.readwrite.tsx</string>
+            <key>match</key>
+            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
           </dict>
         </array>
       </dict>
@@ -4271,7 +4394,7 @@
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>variable.function.tagged-template.tsx</string>
+            <string>entity.name.function.tagged-template.tsx</string>
           </dict>
           <key>2</key>
           <dict>

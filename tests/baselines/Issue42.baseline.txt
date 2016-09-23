@@ -20,7 +20,7 @@ Grammar: TypeScript.tmLanguage
                         ^
                         source.ts punctuation.accessor.ts
                          ^^^^^^^^^^^
-                         source.ts variable.function.ts
+                         source.ts entity.name.function.ts
                                     ^
                                     source.ts meta.brace.round.ts
                                      ^
@@ -46,12 +46,16 @@ Grammar: TypeScript.tmLanguage
                                                       ^^
                                                       source.ts meta.arrow.ts meta.block.ts
 >                cell.live = Math.random() < this.initialLifeProbability;
- ^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^
  source.ts meta.arrow.ts meta.block.ts
+                 ^^^^
+                 source.ts meta.arrow.ts meta.block.ts variable.other.object.ts
                      ^
                      source.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
-                      ^^^^^
-                      source.ts meta.arrow.ts meta.block.ts
+                      ^^^^
+                      source.ts meta.arrow.ts meta.block.ts variable.other.property.ts
+                          ^
+                          source.ts meta.arrow.ts meta.block.ts
                            ^
                            source.ts meta.arrow.ts meta.block.ts keyword.operator.assignment.ts
                             ^
@@ -77,7 +81,7 @@ Grammar: TypeScript.tmLanguage
                                                  ^
                                                  source.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
                                                   ^^^^^^^^^^^^^^^^^^^^^^
-                                                  source.ts meta.arrow.ts meta.block.ts
+                                                  source.ts meta.arrow.ts meta.block.ts variable.other.property.ts
                                                                         ^
                                                                         source.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
                                                                          ^^
@@ -87,8 +91,10 @@ Grammar: TypeScript.tmLanguage
  source.ts meta.arrow.ts meta.block.ts
                  ^^^^^^
                  source.ts meta.arrow.ts meta.block.ts keyword.control.flow.ts
-                       ^^^^^
+                       ^
                        source.ts meta.arrow.ts meta.block.ts
+                        ^^^^
+                        source.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
                             ^
                             source.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
                              ^^
