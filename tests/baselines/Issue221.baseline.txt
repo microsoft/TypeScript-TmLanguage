@@ -1,0 +1,126 @@
+original file
+-----------------------------------
+class syntaxHighlightBug {
+
+    variable = 
+    {"example":1};
+
+    public wronglyHighlitedCode() {
+        var a = 1;
+        return; 
+    }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class syntaxHighlightBug {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^^^^^^^^^^^^
+       source.ts meta.class.ts entity.name.class.ts
+                         ^
+                         source.ts meta.class.ts
+                          ^
+                          source.ts meta.class.ts punctuation.definition.block.ts
+                           ^^
+                           source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>    variable = 
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+     ^^^^^^^^
+     source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+               ^^
+               source.ts meta.class.ts meta.field.declaration.ts
+>    {"example":1};
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts meta.object-literal.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.class.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+       ^^^^^^^
+       source.ts meta.class.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.double.ts
+              ^
+              source.ts meta.class.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.double.ts punctuation.definition.string.end.ts
+               ^
+               source.ts meta.class.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                ^
+                source.ts meta.class.ts meta.object-literal.ts meta.object.member.ts constant.numeric.decimal.ts
+                 ^
+                 source.ts meta.class.ts meta.object-literal.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.class.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>    public wronglyHighlitedCode() {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^^^^^^^^^^^^^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                    ^^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        var a = 1;
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        return; 
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                ^^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
