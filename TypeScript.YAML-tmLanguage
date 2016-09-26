@@ -481,12 +481,15 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
+    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (abstract)
       '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
       '3': { name: storage.modifier.async.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
+      '5': { name: keyword.operator.new.ts } # captures keyword (new)
+      '6': { name: storage.type.ts } # captures keyword (constructor)
+      '7': { name: keyword.generator.asterisk.ts } # captures keyword (*)
     end: '(?=\}|;|,)|(?<=\})'
     patterns:
     - include: '#method-declaration-name'
@@ -499,12 +502,15 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.ts
-    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\<])
+    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (abstract)
       '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
-      '3': { name: storage.modifier.ts } # captures keyword (async)
+      '3': { name: storage.modifier.async.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
+      '5': { name: keyword.operator.new.ts } # captures keyword (new)
+      '6': { name: storage.type.ts } # captures keyword (constructor)
+      '7': { name: keyword.generator.asterisk.ts } # captures keyword (*)
     end: (?=\(|\<)
     patterns:
     - include: '#method-declaration-name'
@@ -513,15 +519,8 @@ repository:
     begin: \G(?!\(|\<)
     end: (?=\(|\<)
     patterns:
-    - match: (\*)\s*
-      captures:
-        '1': { name: keyword.generator.asterisk.ts }
     - include: '#string'
     - include: '#array-literal'
-    - name: keyword.operator.new.ts
-      match: \bnew(?=\s*[\(\<])
-    - name: storage.type.ts
-      match: \bconstructor\b(?=\s*[\(\<])
     - name: entity.name.function.ts
       match: '[_$[:alpha:]][_$[:alnum:]]*'
     - name: keyword.operator.optional.ts
@@ -1613,15 +1612,13 @@ repository:
     - begin: (^[ \t]+)?(?=//)
       beginCaptures:
         '1': {name: punctuation.whitespace.comment.leading.ts}
-      end: \n
-      endCaptures:
-        '0': { name: comment.line.double-slash.ts }
+      end: (?=$)
       patterns:
       - name: comment.line.double-slash.ts
         begin: //
         beginCaptures:
           '0': {name: punctuation.definition.comment.ts}
-        end: (?=\n)
+        end: (?=$)
 
   docblock:
     patterns:

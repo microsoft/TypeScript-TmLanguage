@@ -1573,7 +1573,7 @@
         <key>name</key>
         <string>meta.method.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
+        <string>(?&lt;!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\&lt;]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1595,6 +1595,21 @@
           <dict>
             <key>name</key>
             <string>storage.type.property.tsx</string>
+          </dict>
+          <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.new.tsx</string>
+          </dict>
+          <key>6</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.tsx</string>
+          </dict>
+          <key>7</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.generator.asterisk.tsx</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1636,7 +1651,7 @@
         <key>name</key>
         <string>meta.method.overload.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?=((\bnew)|(?:\b(constructor)\b)|((?:(\*)\s*)?((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*(\??)))?\s*[\(\&lt;])</string>
+        <string>(?&lt;!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\&lt;]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1652,12 +1667,27 @@
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>storage.modifier.tsx</string>
+            <string>storage.modifier.async.tsx</string>
           </dict>
           <key>4</key>
           <dict>
             <key>name</key>
             <string>storage.type.property.tsx</string>
+          </dict>
+          <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.new.tsx</string>
+          </dict>
+          <key>6</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.tsx</string>
+          </dict>
+          <key>7</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.generator.asterisk.tsx</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1679,36 +1709,12 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>match</key>
-            <string>(\*)\s*</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.generator.asterisk.tsx</string>
-              </dict>
-            </dict>
-          </dict>
-          <dict>
             <key>include</key>
             <string>#string</string>
           </dict>
           <dict>
             <key>include</key>
             <string>#array-literal</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.new.tsx</string>
-            <key>match</key>
-            <string>\bnew(?=\s*[\(\&lt;])</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>storage.type.tsx</string>
-            <key>match</key>
-            <string>\bconstructor\b(?=\s*[\(\&lt;])</string>
           </dict>
           <dict>
             <key>name</key>
@@ -4528,15 +4534,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>\n</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>comment.line.double-slash.tsx</string>
-              </dict>
-            </dict>
+            <string>(?=$)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4553,7 +4551,7 @@
                   </dict>
                 </dict>
                 <key>end</key>
-                <string>(?=\n)</string>
+                <string>(?=$)</string>
               </dict>
             </array>
           </dict>
