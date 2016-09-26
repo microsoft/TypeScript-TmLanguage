@@ -1735,7 +1735,7 @@
         <key>name</key>
         <string>meta.indexer.declaration.ts</string>
         <key>begin</key>
-        <string>(?:(?&lt;!\.|\$)\b(readonly)\s*)?(\[)</string>
+        <string>(?:(?&lt;!\.|\$)\b(readonly)\s*)?(\[)(?=\s*[_$[:alpha:]][_$[:alnum:]]*\s*[:\]])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1781,7 +1781,7 @@
         <key>name</key>
         <string>meta.indexer.parameter.ts</string>
         <key>match</key>
-        <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\:)</string>
+        <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
         <key>captures</key>
         <dict>
           <key>1</key>

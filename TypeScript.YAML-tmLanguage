@@ -529,7 +529,7 @@ repository:
     
   indexer-declaration:
     name: meta.indexer.declaration.ts
-    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)
+    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)(?=\s*[_$[:alpha:]][_$[:alnum:]]*\s*[:\]])
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: meta.brace.square.ts }
@@ -543,7 +543,7 @@ repository:
 
   indexer-parameter:
     name: meta.indexer.parameter.ts
-    match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\:)
+    match: ([_$[:alpha:]][_$[:alnum:]]*)
     captures:
       '1': { name: variable.parameter.ts}
 
