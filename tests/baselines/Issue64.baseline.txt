@@ -14,27 +14,31 @@ Grammar: TypeScript.tmLanguage
 -----------------------------------
 >res.sendfile = deprecate.function(res.sendfile,
  ^^^
- source.ts
+ source.ts variable.other.object.ts
     ^
     source.ts punctuation.accessor.ts
-     ^^^^^^^^^
-     source.ts
+     ^^^^^^^^
+     source.ts variable.other.property.ts
+             ^
+             source.ts
               ^
               source.ts keyword.operator.assignment.ts
-               ^^^^^^^^^^
+               ^
                source.ts
+                ^^^^^^^^^
+                source.ts variable.other.object.ts
                          ^
                          source.ts punctuation.accessor.ts
                           ^^^^^^^^
-                          source.ts variable.function.ts
+                          source.ts entity.name.function.ts
                                   ^
                                   source.ts meta.brace.round.ts
                                    ^^^
-                                   source.ts
+                                   source.ts variable.other.object.ts
                                       ^
                                       source.ts punctuation.accessor.ts
                                        ^^^^^^^^
-                                       source.ts
+                                       source.ts variable.other.property.ts
                                                ^
                                                source.ts punctuation.separator.comma.ts
                                                 ^^
@@ -67,11 +71,13 @@ Grammar: TypeScript.tmLanguage
  source.ts
 >res.download = function download(path, filename, fn) {
  ^^^
- source.ts
+ source.ts variable.other.object.ts
     ^
     source.ts punctuation.accessor.ts
-     ^^^^^^^^^
-     source.ts
+     ^^^^^^^^
+     source.ts entity.name.function.ts
+             ^
+             source.ts
               ^
               source.ts keyword.operator.assignment.ts
                ^

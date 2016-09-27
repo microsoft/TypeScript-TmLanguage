@@ -20,7 +20,7 @@ Grammar: TypeScript.tmLanguage
         ^
         source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
          ^
-         source.ts switch-statement.expr.ts switch-expression.expr.ts
+         source.ts switch-statement.expr.ts switch-expression.expr.ts variable.other.readwrite.ts
           ^
           source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
            ^
@@ -59,8 +59,10 @@ Grammar: TypeScript.tmLanguage
 >typeof x;
  ^^^^^^
  source.ts keyword.operator.typeof.ts
-       ^^
+       ^
        source.ts
+        ^
+        source.ts variable.other.readwrite.ts
          ^
          source.ts punctuation.terminator.statement.ts
           ^^
@@ -68,8 +70,10 @@ Grammar: TypeScript.tmLanguage
 >void x;
  ^^^^
  source.ts keyword.operator.void.ts
-     ^^
+     ^
      source.ts
+      ^
+      source.ts variable.other.readwrite.ts
        ^
        source.ts punctuation.terminator.statement.ts
         ^^
@@ -77,22 +81,28 @@ Grammar: TypeScript.tmLanguage
 >delete x.y;
  ^^^^^^
  source.ts keyword.operator.delete.ts
-       ^^
+       ^
        source.ts
+        ^
+        source.ts variable.other.object.ts
          ^
          source.ts punctuation.accessor.ts
           ^
-          source.ts
+          source.ts support.variable.property.dom.ts
            ^
            source.ts punctuation.terminator.statement.ts
             ^^
             source.ts
 >x instanceof y;
- ^^
- source.ts
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
    ^^^^^^^^^^
    source.ts keyword.operator.instanceof.ts
-             ^^
+             ^
              source.ts
+              ^
+              source.ts variable.other.readwrite.ts
                ^
                source.ts punctuation.terminator.statement.ts

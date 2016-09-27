@@ -25,10 +25,10 @@ Grammar: TypeScript.tmLanguage
 >
 >variable;
  ^^^^^^^^
- [4, 4]: source.ts 
+ [4, 4]: source.ts variable.other.readwrite.ts 
 >letter;
  ^^^^^^
- [5, 4]: source.ts 
+ [5, 4]: source.ts variable.other.readwrite.ts 
 >
 >var constenum = 10;
      ^^^^^^^^^
@@ -36,10 +36,10 @@ Grammar: TypeScript.tmLanguage
               ^
               [7, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
 >constenum += 10;
- ^^^^^^^^^^
- [8, 6]: source.ts 
- ^^^^^^^^^^
- [8, 10]: source.ts 
+ ^^^^^^^^^
+ [8, 6]: source.ts variable.other.readwrite.ts 
+          ^
+          [8, 10]: source.ts 
 >const enum E { }
       ^
       [9, 6]: source.ts meta.enum.declaration.ts 
@@ -52,7 +52,7 @@ Grammar: TypeScript.tmLanguage
               ^
               [11, 14]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts 
 >constable += " Royal, I say!";
- ^^^^^^^^^^
- [12, 6]: source.ts 
- ^^^^^^^^^^
- [12, 10]: source.ts 
+ ^^^^^^^^^
+ [12, 6]: source.ts variable.other.readwrite.ts 
+          ^
+          [12, 10]: source.ts 

@@ -147,15 +147,15 @@ Grammar: TypeScript.tmLanguage
     ^
     source.ts meta.brace.round.ts
      ^^^^^^
-     source.ts
+     source.ts variable.other.object.ts
            ^
            source.ts punctuation.accessor.ts
             ^^^^^^^^^^
-            source.ts variable.function.ts
+            source.ts entity.name.function.ts
                       ^
                       source.ts meta.brace.round.ts
                        ^^^^^^^^
-                       source.ts
+                       source.ts variable.other.readwrite.ts
                                ^
                                source.ts meta.brace.round.ts
                                 ^
@@ -258,7 +258,7 @@ Grammar: TypeScript.tmLanguage
      ^
      source.ts
       ^^^^^^^^^^^^^^^
-      source.ts variable.function.ts
+      source.ts entity.name.function.ts
                      ^
                      source.ts meta.brace.round.ts
                       ^
@@ -281,12 +281,18 @@ Grammar: TypeScript.tmLanguage
        source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
         ^
         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
-         ^^^
+         ^
          source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
             ^
             source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.arithmetic.ts
-             ^^
+             ^
              source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
                ^
                source.ts meta.block.ts punctuation.terminator.statement.ts
 >
@@ -302,7 +308,7 @@ Grammar: TypeScript.tmLanguage
          ^
          source.ts meta.block.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
           ^^^^^^^
-          source.ts meta.block.ts switch-statement.expr.ts switch-expression.expr.ts
+          source.ts meta.block.ts switch-statement.expr.ts switch-expression.expr.ts variable.other.readwrite.ts
                  ^
                  source.ts meta.block.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
                   ^
@@ -431,8 +437,10 @@ Grammar: TypeScript.tmLanguage
  source.ts meta.block.ts meta.function.ts meta.block.ts
          ^^^^^^
          source.ts meta.block.ts meta.function.ts meta.block.ts keyword.control.flow.ts
-               ^^
+               ^
                source.ts meta.block.ts meta.function.ts meta.block.ts
+                ^
+                source.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                  ^
                  source.ts meta.block.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
 >    }
@@ -467,8 +475,10 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
                  ^
                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
-                  ^^
+                  ^
                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.other.ts
                     ^
                     source.ts punctuation.terminator.statement.ts
 >
@@ -515,7 +525,7 @@ Grammar: TypeScript.tmLanguage
         ^
         source.ts meta.brace.round.ts
          ^^^^^
-         source.ts
+         source.ts variable.other.readwrite.ts
               ^
               source.ts meta.brace.round.ts
 >
@@ -542,8 +552,10 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
                  ^
                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
-                  ^^^^
-                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                  ^^^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
 >interface I {}
  ^^^^^^^^^
  source.ts meta.class.ts storage.type.interface.ts
@@ -662,12 +674,16 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
                  ^
                  source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.accessor.ts
-                  ^^^^^^^
-                  source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                  ^^^^^^
+                  source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts support.variable.property.dom.ts
+                        ^
+                        source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                          ^
                          source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.assignment.ts
-                          ^^^^^^^
+                          ^
                           source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                           ^^^^^^
+                           source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts
                                  ^
                                  source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
 >            if (typeof parent === 'object' || parent instanceof Error) {
@@ -681,8 +697,12 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
                  ^^^^^^
                  source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.typeof.ts
-                       ^^^^^^^^
+                       ^
                        source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                        ^^^^^^
+                        source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                                ^^^
                                source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.comparison.ts
                                   ^
@@ -697,12 +717,18 @@ Grammar: TypeScript.tmLanguage
                                            source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                                             ^^
                                             source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.logical.ts
-                                              ^^^^^^^^
+                                              ^
                                               source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                               ^^^^^^
+                                               source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts
+                                                     ^
+                                                     source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                                                       ^^^^^^^^^^
                                                       source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.instanceof.ts
-                                                                ^^^^^^
+                                                                ^
                                                                 source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                                                 ^^^^^
+                                                                 source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts support.class.error.ts
                                                                       ^
                                                                       source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
                                                                        ^

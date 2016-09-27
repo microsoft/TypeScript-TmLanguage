@@ -85,16 +85,18 @@ Grammar: TypeScript.tmLanguage
                        ^
                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
 >    console.log(param1);
- ^^^^^^^^^^^
+ ^^^^
  source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts
+     ^^^^^^^
+     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts support.class.console.ts
             ^
             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
              ^^^
-             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts variable.function.ts
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts support.function.console.ts
                 ^
                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
                  ^^^^^^
-                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts
+                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
                        ^
                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
                         ^
@@ -105,65 +107,77 @@ Grammar: TypeScript.tmLanguage
    ^
    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
 >  console.log(param1);
- ^^^^^^^^^
+ ^^
  source.ts meta.function.ts meta.block.ts
+   ^^^^^^^
+   source.ts meta.function.ts meta.block.ts support.class.console.ts
           ^
           source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
            ^^^
-           source.ts meta.function.ts meta.block.ts variable.function.ts
+           source.ts meta.function.ts meta.block.ts support.function.console.ts
               ^
               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                ^^^^^^
-               source.ts meta.function.ts meta.block.ts
+               source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                      ^
                      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                       ^
                       source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
 >  console.log(param1 + number);
- ^^^^^^^^^
+ ^^
  source.ts meta.function.ts meta.block.ts
+   ^^^^^^^
+   source.ts meta.function.ts meta.block.ts support.class.console.ts
           ^
           source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
            ^^^
-           source.ts meta.function.ts meta.block.ts variable.function.ts
+           source.ts meta.function.ts meta.block.ts support.function.console.ts
               ^
               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
-               ^^^^^^^
-               source.ts meta.function.ts meta.block.ts
+               ^^^^^^
+               source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts
                       ^
                       source.ts meta.function.ts meta.block.ts keyword.operator.arithmetic.ts
-                       ^^^^^^^
+                       ^
                        source.ts meta.function.ts meta.block.ts
+                        ^^^^^^
+                        source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                               ^
                               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                                ^
                                source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
 >  console.log(string);
- ^^^^^^^^^
+ ^^
  source.ts meta.function.ts meta.block.ts
+   ^^^^^^^
+   source.ts meta.function.ts meta.block.ts support.class.console.ts
           ^
           source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
            ^^^
-           source.ts meta.function.ts meta.block.ts variable.function.ts
+           source.ts meta.function.ts meta.block.ts support.function.console.ts
               ^
               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                ^^^^^^
-               source.ts meta.function.ts meta.block.ts
+               source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                      ^
                      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                       ^
                       source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
 >  console.log(boolean);
- ^^^^^^^^^
+ ^^
  source.ts meta.function.ts meta.block.ts
+   ^^^^^^^
+   source.ts meta.function.ts meta.block.ts support.class.console.ts
           ^
           source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
            ^^^
-           source.ts meta.function.ts meta.block.ts variable.function.ts
+           source.ts meta.function.ts meta.block.ts support.function.console.ts
               ^
               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                ^^^^^^^
-               source.ts meta.function.ts meta.block.ts
+               source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                       ^
                       source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                        ^
@@ -181,8 +195,12 @@ Grammar: TypeScript.tmLanguage
         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
          ^
          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
-          ^^^^^^^^
+          ^
           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^^^^^^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                   ^
                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.ternary.ts
                    ^
@@ -193,8 +211,10 @@ Grammar: TypeScript.tmLanguage
                      source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                       ^
                       source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.ternary.ts
-                       ^^^^^^^
+                       ^
                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^^^^^^
+                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
                               ^
                               source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
 >}
