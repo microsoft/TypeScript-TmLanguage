@@ -1,5 +1,3 @@
-/// <reference path="typings/node/node.d.ts" />
-
 import * as vt from 'vscode-textmate/release/main';
 import fs = require('fs');
 import path = require('path');
@@ -43,7 +41,7 @@ const tsReactGrammarInfo = getGrammarInfo(tsReactGrammarFileName);
 
 interface Grammar {
     grammar: vt.IGrammar;
-    ruleStack?: vt.StackElement[];
+    ruleStack?: vt.StackElement;
 }
 
 function initGrammar(grammar: vt.IGrammar): Grammar {
