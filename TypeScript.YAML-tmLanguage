@@ -1312,7 +1312,7 @@ repository:
       end: (?=,|\})
       patterns:
       - name: meta.object-literal.key.ts
-        begin: \G(?<!:)
+        begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)
         end: ':'
         endCaptures:
           '0': { name: punctuation.separator.key-value.ts }
