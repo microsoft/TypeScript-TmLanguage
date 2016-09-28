@@ -192,14 +192,14 @@
               </dict>
               <dict>
                 <key>begin</key>
-                <string>\G</string>
+                <string>(?&lt;=\{)</string>
                 <key>end</key>
-                <string>(?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+                <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
                 <key>patterns</key>
                 <array>
                   <dict>
                     <key>begin</key>
-                    <string>\G</string>
+                    <string>(?&lt;=\{)</string>
                     <key>end</key>
                     <string>\}</string>
                     <key>endCaptures</key>
@@ -253,14 +253,14 @@
               </dict>
               <dict>
                 <key>begin</key>
-                <string>\G</string>
+                <string>(?&lt;=\[)</string>
                 <key>end</key>
-                <string>(?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+                <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
                 <key>patterns</key>
                 <array>
                   <dict>
                     <key>begin</key>
-                    <string>\G</string>
+                    <string>(?&lt;=\[)</string>
                     <key>end</key>
                     <string>\]</string>
                     <key>endCaptures</key>
@@ -2245,7 +2245,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;!:)((?=$)|(?=\{|;|//))</string>
+        <string>(?&lt;!:)((?=$)|(?=\{|;|//|\}))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3642,7 +3642,7 @@
                 <key>name</key>
                 <string>meta.object-literal.key.ts</string>
                 <key>begin</key>
-                <string>\G(?&lt;!:)</string>
+                <string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)</string>
                 <key>end</key>
                 <string>:</string>
                 <key>endCaptures</key>

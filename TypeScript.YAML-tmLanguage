@@ -63,10 +63,10 @@ repository:
       end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
-      - begin: \G
-        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
+      - begin: (?<=\{)
+        end: (?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
-        - begin: \G
+        - begin: (?<=\{)
           end: \}
           endCaptures:
             '0': { name: punctuation.definition.binding-pattern.object.ts }
@@ -81,10 +81,10 @@ repository:
       end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
-      - begin: \G
-        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
+      - begin: (?<=\[)
+        end: (?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
-        - begin: \G
+        - begin: (?<=\[)
           end: \]
           endCaptures:
             '0': { name: punctuation.definition.binding-pattern.array.ts }
@@ -690,7 +690,7 @@ repository:
     begin: '(?<=\))\s*(:)'
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }
-    end: (?<!:)((?=$)|(?=\{|;|//))
+    end: (?<!:)((?=$)|(?=\{|;|//|\}))
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
@@ -1312,7 +1312,7 @@ repository:
       end: (?=,|\})
       patterns:
       - name: meta.object-literal.key.ts
-        begin: \G(?<!:)
+        begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)
         end: ':'
         endCaptures:
           '0': { name: punctuation.separator.key-value.ts }
