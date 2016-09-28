@@ -63,10 +63,10 @@ repository:
       end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
-      - begin: \G
-        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
+      - begin: (?<=\{)
+        end: (?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
-        - begin: \G
+        - begin: (?<=\{)
           end: \}
           endCaptures:
             '0': { name: punctuation.definition.binding-pattern.object.ts }
@@ -81,10 +81,10 @@ repository:
       end: (?=$|[;,}]|(\s+(of|in)\s+))
       patterns:
       - include: '#variable-initializer'
-      - begin: \G
-        end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
+      - begin: (?<=\[)
+        end: (?=$|[;,=}]|(\s+(of|in)\s+))
         patterns:
-        - begin: \G
+        - begin: (?<=\[)
           end: \]
           endCaptures:
             '0': { name: punctuation.definition.binding-pattern.array.ts }
