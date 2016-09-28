@@ -690,7 +690,7 @@ repository:
     begin: '(?<=\))\s*(:)'
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }
-    end: (?<!:)((?=$)|(?=\{|;|//))
+    end: (?<!:)((?=$)|(?=\{|;|//|\}))
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block

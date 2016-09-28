@@ -1,0 +1,204 @@
+original file
+-----------------------------------
+    function createBinder(): (file: SourceFile, options: CompilerOptions) => void {
+        let Symbol: { new (flags: SymbolFlags, name: string): Symbol };
+        let classifiableNames: Map<string>;
+
+        const unreachableFlow: FlowNode = { flags: FlowFlags.Unreachable };
+    }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>    function createBinder(): (file: SourceFile, options: CompilerOptions) => void {
+ ^^^^
+ source.ts
+     ^^^^^^^^
+     source.ts meta.function.ts storage.type.function.ts
+             ^
+             source.ts meta.function.ts
+              ^^^^^^^^^^^^
+              source.ts meta.function.ts entity.name.function.ts
+                          ^
+                          source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                           ^
+                           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                            ^
+                            source.ts meta.function.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                             ^
+                             source.ts meta.function.ts meta.return.type.ts meta.type.function.ts
+                              ^
+                              source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                               ^^^^
+                               source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts variable.parameter.ts
+                                   ^
+                                   source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                    ^
+                                    source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts
+                                     ^^^^^^^^^^
+                                     source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                               ^
+                                               source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                ^
+                                                source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts
+                                                 ^^^^^^^
+                                                 source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts variable.parameter.ts
+                                                        ^
+                                                        source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                          ^^^^^^^^^^^^^^^
+                                                          source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.return.type.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                          ^
+                                                                          source.ts meta.function.ts meta.return.type.ts
+                                                                           ^^
+                                                                           source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                                             ^
+                                                                             source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                                              ^^^^
+                                                                              source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts support.type.primitive.ts
+                                                                                  ^
+                                                                                  source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
+                                                                                   ^
+                                                                                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                                                                    ^^
+                                                                                    source.ts meta.function.ts meta.block.ts
+>        let Symbol: { new (flags: SymbolFlags, name: string): Symbol };
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts
+         ^^^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+             ^^^^^^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts
+                       ^^^
+                       source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts keyword.operator.new.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                            ^^^^^
+                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                   ^^^^^^^^^^^
+                                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts
+                                                ^^^^
+                                                source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^^^^^^
+                                                      source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+                                                               ^^^^^^
+                                                               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+                                                                      ^
+                                                                      source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                                       ^
+                                                                       source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                        ^^
+                                                                        source.ts meta.function.ts meta.block.ts
+>        let classifiableNames: Map<string>;
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts
+         ^^^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+             ^^^^^^^^^^^^^^^^^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                                ^^^
+                                source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                    ^^^^^^
+                                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts support.type.primitive.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                            ^^
+                                            source.ts meta.function.ts meta.block.ts
+>
+ ^^
+ source.ts meta.function.ts meta.block.ts
+>        const unreachableFlow: FlowNode = { flags: FlowFlags.Unreachable };
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts
+         ^^^^^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+               ^^^^^^^^^^^^^^^
+               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                                ^^^^^^^^
+                                source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+                                             ^^^^^
+                                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts entity.name.type.attribute-name.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+                                                    ^^^^^^^^^
+                                                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.object.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts punctuation.accessor.ts
+                                                              ^^^^^^^^^^^
+                                                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.property.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+                                                                          ^
+                                                                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
+                                                                           ^
+                                                                           source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                            ^^
+                                                                            source.ts meta.function.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^
+     source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
