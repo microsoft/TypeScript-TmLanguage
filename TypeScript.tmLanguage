@@ -597,7 +597,7 @@
             <key>name</key>
             <string>keyword.control.flow.ts</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(await|return)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(return)\b(?!\$)</string>
           </dict>
           <dict>
             <key>match</key>
@@ -3761,6 +3761,12 @@
       <dict>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.flow.ts</string>
+            <key>match</key>
+            <string>(?&lt;!\.|\$)\b(await)\b(?!\$)</string>
+          </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.delete.ts</string>

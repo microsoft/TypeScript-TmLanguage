@@ -1,0 +1,1 @@
+const body = await res.json();

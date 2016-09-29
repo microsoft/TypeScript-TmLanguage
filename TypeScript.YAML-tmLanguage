@@ -190,7 +190,7 @@ repository:
     - name: keyword.control.loop.ts
       match: (?<!\.|\$)\b(break|continue|do|goto|while)\b(?!\$)
     - name: keyword.control.flow.ts
-      match: (?<!\.|\$)\b(await|return)\b(?!\$)
+      match: (?<!\.|\$)\b(return)\b(?!\$)
     - match: (?<!\.|\$)\b(yield)\b(?!\$)(?:\s*(\*))?
       captures:
         '1': { name: keyword.control.flow.ts }
@@ -1349,6 +1349,8 @@ repository:
 
   expression-operator:
     patterns:
+    - name: keyword.control.flow.ts
+      match: (?<!\.|\$)\b(await)\b(?!\$)
     - name: keyword.operator.delete.ts
       match: (?<!\.|\$)\bdelete\b(?!\$)
     - name: keyword.operator.in.ts
