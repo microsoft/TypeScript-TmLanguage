@@ -4484,123 +4484,6 @@
           </dict>
         </array>
       </dict>
-      <key>comment</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>comment.block.documentation.tsx</string>
-            <key>begin</key>
-            <string>/\*\*(?!/)</string>
-            <key>end</key>
-            <string>\*/</string>
-            <key>captures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.comment.tsx</string>
-              </dict>
-            </dict>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#docblock</string>
-              </dict>
-            </array>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>comment.block.tsx</string>
-            <key>begin</key>
-            <string>/\*</string>
-            <key>end</key>
-            <string>\*/</string>
-            <key>captures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.comment.tsx</string>
-              </dict>
-            </dict>
-          </dict>
-          <dict>
-            <key>begin</key>
-            <string>(^[ \t]+)?(?=//)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.whitespace.comment.leading.tsx</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>(?=$)</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>name</key>
-                <string>comment.line.double-slash.tsx</string>
-                <key>begin</key>
-                <string>//</string>
-                <key>beginCaptures</key>
-                <dict>
-                  <key>0</key>
-                  <dict>
-                    <key>name</key>
-                    <string>punctuation.definition.comment.tsx</string>
-                  </dict>
-                </dict>
-                <key>end</key>
-                <string>(?=$)</string>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>docblock</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>storage.type.class.jsdoc</string>
-            <key>match</key>
-            <string>(?&lt;!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>({\b(?:[_$[:alpha:]][_$[:alnum:]]*)\b})\s+\b([_$[:alpha:]][_$[:alnum:]]*)\b\s*((?:(?!\*\/).)*)</string>
-            <key>captures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>other.meta.jsdoc</string>
-              </dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>entity.name.type.instance.jsdoc</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>variable.other.jsdoc</string>
-              </dict>
-              <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>other.description.jsdoc</string>
-              </dict>
-            </dict>
-          </dict>
-        </array>
-      </dict>
       <key>literal</key>
       <dict>
         <key>name</key>
@@ -4837,6 +4720,277 @@
         <string>storage.type.property.tsx</string>
         <key>match</key>
         <string>(?&lt;!\.|\$)\b(get|set)\b(?!\$)</string>
+      </dict>
+      <key>comment</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>comment.block.documentation.tsx</string>
+            <key>begin</key>
+            <string>/\*\*(?!/)</string>
+            <key>end</key>
+            <string>\*/</string>
+            <key>captures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#docblock</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>comment.block.tsx</string>
+            <key>begin</key>
+            <string>/\*</string>
+            <key>end</key>
+            <string>\*/</string>
+            <key>captures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(^[ \t]+)?(?=//)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.whitespace.comment.leading.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>name</key>
+                <string>comment.line.double-slash.tsx</string>
+                <key>begin</key>
+                <string>//</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.comment.tsx</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?=$)</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>docblock</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>storage.type.class.jsdoc</string>
+            <key>match</key>
+            <string>(?&lt;!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)
+(?:(?&lt;=@param)|(?&lt;=@type))
+\s+
+({(?:
+  \* |                                        # {*} any type
+  \? |                                        # {?} unknown type
+
+  (?:                                          # Check for a prefix
+    \? |                                      # {?string} nullable type
+    !   |                                      # {!string} non-nullable type
+    \.{3}                                     # {...string} variable number of parameters
+  )?
+
+  (?:
+    \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
+      [a-zA-Z_$]+
+      (?:
+        (?:
+          [\w$]*
+          (?:\[\])?                          # {(string[]|number)} type application, an array of strings or a number
+        ) |
+        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+      )
+      (?:
+        [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+        [a-zA-Z_$]+
+        (?:
+          (?:
+            [\w$]*
+            (?:\[\])?                        # {(string|number[])} type application, a string or an array of numbers
+          ) |
+          &lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+        )
+      )*
+    \) |
+    [a-zA-Z_$]+
+    (?:
+      (?:
+        [\w$]*
+        (?:\[\])?                            # {string[]|number} type application, an array of strings or a number
+      ) |
+      &lt;[\w$]+(?:,\s+[\w$]+)*&gt;               # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+    )
+    (?:
+      [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+      [a-zA-Z_$]+
+      (?:
+        [\w$]* |
+        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+      )
+    )*
+  )
+                                               # Check for suffix
+  (?:\[\])?                                  # {string[]} type application, an array of strings
+  =?                                           # {string=} optional parameter
+)})
+\s+
+(
+  \[                                          # [foo] optional parameter
+    \s*
+    (?:
+      [a-zA-Z_$][\w$]*
+      (?:
+        (?:\[\])?                            # Foo[].bar properties within an array
+        \.                                    # Foo.Bar namespaced parameter
+        [a-zA-Z_$][\w$]*
+      )*
+      (?:
+        \s*
+        =                                      # [foo=bar] Default parameter value
+        \s*
+        [\w$\s]*
+      )?
+    )
+    \s*
+  \] |
+  (?:
+    [a-zA-Z_$][\w$]*
+    (?:
+      (?:\[\])?                              # Foo[].bar properties within an array
+      \.                                      # Foo.Bar namespaced parameter
+      [a-zA-Z_$][\w$]*
+    )*
+  )?
+)
+\s+
+((?:(?!\*\/).)*)                             # The type description</string>
+            <key>captures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>other.meta.jsdoc</string>
+              </dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.type.instance.jsdoc</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.jsdoc</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>other.description.jsdoc</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)
+({(?:
+  \* |                                        # {*} any type
+  \? |                                        # {?} unknown type
+
+  (?:                                          # Check for a prefix
+    \? |                                      # {?string} nullable type
+    !   |                                      # {!string} non-nullable type
+    \.{3}                                     # {...string} variable number of parameters
+  )?
+
+  (?:
+    \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
+      [a-zA-Z_$]+
+      (?:
+        [\w$]* |
+        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+      )
+      (?:
+        [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+        [a-zA-Z_$]+
+        (?:
+          [\w$]* |
+          &lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+        )
+      )*
+    \) |
+    [a-zA-Z_$]+
+    (?:
+      [\w$]* |
+      &lt;[\w$]+(?:,\s+[\w$]+)*&gt;               # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+    )
+    (?:
+      [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+      [a-zA-Z_$]+
+      (?:
+        [\w$]* |
+        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+      )
+    )*
+  )
+                                               # Check for suffix
+  (?:\[\])?                                  # {string[]} type application, an array of strings
+  =?                                           # {string=} optional parameter
+)})
+\s+
+((?:(?!\*\/).)*)                             # The type description</string>
+            <key>captures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>other.meta.jsdoc</string>
+              </dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.type.instance.jsdoc</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>other.description.jsdoc</string>
+              </dict>
+            </dict>
+          </dict>
+        </array>
       </dict>
       <key>jsx-tag-attributes</key>
       <dict>
