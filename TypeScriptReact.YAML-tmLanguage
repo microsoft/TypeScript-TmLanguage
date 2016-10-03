@@ -89,13 +89,13 @@ repository:
       match: '&'
 
   jsx-evaluated-code:
-    name: meta.brace.curly.tsx
+    name: meta.embedded.expression.tsx
     begin: '{'
     end: '}'
     beginCaptures:
-      '0': {name: punctuation.definition.brace.curly.start.tsx}
+      '0': { name: punctuation.section.embedded.begin.tsx }
     endCaptures:
-      '0': {name: punctuation.definition.brace.curly.end.tsx}
+      '0': { name: punctuation.section.embedded.end.tsx }
     patterns:
     - include: '#expression'
 
