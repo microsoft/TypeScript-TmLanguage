@@ -89,13 +89,13 @@ repository:
       match: '&'
 
   jsx-evaluated-code:
-    name: meta.brace.curly.tsx
+    name: meta.embedded.expression.tsx
     begin: '{'
     end: '}'
     beginCaptures:
-      '0': {name: punctuation.definition.brace.curly.start.tsx}
+      '0': { name: punctuation.section.embedded.begin.tsx }
     endCaptures:
-      '0': {name: punctuation.definition.brace.curly.end.tsx}
+      '0': { name: punctuation.section.embedded.end.tsx }
     patterns:
     - include: '#expression'
 
@@ -119,7 +119,7 @@ repository:
     patterns:
     - include: '#jsx-children'
 
-  jsx-tag:
+  jsx-tag-in-expression:
     # We need to differentiate between the relational '<' operator and the beginning of a tag using the surrounding context.
     begin: >-
       (?x)
@@ -137,8 +137,35 @@ repository:
       '3': { name: entity.name.tag.tsx }
       '4': { name: punctuation.definition.tag.end.tsx }
     patterns:
-    - name: meta.tag.tsx
-      begin: >-
+    - include: '#jsx-tag'
+
+  jsx-child-tag:
+    # Because this would be included from the jsx-children, this doesnt need to inspect surrounding context
+    begin: >-
+      (?x)
+        (?=(<)\s*
+        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
+        (?=\s+(?!\?)|/?>))
+    end: (/>)|(?:(</)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>))
+    endCaptures:
+      '0': { name: meta.tag.tsx }
+      '1': { name: punctuation.definition.tag.end.tsx }
+      '2': { name: punctuation.definition.tag.begin.tsx }
+      '3': { name: entity.name.tag.tsx }
+      '4': { name: punctuation.definition.tag.end.tsx }
+    patterns:
+    - include: '#jsx-tag'
+
+  jsx-tag:
+    name: meta.tag.tsx
+    begin: >-
+      (?x)
+        (?=(<)\s*
+        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
+        (?=\s+(?!\?)|/?>))
+    end: (?=(/>)|(?:(</)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
+    patterns:
+    - begin: >-
         (?x)
           (<)\s*
           ([_$a-zA-Z][-$\w.]*(?<!\.|-))
@@ -146,21 +173,18 @@ repository:
       beginCaptures:
         '1': { name: punctuation.definition.tag.begin.tsx }
         '2': { name: entity.name.tag.tsx }
-      end: (?=(/>)|(?:(</)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
+      end: (?=[/]?>)
       patterns:
-      - begin: \G(?![/]?>)
-        end: (?=[/]?>)
-        patterns:
-        - include: '#comment'
-        - include: '#jsx-tag-attributes'
-        - include: '#jsx-tag-attributes-illegal'
-      - begin: (>)
-        beginCaptures:
-          '1': { name: punctuation.definition.tag.end.tsx }
-        end: (?=</)
-        contentName: meta.jsx.children.tsx
-        patterns:
-        - include: '#jsx-children'
+      - include: '#comment'
+      - include: '#jsx-tag-attributes'
+      - include: '#jsx-tag-attributes-illegal'
+    - begin: (>)
+      beginCaptures:
+        '1': { name: punctuation.definition.tag.end.tsx }
+      end: (?=</)
+      contentName: meta.jsx.children.tsx
+      patterns:
+      - include: '#jsx-children'
 
   jsx-tag-invalid:
     name: invalid.illegal.tag.incomplete.tsx
@@ -169,16 +193,15 @@ repository:
   jsx-children:
     patterns:
     - include: '#jsx-tag-without-attributes'
-    - include: '#jsx-tag'
+    - include: '#jsx-child-tag'
     - include: '#jsx-tag-invalid'
     - include: '#jsx-evaluated-code'
     - include: '#jsx-entities'
 
   jsx:
-    name: meta.jsx.tsx
     patterns:
     - include: '#jsx-tag-without-attributes'
-    - include: '#jsx-tag'
+    - include: '#jsx-tag-in-expression'
     - include: '#jsx-tag-invalid'
 
 ...
