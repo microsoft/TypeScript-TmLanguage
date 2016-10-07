@@ -108,8 +108,7 @@ repository:
         match: ([_$[:alpha:]][_$[:alnum:]]*)
     - name: variable.other.readwrite.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - name: meta.delimiter.object.comma.ts
-      match: ','
+    - include: '#punctuation-comma'
 
   array-binding-element:
     patterns:
@@ -118,8 +117,7 @@ repository:
     - include: '#array-binding-pattern'
     - name: variable.other.readwrite.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - name: meta.delimiter.object.comma.ts
-      match: ','
+    - include: '#punctuation-comma'
 
   object-binding-pattern:
     begin: \{
@@ -371,8 +369,7 @@ repository:
         '4': { name: keyword.control.as.ts }
         '5': { name: invalid.illegal.ts }
         '6': { name: variable.other.readwrite.alias.ts }
-    - name: meta.delimiter.object.comma.ts
-      match: ','
+    - include: '#punctuation-comma'
     - name: constant.language.import-export-all.ts
       match: \*
     - name: keyword.control.default.ts
@@ -652,8 +649,7 @@ repository:
         match: ([_$[:alpha:]][_$[:alnum:]]*)
     - name: variable.parameter.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - name: meta.delimiter.object.comma.ts
-      match: ','
+    - include: '#punctuation-comma'
 
   parameter-array-binding-element:
     patterns:
@@ -662,8 +658,7 @@ repository:
     - include: '#parameter-array-binding-pattern'
     - name: variable.parameter.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - name: meta.delimiter.object.comma.ts
-      match: ','
+    - include: '#punctuation-comma'
 
   parameter-object-binding-pattern:
     begin: \{
