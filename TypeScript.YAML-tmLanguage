@@ -599,7 +599,7 @@ repository:
 
   after-operator-block:
     name: meta.object-literal.ts
-    begin: (?<=[=(:,\[?+!]|await|return|yield|throw|in|of|typeof|&&|\|\||\*)\s*(\{)
+    begin: (?<=[=(,\[?+!]|await|return|yield|throw|in|of|typeof|&&|\|\||\*)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.ts }
     end: \}
