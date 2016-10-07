@@ -1341,7 +1341,7 @@ repository:
       patterns:
       - include: '#expression'
     - name: meta.object.member.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\})
+      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\}|$)
       captures:
         '1': { name: variable.other.readwrite.ts }
     - include: '#punctuation-comma'
