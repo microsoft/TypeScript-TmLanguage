@@ -106,8 +106,8 @@ repository:
       - include: '#array-binding-pattern'
       - name: variable.other.readwrite.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - name: variable.other.readwrite.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+    - include: '#object-binding-pattern'
+    - include: '#destructuring-variable-rest'
     - include: '#punctuation-comma'
 
   array-binding-element:
@@ -115,14 +115,20 @@ repository:
     - include: '#comment'
     - include: '#object-binding-pattern'
     - include: '#array-binding-pattern'
-    - name: variable.other.readwrite.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+    - include: '#destructuring-variable-rest'
     - include: '#punctuation-comma'
 
+  destructuring-variable-rest:
+    match: (?:(\.\.\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)
+    captures:
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: variable.other.readwrite.ts }
+
   object-binding-pattern:
-    begin: \{
+    begin: (?:(\.\.\.)\s*)?(\{)
     beginCaptures:
-      '0': { name: punctuation.definition.binding-pattern.object.ts }
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: punctuation.definition.binding-pattern.object.ts }
     end: \}
     endCaptures:
       '0': { name: punctuation.definition.binding-pattern.object.ts }
@@ -130,9 +136,10 @@ repository:
     - include: '#object-binding-element'
 
   array-binding-pattern:
-    begin: \[
+    begin: (?:(\.\.\.)\s*)?(\[)
     beginCaptures:
-      '0': { name: punctuation.definition.binding-pattern.array.ts }
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: punctuation.definition.binding-pattern.array.ts }
     end: \]
     endCaptures:
       '0': { name: punctuation.definition.binding-pattern.array.ts }
@@ -171,8 +178,7 @@ repository:
     - include: '#ternary-expression'
     - include: '#new-expr'
     - include: '#object-literal'
-    - include: '#expression-operator'
-    - include: '#operators'
+    - include: '#expression-operators'
     - include: '#support-objects'
     - include: '#function-call'
     - include: '#identifiers'
@@ -457,6 +463,12 @@ repository:
     - include: '#method-declaration'
     - include: '#indexer-declaration'
     - include: '#type-annotation'
+    - begin: \.\.\.
+      beginCaptures:
+        '0': { name: keyword.operator.spread.ts }
+      end: '(?=\}|;|,|$)|(?<=\})'
+      patterns:
+      - include: '#type'
     - include: '#punctuation-comma'
     - include: '#punctuation-semicolon'
 
@@ -609,7 +621,7 @@ repository:
     match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.ts }
-      '2': { name: keyword.operator.spread.ts }
+      '2': { name: keyword.operator.rest.ts }
       '3': { name: variable.parameter.ts }
       '4': { name: keyword.operator.optional.ts }
 
@@ -647,8 +659,8 @@ repository:
       - include: '#parameter-array-binding-pattern'
       - name: variable.parameter.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - name: variable.parameter.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+    - include: '#parameter-object-binding-pattern'
+    - include: '#destructuring-parameter-rest'
     - include: '#punctuation-comma'
 
   parameter-array-binding-element:
@@ -656,14 +668,20 @@ repository:
     - include: '#comment'
     - include: '#parameter-object-binding-pattern'
     - include: '#parameter-array-binding-pattern'
-    - name: variable.parameter.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+    - include: '#destructuring-parameter-rest'
     - include: '#punctuation-comma'
 
+  destructuring-parameter-rest:
+    match: (?:(\.\.\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)
+    captures:
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: variable.parameter.ts }
+
   parameter-object-binding-pattern:
-    begin: \{
+    begin: (?:(\.\.\.)\s*)?(\{)
     beginCaptures:
-      '0': { name: punctuation.definition.binding-pattern.object.ts }
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: punctuation.definition.binding-pattern.object.ts }
     end: \}
     endCaptures:
       '0': { name: punctuation.definition.binding-pattern.object.ts }
@@ -671,9 +689,10 @@ repository:
     - include: '#parameter-object-binding-element'
 
   parameter-array-binding-pattern:
-    begin: \[
+    begin: (?:(\.\.\.)\s*)?(\[)
     beginCaptures:
-      '0': { name: punctuation.definition.binding-pattern.array.ts }
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: punctuation.definition.binding-pattern.array.ts }
     end: \]
     endCaptures:
       '0': { name: punctuation.definition.binding-pattern.array.ts }
@@ -723,11 +742,10 @@ repository:
     - include: '#numeric-literal'
     - include: '#type-primitive'
     - include: '#type-builtin-literals'
-    - include: '#typeof-operator'
     - include: '#type-parameters'
     - include: '#type-tuple'
     - include: '#type-object'
-    - include: '#type-operator'
+    - include: '#type-operators'
     - include: '#type-fn-type-parameters'
     - include: '#type-paren-or-function-parameters'
     - include: '#type-function-return-type'
@@ -814,9 +832,11 @@ repository:
       patterns:
       - include: '#function-parameters'
 
-  type-operator:
-    name: keyword.operator.type.ts
-    match: '[&|]'
+  type-operators:
+    patterns:
+    - include: '#typeof-operator'
+    - name: keyword.operator.type.ts
+      match: '[&|]'
 
   type-function-return-type:
     name: meta.type.function.return.ts
@@ -1336,12 +1356,19 @@ repository:
       patterns:
       - include: '#expression'
     - name: meta.object.member.ts
+      begin: \.\.\.
+      beginCaptures:
+        '0': { name: keyword.operator.spread.ts }
+      end: (?=,|\})
+      patterns:
+      - include: '#expression'
+    - name: meta.object.member.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\})
       captures:
         '1': { name: variable.other.readwrite.ts }
     - include: '#punctuation-comma'
 
-  expression-operator:
+  expression-operators:
     patterns:
     - name: keyword.control.flow.ts
       match: (?<!\.|\$)\b(await)\b(?!\$)
@@ -1364,13 +1391,8 @@ repository:
       end: (?=$|[;,})\]])
       patterns:
       - include: '#type'
-
-  typeof-operator:
-    name: keyword.operator.typeof.ts
-    match: (?<!\.|\$)\btypeof\b(?!\$)
-
-  operators:
-    patterns:
+    - name: keyword.operator.spread.ts
+      match: \.\.\.
     - name: keyword.operator.assignment.compound.ts
       match: \*=|(?<!\()/=|%=|\+=|\-=
     - name: keyword.operator.assignment.compound.bitwise.ts
@@ -1391,6 +1413,10 @@ repository:
       match: \+\+
     - name: keyword.operator.arithmetic.ts
       match: '%|\*|/|-|\+'
+
+  typeof-operator:
+    name: keyword.operator.typeof.ts
+    match: (?<!\.|\$)\btypeof\b(?!\$)
 
   arrow-function:
     patterns:
