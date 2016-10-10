@@ -1399,6 +1399,8 @@ repository:
       match: \*=|(?<!\()/=|%=|\+=|\-=
     - name: keyword.operator.assignment.compound.bitwise.ts
       match: \&=|\^=|<<=|>>=|>>>=|\|=
+    - name: keyword.operator.bitwise.shift.ts
+      match: <<|>>>|>>
     - name: keyword.operator.comparison.ts
       match: ===|!==|==|!=
     - name: keyword.operator.relational.ts
@@ -1746,27 +1748,25 @@ repository:
       match: (?<!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b
     - match: |-
           (?x)
-          (?:(?<=@param)|(?<=@type))
+          (?:(?<=@param)|(?<=@arg)|(?<=@argument)|(?<=@type))
           \s+
           ({(?:
             \* |                                        # {*} any type
             \? |                                        # {?} unknown type
-
-            (?:                                          # Check for a prefix
+            (?:                                         # Check for a prefix
               \? |                                      # {?string} nullable type
-              !   |                                      # {!string} non-nullable type
+              !   |                                     # {!string} non-nullable type
               \.{3}                                     # {...string} variable number of parameters
             )?
-
             (?:
               \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
                 [a-zA-Z_$]+
                 (?:
                   (?:
                     [\w$]*
-                    (?:\[\])?                          # {(string[]|number)} type application, an array of strings or a number
+                    (?:\[\])?                           # {(string[]|number)} type application, an array of strings or a number
                   ) |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>            # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
                 (?:
                   [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
@@ -1776,7 +1776,7 @@ repository:
                       [\w$]*
                       (?:\[\])?                        # {(string|number[])} type application, a string or an array of numbers
                     ) |
-                    <[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application
+                    \.?<[\w$]+(?:,\s+[\w$]+)*>         # {Array<string>} or {Object<string, number>} type application (optional .)
                   )
                 )*
               \) |
@@ -1786,35 +1786,35 @@ repository:
                   [\w$]*
                   (?:\[\])?                            # {string[]|number} type application, an array of strings or a number
                 ) |
-                <[\w$]+(?:,\s+[\w$]+)*>               # {Array<string>} or {Object<string, number>} type application
+                \.?<[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application (optional .)
               )
               (?:
-                [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+                [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
                 [a-zA-Z_$]+
                 (?:
                   [\w$]* |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
               )*
             )
-                                                         # Check for suffix
+                                                       # Check for suffix
             (?:\[\])?                                  # {string[]} type application, an array of strings
-            =?                                           # {string=} optional parameter
+            =?                                         # {string=} optional parameter
           )})
           \s+
           (
-            \[                                          # [foo] optional parameter
+            \[                                         # [foo] optional parameter
               \s*
               (?:
                 [a-zA-Z_$][\w$]*
                 (?:
                   (?:\[\])?                            # Foo[].bar properties within an array
-                  \.                                    # Foo.Bar namespaced parameter
+                  \.                                   # Foo.Bar namespaced parameter
                   [a-zA-Z_$][\w$]*
                 )*
                 (?:
                   \s*
-                  =                                      # [foo=bar] Default parameter value
+                  =                                    # [foo=bar] Default parameter value
                   \s*
                   [\w$\s]*
                 )?
@@ -1825,12 +1825,13 @@ repository:
               [a-zA-Z_$][\w$]*
               (?:
                 (?:\[\])?                              # Foo[].bar properties within an array
-                \.                                      # Foo.Bar namespaced parameter
+                \.                                     # Foo.Bar namespaced parameter
                 [a-zA-Z_$][\w$]*
               )*
             )?
           )
           \s+
+          (?:-\s+)?                                    # optional hyphen before the description
           ((?:(?!\*\/).)*)                             # The type description
       captures:
         '0': { name: other.meta.jsdoc }
@@ -1840,50 +1841,51 @@ repository:
     - match: |-
           (?x)
           ({(?:
-            \* |                                        # {*} any type
-            \? |                                        # {?} unknown type
+            \* |                                       # {*} any type
+            \? |                                       # {?} unknown type
 
-            (?:                                          # Check for a prefix
-              \? |                                      # {?string} nullable type
-              !   |                                      # {!string} non-nullable type
-              \.{3}                                     # {...string} variable number of parameters
+            (?:                                        # Check for a prefix
+              \? |                                     # {?string} nullable type
+              !   |                                    # {!string} non-nullable type
+              \.{3}                                    # {...string} variable number of parameters
             )?
 
             (?:
-              \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
+              \(                                       # Opening bracket of multiple types with parenthesis {(string|number)}
                 [a-zA-Z_$]+
                 (?:
                   [\w$]* |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
                 (?:
-                  [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+                  [\.|~]                               # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
                   [a-zA-Z_$]+
                   (?:
                     [\w$]* |
-                    <[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application
+                    \.?<[\w$]+(?:,\s+[\w$]+)*>         # {Array<string>} or {Object<string, number>} type application (optional .)
                   )
                 )*
               \) |
               [a-zA-Z_$]+
               (?:
                 [\w$]* |
-                <[\w$]+(?:,\s+[\w$]+)*>               # {Array<string>} or {Object<string, number>} type application
+                \.?<[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application (optional .)
               )
               (?:
-                [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+                [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
                 [a-zA-Z_$]+
                 (?:
                   [\w$]* |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
               )*
             )
-                                                         # Check for suffix
+                                                       # Check for suffix
             (?:\[\])?                                  # {string[]} type application, an array of strings
-            =?                                           # {string=} optional parameter
+            =?                                         # {string=} optional parameter
           )})
           \s+
+          (?:-\s+)?                                    # optional hyphen before the description
           ((?:(?!\*\/).)*)                             # The type description
       captures:
         '0': { name: other.meta.jsdoc }

@@ -3942,6 +3942,12 @@
           </dict>
           <dict>
             <key>name</key>
+            <string>keyword.operator.bitwise.shift.ts</string>
+            <key>match</key>
+            <string>&lt;&lt;|&gt;&gt;&gt;|&gt;&gt;</string>
+          </dict>
+          <dict>
+            <key>name</key>
             <string>keyword.operator.comparison.ts</string>
             <key>match</key>
             <string>===|!==|==|!=</string>
@@ -4929,27 +4935,25 @@
           <dict>
             <key>match</key>
             <string>(?x)
-(?:(?&lt;=@param)|(?&lt;=@type))
+(?:(?&lt;=@param)|(?&lt;=@arg)|(?&lt;=@argument)|(?&lt;=@type))
 \s+
 ({(?:
   \* |                                        # {*} any type
   \? |                                        # {?} unknown type
-
-  (?:                                          # Check for a prefix
+  (?:                                         # Check for a prefix
     \? |                                      # {?string} nullable type
-    !   |                                      # {!string} non-nullable type
+    !   |                                     # {!string} non-nullable type
     \.{3}                                     # {...string} variable number of parameters
   )?
-
   (?:
     \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
       [a-zA-Z_$]+
       (?:
         (?:
           [\w$]*
-          (?:\[\])?                          # {(string[]|number)} type application, an array of strings or a number
+          (?:\[\])?                           # {(string[]|number)} type application, an array of strings or a number
         ) |
-        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;            # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
       )
       (?:
         [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
@@ -4959,7 +4963,7 @@
             [\w$]*
             (?:\[\])?                        # {(string|number[])} type application, a string or an array of numbers
           ) |
-          &lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+          \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;         # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
         )
       )*
     \) |
@@ -4969,35 +4973,35 @@
         [\w$]*
         (?:\[\])?                            # {string[]|number} type application, an array of strings or a number
       ) |
-      &lt;[\w$]+(?:,\s+[\w$]+)*&gt;               # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+      \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
     )
     (?:
-      [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+      [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
       [a-zA-Z_$]+
       (?:
         [\w$]* |
-        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
       )
     )*
   )
-                                               # Check for suffix
+                                             # Check for suffix
   (?:\[\])?                                  # {string[]} type application, an array of strings
-  =?                                           # {string=} optional parameter
+  =?                                         # {string=} optional parameter
 )})
 \s+
 (
-  \[                                          # [foo] optional parameter
+  \[                                         # [foo] optional parameter
     \s*
     (?:
       [a-zA-Z_$][\w$]*
       (?:
         (?:\[\])?                            # Foo[].bar properties within an array
-        \.                                    # Foo.Bar namespaced parameter
+        \.                                   # Foo.Bar namespaced parameter
         [a-zA-Z_$][\w$]*
       )*
       (?:
         \s*
-        =                                      # [foo=bar] Default parameter value
+        =                                    # [foo=bar] Default parameter value
         \s*
         [\w$\s]*
       )?
@@ -5008,12 +5012,13 @@
     [a-zA-Z_$][\w$]*
     (?:
       (?:\[\])?                              # Foo[].bar properties within an array
-      \.                                      # Foo.Bar namespaced parameter
+      \.                                     # Foo.Bar namespaced parameter
       [a-zA-Z_$][\w$]*
     )*
   )?
 )
 \s+
+(?:-\s+)?                                    # optional hyphen before the description
 ((?:(?!\*\/).)*)                             # The type description</string>
             <key>captures</key>
             <dict>
@@ -5043,50 +5048,51 @@
             <key>match</key>
             <string>(?x)
 ({(?:
-  \* |                                        # {*} any type
-  \? |                                        # {?} unknown type
+  \* |                                       # {*} any type
+  \? |                                       # {?} unknown type
 
-  (?:                                          # Check for a prefix
-    \? |                                      # {?string} nullable type
-    !   |                                      # {!string} non-nullable type
-    \.{3}                                     # {...string} variable number of parameters
+  (?:                                        # Check for a prefix
+    \? |                                     # {?string} nullable type
+    !   |                                    # {!string} non-nullable type
+    \.{3}                                    # {...string} variable number of parameters
   )?
 
   (?:
-    \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
+    \(                                       # Opening bracket of multiple types with parenthesis {(string|number)}
       [a-zA-Z_$]+
       (?:
         [\w$]* |
-        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
       )
       (?:
-        [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+        [\.|~]                               # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
         [a-zA-Z_$]+
         (?:
           [\w$]* |
-          &lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+          \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;         # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
         )
       )*
     \) |
     [a-zA-Z_$]+
     (?:
       [\w$]* |
-      &lt;[\w$]+(?:,\s+[\w$]+)*&gt;               # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+      \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
     )
     (?:
-      [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+      [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
       [a-zA-Z_$]+
       (?:
         [\w$]* |
-        &lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application
+        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
       )
     )*
   )
-                                               # Check for suffix
+                                             # Check for suffix
   (?:\[\])?                                  # {string[]} type application, an array of strings
-  =?                                           # {string=} optional parameter
+  =?                                         # {string=} optional parameter
 )})
 \s+
+(?:-\s+)?                                    # optional hyphen before the description
 ((?:(?!\*\/).)*)                             # The type description</string>
             <key>captures</key>
             <dict>
