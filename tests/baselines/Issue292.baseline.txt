@@ -1,0 +1,142 @@
+original file
+-----------------------------------
+    const shellOptions: IOptions = {
+        filesToOpen,
+        filesToCreate,
+        filesToDiff
+    };
+    const a = {
+        filesToOpen: filesToOpen,
+        filesToCreate: filesToCreate,
+        filesToDiff: filesToDiff
+    }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>    const shellOptions: IOptions = {
+ ^^^^
+ source.ts
+     ^^^^^
+     source.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^^^^^^^^^^^^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                         ^^^^^^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
+                                     ^^
+                                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+>        filesToOpen,
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+         ^^^^^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.separator.comma.ts
+                     ^^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+>        filesToCreate,
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+         ^^^^^^^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.separator.comma.ts
+                       ^^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+>        filesToDiff
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+         ^^^^^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                    ^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+>    };
+ ^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
+      ^
+      source.ts punctuation.terminator.statement.ts
+       ^^
+       source.ts
+>    const a = {
+ ^^^^
+ source.ts
+     ^^^^^
+     source.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+>        filesToOpen: filesToOpen,
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+         ^^^^^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+                      ^^^^^^^^^^^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.separator.comma.ts
+                                  ^^
+                                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+>        filesToCreate: filesToCreate,
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+         ^^^^^^^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+                        ^^^^^^^^^^^^^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.separator.comma.ts
+                                      ^^
+                                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+>        filesToDiff: filesToDiff
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts
+         ^^^^^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+                      ^^^^^^^^^^^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts variable.other.readwrite.ts
+                                 ^^
+                                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+>    }
+ ^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts meta.object.member.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.object-literal.ts punctuation.definition.block.ts
