@@ -1,0 +1,470 @@
+original file
+-----------------------------------
+interface IOptions {
+    check: boolean;
+    files: string;
+    primary: string;
+}
+var {
+    check: isReportMode = false,
+    files = '**/locals/*.json',
+    primary: primaryLanguage = 'en'
+}: IOptions = null;
+function sync({
+    check: isReportMode = false,
+    files = '**/locals/*.json',
+    primary: primaryLanguage = 'en'
+}: IOptions) {
+}
+
+var [
+    check2 = false,
+    files2 = '**/locals/*.json',
+    primary2 = 'en'
+] = [];
+function sync2([
+    check2 = false,
+    files2 = '**/locals/*.json',
+    primary2 = 'en'
+]) {
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>interface IOptions {
+ ^^^^^^^^^
+ source.ts meta.class.ts storage.type.interface.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts entity.name.class.ts
+                   ^
+                   source.ts meta.class.ts
+                    ^
+                    source.ts meta.class.ts punctuation.definition.block.ts
+                     ^^
+                     source.ts meta.class.ts
+>    check: boolean;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+     ^^^^^
+     source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+            ^^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                   ^
+                   source.ts meta.class.ts punctuation.terminator.statement.ts
+                    ^^
+                    source.ts meta.class.ts
+>    files: string;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+     ^^^^^
+     source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+            ^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.class.ts punctuation.terminator.statement.ts
+                   ^^
+                   source.ts meta.class.ts
+>    primary: string;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+     ^^^^^^^
+     source.ts meta.class.ts meta.field.declaration.ts variable.object.property.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+              ^^^^^^
+              source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                    ^
+                    source.ts meta.class.ts punctuation.terminator.statement.ts
+                     ^^
+                     source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>var {
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+      ^^
+      source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+>    check: isReportMode = false,
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^^^^^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+            ^^^^^^^^^^^^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                           ^^^^^
+                           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts constant.language.boolean.false.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
+                                 ^^
+                                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+>    files = '**/locals/*.json',
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^^^^^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+           ^
+           source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+             ^
+             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+              ^^^^^^^^^^^^^^^^
+              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts string.quoted.single.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
+                                ^^
+                                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+>    primary: primaryLanguage = 'en'
+ ^^^^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.object.property.ts
+            ^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.destructuring.ts
+             ^
+             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+              ^^^^^^^^^^^^^^^
+              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts keyword.operator.assignment.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                 ^^
+                                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts string.quoted.single.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+>}: IOptions = null;
+ ^
+ source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+  ^
+  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+   ^
+   source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts
+    ^^^^^^^^
+    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts entity.name.type.ts
+            ^
+            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.type.annotation.ts
+             ^
+             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+               ^^^^
+               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts constant.language.null.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+                    ^^
+                    source.ts
+>function sync({
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^
+          source.ts meta.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+                ^^
+                source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+>    check: isReportMode = false,
+ ^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+     ^^^^^
+     source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts variable.object.property.ts
+          ^
+          source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.destructuring.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+            ^^^^^^^^^^^^
+            source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts variable.parameter.ts
+                        ^
+                        source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                         ^
+                         source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                           ^^^^^
+                           source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts constant.language.boolean.false.ts
+                                ^
+                                source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.separator.comma.ts
+                                 ^^
+                                 source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+>    files = '**/locals/*.json',
+ ^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+     ^^^^^
+     source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts variable.parameter.ts
+          ^
+          source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+              ^^^^^^^^^^^^^^^^
+              source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts
+                              ^
+                              source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.separator.comma.ts
+                                ^^
+                                source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+>    primary: primaryLanguage = 'en'
+ ^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+     ^^^^^^^
+     source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts variable.object.property.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.destructuring.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+              ^^^^^^^^^^^^^^^
+              source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts variable.parameter.ts
+                             ^
+                             source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                              ^
+                              source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts keyword.operator.assignment.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                                ^
+                                source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                 ^^
+                                 source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts
+                                   ^
+                                   source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                    ^
+                                    source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+>}: IOptions) {
+ ^
+ source.ts meta.function.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+  ^
+  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+   ^
+   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+    ^^^^^^^^
+    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.function.ts
+              ^
+              source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>var [
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+     ^
+     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+      ^^
+      source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+>    check2 = false,
+ ^^^^
+ source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+            ^
+            source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+              ^^^^^
+              source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts constant.language.boolean.false.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.separator.comma.ts
+                    ^^
+                    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+>    files2 = '**/locals/*.json',
+ ^^^^
+ source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+            ^
+            source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+              ^
+              source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+               ^^^^^^^^^^^^^^^^
+               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts string.quoted.single.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.separator.comma.ts
+                                 ^^
+                                 source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+>    primary2 = 'en'
+ ^^^^
+ source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+     ^^^^^^^^
+     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+              ^
+              source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+                ^
+                source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^
+                 source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts string.quoted.single.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+>] = [];
+ ^
+ source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+  ^
+  source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+   ^
+   source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts keyword.operator.assignment.ts
+    ^
+    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+     ^
+     source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.array.literal.ts meta.brace.square.ts
+      ^
+      source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.array.literal.ts meta.brace.square.ts
+       ^
+       source.ts punctuation.terminator.statement.ts
+        ^^
+        source.ts
+>function sync2([
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^
+          source.ts meta.function.ts entity.name.function.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts punctuation.definition.binding-pattern.array.ts
+                 ^^
+                 source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+>    check2 = false,
+ ^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts variable.parameter.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+              ^^^^^
+              source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts constant.language.boolean.false.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts punctuation.separator.comma.ts
+                    ^^
+                    source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+>    files2 = '**/locals/*.json',
+ ^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts variable.parameter.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+               ^^^^^^^^^^^^^^^^
+               source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts string.quoted.single.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                ^
+                                source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts punctuation.separator.comma.ts
+                                 ^^
+                                 source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+>    primary2 = 'en'
+ ^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+     ^^^^^^^^
+     source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts variable.parameter.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^
+                 source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts string.quoted.single.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                    ^
+                    source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+>]) {
+ ^
+ source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts punctuation.definition.binding-pattern.array.ts
+  ^
+  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+   ^
+   source.ts meta.function.ts
+    ^
+    source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

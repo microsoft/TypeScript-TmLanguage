@@ -335,6 +335,10 @@
                 <key>match</key>
                 <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#variable-initializer</string>
+              </dict>
             </array>
           </dict>
           <dict>
@@ -344,6 +348,10 @@
           <dict>
             <key>include</key>
             <string>#destructuring-variable-rest</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#variable-initializer</string>
           </dict>
           <dict>
             <key>include</key>
@@ -370,6 +378,10 @@
           <dict>
             <key>include</key>
             <string>#destructuring-variable-rest</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#variable-initializer</string>
           </dict>
           <dict>
             <key>include</key>
@@ -2167,6 +2179,10 @@
                 <key>match</key>
                 <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#variable-initializer</string>
+              </dict>
             </array>
           </dict>
           <dict>
@@ -2176,6 +2192,10 @@
           <dict>
             <key>include</key>
             <string>#destructuring-parameter-rest</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#variable-initializer</string>
           </dict>
           <dict>
             <key>include</key>
@@ -2202,6 +2222,10 @@
           <dict>
             <key>include</key>
             <string>#destructuring-parameter-rest</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#variable-initializer</string>
           </dict>
           <dict>
             <key>include</key>
@@ -2839,7 +2863,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|[,);}])</string>
+        <string>(?=$|[,);}\]])</string>
         <key>patterns</key>
         <array>
           <dict>

@@ -106,8 +106,10 @@ repository:
       - include: '#array-binding-pattern'
       - name: variable.other.readwrite.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
+      - include: '#variable-initializer'
     - include: '#object-binding-pattern'
     - include: '#destructuring-variable-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   array-binding-element:
@@ -116,6 +118,7 @@ repository:
     - include: '#object-binding-pattern'
     - include: '#array-binding-pattern'
     - include: '#destructuring-variable-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   destructuring-variable-rest:
@@ -659,8 +662,10 @@ repository:
       - include: '#parameter-array-binding-pattern'
       - name: variable.parameter.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
+      - include: '#variable-initializer'
     - include: '#parameter-object-binding-pattern'
     - include: '#destructuring-parameter-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   parameter-array-binding-element:
@@ -669,6 +674,7 @@ repository:
     - include: '#parameter-object-binding-pattern'
     - include: '#parameter-array-binding-pattern'
     - include: '#destructuring-parameter-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   destructuring-parameter-rest:
@@ -899,7 +905,7 @@ repository:
     begin: (?<!=|!)(=)(?!=)
     beginCaptures:
       '1': { name: keyword.operator.assignment.ts }
-    end: (?=$|[,);}])
+    end: (?=$|[,);}\]])
     patterns:
       - include: '#expression'
 
