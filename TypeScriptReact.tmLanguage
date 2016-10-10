@@ -2002,7 +2002,7 @@
         <key>name</key>
         <string>meta.object-literal.tsx</string>
         <key>begin</key>
-        <string>(?&lt;=[=(:,\[?+!]|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
+        <string>(?&lt;=[=(,\[?+!]|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2972,6 +2972,14 @@
         </dict>
         <key>end</key>
         <string>:</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.section.case-statement.tsx</string>
+          </dict>
+        </dict>
         <key>patterns</key>
         <array>
           <dict>
@@ -3809,7 +3817,7 @@
             <key>name</key>
             <string>meta.object.member.tsx</string>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\})</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\}|$)</string>
             <key>captures</key>
             <dict>
               <key>1</key>

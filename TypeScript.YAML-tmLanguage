@@ -608,7 +608,7 @@ repository:
 
   after-operator-block:
     name: meta.object-literal.ts
-    begin: (?<=[=(:,\[?+!]|await|return|yield|throw|in|of|typeof|&&|\|\||\*)\s*(\{)
+    begin: (?<=[=(,\[?+!]|await|return|yield|throw|in|of|typeof|&&|\|\||\*)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.ts }
     end: \}
@@ -944,6 +944,8 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.switch.ts }
     end: ':'
+    endCaptures:
+      '0': { name: punctuation.definition.section.case-statement.ts }
     patterns:
     - include: '#expression'
 
@@ -1363,7 +1365,7 @@ repository:
       patterns:
       - include: '#expression'
     - name: meta.object.member.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\})
+      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\}|$)
       captures:
         '1': { name: variable.other.readwrite.ts }
     - include: '#punctuation-comma'

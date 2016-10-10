@@ -1,0 +1,90 @@
+original file
+-----------------------------------
+switch (0) {
+    case 0: {
+        const zero = 0;
+        return zero;
+    }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>switch (0) {
+ ^^^^^^
+ source.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.switch.ts
+       ^
+       source.ts switch-statement.expr.ts switch-expression.expr.ts
+        ^
+        source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
+         ^
+         source.ts switch-statement.expr.ts switch-expression.expr.ts constant.numeric.decimal.ts
+          ^
+          source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
+           ^
+           source.ts switch-statement.expr.ts
+            ^
+            source.ts switch-statement.expr.ts switch-block.expr.ts punctuation.definition.block.ts
+             ^^
+             source.ts switch-statement.expr.ts switch-block.expr.ts
+>    case 0: {
+ ^^^^
+ source.ts switch-statement.expr.ts switch-block.expr.ts
+     ^^^^
+     source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts
+         ^
+         source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
+          ^
+          source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts constant.numeric.decimal.ts
+           ^
+           source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts punctuation.definition.section.case-statement.ts
+            ^
+            source.ts switch-statement.expr.ts switch-block.expr.ts
+             ^
+             source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts punctuation.definition.block.ts
+              ^^
+              source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts
+>        const zero = 0;
+ ^^^^^^^^
+ source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts
+         ^^^^^
+         source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts meta.var.expr.ts storage.type.ts
+              ^
+              source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts meta.var.expr.ts
+               ^^^^
+               source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+                   ^
+                   source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                      ^
+                      source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts
+>        return zero;
+ ^^^^^^^^
+ source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts
+         ^^^^^^
+         source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts keyword.control.flow.ts
+               ^
+               source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts
+                ^^^^
+                source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts variable.other.readwrite.ts
+                    ^
+                    source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts punctuation.terminator.statement.ts
+                     ^^
+                     source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts
+     ^
+     source.ts switch-statement.expr.ts switch-block.expr.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts switch-statement.expr.ts switch-block.expr.ts
+>}
+ ^
+ source.ts switch-statement.expr.ts punctuation.definition.block.ts
