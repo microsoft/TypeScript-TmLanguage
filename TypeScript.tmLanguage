@@ -1457,10 +1457,6 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#static-modifier</string>
-          </dict>
-          <dict>
-            <key>include</key>
             <string>#property-accessor</string>
           </dict>
           <dict>
@@ -1702,7 +1698,7 @@
         <key>name</key>
         <string>meta.method.overload.declaration.ts</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\&lt;]))</string>
+        <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\&lt;]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2040,7 +2036,7 @@
       <key>parameter-name</key>
       <dict>
         <key>match</key>
-        <string>(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)</string>
+        <string>(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)</string>
         <key>captures</key>
         <dict>
           <key>1</key>
@@ -2051,14 +2047,19 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>keyword.operator.rest.ts</string>
+            <string>storage.modifier.ts</string>
           </dict>
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>variable.parameter.ts</string>
+            <string>keyword.operator.rest.ts</string>
           </dict>
           <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>variable.parameter.ts</string>
+          </dict>
+          <key>5</key>
           <dict>
             <key>name</key>
             <string>keyword.operator.optional.ts</string>
@@ -4852,14 +4853,7 @@
         <key>name</key>
         <string>storage.modifier.ts</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(public|protected|private|readonly)\b(?!\$)</string>
-      </dict>
-      <key>static-modifier</key>
-      <dict>
-        <key>name</key>
-        <string>storage.modifier.ts</string>
-        <key>match</key>
-        <string>(?&lt;!\.|\$)\b(static)\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$)</string>
       </dict>
       <key>property-accessor</key>
       <dict>

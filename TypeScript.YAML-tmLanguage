@@ -442,7 +442,6 @@ repository:
     - include: '#type-annotation'
     - include: '#variable-initializer'
     - include: '#access-modifier'
-    - include: '#static-modifier'
     - include: '#property-accessor'
     - include: '#expression'
     - include: '#punctuation-comma'
@@ -515,10 +514,10 @@ repository:
 
   method-overload-declaration:
     name: meta.method.overload.declaration.ts
-    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
+    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
-      '1': { name: storage.modifier.ts } # captures keyword (abstract)
-      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '2': { name: storage.modifier.ts } # captures keyword (abstract)
       '3': { name: storage.modifier.async.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
       '5': { name: keyword.operator.new.ts } # captures keyword (new)
@@ -621,12 +620,13 @@ repository:
     - include: '#object-member' 
 
   parameter-name:
-    match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)'
+    match: '(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.ts }
-      '2': { name: keyword.operator.rest.ts }
-      '3': { name: variable.parameter.ts }
-      '4': { name: keyword.operator.optional.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: keyword.operator.rest.ts }
+      '4': { name: variable.parameter.ts }
+      '5': { name: keyword.operator.optional.ts }
 
   destructuring-parameter:
     patterns:
@@ -1713,11 +1713,7 @@ repository:
 
   access-modifier:
     name: storage.modifier.ts
-    match: (?<!\.|\$)\b(public|protected|private|readonly)\b(?!\$)
-
-  static-modifier:
-    name: storage.modifier.ts
-    match: (?<!\.|\$)\b(static)\b(?!\$)
+    match: (?<!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$)
 
   property-accessor:
     name: storage.type.property.ts
