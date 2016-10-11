@@ -1441,7 +1441,7 @@ repository:
         '1': { name: storage.modifier.async.ts }
         '2': { name: variable.parameter.ts }
     - name: meta.arrow.ts
-      begin: (?x)(?<=return|throw|yield|await|async|default|[=(\[,:>*])\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#comment'
