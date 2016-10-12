@@ -411,9 +411,9 @@ repository:
     - include: "#string"
     - include: '#comment'
     - include: '#decorator'
-    - include: '#field-declaration'
     - include: '#method-declaration'
     - include: '#indexer-declaration'
+    - include: '#field-declaration'
     - include: '#type-annotation'
     - include: '#variable-initializer'
     - include: '#access-modifier'
@@ -436,9 +436,9 @@ repository:
   type-object-members:
     patterns:
     - include: '#comment'
-    - include: '#field-declaration'
     - include: '#method-declaration'
     - include: '#indexer-declaration'
+    - include: '#field-declaration'
     - include: '#type-annotation'
     - begin: \.\.\.
       beginCaptures:
@@ -451,27 +451,30 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
+    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-      '2': { name: variable.object.property.ts }
-      '3': { name: keyword.operator.optional.ts }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#variable-initializer'
-    - begin: \G
-      end: (?!\G)(?=[};,=]|$)|(?<=\})
+    - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))
+      end: (?=[};,=]|$)|(?<=\})
       patterns:
       - include: '#type-annotation'
       - include: '#string'
+      - include: '#array-literal'
       - include: '#comment'
+      - name: variable.object.property.ts
+        match: '[_$[:alpha:]][_$[:alnum:]]*'
+      - name: keyword.operator.optional.ts
+        match: \?
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
+    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
-      '1': { name: storage.modifier.ts } # captures keyword (abstract)
-      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '2': { name: storage.modifier.ts } # captures keyword (abstract)
       '3': { name: storage.modifier.async.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
       '5': { name: keyword.operator.new.ts } # captures keyword (new)
@@ -488,7 +491,6 @@ repository:
     - include: '#decl-block'
 
   method-overload-declaration:
-    name: meta.method.overload.declaration.ts
     begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
@@ -503,7 +505,7 @@ repository:
     - include: '#method-declaration-name'
 
   method-declaration-name:
-    begin: \G(?!\(|\<)
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??)\s*[\(\<])
     end: (?=\(|\<)
     patterns:
     - include: '#string'
@@ -515,23 +517,17 @@ repository:
     
   indexer-declaration:
     name: meta.indexer.declaration.ts
-    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)(?=\s*[_$[:alpha:]][_$[:alnum:]]*\s*[:\]])
+    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: meta.brace.square.ts }
+      '3': { name: variable.parameter.ts}
     end: (\])\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.ts }
       '2': { name: keyword.operator.optional.ts }
     patterns:
     - include: '#type-annotation'
-    - include: '#indexer-parameter'
-
-  indexer-parameter:
-    name: meta.indexer.parameter.ts
-    match: ([_$[:alpha:]][_$[:alnum:]]*)
-    captures:
-      '1': { name: variable.parameter.ts}
 
   function-declaration:
     name: meta.function.ts
