@@ -36,6 +36,7 @@ repository:
     patterns:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
+    - include: '#variable-initializer'
     - include: '#comment'
     - include: '#punctuation-comma'
 
@@ -44,54 +45,28 @@ repository:
     begin: ([_$[:alpha:]][_$[:alnum:]]*)
     beginCaptures:
       '1': { name: variable.other.readwrite.ts }
-    end: (?=$|[;,}]|(\s+(of|in)\s+))
+    end: (?=$|[;,=}]|(\s+(of|in)\s+))
     patterns:
-    - include: '#variable-initializer'
-    - begin: \G
-      end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
-      patterns:
-      - include: '#type-annotation'
-      - include: '#string'
-      - include: '#comment'
+    - include: '#type-annotation'
+    - include: '#string'
+    - include: '#comment'
 
   destructuring-variable:
     patterns:
     - name: meta.object-binding-pattern-variable.ts
-      begin: (?<!=|:|of|in)\s*(\{)
-      beginCaptures:
-        '1': { name: punctuation.definition.binding-pattern.object.ts }
-      end: (?=$|[;,}]|(\s+(of|in)\s+))
+      begin: (?<!=|:|of|in)\s*(?=\{)
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
       patterns:
-      - include: '#variable-initializer'
-      - begin: (?<=\{)
-        end: (?=$|[;,=}]|(\s+(of|in)\s+))
-        patterns:
-        - begin: (?<=\{)
-          end: \}
-          endCaptures:
-            '0': { name: punctuation.definition.binding-pattern.object.ts }
-          patterns:
-          - include: '#object-binding-element'
-        - include: '#type-annotation'
-        - include: '#comment'
+      - include: '#object-binding-pattern'
+      - include: '#type-annotation'
+      - include: '#comment'
     - name: meta.array-binding-pattern-variable.ts
-      begin: (?<!=|:|of|in)\s*(\[)
-      beginCaptures:
-        '1': { name: punctuation.definition.binding-pattern.array.ts }
-      end: (?=$|[;,}]|(\s+(of|in)\s+))
+      begin: (?<!=|:|of|in)\s*(?=\[)
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
       patterns:
-      - include: '#variable-initializer'
-      - begin: (?<=\[)
-        end: (?=$|[;,=}]|(\s+(of|in)\s+))
-        patterns:
-        - begin: (?<=\[)
-          end: \]
-          endCaptures:
-            '0': { name: punctuation.definition.binding-pattern.array.ts }
-          patterns:
-          - include: '#array-binding-element'
-        - include: '#type-annotation'
-        - include: '#comment'
+      - include: '#array-binding-pattern'
+      - include: '#type-annotation'
+      - include: '#comment'
 
   object-binding-element:
     patterns:
@@ -106,8 +81,10 @@ repository:
       - include: '#array-binding-pattern'
       - name: variable.other.readwrite.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
+      - include: '#variable-initializer'
     - include: '#object-binding-pattern'
     - include: '#destructuring-variable-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   array-binding-element:
@@ -116,6 +93,7 @@ repository:
     - include: '#object-binding-pattern'
     - include: '#array-binding-pattern'
     - include: '#destructuring-variable-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   destructuring-variable-rest:
@@ -433,13 +411,12 @@ repository:
     - include: "#string"
     - include: '#comment'
     - include: '#decorator'
-    - include: '#field-declaration'
     - include: '#method-declaration'
     - include: '#indexer-declaration'
+    - include: '#field-declaration'
     - include: '#type-annotation'
     - include: '#variable-initializer'
     - include: '#access-modifier'
-    - include: '#static-modifier'
     - include: '#property-accessor'
     - include: '#expression'
     - include: '#punctuation-comma'
@@ -459,9 +436,9 @@ repository:
   type-object-members:
     patterns:
     - include: '#comment'
-    - include: '#field-declaration'
     - include: '#method-declaration'
     - include: '#indexer-declaration'
+    - include: '#field-declaration'
     - include: '#type-annotation'
     - begin: \.\.\.
       beginCaptures:
@@ -474,27 +451,30 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?\s*((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\"))\s*(\?\s*)?(?=(=|:))
+    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-      '2': { name: variable.object.property.ts }
-      '3': { name: keyword.operator.optional.ts }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#variable-initializer'
-    - begin: \G
-      end: (?!\G)(?=[};,=]|$)|(?<=\})
+    - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))
+      end: (?=[};,=]|$)|(?<=\})
       patterns:
       - include: '#type-annotation'
       - include: '#string'
+      - include: '#array-literal'
       - include: '#comment'
+      - name: variable.object.property.ts
+        match: '[_$[:alpha:]][_$[:alnum:]]*'
+      - name: keyword.operator.optional.ts
+        match: \?
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
+    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
-      '1': { name: storage.modifier.ts } # captures keyword (abstract)
-      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '2': { name: storage.modifier.ts } # captures keyword (abstract)
       '3': { name: storage.modifier.async.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
       '5': { name: keyword.operator.new.ts } # captures keyword (new)
@@ -511,11 +491,10 @@ repository:
     - include: '#decl-block'
 
   method-overload-declaration:
-    name: meta.method.overload.declaration.ts
-    begin: (?<!\.|\$)(?:\b(abstract)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
+    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
-      '1': { name: storage.modifier.ts } # captures keyword (abstract)
-      '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+      '2': { name: storage.modifier.ts } # captures keyword (abstract)
       '3': { name: storage.modifier.async.ts } # captures keyword (async)
       '4': { name: storage.type.property.ts } # captures keyword (get|set)
       '5': { name: keyword.operator.new.ts } # captures keyword (new)
@@ -526,7 +505,7 @@ repository:
     - include: '#method-declaration-name'
 
   method-declaration-name:
-    begin: \G(?!\(|\<)
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??)\s*[\(\<])
     end: (?=\(|\<)
     patterns:
     - include: '#string'
@@ -538,23 +517,17 @@ repository:
     
   indexer-declaration:
     name: meta.indexer.declaration.ts
-    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)(?=\s*[_$[:alpha:]][_$[:alnum:]]*\s*[:\]])
+    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: meta.brace.square.ts }
+      '3': { name: variable.parameter.ts}
     end: (\])\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.ts }
       '2': { name: keyword.operator.optional.ts }
     patterns:
     - include: '#type-annotation'
-    - include: '#indexer-parameter'
-
-  indexer-parameter:
-    name: meta.indexer.parameter.ts
-    match: ([_$[:alpha:]][_$[:alnum:]]*)
-    captures:
-      '1': { name: variable.parameter.ts}
 
   function-declaration:
     name: meta.function.ts
@@ -618,12 +591,13 @@ repository:
     - include: '#object-member' 
 
   parameter-name:
-    match: '(?:\s*\b(public|private|protected)\b\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)'
+    match: '(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)'
     captures:
       '1': { name: storage.modifier.ts }
-      '2': { name: keyword.operator.rest.ts }
-      '3': { name: variable.parameter.ts }
-      '4': { name: keyword.operator.optional.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: keyword.operator.rest.ts }
+      '4': { name: variable.parameter.ts }
+      '5': { name: keyword.operator.optional.ts }
 
   destructuring-parameter:
     patterns:
@@ -659,8 +633,10 @@ repository:
       - include: '#parameter-array-binding-pattern'
       - name: variable.parameter.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
+      - include: '#variable-initializer'
     - include: '#parameter-object-binding-pattern'
     - include: '#destructuring-parameter-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   parameter-array-binding-element:
@@ -669,6 +645,7 @@ repository:
     - include: '#parameter-object-binding-pattern'
     - include: '#parameter-array-binding-pattern'
     - include: '#destructuring-parameter-rest'
+    - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
   destructuring-parameter-rest:
@@ -899,7 +876,7 @@ repository:
     begin: (?<!=|!)(=)(?!=)
     beginCaptures:
       '1': { name: keyword.operator.assignment.ts }
-    end: (?=$|[,);}])
+    end: (?=$|[,);}\]])
     patterns:
       - include: '#expression'
 
@@ -1399,6 +1376,8 @@ repository:
       match: \*=|(?<!\()/=|%=|\+=|\-=
     - name: keyword.operator.assignment.compound.bitwise.ts
       match: \&=|\^=|<<=|>>=|>>>=|\|=
+    - name: keyword.operator.bitwise.shift.ts
+      match: <<|>>>|>>
     - name: keyword.operator.comparison.ts
       match: ===|!==|==|!=
     - name: keyword.operator.relational.ts
@@ -1433,7 +1412,7 @@ repository:
         '1': { name: storage.modifier.async.ts }
         '2': { name: variable.parameter.ts }
     - name: meta.arrow.ts
-      begin: (?x)(?<=return|throw|yield|await|async|default|[=(\[,:>*])\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+      begin: (?x)\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
       end: (?==>)
       patterns:
       - include: '#comment'
@@ -1705,11 +1684,7 @@ repository:
 
   access-modifier:
     name: storage.modifier.ts
-    match: (?<!\.|\$)\b(public|protected|private|readonly)\b(?!\$)
-
-  static-modifier:
-    name: storage.modifier.ts
-    match: (?<!\.|\$)\b(static)\b(?!\$)
+    match: (?<!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$)
 
   property-accessor:
     name: storage.type.property.ts
@@ -1746,27 +1721,25 @@ repository:
       match: (?<!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b
     - match: |-
           (?x)
-          (?:(?<=@param)|(?<=@type))
+          (?:(?<=@param)|(?<=@arg)|(?<=@argument)|(?<=@type))
           \s+
           ({(?:
             \* |                                        # {*} any type
             \? |                                        # {?} unknown type
-
-            (?:                                          # Check for a prefix
+            (?:                                         # Check for a prefix
               \? |                                      # {?string} nullable type
-              !   |                                      # {!string} non-nullable type
+              !   |                                     # {!string} non-nullable type
               \.{3}                                     # {...string} variable number of parameters
             )?
-
             (?:
               \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
                 [a-zA-Z_$]+
                 (?:
                   (?:
                     [\w$]*
-                    (?:\[\])?                          # {(string[]|number)} type application, an array of strings or a number
+                    (?:\[\])?                           # {(string[]|number)} type application, an array of strings or a number
                   ) |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>            # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
                 (?:
                   [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
@@ -1776,7 +1749,7 @@ repository:
                       [\w$]*
                       (?:\[\])?                        # {(string|number[])} type application, a string or an array of numbers
                     ) |
-                    <[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application
+                    \.?<[\w$]+(?:,\s+[\w$]+)*>         # {Array<string>} or {Object<string, number>} type application (optional .)
                   )
                 )*
               \) |
@@ -1786,35 +1759,35 @@ repository:
                   [\w$]*
                   (?:\[\])?                            # {string[]|number} type application, an array of strings or a number
                 ) |
-                <[\w$]+(?:,\s+[\w$]+)*>               # {Array<string>} or {Object<string, number>} type application
+                \.?<[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application (optional .)
               )
               (?:
-                [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+                [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
                 [a-zA-Z_$]+
                 (?:
                   [\w$]* |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
               )*
             )
-                                                         # Check for suffix
+                                                       # Check for suffix
             (?:\[\])?                                  # {string[]} type application, an array of strings
-            =?                                           # {string=} optional parameter
+            =?                                         # {string=} optional parameter
           )})
           \s+
           (
-            \[                                          # [foo] optional parameter
+            \[                                         # [foo] optional parameter
               \s*
               (?:
                 [a-zA-Z_$][\w$]*
                 (?:
                   (?:\[\])?                            # Foo[].bar properties within an array
-                  \.                                    # Foo.Bar namespaced parameter
+                  \.                                   # Foo.Bar namespaced parameter
                   [a-zA-Z_$][\w$]*
                 )*
                 (?:
                   \s*
-                  =                                      # [foo=bar] Default parameter value
+                  =                                    # [foo=bar] Default parameter value
                   \s*
                   [\w$\s]*
                 )?
@@ -1825,12 +1798,13 @@ repository:
               [a-zA-Z_$][\w$]*
               (?:
                 (?:\[\])?                              # Foo[].bar properties within an array
-                \.                                      # Foo.Bar namespaced parameter
+                \.                                     # Foo.Bar namespaced parameter
                 [a-zA-Z_$][\w$]*
               )*
             )?
           )
           \s+
+          (?:-\s+)?                                    # optional hyphen before the description
           ((?:(?!\*\/).)*)                             # The type description
       captures:
         '0': { name: other.meta.jsdoc }
@@ -1840,50 +1814,51 @@ repository:
     - match: |-
           (?x)
           ({(?:
-            \* |                                        # {*} any type
-            \? |                                        # {?} unknown type
+            \* |                                       # {*} any type
+            \? |                                       # {?} unknown type
 
-            (?:                                          # Check for a prefix
-              \? |                                      # {?string} nullable type
-              !   |                                      # {!string} non-nullable type
-              \.{3}                                     # {...string} variable number of parameters
+            (?:                                        # Check for a prefix
+              \? |                                     # {?string} nullable type
+              !   |                                    # {!string} non-nullable type
+              \.{3}                                    # {...string} variable number of parameters
             )?
 
             (?:
-              \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
+              \(                                       # Opening bracket of multiple types with parenthesis {(string|number)}
                 [a-zA-Z_$]+
                 (?:
                   [\w$]* |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
                 (?:
-                  [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+                  [\.|~]                               # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
                   [a-zA-Z_$]+
                   (?:
                     [\w$]* |
-                    <[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application
+                    \.?<[\w$]+(?:,\s+[\w$]+)*>         # {Array<string>} or {Object<string, number>} type application (optional .)
                   )
                 )*
               \) |
               [a-zA-Z_$]+
               (?:
                 [\w$]* |
-                <[\w$]+(?:,\s+[\w$]+)*>               # {Array<string>} or {Object<string, number>} type application
+                \.?<[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application (optional .)
               )
               (?:
-                [\.|~]                                  # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+                [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
                 [a-zA-Z_$]+
                 (?:
                   [\w$]* |
-                  <[\w$]+(?:,\s+[\w$]+)*>             # {Array<string>} or {Object<string, number>} type application
+                  \.?<[\w$]+(?:,\s+[\w$]+)*>           # {Array<string>} or {Object<string, number>} type application (optional .)
                 )
               )*
             )
-                                                         # Check for suffix
+                                                       # Check for suffix
             (?:\[\])?                                  # {string[]} type application, an array of strings
-            =?                                           # {string=} optional parameter
+            =?                                         # {string=} optional parameter
           )})
           \s+
+          (?:-\s+)?                                    # optional hyphen before the description
           ((?:(?!\*\/).)*)                             # The type description
       captures:
         '0': { name: other.meta.jsdoc }
