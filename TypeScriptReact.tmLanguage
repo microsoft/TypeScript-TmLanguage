@@ -112,6 +112,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#variable-initializer</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#comment</string>
           </dict>
           <dict>
@@ -135,33 +139,20 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|[;,}]|(\s+(of|in)\s+))</string>
+        <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
         <key>patterns</key>
         <array>
           <dict>
             <key>include</key>
-            <string>#variable-initializer</string>
+            <string>#type-annotation</string>
           </dict>
           <dict>
-            <key>begin</key>
-            <string>\G</string>
-            <key>end</key>
-            <string>(?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#type-annotation</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#string</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-            </array>
+            <key>include</key>
+            <string>#string</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#comment</string>
           </dict>
         </array>
       </dict>
@@ -173,60 +164,22 @@
             <key>name</key>
             <string>meta.object-binding-pattern-variable.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!=|:|of|in)\s*(\{)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.binding-pattern.object.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;!=|:|of|in)\s*(?=\{)</string>
             <key>end</key>
-            <string>(?=$|[;,}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#variable-initializer</string>
+                <string>#object-binding-pattern</string>
               </dict>
               <dict>
-                <key>begin</key>
-                <string>(?&lt;=\{)</string>
-                <key>end</key>
-                <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
-                <key>patterns</key>
-                <array>
-                  <dict>
-                    <key>begin</key>
-                    <string>(?&lt;=\{)</string>
-                    <key>end</key>
-                    <string>\}</string>
-                    <key>endCaptures</key>
-                    <dict>
-                      <key>0</key>
-                      <dict>
-                        <key>name</key>
-                        <string>punctuation.definition.binding-pattern.object.tsx</string>
-                      </dict>
-                    </dict>
-                    <key>patterns</key>
-                    <array>
-                      <dict>
-                        <key>include</key>
-                        <string>#object-binding-element</string>
-                      </dict>
-                    </array>
-                  </dict>
-                  <dict>
-                    <key>include</key>
-                    <string>#type-annotation</string>
-                  </dict>
-                  <dict>
-                    <key>include</key>
-                    <string>#comment</string>
-                  </dict>
-                </array>
+                <key>include</key>
+                <string>#type-annotation</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
               </dict>
             </array>
           </dict>
@@ -234,60 +187,22 @@
             <key>name</key>
             <string>meta.array-binding-pattern-variable.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!=|:|of|in)\s*(\[)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.binding-pattern.array.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;!=|:|of|in)\s*(?=\[)</string>
             <key>end</key>
-            <string>(?=$|[;,}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#variable-initializer</string>
+                <string>#array-binding-pattern</string>
               </dict>
               <dict>
-                <key>begin</key>
-                <string>(?&lt;=\[)</string>
-                <key>end</key>
-                <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
-                <key>patterns</key>
-                <array>
-                  <dict>
-                    <key>begin</key>
-                    <string>(?&lt;=\[)</string>
-                    <key>end</key>
-                    <string>\]</string>
-                    <key>endCaptures</key>
-                    <dict>
-                      <key>0</key>
-                      <dict>
-                        <key>name</key>
-                        <string>punctuation.definition.binding-pattern.array.tsx</string>
-                      </dict>
-                    </dict>
-                    <key>patterns</key>
-                    <array>
-                      <dict>
-                        <key>include</key>
-                        <string>#array-binding-element</string>
-                      </dict>
-                    </array>
-                  </dict>
-                  <dict>
-                    <key>include</key>
-                    <string>#type-annotation</string>
-                  </dict>
-                  <dict>
-                    <key>include</key>
-                    <string>#comment</string>
-                  </dict>
-                </array>
+                <key>include</key>
+                <string>#type-annotation</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
               </dict>
             </array>
           </dict>

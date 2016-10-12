@@ -1,0 +1,152 @@
+original file
+-----------------------------------
+class Test {
+  method() {
+    const obj = { a: 'hello' };
+    const {
+      a
+    } = obj;
+    const x = 'world';
+  }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Test {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^
+       source.ts meta.class.ts entity.name.class.ts
+           ^
+           source.ts meta.class.ts
+            ^
+            source.ts meta.class.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.class.ts
+>  method() {
+ ^^
+ source.ts meta.class.ts
+   ^^^^^^
+   source.ts meta.class.ts meta.method.declaration.ts entity.name.function.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    const obj = { a: 'hello' };
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+           ^^^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts meta.object.member.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                       ^^^^^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts meta.object.member.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-literal.ts punctuation.definition.block.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                                ^^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    const {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+            ^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+>      a
+ ^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+       ^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+        ^^
+        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+>    } = obj;
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+       ^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+         ^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    const x = 'world';
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                ^^^^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts string.quoted.single.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                       ^^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+   ^
+   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

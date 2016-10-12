@@ -36,6 +36,7 @@ repository:
     patterns:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
+    - include: '#variable-initializer'
     - include: '#comment'
     - include: '#punctuation-comma'
 
@@ -44,54 +45,28 @@ repository:
     begin: ([_$[:alpha:]][_$[:alnum:]]*)
     beginCaptures:
       '1': { name: variable.other.readwrite.ts }
-    end: (?=$|[;,}]|(\s+(of|in)\s+))
+    end: (?=$|[;,=}]|(\s+(of|in)\s+))
     patterns:
-    - include: '#variable-initializer'
-    - begin: \G
-      end: (?!\G)(?=$|[;,=}]|(\s+(of|in)\s+))
-      patterns:
-      - include: '#type-annotation'
-      - include: '#string'
-      - include: '#comment'
+    - include: '#type-annotation'
+    - include: '#string'
+    - include: '#comment'
 
   destructuring-variable:
     patterns:
     - name: meta.object-binding-pattern-variable.ts
-      begin: (?<!=|:|of|in)\s*(\{)
-      beginCaptures:
-        '1': { name: punctuation.definition.binding-pattern.object.ts }
-      end: (?=$|[;,}]|(\s+(of|in)\s+))
+      begin: (?<!=|:|of|in)\s*(?=\{)
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
       patterns:
-      - include: '#variable-initializer'
-      - begin: (?<=\{)
-        end: (?=$|[;,=}]|(\s+(of|in)\s+))
-        patterns:
-        - begin: (?<=\{)
-          end: \}
-          endCaptures:
-            '0': { name: punctuation.definition.binding-pattern.object.ts }
-          patterns:
-          - include: '#object-binding-element'
-        - include: '#type-annotation'
-        - include: '#comment'
+      - include: '#object-binding-pattern'
+      - include: '#type-annotation'
+      - include: '#comment'
     - name: meta.array-binding-pattern-variable.ts
-      begin: (?<!=|:|of|in)\s*(\[)
-      beginCaptures:
-        '1': { name: punctuation.definition.binding-pattern.array.ts }
-      end: (?=$|[;,}]|(\s+(of|in)\s+))
+      begin: (?<!=|:|of|in)\s*(?=\[)
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
       patterns:
-      - include: '#variable-initializer'
-      - begin: (?<=\[)
-        end: (?=$|[;,=}]|(\s+(of|in)\s+))
-        patterns:
-        - begin: (?<=\[)
-          end: \]
-          endCaptures:
-            '0': { name: punctuation.definition.binding-pattern.array.ts }
-          patterns:
-          - include: '#array-binding-element'
-        - include: '#type-annotation'
-        - include: '#comment'
+      - include: '#array-binding-pattern'
+      - include: '#type-annotation'
+      - include: '#comment'
 
   object-binding-element:
     patterns:

@@ -96,10 +96,10 @@ Grammar: TypeScript.tmLanguage
                [12, 15]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts comment.block.ts punctuation.definition.comment.ts 
 >var x: string = /* comment */ "yahoo";
                  ^^
-                 [13, 17]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
+                 [13, 17]: source.ts meta.var.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >var x: string = "yahoo" /* comment */;
                          ^^
-                         [14, 25]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
+                         [14, 25]: source.ts meta.var.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >var x: string = "yahoo"; /* comment */
                           ^^
                           [15, 26]: source.ts comment.block.ts punctuation.definition.comment.ts 
@@ -118,10 +118,10 @@ Grammar: TypeScript.tmLanguage
                [20, 15]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts comment.block.ts punctuation.definition.comment.ts 
 >var x: string = /* comment */ "yahoo"
                  ^^
-                 [21, 17]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
+                 [21, 17]: source.ts meta.var.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >var x: string = "yahoo" /* comment */
                          ^^
-                         [22, 25]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
+                         [22, 25]: source.ts meta.var.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >
 >/**/ interface i extends i1, i2, i3 {}
  ^^
@@ -284,17 +284,17 @@ Grammar: TypeScript.tmLanguage
       [64, 6]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >var x=/*comments*/new String();
        ^^
-       [65, 7]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
+       [65, 7]: source.ts meta.var.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >var x= new/*comments*/String();
            ^^
-           [66, 11]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts comment.block.ts punctuation.definition.comment.ts 
+           [66, 11]: source.ts meta.var.expr.ts new.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >
 >var x /* comments */ = new String();
        ^^
        [68, 7]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >var x = /* comments */ new String();
          ^^
-         [69, 9]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts comment.block.ts punctuation.definition.comment.ts 
+         [69, 9]: source.ts meta.var.expr.ts comment.block.ts punctuation.definition.comment.ts 
 >var x = new /* comments */ String();
              ^^
-             [70, 13]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts new.expr.ts comment.block.ts punctuation.definition.comment.ts 
+             [70, 13]: source.ts meta.var.expr.ts new.expr.ts comment.block.ts punctuation.definition.comment.ts 
