@@ -377,7 +377,7 @@ repository:
     - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
     - match: '[_$[:alpha:]][_$[:alnum:]]*'
       captures:
-        '0': { name: 'entity.name.class.ts' }
+        '0': { name: 'entity.name.type.class.ts' }
     - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
     - include: '#class-or-interface-body'
 
