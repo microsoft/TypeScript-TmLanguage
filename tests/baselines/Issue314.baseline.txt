@@ -1,0 +1,68 @@
+original file
+-----------------------------------
+let x = a ? b as X : c;
+let y = 123;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let x = a ? b as X : c;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.ternary.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^^
+               source.ts meta.var.expr.ts keyword.control.as.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts entity.name.type.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.ternary.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts variable.other.readwrite.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts
+>let y = 123;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^^^
+         source.ts meta.var.expr.ts constant.numeric.decimal.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
