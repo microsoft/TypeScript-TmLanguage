@@ -3403,7 +3403,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=\()</string>
+        <string>(?&lt;=\))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3444,6 +3444,10 @@
                 <string>#punctuation-comma</string>
               </dict>
             </array>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#paren-expression</string>
           </dict>
         </array>
       </dict>
@@ -3614,9 +3618,13 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=[(;),]|$|((?&lt;!\.|\$)\bnew\b(?!\$)))</string>
+        <string>(?&lt;=\))|(?=[;),]|$|((?&lt;!\.|\$)\bnew\b(?!\$)))</string>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>include</key>
+            <string>#paren-expression</string>
+          </dict>
           <dict>
             <key>include</key>
             <string>#type</string>

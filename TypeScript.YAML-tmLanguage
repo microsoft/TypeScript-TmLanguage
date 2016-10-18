@@ -1209,7 +1209,7 @@ repository:
     beginCaptures:
       '1': { name: punctuation.accessor.ts }
       '2': { name: entity.name.function.ts }
-    end: (?=\()
+    end: (?<=\))
     patterns:
     - include: '#comment'
     - name: meta.type.parameters.ts
@@ -1222,6 +1222,7 @@ repository:
       patterns:
       - include: '#type'
       - include: '#punctuation-comma'
+    - include: '#paren-expression'
 
   identifiers:
     patterns:
@@ -1292,9 +1293,9 @@ repository:
     begin: '(?<!\.|\$)\b(new)\b(?!\$)'
     beginCaptures:
       '1': { name: keyword.operator.new.ts }
-    # new-expr ends just before any type or call arguments. Type arguments will be picked up by #cast.
-    end: '(?=[(;),]|$|((?<!\.|\$)\bnew\b(?!\$)))'
+    end: '(?<=\))|(?=[;),]|$|((?<!\.|\$)\bnew\b(?!\$)))'
     patterns:
+    - include: '#paren-expression'
     - include: '#type'
 
   object-member:
