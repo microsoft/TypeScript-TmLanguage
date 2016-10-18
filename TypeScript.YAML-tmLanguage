@@ -698,7 +698,7 @@ repository:
     - include: '#type'
 
   type-predicate-operator:
-    name: keyword.operator.is.ts
+    name: keyword.operator.expression.is.ts
     match: (?<!\.|\$)\bis\b(?!\$)
 
   type-annotation:
@@ -1351,18 +1351,18 @@ repository:
     patterns:
     - name: keyword.control.flow.ts
       match: (?<!\.|\$)\b(await)\b(?!\$)
-    - name: keyword.operator.delete.ts
+    - name: keyword.operator.expression.delete.ts
       match: (?<!\.|\$)\bdelete\b(?!\$)
-    - name: keyword.operator.in.ts
+    - name: keyword.operator.expression.in.ts
       match: (?<!\.|\$)\bin\b(?!\$)
-    - name: keyword.operator.of.ts
+    - name: keyword.operator.expression.of.ts
       match: (?<!\.|\$)\bof\b(?!\$)
-    - name: keyword.operator.instanceof.ts
+    - name: keyword.operator.expression.instanceof.ts
       match: (?<!\.|\$)\binstanceof\b(?!\$)
     - name: keyword.operator.new.ts
       match: (?<!\.|\$)\bnew\b(?!\$)
     - include: '#typeof-operator'
-    - name: keyword.operator.void.ts
+    - name: keyword.operator.expression.void.ts
       match: (?<!\.|\$)\bvoid\b(?!\$)
     - begin: (?<!\.|\$)\bas\b(?!\$)
       beginCaptures:
@@ -1396,7 +1396,7 @@ repository:
       match: '%|\*|/|-|\+'
 
   typeof-operator:
-    name: keyword.operator.typeof.ts
+    name: keyword.operator.expression.typeof.ts
     match: (?<!\.|\$)\btypeof\b(?!\$)
 
   arrow-function:

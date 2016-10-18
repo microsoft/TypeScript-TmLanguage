@@ -120,7 +120,7 @@ Grammar: TypeScript.tmLanguage
 >
 >void newFunctionName(){
  ^^^^
- [19, 1]: source.ts keyword.operator.void.ts 
+ [19, 1]: source.ts keyword.operator.expression.void.ts 
       ^^^^^^^^^^^^^^^
       [19, 6]: source.ts entity.name.function.ts 
 >
@@ -162,14 +162,14 @@ Grammar: TypeScript.tmLanguage
 >
 >var m: typeof M = M;
         ^^^^^^
-        [41, 8]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.typeof.ts 
+        [41, 8]: source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.expression.typeof.ts 
 >
 >var adder = new Adder(3, 4);
              ^^^
              [43, 13]: source.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts 
 >delete (adder)
  ^^^^^^
- [44, 1]: source.ts keyword.operator.delete.ts 
+ [44, 1]: source.ts keyword.operator.expression.delete.ts 
 >
 >var s = typeof {}git 
 >interface I {}
@@ -210,7 +210,7 @@ Grammar: TypeScript.tmLanguage
                            [56, 27]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts 
 >            if (typeof parent === 'object' || parent instanceof Error) {
                  ^^^^^^
-                 [57, 17]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.typeof.ts 
+                 [57, 17]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.expression.typeof.ts 
                         ^^^^^^
                         [57, 24]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts 
                                ^^^
@@ -220,7 +220,7 @@ Grammar: TypeScript.tmLanguage
                                                ^^^^^^
                                                [57, 47]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts 
                                                       ^^^^^^^^^^
-                                                      [57, 54]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.instanceof.ts 
+                                                      [57, 54]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.expression.instanceof.ts 
                                                                  ^^^^^
                                                                  [57, 65]: source.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts support.class.error.ts 
 >            	
