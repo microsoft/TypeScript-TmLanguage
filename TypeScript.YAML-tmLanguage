@@ -229,12 +229,37 @@ repository:
 
   enum-declaration:
     name: meta.enum.declaration.ts
-    match: (?<!\.|\$)(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)
-    captures:
+    begin: (?<!\.|\$)(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)
+    beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts}
       '3': { name: storage.type.enum.ts }
       '4': { name: entity.name.type.enum.ts }
+    end: (?<=\})
+    patterns:
+    - include: '#comment'
+    - begin: \{
+      beginCaptures:
+        '0': { name: punctuation.definition.block.ts }
+      end: \}
+      endCaptures:
+        '0': { name: punctuation.definition.block.ts }
+      patterns:
+      - include: '#comment'
+      - begin: ([_$[:alpha:]][_$[:alnum:]]*)
+        beginCaptures:
+          '0': { name: variable.other.enummember.ts }
+        end: (?=,|\}|$)
+        patterns:
+        - include: '#comment'
+        - include: '#variable-initializer'
+      - begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")))
+        end: (?=,|\}|$)
+        patterns:
+        - include: '#string'
+        - include: '#comment'
+        - include: '#variable-initializer'
+      - include: '#punctuation-comma'
 
   namespace-declaration:
     name: meta.namespace.declaration.ts

@@ -1,0 +1,76 @@
+original file
+-----------------------------------
+export enum Foo {
+        A = 1 << 1,
+        B = 1 << 2,
+    }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export enum Foo {
+ ^^^^^^
+ source.ts meta.enum.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.enum.declaration.ts
+        ^^^^
+        source.ts meta.enum.declaration.ts storage.type.enum.ts
+            ^
+            source.ts meta.enum.declaration.ts
+             ^^^
+             source.ts meta.enum.declaration.ts entity.name.type.enum.ts
+                ^
+                source.ts meta.enum.declaration.ts
+                 ^
+                 source.ts meta.enum.declaration.ts punctuation.definition.block.ts
+>        A = 1 << 1,
+ ^^^^^^^^
+ source.ts meta.enum.declaration.ts
+         ^
+         source.ts meta.enum.declaration.ts variable.other.enummember.ts
+          ^
+          source.ts meta.enum.declaration.ts
+           ^
+           source.ts meta.enum.declaration.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.enum.declaration.ts
+             ^
+             source.ts meta.enum.declaration.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.enum.declaration.ts
+               ^^
+               source.ts meta.enum.declaration.ts keyword.operator.bitwise.shift.ts
+                 ^
+                 source.ts meta.enum.declaration.ts
+                  ^
+                  source.ts meta.enum.declaration.ts constant.numeric.decimal.ts
+                   ^
+                   source.ts meta.enum.declaration.ts punctuation.separator.comma.ts
+>        B = 1 << 2,
+ ^^^^^^^^
+ source.ts meta.enum.declaration.ts
+         ^
+         source.ts meta.enum.declaration.ts variable.other.enummember.ts
+          ^
+          source.ts meta.enum.declaration.ts
+           ^
+           source.ts meta.enum.declaration.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.enum.declaration.ts
+             ^
+             source.ts meta.enum.declaration.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.enum.declaration.ts
+               ^^
+               source.ts meta.enum.declaration.ts keyword.operator.bitwise.shift.ts
+                 ^
+                 source.ts meta.enum.declaration.ts
+                  ^
+                  source.ts meta.enum.declaration.ts constant.numeric.decimal.ts
+                   ^
+                   source.ts meta.enum.declaration.ts punctuation.separator.comma.ts
+>    }
+ ^^^^
+ source.ts meta.enum.declaration.ts
+     ^
+     source.ts meta.enum.declaration.ts punctuation.definition.block.ts

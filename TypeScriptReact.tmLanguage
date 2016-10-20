@@ -729,9 +729,9 @@
       <dict>
         <key>name</key>
         <string>meta.enum.declaration.tsx</string>
-        <key>match</key>
+        <key>begin</key>
         <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)</string>
-        <key>captures</key>
+        <key>beginCaptures</key>
         <dict>
           <key>1</key>
           <dict>
@@ -754,6 +754,94 @@
             <string>entity.name.type.enum.tsx</string>
           </dict>
         </dict>
+        <key>end</key>
+        <string>(?&lt;=\})</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#comment</string>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>\{</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\}</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>begin</key>
+                <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>variable.other.enummember.tsx</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?=,|\}|$)</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#comment</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#variable-initializer</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>begin</key>
+                <string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")))</string>
+                <key>end</key>
+                <string>(?=,|\}|$)</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#string</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#comment</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#variable-initializer</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#punctuation-comma</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
       </dict>
       <key>namespace-declaration</key>
       <dict>
