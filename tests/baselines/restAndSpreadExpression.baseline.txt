@@ -27,7 +27,7 @@ Grammar: TypeScript.tmLanguage
          ^
          source.ts meta.function.ts
           ^^^
-          source.ts meta.function.ts entity.name.function.ts
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
              ^
              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
               ^^^
@@ -62,13 +62,13 @@ Grammar: TypeScript.tmLanguage
       ^
       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
        ^
-       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
         ^
         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
          ^
          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
           ^
-          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+          source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
            ^
            source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
             ^
@@ -76,7 +76,7 @@ Grammar: TypeScript.tmLanguage
              ^^^
              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts keyword.operator.rest.ts
                 ^
-                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
                  ^
                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
                   ^
@@ -214,7 +214,7 @@ Grammar: TypeScript.tmLanguage
       ^
       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
        ^
-       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
         ^
         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
          ^
@@ -226,13 +226,13 @@ Grammar: TypeScript.tmLanguage
               ^
               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
                ^
-               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
                 ^
                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
                  ^
                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
                   ^
-                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts variable.other.readwrite.ts
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
                    ^
                    source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
                     ^
@@ -261,7 +261,7 @@ Grammar: TypeScript.tmLanguage
        ^
        source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
         ^
-        source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+        source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
          ^
          source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.separator.comma.ts
           ^
@@ -271,13 +271,13 @@ Grammar: TypeScript.tmLanguage
               ^
               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
                ^
-               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+               source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
                 ^
                 source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.separator.comma.ts
                  ^
                  source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
                   ^
-                  source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts variable.other.readwrite.ts
+                  source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
                    ^
                    source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
                     ^
@@ -333,7 +333,7 @@ Grammar: TypeScript.tmLanguage
     ^
     source.ts meta.var.expr.ts
      ^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
       ^
       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
        ^
@@ -374,7 +374,7 @@ Grammar: TypeScript.tmLanguage
          ^
          source.ts meta.function.ts
           ^
-          source.ts meta.function.ts entity.name.function.ts
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
            ^
            source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
             ^
@@ -420,7 +420,7 @@ Grammar: TypeScript.tmLanguage
                                 ^
                                 source.ts meta.function.ts meta.return.type.ts meta.object.type.ts
                                  ^^
-                                 source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.field.declaration.ts variable.object.property.ts
+                                 source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
                                    ^
                                    source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
                                     ^
@@ -511,7 +511,7 @@ Grammar: TypeScript.tmLanguage
          ^
          source.ts meta.function.ts
           ^^^^^^^^^^
-          source.ts meta.function.ts entity.name.function.ts
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
                     ^
                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
                      ^
@@ -558,7 +558,7 @@ Grammar: TypeScript.tmLanguage
     ^
     source.ts meta.var.expr.ts
      ^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
          ^
          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
           ^
@@ -628,7 +628,7 @@ Grammar: TypeScript.tmLanguage
     ^
     source.ts meta.var.expr.ts
      ^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
           ^
           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
            ^
@@ -665,7 +665,7 @@ Grammar: TypeScript.tmLanguage
     ^
     source.ts meta.var.expr.ts
      ^^^^^^
-     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts variable.other.readwrite.ts
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
            ^
            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
             ^

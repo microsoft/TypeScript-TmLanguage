@@ -44,7 +44,7 @@ repository:
     name: meta.var-single-variable.expr.ts
     begin: ([_$[:alpha:]][_$[:alnum:]]*)
     beginCaptures:
-      '1': { name: variable.other.readwrite.ts }
+      '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
     end: (?=$|[;,=}]|(\s+(of|in)\s+))
     patterns:
     - include: '#type-annotation'
@@ -79,7 +79,7 @@ repository:
       patterns:
       - include: '#object-binding-pattern'
       - include: '#array-binding-pattern'
-      - name: variable.other.readwrite.ts
+      - name: meta.definition.variable.ts variable.other.readwrite.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
       - include: '#variable-initializer'
     - include: '#object-binding-pattern'
@@ -100,7 +100,7 @@ repository:
     match: (?:(\.\.\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)
     captures:
       '1': { name: keyword.operator.rest.ts }
-      '2': { name: variable.other.readwrite.ts }
+      '2': { name: meta.definition.variable.ts variable.other.readwrite.ts }
 
   object-binding-pattern:
     begin: (?:(\.\.\.)\s*)?(\{)
@@ -489,7 +489,7 @@ repository:
       - include: '#string'
       - include: '#array-literal'
       - include: '#comment'
-      - name: variable.object.property.ts
+      - name: meta.definition.property.ts variable.object.property.ts
         match: '[_$[:alpha:]][_$[:alnum:]]*'
       - name: keyword.operator.optional.ts
         match: \?
@@ -535,7 +535,7 @@ repository:
     patterns:
     - include: '#string'
     - include: '#array-literal'
-    - name: entity.name.function.ts
+    - name: meta.definition.method.ts entity.name.function.ts
       match: '[_$[:alpha:]][_$[:alnum:]]*'
     - name: keyword.operator.optional.ts
       match: \?
@@ -562,7 +562,7 @@ repository:
       '2': { name: storage.modifier.async.ts }
       '3': { name: storage.type.function.ts }
       '4': { name: keyword.generator.asterisk.ts }
-      '5': { name: entity.name.function.ts }
+      '5': { name: meta.definition.function.ts entity.name.function.ts }
     end: (?=;|\})|(?<=\})
     patterns:
     - include: '#comment'
@@ -580,7 +580,7 @@ repository:
       '2': { name: storage.modifier.async.ts }
       '3': { name: storage.type.function.ts }
       '4': { name: keyword.generator.asterisk.ts }
-      '5': { name: entity.name.function.ts }
+      '5': { name: meta.definition.function.ts entity.name.function.ts }
 
   object-literal:
     name: meta.object-literal.ts
