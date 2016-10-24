@@ -4,6 +4,6 @@
 **Code**
 
 ```ts
-// Please include code snippit that demostrats the issue
+// Please include a code snippet that demonstrates the issue
 
 ```
