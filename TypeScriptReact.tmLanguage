@@ -2074,36 +2074,73 @@
       </dict>
       <key>parameter-name</key>
       <dict>
-        <key>match</key>
-        <string>(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)</string>
-        <key>captures</key>
-        <dict>
-          <key>1</key>
+        <key>patterns</key>
+        <array>
           <dict>
-            <key>name</key>
-            <string>storage.modifier.tsx</string>
+            <key>match</key>
+            <string>(?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s* (=\s*( (async\s+) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.rest.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tsx</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.optional.tsx</string>
+              </dict>
+            </dict>
           </dict>
-          <key>2</key>
           <dict>
-            <key>name</key>
-            <string>storage.modifier.tsx</string>
+            <key>match</key>
+            <string>(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.rest.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter.tsx</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.optional.tsx</string>
+              </dict>
+            </dict>
           </dict>
-          <key>3</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.rest.tsx</string>
-          </dict>
-          <key>4</key>
-          <dict>
-            <key>name</key>
-            <string>variable.parameter.tsx</string>
-          </dict>
-          <key>5</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.optional.tsx</string>
-          </dict>
-        </dict>
+        </array>
       </dict>
       <key>destructuring-parameter</key>
       <dict>
