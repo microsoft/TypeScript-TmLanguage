@@ -41,15 +41,44 @@ repository:
     - include: '#punctuation-comma'
 
   var-single-variable:
-    name: meta.var-single-variable.expr.ts
-    begin: ([_$[:alpha:]][_$[:alnum:]]*)
-    beginCaptures:
-      '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
-    end: (?=$|[;,=}]|(\s+(of|in)\s+))
     patterns:
-    - include: '#type-annotation'
-    - include: '#string'
-    - include: '#comment'
+    - name: meta.var-single-variable.expr.ts
+      # function assignment |
+      # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+      begin: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
+        (=\s*(
+          (async\s+) |
+          (function\s+) |
+          ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+          ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+        ) |
+        (:\s*(
+          (<) |
+          ([(]\s*(
+            ([)]) |
+            (\.\.\.) |
+            ([_$[:alnum:]]+\s*(
+              ([:,?=])|
+              ([)]\s*=>)
+            ))
+          )))
+        ))
+      beginCaptures:
+        '1': { name: meta.definition.variable.ts entity.name.function.ts }
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#type-annotation'
+      - include: '#string'
+      - include: '#comment'
+    - name: meta.var-single-variable.expr.ts
+      begin: ([_$[:alpha:]][_$[:alnum:]]*)
+      beginCaptures:
+        '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#type-annotation'
+      - include: '#string'
+      - include: '#comment'
 
   destructuring-variable:
     patterns:

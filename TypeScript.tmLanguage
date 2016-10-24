@@ -126,33 +126,69 @@
       </dict>
       <key>var-single-variable</key>
       <dict>
-        <key>name</key>
-        <string>meta.var-single-variable.expr.ts</string>
-        <key>begin</key>
-        <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>meta.definition.variable.ts variable.other.readwrite.ts</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
         <key>patterns</key>
         <array>
           <dict>
-            <key>include</key>
-            <string>#type-annotation</string>
+            <key>name</key>
+            <string>meta.var-single-variable.expr.ts</string>
+            <key>begin</key>
+            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s* (=\s*( (async\s+) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.definition.variable.ts entity.name.function.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-annotation</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#string</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#string</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#comment</string>
+            <key>name</key>
+            <string>meta.var-single-variable.expr.ts</string>
+            <key>begin</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.definition.variable.ts variable.other.readwrite.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-annotation</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#string</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
