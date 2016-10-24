@@ -518,6 +518,27 @@ repository:
       - include: '#string'
       - include: '#array-literal'
       - include: '#comment'
+      - name: meta.definition.property.ts entity.name.function.ts
+        # function assignment |
+        # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+        match: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
+          (=\s*(
+            (async\s+) |
+            (function\s+) |
+            ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+            ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+          ) |
+          (:\s*(
+            (<) |
+            ([(]\s*(
+              ([)]) |
+              (\.\.\.) |
+              ([_$[:alnum:]]+\s*(
+                ([:,?=])|
+                ([)]\s*=>)
+              ))
+            )))
+          ))
       - name: meta.definition.property.ts variable.object.property.ts
         match: '[_$[:alpha:]][_$[:alnum:]]*'
       - name: keyword.operator.optional.ts
