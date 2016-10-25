@@ -417,13 +417,14 @@ repository:
     - include: '#comment'
     - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
-    - match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
+    - match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)(?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)*\s*([,<{]|extends|implements|//|/\*))
       captures:
         '1': { name: entity.name.type.module.ts }
         '2': { name: punctuation.accessor.ts }
-    - match: '([_$[:alpha:]][_$[:alnum:]]*)'
+    - match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\s*([,<{]|extends|implements|//|/\*))
       captures:
         '1': { name: entity.other.inherited-class.ts }
+    - include: '#expression'
 
   class-or-interface-body:
     begin: \{

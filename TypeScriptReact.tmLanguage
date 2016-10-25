@@ -1373,7 +1373,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)(?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)*\s*([,&lt;{]|extends|implements|//|/\*))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -1390,7 +1390,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*([,&lt;{]|extends|implements|//|/\*))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -1399,6 +1399,10 @@
                 <string>entity.other.inherited-class.tsx</string>
               </dict>
             </dict>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#expression</string>
           </dict>
         </array>
       </dict>
