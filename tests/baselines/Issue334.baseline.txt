@@ -1,0 +1,382 @@
+original file
+-----------------------------------
+var Backbone= require("backbone");
+var SearchModel= require("./../search/models/SearchModel");
+var ResultsContainerModel= require("./ResultsContainerModel");
+
+var _PROP_SEARCH_ = "SEARCH";
+var _PROP_RESULTS_CONTAINER_   = "SERCH_RESULTS";
+
+var PageModel= Backbone.Model.extend({
+
+    defaults: function() {
+        var defaults= {};
+        defaults[_PROP_SEARCH_]= new SearchModel();
+        defaults[_PROP_RESULTS_CONTAINER_]= new ResultsContainerModel();
+        return defaults;
+    },
+
+}, {
+    propSearch: _PROP_SEARCH_,
+    propResultsContainer: _PROP_RESULTS_CONTAINER_
+});
+
+module.exports= PageModel;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>var Backbone= require("backbone");
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^^^^^^^
+               source.ts meta.var.expr.ts support.function.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.brace.round.ts
+                       ^
+                       source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                        ^^^^^^^^
+                        source.ts meta.var.expr.ts string.quoted.double.ts
+                                ^
+                                source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.brace.round.ts
+                                  ^
+                                  source.ts punctuation.terminator.statement.ts
+                                   ^^
+                                   source.ts
+>var SearchModel= require("./../search/models/SearchModel");
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^^^^^^^
+                  source.ts meta.var.expr.ts support.function.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.brace.round.ts
+                          ^
+                          source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                           source.ts meta.var.expr.ts string.quoted.double.ts
+                                                         ^
+                                                         source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                          ^
+                                                          source.ts meta.var.expr.ts meta.brace.round.ts
+                                                           ^
+                                                           source.ts punctuation.terminator.statement.ts
+                                                            ^^
+                                                            source.ts
+>var ResultsContainerModel= require("./ResultsContainerModel");
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                           ^
+                           source.ts meta.var.expr.ts
+                            ^^^^^^^
+                            source.ts meta.var.expr.ts support.function.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.brace.round.ts
+                                    ^
+                                    source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                     ^^^^^^^^^^^^^^^^^^^^^^^
+                                     source.ts meta.var.expr.ts string.quoted.double.ts
+                                                            ^
+                                                            source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                             ^
+                                                             source.ts meta.var.expr.ts meta.brace.round.ts
+                                                              ^
+                                                              source.ts punctuation.terminator.statement.ts
+                                                               ^^
+                                                               source.ts
+>
+ ^^
+ source.ts
+>var _PROP_SEARCH_ = "SEARCH";
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                      ^^^^^^
+                      source.ts meta.var.expr.ts string.quoted.double.ts
+                            ^
+                            source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                             ^
+                             source.ts punctuation.terminator.statement.ts
+                              ^^
+                              source.ts
+>var _PROP_RESULTS_CONTAINER_   = "SERCH_RESULTS";
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^^^^^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                             ^^^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                ^
+                                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                                 ^
+                                 source.ts meta.var.expr.ts
+                                  ^
+                                  source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                   ^^^^^^^^^^^^^
+                                   source.ts meta.var.expr.ts string.quoted.double.ts
+                                                ^
+                                                source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                 ^
+                                                 source.ts punctuation.terminator.statement.ts
+                                                  ^^
+                                                  source.ts
+>
+ ^^
+ source.ts
+>var PageModel= Backbone.Model.extend({
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.var.expr.ts
+                ^^^^^^^^
+                source.ts meta.var.expr.ts variable.other.object.ts
+                        ^
+                        source.ts meta.var.expr.ts punctuation.accessor.ts
+                         ^^^^^
+                         source.ts meta.var.expr.ts variable.other.object.property.ts
+                              ^
+                              source.ts meta.var.expr.ts punctuation.accessor.ts
+                               ^^^^^^
+                               source.ts meta.var.expr.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.brace.round.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                       ^^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts
+>
+ ^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+>    defaults: function() {
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^^^^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts entity.name.function.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+               ^^^^^^^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts storage.type.function.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                           ^^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+>        var defaults= {};
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+         ^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.var.expr.ts
+             ^^^^^^^^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                          ^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+>        defaults[_PROP_SEARCH_]= new SearchModel();
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+         ^^^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                  ^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts keyword.operator.assignment.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+                                  ^^^
+                                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts
+                                      ^^^^^^^^^^^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                   ^
+                                                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                    ^^
+                                                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+>        defaults[_PROP_RESULTS_CONTAINER_]= new ResultsContainerModel();
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+         ^^^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                           ^
+                                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts keyword.operator.assignment.ts
+                                            ^
+                                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+                                             ^^^
+                                             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts
+                                                 ^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                                                      ^
+                                                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                       ^
+                                                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                        ^
+                                                                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                         ^^
+                                                                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+>        return defaults;
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+         ^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+                ^^^^^^^^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+>    },
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+       ^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts
+>
+ ^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+>}, {
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+   ^
+   source.ts meta.var.expr.ts
+    ^
+    source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+     ^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts
+>    propSearch: _PROP_SEARCH_,
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                 ^^^^^^^^^^^^^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                               ^^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts
+>    propResultsContainer: _PROP_RESULTS_CONTAINER_
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^^^^^^^^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                           ^^^^^^^^^^^^^^^^^^^^^^^^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                                                   ^^
+                                                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+>});
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.brace.round.ts
+   ^
+   source.ts punctuation.terminator.statement.ts
+    ^^
+    source.ts
+>
+ ^^
+ source.ts
+>module.exports= PageModel;
+ ^^^^^^
+ source.ts support.type.object.module.ts
+       ^
+       source.ts punctuation.accessor.ts
+        ^^^^^^^
+        source.ts support.type.object.module.ts
+               ^
+               source.ts keyword.operator.assignment.ts
+                ^
+                source.ts
+                 ^^^^^^^^^
+                 source.ts variable.other.readwrite.ts
+                          ^
+                          source.ts punctuation.terminator.statement.ts

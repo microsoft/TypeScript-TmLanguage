@@ -1346,7 +1346,7 @@ repository:
         '3': { name: variable.other.object.property.ts }
     # function and method assignment
     - match: (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
-        (async\s+)|(function\s+)|
+        (async\s+)|(function\s*[(<])|(function\s+)|
         ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
         ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)))
       captures:
@@ -1422,7 +1422,7 @@ repository:
       - include: '#expression'
     - name: meta.object.member.ts
       begin: (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
-        (async\s+)|(function\s+)|
+        (async\s+)|(function\s*[(<])|(function\s+)|
         ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
         ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))))
       beginCaptures:
