@@ -132,7 +132,7 @@
             <key>name</key>
             <string>meta.var-single-variable.expr.tsx</string>
             <key>begin</key>
-            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s* (=\s*( (async\s+) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
+            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s* (=\s*( (async\s+) | (function\s*[(&lt;]) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1652,7 +1652,7 @@
                 <key>name</key>
                 <string>meta.definition.property.tsx entity.name.function.tsx</string>
                 <key>match</key>
-                <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s* (=\s*( (async\s+) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
+                <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s* (=\s*( (async\s+) | (function\s*[(&lt;]) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
               </dict>
               <dict>
                 <key>name</key>
@@ -2078,7 +2078,7 @@
         <array>
           <dict>
             <key>match</key>
-            <string>(?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s* (=\s*( (async\s+) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
+            <string>(?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s* (=\s*( (async\s+) | (function\s*[(&lt;]) | (function\s+) | ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) | ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)) ) | (:\s*( (&lt;) | ([(]\s*( ([)]) | (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ))) ))</string>
             <key>captures</key>
             <dict>
               <key>1</key>

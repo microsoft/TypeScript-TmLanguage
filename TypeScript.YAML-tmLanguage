@@ -48,6 +48,7 @@ repository:
       begin: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
         (=\s*(
           (async\s+) |
+          (function\s*[(<]) |
           (function\s+) |
           ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
           ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
@@ -524,6 +525,7 @@ repository:
         match: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
           (=\s*(
             (async\s+) |
+            (function\s*[(<]) |
             (function\s+) |
             ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
             ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
@@ -672,6 +674,7 @@ repository:
     - match: (?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
         (=\s*(
           (async\s+) |
+          (function\s*[(<]) |
           (function\s+) |
           ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
           ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
