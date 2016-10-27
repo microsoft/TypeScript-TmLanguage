@@ -18,6 +18,20 @@
         <key>include</key>
         <string>#statements</string>
       </dict>
+      <dict>
+        <key>name</key>
+        <string>comment.line.shebang.ts</string>
+        <key>match</key>
+        <string>\A(#!).*(?=$)</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.comment.ts</string>
+          </dict>
+        </dict>
+      </dict>
     </array>
     <key>repository</key>
     <dict>

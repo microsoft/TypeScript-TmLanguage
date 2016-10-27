@@ -7,6 +7,10 @@ uuid: ef98eb90-bf9b-11e4-bb52-0800200c9a66
 
 patterns:
 - include: '#statements'
+- name: comment.line.shebang.ts
+  match: \A(#!).*(?=$)
+  captures:
+    '1': { name: punctuation.definition.comment.ts }
 
 repository:
   statements:
