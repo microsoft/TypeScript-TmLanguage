@@ -1582,7 +1582,7 @@
         <key>name</key>
         <string>meta.field.declaration.ts</string>
         <key>begin</key>
-        <string>(?&lt;!\()(?:(?&lt;!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))</string>
+        <string>(?&lt;!\()(?:(?&lt;!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\?\s*)?(=|:))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1601,7 +1601,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))</string>
+            <string>(?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\?\s*)?(=|:))</string>
             <key>end</key>
             <string>(?=[};,=]|$)|(?&lt;=\})</string>
             <key>patterns</key>
@@ -1643,7 +1643,7 @@
         <key>name</key>
         <string>meta.method.declaration.ts</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\&lt;]))</string>
+        <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1719,7 +1719,7 @@
       <key>method-overload-declaration</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\&lt;]))</string>
+        <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1771,7 +1771,7 @@
       <key>method-declaration-name</key>
       <dict>
         <key>begin</key>
-        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??)\s*[\(\&lt;])</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??)\s*[\(\&lt;])</string>
         <key>end</key>
         <string>(?=\(|\&lt;)</string>
         <key>patterns</key>
@@ -3749,7 +3749,7 @@
             <key>name</key>
             <string>meta.object.member.ts</string>
             <key>begin</key>
-            <string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)</string>
+            <string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[([^\[\]]|\[[^\[\]]+\])+\]))\s*:)</string>
             <key>end</key>
             <string>(?=,|\})</string>
             <key>patterns</key>
@@ -3758,7 +3758,7 @@
                 <key>name</key>
                 <string>meta.object-literal.key.ts</string>
                 <key>begin</key>
-                <string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)</string>
+                <string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[([^\[\]]|\[[^\[\]]+\])+\]))\s*:)</string>
                 <key>end</key>
                 <string>:</string>
                 <key>endCaptures</key>

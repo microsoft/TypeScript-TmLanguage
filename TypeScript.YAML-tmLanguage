@@ -480,13 +480,13 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))
+    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\?\s*)?(=|:))
     beginCaptures:
       '1': { name: storage.modifier.ts }
     end: '(?=\}|;|,|$)|(?<=\})'
     patterns:
     - include: '#variable-initializer'
-    - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[[^\]]*\]))\s*(\?\s*)?(=|:))
+    - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\?\s*)?(=|:))
       end: (?=[};,=]|$)|(?<=\})
       patterns:
       - include: '#type-annotation'
@@ -500,7 +500,7 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
+    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
       '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -520,7 +520,7 @@ repository:
     - include: '#decl-block'
 
   method-overload-declaration:
-    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??))?\s*[\(\<]))
+    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
       '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -534,7 +534,7 @@ repository:
     - include: '#method-declaration-name'
 
   method-declaration-name:
-    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[[^\]]*\]))\s*(\??)\s*[\(\<])
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??)\s*[\(\<])
     end: (?=\(|\<)
     patterns:
     - include: '#string'
@@ -1332,11 +1332,11 @@ repository:
     - include: '#comment'
     - include: '#method-declaration'
     - name: meta.object.member.ts
-      begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)
+      begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[([^\[\]]|\[[^\[\]]+\])+\]))\s*:)
       end: (?=,|\})
       patterns:
       - name: meta.object-literal.key.ts
-        begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[[^\]]*\]))\s*:)
+        begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[([^\[\]]|\[[^\[\]]+\])+\]))\s*:)
         end: ':'
         endCaptures:
           '0': { name: punctuation.separator.key-value.ts }
