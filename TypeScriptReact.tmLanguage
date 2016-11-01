@@ -268,41 +268,18 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(:)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>variable.object.property.tsx</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.destructuring.tsx</string>
-              </dict>
-            </dict>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(:))</string>
             <key>end</key>
             <string>(?=,|\})</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#object-binding-pattern</string>
+                <string>#object-binding-element-propertyName</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#array-binding-pattern</string>
-              </dict>
-              <dict>
-                <key>name</key>
-                <string>meta.definition.variable.tsx variable.other.readwrite.tsx</string>
-                <key>match</key>
-                <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#variable-initializer</string>
+                <string>#binding-element</string>
               </dict>
             </array>
           </dict>
@@ -324,7 +301,39 @@
           </dict>
         </array>
       </dict>
-      <key>array-binding-element</key>
+      <key>object-binding-element-propertyName</key>
+      <dict>
+        <key>begin</key>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(:))</string>
+        <key>end</key>
+        <string>(:)</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.destructuring.tsx</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#string</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#array-literal</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>variable.object.property.tsx</string>
+            <key>match</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+          </dict>
+        </array>
+      </dict>
+      <key>binding-element</key>
       <dict>
         <key>patterns</key>
         <array>
@@ -347,10 +356,6 @@
           <dict>
             <key>include</key>
             <string>#variable-initializer</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#punctuation-comma</string>
           </dict>
         </array>
       </dict>
@@ -438,7 +443,11 @@
         <array>
           <dict>
             <key>include</key>
-            <string>#array-binding-element</string>
+            <string>#binding-element</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#punctuation-comma</string>
           </dict>
         </array>
       </dict>
@@ -866,7 +875,7 @@
               </dict>
               <dict>
                 <key>begin</key>
-                <string>(?=(?:(?:\'[^']*\')|(?:\"[^"]*\")))</string>
+                <string>(?=((\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\])))</string>
                 <key>end</key>
                 <string>(?=,|\}|$)</string>
                 <key>patterns</key>
@@ -874,6 +883,10 @@
                   <dict>
                     <key>include</key>
                     <string>#string</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#array-literal</string>
                   </dict>
                   <dict>
                     <key>include</key>
@@ -2218,7 +2231,11 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#parameter-array-binding-element</string>
+                <string>#parameter-binding-element</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#punctuation-comma</string>
               </dict>
             </array>
           </dict>
@@ -2234,41 +2251,18 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(:)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>variable.object.property.tsx</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.destructuring.tsx</string>
-              </dict>
-            </dict>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(:))</string>
             <key>end</key>
             <string>(?=,|\})</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#parameter-object-binding-pattern</string>
+                <string>#object-binding-element-propertyName</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#parameter-array-binding-pattern</string>
-              </dict>
-              <dict>
-                <key>name</key>
-                <string>variable.parameter.tsx</string>
-                <key>match</key>
-                <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#variable-initializer</string>
+                <string>#parameter-binding-element</string>
               </dict>
             </array>
           </dict>
@@ -2290,7 +2284,7 @@
           </dict>
         </array>
       </dict>
-      <key>parameter-array-binding-element</key>
+      <key>parameter-binding-element</key>
       <dict>
         <key>patterns</key>
         <array>
@@ -2313,10 +2307,6 @@
           <dict>
             <key>include</key>
             <string>#variable-initializer</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#punctuation-comma</string>
           </dict>
         </array>
       </dict>
@@ -2404,7 +2394,11 @@
         <array>
           <dict>
             <key>include</key>
-            <string>#parameter-array-binding-element</string>
+            <string>#parameter-binding-element</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#punctuation-comma</string>
           </dict>
         </array>
       </dict>
