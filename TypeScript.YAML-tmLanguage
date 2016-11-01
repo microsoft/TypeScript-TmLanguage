@@ -45,15 +45,45 @@ repository:
     - include: '#punctuation-comma'
 
   var-single-variable:
-    name: meta.var-single-variable.expr.ts
-    begin: ([_$[:alpha:]][_$[:alnum:]]*)
-    beginCaptures:
-      '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
-    end: (?=$|[;,=}]|(\s+(of|in)\s+))
     patterns:
-    - include: '#type-annotation'
-    - include: '#string'
-    - include: '#comment'
+    - name: meta.var-single-variable.expr.ts
+      # function assignment |
+      # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+      begin: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
+        (=\s*(
+          (async\s+) |
+          (function\s*[(<]) |
+          (function\s+) |
+          ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+          ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+        ) |
+        (:\s*(
+          (<) |
+          ([(]\s*(
+            ([)]) |
+            (\.\.\.) |
+            ([_$[:alnum:]]+\s*(
+              ([:,?=])|
+              ([)]\s*=>)
+            ))
+          )))
+        ))
+      beginCaptures:
+        '1': { name: meta.definition.variable.ts entity.name.function.ts }
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#type-annotation'
+      - include: '#string'
+      - include: '#comment'
+    - name: meta.var-single-variable.expr.ts
+      begin: ([_$[:alpha:]][_$[:alnum:]]*)
+      beginCaptures:
+        '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#type-annotation'
+      - include: '#string'
+      - include: '#comment'
 
   destructuring-variable:
     patterns:
@@ -75,30 +105,34 @@ repository:
   object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: ([_$[:alpha:]][_$[:alnum:]]*)\s*(:)
-      beginCaptures:
-        '1': { name: variable.object.property.ts }
-        '2': { name: punctuation.destructuring.ts }
+    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(:))
       end: (?=,|\})
       patterns:
-      - include: '#object-binding-pattern'
-      - include: '#array-binding-pattern'
-      - name: meta.definition.variable.ts variable.other.readwrite.ts
-        match: ([_$[:alpha:]][_$[:alnum:]]*)
-      - include: '#variable-initializer'
+      - include: '#object-binding-element-propertyName'
+      - include: '#binding-element'
     - include: '#object-binding-pattern'
     - include: '#destructuring-variable-rest'
     - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
-  array-binding-element:
+  object-binding-element-propertyName:
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(:))
+    end: (:)
+    endCaptures:
+      '0': { name: punctuation.destructuring.ts }
+    patterns:
+    - include: '#string'
+    - include: '#array-literal'
+    - name: variable.object.property.ts
+      match: ([_$[:alpha:]][_$[:alnum:]]*)
+
+  binding-element:
     patterns:
     - include: '#comment'
     - include: '#object-binding-pattern'
     - include: '#array-binding-pattern'
     - include: '#destructuring-variable-rest'
     - include: '#variable-initializer'
-    - include: '#punctuation-comma'
 
   destructuring-variable-rest:
     match: (?:(\.\.\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)
@@ -126,7 +160,8 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.binding-pattern.array.ts }
     patterns:
-    - include: '#array-binding-element'
+    - include: '#binding-element'
+    - include: '#punctuation-comma'
 
   ternary-expression:
     begin: (?=\?)
@@ -257,10 +292,11 @@ repository:
         patterns:
         - include: '#comment'
         - include: '#variable-initializer'
-      - begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")))
+      - begin: (?=((\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\])))
         end: (?=,|\}|$)
         patterns:
         - include: '#string'
+        - include: '#array-literal'
         - include: '#comment'
         - include: '#variable-initializer'
       - include: '#punctuation-comma'
@@ -494,6 +530,28 @@ repository:
       - include: '#string'
       - include: '#array-literal'
       - include: '#comment'
+      - name: meta.definition.property.ts entity.name.function.ts
+        # function assignment |
+        # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+        match: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
+          (=\s*(
+            (async\s+) |
+            (function\s*[(<]) |
+            (function\s+) |
+            ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+            ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+          ) |
+          (:\s*(
+            (<) |
+            ([(]\s*(
+              ([)]) |
+              (\.\.\.) |
+              ([_$[:alnum:]]+\s*(
+                ([:,?=])|
+                ([)]\s*=>)
+              ))
+            )))
+          ))
       - name: meta.definition.property.ts variable.object.property.ts
         match: '[_$[:alpha:]][_$[:alnum:]]*'
       - name: keyword.operator.optional.ts
@@ -621,13 +679,41 @@ repository:
     - include: '#object-member' 
 
   parameter-name:
-    match: '(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)'
-    captures:
-      '1': { name: storage.modifier.ts }
-      '2': { name: storage.modifier.ts }
-      '3': { name: keyword.operator.rest.ts }
-      '4': { name: variable.parameter.ts }
-      '5': { name: keyword.operator.optional.ts }
+    patterns:
+    # function assignment |
+    # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+    - match: (?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
+        (=\s*(
+          (async\s+) |
+          (function\s*[(<]) |
+          (function\s+) |
+          ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+          ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+        ) |
+        (:\s*(
+          (<) |
+          ([(]\s*(
+            ([)]) |
+            (\.\.\.) |
+            ([_$[:alnum:]]+\s*(
+              ([:,?=])|
+              ([)]\s*=>)
+            ))
+          )))
+        ))
+      captures:
+        '1': { name: storage.modifier.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: keyword.operator.rest.ts }
+        '4': { name: entity.name.function.ts }
+        '5': { name: keyword.operator.optional.ts }
+    - match: (?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)
+      captures:
+        '1': { name: storage.modifier.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: keyword.operator.rest.ts }
+        '4': { name: variable.parameter.ts }
+        '5': { name: keyword.operator.optional.ts }
 
   destructuring-parameter:
     patterns:
@@ -648,35 +734,29 @@ repository:
       endCaptures:
         '0': { name: punctuation.definition.binding-pattern.array.ts }
       patterns:
-      - include: '#parameter-array-binding-element'
+      - include: '#parameter-binding-element'
+      - include: '#punctuation-comma'
 
   parameter-object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: ([_$[:alpha:]][_$[:alnum:]]*)\s*(:)
-      beginCaptures:
-        '1': { name: variable.object.property.ts }
-        '2': { name: punctuation.destructuring.ts }
+    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(:))
       end: (?=,|\})
       patterns:
-      - include: '#parameter-object-binding-pattern'
-      - include: '#parameter-array-binding-pattern'
-      - name: variable.parameter.ts
-        match: ([_$[:alpha:]][_$[:alnum:]]*)
-      - include: '#variable-initializer'
+      - include: '#object-binding-element-propertyName'
+      - include: '#parameter-binding-element'
     - include: '#parameter-object-binding-pattern'
     - include: '#destructuring-parameter-rest'
     - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
-  parameter-array-binding-element:
+  parameter-binding-element:
     patterns:
     - include: '#comment'
     - include: '#parameter-object-binding-pattern'
     - include: '#parameter-array-binding-pattern'
     - include: '#destructuring-parameter-rest'
     - include: '#variable-initializer'
-    - include: '#punctuation-comma'
 
   destructuring-parameter-rest:
     match: (?:(\.\.\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)
@@ -704,7 +784,8 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.binding-pattern.array.ts }
     patterns:
-    - include: '#parameter-array-binding-element'
+    - include: '#parameter-binding-element'
+    - include: '#punctuation-comma'
 
   return-type:
     name: meta.return.type.ts
