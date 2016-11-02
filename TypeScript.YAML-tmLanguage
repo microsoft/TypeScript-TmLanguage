@@ -925,6 +925,8 @@ repository:
     - include: '#typeof-operator'
     - name: keyword.operator.type.ts
       match: '[&|]'
+    - name: keyword.operator.expression.keyof.ts
+      match: (?<!\.|\$)\bkeyof\b(?!\$)
 
   type-function-return-type:
     name: meta.type.function.return.ts
