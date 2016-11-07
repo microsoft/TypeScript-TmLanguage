@@ -45,10 +45,6 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#regex</string>
-          </dict>
-          <dict>
-            <key>include</key>
             <string>#template</string>
           </dict>
           <dict>
@@ -4120,6 +4116,18 @@
             <string>keyword.operator.arithmetic.ts</string>
             <key>match</key>
             <string>%|\*|/|-|\+</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?&lt;=[_$[:alnum:]])\s*(/)(?![/*])</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.arithmetic.ts</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>
