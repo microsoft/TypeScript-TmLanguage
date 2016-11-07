@@ -5318,7 +5318,7 @@
       <key>jsx-string-double-quoted</key>
       <dict>
         <key>name</key>
-        <string>string.jsxAttributeValue.quoted.double.tsx</string>
+        <string>string.quoted.double.tsx</string>
         <key>begin</key>
         <string>"</string>
         <key>end</key>
@@ -5328,7 +5328,7 @@
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.jsxAttributeValue.begin.tsx</string>
+            <string>punctuation.definition.string.begin.tsx</string>
           </dict>
         </dict>
         <key>endCaptures</key>
@@ -5336,21 +5336,21 @@
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.jsxAttributeValue.end.tsx</string>
+            <string>punctuation.definition.string.end.tsx</string>
           </dict>
         </dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>include</key>
-            <string>#jsx-attributeValue-entities</string>
+            <string>#jsx-entities</string>
           </dict>
         </array>
       </dict>
       <key>jsx-string-single-quoted</key>
       <dict>
         <key>name</key>
-        <string>string.jsxAttributeValue.quoted.single.tsx</string>
+        <string>string.quoted.single.tsx</string>
         <key>begin</key>
         <string>'</string>
         <key>end</key>
@@ -5360,7 +5360,7 @@
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.jsxAttributeValue.begin.tsx</string>
+            <string>punctuation.definition.string.begin.tsx</string>
           </dict>
         </dict>
         <key>endCaptures</key>
@@ -5368,14 +5368,14 @@
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>punctuation.definition.string.jsxAttributeValue.end.tsx</string>
+            <string>punctuation.definition.string.end.tsx</string>
           </dict>
         </dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>include</key>
-            <string>#jsx-attributeValue-entities</string>
+            <string>#jsx-entities</string>
           </dict>
         </array>
       </dict>
@@ -5405,37 +5405,6 @@
           <dict>
             <key>name</key>
             <string>invalid.illegal.bad-ampersand.tsx</string>
-            <key>match</key>
-            <string>&amp;</string>
-          </dict>
-        </array>
-      </dict>
-      <key>jsx-attributeValue-entities</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>constant.character.entity.jsxAttributeValue.tsx</string>
-            <key>match</key>
-            <string>(&amp;)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.entity.jsxAttributeValue.tsx</string>
-              </dict>
-              <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.entity.jsxAttributeValue.tsx</string>
-              </dict>
-            </dict>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>invalid.illegal.bad-ampersand.jsxAttributeValue.tsx</string>
             <key>match</key>
             <string>&amp;</string>
           </dict>
