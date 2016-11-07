@@ -1,0 +1,528 @@
+original file
+-----------------------------------
+function f()
+{
+	let t = 0
+	let TAU440 = Math.PI*2 * 440
+
+	onmessage = function(e)
+	{
+		let b = new Float64Array(e.data.bufferSize)
+		let s = e.data.sampleRate
+
+		for (let i = 0; i < b.length; i++) b[i] = Math.sin(TAU440 * t++/s * Math.sin(t++/s*.5))
+
+		postMessage(b)
+	}
+}
+
+let a = new AudioContext()
+let s = a.createScriptProcessor(0,1,1)
+let b = new Float64Array(s.bufferSize)
+let w = new Worker(URL.createObjectURL(new Blob(["("+f+"())"],{type:"application/javascript"})))
+
+w.onmessage = e => b = e.data
+s.connect(a.destination)
+
+s.onaudioprocess = function(e)
+{
+	w.postMessage({ bufferSize: s.bufferSize, sampleRate: a.sampleRate })
+	e.outputBuffer.getChannelData(0).set(b)
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function f()
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^^
+             source.ts meta.function.ts
+>{
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.function.ts meta.block.ts
+>	let t = 0
+ ^
+ source.ts meta.function.ts meta.block.ts
+  ^^^
+  source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>	let TAU440 = Math.PI*2 * 440
+ ^
+ source.ts meta.function.ts meta.block.ts
+  ^^^
+  source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+      ^^^^^^
+      source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+               ^^^^
+               source.ts meta.function.ts meta.block.ts meta.var.expr.ts support.constant.math.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                    ^^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts support.constant.property.math.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                           ^^^
+                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>
+ ^^
+ source.ts meta.function.ts meta.block.ts
+>	onmessage = function(e)
+ ^
+ source.ts meta.function.ts meta.block.ts
+  ^^^^^^^^^
+  source.ts meta.function.ts meta.block.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.block.ts
+            ^
+            source.ts meta.function.ts meta.block.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.function.ts meta.block.ts
+              ^^^^^^^^
+              source.ts meta.function.ts meta.block.ts meta.function.ts storage.type.function.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                         ^^
+                         source.ts meta.function.ts meta.block.ts meta.function.ts
+>	{
+ ^
+ source.ts meta.function.ts meta.block.ts meta.function.ts
+  ^
+  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+>		let b = new Float64Array(e.data.bufferSize)
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+   ^^^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+           ^^^
+           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts
+               ^^^^^^^^^^^^
+               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts entity.name.type.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts variable.other.object.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts punctuation.accessor.ts
+                              ^^^^
+                              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts support.variable.property.dom.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts punctuation.accessor.ts
+                                   ^^^^^^^^^^
+                                   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts variable.other.property.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>		let s = e.data.sampleRate
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+   ^^^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts variable.other.object.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+             ^^^^
+             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts support.variable.property.dom.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                  ^^^^^^^^^^
+                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts variable.other.property.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+>		for (let i = 0; i < b.length; i++) b[i] = Math.sin(TAU440 * t++/s * Math.sin(t++/s*.5))
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+   ^^^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts keyword.control.loop.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.brace.round.ts
+        ^^^
+        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts variable.other.object.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                         ^^^^^^
+                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts support.variable.property.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                  ^^
+                                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.increment.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.assignment.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                                             ^^^^
+                                             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts support.constant.math.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                                  ^^^
+                                                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts support.function.math.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                      ^^^^^^
+                                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts constant.other.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.arithmetic.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                                                ^^
+                                                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts keyword.operator.increment.ts
+                                                                  ^
+                                                                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts punctuation.definition.string.begin.ts
+                                                                   ^^
+                                                                   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts keyword.operator.quantifier.regexp
+                                                                      ^^^^^
+                                                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                                                                           ^
+                                                                           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+                                                                            ^^^
+                                                                            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                                                                               ^
+                                                                               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                                                                ^
+                                                                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                                                                 ^
+                                                                                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp keyword.operator.quantifier.regexp
+                                                                                  ^
+                                                                                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp keyword.operator.quantifier.regexp
+                                                                                   ^^
+                                                                                   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                                                                     ^
+                                                                                     source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp keyword.operator.quantifier.regexp
+                                                                                      ^
+                                                                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp constant.other.character-class.regexp
+                                                                                       ^
+                                                                                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                                                                        ^
+                                                                                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                                                                         ^^^
+                                                                                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>		postMessage(b)
+ ^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+               ^
+               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                ^
+                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                 ^^
+                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>	}
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>}
+ ^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>let a = new AudioContext()
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                          ^
+                          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                           ^^
+                           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>let s = a.createScriptProcessor(0,1,1)
+ ^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+           ^^^^^^^^^^^^^^^^^^^^^
+           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                 ^^^^^
+                                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                       ^^
+                                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>let b = new Float64Array(s.bufferSize)
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                          ^
+                          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                           ^
+                           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp constant.other.character-class.regexp
+                            ^^^^^^^^^^
+                            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                       ^^
+                                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>let w = new Worker(URL.createObjectURL(new Blob(["("+f+"())"],{type:"application/javascript"})))
+ ^^^^^^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                    ^^^
+                    source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp constant.other.character-class.regexp
+                        ^^^^^^^^^^^^^^^
+                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                                        ^^^^^^^^
+                                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp meta.group.regexp constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                                                  ^^^^^^^^^^^
+                                                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp meta.group.regexp constant.other.character-class.set.regexp
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp meta.group.regexp constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp meta.group.regexp
+                                                                                              ^
+                                                                                              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                                                                                               ^
+                                                                                               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                                                                                                ^
+                                                                                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                                                                                 ^^
+                                                                                                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>w.onmessage = e => b = e.data
+ ^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+  ^
+  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+   ^^^^^^^^^^^^^^^^^^^^^^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+                          ^^^^^^
+                          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>s.connect(a.destination)
+ ^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+  ^
+  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+   ^^^^^^^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+           ^
+           source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+            ^
+            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp constant.other.character-class.regexp
+             ^^^^^^^^^^^
+             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                         ^^
+                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>s.onaudioprocess = function(e)
+ ^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+  ^
+  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+   ^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                               ^^
+                               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>{
+ ^^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>	w.postMessage({ bufferSize: s.bufferSize, sampleRate: a.sampleRate })
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+    ^^^^^^^^^^^
+    source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                ^^^^^^^^^^^^^^^
+                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp constant.other.character-class.regexp
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                                         ^
+                                                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp constant.other.character-class.regexp
+                                                          ^^^^^^^^^^^^
+                                                          source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                                                      ^
+                                                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                                                       ^^
+                                                                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>	e.outputBuffer.getChannelData(0).set(b)
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+    ^^^^^^^^^^^^
+    source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+                 ^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts constant.other.character-class.regexp
+                                   ^^^
+                                   source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts meta.group.regexp punctuation.definition.group.regexp
+                                         ^^
+                                         source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
+>}
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.function.ts meta.block.ts string.regex.ts
