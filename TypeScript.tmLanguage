@@ -2633,10 +2633,10 @@
         <key>name</key>
         <string>meta.type.paren.cover.ts</string>
         <key>begin</key>
-        <string>\s*(\()</string>
+        <string>\(</string>
         <key>beginCaptures</key>
         <dict>
-          <key>1</key>
+          <key>0</key>
           <dict>
             <key>name</key>
             <string>meta.brace.round.ts</string>
@@ -2724,7 +2724,7 @@
             <key>name</key>
             <string>meta.type.function.ts</string>
             <key>begin</key>
-            <string>(?x)( \s* (?= [(]\s*( ([)]) |  (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ) ) )</string>
+            <string>(?x)( (?= [(]\s*( ([)]) |  (\.\.\.) | ([_$[:alnum:]]+\s*( ([:,?=])| ([)]\s*=&gt;) )) ) ) )</string>
             <key>end</key>
             <string>(?&lt;=\))</string>
             <key>patterns</key>

@@ -1,0 +1,198 @@
+original file
+-----------------------------------
+const a = new Promise (resolve => {
+    const file = this.props.doc.file;
+    resolve({
+        abc: Math.random()
+    });
+
+    class Foo extends React.Component {
+        render() {
+        }
+    }
+    
+});
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const a = new Promise (resolve => {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^^^
+           source.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.var.expr.ts new.expr.ts
+               ^^^^^^^
+               source.ts meta.var.expr.ts new.expr.ts entity.name.type.ts
+                      ^
+                      source.ts meta.var.expr.ts new.expr.ts
+                       ^
+                       source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                        ^^^^^^^
+                        source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts variable.parameter.ts
+                               ^
+                               source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts
+                                ^^
+                                source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                                  ^
+                                  source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts
+                                   ^
+                                   source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                    ^^
+                                    source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+>    const file = this.props.doc.file;
+ ^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+     ^^^^^
+     source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+           ^^^^
+           source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+                  ^^^^
+                  source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.language.this.ts
+                      ^
+                      source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                       ^^^^^
+                       source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.other.object.property.ts
+                            ^
+                            source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                             ^^^
+                             source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.other.object.property.ts
+                                ^
+                                source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                                 ^^^^
+                                 source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.other.property.ts
+                                     ^
+                                     source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                                      ^^
+                                      source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+>    resolve({
+ ^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts entity.name.function.ts
+            ^
+            source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+             ^
+             source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+              ^^
+              source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts
+>        abc: Math.random()
+ ^^^^^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts
+         ^^^
+         source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+            ^
+            source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+             ^
+             source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+              ^^^^
+              source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts support.constant.math.ts
+                  ^
+                  source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                   ^^^^^^
+                   source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts support.function.math.ts
+                         ^
+                         source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                          ^
+                          source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                           ^^
+                           source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+>    });
+ ^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+     ^
+     source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+       ^
+       source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+        ^^
+        source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+>
+ ^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+>    class Foo extends React.Component {
+ ^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+     ^^^^^
+     source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts storage.type.class.ts
+          ^
+          source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+           ^^^
+           source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts entity.name.type.class.ts
+              ^
+              source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+               ^^^^^^^
+               source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts storage.modifier.ts
+                      ^
+                      source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+                       ^^^^^
+                       source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts entity.name.type.module.ts
+                            ^
+                            source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts punctuation.accessor.ts
+                             ^^^^^^^^^
+                             source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts entity.other.inherited-class.ts
+                                      ^
+                                      source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+                                       ^
+                                       source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts punctuation.definition.block.ts
+                                        ^^
+                                        source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+>        render() {
+ ^^^^^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+         ^^^^^^
+         source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+               ^
+               source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts
+                  ^
+                  source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                   ^^
+                   source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        }
+ ^^^^^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^
+         source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+>    }
+ ^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts
+     ^
+     source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts meta.class.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+>    
+ ^^^^^^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts
+>});
+ ^
+ source.ts meta.var.expr.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+   ^
+   source.ts punctuation.terminator.statement.ts

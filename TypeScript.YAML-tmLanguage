@@ -870,9 +870,9 @@ repository:
   # (number | (param: number, param2: string) => void)
   type-paren-or-function-parameters:
     name: meta.type.paren.cover.ts
-    begin: '\s*(\()'
+    begin: '\('
     beginCaptures:
-      '1': { name: meta.brace.round.ts }
+      '0': { name: meta.brace.round.ts }
     end: '\)'
     endCaptures:
       '0': { name: meta.brace.round.ts }
@@ -903,7 +903,6 @@ repository:
     # () | (... | (param: | (param, | (param? | (param= | (param) =>
     - name: meta.type.function.ts
       begin: '(?x)(
-        \s*
         (?=
           [(]\s*(
             ([)]) | 
