@@ -16,6 +16,10 @@
     <array>
       <dict>
         <key>include</key>
+        <string>#directives</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#statements</string>
       </dict>
       <dict>
@@ -4689,8 +4693,6 @@
       </dict>
       <key>string</key>
       <dict>
-        <key>name</key>
-        <string>string.ts</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -5022,9 +5024,17 @@
             <string>comment.block.documentation.ts</string>
             <key>begin</key>
             <string>/\*\*(?!/)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.ts</string>
+              </dict>
+            </dict>
             <key>end</key>
             <string>\*/</string>
-            <key>captures</key>
+            <key>endCaptures</key>
             <dict>
               <key>0</key>
               <dict>
@@ -5045,9 +5055,17 @@
             <string>comment.block.ts</string>
             <key>begin</key>
             <string>/\*</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.ts</string>
+              </dict>
+            </dict>
             <key>end</key>
             <string>\*/</string>
-            <key>captures</key>
+            <key>endCaptures</key>
             <dict>
               <key>0</key>
               <dict>
@@ -5086,6 +5104,74 @@
                 </dict>
                 <key>end</key>
                 <string>(?=$)</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>directives</key>
+      <dict>
+        <key>name</key>
+        <string>comment.line.triple-slash.directive.ts</string>
+        <key>begin</key>
+        <string>^(///)\s*(?=&lt;(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*((\'[^']*\')|(\"[^"]*\")))+\s*/&gt;\s*$)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.comment.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?=$)</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>meta.tag.ts</string>
+            <key>begin</key>
+            <string>(&lt;)(reference|amd-dependency|amd-module)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.tag.directive.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.tag.directive.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>/&gt;</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.tag.directive.ts</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>name</key>
+                <string>entity.other.attribute-name.directive.ts</string>
+                <key>match</key>
+                <string>path|types|no-default-lib|name</string>
+              </dict>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.ts</string>
+                <key>match</key>
+                <string>=</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#string</string>
               </dict>
             </array>
           </dict>

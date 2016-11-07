@@ -6,6 +6,7 @@ fileTypes: [ts]
 uuid: ef98eb90-bf9b-11e4-bb52-0800200c9a66
 
 patterns:
+- include: '#directives'
 - include: '#statements'
 - name: comment.line.shebang.ts
   match: \A(#!).*(?=$)
@@ -1695,7 +1696,6 @@ repository:
       match: \\.
 
   string:
-    name: string.ts
     patterns:
     - include: '#qstring-single'
     - include: '#qstring-double'
@@ -1823,26 +1823,52 @@ repository:
     patterns:
     - name: comment.block.documentation.ts
       begin: /\*\*(?!/)
+      beginCaptures:
+        '0': { name: punctuation.definition.comment.ts }
       end: \*/
-      captures:
-        '0': {name: punctuation.definition.comment.ts}
+      endCaptures:
+        '0': { name: punctuation.definition.comment.ts }
       patterns:
       - include: '#docblock'
     - name: comment.block.ts
       begin: /\*
+      beginCaptures:
+        '0': { name: punctuation.definition.comment.ts }
       end: \*/
-      captures:
-        '0': {name: punctuation.definition.comment.ts}
+      endCaptures:
+        '0': { name: punctuation.definition.comment.ts }
     - begin: (^[ \t]+)?(?=//)
       beginCaptures:
-        '1': {name: punctuation.whitespace.comment.leading.ts}
+        '1': { name: punctuation.whitespace.comment.leading.ts }
       end: (?=$)
       patterns:
       - name: comment.line.double-slash.ts
         begin: //
         beginCaptures:
-          '0': {name: punctuation.definition.comment.ts}
+          '0': { name: punctuation.definition.comment.ts }
         end: (?=$)
+
+  directives:
+    name: comment.line.triple-slash.directive.ts
+    begin: ^(///)\s*(?=<(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*((\'[^']*\')|(\"[^"]*\")))+\s*/>\s*$)
+    beginCaptures:
+      '1': { name: punctuation.definition.comment.ts }
+    end: (?=$)
+    patterns:
+    - name: meta.tag.ts
+      begin: (<)(reference|amd-dependency|amd-module)
+      beginCaptures:
+        '1': { name: punctuation.definition.tag.directive.ts }
+        '2': { name: entity.name.tag.directive.ts }
+      end: />
+      endCaptures:
+        '0': { name: punctuation.definition.tag.directive.ts }
+      patterns:
+      - name: entity.other.attribute-name.directive.ts
+        match: 'path|types|no-default-lib|name'
+      - name: keyword.operator.assignment.ts
+        match: =
+      - include: '#string'
 
   docblock:
     patterns:
