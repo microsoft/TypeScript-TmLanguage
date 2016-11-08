@@ -1,0 +1,108 @@
+original file
+-----------------------------------
+let a = Array<number>();   // Highlight ok here
+
+interface egGenericsInArray {
+   a: Array<number>;
+}
+let s = "nothing should fail here...";
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>let a = Array<number>();   // Highlight ok here
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+        ^
+        source.tsx meta.var.expr.tsx
+         ^^^^^
+         source.tsx meta.var.expr.tsx support.class.builtin.tsx
+              ^
+              source.tsx meta.var.expr.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+               ^^^^^^
+               source.tsx meta.var.expr.tsx meta.type.parameters.tsx support.type.primitive.tsx
+                     ^
+                     source.tsx meta.var.expr.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                      ^
+                      source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                        ^
+                        source.tsx punctuation.terminator.statement.tsx
+                         ^^^
+                         source.tsx
+                            ^^
+                            source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+                              ^^^^^^^^^^^^^^^^^^^
+                              source.tsx comment.line.double-slash.tsx
+>
+ ^^
+ source.tsx
+>interface egGenericsInArray {
+ ^^^^^^^^^
+ source.tsx meta.class.tsx storage.type.interface.tsx
+          ^
+          source.tsx meta.class.tsx
+           ^^^^^^^^^^^^^^^^^
+           source.tsx meta.class.tsx entity.name.type.class.tsx
+                            ^
+                            source.tsx meta.class.tsx
+                             ^
+                             source.tsx meta.class.tsx punctuation.definition.block.tsx
+                              ^^
+                              source.tsx meta.class.tsx
+>   a: Array<number>;
+ ^^^
+ source.tsx meta.class.tsx
+    ^
+    source.tsx meta.class.tsx meta.field.declaration.tsx meta.definition.property.tsx variable.object.property.tsx
+     ^
+     source.tsx meta.class.tsx meta.field.declaration.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+      ^
+      source.tsx meta.class.tsx meta.field.declaration.tsx meta.type.annotation.tsx
+       ^^^^^
+       source.tsx meta.class.tsx meta.field.declaration.tsx meta.type.annotation.tsx entity.name.type.tsx
+            ^
+            source.tsx meta.class.tsx meta.field.declaration.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+             ^^^^^^
+             source.tsx meta.class.tsx meta.field.declaration.tsx meta.type.annotation.tsx meta.type.parameters.tsx support.type.primitive.tsx
+                   ^
+                   source.tsx meta.class.tsx meta.field.declaration.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                    ^
+                    source.tsx meta.class.tsx punctuation.terminator.statement.tsx
+                     ^^
+                     source.tsx meta.class.tsx
+>}
+ ^
+ source.tsx meta.class.tsx punctuation.definition.block.tsx
+  ^^
+  source.tsx
+>let s = "nothing should fail here...";
+ ^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+    ^
+    source.tsx meta.var.expr.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+        ^
+        source.tsx meta.var.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx string.quoted.double.tsx punctuation.definition.string.begin.tsx
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          source.tsx meta.var.expr.tsx string.quoted.double.tsx
+                                     ^
+                                     source.tsx meta.var.expr.tsx string.quoted.double.tsx punctuation.definition.string.end.tsx
+                                      ^
+                                      source.tsx punctuation.terminator.statement.tsx

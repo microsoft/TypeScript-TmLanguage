@@ -559,11 +559,11 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#support-objects</string>
+            <string>#function-call</string>
           </dict>
           <dict>
             <key>include</key>
-            <string>#function-call</string>
+            <string>#support-objects</string>
           </dict>
           <dict>
             <key>include</key>
@@ -3573,24 +3573,27 @@
       <key>function-call</key>
       <dict>
         <key>begin</key>
-        <string>(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
+        <string>(?=(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <key>end</key>
+        <string>(?&lt;=\))(?!(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#support-objects</string>
+          </dict>
           <dict>
             <key>name</key>
             <string>punctuation.accessor.ts</string>
+            <key>match</key>
+            <string>\.</string>
           </dict>
-          <key>2</key>
           <dict>
             <key>name</key>
             <string>entity.name.function.ts</string>
+            <key>match</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
           </dict>
-        </dict>
-        <key>end</key>
-        <string>(?&lt;=\))</string>
-        <key>patterns</key>
-        <array>
           <dict>
             <key>include</key>
             <string>#comment</string>

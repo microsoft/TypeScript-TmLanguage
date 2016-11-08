@@ -196,8 +196,8 @@ repository:
     - include: '#new-expr'
     - include: '#object-literal'
     - include: '#expression-operators'
-    - include: '#support-objects'
     - include: '#function-call'
+    - include: '#support-objects'
     - include: '#identifiers'
     - include: '#paren-expression'
     - include: '#punctuation-comma'
@@ -1317,12 +1317,14 @@ repository:
         '4': { name: support.function.dom.ts }
 
   function-call:
-    begin: (?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\()
-    beginCaptures:
-      '1': { name: punctuation.accessor.ts }
-      '2': { name: entity.name.function.ts }
-    end: (?<=\))
+    begin: (?=(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
+    end: (?<=\))(?!(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
     patterns:
+    - include: '#support-objects'
+    - name: punctuation.accessor.ts
+      match: \.
+    - name: entity.name.function.ts
+      match: ([_$[:alpha:]][_$[:alnum:]]*)
     - include: '#comment'
     - name: meta.type.parameters.ts
       begin: \<

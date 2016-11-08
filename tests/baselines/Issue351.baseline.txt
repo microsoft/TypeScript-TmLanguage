@@ -1,0 +1,60 @@
+original file
+-----------------------------------
+this._blockRenderMap = Map<any>({});
+this._eventsMap = {};
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>this._blockRenderMap = Map<any>({});
+ ^^^^
+ source.tsx variable.language.this.tsx
+     ^
+     source.tsx punctuation.accessor.tsx
+      ^^^^^^^^^^^^^^^
+      source.tsx variable.other.property.tsx
+                     ^
+                     source.tsx
+                      ^
+                      source.tsx keyword.operator.assignment.tsx
+                       ^
+                       source.tsx
+                        ^^^
+                        source.tsx support.class.builtin.tsx
+                           ^
+                           source.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+                            ^^^
+                            source.tsx meta.type.parameters.tsx support.type.primitive.tsx
+                               ^
+                               source.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                                ^
+                                source.tsx meta.brace.round.tsx
+                                 ^
+                                 source.tsx meta.objectliteral.tsx punctuation.definition.block.tsx
+                                  ^
+                                  source.tsx meta.objectliteral.tsx punctuation.definition.block.tsx
+                                   ^
+                                   source.tsx meta.brace.round.tsx
+                                    ^
+                                    source.tsx punctuation.terminator.statement.tsx
+                                     ^^
+                                     source.tsx
+>this._eventsMap = {};
+ ^^^^
+ source.tsx variable.language.this.tsx
+     ^
+     source.tsx punctuation.accessor.tsx
+      ^^^^^^^^^^
+      source.tsx variable.other.property.tsx
+                ^
+                source.tsx
+                 ^
+                 source.tsx keyword.operator.assignment.tsx
+                  ^
+                  source.tsx meta.objectliteral.tsx
+                   ^
+                   source.tsx meta.objectliteral.tsx punctuation.definition.block.tsx
+                    ^
+                    source.tsx meta.objectliteral.tsx punctuation.definition.block.tsx
+                     ^
+                     source.tsx punctuation.terminator.statement.tsx
