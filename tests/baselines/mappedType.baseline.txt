@@ -1,0 +1,1034 @@
+original file
+-----------------------------------
+type Item = { a: string, b: number, c: boolean };
+
+type T1 = { [P in "x" | "y"]: number };  // { x: number, y: number }
+type T2 = { [P in "x" | "y"]: P };  // { x: "x", y: "y" }
+type T3 = { [P in "a" | "b"]: Item[P] };  // { a: string, b: number }
+type T4 = { [P in keyof Item]: Date };  // { a: Date, b: Date, c: Date }
+type T5 = { [P in keyof Item]: Item[P] };  // { a: string, b: number, c: boolean }
+type T6 = { readonly [P in keyof Item]: Item[P] };  // { readonly a: string, readonly b: number, readonly c: boolean }
+type T7 = { [P in keyof Item]: Array<Item[P]> };  // { a: string[], b: number[], c: boolean[] }
+
+// Make all properties in T optional
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+};
+
+// Make all properties in T readonly
+type Readonly<T> = {
+    readonly [P in keyof T]: T[P];
+};
+
+// Pick a set of properties from T
+type Pick<T, K extends keyof T> = {
+    [P in K]: T[P];
+}
+
+// A type with a given set of properties of a given type
+type Record<K extends string | number, T> = {
+    [_ in K]: T;
+}
+
+// A proxy for a given type
+type Proxy<T> = {
+    get(): T;
+    set(value: T): void;
+}
+
+// Proxify all properties in T
+type Proxify<T> = {
+    [P in keyof T]: Proxy<T[P]>;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>type Item = { a: string, b: number, c: boolean };
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                             ^^^^^^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.object.type.ts punctuation.separator.comma.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.object.type.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                        ^^^^^^^
+                                        source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                                 ^
+                                                 source.ts punctuation.terminator.statement.ts
+                                                  ^^
+                                                  source.ts
+>
+ ^^
+ source.ts
+>type T1 = { [P in "x" | "y"]: number };  // { x: number, y: number }
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                ^^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                               ^^^^^^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts
+                                        ^^
+                                        source.ts
+                                          ^^
+                                          source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                            source.ts comment.line.double-slash.ts
+>type T2 = { [P in "x" | "y"]: P };  // { x: "x", y: "y" }
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                ^^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                  ^
+                                  source.ts punctuation.terminator.statement.ts
+                                   ^^
+                                   source.ts
+                                     ^^
+                                     source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                       ^^^^^^^^^^^^^^^^^^^^
+                                       source.ts comment.line.double-slash.ts
+>type T3 = { [P in "a" | "b"]: Item[P] };  // { a: string, b: number }
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                ^^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                               ^^^^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                        ^
+                                        source.ts punctuation.terminator.statement.ts
+                                         ^^
+                                         source.ts
+                                           ^^
+                                           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                             source.ts comment.line.double-slash.ts
+>type T4 = { [P in keyof Item]: Date };  // { a: Date, b: Date, c: Date }
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                ^^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                   ^^^^^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                         ^^^^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                ^^^^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
+                                       ^^
+                                       source.ts
+                                         ^^
+                                         source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           source.ts comment.line.double-slash.ts
+>type T5 = { [P in keyof Item]: Item[P] };  // { a: string, b: number, c: boolean }
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                ^^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                   ^^^^^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                         ^^^^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                ^^^^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
+                                          ^^
+                                          source.ts
+                                            ^^
+                                            source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                              source.ts comment.line.double-slash.ts
+>type T6 = { readonly [P in keyof Item]: Item[P] };  // { readonly a: string, readonly b: number, readonly c: boolean }
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts
+             ^^^^^^^^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts storage.modifier.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                         ^^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                            ^^^^^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                                  ^^^^
+                                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                         ^^^^
+                                         source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                              ^
+                                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                                 ^
+                                                 source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                                  ^
+                                                  source.ts punctuation.terminator.statement.ts
+                                                   ^^
+                                                   source.ts
+                                                     ^^
+                                                     source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                       source.ts comment.line.double-slash.ts
+>type T7 = { [P in keyof Item]: Array<Item[P]> };  // { a: string[], b: number[], c: boolean[] }
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                ^^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                   ^^^^^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                         ^^^^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                ^^^^^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                      ^^^^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts entity.name.type.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.tuple.ts entity.name.type.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                              ^
+                                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                                ^
+                                                source.ts punctuation.terminator.statement.ts
+                                                 ^^
+                                                 source.ts
+                                                   ^^
+                                                   source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                     source.ts comment.line.double-slash.ts
+>
+ ^^
+ source.ts
+>// Make all properties in T optional
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>type Partial<T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts meta.type.declaration.ts meta.object.type.ts
+>    [P in keyof T]?: T[P];
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+        ^^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+          ^
+          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+           ^^^^^
+           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.optional.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                           ^^
+                           source.ts meta.type.declaration.ts meta.object.type.ts
+>};
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+   ^^
+   source.ts
+>
+ ^^
+ source.ts
+>// Make all properties in T readonly
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>type Readonly<T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                     ^^
+                     source.ts meta.type.declaration.ts meta.object.type.ts
+>    readonly [P in keyof T]: T[P];
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^^^^^^^^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                 ^^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                    ^^^^^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                                   ^^
+                                   source.ts meta.type.declaration.ts meta.object.type.ts
+>};
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+   ^^
+   source.ts
+>
+ ^^
+ source.ts
+>// Pick a set of properties from T
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>type Pick<T, K extends keyof T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+          ^
+          source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+           ^
+           source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts
+                ^^^^^^^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts storage.modifier.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.type.parameters.ts
+                        ^^^^^
+                        source.ts meta.type.declaration.ts meta.type.parameters.ts keyword.operator.expression.keyof.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.type.parameters.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                ^
+                                source.ts meta.type.declaration.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                    ^^
+                                    source.ts meta.type.declaration.ts meta.object.type.ts
+>    [P in K]: T[P];
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+        ^^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+          ^
+          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                    ^^
+                    source.ts meta.type.declaration.ts meta.object.type.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.type.declaration.ts
+>
+ ^^
+ source.ts meta.type.declaration.ts
+>// A type with a given set of properties of a given type
+ ^^
+ source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts meta.type.declaration.ts comment.line.double-slash.ts
+>type Record<K extends string | number, T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts
+               ^^^^^^^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts storage.modifier.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.type.parameters.ts
+                       ^^^^^^
+                       source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.type.parameters.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.parameters.ts keyword.operator.type.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                ^^^^^^
+                                source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                              ^^
+                                              source.ts meta.type.declaration.ts meta.object.type.ts
+>    [_ in K]: T;
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+        ^^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+          ^
+          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.type.declaration.ts meta.object.type.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.type.declaration.ts
+>
+ ^^
+ source.ts meta.type.declaration.ts
+>// A proxy for a given type
+ ^^
+ source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts meta.type.declaration.ts comment.line.double-slash.ts
+>type Proxy<T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+           ^
+           source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+              ^
+              source.ts meta.type.declaration.ts
+               ^
+               source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                  ^^
+                  source.ts meta.type.declaration.ts meta.object.type.ts
+>    get(): T;
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^^^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^
+         source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+          ^
+          source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+           ^
+           source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+              ^^
+              source.ts meta.type.declaration.ts meta.object.type.ts
+>    set(value: T): void;
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^^^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^^^^^
+         source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+                    ^^^^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.type.declaration.ts meta.object.type.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.type.declaration.ts
+>
+ ^^
+ source.ts meta.type.declaration.ts
+>// Proxify all properties in T
+ ^^
+ source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts meta.type.declaration.ts comment.line.double-slash.ts
+>type Proxify<T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts meta.type.declaration.ts meta.object.type.ts
+>    [P in keyof T]: Proxy<T[P]>;
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+        ^^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+          ^
+          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+           ^^^^^
+           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                     ^^^^^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts entity.name.type.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.tuple.ts entity.name.type.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                                 ^^
+                                 source.ts meta.type.declaration.ts meta.object.type.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts

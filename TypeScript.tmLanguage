@@ -1593,6 +1593,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#indexer-mapped-type-declaration</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#field-declaration</string>
           </dict>
           <dict>
@@ -1901,6 +1905,58 @@
           <dict>
             <key>include</key>
             <string>#type-annotation</string>
+          </dict>
+        </array>
+      </dict>
+      <key>indexer-mapped-type-declaration</key>
+      <dict>
+        <key>name</key>
+        <string>meta.indexer.mappedtype.declaration.ts</string>
+        <key>begin</key>
+        <string>(?:(?&lt;!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s+(in)\s+</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.ts</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>meta.brace.square.ts</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.type.ts</string>
+          </dict>
+          <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.expression.in.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(\])\s*(\?\s*)?|$</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>meta.brace.square.ts</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.optional.ts</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#type</string>
           </dict>
         </array>
       </dict>
