@@ -1,0 +1,62 @@
+original file
+-----------------------------------
+const constructor = someObject.prototype.constructor;
+ const objectLiteral = { constructor };
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const constructor = someObject.prototype.constructor;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.var.expr.ts
+                     ^^^^^^^^^^
+                     source.ts meta.var.expr.ts support.class.ts
+                               ^
+                               source.ts meta.var.expr.ts punctuation.accessor.ts
+                                ^^^^^^^^^
+                                source.ts meta.var.expr.ts support.variable.property.ts
+                                         ^
+                                         source.ts meta.var.expr.ts punctuation.accessor.ts
+                                          ^^^^^^^^^^^
+                                          source.ts meta.var.expr.ts support.variable.property.ts
+                                                     ^
+                                                     source.ts punctuation.terminator.statement.ts
+                                                      ^^
+                                                      source.ts
+> const objectLiteral = { constructor };
+ ^
+ source.ts
+  ^^^^^
+  source.ts meta.var.expr.ts storage.type.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^^^^^^^^^^^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                       ^
+                       source.ts meta.var.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts
+                          ^^^^^^^^^^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts

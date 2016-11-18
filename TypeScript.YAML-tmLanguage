@@ -603,7 +603,34 @@ repository:
       match: '[_$[:alpha:]][_$[:alnum:]]*'
     - name: keyword.operator.optional.ts
       match: \?
-    
+
+  object-literal-method-declaration:
+    name: meta.method.declaration.ts
+    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\<])
+    beginCaptures:
+      '1': { name: storage.modifier.async.ts } # captures keyword (async)
+      '2': { name: storage.type.property.ts } # captures keyword (get|set)
+      '3': { name: keyword.generator.asterisk.ts } # captures keyword (*)
+    end: '(?=\}|;|,)|(?<=\})'
+    patterns:
+    - include: '#method-declaration-name'
+    - include: '#comment'
+    - include: '#type-parameters'
+    - include: '#function-parameters'
+    - include: '#return-type'
+    - include: '#method-overload-declaration'
+    - include: '#decl-block'
+
+  object-literal-method-overload-declaration:
+    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\<])
+    beginCaptures:
+      '1': { name: storage.modifier.async.ts } # captures keyword (async)
+      '2': { name: storage.type.property.ts } # captures keyword (get|set)
+      '3': { name: keyword.generator.asterisk.ts } # captures keyword (*)
+    end: (?=\(|\<)
+    patterns:
+    - include: '#method-declaration-name'
+
   indexer-declaration:
     name: meta.indexer.declaration.ts
     begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)
@@ -1432,7 +1459,7 @@ repository:
   object-member:
     patterns:
     - include: '#comment'
-    - include: '#method-declaration'
+    - include: '#object-literal-method-declaration'
     - name: meta.object.member.ts
       begin: (?=(?:(?:\'[^']*\')|(?:\"[^"]*\")|(?:\[([^\[\]]|\[[^\[\]]+\])+\]))\s*:)
       end: (?=,|\})

@@ -1865,6 +1865,96 @@
           </dict>
         </array>
       </dict>
+      <key>object-literal-method-declaration</key>
+      <dict>
+        <key>name</key>
+        <string>meta.method.declaration.tsx</string>
+        <key>begin</key>
+        <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\&lt;])</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.async.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.property.tsx</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.generator.asterisk.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?=\}|;|,)|(?&lt;=\})</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#method-declaration-name</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#comment</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#type-parameters</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#function-parameters</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#return-type</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#method-overload-declaration</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#decl-block</string>
+          </dict>
+        </array>
+      </dict>
+      <key>object-literal-method-overload-declaration</key>
+      <dict>
+        <key>begin</key>
+        <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]+\])+\]))\s*(\??))?\s*[\(\&lt;])</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.async.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.property.tsx</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.generator.asterisk.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?=\(|\&lt;)</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#method-declaration-name</string>
+          </dict>
+        </array>
+      </dict>
       <key>indexer-declaration</key>
       <dict>
         <key>name</key>
@@ -3871,7 +3961,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#method-declaration</string>
+            <string>#object-literal-method-declaration</string>
           </dict>
           <dict>
             <key>name</key>
