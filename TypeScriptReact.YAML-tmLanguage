@@ -33,7 +33,7 @@ repository:
       - include: '#jsx-evaluated-code'
 
   jsx-tag-attribute-name:
-    match: >-
+    match: |-
       (?x)
         \s*
         ([_$a-zA-Z][-$\w]*)
@@ -79,8 +79,8 @@ repository:
 
   jsx-evaluated-code:
     name: meta.embedded.expression.tsx
-    begin: '{'
-    end: '}'
+    begin: \{
+    end: \}
     beginCaptures:
       '0': { name: punctuation.section.embedded.begin.tsx }
     endCaptures:
@@ -110,7 +110,7 @@ repository:
 
   jsx-tag-in-expression:
     # We need to differentiate between the relational '<' operator and the beginning of a tag using the surrounding context.
-    begin: >-
+    begin: |-
       (?x)
         (?<=[({\[,?=>:*]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
         (?!(<)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)) #look ahead is not start of tag without attributes
@@ -130,7 +130,7 @@ repository:
 
   jsx-child-tag:
     # Because this would be included from the jsx-children, this doesnt need to inspect surrounding context
-    begin: >-
+    begin: |-
       (?x)
         (?=(<)\s*
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
@@ -147,14 +147,14 @@ repository:
 
   jsx-tag:
     name: meta.tag.tsx
-    begin: >-
+    begin: |-
       (?x)
         (?=(<)\s*
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
         (?=\s+(?!\?)|/?>))
     end: (?=(/>)|(?:(</)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
     patterns:
-    - begin: >-
+    - begin: |-
         (?x)
           (<)\s*
           ([_$a-zA-Z][-$\w.]*(?<!\.|-))

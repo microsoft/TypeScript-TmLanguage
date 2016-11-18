@@ -49,25 +49,27 @@ repository:
     - name: meta.var-single-variable.expr.ts
       # function assignment |
       # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
-      begin: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
-        (=\s*(
-          (async\s+) |
-          (function\s*[(<]) |
-          (function\s+) |
-          ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
-          ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
-        ) |
-        (:\s*(
-          (<) |
-          ([(]\s*(
-            ([)]) |
-            (\.\.\.) |
-            ([_$[:alnum:]]+\s*(
-              ([:,?=])|
-              ([)]\s*=>)
-            ))
-          )))
-        ))
+      begin: |-
+        (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
+          (=\s*(
+            (async\s+) |
+            (function\s*[(<]) |
+            (function\s+) |
+            ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+            ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+          ) |
+          (:\s*(
+            (<) |
+            ([(]\s*(
+              ([)]) |
+              (\.\.\.) |
+              ([_$[:alnum:]]+\s*(
+                ([:,?=])|
+                ([)]\s*=>)
+              ))
+            )))
+          )
+        )
       beginCaptures:
         '1': { name: meta.definition.variable.ts entity.name.function.ts }
       end: (?=$|[;,=}]|(\s+(of|in)\s+))
@@ -409,8 +411,9 @@ repository:
     patterns:
     - include: '#comment'
     - comment: (default|*|name) as alias
-      match: '(?x) (?: \b(default)\b | (\*) | ([_$[:alpha:]][_$[:alnum:]]*)) \s+ 
-        (as) \s+ (?: (\b default \b | \*) | ([_$[:alpha:]][_$[:alnum:]]*))'
+      match: |- 
+        (?x) (?: \b(default)\b | (\*) | ([_$[:alpha:]][_$[:alnum:]]*)) \s+ 
+          (as) \s+ (?: (\b default \b | \*) | ([_$[:alpha:]][_$[:alnum:]]*))
       captures:
         '1': { name: keyword.control.default.ts }
         '2': { name: constant.language.import-export-all.ts }
@@ -428,7 +431,7 @@ repository:
 
   class-or-interface-declaration:
     name: meta.class.ts
-    begin: '(?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b'
+    begin: (?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts }
@@ -447,7 +450,7 @@ repository:
     - include: '#class-or-interface-body'
 
   class-or-interface-heritage:
-    begin: '(?<!\.|\$)(?:\b(extends|implements)\b)(?!\$)'
+    begin: (?<!\.|\$)(?:\b(extends|implements)\b)(?!\$)
     beginCaptures:
       '1': { name: storage.modifier.ts }
     end: (?=\{)
@@ -534,25 +537,27 @@ repository:
       - name: meta.definition.property.ts entity.name.function.ts
         # function assignment |
         # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
-        match: (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
-          (=\s*(
-            (async\s+) |
-            (function\s*[(<]) |
-            (function\s+) |
-            ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
-            ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
-          ) |
-          (:\s*(
-            (<) |
-            ([(]\s*(
-              ([)]) |
-              (\.\.\.) |
-              ([_$[:alnum:]]+\s*(
-                ([:,?=])|
-                ([)]\s*=>)
-              ))
-            )))
-          ))
+        match: |-
+          (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
+            (=\s*(
+              (async\s+) |
+              (function\s*[(<]) |
+              (function\s+) |
+              ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+              ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+            ) |
+            (:\s*(
+              (<) |
+              ([(]\s*(
+                ([)]) |
+                (\.\.\.) |
+                ([_$[:alnum:]]+\s*(
+                  ([:,?=])|
+                  ([)]\s*=>)
+                ))
+              )))
+            )
+          )
       - name: meta.definition.property.ts variable.object.property.ts
         match: '[_$[:alpha:]][_$[:alnum:]]*'
       - name: keyword.operator.optional.ts
@@ -725,25 +730,27 @@ repository:
     patterns:
     # function assignment |
     # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
-    - match: (?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
-        (=\s*(
-          (async\s+) |
-          (function\s*[(<]) |
-          (function\s+) |
-          ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
-          ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
-        ) |
-        (:\s*(
-          (<) |
-          ([(]\s*(
-            ([)]) |
-            (\.\.\.) |
-            ([_$[:alnum:]]+\s*(
-              ([:,?=])|
-              ([)]\s*=>)
-            ))
-          )))
-        ))
+    - match: |-
+        (?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
+          (=\s*(
+            (async\s+) |
+            (function\s*[(<]) |
+            (function\s+) |
+            ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+            ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
+          ) |
+          (:\s*(
+            (<) |
+            ([(]\s*(
+              ([)]) |
+              (\.\.\.) |
+              ([_$[:alnum:]]+\s*(
+                ([:,?=])|
+                ([)]\s*=>)
+              ))
+            )))
+          )
+        )
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: storage.modifier.ts }
@@ -832,7 +839,7 @@ repository:
 
   return-type:
     name: meta.return.type.ts
-    begin: '(?<=\))\s*(:)'
+    begin: (?<=\))\s*(:)
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }
     end: (?<!:)((?=$)|(?=\{|;|//|\}))
@@ -902,11 +909,11 @@ repository:
 
   type-primitive:
     name: support.type.primitive.ts
-    match: '(?<!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$)'
+    match: (?<!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$)
 
   type-builtin-literals:
     name: support.type.builtin.ts
-    match: '(?<!\.|\$)\b(this|true|false|undefined|null)\b(?!\$)'
+    match: (?<!\.|\$)\b(this|true|false|undefined|null)\b(?!\$)
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -914,10 +921,10 @@ repository:
   # (number | (param: number, param2: string) => void)
   type-paren-or-function-parameters:
     name: meta.type.paren.cover.ts
-    begin: '\('
+    begin: \(
     beginCaptures:
       '0': { name: meta.brace.round.ts }
-    end: '\)'
+    end: \)
     endCaptures:
       '0': { name: meta.brace.round.ts }
     patterns:
@@ -946,18 +953,19 @@ repository:
       - include: '#function-parameters'
     # () | (... | (param: | (param, | (param? | (param= | (param) =>
     - name: meta.type.function.ts
-      begin: '(?x)(
-        (?=
-          [(]\s*(
-            ([)]) | 
-            (\.\.\.) |
-            ([_$[:alnum:]]+\s*(
-              ([:,?=])|
-              ([)]\s*=>)
-            ))
+      begin: |-
+        (?x)(
+          (?=
+            [(]\s*(
+              ([)]) | 
+              (\.\.\.) |
+              ([_$[:alnum:]]+\s*(
+                ([:,?=])|
+                ([)]\s*=>)
+              ))
+            )
           )
         )
-      )'
       end: (?<=\))
       patterns:
       - include: '#function-parameters'
@@ -1023,7 +1031,7 @@ repository:
     patterns:
     - include: '#comment'
     - name: storage.modifier.ts
-      match: '(?<!\.|\$)\b(extends)\b(?!\$)'
+      match: (?<!\.|\$)\b(extends)\b(?!\$)
     - include: '#type'
     - include: '#punctuation-comma'
 
@@ -1062,7 +1070,7 @@ repository:
 
   switch-block:
     name: switch-block.expr.ts
-    begin: '{'
+    begin: \{
     beginCaptures:
       '0': { name: punctuation.definition.block.ts }
     end: (?=\})
@@ -1072,7 +1080,7 @@ repository:
 
   case-clause:
     name: case-clause.expr.ts
-    begin: '(?<!\.|\$)\b(case|default(?=:))\b(?!\$)'
+    begin: (?<!\.|\$)\b(case|default(?=:))\b(?!\$)
     beginCaptures:
       '1': { name: keyword.control.switch.ts }
     end: ':'
@@ -1084,7 +1092,7 @@ repository:
   switch-statement:
     name: switch-statement.expr.ts
     begin: (?<!\.|\$)(?=\bswitch\s*\()
-    end: '}'
+    end: \}
     endCaptures:
       '0': {name: punctuation.definition.block.ts}      
     patterns:
@@ -1097,16 +1105,18 @@ repository:
       match: (?<!\.|\$)\b(arguments)\b(?!\$)
     # builtins
     - name: support.class.builtin.ts
-      match: (?x)(?<!\.|\$)\b(Array|ArrayBuffer|Atomics|Boolean|DataView|Date|Float32Array|Float64Array|Function|Generator
-        |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Promise|Proxy
-        |Reflect|RegExp|Set|SharedArrayBuffer|SIMD|String|Symbol|TypedArray
-        |Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|WeakMap|WeakSet)\b(?!\$)
+      match: |-
+        (?x)(?<!\.|\$)\b(Array|ArrayBuffer|Atomics|Boolean|DataView|Date|Float32Array|Float64Array|Function|Generator
+          |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Promise|Proxy
+          |Reflect|RegExp|Set|SharedArrayBuffer|SIMD|String|Symbol|TypedArray
+          |Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|WeakMap|WeakSet)\b(?!\$)
     - name: support.class.error.ts
       match: (?<!\.|\$)\b((Eval|Internal|Range|Reference|Syntax|Type|URI)?Error)\b(?!\$)
     # known builtin function calls
     - name: support.function.ts
-      match: (?x)(?<!\.|\$)\b(clear(Interval|Timeout)|decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|eval|
-        isFinite|isNaN|parseFloat|parseInt|require|set(Interval|Timeout)|super|unescape|uneval)(?=\s*\() 
+      match: |-
+        (?x)(?<!\.|\$)\b(clear(Interval|Timeout)|decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|eval|
+          isFinite|isNaN|parseFloat|parseInt|require|set(Interval|Timeout)|super|unescape|uneval)(?=\s*\() 
     # Math
     - match: |-
         (?x)(?<!\.|\$)\b(Math)(?:\s*(\.)\s*(?:
@@ -1397,10 +1407,11 @@ repository:
         '2': { name: constant.other.object.property.ts }
         '3': { name: variable.other.object.property.ts }
     # function and method assignment
-    - match: (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
-        (async\s+)|(function\s*[(<])|(function\s+)|
-        ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
-        ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)))
+    - match: |-
+        (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
+          (async\s+)|(function\s*[(<])|(function\s+)|
+          ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
+          ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)))
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: entity.name.function.ts }
@@ -1436,10 +1447,10 @@ repository:
     # If '<' is preceeded by 'return', 'throw', 'yield', or 'await', it's most likely a type assertion
     # If '=', '(', ',', ':', or '>' are followed by a '<', it is also likely a type assertion as otherwise it would be a syntax error
     # '<=' and '<<=' are cannot be type assertions, as they are assignment operators.
-    begin: '(?:(?<=return|throw|yield|await|default|[=(,:>*]))\s*(<)(?!<?\=)'
+    begin: (?:(?<=return|throw|yield|await|default|[=(,:>*]))\s*(<)(?!<?\=)
     beginCaptures:
       '1': { name: meta.brace.angle.ts }
-    end: '>'
+    end: \>
     endCaptures:
       '0': { name: meta.brace.angle.ts }
     patterns:
@@ -1447,10 +1458,10 @@ repository:
 
   new-expr:
     name: new.expr.ts
-    begin: '(?<!\.|\$)\b(new)\b(?!\$)'
+    begin: (?<!\.|\$)\b(new)\b(?!\$)
     beginCaptures:
       '1': { name: keyword.operator.new.ts }
-    end: '(?<=\))|(?=[;),]|$|((?<!\.|\$)\bnew\b(?!\$)))'
+    end: (?<=\))|(?=[;),]|$|((?<!\.|\$)\bnew\b(?!\$)))
     patterns:
     - include: '#paren-expression'
     - include: '#class-or-interface-declaration'
@@ -1474,10 +1485,11 @@ repository:
         - include: '#array-literal'
       - include: '#expression'
     - name: meta.object.member.ts
-      begin: (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
-        (async\s+)|(function\s*[(<])|(function\s+)|
-        ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
-        ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))))
+      begin: |-
+        (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
+          (async\s+)|(function\s*[(<])|(function\s+)|
+          ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
+          ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))))
       beginCaptures:
         '0': { name: meta.object-literal.key.ts }
         '1': { name: entity.name.function.ts }
@@ -1912,7 +1924,7 @@ repository:
       - name: entity.other.attribute-name.directive.ts
         match: 'path|types|no-default-lib|name'
       - name: keyword.operator.assignment.ts
-        match: =
+        match: '='
       - include: '#string'
 
   docblock:
