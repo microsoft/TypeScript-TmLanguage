@@ -5652,7 +5652,7 @@
       <dict>
         <key>begin</key>
         <string>(?x)
-  (?&lt;=[({\[,?=&gt;]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+  (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
   (?!(&lt;)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)) #look ahead is not start of tag without attributes
   (?!&lt;\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
   (?=(&lt;)\s*
