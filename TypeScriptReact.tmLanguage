@@ -2294,7 +2294,19 @@
         <array>
           <dict>
             <key>match</key>
-            <string>(?x)(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
+            <string>\s*\b(public|protected|private|readonly)(?=\s+(public|protected|private|readonly)\s+)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
   (=\s*(
     (async\s+) |
     (function\s*[(&lt;]) |
@@ -2324,19 +2336,14 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>storage.modifier.tsx</string>
+                <string>keyword.operator.rest.tsx</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.rest.tsx</string>
-              </dict>
-              <key>4</key>
-              <dict>
-                <key>name</key>
                 <string>entity.name.function.tsx</string>
               </dict>
-              <key>5</key>
+              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.optional.tsx</string>
@@ -2345,7 +2352,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?:\s*\b(readonly)\s+)?(?:\s*\b(public|private|protected)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)</string>
+            <string>(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2356,19 +2363,14 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>storage.modifier.tsx</string>
+                <string>keyword.operator.rest.tsx</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.rest.tsx</string>
-              </dict>
-              <key>4</key>
-              <dict>
-                <key>name</key>
                 <string>variable.parameter.tsx</string>
               </dict>
-              <key>5</key>
+              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.optional.tsx</string>
