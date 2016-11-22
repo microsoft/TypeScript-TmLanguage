@@ -5415,78 +5415,183 @@
             <key>name</key>
             <string>storage.type.class.jsdoc</string>
             <key>match</key>
-            <string>(?&lt;!\w)@(abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file|fileoverview|final|fires|for|function|global|host|ignore|implements|inherit[Dd]oc|inner|instance|interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|module|name|namespace|nocollapse|nosideeffects|override|overview|package|param|preserve|private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b</string>
+            <string>(?x)(?&lt;!\w)@(
+  abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class
+  |classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc
+  |description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file
+  |fileoverview|final|fires|for|function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance
+  |interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|modifies|module|name|namespace
+  |noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve|private|prop|property
+  |protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|suppress
+  |template|this|throws|todo|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>other.meta.jsdoc</string>
+            <key>match</key>
+            <string>(?x)
+(
+  \[
+    [^\]]+            # Optional [link text] preceding {@link syntax}
+  \]
+
+  (?!                  # Check to avoid highlighting two sets of link text
+    {
+      @\w+            # Tagname
+      \s+
+      [^\s|}]+        # Namepath/URL
+      [\s|]           # Whitespace or bar delimiting description
+      [^}]*
+    }
+  )
+)?
+
+(?:
+  {
+    (
+      @
+      (?: link         # Name of tag
+        | linkcode
+        | linkplain
+        | tutorial
+      )
+    )
+
+    \s+
+
+    ([^\s|}]+)        # Namepath or URL
+
+    (?:                # Optional link text following link target
+      [\s|]           # Bar or space separating target and text
+      [^}]*            # Actual text
+    )?
+  }
+)</string>
+            <key>captures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.type.instance.jsdoc</string>
+              </dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>constant.other.description.jsdoc</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.class.jsdoc</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.description.jsdoc</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>match</key>
             <string>(?x)
+
 (?:(?&lt;=@param)|(?&lt;=@arg)|(?&lt;=@argument)|(?&lt;=@type))
+
 \s+
+
 ({(?:
-  \* |                                        # {*} any type
-  \? |                                        # {?} unknown type
-  (?:                                         # Check for a prefix
-    \? |                                      # {?string} nullable type
-    !   |                                     # {!string} non-nullable type
-    \.{3}                                     # {...string} variable number of parameters
-  )?
+  \* |                                       # {*} any type
+  \? |                                       # {?} unknown type
+
   (?:
-    \(                                        # Opening bracket of multiple types with parenthesis {(string|number)}
-      [a-zA-Z_$]+
+    (?:                                       # Check for a prefix
+      \? |                                   # {?string} nullable type
+      !   |                                   # {!string} non-nullable type
+      \.{3}                                  # {...string} variable number of parameters
+    )?
+
+    (?:
       (?:
+        function                              # {function(string, number)} function type
+        \s*
+        \(
+        \s*
         (?:
-          [\w$]*
-          (?:\[\])?                           # {(string[]|number)} type application, an array of strings or a number
-        ) |
-        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;            # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
-      )
+          [a-zA-Z_$][\w$]*
+          (?:
+            \s*,\s*
+            [a-zA-Z_$][\w$]*
+          )*
+        )?
+        \s*
+        \)
+        (?:                                   # {function(): string} function return type
+          \s*:\s*
+          [a-zA-Z_$][\w$]*
+        )?
+      )?
+      |
       (?:
-        [\.|~]                                # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+        \(                                   # Opening bracket of multiple types with parenthesis {(string|number)}
+          [a-zA-Z_$]+
+          (?:
+            (?:
+              [\w$]*
+              (?:\[\])?                     # {(string[]|number)} type application, an array of strings or a number
+            ) |
+            \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;    # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+          )
+          (?:
+            [\.|~]                           # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+            [a-zA-Z_$]+
+            (?:
+              (?:
+                [\w$]*
+                (?:\[\])?                   # {(string|number[])} type application, a string or an array of numbers
+              ) |
+              \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;  # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+            )
+          )*
+        \) |
         [a-zA-Z_$]+
         (?:
           (?:
             [\w$]*
-            (?:\[\])?                        # {(string|number[])} type application, a string or an array of numbers
+            (?:\[\])?                       # {(string|number[])} type application, a string or an array of numbers
           ) |
-          \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;         # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+          \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;      # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
         )
-      )*
-    \) |
-    [a-zA-Z_$]+
-    (?:
-      (?:
-        [\w$]*
-        (?:\[\])?                            # {string[]|number} type application, an array of strings or a number
-      ) |
-      \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
-    )
-    (?:
-      [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
-      [a-zA-Z_$]+
-      (?:
-        [\w$]* |
-        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+        (?:
+          [\.|~]                             # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+          [a-zA-Z_$]+
+          (?:
+            [\w$]* |
+            \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;    # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+          )
+        )*
       )
-    )*
+    )
+                                              # Check for suffix
+    (?:\[\])?                               # {string[]} type application, an array of strings
+    =?                                        # {string=} optional parameter
   )
-                                             # Check for suffix
-  (?:\[\])?                                  # {string[]} type application, an array of strings
-  =?                                         # {string=} optional parameter
 )})
+
 \s+
+
 (
   \[                                         # [foo] optional parameter
     \s*
     (?:
       [a-zA-Z_$][\w$]*
       (?:
-        (?:\[\])?                            # Foo[].bar properties within an array
+        (?:\[\])?                           # Foo[].bar properties within an array
         \.                                   # Foo.Bar namespaced parameter
         [a-zA-Z_$][\w$]*
       )*
       (?:
         \s*
-        =                                    # [foo=bar] Default parameter value
+        =                                     # [foo=bar] Default parameter value
         \s*
         [\w$\s]*
       )?
@@ -5496,14 +5601,17 @@
   (?:
     [a-zA-Z_$][\w$]*
     (?:
-      (?:\[\])?                              # Foo[].bar properties within an array
+      (?:\[\])?                             # Foo[].bar properties within an array
       \.                                     # Foo.Bar namespaced parameter
       [a-zA-Z_$][\w$]*
     )*
   )?
 )
+
 \s+
-(?:-\s+)?                                    # optional hyphen before the description
+
+(?:-\s+)?                                     # optional hyphen before the description
+
 ((?:(?!\*\/).)*)                             # The type description</string>
             <key>captures</key>
             <dict>
@@ -5532,53 +5640,81 @@
           <dict>
             <key>match</key>
             <string>(?x)
+
 ({(?:
   \* |                                       # {*} any type
   \? |                                       # {?} unknown type
 
-  (?:                                        # Check for a prefix
-    \? |                                     # {?string} nullable type
-    !   |                                    # {!string} non-nullable type
-    \.{3}                                    # {...string} variable number of parameters
-  )?
-
   (?:
-    \(                                       # Opening bracket of multiple types with parenthesis {(string|number)}
-      [a-zA-Z_$]+
+    (?:                                       # Check for a prefix
+      \? |                                   # {?string} nullable type
+      !   |                                   # {!string} non-nullable type
+      \.{3}                                  # {...string} variable number of parameters
+    )?
+
+    (?:
       (?:
-        [\w$]* |
-        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
-      )
+        function                              # {function(string, number)} function type
+        \s*
+        \(
+        \s*
+        (?:
+          [a-zA-Z_$][\w$]*
+          (?:
+            \s*,\s*
+            [a-zA-Z_$][\w$]*
+          )*
+        )?
+        \s*
+        \)
+        (?:                                   # {function(): string} function return type
+          \s*:\s*
+          [a-zA-Z_$][\w$]*
+        )?
+      )?
+      |
       (?:
-        [\.|~]                               # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+        \(                                   # Opening bracket of multiple types with parenthesis {(string|number)}
+          [a-zA-Z_$]+
+          (?:
+            [\w$]* |
+            \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;    # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+          )
+          (?:
+            [\.|~]                           # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+            [a-zA-Z_$]+
+            (?:
+              [\w$]* |
+              \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;  # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+            )
+          )*
+        \) |
         [a-zA-Z_$]+
         (?:
           [\w$]* |
-          \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;         # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+          \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;      # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
         )
-      )*
-    \) |
-    [a-zA-Z_$]+
-    (?:
-      [\w$]* |
-      \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;             # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
-    )
-    (?:
-      [\.|~]                                 # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
-      [a-zA-Z_$]+
-      (?:
-        [\w$]* |
-        \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;           # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+        (?:
+          [\.|~]                             # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
+          [a-zA-Z_$]+
+          (?:
+            [\w$]* |
+            \.?&lt;[\w$]+(?:,\s+[\w$]+)*&gt;    # {Array&lt;string&gt;} or {Object&lt;string, number&gt;} type application (optional .)
+          )
+        )*
       )
-    )*
+    )
+                                              # Check for suffix
+    (?:\[\])?                               # {string[]} type application, an array of strings
+    =?                                        # {string=} optional parameter
   )
-                                             # Check for suffix
-  (?:\[\])?                                  # {string[]} type application, an array of strings
-  =?                                         # {string=} optional parameter
 )})
+
 \s+
+
 (?:-\s+)?                                    # optional hyphen before the description
-((?:(?!\*\/).)*)                             # The type description</string>
+
+((?:(?!\*\/).)*)                            # The type description</string>
             <key>captures</key>
             <dict>
               <key>0</key>
