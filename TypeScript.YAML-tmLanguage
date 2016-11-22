@@ -166,13 +166,6 @@ repository:
     - include: '#punctuation-comma'
 
   ternary-expression:
-    begin: (?=\?)
-    end: (?=$|[;,})\]])
-    patterns:
-    - include: '#ternary-operator'
-    - include: '#expression' 
-
-  ternary-operator:
     begin: (\?)
     beginCaptures:
       '0': { name: keyword.operator.ternary.ts }
