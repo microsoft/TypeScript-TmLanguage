@@ -57,10 +57,6 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#literal</string>
-          </dict>
-          <dict>
-            <key>include</key>
             <string>#declaration</string>
           </dict>
           <dict>
@@ -941,10 +937,8 @@
             <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>punctuation.accessor.ts</string>
-            <key>match</key>
-            <string>\.</string>
+            <key>include</key>
+            <string>#punctuation-accessor</string>
           </dict>
         </array>
       </dict>
@@ -3775,10 +3769,12 @@
       </dict>
       <key>function-call</key>
       <dict>
+        <key>name</key>
+        <string>meta.function-call.ts</string>
         <key>begin</key>
-        <string>(?=(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
         <key>end</key>
-        <string>(?&lt;=\))(?!(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3786,10 +3782,12 @@
             <string>#support-objects</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>punctuation.accessor.ts</string>
-            <key>match</key>
-            <string>\.</string>
+            <key>include</key>
+            <string>#object-identifier</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#punctuation-accessor</string>
           </dict>
           <dict>
             <key>name</key>
@@ -3847,35 +3845,8 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>name</key>
-            <string>support.class.ts</string>
-            <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>(?x)(\.)\s*(?:
-  ([[:upper:]][_$[:digit:][:upper:]]*) |
-  ([_$[:alpha:]][_$[:alnum:]]*)
-)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.accessor.ts</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>constant.other.object.property.ts</string>
-              </dict>
-              <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>variable.other.object.property.ts</string>
-              </dict>
-            </dict>
+            <key>include</key>
+            <string>#object-identifier</string>
           </dict>
           <dict>
             <key>match</key>
@@ -3932,6 +3903,63 @@
             </dict>
           </dict>
           <dict>
+            <key>name</key>
+            <string>constant.other.ts</string>
+            <key>match</key>
+            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>variable.other.readwrite.ts</string>
+            <key>match</key>
+            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
+          </dict>
+        </array>
+      </dict>
+      <key>object-identifier</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#this-literal</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#super-literal</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>support.class.ts</string>
+            <key>match</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(\.)\s*(?:
+  ([[:upper:]][_$[:digit:][:upper:]]*) |
+  ([_$[:alpha:]][_$[:alnum:]]*)
+)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.other.object.property.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.object.property.ts</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
             <key>match</key>
             <string>(?x)(?:
   ([[:upper:]][_$[:digit:][:upper:]]*) |
@@ -3950,18 +3978,6 @@
                 <string>variable.other.object.ts</string>
               </dict>
             </dict>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>constant.other.ts</string>
-            <key>match</key>
-            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>variable.other.readwrite.ts</string>
-            <key>match</key>
-            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
           </dict>
         </array>
       </dict>
@@ -4999,8 +5015,6 @@
       </dict>
       <key>literal</key>
       <dict>
-        <key>name</key>
-        <string>literal.ts</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -5026,14 +5040,6 @@
           <dict>
             <key>include</key>
             <string>#array-literal</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#this-literal</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#super-literal</string>
           </dict>
         </array>
       </dict>
