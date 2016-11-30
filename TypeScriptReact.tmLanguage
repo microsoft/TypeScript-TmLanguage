@@ -3165,7 +3165,7 @@
       <key>for-loop</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(for)\s*(\()</string>
+        <string>(?&lt;!\.|\$)\b(for)(?:\s+(await))?\s*(\()</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3174,6 +3174,11 @@
             <string>keyword.control.loop.tsx</string>
           </dict>
           <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.loop.tsx</string>
+          </dict>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>meta.brace.round.tsx</string>

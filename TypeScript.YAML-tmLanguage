@@ -1038,10 +1038,11 @@ repository:
       - include: '#expression'
 
   for-loop:
-    begin: (?<!\.|\$)\b(for)\s*(\()
+    begin: (?<!\.|\$)\b(for)(?:\s+(await))?\s*(\()
     beginCaptures:
       '1': { name: keyword.control.loop.ts }
-      '2': { name: meta.brace.round.ts }
+      '2': { name: keyword.control.loop.ts }
+      '3': { name: meta.brace.round.ts }
     end: \)
     endCaptures:
       '0': { name: meta.brace.round.ts }
