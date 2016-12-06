@@ -1,0 +1,168 @@
+original file
+-----------------------------------
+ interface Itest {
+	a: 'a1' // a1 is good
+		| 'a2' // a2 is good
+		| 'a3' // a3 is good
+	b: {
+		a: 'a1'
+			| 'a2' // oh , the color is not good !
+			| 'a3' // oh , the color is not good !
+	}
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+> interface Itest {
+ ^
+ source.ts
+  ^^^^^^^^^
+  source.ts meta.class.ts storage.type.interface.ts
+           ^
+           source.ts meta.class.ts
+            ^^^^^
+            source.ts meta.class.ts entity.name.type.class.ts
+                 ^
+                 source.ts meta.class.ts
+                  ^
+                  source.ts meta.class.ts punctuation.definition.block.ts
+                   ^^
+                   source.ts meta.class.ts
+>	a: 'a1' // a1 is good
+ ^
+ source.ts meta.class.ts
+  ^
+  source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+   ^
+   source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+    ^
+    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+      ^^
+      source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts string.quoted.single.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.end.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^
+          source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+            ^^^^^^^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts
+>		| 'a2' // a2 is good
+ ^^
+ source.ts meta.class.ts
+   ^
+   source.ts meta.class.ts keyword.operator.bitwise.ts
+    ^
+    source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+      ^^
+      source.ts meta.class.ts string.quoted.single.ts
+        ^
+        source.ts meta.class.ts string.quoted.single.ts punctuation.definition.string.end.ts
+         ^
+         source.ts meta.class.ts
+          ^^
+          source.ts meta.class.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+            ^^^^^^^^^^^^
+            source.ts meta.class.ts comment.line.double-slash.ts
+>		| 'a3' // a3 is good
+ ^^
+ source.ts meta.class.ts
+   ^
+   source.ts meta.class.ts keyword.operator.bitwise.ts
+    ^
+    source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+      ^^
+      source.ts meta.class.ts string.quoted.single.ts
+        ^
+        source.ts meta.class.ts string.quoted.single.ts punctuation.definition.string.end.ts
+         ^
+         source.ts meta.class.ts
+          ^^
+          source.ts meta.class.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+            ^^^^^^^^^^^^
+            source.ts meta.class.ts comment.line.double-slash.ts
+>	b: {
+ ^
+ source.ts meta.class.ts
+  ^
+  source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+   ^
+   source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+    ^
+    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+>		a: 'a1'
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+   ^
+   source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+    ^
+    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+       ^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts string.quoted.single.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.end.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+>			| 'a2' // oh , the color is not good !
+ ^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+    ^
+    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts keyword.operator.type.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+       ^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts string.quoted.single.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts string.quoted.single.ts punctuation.definition.string.end.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+           ^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts comment.line.double-slash.ts
+>			| 'a3' // oh , the color is not good !
+ ^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+    ^
+    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts keyword.operator.type.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+       ^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts string.quoted.single.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts string.quoted.single.ts punctuation.definition.string.end.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+           ^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts comment.line.double-slash.ts
+>	}
+ ^
+ source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+  ^
+  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+   ^
+   source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
