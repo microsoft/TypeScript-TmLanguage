@@ -196,6 +196,22 @@
             <key>name</key>
             <string>meta.var-single-variable.expr.ts</string>
             <key>begin</key>
+            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.definition.variable.ts variable.other.constant.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.var-single-variable.expr.ts</string>
+            <key>begin</key>
             <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>beginCaptures</key>
             <dict>
@@ -3868,7 +3884,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.other.object.property.ts</string>
+                <string>variable.other.constant.object.property.ts</string>
               </dict>
               <key>3</key>
               <dict>
@@ -3910,7 +3926,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.other.property.ts</string>
+                <string>variable.other.constant.property.ts</string>
               </dict>
             </dict>
           </dict>
@@ -3942,7 +3958,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>constant.other.object.ts</string>
+                <string>variable.other.constant.object.ts</string>
               </dict>
               <key>2</key>
               <dict>
@@ -3953,7 +3969,7 @@
           </dict>
           <dict>
             <key>name</key>
-            <string>constant.other.ts</string>
+            <string>variable.other.constant.ts</string>
             <key>match</key>
             <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
           </dict>

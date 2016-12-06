@@ -78,6 +78,11 @@ repository:
       - include: '#string'
       - include: '#comment'
     - name: meta.var-single-variable.expr.ts
+      begin: ([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
+      beginCaptures:
+        '1': { name: meta.definition.variable.ts variable.other.constant.ts }
+      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+    - name: meta.var-single-variable.expr.ts
       begin: ([_$[:alpha:]][_$[:alnum:]]*)
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
@@ -1397,7 +1402,7 @@ repository:
         )(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)
       captures:
         '1': { name: punctuation.accessor.ts }
-        '2': { name: constant.other.object.property.ts }
+        '2': { name: variable.other.constant.object.property.ts }
         '3': { name: variable.other.object.property.ts }
     # function and method assignment
     - match: |-
@@ -1412,7 +1417,7 @@ repository:
     - match: (\.)\s*([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
       captures:
         '1': { name: punctuation.accessor.ts }
-        '2': { name: constant.other.property.ts }
+        '2': { name: variable.other.constant.property.ts }
     # properties
     - match: (\.)\s*([_$[:alpha:]][_$[:alnum:]]*)
       captures:
@@ -1425,10 +1430,10 @@ repository:
           ([_$[:alpha:]][_$[:alnum:]]*)
         )(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)
       captures:
-        '1': { name: constant.other.object.ts }
+        '1': { name: variable.other.constant.object.ts }
         '2': { name: variable.other.object.ts }
     # const
-    - name: constant.other.ts
+    - name: variable.other.constant.ts
       match: ([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
     # vars
     - name: variable.other.readwrite.ts
