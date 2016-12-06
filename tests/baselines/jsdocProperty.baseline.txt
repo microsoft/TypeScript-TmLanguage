@@ -1,0 +1,374 @@
+original file
+-----------------------------------
+/**
+ * @namespace
+ * @property {object}  defaults               - The default values for parties.
+ * @property {number}  defaults.players       - The default number of players.
+ * @property {string}  defaults.level         - The default level for the party.
+ * @property {object}  defaults.treasure      - The default treasure.
+ * @property {number}  defaults.treasure.gold - How much gold the party starts with.
+ */
+var config = {
+    defaults: {
+        players: 1,
+        level:   'beginner',
+        treasure: {
+            gold: 0
+        }
+    }
+};
+/**
+ * @class MyClass
+ * @param {string} name It is a Input Name
+ * @prop {string} name It is a Prop Name
+ */
+class MyClass {
+    constructor(name) {
+        this.name = name || 'NoName';
+    }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts comment.block.documentation.ts
+> * @namespace
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+              ^^
+              source.ts comment.block.documentation.ts
+> * @property {object}  defaults               - The default values for parties.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+             ^
+             source.ts comment.block.documentation.ts other.meta.jsdoc
+              ^^^^^^^^
+              source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                      ^^
+                      source.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^^^^
+                        source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                                ^^^^^^^^^^^^^^^^^
+                                source.ts comment.block.documentation.ts other.meta.jsdoc
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> * @property {number}  defaults.players       - The default number of players.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+             ^
+             source.ts comment.block.documentation.ts other.meta.jsdoc
+              ^^^^^^^^
+              source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                      ^^
+                      source.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^^^^^^^^^^^^
+                        source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                                        ^^^^^^^^^
+                                        source.ts comment.block.documentation.ts other.meta.jsdoc
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> * @property {string}  defaults.level         - The default level for the party.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+             ^
+             source.ts comment.block.documentation.ts other.meta.jsdoc
+              ^^^^^^^^
+              source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                      ^^
+                      source.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^^^^^^^^^^
+                        source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                                      ^^^^^^^^^^^
+                                      source.ts comment.block.documentation.ts other.meta.jsdoc
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> * @property {object}  defaults.treasure      - The default treasure.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+             ^
+             source.ts comment.block.documentation.ts other.meta.jsdoc
+              ^^^^^^^^
+              source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                      ^^
+                      source.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^^^^^^^^^^^^^
+                        source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                                         ^^^^^^^^
+                                         source.ts comment.block.documentation.ts other.meta.jsdoc
+                                                 ^^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> * @property {number}  defaults.treasure.gold - How much gold the party starts with.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+             ^
+             source.ts comment.block.documentation.ts other.meta.jsdoc
+              ^^^^^^^^
+              source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                      ^^
+                      source.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                                              ^^^
+                                              source.ts comment.block.documentation.ts other.meta.jsdoc
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts
+>var config = {
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts
+>    defaults: {
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^^^^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+>        players: 1,
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                    ^^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+>        level:   'beginner',
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+         ^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+               ^^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                   ^^^^^^^^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                             ^^
+                             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+>        treasure: {
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+         ^^^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+>            gold: 0
+ ^^^^^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+             ^^^^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                    ^^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+>        }
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+>    }
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+>};
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+   ^^
+   source.ts
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts comment.block.documentation.ts
+> * @class MyClass
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+          ^^^^^^^^^^
+          source.ts comment.block.documentation.ts
+> * @param {string} name It is a Input Name
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+          ^
+          source.ts comment.block.documentation.ts other.meta.jsdoc
+           ^^^^^^^^
+           source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                   ^
+                   source.ts comment.block.documentation.ts other.meta.jsdoc
+                    ^^^^
+                    source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                        ^
+                        source.ts comment.block.documentation.ts other.meta.jsdoc
+                         ^^^^^^^^^^^^^^^^^^^
+                         source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> * @prop {string} name It is a Prop Name
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^^^^^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc
+         ^
+         source.ts comment.block.documentation.ts other.meta.jsdoc
+          ^^^^^^^^
+          source.ts comment.block.documentation.ts other.meta.jsdoc entity.name.type.instance.jsdoc
+                  ^
+                  source.ts comment.block.documentation.ts other.meta.jsdoc
+                   ^^^^
+                   source.ts comment.block.documentation.ts other.meta.jsdoc variable.other.jsdoc
+                       ^
+                       source.ts comment.block.documentation.ts other.meta.jsdoc
+                        ^^^^^^^^^^^^^^^^^^
+                        source.ts comment.block.documentation.ts other.meta.jsdoc other.description.jsdoc
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts
+>class MyClass {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+              ^
+              source.ts meta.class.ts
+               ^
+               source.ts meta.class.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.class.ts
+>    constructor(name) {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.type.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                 ^^^^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                        ^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        this.name = name || 'NoName';
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.accessor.ts
+              ^^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts support.variable.property.dom.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                     ^^^^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                          ^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.logical.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                              ^^^^^^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                                      ^^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

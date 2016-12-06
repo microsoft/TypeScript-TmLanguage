@@ -192,6 +192,22 @@
             <key>name</key>
             <string>meta.var-single-variable.expr.tsx</string>
             <key>begin</key>
+            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.definition.variable.tsx variable.other.constant.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.var-single-variable.expr.tsx</string>
+            <key>begin</key>
             <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>beginCaptures</key>
             <dict>
@@ -1631,6 +1647,10 @@
           <dict>
             <key>include</key>
             <string>#punctuation-semicolon</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#type</string>
           </dict>
         </array>
       </dict>
@@ -3885,7 +3905,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.other.property.tsx</string>
+                <string>variable.other.constant.property.tsx</string>
               </dict>
             </dict>
           </dict>
@@ -3908,7 +3928,7 @@
           </dict>
           <dict>
             <key>name</key>
-            <string>constant.other.tsx</string>
+            <string>variable.other.constant.tsx</string>
             <key>match</key>
             <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
           </dict>
@@ -3954,7 +3974,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.other.object.property.tsx</string>
+                <string>variable.other.constant.object.property.tsx</string>
               </dict>
               <key>3</key>
               <dict>
@@ -3974,7 +3994,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>constant.other.object.tsx</string>
+                <string>variable.other.constant.object.tsx</string>
               </dict>
               <key>2</key>
               <dict>
@@ -5465,7 +5485,7 @@
             <key>match</key>
             <string>(?x)
 
-(?:(?&lt;=@param)|(?&lt;=@arg)|(?&lt;=@argument)|(?&lt;=@type))
+(?:(?&lt;=@param)|(?&lt;=@arg)|(?&lt;=@argument)|(?&lt;=@type)|(?&lt;=@property)|(?&lt;=@prop))
 
 \s+
 
