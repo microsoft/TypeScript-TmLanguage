@@ -941,10 +941,8 @@
             <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>punctuation.accessor.ts</string>
-            <key>match</key>
-            <string>\.</string>
+            <key>include</key>
+            <string>#punctuation-accessor</string>
           </dict>
         </array>
       </dict>
@@ -3786,10 +3784,8 @@
             <string>#support-objects</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>punctuation.accessor.ts</string>
-            <key>match</key>
-            <string>\.</string>
+            <key>include</key>
+            <string>#punctuation-accessor</string>
           </dict>
           <dict>
             <key>name</key>
@@ -3970,7 +3966,7 @@
         <key>name</key>
         <string>cast.expr.ts</string>
         <key>begin</key>
-        <string>(?:(?&lt;=return|throw|yield|await|default|[=(,:&gt;*]))\s*(&lt;)(?!&lt;?\=)</string>
+        <string>(?:(?&lt;=return|throw|yield|await|default|^|[=(,:&gt;*]))\s*(&lt;)(?!&lt;?\=)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>

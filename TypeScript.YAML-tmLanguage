@@ -308,8 +308,7 @@ repository:
     - include: '#string'
     - name: entity.name.type.module.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - name: punctuation.accessor.ts
-      match: \.      
+    - include: '#punctuation-accessor'      
 
   import-equals-declaration: 
     patterns:
@@ -1368,8 +1367,7 @@ repository:
     end: (?<=\))(?!(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
     patterns:
     - include: '#support-objects'
-    - name: punctuation.accessor.ts
-      match: \.
+    - include: '#punctuation-accessor'
     - name: entity.name.function.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
     - include: '#comment'
@@ -1441,7 +1439,7 @@ repository:
     # If '<' is preceeded by 'return', 'throw', 'yield', or 'await', it's most likely a type assertion
     # If '=', '(', ',', ':', or '>' are followed by a '<', it is also likely a type assertion as otherwise it would be a syntax error
     # '<=' and '<<=' are cannot be type assertions, as they are assignment operators.
-    begin: (?:(?<=return|throw|yield|await|default|[=(,:>*]))\s*(<)(?!<?\=)
+    begin: (?:(?<=return|throw|yield|await|default|^|[=(,:>*]))\s*(<)(?!<?\=)
     beginCaptures:
       '1': { name: meta.brace.angle.ts }
     end: \>
