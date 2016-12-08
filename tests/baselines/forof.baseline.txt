@@ -1,0 +1,72 @@
+original file
+-----------------------------------
+for (const x of y) {}
+for await (const x of y) {}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>for (const x of y) {}
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+             ^
+             source.ts
+              ^^
+              source.ts keyword.operator.expression.of.ts
+                ^
+                source.ts
+                 ^
+                 source.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.brace.round.ts
+                   ^
+                   source.ts
+                    ^
+                    source.ts meta.block.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.block.ts punctuation.definition.block.ts
+                      ^^
+                      source.ts
+>for await (const x of y) {}
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^^^^^
+     source.ts keyword.control.loop.ts
+          ^
+          source.ts
+           ^
+           source.ts meta.brace.round.ts
+            ^^^^^
+            source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                   ^
+                   source.ts
+                    ^^
+                    source.ts keyword.operator.expression.of.ts
+                      ^
+                      source.ts
+                       ^
+                       source.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.brace.round.ts
+                         ^
+                         source.ts
+                          ^
+                          source.ts meta.block.ts punctuation.definition.block.ts
+                           ^
+                           source.ts meta.block.ts punctuation.definition.block.ts
