@@ -1564,8 +1564,8 @@ repository:
       match: \+\+
     - name: keyword.operator.arithmetic.ts
       match: '%|\*|/|-|\+'
-    # capture the arithmetic sign followed by variable so that it is not interpreted as regex
-    - match: (?<=[_$[:alnum:]])\s*(/)(?![/*])
+    # capture the arithmetic sign followed by variable or parenthesized expression so that it is not interpreted as regex
+    - match: (?<=[_$[:alnum:])])\s*(/)(?![/*])
       captures:
         '1': { name: keyword.operator.arithmetic.ts }
 
