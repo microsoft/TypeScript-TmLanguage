@@ -38,9 +38,9 @@ Grammar: TypeScript.tmLanguage
              ^^^^
              [3, 13]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts 
                             ^^^^^^^
-                            [3, 28]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.type.parameters.ts support.type.primitive.ts 
+                            [3, 28]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
                                      ^
-                                     [3, 37]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts 
+                                     [3, 37]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.function-call.ts meta.brace.round.ts 
 >        this.store = new Data();
          ^^^^
          [4, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts 
@@ -48,18 +48,18 @@ Grammar: TypeScript.tmLanguage
                           [4, 26]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts entity.name.type.ts 
 >        gaze(path.join(this.content, "**/*.json"), (err, watch) => {
          ^^^^
-         [5, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts entity.name.function.ts 
+         [5, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts variable.function.ts 
                                        ^^^^^^^^^
-                                       [5, 39]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts 
+                                       [5, 39]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.function-call.ts string.quoted.double.ts 
                                                  ^
-                                                 [5, 49]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts 
+                                                 [5, 49]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.function-call.ts meta.brace.round.ts 
 >            process.stuout.write(`Watching for changes in:`);
              ^^^^^^^
-             [6, 13]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts support.variable.object.process.ts 
+             [6, 13]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.arrow.ts meta.block.ts meta.function-call.ts support.variable.object.process.ts 
                                    ^^^^^^^^^^^^^^^^^^^^^^^^
-                                   [6, 35]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts string.template.ts 
+                                   [6, 35]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.arrow.ts meta.block.ts meta.function-call.ts string.template.ts 
                                                             ^
-                                                            [6, 60]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts 
+                                                            [6, 60]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.arrow.ts meta.block.ts meta.function-call.ts meta.brace.round.ts 
 >        })
 >    };
 >}
@@ -82,9 +82,9 @@ Grammar: TypeScript.tmLanguage
              ^^^^
              [13, 13]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts 
                             ^^^^^^^
-                            [13, 28]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.type.parameters.ts support.type.primitive.ts 
+                            [13, 28]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
                                      ^
-                                     [13, 37]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts 
+                                     [13, 37]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.function-call.ts meta.brace.round.ts 
 >        this.store = new Data();
          ^^^^
          [14, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts 
@@ -92,18 +92,18 @@ Grammar: TypeScript.tmLanguage
                           [14, 26]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts new.expr.ts entity.name.type.ts 
 >        gaze(path.join(this.content, "**/*.json"), (err, watch) => {
          ^^^^
-         [15, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts entity.name.function.ts 
+         [15, 9]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts variable.function.ts 
                                        ^^^^^^^^^
-                                       [15, 39]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.double.ts 
+                                       [15, 39]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.function-call.ts string.quoted.double.ts 
                                                  ^
-                                                 [15, 49]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts 
+                                                 [15, 49]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.function-call.ts meta.brace.round.ts 
 >            process.stuout.write(`Watching for changes in:`);
              ^^^^^^^
-             [16, 13]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts support.variable.object.process.ts 
+             [16, 13]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.arrow.ts meta.block.ts meta.function-call.ts support.variable.object.process.ts 
                                    ^^^^^^^^^^^^^^^^^^^^^^^^
-                                   [16, 35]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts string.template.ts 
+                                   [16, 35]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.arrow.ts meta.block.ts meta.function-call.ts string.template.ts 
                                                             ^
-                                                            [16, 60]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts 
+                                                            [16, 60]: source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts meta.arrow.ts meta.block.ts meta.function-call.ts meta.brace.round.ts 
 >        })
 >    };
 >}

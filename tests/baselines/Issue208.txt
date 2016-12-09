@@ -29,15 +29,15 @@ Grammar: TypeScript.tmLanguage
                                                [1, 47]: source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts 
 >var someVar = makeThing<number, string>('data');
                ^^^^^^^^^
-               [2, 15]: source.ts meta.var.expr.ts entity.name.function.ts 
+               [2, 15]: source.ts meta.var.expr.ts meta.function-call.ts variable.function.ts 
                          ^^^^^^
-                         [2, 25]: source.ts meta.var.expr.ts meta.type.parameters.ts support.type.primitive.ts 
+                         [2, 25]: source.ts meta.var.expr.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
                                  ^^^^^^
-                                 [2, 33]: source.ts meta.var.expr.ts meta.type.parameters.ts support.type.primitive.ts 
+                                 [2, 33]: source.ts meta.var.expr.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
                                           ^^^^
-                                          [2, 42]: source.ts meta.var.expr.ts string.quoted.single.ts 
+                                          [2, 42]: source.ts meta.var.expr.ts meta.function-call.ts string.quoted.single.ts 
                                                ^
-                                               [2, 47]: source.ts meta.var.expr.ts meta.brace.round.ts 
+                                               [2, 47]: source.ts meta.var.expr.ts meta.function-call.ts meta.brace.round.ts 
 >
 >class MyClass {
 >    static someProp = new Thing<number, string>('data');
@@ -53,11 +53,11 @@ Grammar: TypeScript.tmLanguage
             ^^^^^^^^
             [6, 12]: source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts 
                        ^^^^^^^^^
-                       [6, 23]: source.ts meta.class.ts meta.field.declaration.ts entity.name.function.ts 
+                       [6, 23]: source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts variable.function.ts 
                                  ^^^^^^
-                                 [6, 33]: source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts support.type.primitive.ts 
+                                 [6, 33]: source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
                                          ^^^^^^
-                                         [6, 41]: source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts support.type.primitive.ts 
+                                         [6, 41]: source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
 >
 >    someProp = new Thing<number, string>('data');
                     ^^^^^
@@ -68,9 +68,9 @@ Grammar: TypeScript.tmLanguage
                                   [8, 34]: source.ts meta.class.ts meta.field.declaration.ts new.expr.ts meta.type.parameters.ts support.type.primitive.ts 
 >    someProp = makeThing<number, string>('data');
                 ^^^^^^^^^
-                [9, 16]: source.ts meta.class.ts meta.field.declaration.ts entity.name.function.ts 
+                [9, 16]: source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts variable.function.ts 
                           ^^^^^^
-                          [9, 26]: source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts support.type.primitive.ts 
+                          [9, 26]: source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
                                   ^^^^^^
-                                  [9, 34]: source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts support.type.primitive.ts 
+                                  [9, 34]: source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts meta.type.parameters.ts support.type.primitive.ts 
 >}

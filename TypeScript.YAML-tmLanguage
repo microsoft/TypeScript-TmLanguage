@@ -19,7 +19,6 @@ repository:
     - include: '#string'
     - include: '#template'
     - include: '#comment'
-    - include: '#literal'
     - include: '#declaration'
     - include: '#switch-statement'
     - include: '#for-loop'
@@ -313,7 +312,7 @@ repository:
     - include: '#string'
     - name: entity.name.type.module.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - include: '#punctuation-accessor'      
+    - include: '#punctuation-accessor'
 
   import-equals-declaration: 
     patterns:
@@ -1370,12 +1369,17 @@ repository:
         '4': { name: support.function.dom.ts }
 
   function-call:
-    begin: (?=(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
-    end: (?<=\))(?!(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
+    name: meta.function-call.ts
+    # match (object.)+fun() for method call
+    # .func() for eg method call of fun in show().fun() 
+    # fun() for function call
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
+    end: (?<=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
     patterns:
     - include: '#support-objects'
+    - include: '#object-identifier'
     - include: '#punctuation-accessor'
-    - name: entity.name.function.ts
+    - name: variable.function.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
     - include: '#comment'
     - name: meta.type.parameters.ts
@@ -1392,19 +1396,7 @@ repository:
 
   identifiers:
     patterns:
-    # class
-    - name: support.class.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))
-    # object properties
-    - match: |-
-        (?x)(\.)\s*(?:
-          ([[:upper:]][_$[:digit:][:upper:]]*) |
-          ([_$[:alpha:]][_$[:alnum:]]*)
-        )(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)
-      captures:
-        '1': { name: punctuation.accessor.ts }
-        '2': { name: variable.other.constant.object.property.ts }
-        '3': { name: variable.other.object.property.ts }
+    - include: '#object-identifier'
     # function and method assignment
     - match: |-
         (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
@@ -1424,6 +1416,29 @@ repository:
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: variable.other.property.ts }
+    # const
+    - name: variable.other.constant.ts
+      match: ([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
+    # vars
+    - name: variable.other.readwrite.ts
+      match: '[_$[:alpha:]][_$[:alnum:]]*'
+
+  object-identifier:
+    patterns:
+    - include: '#this-literal'
+    - include: '#super-literal'
+    - name: support.class.ts
+      match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))
+    # object properties
+    - match: |-
+        (?x)(\.)\s*(?:
+          ([[:upper:]][_$[:digit:][:upper:]]*) |
+          ([_$[:alpha:]][_$[:alnum:]]*)
+        )(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)
+      captures:
+        '1': { name: punctuation.accessor.ts }
+        '2': { name: variable.other.constant.object.property.ts }
+        '3': { name: variable.other.object.property.ts }
     # objects
     - match: |-
         (?x)(?:
@@ -1433,12 +1448,6 @@ repository:
       captures:
         '1': { name: variable.other.constant.object.ts }
         '2': { name: variable.other.object.ts }
-    # const
-    - name: variable.other.constant.ts
-      match: ([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
-    # vars
-    - name: variable.other.readwrite.ts
-      match: '[_$[:alpha:]][_$[:alnum:]]*'
 
   cast:
     name: cast.expr.ts
@@ -1785,7 +1794,6 @@ repository:
       - include: '#expression'
 
   literal:
-    name: literal.ts
     patterns:
     - include: '#numeric-literal'
     - include: '#boolean-literal'
@@ -1793,8 +1801,6 @@ repository:
     - include: '#undefined-literal'
     - include: '#numericConstant-literal'
     - include: '#array-literal'
-    - include: '#this-literal'
-    - include: '#super-literal'
 
   array-literal:
     name: meta.array.literal.ts
