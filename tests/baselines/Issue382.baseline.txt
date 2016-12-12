@@ -1,0 +1,314 @@
+original file
+-----------------------------------
+
+   class ConstrainedBasedObjectcolection<T extends Core.Model.DataEntity>
+     {
+          public GetState(): { [index : string]: string } 
+          {
+              if (this.ShouldFilter())
+                  return { fpn: this.CurrentFilter().PropertyOfDefinition.DisplayName, fpv: this.CuttrentFilter().FilterValue }
+              return {};
+          }
+
+          public CurrentFilter: knockoutObservable<CollectionFilter<any>> = ko.observable<CollectionFilter<any>>();
+
+     }
+ 
+
+
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>
+ ^^
+ source.ts
+>   class ConstrainedBasedObjectcolection<T extends Core.Model.DataEntity>
+ ^^^
+ source.ts
+    ^^^^^
+    source.ts meta.class.ts storage.type.class.ts
+         ^
+         source.ts meta.class.ts
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          source.ts meta.class.ts entity.name.type.class.ts
+                                         ^
+                                         source.ts meta.class.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                          ^
+                                          source.ts meta.class.ts meta.type.parameters.ts entity.name.type.ts
+                                           ^
+                                           source.ts meta.class.ts meta.type.parameters.ts
+                                            ^^^^^^^
+                                            source.ts meta.class.ts meta.type.parameters.ts storage.modifier.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.type.parameters.ts
+                                                    ^^^^
+                                                    source.ts meta.class.ts meta.type.parameters.ts entity.name.type.module.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.type.parameters.ts punctuation.accessor.ts
+                                                         ^^^^^
+                                                         source.ts meta.class.ts meta.type.parameters.ts entity.name.type.module.ts
+                                                              ^
+                                                              source.ts meta.class.ts meta.type.parameters.ts punctuation.accessor.ts
+                                                               ^^^^^^^^^^
+                                                               source.ts meta.class.ts meta.type.parameters.ts entity.name.type.ts
+                                                                         ^
+                                                                         source.ts meta.class.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                          ^^
+                                                                          source.ts meta.class.ts
+>     {
+ ^^^^^
+ source.ts meta.class.ts
+      ^
+      source.ts meta.class.ts punctuation.definition.block.ts
+       ^^
+       source.ts meta.class.ts
+>          public GetState(): { [index : string]: string } 
+ ^^^^^^^^^^
+ source.ts meta.class.ts
+           ^^^^^^
+           source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts
+                  ^^^^^^^^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                                 ^^^^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts variable.parameter.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts
+                                         ^^^^^^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                                                ^
+                                                source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                 ^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts
+                                                  ^^^^^^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts support.type.primitive.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts
+                                                         ^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                                                          ^^
+                                                          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+>          {
+ ^^^^^^^^^^
+ source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts meta.block.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.class.ts meta.block.ts
+>              if (this.ShouldFilter())
+ ^^^^^^^^^^^^^^
+ source.ts meta.class.ts meta.block.ts
+               ^^
+               source.ts meta.class.ts meta.block.ts keyword.control.conditional.ts
+                 ^
+                 source.ts meta.class.ts meta.block.ts
+                  ^
+                  source.ts meta.class.ts meta.block.ts meta.brace.round.ts
+                   ^^^^
+                   source.ts meta.class.ts meta.block.ts variable.language.this.ts
+                       ^
+                       source.ts meta.class.ts meta.block.ts punctuation.accessor.ts
+                        ^^^^^^^^^^^^
+                        source.ts meta.class.ts meta.block.ts entity.name.function.ts
+                                    ^
+                                    source.ts meta.class.ts meta.block.ts meta.brace.round.ts
+                                     ^
+                                     source.ts meta.class.ts meta.block.ts meta.brace.round.ts
+                                      ^
+                                      source.ts meta.class.ts meta.block.ts meta.brace.round.ts
+                                       ^^
+                                       source.ts meta.class.ts meta.block.ts
+>                  return { fpn: this.CurrentFilter().PropertyOfDefinition.DisplayName, fpv: this.CuttrentFilter().FilterValue }
+ ^^^^^^^^^^^^^^^^^^
+ source.ts meta.class.ts meta.block.ts
+                   ^^^^^^
+                   source.ts meta.class.ts meta.block.ts keyword.control.flow.ts
+                         ^
+                         source.ts meta.class.ts meta.block.ts meta.objectliteral.ts
+                          ^
+                          source.ts meta.class.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                           ^
+                           source.ts meta.class.ts meta.block.ts meta.objectliteral.ts
+                            ^^^
+                            source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                               ^
+                               source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                ^
+                                source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                                 ^^^^
+                                 source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.language.this.ts
+                                     ^
+                                     source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                      ^^^^^^^^^^^^^
+                                      source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts entity.name.function.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                                    ^
+                                                    source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                                      ^^^^^^^^^^^^^^^^^^^^
+                                                      source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.property.ts
+                                                                          ^
+                                                                          source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                                                           ^^^^^^^^^^^
+                                                                           source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.other.property.ts
+                                                                                      ^
+                                                                                      source.ts meta.class.ts meta.block.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                                                                                       ^
+                                                                                       source.ts meta.class.ts meta.block.ts meta.objectliteral.ts
+                                                                                        ^^^
+                                                                                        source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                                                                                           ^
+                                                                                           source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                                                                            ^
+                                                                                            source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                                                                                             ^^^^
+                                                                                             source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.language.this.ts
+                                                                                                 ^
+                                                                                                 source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                                                                                  ^^^^^^^^^^^^^^
+                                                                                                  source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts entity.name.function.ts
+                                                                                                                ^
+                                                                                                                source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                                                                                                 ^
+                                                                                                                 source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                                                                                                  ^
+                                                                                                                  source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                                                                                                   ^^^^^^^^^^^
+                                                                                                                   source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.other.property.ts
+                                                                                                                              ^
+                                                                                                                              source.ts meta.class.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                                                                                                                               ^
+                                                                                                                               source.ts meta.class.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                                                                                                ^^
+                                                                                                                                source.ts meta.class.ts meta.block.ts
+>              return {};
+ ^^^^^^^^^^^^^^
+ source.ts meta.class.ts meta.block.ts
+               ^^^^^^
+               source.ts meta.class.ts meta.block.ts keyword.control.flow.ts
+                     ^
+                     source.ts meta.class.ts meta.block.ts meta.objectliteral.ts
+                      ^
+                      source.ts meta.class.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.class.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                        ^
+                        source.ts meta.class.ts meta.block.ts punctuation.terminator.statement.ts
+                         ^^
+                         source.ts meta.class.ts meta.block.ts
+>          }
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.block.ts
+           ^
+           source.ts meta.class.ts meta.block.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>          public CurrentFilter: knockoutObservable<CollectionFilter<any>> = ko.observable<CollectionFilter<any>>();
+ ^^^^^^^^^^
+ source.ts meta.class.ts
+           ^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts
+                  ^^^^^^^^^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                               ^
+                               source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                                 ^^^^^^^^^^^^^^^^^^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                                    ^^^^^^^^^^^^^^^^
+                                                    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts entity.name.type.ts
+                                                                    ^
+                                                                    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                                                     ^^^
+                                                                     source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts support.type.primitive.ts
+                                                                        ^
+                                                                        source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                         ^
+                                                                         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                          ^
+                                                                          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                                           ^
+                                                                           source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                                                                            ^
+                                                                            source.ts meta.class.ts meta.field.declaration.ts
+                                                                             ^^
+                                                                             source.ts meta.class.ts meta.field.declaration.ts variable.other.object.ts
+                                                                               ^
+                                                                               source.ts meta.class.ts meta.field.declaration.ts punctuation.accessor.ts
+                                                                                ^^^^^^^^^^
+                                                                                source.ts meta.class.ts meta.field.declaration.ts entity.name.function.ts
+                                                                                          ^
+                                                                                          source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                                                                           ^^^^^^^^^^^^^^^^
+                                                                                           source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                                                                                                           ^
+                                                                                                           source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                                                                                            ^^^
+                                                                                                            source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.parameters.ts support.type.primitive.ts
+                                                                                                               ^
+                                                                                                               source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                                                                ^
+                                                                                                                source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                                                                 ^
+                                                                                                                 source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                                                                                                  ^
+                                                                                                                  source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                                                                                                   ^
+                                                                                                                   source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                                                                                    ^^
+                                                                                                                    source.ts meta.class.ts
+>
+ ^^
+ source.ts meta.class.ts
+>     }
+ ^^^^^
+ source.ts meta.class.ts
+      ^
+      source.ts meta.class.ts punctuation.definition.block.ts
+       ^^
+       source.ts
+> 
+ ^^^
+ source.ts
+>
+ ^^
+ source.ts
+>
+ ^^
+ source.ts
+>
+ ^
+ source.ts

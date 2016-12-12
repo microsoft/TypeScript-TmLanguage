@@ -484,6 +484,7 @@ repository:
     - include: '#variable-initializer'
     - include: '#access-modifier'
     - include: '#property-accessor'
+    - include: '#decl-block'
     - include: '#expression'
     - include: '#punctuation-comma'
     - include: '#punctuation-semicolon'
@@ -572,29 +573,14 @@ repository:
       '5': { name: keyword.operator.new.ts } # captures keyword (new)
       '6': { name: storage.type.ts } # captures keyword (constructor)
       '7': { name: keyword.generator.asterisk.ts } # captures keyword (*)
-    end: '(?=\}|;|,)|(?<=\})'
+    end: (?=\}|;|,|$)|(?<=\})
     patterns:
     - include: '#method-declaration-name'
     - include: '#comment'
     - include: '#type-parameters'
     - include: '#function-parameters'
     - include: '#return-type'
-    - include: '#method-overload-declaration'
     - include: '#decl-block'
-
-  method-overload-declaration:
-    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\<]))
-    beginCaptures:
-      '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
-      '2': { name: storage.modifier.ts } # captures keyword (abstract)
-      '3': { name: storage.modifier.async.ts } # captures keyword (async)
-      '4': { name: storage.type.property.ts } # captures keyword (get|set)
-      '5': { name: keyword.operator.new.ts } # captures keyword (new)
-      '6': { name: storage.type.ts } # captures keyword (constructor)
-      '7': { name: keyword.generator.asterisk.ts } # captures keyword (*)
-    end: (?=\(|\<)
-    patterns:
-    - include: '#method-declaration-name'
 
   method-declaration-name:
     begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??)\s*[\(\<])
@@ -621,7 +607,7 @@ repository:
     - include: '#type-parameters'
     - include: '#function-parameters'
     - include: '#return-type'
-    - include: '#method-overload-declaration'
+    - include: '#object-literal-method-overload-declaration'
     - include: '#decl-block'
 
   object-literal-method-overload-declaration:
