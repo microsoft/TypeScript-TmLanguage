@@ -303,7 +303,7 @@ repository:
 
   namespace-declaration:
     name: meta.namespace.declaration.ts
-    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(namespace|module)\s+
+    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(namespace|module)\s+(?=[_$[:alpha:]"'`])
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.namespace.ts }
