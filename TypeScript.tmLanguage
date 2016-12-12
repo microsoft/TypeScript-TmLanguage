@@ -1547,6 +1547,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#after-operator-block</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#decl-block</string>
           </dict>
           <dict>
@@ -3104,23 +3108,49 @@
       </dict>
       <key>variable-initializer</key>
       <dict>
-        <key>begin</key>
-        <string>(?&lt;!=|!)(=)(?!=)</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.assignment.ts</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>(?=$|[,);}\]])</string>
         <key>patterns</key>
         <array>
           <dict>
-            <key>include</key>
-            <string>#expression</string>
+            <key>begin</key>
+            <string>(?&lt;!=|!)(=)(?!=)(?=\s*\S)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$|[,);}\]])</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;!=|!)(=)(?!=)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=[,);}\]])|(?=^\s*$)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>

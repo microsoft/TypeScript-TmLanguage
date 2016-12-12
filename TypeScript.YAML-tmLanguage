@@ -484,6 +484,7 @@ repository:
     - include: '#variable-initializer'
     - include: '#access-modifier'
     - include: '#property-accessor'
+    - include: '#after-operator-block'
     - include: '#decl-block'
     - include: '#expression'
     - include: '#punctuation-comma'
@@ -1021,12 +1022,21 @@ repository:
     - include: '#punctuation-comma'
 
   variable-initializer:
-    begin: (?<!=|!)(=)(?!=)
-    beginCaptures:
-      '1': { name: keyword.operator.assignment.ts }
-    end: (?=$|[,);}\]])
     patterns:
+    # if it is assignment with expression on same line, use end of line as end of scope
+    - begin: (?<!=|!)(=)(?!=)(?=\s*\S)
+      beginCaptures:
+        '1': { name: keyword.operator.assignment.ts }
+      end: (?=$|[,);}\]])
+      patterns:
       - include: '#expression'
+    # if the expression doesnt start on same line do not use end of line as end of unless the complete line is blank
+    - begin: (?<!=|!)(=)(?!=)
+      beginCaptures:
+        '1': { name: keyword.operator.assignment.ts }
+      end: (?=[,);}\]])|(?=^\s*$)
+      patterns:
+        - include: '#expression'
 
   for-loop:
     begin: (?<!\.|\$)\b(for)(?:\s+(await))?\s*(\()
