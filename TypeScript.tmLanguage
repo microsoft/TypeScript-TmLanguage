@@ -152,6 +152,8 @@
     (function\s*[(&lt;]) |
     (function\s+) |
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
+    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
     ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
   ) |
   (:\s*(
@@ -1717,6 +1719,8 @@
     (function\s*[(&lt;]) |
     (function\s+) |
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
+    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
     ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
   ) |
   (:\s*(
@@ -2260,6 +2264,8 @@
     (function\s*[(&lt;]) |
     (function\s+) |
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
+    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
     ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
   ) |
   (:\s*(
@@ -3881,6 +3887,8 @@
             <string>(?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
   (async\s+)|(function\s*[(&lt;])|(function\s+)|
   ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)|
+  ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+  ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
   ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)))</string>
             <key>captures</key>
             <dict>
@@ -4089,6 +4097,8 @@
             <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
   (async\s+)|(function\s*[(&lt;])|(function\s+)|
   ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)|
+  ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+  ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
   ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
             <key>beginCaptures</key>
             <dict>
@@ -4361,20 +4371,6 @@
             <key>name</key>
             <string>meta.arrow.ts</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)(\basync)(?=\s*[&lt;(])</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>storage.modifier.async.ts</string>
-              </dict>
-            </dict>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>meta.arrow.ts</string>
-            <key>match</key>
             <string>(?:(?&lt;!\.|\$)(\basync)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
             <key>captures</key>
             <dict>
@@ -4394,7 +4390,43 @@
             <key>name</key>
             <string>meta.arrow.ts</string>
             <key>begin</key>
-            <string>(?x)\s*(?=(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)</string>
+            <string>(?x) (?:
+  (?&lt;!\.|\$)(\basync)(?=\s*[&lt;(])
+) | (\s*
+  (?=
+    # sure shot arrow functions even if =&gt; is on new line
+    (
+      [(]\s*
+      (
+        ([)]\s*:) |                               # ():
+        ([_$[:alpha:]][_$[:alnum:]]*\s*:) |       # [(]param:
+        (\.\.\.)                                  # [(]...
+      )
+    ) |
+    (
+      [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*
+      (
+        (\s+extends\s*[^=&gt;]) |                    # &lt; typeparam extends 
+        (\s*[,])                                  # &lt; typeparam,
+      )
+    ) |
+    # arrow function possible to detect only with =&gt; on same line
+    (
+      (&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?                 # typeparameters
+      \(([^()]|\([^()]*\))*\)                     # parameteres
+      (\s*:\s*(.)*)?                              # return type
+      \s*=&gt;                                       # arrow operator
+    )
+  )
+)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.async.ts</string>
+              </dict>
+            </dict>
             <key>end</key>
             <string>(?==&gt;)</string>
             <key>patterns</key>

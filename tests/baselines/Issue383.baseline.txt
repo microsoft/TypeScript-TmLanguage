@@ -1,0 +1,324 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+
+const singleLineArrow = (first: number, second: Set<string>) => (<div></div>);
+
+const multilineArrow = (first: number,
+	second: number[],
+) => (<div></div>);
+
+const multilineArrowWithGenericType = (first: number,
+	second: Set<string>,
+) => (<div></div>);
+
+const followup = (first: number, second: Set<string>) => (<div></div>);
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>
+ ^^
+ source.tsx
+>const singleLineArrow = (first: number, second: Set<string>) => (<div></div>);
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx entity.name.function.tsx
+                      ^
+                      source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx meta.arrow.tsx
+                         ^
+                         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+                          ^^^^^
+                          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+                                 ^^^^^^
+                                 source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx support.type.primitive.tsx
+                                       ^
+                                       source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                                        ^
+                                        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+                                         ^^^^^^
+                                         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                                               ^
+                                               source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+                                                ^
+                                                source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+                                                 ^^^
+                                                 source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx entity.name.type.tsx
+                                                    ^
+                                                    source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+                                                     ^^^^^^
+                                                     source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx support.type.primitive.tsx
+                                                           ^
+                                                           source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                                                            ^
+                                                            source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+                                                             ^
+                                                             source.tsx meta.var.expr.tsx meta.arrow.tsx
+                                                              ^^
+                                                              source.tsx meta.var.expr.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+                                                                ^
+                                                                source.tsx meta.var.expr.tsx meta.arrow.tsx
+                                                                 ^
+                                                                 source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                                                                  ^
+                                                                  source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                                                   ^^^
+                                                                   source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                                                      ^
+                                                                      source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                                                       ^^
+                                                                       source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                                                         ^^^
+                                                                         source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                                                            ^
+                                                                            source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                                                             ^
+                                                                             source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                                                                              ^
+                                                                              source.tsx punctuation.terminator.statement.tsx
+                                                                               ^^
+                                                                               source.tsx
+>
+ ^^
+ source.tsx
+>const multilineArrow = (first: number,
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx entity.name.function.tsx
+                     ^
+                     source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                      ^
+                      source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.arrow.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+                         ^^^^^
+                         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+                                ^^^^^^
+                                source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx support.type.primitive.tsx
+                                      ^
+                                      source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                                       ^^
+                                       source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+>	second: number[],
+ ^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+  ^^^^^^
+  source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+          ^^^^^^
+          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx support.type.primitive.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.tuple.tsx meta.brace.square.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.tuple.tsx meta.brace.square.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                   ^^
+                   source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+>) => (<div></div>);
+ ^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+  ^
+  source.tsx meta.var.expr.tsx meta.arrow.tsx
+   ^^
+   source.tsx meta.var.expr.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.arrow.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.brace.round.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+        ^^^
+        source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+           ^
+           source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+            ^^
+            source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+              ^^^
+              source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                   ^
+                   source.tsx punctuation.terminator.statement.tsx
+                    ^^
+                    source.tsx
+>
+ ^^
+ source.tsx
+>const multilineArrowWithGenericType = (first: number,
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx entity.name.function.tsx
+                                    ^
+                                    source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                                     ^
+                                     source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                                      ^
+                                      source.tsx meta.var.expr.tsx meta.arrow.tsx
+                                       ^
+                                       source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+                                        ^^^^^
+                                        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                                             ^
+                                             source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+                                              ^
+                                              source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+                                               ^^^^^^
+                                               source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx support.type.primitive.tsx
+                                                     ^
+                                                     source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                                                      ^^
+                                                      source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+>	second: Set<string>,
+ ^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+  ^^^^^^
+  source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+          ^^^
+          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx entity.name.type.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+              ^^^^^^
+              source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx support.type.primitive.tsx
+                    ^
+                    source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                     ^
+                     source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                      ^^
+                      source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+>) => (<div></div>);
+ ^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+  ^
+  source.tsx meta.var.expr.tsx meta.arrow.tsx
+   ^^
+   source.tsx meta.var.expr.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.arrow.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.brace.round.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+        ^^^
+        source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+           ^
+           source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+            ^^
+            source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+              ^^^
+              source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                   ^
+                   source.tsx punctuation.terminator.statement.tsx
+                    ^^
+                    source.tsx
+>
+ ^^
+ source.tsx
+>const followup = (first: number, second: Set<string>) => (<div></div>);
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx entity.name.function.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx meta.arrow.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+                   ^^^^^
+                   source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+                         ^
+                         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+                          ^^^^^^
+                          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx support.type.primitive.tsx
+                                ^
+                                source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                                 ^
+                                 source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+                                  ^^^^^^
+                                  source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                                        ^
+                                        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+                                         ^
+                                         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+                                          ^^^
+                                          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx entity.name.type.tsx
+                                             ^
+                                             source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+                                              ^^^^^^
+                                              source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx support.type.primitive.tsx
+                                                    ^
+                                                    source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                                                     ^
+                                                     source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+                                                      ^
+                                                      source.tsx meta.var.expr.tsx meta.arrow.tsx
+                                                       ^^
+                                                       source.tsx meta.var.expr.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+                                                         ^
+                                                         source.tsx meta.var.expr.tsx meta.arrow.tsx
+                                                          ^
+                                                          source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                                                           ^
+                                                           source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                                            ^^^
+                                                            source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                                               ^
+                                                               source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                                                ^^
+                                                                source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                                                  ^^^
+                                                                  source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                                                     ^
+                                                                     source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                                                      ^
+                                                                      source.tsx meta.var.expr.tsx meta.brace.round.tsx
+                                                                       ^
+                                                                       source.tsx punctuation.terminator.statement.tsx

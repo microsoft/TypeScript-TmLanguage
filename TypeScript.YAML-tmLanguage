@@ -56,6 +56,8 @@ repository:
             (function\s*[(<]) |
             (function\s+) |
             ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
             ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
           ) |
           (:\s*(
@@ -544,6 +546,8 @@ repository:
               (function\s*[(<]) |
               (function\s+) |
               ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+              ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+              ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
               ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
             ) |
             (:\s*(
@@ -725,6 +729,8 @@ repository:
             (function\s*[(<]) |
             (function\s+) |
             ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
+            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
             ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
           ) |
           (:\s*(
@@ -1406,6 +1412,8 @@ repository:
         (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
           (async\s+)|(function\s*[(<])|(function\s+)|
           ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
+          ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+          ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
           ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)))
       captures:
         '1': { name: punctuation.accessor.ts }
@@ -1484,6 +1492,8 @@ repository:
         (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
           (async\s+)|(function\s*[(<])|(function\s+)|
           ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
+          ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+          ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
           ((<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))))
       beginCaptures:
         '0': { name: meta.object-literal.key.ts }
@@ -1571,18 +1581,48 @@ repository:
 
   arrow-function:
     patterns:
-    - name: meta.arrow.ts
-      match: (?<!\.|\$)(\basync)(?=\s*[<(])
-      captures:
-        '1': { name: storage.modifier.async.ts }
-    # paramters of the arrow
+    # arrow with single parameter without parenthesis
     - name: meta.arrow.ts
       match: (?:(?<!\.|\$)(\basync)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
       captures:
         '1': { name: storage.modifier.async.ts }
         '2': { name: variable.parameter.ts }
+    # parenthesized arrow
     - name: meta.arrow.ts
-      begin: (?x)\s*(?=(<([^<>]|\<[^<>]+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+      begin: >-
+        (?x)
+        (?:
+          (?<!\.|\$)(\basync)(?=\s*[<(])
+        ) |
+        (\s*
+          (?=
+            # sure shot arrow functions even if => is on new line
+            (
+              [(]\s*
+              (
+                ([)]\s*:) |                               # ():
+                ([_$[:alpha:]][_$[:alnum:]]*\s*:) |       # [(]param:
+                (\.\.\.)                                  # [(]...
+              )
+            ) |
+            (
+              [<]\s*[_$[:alpha:]][_$[:alnum:]]*
+              (
+                (\s+extends\s*[^=>]) |                    # < typeparam extends 
+                (\s*[,])                                  # < typeparam,
+              )
+            ) |
+            # arrow function possible to detect only with => on same line
+            (
+              (<([^<>]|\<[^<>]+\>)+>\s*)?                 # typeparameters
+              \(([^()]|\([^()]*\))*\)                     # parameteres
+              (\s*:\s*(.)*)?                              # return type
+              \s*=>                                       # arrow operator
+            )
+          )
+        )
+      beginCaptures:
+        '1': { name: storage.modifier.async.ts }
       end: (?==>)
       patterns:
       - include: '#comment'
