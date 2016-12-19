@@ -663,24 +663,13 @@ repository:
       '3': { name: storage.type.function.ts }
       '4': { name: keyword.generator.asterisk.ts }
       '5': { name: meta.definition.function.ts entity.name.function.ts }
-    end: (?=;|\})|(?<=\})
+    end: (?=$|;|\})|(?<=\})
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
     - include: '#function-parameters'
     - include: '#return-type'
-    - include: '#function-overload-declaration'
     - include: '#decl-block'
-
-  function-overload-declaration:
-    name: meta.function.overload.ts
-    match: (?<!\.|\$)\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*
-    captures:
-      '1': { name: keyword.control.export.ts }
-      '2': { name: storage.modifier.async.ts }
-      '3': { name: storage.type.function.ts }
-      '4': { name: keyword.generator.asterisk.ts }
-      '5': { name: meta.definition.function.ts entity.name.function.ts }
 
   object-literal:
     name: meta.objectliteral.ts

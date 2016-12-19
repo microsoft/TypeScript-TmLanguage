@@ -2080,7 +2080,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=;|\})|(?&lt;=\})</string>
+        <string>(?=$|;|\})|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2101,48 +2101,9 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#function-overload-declaration</string>
-          </dict>
-          <dict>
-            <key>include</key>
             <string>#decl-block</string>
           </dict>
         </array>
-      </dict>
-      <key>function-overload-declaration</key>
-      <dict>
-        <key>name</key>
-        <string>meta.function.overload.ts</string>
-        <key>match</key>
-        <string>(?&lt;!\.|\$)\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
-        <key>captures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.export.ts</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>storage.modifier.async.ts</string>
-          </dict>
-          <key>3</key>
-          <dict>
-            <key>name</key>
-            <string>storage.type.function.ts</string>
-          </dict>
-          <key>4</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.generator.asterisk.ts</string>
-          </dict>
-          <key>5</key>
-          <dict>
-            <key>name</key>
-            <string>meta.definition.function.ts entity.name.function.ts</string>
-          </dict>
-        </dict>
       </dict>
       <key>object-literal</key>
       <dict>
