@@ -619,23 +619,6 @@
             <string>(?&lt;!\.|\$)\b(return)\b(?!\$)</string>
           </dict>
           <dict>
-            <key>match</key>
-            <string>(?&lt;!\.|\$)\b(yield)\b(?!\$)(?:\s*(\*))?</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.flow.ts</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.generator.asterisk.ts</string>
-              </dict>
-            </dict>
-          </dict>
-          <dict>
             <key>name</key>
             <string>keyword.control.switch.ts</string>
             <key>match</key>
@@ -4203,6 +4186,23 @@
             <string>keyword.control.flow.ts</string>
             <key>match</key>
             <string>(?&lt;!\.|\$)\b(await)\b(?!\$)</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?&lt;!\.|\$)\b(yield)\b(?!\$)(?:\s*(\*))?</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.flow.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.generator.asterisk.ts</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>name</key>

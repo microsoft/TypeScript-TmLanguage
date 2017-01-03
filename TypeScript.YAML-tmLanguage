@@ -212,10 +212,6 @@ repository:
       match: (?<!\.|\$)\b(break|continue|do|goto|while)\b(?!\$)
     - name: keyword.control.flow.ts
       match: (?<!\.|\$)\b(return)\b(?!\$)
-    - match: (?<!\.|\$)\b(yield)\b(?!\$)(?:\s*(\*))?
-      captures:
-        '1': { name: keyword.control.flow.ts }
-        '2': { name: keyword.generator.asterisk.ts }
     - name: keyword.control.switch.ts
       match: (?<!\.|\$)\b(case|default|switch)\b(?!\$)
     - name: keyword.control.conditional.ts
@@ -1523,6 +1519,10 @@ repository:
     patterns:
     - name: keyword.control.flow.ts
       match: (?<!\.|\$)\b(await)\b(?!\$)
+    - match: (?<!\.|\$)\b(yield)\b(?!\$)(?:\s*(\*))?
+      captures:
+        '1': { name: keyword.control.flow.ts }
+        '2': { name: keyword.generator.asterisk.ts }
     - name: keyword.operator.expression.delete.ts
       match: (?<!\.|\$)\bdelete\b(?!\$)
     - name: keyword.operator.expression.in.ts
