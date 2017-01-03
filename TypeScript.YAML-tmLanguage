@@ -19,7 +19,6 @@ repository:
     - include: '#string'
     - include: '#template'
     - include: '#comment'
-    - include: '#literal'
     - include: '#declaration'
     - include: '#switch-statement'
     - include: '#for-loop'
@@ -188,7 +187,6 @@ repository:
     - include: '#regex'
     - include: '#template'
     - include: '#comment'
-    - include: '#literal'
     - include: '#function-expression'
     - include: '#class-or-interface-declaration'
     - include: '#arrow-function'
@@ -198,6 +196,7 @@ repository:
     - include: '#object-literal'
     - include: '#expression-operators'
     - include: '#function-call'
+    - include: '#literal'
     - include: '#support-objects'
     - include: '#identifiers'
     - include: '#paren-expression'
@@ -1371,6 +1370,7 @@ repository:
     begin: (?=(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
     end: (?<=\))(?!(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>]|\<[^<>]+\>)+>\s*)?\()
     patterns:
+    - include: '#literal'
     - include: '#support-objects'
     - include: '#punctuation-accessor'
     - name: entity.name.function.ts
