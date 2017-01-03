@@ -183,14 +183,13 @@ repository:
     - include: '#expression' 
 
   expression:
-    name: meta.expression.ts
     patterns:
     - include: '#string'
     - include: '#regex'
     - include: '#template'
     - include: '#comment'
     - include: '#literal'
-    - include: '#function-declaration'
+    - include: '#function-expression'
     - include: '#class-or-interface-declaration'
     - include: '#arrow-function'
     - include: '#cast'
@@ -230,7 +229,6 @@ repository:
       match: (?<!\.|\$)\b(declare)\b(?!\$)
 
   declaration:
-    name: meta.declaration.ts
     patterns:
      - include: '#decorator'
      - include: '#var-expr'
@@ -663,7 +661,23 @@ repository:
       '3': { name: storage.type.function.ts }
       '4': { name: keyword.generator.asterisk.ts }
       '5': { name: meta.definition.function.ts entity.name.function.ts }
-    end: (?=$|;|\})|(?<=\})
+    end: (?=$|;)|(?<=\})
+    patterns:
+    - include: '#comment'
+    - include: '#type-parameters'
+    - include: '#function-parameters'
+    - include: '#return-type'
+    - include: '#decl-block'
+
+  function-expression:
+    name: meta.function.expression.ts
+    begin: (?<!\.|\$)\b(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*
+    beginCaptures:
+      '1': { name: storage.modifier.async.ts }
+      '2': { name: storage.type.function.ts }
+      '3': { name: keyword.generator.asterisk.ts }
+      '4': { name: meta.definition.function.ts entity.name.function.ts }
+    end: (?<=\})
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
@@ -854,7 +868,6 @@ repository:
     - include: '#type'
 
   type:
-    name: meta.type.ts
     patterns:
     - include: '#comment'
     - include: '#string'
@@ -1804,7 +1817,6 @@ repository:
       - include: '#expression'
 
   literal:
-    name: literal.ts
     patterns:
     - include: '#numeric-literal'
     - include: '#boolean-literal'

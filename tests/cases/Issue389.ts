@@ -1,0 +1,4 @@
+[function ()
+{
+    let foo;
+}];

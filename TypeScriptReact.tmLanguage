@@ -520,8 +520,6 @@
       </dict>
       <key>expression</key>
       <dict>
-        <key>name</key>
-        <string>meta.expression.tsx</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -550,7 +548,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#function-declaration</string>
+            <string>#function-expression</string>
           </dict>
           <dict>
             <key>include</key>
@@ -679,8 +677,6 @@
       </dict>
       <key>declaration</key>
       <dict>
-        <key>name</key>
-        <string>meta.declaration.tsx</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2084,7 +2080,62 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|;|\})|(?&lt;=\})</string>
+        <string>(?=$|;)|(?&lt;=\})</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#comment</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#type-parameters</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#function-parameters</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#return-type</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#decl-block</string>
+          </dict>
+        </array>
+      </dict>
+      <key>function-expression</key>
+      <dict>
+        <key>name</key>
+        <string>meta.function.expression.tsx</string>
+        <key>begin</key>
+        <string>(?&lt;!\.|\$)\b(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.async.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.function.tsx</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.generator.asterisk.tsx</string>
+          </dict>
+          <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>meta.definition.function.tsx entity.name.function.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2631,8 +2682,6 @@
       </dict>
       <key>type</key>
       <dict>
-        <key>name</key>
-        <string>meta.type.tsx</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -4958,8 +5007,6 @@
       </dict>
       <key>literal</key>
       <dict>
-        <key>name</key>
-        <string>literal.tsx</string>
         <key>patterns</key>
         <array>
           <dict>
