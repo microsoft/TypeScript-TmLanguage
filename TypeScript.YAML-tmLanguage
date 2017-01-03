@@ -428,7 +428,7 @@ repository:
 
   class-or-interface-declaration:
     name: meta.class.ts
-    begin: (?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b
+    begin: (?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b(?=\s+|/[/*])
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts }
