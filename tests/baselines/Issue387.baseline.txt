@@ -1,0 +1,464 @@
+original file
+-----------------------------------
+//
+// Copyright 2016 Kary Foundation, Inc.
+//   Author: Pouya Kary <k@karyfoundation.org>
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//
+
+//
+// --- IMPORTS --------------------------------------------------------------------
+//
+
+    import * as readline from 'readline';
+
+//
+// --- READLINE -------------------------------------------------------------------
+//
+
+    /**
+     * Reads a string from the command line
+     * ```
+     * async function main ( ) {
+     *    let name = await kary.terminal.input('Your name: ')
+     *    console.log(`Hello, ${ name }!`)
+     * }
+     * ```
+     */
+    export async function input ( message = '' ) {
+        const readlineInterface = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout,
+        })
+        return new Promise<string> ( resolve => {
+            readlineInterface.question ( message , answer => {
+                readlineInterface.close( );
+                resolve( answer );
+            });
+        });
+    }
+
+// --------------------------------------------------------------------------------
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>//
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>// Copyright 2016 Kary Foundation, Inc.
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>//   Author: Pouya Kary <k@karyfoundation.org>
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>//
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>// This Source Code Form is subject to the terms of the Mozilla Public
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>// License, v. 2.0. If a copy of the MPL was not distributed with this
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>//
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>
+ ^^
+ source.ts
+>//
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>// --- IMPORTS --------------------------------------------------------------------
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>//
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>
+ ^^
+ source.ts
+>    import * as readline from 'readline';
+ ^^^^
+ source.ts
+     ^^^^^^
+     source.ts meta.import.ts keyword.control.import.ts
+           ^
+           source.ts meta.import.ts
+            ^
+            source.ts meta.import.ts constant.language.import-export-all.ts
+             ^
+             source.ts meta.import.ts
+              ^^
+              source.ts meta.import.ts keyword.control.as.ts
+                ^
+                source.ts meta.import.ts
+                 ^^^^^^^^
+                 source.ts meta.import.ts variable.other.readwrite.alias.ts
+                         ^
+                         source.ts meta.import.ts
+                          ^^^^
+                          source.ts meta.import.ts keyword.control.from.ts
+                              ^
+                              source.ts meta.import.ts
+                               ^
+                               source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                ^^^^^^^^
+                                source.ts meta.import.ts string.quoted.single.ts
+                                        ^
+                                        source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
+                                          ^^
+                                          source.ts
+>
+ ^^
+ source.ts
+>//
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>// --- READLINE -------------------------------------------------------------------
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>//
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>
+ ^^
+ source.ts
+>    /**
+ ^^^^
+ source.ts
+     ^^^
+     source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^
+        source.ts comment.block.documentation.ts
+>     * Reads a string from the command line
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+>     * ```
+ ^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+>     * async function main ( ) {
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+>     *    let name = await kary.terminal.input('Your name: ')
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+>     *    console.log(`Hello, ${ name }!`)
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+>     * }
+ ^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+>     * ```
+ ^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+>     */
+ ^^^^^
+ source.ts comment.block.documentation.ts
+      ^^
+      source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^
+        source.ts
+>    export async function input ( message = '' ) {
+ ^^^^
+ source.ts
+     ^^^^^^
+     source.ts meta.function.ts keyword.control.export.ts
+           ^
+           source.ts meta.function.ts
+            ^^^^^
+            source.ts meta.function.ts storage.modifier.async.ts
+                 ^
+                 source.ts meta.function.ts
+                  ^^^^^^^^
+                  source.ts meta.function.ts storage.type.function.ts
+                          ^
+                          source.ts meta.function.ts
+                           ^^^^^
+                           source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                                ^
+                                source.ts meta.function.ts
+                                 ^
+                                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                  ^
+                                  source.ts meta.function.ts meta.parameters.ts
+                                   ^^^^^^^
+                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                          ^
+                                          source.ts meta.function.ts meta.parameters.ts
+                                           ^
+                                           source.ts meta.function.ts meta.parameters.ts keyword.operator.assignment.ts
+                                            ^
+                                            source.ts meta.function.ts meta.parameters.ts
+                                             ^
+                                             source.ts meta.function.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                              ^
+                                              source.ts meta.function.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                               ^
+                                               source.ts meta.function.ts meta.parameters.ts
+                                                ^
+                                                source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                 ^
+                                                 source.ts meta.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                                   ^^
+                                                   source.ts meta.function.ts meta.block.ts
+>        const readlineInterface = readline.createInterface({
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts
+         ^^^^^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+               ^^^^^^^^^^^^^^^^^
+               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                                   ^^^^^^^^
+                                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts support.module.node.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                                            ^^^^^^^^^^^^^^^
+                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts entity.name.function.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                             ^^
+                                                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts
+>            input: process.stdin,
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts
+             ^^^^^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                    ^^^^^^^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts support.variable.object.process.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                            ^^^^^
+                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts support.variable.property.process.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                                  ^^
+                                  source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts
+>            output: process.stdout,
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts
+             ^^^^^^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                     ^^^^^^^
+                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts support.variable.object.process.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                             ^^^^^^
+                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts support.variable.property.process.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                                    ^^
+                                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts
+>        })
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>        return new Promise<string> ( resolve => {
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts
+         ^^^^^^
+         source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+               ^
+               source.ts meta.function.ts meta.block.ts
+                ^^^
+                source.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts new.expr.ts
+                    ^^^^^^^
+                    source.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                            ^^^^^^
+                            source.ts meta.function.ts meta.block.ts new.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts new.expr.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts new.expr.ts
+                                      ^^^^^^^
+                                      source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts variable.parameter.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts
+                                              ^^
+                                              source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                                  ^^
+                                                  source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+>            readlineInterface.question ( message , answer => {
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+             ^^^^^^^^^^^^^^^^^
+             source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts variable.other.object.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+                               ^^^^^^^^
+                               source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts entity.name.function.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+                                          ^^^^^^^
+                                          source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.separator.comma.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+                                                    ^^^^^^
+                                                    source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts variable.parameter.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts
+                                                           ^^
+                                                           source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                                               ^^
+                                                               source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+>                readlineInterface.close( );
+ ^^^^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+                 ^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.object.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+                                   ^^^^^
+                                   source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts support.function.dom.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                                            ^^
+                                            source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+>                resolve( answer );
+ ^^^^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+                 ^^^^^^^
+                 source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts entity.name.function.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+                          ^^^^^^
+                          source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                                   ^^
+                                   source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+>            });
+ ^^^^^^^^^^^^
+ source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts
+             ^
+             source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+               ^
+               source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                ^^
+                source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+>        });
+ ^^^^^^^^
+ source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts
+         ^
+         source.ts meta.function.ts meta.block.ts new.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+           ^
+           source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+            ^^
+            source.ts meta.function.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^
+     source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts
+>
+ ^^
+ source.ts
+>// --------------------------------------------------------------------------------
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts

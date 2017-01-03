@@ -926,12 +926,6 @@ repository:
       end: (?<=\))
       patterns:
       - include: '#function-parameters'
-    #type parameters followed by parenthesis
-    - name: meta.type.function.ts
-      begin: (?<=\>)\s*(?=\()
-      end: (?<=\))
-      patterns:
-      - include: '#function-parameters'
     # () | (... | (param: | (param, | (param? | (param= | (param) =>
     - name: meta.type.function.ts
       begin: |-
