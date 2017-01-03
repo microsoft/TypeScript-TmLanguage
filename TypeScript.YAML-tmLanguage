@@ -1628,7 +1628,7 @@ repository:
     begin: '(?<=\))\s*(:)'
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }    
-    end: (?<!:)((?=$)|(?==>|;|//))
+    end: (?==>)
     patterns:
     # TODO: handle the fn and constructor type specifically.
     - include: '#type-predicate-operator'
