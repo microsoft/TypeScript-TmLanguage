@@ -3757,9 +3757,9 @@
       <key>function-call</key>
       <dict>
         <key>begin</key>
-        <string>(?=(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
         <key>end</key>
-        <string>(?&lt;=\))(?!(\.\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3769,6 +3769,10 @@
           <dict>
             <key>include</key>
             <string>#support-objects</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#object-identifiers</string>
           </dict>
           <dict>
             <key>include</key>
@@ -3830,35 +3834,8 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>name</key>
-            <string>support.class.ts</string>
-            <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>(?x)(\.)\s*(?:
-  ([[:upper:]][_$[:digit:][:upper:]]*) |
-  ([_$[:alpha:]][_$[:alnum:]]*)
-)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.accessor.ts</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>variable.other.constant.object.property.ts</string>
-              </dict>
-              <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>variable.other.object.property.ts</string>
-              </dict>
-            </dict>
+            <key>include</key>
+            <string>#object-identifiers</string>
           </dict>
           <dict>
             <key>match</key>
@@ -3917,6 +3894,55 @@
             </dict>
           </dict>
           <dict>
+            <key>name</key>
+            <string>variable.other.constant.ts</string>
+            <key>match</key>
+            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>variable.other.readwrite.ts</string>
+            <key>match</key>
+            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
+          </dict>
+        </array>
+      </dict>
+      <key>object-identifiers</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>support.class.ts</string>
+            <key>match</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(\.)\s*(?:
+  ([[:upper:]][_$[:digit:][:upper:]]*) |
+  ([_$[:alpha:]][_$[:alnum:]]*)
+)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.constant.object.property.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.object.property.ts</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
             <key>match</key>
             <string>(?x)(?:
   ([[:upper:]][_$[:digit:][:upper:]]*) |
@@ -3935,18 +3961,6 @@
                 <string>variable.other.object.ts</string>
               </dict>
             </dict>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>variable.other.constant.ts</string>
-            <key>match</key>
-            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>variable.other.readwrite.ts</string>
-            <key>match</key>
-            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
           </dict>
         </array>
       </dict>
