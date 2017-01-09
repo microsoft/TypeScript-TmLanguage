@@ -1,0 +1,592 @@
+original file
+-----------------------------------
+ipcMain.on('ELECTRON_GUEST_WINDOW_MANAGER_WEB_CONTENTS_METHOD', function (event, guestId, method, ...args) {
+  const guestContents = webContents.fromId(guestId)
+  if (guestContents == null) return
+
+  if (canAccessWindow(event.sender, guestContents)) {
+    guestContents[method](...args)
+  } else {
+    console.error(`Blocked ${event.sender.getURL()} from calling ${method} on its opener.`)
+  }
+})
+
+ipcMain.on('ELECTRON_GUEST_WINDOW_MANAGER_WEB_CONTENTS_METHOD_SYNC', function (event, guestId, method, ...args) {
+  const guestContents = webContents.fromId(guestId)
+  if (guestContents == null) {
+    event.returnValue = null
+    return
+  }
+
+  if (canAccessWindow(event.sender, guestContents)) {
+    event.returnValue = guestContents[method](...args)
+  } else {
+    console.error(`Blocked ${event.sender.getURL()} from calling ${method} on its opener.`)
+    event.returnValue = null
+  }
+})
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>ipcMain.on('ELECTRON_GUEST_WINDOW_MANAGER_WEB_CONTENTS_METHOD', function (event, guestId, method, ...args) {
+ ^^^^^^^
+ source.ts variable.other.object.ts
+        ^
+        source.ts punctuation.accessor.ts
+         ^^
+         source.ts entity.name.function.ts
+           ^
+           source.ts meta.brace.round.ts
+            ^
+            source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts string.quoted.single.ts
+                                                              ^
+                                                              source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                               ^
+                                                               source.ts punctuation.separator.comma.ts
+                                                                ^
+                                                                source.ts
+                                                                 ^^^^^^^^
+                                                                 source.ts meta.function.expression.ts storage.type.function.ts
+                                                                         ^
+                                                                         source.ts meta.function.expression.ts
+                                                                          ^
+                                                                          source.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                                           ^^^^^
+                                                                           source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                ^
+                                                                                source.ts meta.function.expression.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                 ^
+                                                                                 source.ts meta.function.expression.ts meta.parameters.ts
+                                                                                  ^^^^^^^
+                                                                                  source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                         ^
+                                                                                         source.ts meta.function.expression.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                          ^
+                                                                                          source.ts meta.function.expression.ts meta.parameters.ts
+                                                                                           ^^^^^^
+                                                                                           source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                                 ^
+                                                                                                 source.ts meta.function.expression.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                                  ^
+                                                                                                  source.ts meta.function.expression.ts meta.parameters.ts
+                                                                                                   ^^^
+                                                                                                   source.ts meta.function.expression.ts meta.parameters.ts keyword.operator.rest.ts
+                                                                                                      ^^^^
+                                                                                                      source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                                          ^
+                                                                                                          source.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                                                           ^
+                                                                                                           source.ts meta.function.expression.ts
+                                                                                                            ^
+                                                                                                            source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                                                                                             ^^
+                                                                                                             source.ts meta.function.expression.ts meta.block.ts
+>  const guestContents = webContents.fromId(guestId)
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+   ^^^^^
+   source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^^^^^^^^
+         source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+                         ^^^^^^^^^^^
+                         source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts variable.other.object.ts
+                                    ^
+                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                                     ^^^^^^
+                                     source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+                                            ^^^^^^^
+                                            source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                   ^
+                                                   source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+                                                    ^
+                                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+>  if (guestContents == null) return
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+   ^^
+   source.ts meta.function.expression.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.expression.ts meta.block.ts
+      ^
+      source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+       ^^^^^^^^^^^^^
+       source.ts meta.function.expression.ts meta.block.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.function.expression.ts meta.block.ts
+                     ^^
+                     source.ts meta.function.expression.ts meta.block.ts keyword.operator.comparison.ts
+                       ^
+                       source.ts meta.function.expression.ts meta.block.ts
+                        ^^^^
+                        source.ts meta.function.expression.ts meta.block.ts constant.language.null.ts
+                            ^
+                            source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                             ^
+                             source.ts meta.function.expression.ts meta.block.ts
+                              ^^^^^^
+                              source.ts meta.function.expression.ts meta.block.ts keyword.control.flow.ts
+                                    ^^
+                                    source.ts meta.function.expression.ts meta.block.ts
+>
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+>  if (canAccessWindow(event.sender, guestContents)) {
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+   ^^
+   source.ts meta.function.expression.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.expression.ts meta.block.ts
+      ^
+      source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+       ^^^^^^^^^^^^^^^
+       source.ts meta.function.expression.ts meta.block.ts entity.name.function.ts
+                      ^
+                      source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                       ^^^^^
+                       source.ts meta.function.expression.ts meta.block.ts support.variable.dom.ts
+                            ^
+                            source.ts meta.function.expression.ts meta.block.ts punctuation.accessor.ts
+                             ^^^^^^
+                             source.ts meta.function.expression.ts meta.block.ts variable.other.property.ts
+                                   ^
+                                   source.ts meta.function.expression.ts meta.block.ts punctuation.separator.comma.ts
+                                    ^
+                                    source.ts meta.function.expression.ts meta.block.ts
+                                     ^^^^^^^^^^^^^
+                                     source.ts meta.function.expression.ts meta.block.ts variable.other.readwrite.ts
+                                                  ^
+                                                  source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                                                   ^
+                                                   source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                                                    ^
+                                                    source.ts meta.function.expression.ts meta.block.ts
+                                                     ^
+                                                     source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                                      ^^
+                                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>    guestContents[method](...args)
+ ^^^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+     ^^^^^^^^^^^^^
+     source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                   ^^^^^^
+                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                         ^
+                         source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                          ^
+                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                           ^^^
+                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts keyword.operator.spread.ts
+                              ^^^^
+                              source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                                  ^
+                                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                   ^^
+                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>  } else {
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^
+    source.ts meta.function.expression.ts meta.block.ts
+     ^^^^
+     source.ts meta.function.expression.ts meta.block.ts keyword.control.conditional.ts
+         ^
+         source.ts meta.function.expression.ts meta.block.ts
+          ^
+          source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+           ^^
+           source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>    console.error(`Blocked ${event.sender.getURL()} from calling ${method} on its opener.`)
+ ^^^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+     ^^^^^^^
+     source.ts meta.function.expression.ts meta.block.ts meta.block.ts support.class.console.ts
+            ^
+            source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+             ^^^^^
+             source.ts meta.function.expression.ts meta.block.ts meta.block.ts support.function.console.ts
+                  ^
+                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts punctuation.definition.string.template.begin.ts
+                    ^^^^^^^^
+                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts
+                            ^^
+                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                              ^^^^^
+                              source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts support.variable.dom.ts
+                                   ^
+                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.accessor.ts
+                                    ^^^^^^
+                                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts variable.other.object.property.ts
+                                          ^
+                                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.accessor.ts
+                                           ^^^^^^
+                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts entity.name.function.ts
+                                                 ^
+                                                 source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts meta.brace.round.ts
+                                                  ^
+                                                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts meta.brace.round.ts
+                                                   ^
+                                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                    ^^^^^^^^^^^^^^
+                                                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts
+                                                                  ^^
+                                                                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                                                    ^^^^^^
+                                                                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts variable.other.readwrite.ts
+                                                                          ^
+                                                                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                                           ^^^^^^^^^^^^^^^
+                                                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts
+                                                                                          ^
+                                                                                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                                                           ^
+                                                                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                                                            ^^
+                                                                                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.function.expression.ts meta.block.ts
+>})
+ ^
+ source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.brace.round.ts
+   ^^
+   source.ts
+>
+ ^^
+ source.ts
+>ipcMain.on('ELECTRON_GUEST_WINDOW_MANAGER_WEB_CONTENTS_METHOD_SYNC', function (event, guestId, method, ...args) {
+ ^^^^^^^
+ source.ts variable.other.object.ts
+        ^
+        source.ts punctuation.accessor.ts
+         ^^
+         source.ts entity.name.function.ts
+           ^
+           source.ts meta.brace.round.ts
+            ^
+            source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts string.quoted.single.ts
+                                                                   ^
+                                                                   source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                    ^
+                                                                    source.ts punctuation.separator.comma.ts
+                                                                     ^
+                                                                     source.ts
+                                                                      ^^^^^^^^
+                                                                      source.ts meta.function.expression.ts storage.type.function.ts
+                                                                              ^
+                                                                              source.ts meta.function.expression.ts
+                                                                               ^
+                                                                               source.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                                                ^^^^^
+                                                                                source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                     ^
+                                                                                     source.ts meta.function.expression.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                      ^
+                                                                                      source.ts meta.function.expression.ts meta.parameters.ts
+                                                                                       ^^^^^^^
+                                                                                       source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                              ^
+                                                                                              source.ts meta.function.expression.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                               ^
+                                                                                               source.ts meta.function.expression.ts meta.parameters.ts
+                                                                                                ^^^^^^
+                                                                                                source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                                      ^
+                                                                                                      source.ts meta.function.expression.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                                       ^
+                                                                                                       source.ts meta.function.expression.ts meta.parameters.ts
+                                                                                                        ^^^
+                                                                                                        source.ts meta.function.expression.ts meta.parameters.ts keyword.operator.rest.ts
+                                                                                                           ^^^^
+                                                                                                           source.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                                                                                               ^
+                                                                                                               source.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                                                                ^
+                                                                                                                source.ts meta.function.expression.ts
+                                                                                                                 ^
+                                                                                                                 source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                                                                                                  ^^
+                                                                                                                  source.ts meta.function.expression.ts meta.block.ts
+>  const guestContents = webContents.fromId(guestId)
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+   ^^^^^
+   source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^^^^^^^^
+         source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+                         ^^^^^^^^^^^
+                         source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts variable.other.object.ts
+                                    ^
+                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                                     ^^^^^^
+                                     source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts entity.name.function.ts
+                                           ^
+                                           source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+                                            ^^^^^^^
+                                            source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                   ^
+                                                   source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+                                                    ^
+                                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+>  if (guestContents == null) {
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+   ^^
+   source.ts meta.function.expression.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.expression.ts meta.block.ts
+      ^
+      source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+       ^^^^^^^^^^^^^
+       source.ts meta.function.expression.ts meta.block.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.function.expression.ts meta.block.ts
+                     ^^
+                     source.ts meta.function.expression.ts meta.block.ts keyword.operator.comparison.ts
+                       ^
+                       source.ts meta.function.expression.ts meta.block.ts
+                        ^^^^
+                        source.ts meta.function.expression.ts meta.block.ts constant.language.null.ts
+                            ^
+                            source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                             ^
+                             source.ts meta.function.expression.ts meta.block.ts
+                              ^
+                              source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                               ^^
+                               source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>    event.returnValue = null
+ ^^^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.expression.ts meta.block.ts meta.block.ts support.variable.dom.ts
+          ^
+          source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+           ^^^^^^^^^^^
+           source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.property.ts
+                      ^
+                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+                       ^
+                       source.ts meta.function.expression.ts meta.block.ts meta.block.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+                         ^^^^
+                         source.ts meta.function.expression.ts meta.block.ts meta.block.ts constant.language.null.ts
+                             ^^
+                             source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>    return
+ ^^^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.expression.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+           ^^
+           source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.function.expression.ts meta.block.ts
+>
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+>  if (canAccessWindow(event.sender, guestContents)) {
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts
+   ^^
+   source.ts meta.function.expression.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.expression.ts meta.block.ts
+      ^
+      source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+       ^^^^^^^^^^^^^^^
+       source.ts meta.function.expression.ts meta.block.ts entity.name.function.ts
+                      ^
+                      source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                       ^^^^^
+                       source.ts meta.function.expression.ts meta.block.ts support.variable.dom.ts
+                            ^
+                            source.ts meta.function.expression.ts meta.block.ts punctuation.accessor.ts
+                             ^^^^^^
+                             source.ts meta.function.expression.ts meta.block.ts variable.other.property.ts
+                                   ^
+                                   source.ts meta.function.expression.ts meta.block.ts punctuation.separator.comma.ts
+                                    ^
+                                    source.ts meta.function.expression.ts meta.block.ts
+                                     ^^^^^^^^^^^^^
+                                     source.ts meta.function.expression.ts meta.block.ts variable.other.readwrite.ts
+                                                  ^
+                                                  source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                                                   ^
+                                                   source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                                                    ^
+                                                    source.ts meta.function.expression.ts meta.block.ts
+                                                     ^
+                                                     source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                                      ^^
+                                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>    event.returnValue = guestContents[method](...args)
+ ^^^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.expression.ts meta.block.ts meta.block.ts support.variable.dom.ts
+          ^
+          source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+           ^^^^^^^^^^^
+           source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.property.ts
+                      ^
+                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+                       ^
+                       source.ts meta.function.expression.ts meta.block.ts meta.block.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+                         ^^^^^^^^^^^^^
+                         source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                                      ^
+                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                       ^^^^^^
+                                       source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                                             ^
+                                             source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                                              ^
+                                              source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                               ^^^
+                                               source.ts meta.function.expression.ts meta.block.ts meta.block.ts keyword.operator.spread.ts
+                                                  ^^^^
+                                                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                                                      ^
+                                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                       ^^
+                                                       source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>  } else {
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^
+    source.ts meta.function.expression.ts meta.block.ts
+     ^^^^
+     source.ts meta.function.expression.ts meta.block.ts keyword.control.conditional.ts
+         ^
+         source.ts meta.function.expression.ts meta.block.ts
+          ^
+          source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+           ^^
+           source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>    console.error(`Blocked ${event.sender.getURL()} from calling ${method} on its opener.`)
+ ^^^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+     ^^^^^^^
+     source.ts meta.function.expression.ts meta.block.ts meta.block.ts support.class.console.ts
+            ^
+            source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+             ^^^^^
+             source.ts meta.function.expression.ts meta.block.ts meta.block.ts support.function.console.ts
+                  ^
+                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts punctuation.definition.string.template.begin.ts
+                    ^^^^^^^^
+                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts
+                            ^^
+                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                              ^^^^^
+                              source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts support.variable.dom.ts
+                                   ^
+                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.accessor.ts
+                                    ^^^^^^
+                                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts variable.other.object.property.ts
+                                          ^
+                                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.accessor.ts
+                                           ^^^^^^
+                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts entity.name.function.ts
+                                                 ^
+                                                 source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts meta.brace.round.ts
+                                                  ^
+                                                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts meta.brace.round.ts
+                                                   ^
+                                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                    ^^^^^^^^^^^^^^
+                                                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts
+                                                                  ^^
+                                                                  source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                                                    ^^^^^^
+                                                                    source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts variable.other.readwrite.ts
+                                                                          ^
+                                                                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                                           ^^^^^^^^^^^^^^^
+                                                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts
+                                                                                          ^
+                                                                                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                                                           ^
+                                                                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                                                            ^^
+                                                                                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>    event.returnValue = null
+ ^^^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.expression.ts meta.block.ts meta.block.ts support.variable.dom.ts
+          ^
+          source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+           ^^^^^^^^^^^
+           source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.property.ts
+                      ^
+                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+                       ^
+                       source.ts meta.function.expression.ts meta.block.ts meta.block.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+                         ^^^^
+                         source.ts meta.function.expression.ts meta.block.ts meta.block.ts constant.language.null.ts
+                             ^^
+                             source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.function.expression.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.function.expression.ts meta.block.ts
+>})
+ ^
+ source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.brace.round.ts
