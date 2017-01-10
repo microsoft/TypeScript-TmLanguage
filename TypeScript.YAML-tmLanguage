@@ -1607,11 +1607,7 @@ repository:
               )
             ) |
             (
-              [<]\s*[_$[:alpha:]][_$[:alnum:]]*
-              (
-                (\s+extends\s*[^=>]) |                    # < typeparam extends 
-                (\s*[,])                                  # < typeparam,
-              )
+              [<]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=>] # < typeparam extends 
             ) |
             # arrow function possible to detect only with => on same line
             (

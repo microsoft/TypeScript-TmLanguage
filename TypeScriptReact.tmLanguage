@@ -4395,11 +4395,7 @@
       )
     ) |
     (
-      [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*
-      (
-        (\s+extends\s*[^=&gt;]) |                    # &lt; typeparam extends 
-        (\s*[,])                                  # &lt; typeparam,
-      )
+      [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;] # &lt; typeparam extends 
     ) |
     # arrow function possible to detect only with =&gt; on same line
     (
