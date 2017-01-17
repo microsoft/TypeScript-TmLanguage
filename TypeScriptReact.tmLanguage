@@ -178,15 +178,7 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#type-annotation</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#string</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
+                <string>#var-single-variable-type-annotation</string>
               </dict>
             </array>
           </dict>
@@ -205,6 +197,13 @@
             </dict>
             <key>end</key>
             <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#var-single-variable-type-annotation</string>
+              </dict>
+            </array>
           </dict>
           <dict>
             <key>name</key>
@@ -225,17 +224,27 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#type-annotation</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#string</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
+                <string>#var-single-variable-type-annotation</string>
               </dict>
             </array>
+          </dict>
+        </array>
+      </dict>
+      <key>var-single-variable-type-annotation</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#type-annotation</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#string</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#comment</string>
           </dict>
         </array>
       </dict>
