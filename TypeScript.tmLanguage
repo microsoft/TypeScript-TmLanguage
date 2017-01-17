@@ -4442,7 +4442,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?==&gt;)</string>
+            <string>(?==&gt;|\{)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4507,9 +4507,40 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?==&gt;)</string>
+        <string>(?==&gt;|\{)</string>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>name</key>
+            <string>meta.object.type.ts</string>
+            <key>begin</key>
+            <string>(?&lt;=:)\s*(\{)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\}</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.ts</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-object-members</string>
+              </dict>
+            </array>
+          </dict>
           <dict>
             <key>include</key>
             <string>#type-predicate-operator</string>

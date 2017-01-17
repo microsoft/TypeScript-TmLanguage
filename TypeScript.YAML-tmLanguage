@@ -1624,7 +1624,7 @@ repository:
         )
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
-      end: (?==>)
+      end: (?==>|\{)
       patterns:
       - include: '#comment'
       - include: '#type-parameters'
@@ -1646,9 +1646,19 @@ repository:
     begin: '(?<=\))\s*(:)'
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }    
-    end: (?==>)
+    end: (?==>|\{)
     patterns:
     # TODO: handle the fn and constructor type specifically.
+    # Handle returning of object type specifically here so as to not confuse it with the start of function block
+    - name: meta.object.type.ts
+      begin: (?<=:)\s*(\{)
+      beginCaptures:
+        '1': { name: punctuation.definition.block.ts }
+      end: \}
+      endCaptures:
+        '0': { name: punctuation.definition.block.ts }
+      patterns:
+      - include: '#type-object-members'
     - include: '#type-predicate-operator'
     - include: '#type'
 
