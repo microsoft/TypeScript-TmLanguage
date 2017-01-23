@@ -1711,7 +1711,7 @@ repository:
 
   regex:
     patterns:
-    - name: string.regex.ts
+    - name: string.regexp.ts
       begin: (?<=[=(:,\[?+!]|return|case|=>|&&|\|\||\*\/)\s*(/)(?![/*])(?=(?:[^/\\\[]|\\.|\[([^\]\\]|\\.)+\])+/(?![/*])[gimy]*(?!\s*[a-zA-Z0-9_$]))
       beginCaptures:
         '1': {name: punctuation.definition.string.begin.ts}
@@ -1722,7 +1722,7 @@ repository:
       patterns:
       - include: '#regexp'
     # Check if complete regexp syntax
-    - name: string.regex.ts
+    - name: string.regexp.ts
       begin: (?<![_$[:alnum:]])/(?![/*])(?=(?:[^/\\\[]|\\.|\[([^\]\\]|\\.)+\])+/(?![/*])[gimy]*(?!\s*[a-zA-Z0-9_$]))
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.ts}
