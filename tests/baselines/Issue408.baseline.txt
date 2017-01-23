@@ -1,0 +1,42 @@
+original file
+-----------------------------------
+assert(truthyValue, 'must be true');
+path(pathArgs);
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>assert(truthyValue, 'must be true');
+ ^^^^^^
+ source.ts entity.name.function.ts
+       ^
+       source.ts meta.brace.round.ts
+        ^^^^^^^^^^^
+        source.ts variable.other.readwrite.ts
+                   ^
+                   source.ts punctuation.separator.comma.ts
+                    ^
+                    source.ts
+                     ^
+                     source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                      ^^^^^^^^^^^^
+                      source.ts string.quoted.single.ts
+                                  ^
+                                  source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                   ^
+                                   source.ts meta.brace.round.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+                                     ^^
+                                     source.ts
+>path(pathArgs);
+ ^^^^
+ source.ts entity.name.function.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^
+      source.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.brace.round.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
