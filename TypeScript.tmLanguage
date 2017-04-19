@@ -3974,33 +3974,69 @@
       </dict>
       <key>cast</key>
       <dict>
-        <key>name</key>
-        <string>cast.expr.ts</string>
-        <key>begin</key>
-        <string>(?:(?&lt;=return|throw|yield|await|default|^|[=(,:&gt;*]))\s*(&lt;)(?!&lt;?\=)</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>meta.brace.angle.ts</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>\&gt;</string>
-        <key>endCaptures</key>
-        <dict>
-          <key>0</key>
-          <dict>
-            <key>name</key>
-            <string>meta.brace.angle.ts</string>
-          </dict>
-        </dict>
         <key>patterns</key>
         <array>
           <dict>
-            <key>include</key>
-            <string>#type</string>
+            <key>name</key>
+            <string>cast.expr.ts</string>
+            <key>begin</key>
+            <string>(?:(?&lt;=return|throw|yield|await|default|[=(,:&gt;*]))\s*(&lt;)(?!&lt;?\=)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.angle.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\&gt;</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.angle.ts</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>cast.expr.ts</string>
+            <key>begin</key>
+            <string>(?:(?&lt;=^))\s*(&lt;)(?=[_$[:alpha:]][_$[:alnum:]]*\s*&gt;)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.angle.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\&gt;</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.angle.ts</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
