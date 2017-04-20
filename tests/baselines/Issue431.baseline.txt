@@ -1,0 +1,52 @@
+original file
+-----------------------------------
+myFunc
+(...argName)
+
+function otherFunc() {} // <-- Not highlighted.
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>myFunc
+ ^^^^^^
+ source.ts variable.other.readwrite.ts
+       ^^
+       source.ts
+>(...argName)
+ ^
+ source.ts meta.brace.round.ts
+  ^^^
+  source.ts keyword.operator.spread.ts
+     ^^^^^^^
+     source.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^^
+             source.ts
+>
+ ^^
+ source.ts
+>function otherFunc() {} // <-- Not highlighted.
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                    ^
+                    source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                     ^
+                     source.ts meta.function.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                        ^
+                        source.ts
+                         ^^
+                         source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                           ^^^^^^^^^^^^^^^^^^^^^
+                           source.ts comment.line.double-slash.ts
