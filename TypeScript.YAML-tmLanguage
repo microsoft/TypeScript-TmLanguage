@@ -1501,6 +1501,15 @@ repository:
         - include: '#array-literal'
       - include: '#expression'
     - name: meta.object.member.ts
+      begin: (?![_$[:alpha:]])([[:digit:]]+)\s*(:)
+      beginCaptures:
+        '0': { name: meta.object-literal.key.ts }
+        '1': { name: constant.numeric.decimal.ts }
+        '2': { name: punctuation.separator.key-value.ts }
+      end: (?=,|\})
+      patterns:
+      - include: '#expression'
+    - name: meta.object.member.ts
       begin: |-
         (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
           (async\s+)|(function\s*[(<])|(function\s+)|

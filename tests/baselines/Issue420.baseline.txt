@@ -1,0 +1,66 @@
+original file
+-----------------------------------
+verify.quickInfos({
+    1: "this: ContextualInterface",
+    2: "(parameter) this: void"
+});
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>verify.quickInfos({
+ ^^^^^^
+ source.ts variable.other.object.ts
+       ^
+       source.ts punctuation.accessor.ts
+        ^^^^^^^^^^
+        source.ts entity.name.function.ts
+                  ^
+                  source.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts meta.objectliteral.ts
+>    1: "this: ContextualInterface",
+ ^^^^
+ source.ts meta.objectliteral.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+       ^
+       source.ts meta.objectliteral.ts meta.object.member.ts
+        ^
+        source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+         source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                                  ^
+                                  source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                   ^
+                                   source.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                                    ^^
+                                    source.ts meta.objectliteral.ts
+>    2: "(parameter) this: void"
+ ^^^^
+ source.ts meta.objectliteral.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+       ^
+       source.ts meta.objectliteral.ts meta.object.member.ts
+        ^
+        source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+         ^^^^^^^^^^^^^^^^^^^^^^
+         source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                               ^
+                               source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                ^^
+                                source.ts meta.objectliteral.ts meta.object.member.ts
+>});
+ ^
+ source.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.brace.round.ts
+   ^
+   source.ts punctuation.terminator.statement.ts

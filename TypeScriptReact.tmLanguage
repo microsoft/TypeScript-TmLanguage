@@ -4076,6 +4076,39 @@
             <key>name</key>
             <string>meta.object.member.tsx</string>
             <key>begin</key>
+            <string>(?![_$[:alpha:]])([[:digit:]]+)\s*(:)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>meta.object-literal.key.tsx</string>
+              </dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>constant.numeric.decimal.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.separator.key-value.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=,|\})</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.object.member.tsx</string>
+            <key>begin</key>
             <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
   (async\s+)|(function\s*[(&lt;])|(function\s+)|
   ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)|
