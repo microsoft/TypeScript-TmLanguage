@@ -929,7 +929,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|\{)</string>
+        <string>(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -949,6 +949,10 @@
           <dict>
             <key>include</key>
             <string>#punctuation-accessor</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#decl-block</string>
           </dict>
         </array>
       </dict>

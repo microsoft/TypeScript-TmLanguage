@@ -306,13 +306,14 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.namespace.ts }
-    end: (?=$|\{)
+    end: (?<=\})
     patterns:
     - include: '#comment'
     - include: '#string'
     - name: entity.name.type.module.ts
       match: ([_$[:alpha:]][_$[:alnum:]]*)
-    - include: '#punctuation-accessor'      
+    - include: '#punctuation-accessor'
+    - include: '#decl-block'
 
   import-equals-declaration: 
     patterns:
