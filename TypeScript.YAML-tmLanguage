@@ -1645,7 +1645,7 @@ repository:
         )
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
-      end: (?==>|\{)
+      end: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
       patterns:
       - include: '#comment'
       - include: '#type-parameters'
@@ -1667,7 +1667,7 @@ repository:
     begin: '(?<=\))\s*(:)'
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }    
-    end: (?==>|\{)
+    end: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
     patterns:
     # TODO: handle the fn and constructor type specifically.
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
