@@ -836,12 +836,12 @@ repository:
     begin: (?<=\))\s*(:)
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }
-    end: (?<!:)((?=$)|(?=[{};,]|//))
+    end: (?<![:|&])((?=$)|(?=[{};,]|//))
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
     - name: meta.object.type.ts
-      begin: (?<=:)\s*(\{)
+      begin: (?<=[:|&])\s*(\{)
       beginCaptures:
         '1': { name: punctuation.definition.block.ts }
       end: \}
@@ -970,12 +970,12 @@ repository:
     begin: '=>'
     beginCaptures:
       '0': { name: storage.type.function.arrow.ts }
-    end: (?<!=>)(?=[,\]\)\{\}=;>]|//|$)
+    end: (?<!=>)(?<![|&])(?=[,\]\)\{\}=;>]|//|$)
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
     - name: meta.object.type.ts
-      begin: (?<==>)\s*(\{)
+      begin: (?:(?<==>)|(?<=[|&]))\s*(\{)
       beginCaptures:
         '1': { name: punctuation.definition.block.ts }
       end: \}
@@ -1663,7 +1663,7 @@ repository:
     # TODO: handle the fn and constructor type specifically.
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
     - name: meta.object.type.ts
-      begin: (?<=:)\s*(\{)
+      begin: (?<=[:|&])\s*(\{)
       beginCaptures:
         '1': { name: punctuation.definition.block.ts }
       end: \}

@@ -2585,7 +2585,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;!:)((?=$)|(?=[{};,]|//))</string>
+        <string>(?&lt;![:|&amp;])((?=$)|(?=[{};,]|//))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2596,7 +2596,7 @@
             <key>name</key>
             <string>meta.object.type.tsx</string>
             <key>begin</key>
-            <string>(?&lt;=:)\s*(\{)</string>
+            <string>(?&lt;=[:|&amp;])\s*(\{)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -2940,7 +2940,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;!=&gt;)(?=[,\]\)\{\}=;&gt;]|//|$)</string>
+        <string>(?&lt;!=&gt;)(?&lt;![|&amp;])(?=[,\]\)\{\}=;&gt;]|//|$)</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2951,7 +2951,7 @@
             <key>name</key>
             <string>meta.object.type.tsx</string>
             <key>begin</key>
-            <string>(?&lt;==&gt;)\s*(\{)</string>
+            <string>(?:(?&lt;==&gt;)|(?&lt;=[|&amp;]))\s*(\{)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -4495,7 +4495,7 @@
             <key>name</key>
             <string>meta.object.type.tsx</string>
             <key>begin</key>
-            <string>(?&lt;=:)\s*(\{)</string>
+            <string>(?&lt;=[:|&amp;])\s*(\{)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>

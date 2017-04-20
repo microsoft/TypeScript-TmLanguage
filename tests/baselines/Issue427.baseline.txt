@@ -1,0 +1,192 @@
+original file
+-----------------------------------
+function a(): { [key: string]: number } | { [key: string]: number } { throw 1 }
+
+function b(a: { [key: string]: number } | { [key: string]: number }): void { }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function a(): { [key: string]: number } | { [key: string]: number } { throw 1 }
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.function.ts meta.return.type.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.function.ts meta.return.type.ts meta.object.type.ts
+               ^
+               source.ts meta.function.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.function.ts meta.return.type.ts meta.object.type.ts
+                 ^
+                 source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                  ^^^
+                  source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts variable.parameter.ts
+                     ^
+                     source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                      ^
+                      source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts
+                       ^^^^^^
+                       source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                             ^
+                             source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                              ^
+                              source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts
+                                ^^^^^^
+                                source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts
+                                       ^
+                                       source.ts meta.function.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                                        ^
+                                        source.ts meta.function.ts meta.return.type.ts
+                                         ^
+                                         source.ts meta.function.ts meta.return.type.ts keyword.operator.type.ts
+                                          ^
+                                          source.ts meta.function.ts meta.return.type.ts meta.object.type.ts
+                                           ^
+                                           source.ts meta.function.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                                            ^
+                                            source.ts meta.function.ts meta.return.type.ts meta.object.type.ts
+                                             ^
+                                             source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                                              ^^^
+                                              source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts variable.parameter.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts
+                                                   ^^^^^^
+                                                   source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts
+                                                            ^^^^^^
+                                                            source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts support.type.primitive.ts
+                                                                  ^
+                                                                  source.ts meta.function.ts meta.return.type.ts meta.object.type.ts meta.type.annotation.ts
+                                                                   ^
+                                                                   source.ts meta.function.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                                                                    ^
+                                                                    source.ts meta.function.ts meta.return.type.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                                                      ^
+                                                                      source.ts meta.function.ts meta.block.ts
+                                                                       ^^^^^
+                                                                       source.ts meta.function.ts meta.block.ts keyword.control.trycatch.ts
+                                                                            ^
+                                                                            source.ts meta.function.ts meta.block.ts
+                                                                             ^
+                                                                             source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                                                                              ^
+                                                                              source.ts meta.function.ts meta.block.ts
+                                                                               ^
+                                                                               source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                                                                ^^
+                                                                                source.ts
+>
+ ^^
+ source.ts
+>function b(a: { [key: string]: number } | { [key: string]: number }): void { }
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                  ^^^
+                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts variable.parameter.ts
+                     ^
+                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                      ^
+                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts
+                       ^^^^^^
+                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                             ^
+                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                              ^
+                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts
+                                ^^^^^^
+                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                                          ^
+                                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                           ^
+                                           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                            ^
+                                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+                                             ^
+                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                                              ^^^
+                                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts variable.parameter.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts
+                                                   ^^^^^^
+                                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.indexer.declaration.ts meta.brace.square.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts
+                                                            ^^^^^^
+                                                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts support.type.primitive.ts
+                                                                  ^
+                                                                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.type.annotation.ts
+                                                                   ^
+                                                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                                    ^
+                                                                    source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                                                      ^
+                                                                      source.ts meta.function.ts meta.return.type.ts
+                                                                       ^^^^
+                                                                       source.ts meta.function.ts meta.return.type.ts support.type.primitive.ts
+                                                                           ^
+                                                                           source.ts meta.function.ts meta.return.type.ts
+                                                                            ^
+                                                                            source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                                                             ^
+                                                                             source.ts meta.function.ts meta.block.ts
+                                                                              ^
+                                                                              source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
