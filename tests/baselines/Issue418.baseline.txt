@@ -1,0 +1,528 @@
+original file
+-----------------------------------
+function merge(as, bs) {
+  let res = []
+  let ia = 0
+  let ib = 0
+  while (ia < as.length && ib < bs.length) { // coloring broken
+    if (as[ia] < bs[ib]) {
+      res.push(as[ia++]) // coloring broken
+    } else {
+      res.push(bs[ib++]) // coloring broken
+    }
+  }
+  return res.concat(as.slice(ia)).concat(bs.slice(ib)) // coloring broken
+}
+
+function mergesort(array) {
+  if (array.length < 2) {
+    return array
+  }
+  const mid = Math.floor(array.length / 2)
+  return merge(mergesort(array.slice(0, mid)), mergesort(array.slice(mid)))
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function merge(as, bs) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^^
+                source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                  ^
+                  source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts
+                    ^^
+                    source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                      ^
+                      source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                       ^
+                       source.ts meta.function.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                         ^^
+                         source.ts meta.function.ts meta.block.ts
+>  let res = []
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^
+   source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>  let ia = 0
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^
+   source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+       ^^
+       source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>  let ib = 0
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^
+   source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+       ^^
+       source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>  while (ia < as.length && ib < bs.length) { // coloring broken
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.loop.ts
+        ^
+        source.ts meta.function.ts meta.block.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+          ^^
+          source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.function.ts meta.block.ts
+             ^
+             source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+              ^
+              source.ts meta.function.ts meta.block.ts
+               ^^
+               source.ts meta.function.ts meta.block.ts variable.other.object.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                  ^^^^^^
+                  source.ts meta.function.ts meta.block.ts support.variable.property.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts
+                         ^^
+                         source.ts meta.function.ts meta.block.ts keyword.operator.logical.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts
+                            ^^
+                            source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts
+                                 ^^
+                                 source.ts meta.function.ts meta.block.ts variable.other.object.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                    ^^^^^^
+                                    source.ts meta.function.ts meta.block.ts support.variable.property.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts meta.block.ts
+                                              ^^
+                                              source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                ^^^^^^^^^^^^^^^^^
+                                                source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
+>    if (as[ia] < bs[ib]) {
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts keyword.control.conditional.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.block.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+         ^^
+         source.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+            ^^
+            source.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.block.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.block.ts keyword.operator.relational.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.block.ts
+                  ^^
+                  source.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                     ^^
+                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.block.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                           ^^
+                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+>      res.push(as[ia++]) // coloring broken
+ ^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+       ^^^
+       source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts variable.other.object.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+           ^^^^
+           source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts support.function.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                ^^
+                source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                   ^^
+                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                     ^^
+                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts keyword.operator.increment.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+                          ^^
+                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                            ^^^^^^^^^^^^^^^^^
+                            source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
+>    } else {
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+     ^
+     source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.block.ts
+       ^^^^
+       source.ts meta.function.ts meta.block.ts meta.block.ts keyword.control.conditional.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.block.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+>      res.push(bs[ib++]) // coloring broken
+ ^^^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+       ^^^
+       source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts variable.other.object.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.accessor.ts
+           ^^^^
+           source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts support.function.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                ^^
+                source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                   ^^
+                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts variable.other.readwrite.ts
+                     ^^
+                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts keyword.operator.increment.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+                          ^^
+                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                            ^^^^^^^^^^^^^^^^^
+                            source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
+>    }
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
+     ^
+     source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.function.ts meta.block.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.function.ts meta.block.ts
+>  return res.concat(as.slice(ia)).concat(bs.slice(ib)) // coloring broken
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^^^
+          source.ts meta.function.ts meta.block.ts variable.other.object.ts
+             ^
+             source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+              ^^^^^^
+              source.ts meta.function.ts meta.block.ts support.function.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                     ^^
+                     source.ts meta.function.ts meta.block.ts variable.other.object.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                        ^^^^^
+                        source.ts meta.function.ts meta.block.ts support.function.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                              ^^
+                              source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                   ^^^^^^
+                                   source.ts meta.function.ts meta.block.ts support.function.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                          ^^
+                                          source.ts meta.function.ts meta.block.ts variable.other.object.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                             ^^^^^
+                                             source.ts meta.function.ts meta.block.ts support.function.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                   ^^
+                                                   source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.block.ts
+                                                        ^^
+                                                        source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                          ^^^^^^^^^^^^^^^^^
+                                                          source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>function mergesort(array) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                    ^^^^^
+                    source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                         ^
+                         source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                          ^
+                          source.ts meta.function.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                            ^^
+                            source.ts meta.function.ts meta.block.ts
+>  if (array.length < 2) {
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.ts meta.block.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+       ^^^^^
+       source.ts meta.function.ts meta.block.ts variable.other.object.ts
+            ^
+            source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+             ^^^^^^
+             source.ts meta.function.ts meta.block.ts support.variable.property.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                          ^^
+                          source.ts meta.function.ts meta.block.ts meta.block.ts
+>    return array
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.block.ts
+            ^^^^^
+            source.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                 ^^
+                 source.ts meta.function.ts meta.block.ts meta.block.ts
+>  }
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^^
+    source.ts meta.function.ts meta.block.ts
+>  const mid = Math.floor(array.length / 2)
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^
+   source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+         ^^^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+               ^^^^
+               source.ts meta.function.ts meta.block.ts meta.var.expr.ts support.constant.math.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                    ^^^^^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts support.function.math.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+                          ^^^^^
+                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts variable.other.object.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                                ^^^^^^
+                                source.ts meta.function.ts meta.block.ts meta.var.expr.ts support.variable.property.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>  return merge(mergesort(array.slice(0, mid)), mergesort(array.slice(mid)))
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^^^^^
+          source.ts meta.function.ts meta.block.ts entity.name.function.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                ^^^^^^^^^
+                source.ts meta.function.ts meta.block.ts entity.name.function.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                          ^^^^^
+                          source.ts meta.function.ts meta.block.ts variable.other.object.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                ^^^^^
+                                source.ts meta.function.ts meta.block.ts support.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts
+                                         ^^^
+                                         source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts
+                                                ^^^^^^^^^
+                                                source.ts meta.function.ts meta.block.ts entity.name.function.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                          ^^^^^
+                                                          source.ts meta.function.ts meta.block.ts variable.other.object.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                                                                ^^^^^
+                                                                source.ts meta.function.ts meta.block.ts support.function.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                                      ^^^
+                                                                      source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                                          ^
+                                                                          source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                                           ^
+                                                                           source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                                                                            ^^
+                                                                            source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

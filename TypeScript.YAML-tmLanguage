@@ -31,7 +31,7 @@ repository:
 
   var-expr:
     name: meta.var.expr.ts
-    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(var|let|const(?!\s+enum\b))\b(?!\$)
+    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(var|let|const(?!\s+enum\b))\b(?!\$|\.)
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.ts }
@@ -211,21 +211,21 @@ repository:
     # TODO: convert this to actual statements instead
     patterns:
     - name: keyword.control.trycatch.ts
-      match: (?<!\.|\$)\b(catch|finally|throw|try)\b(?!\$)
+      match: (?<!\.|\$)\b(catch|finally|throw|try)\b(?!\$|\.)
     - name: keyword.control.loop.ts
-      match: (?<!\.|\$)\b(break|continue|do|goto|while)\b(?!\$)
+      match: (?<!\.|\$)\b(break|continue|do|goto|while)\b(?!\$|\.)
     - name: keyword.control.flow.ts
-      match: (?<!\.|\$)\b(return)\b(?!\$)
+      match: (?<!\.|\$)\b(return)\b(?!\$|\.)
     - name: keyword.control.switch.ts
-      match: (?<!\.|\$)\b(case|default|switch)\b(?!\$)
+      match: (?<!\.|\$)\b(case|default|switch)\b(?!\$|\.)
     - name: keyword.control.conditional.ts
-      match: (?<!\.|\$)\b(else|if)\b(?!\$)
+      match: (?<!\.|\$)\b(else|if)\b(?!\$|\.)
     - name: keyword.control.with.ts
-      match: (?<!\.|\$)\b(with)\b(?!\$)
+      match: (?<!\.|\$)\b(with)\b(?!\$|\.)
     - name: keyword.other.debugger.ts
-      match: (?<!\.|\$)\b(debugger)\b(?!\$)
+      match: (?<!\.|\$)\b(debugger)\b(?!\$|\.)
     - name: storage.modifier.ts
-      match: (?<!\.|\$)\b(declare)\b(?!\$)
+      match: (?<!\.|\$)\b(declare)\b(?!\$|\.)
 
   declaration:
     patterns:
@@ -350,7 +350,7 @@ repository:
 
   import-declaration:
     name: meta.import.ts
-    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*:)|(\$))\b
+    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*:)|(\$|\.))\b
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: keyword.control.import.ts }
@@ -446,7 +446,7 @@ repository:
     - include: '#class-or-interface-body'
 
   class-or-interface-heritage:
-    begin: (?<!\.|\$)(?:\b(extends|implements)\b)(?!\$)
+    begin: (?<!\.|\$)(?:\b(extends|implements)\b)(?!\$|\.)
     beginCaptures:
       '1': { name: storage.modifier.ts }
     end: (?=\{)
@@ -566,7 +566,7 @@ repository:
 
   method-declaration:
     name: meta.method.declaration.ts
-    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\<]))
+    begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\<]))
     beginCaptures:
       '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
       '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -854,7 +854,7 @@ repository:
 
   type-predicate-operator:
     name: keyword.operator.expression.is.ts
-    match: (?<!\.|\$)\bis\b(?!\$)
+    match: (?<!\.|\$)\bis\b(?!\$|\.)
 
   type-annotation:
     name: meta.type.annotation.ts
@@ -902,11 +902,11 @@ repository:
 
   type-primitive:
     name: support.type.primitive.ts
-    match: (?<!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$)
+    match: (?<!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$|\.)
 
   type-builtin-literals:
     name: support.type.builtin.ts
-    match: (?<!\.|\$)\b(this|true|false|undefined|null|object)\b(?!\$)
+    match: (?<!\.|\$)\b(this|true|false|undefined|null|object)\b(?!\$|\.)
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -963,7 +963,7 @@ repository:
     - name: keyword.operator.type.ts
       match: '[&|]'
     - name: keyword.operator.expression.keyof.ts
-      match: (?<!\.|\$)\bkeyof\b(?!\$)
+      match: (?<!\.|\$)\bkeyof\b(?!\$|\.)
 
   type-function-return-type:
     name: meta.type.function.return.ts
@@ -1079,7 +1079,7 @@ repository:
 
   case-clause:
     name: case-clause.expr.ts
-    begin: (?<!\.|\$)\b(case|default(?=:))\b(?!\$)
+    begin: (?<!\.|\$)\b(case|default(?=:))\b(?!\$|\.)
     beginCaptures:
       '1': { name: keyword.control.switch.ts }
     end: ':'
@@ -1474,10 +1474,10 @@ repository:
 
   new-expr:
     name: new.expr.ts
-    begin: (?<!\.|\$)\b(new)\b(?!\$)
+    begin: (?<!\.|\$)\b(new)\b(?!\$|\.)
     beginCaptures:
       '1': { name: keyword.operator.new.ts }
-    end: (?<=\))|(?=[;),}]|$|((?<!\.|\$)\bnew\b(?!\$)))
+    end: (?<=\))|(?=[;),}]|$|((?<!\.|\$)\bnew\b(?!\$|\.)))
     patterns:
     - include: '#paren-expression'
     - include: '#class-or-interface-declaration'
@@ -1539,27 +1539,28 @@ repository:
   expression-operators:
     patterns:
     - name: keyword.control.flow.ts
-      match: (?<!\.|\$)\b(await)\b(?!\$)
-    - match: (?<!\.|\$)\b(yield)\b(?!\$)(?:\s*(\*))?
+      match: (?<!\.|\$)\b(await)\b(?!\$|\.)
+    - match: (?<!\.|\$)\b(yield)\b(?!\$|\.)(?:\s*(\*))?
       captures:
         '1': { name: keyword.control.flow.ts }
         '2': { name: keyword.generator.asterisk.ts }
     - name: keyword.operator.expression.delete.ts
-      match: (?<!\.|\$)\bdelete\b(?!\$)
+      match: (?<!\.|\$)\bdelete\b(?!\$|\.)
     - name: keyword.operator.expression.in.ts
-      match: (?<!\.|\$)\bin\b(?!\$)
+      match: (?<!\.|\$)\bin\b(?!\$|\.)
     - name: keyword.operator.expression.of.ts
-      match: (?<!\.|\$)\bof\b(?!\$)
+      match: (?<!\.|\$)\bof\b(?!\$|\.)
     - name: keyword.operator.expression.instanceof.ts
-      match: (?<!\.|\$)\binstanceof\b(?!\$)
+      match: (?<!\.|\$)\binstanceof\b(?!\$|\.)
     - name: keyword.operator.new.ts
-      match: (?<!\.|\$)\bnew\b(?!\$)
+      match: (?<!\.|\$)\bnew\b(?!\$|\.)
     - include: '#typeof-operator'
     - name: keyword.operator.expression.void.ts
-      match: (?<!\.|\$)\bvoid\b(?!\$)
-    - begin: (?<!\.|\$)\bas\b(?!\$)
+      match: (?<!\.|\$)\bvoid\b(?!\$|\.)
+      #handle as operator specifically to be recognized only if it is 'as' followed by space
+    - begin: (?<!\.|\$)\b(as)\s+
       beginCaptures:
-        '0': { name: keyword.control.as.ts }
+        '1': { name: keyword.control.as.ts }
       end: (?=$|[;,:})\]])
       patterns:
       - include: '#type'
@@ -1594,7 +1595,7 @@ repository:
 
   typeof-operator:
     name: keyword.operator.expression.typeof.ts
-    match: (?<!\.|\$)\btypeof\b(?!\$)
+    match: (?<!\.|\$)\btypeof\b(?!\$|\.)
 
   arrow-function:
     patterns:
@@ -1927,11 +1928,11 @@ repository:
 
   access-modifier:
     name: storage.modifier.ts
-    match: (?<!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$)
+    match: (?<!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$|\.)
 
   property-accessor:
     name: storage.type.property.ts
-    match: (?<!\.|\$)\b(get|set)\b(?!\$)
+    match: (?<!\.|\$)\b(get|set)\b(?!\$|\.)
 
   comment:
     patterns:

@@ -94,7 +94,7 @@
         <key>name</key>
         <string>meta.var.expr.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(var|let|const(?!\s+enum\b))\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(var|let|const(?!\s+enum\b))\b(?!\$|\.)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -617,49 +617,49 @@
             <key>name</key>
             <string>keyword.control.trycatch.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(catch|finally|throw|try)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(catch|finally|throw|try)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.loop.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(break|continue|do|goto|while)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(break|continue|do|goto|while)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.flow.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(return)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(return)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.switch.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(case|default|switch)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(case|default|switch)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.conditional.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(else|if)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(else|if)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.with.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(with)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(with)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.other.debugger.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(debugger)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(debugger)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>storage.modifier.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(declare)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(declare)\b(?!\$|\.)</string>
           </dict>
         </array>
       </dict>
@@ -1084,7 +1084,7 @@
         <key>name</key>
         <string>meta.import.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*:)|(\$))\b</string>
+        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*:)|(\$|\.))\b</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1403,7 +1403,7 @@
       <key>class-or-interface-heritage</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(extends|implements)\b)(?!\$)</string>
+        <string>(?&lt;!\.|\$)(?:\b(extends|implements)\b)(?!\$|\.)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1745,7 +1745,7 @@
         <key>name</key>
         <string>meta.method.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
+        <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2638,7 +2638,7 @@
         <key>name</key>
         <string>keyword.operator.expression.is.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\bis\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\bis\b(?!\$|\.)</string>
       </dict>
       <key>type-annotation</key>
       <dict>
@@ -2789,14 +2789,14 @@
         <key>name</key>
         <string>support.type.primitive.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$|\.)</string>
       </dict>
       <key>type-builtin-literals</key>
       <dict>
         <key>name</key>
         <string>support.type.builtin.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(this|true|false|undefined|null|object)\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\b(this|true|false|undefined|null|object)\b(?!\$|\.)</string>
       </dict>
       <key>type-paren-or-function-parameters</key>
       <dict>
@@ -2921,7 +2921,7 @@
             <key>name</key>
             <string>keyword.operator.expression.keyof.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bkeyof\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\bkeyof\b(?!\$|\.)</string>
           </dict>
         </array>
       </dict>
@@ -3271,7 +3271,7 @@
         <key>name</key>
         <string>case-clause.expr.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(case|default(?=:))\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\b(case|default(?=:))\b(?!\$|\.)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3991,7 +3991,7 @@
         <key>name</key>
         <string>new.expr.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(new)\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\b(new)\b(?!\$|\.)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -4001,7 +4001,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\))|(?=[;),}]|$|((?&lt;!\.|\$)\bnew\b(?!\$)))</string>
+        <string>(?&lt;=\))|(?=[;),}]|$|((?&lt;!\.|\$)\bnew\b(?!\$|\.)))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -4189,11 +4189,11 @@
             <key>name</key>
             <string>keyword.control.flow.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(await)\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(await)\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(yield)\b(?!\$)(?:\s*(\*))?</string>
+            <string>(?&lt;!\.|\$)\b(yield)\b(?!\$|\.)(?:\s*(\*))?</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4212,31 +4212,31 @@
             <key>name</key>
             <string>keyword.operator.expression.delete.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bdelete\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\bdelete\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.expression.in.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bin\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\bin\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.expression.of.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bof\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\bof\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.expression.instanceof.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\binstanceof\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\binstanceof\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.new.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bnew\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\bnew\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>include</key>
@@ -4246,14 +4246,14 @@
             <key>name</key>
             <string>keyword.operator.expression.void.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bvoid\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\bvoid\b(?!\$|\.)</string>
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\bas\b(?!\$)</string>
+            <string>(?&lt;!\.|\$)\b(as)\s+</string>
             <key>beginCaptures</key>
             <dict>
-              <key>0</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
                 <string>keyword.control.as.tsx</string>
@@ -4360,7 +4360,7 @@
         <key>name</key>
         <string>keyword.operator.expression.typeof.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\btypeof\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\btypeof\b(?!\$|\.)</string>
       </dict>
       <key>arrow-function</key>
       <dict>
@@ -5273,14 +5273,14 @@
         <key>name</key>
         <string>storage.modifier.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$|\.)</string>
       </dict>
       <key>property-accessor</key>
       <dict>
         <key>name</key>
         <string>storage.type.property.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(get|set)\b(?!\$)</string>
+        <string>(?&lt;!\.|\$)\b(get|set)\b(?!\$|\.)</string>
       </dict>
       <key>comment</key>
       <dict>
