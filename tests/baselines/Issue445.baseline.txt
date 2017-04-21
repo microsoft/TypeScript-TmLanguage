@@ -1,0 +1,118 @@
+original file
+-----------------------------------
+/**
+ * My awesome function.
+ * @param {{id: string, name: string}} object An object with an id and name field.
+ */
+function myAwesomeFunction(object) {
+  const { name, id } = object.
+  // do stuff with name and id
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts comment.block.documentation.ts
+> * My awesome function.
+ ^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+> * @param {{id: string, name: string}} object An object with an id and name field.
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+     ^^^^^
+     source.ts comment.block.documentation.ts storage.type.class.jsdoc
+          ^
+          source.ts comment.block.documentation.ts
+           ^
+           source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.begin.jsdoc
+            ^
+            source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+             source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+                                     ^
+                                     source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+                                      ^
+                                      source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.end.jsdoc
+                                       ^
+                                       source.ts comment.block.documentation.ts
+                                        ^^^^^^
+                                        source.ts comment.block.documentation.ts variable.other.jsdoc
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                              source.ts comment.block.documentation.ts
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^^
+    source.ts
+>function myAwesomeFunction(object) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^^^^^^^^^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                           ^
+                           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                            ^^^^^^
+                            source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                  ^
+                                  source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                   ^
+                                   source.ts meta.function.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                     ^^
+                                     source.ts meta.function.ts meta.block.ts
+>  const { name, id } = object.
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^
+   source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+           ^^^^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                 ^^
+                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                        ^^^^^^
+                        source.ts meta.function.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+>  // do stuff with name and id
+ ^^
+ source.ts meta.function.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

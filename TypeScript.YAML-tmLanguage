@@ -1993,268 +1993,380 @@ repository:
 
   docblock:
     patterns:
-    - name: storage.type.class.jsdoc
-      match: |-
-        (?x)(?<!\w)@(
-          abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbes|callback|chainable|class
-          |classdesc|code|config|const|constant|constructor|constructs|copyright|default|defaultvalue|define|deprecated|desc
-          |description|dict|emits|enum|event|example|exports?|extends|extension|extension_for|extensionfor|external|file
-          |fileoverview|final|fires|for|function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance
-          |interface|kind|lends|license|listens|main|member|memberof|method|mixex|mixins?|modifies|module|name|namespace
-          |noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve|private|prop|property
-          |protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary|suppress
-          |template|this|throws|todo|type|typedef|unrestricted|uses|var|variation|version|virtual|writeOnce)\b
-    - name: other.meta.jsdoc
+    - captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: constant.language.access-type.jsdoc
       match: |-
         (?x)
+        ((@)access)
+        \s+
+        (private|protected|public)
+        \b
+    - match: |-
+        (?x)
+        ((@)author)
+        \s+
         (
-          \[
-            [^\]]+            # Optional [link text] preceding {@link syntax}
-          \]
-
-          (?!                  # Check to avoid highlighting two sets of link text
-            {
-              @\w+            # Tagname
-              \s+
-              [^\s|}]+        # Namepath/URL
-              [\s|]           # Whitespace or bar delimiting description
-              [^}]*
-            }
-          )
-        )?
-
+          [^@\s<>*/]
+          (?:[^@<>*/]|\*[^/])*
+        )
         (?:
-          {
-            (
-              @
-              (?: link         # Name of tag
-                | linkcode
-                | linkplain
-                | tutorial
-              )
-            )
-
-            \s+
-
-            ([^\s|}]+)        # Namepath or URL
-
-            (?:                # Optional link text following link target
-              [\s|]           # Bar or space separating target and text
-              [^}]*            # Actual text
-            )?
-          }
-        )
+          \s*
+          (<)
+          ([^>\s]+)
+          (>)
+        )?
       captures:
-        '0': { name: entity.name.type.instance.jsdoc }
-        '1': { name: constant.other.description.jsdoc }
-        '2': { name: storage.type.class.jsdoc }
-        '3': { name: variable.other.description.jsdoc }
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: entity.name.type.instance.jsdoc
+        '4':
+          name: punctuation.definition.bracket.angle.begin.jsdoc
+        '5':
+          name: constant.other.email.link.underline.jsdoc
+        '6':
+          name: punctuation.definition.bracket.angle.end.jsdoc
     - match: |-
         (?x)
+        ((@)borrows) \s+
+        ((?:[^@\s*/]|\*[^/])+)    # <that namepath>
+        \s+ (as) \s+              # as
+        ((?:[^@\s*/]|\*[^/])+)    # <this namepath>
+      captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: entity.name.type.instance.jsdoc
+        '4':
+          name: keyword.operator.control.jsdoc
+        '5':
+          name: entity.name.type.instance.jsdoc
+    - name: meta.example.jsdoc
+      begin: ((@)example)\s+
+      end: (?=@|\*/)
+      beginCaptures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+      patterns:
+        - match: ^\s\*\s+
+        - begin: \G(<)caption(>)
+          beginCaptures:
+            '0':
+              name: entity.name.tag.inline.jsdoc
+            '1':
+              name: punctuation.definition.bracket.angle.begin.jsdoc
+            '2':
+              name: punctuation.definition.bracket.angle.end.jsdoc
+          contentName: constant.other.description.jsdoc
+          end: (</)caption(>)|(?=\*/)
+          endCaptures:
+            '0':
+              name: entity.name.tag.inline.jsdoc
+            '1':
+              name: punctuation.definition.bracket.angle.begin.jsdoc
+            '2':
+              name: punctuation.definition.bracket.angle.end.jsdoc
+        - match: '[^\s@*](?:[^*]|\*[^/])*'
+          captures:
+            '0':
+              name: source.embedded.js
+              patterns:
+                - include: source.js
+    - captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: constant.language.symbol-type.jsdoc
+      match: >-
+        (?x)
 
-        (?:(?<=@param)|(?<=@arg)|(?<=@argument)|(?<=@type)|(?<=@property)|(?<=@prop))
+        ((@)kind)
 
         \s+
 
-        ({(?:
-          \* |                                       # {*} any type
-          \? |                                       # {?} unknown type
+        (class|constant|event|external|file|function|member|mixin|module|namespace|typedef)
 
-          (?:
-            (?:                                       # Check for a prefix
-              \? |                                   # {?string} nullable type
-              !   |                                   # {!string} non-nullable type
-              \.{3}                                  # {...string} variable number of parameters
-            )?
-
-            (?:
-              (?:
-                function                              # {function(string, number)} function type
-                \s*
-                \(
-                \s*
-                (?:
-                  [a-zA-Z_$][\w$]*
-                  (?:
-                    \s*,\s*
-                    [a-zA-Z_$][\w$]*
-                  )*
-                )?
-                \s*
-                \)
-                (?:                                   # {function(): string} function return type
-                  \s*:\s*
-                  [a-zA-Z_$][\w$]*
-                )?
-              )?
-              |
-              (?:
-                \(                                   # Opening bracket of multiple types with parenthesis {(string|number)}
-                  [a-zA-Z_$]+
-                  (?:
-                    (?:
-                      [\w$]*
-                      (?:\[\])?                     # {(string[]|number)} type application, an array of strings or a number
-                    ) |
-                    \.?<[\w$]+(?:,\s+[\w$]+)*>    # {Array<string>} or {Object<string, number>} type application (optional .)
-                  )
-                  (?:
-                    [\.|~]                           # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
-                    [a-zA-Z_$]+
-                    (?:
-                      (?:
-                        [\w$]*
-                        (?:\[\])?                   # {(string|number[])} type application, a string or an array of numbers
-                      ) |
-                      \.?<[\w$]+(?:,\s+[\w$]+)*>  # {Array<string>} or {Object<string, number>} type application (optional .)
-                    )
-                  )*
-                \) |
-                [a-zA-Z_$]+
-                (?:
-                  (?:
-                    [\w$]*
-                    (?:\[\])?                       # {(string|number[])} type application, a string or an array of numbers
-                  ) |
-                  \.?<[\w$]+(?:,\s+[\w$]+)*>      # {Array<string>} or {Object<string, number>} type application (optional .)
-                )
-                (?:
-                  [\.|~]                             # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
-                  [a-zA-Z_$]+
-                  (?:
-                    [\w$]* |
-                    \.?<[\w$]+(?:,\s+[\w$]+)*>    # {Array<string>} or {Object<string, number>} type application (optional .)
-                  )
-                )*
-              )
-            )
-                                                      # Check for suffix
-            (?:\[\])?                               # {string[]} type application, an array of strings
-            =?                                        # {string=} optional parameter
+        \b
+    - captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: variable.other.link.underline.jsdoc
+        '4':
+          name: entity.name.type.instance.jsdoc
+      match: |-
+        (?x)
+        ((@)see)
+        \s+
+        (?:
+          # URL
+          (
+            (?=https?://)
+            (?:[^\s*]|\*[^/])+
           )
-        )})
-
+          |
+          # JSDoc namepath
+          (
+            (?!https?://)
+            (?:[^@\s*/]|\*[^/])+
+          )
+        )
+    - captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: variable.other.jsdoc
+          patterns:
+            - match: ','
+              name: punctuation.delimiter.object.comma.jsdoc
+      match: |-
+        (?x)
+        ((@)template)
         \s+
-
+        # One or more valid identifiers
         (
-          \[                                         # [foo] optional parameter
-            \s*
-            (?:
-              [a-zA-Z_$][\w$]*
-              (?:
-                (?:\[\])?                           # Foo[].bar properties within an array
-                \.                                   # Foo.Bar namespaced parameter
-                [a-zA-Z_$][\w$]*
-              )*
-              (?:
-                \s*
-                =                                     # [foo=bar] Default parameter value
-                \s*
-                [\w$\s]*
-              )?
-            )
-            \s*
-          \] |
-          (?:
-            [a-zA-Z_$][\w$]*
-            (?:
-              (?:\[\])?                             # Foo[].bar properties within an array
-              \.                                     # Foo.Bar namespaced parameter
-              [a-zA-Z_$][\w$]*
-            )*
-          )?
+          [A-Za-z_$]        # First character: non-numeric word character
+          [\w$.\[\]]*    # Rest of identifier
+          (?:               # Possible list of additional identifiers
+            \s* , \s*
+            [A-Za-z_$]
+            [\w$.\[\]]*
+          )*
         )
-
-        \s+
-
-        (?:-\s+)?                                     # optional hyphen before the description
-
-        ((?:(?!\*\/).)*)                             # The type description
-      captures:
-        '0': { name: other.meta.jsdoc }
-        '1': { name: entity.name.type.instance.jsdoc }
-        '2': { name: variable.other.jsdoc }
-        '3': { name: other.description.jsdoc }
-    - match: |-
+    - captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: variable.other.jsdoc
+      match: |-
         (?x)
-
-        ({(?:
-          \* |                                       # {*} any type
-          \? |                                       # {?} unknown type
-
-          (?:
-            (?:                                       # Check for a prefix
-              \? |                                   # {?string} nullable type
-              !   |                                   # {!string} non-nullable type
-              \.{3}                                  # {...string} variable number of parameters
-            )?
-
-            (?:
-              (?:
-                function                              # {function(string, number)} function type
-                \s*
-                \(
-                \s*
-                (?:
-                  [a-zA-Z_$][\w$]*
-                  (?:
-                    \s*,\s*
-                    [a-zA-Z_$][\w$]*
-                  )*
-                )?
-                \s*
-                \)
-                (?:                                   # {function(): string} function return type
-                  \s*:\s*
-                  [a-zA-Z_$][\w$]*
-                )?
-              )?
-              |
-              (?:
-                \(                                   # Opening bracket of multiple types with parenthesis {(string|number)}
-                  [a-zA-Z_$]+
-                  (?:
-                    [\w$]* |
-                    \.?<[\w$]+(?:,\s+[\w$]+)*>    # {Array<string>} or {Object<string, number>} type application (optional .)
-                  )
-                  (?:
-                    [\.|~]                           # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
-                    [a-zA-Z_$]+
-                    (?:
-                      [\w$]* |
-                      \.?<[\w$]+(?:,\s+[\w$]+)*>  # {Array<string>} or {Object<string, number>} type application (optional .)
-                    )
-                  )*
-                \) |
-                [a-zA-Z_$]+
-                (?:
-                  [\w$]* |
-                  \.?<[\w$]+(?:,\s+[\w$]+)*>      # {Array<string>} or {Object<string, number>} type application (optional .)
-                )
-                (?:
-                  [\.|~]                             # {Foo.bar} namespaced, {string|number} multiple, {Foo~bar} class-specific callback
-                  [a-zA-Z_$]+
-                  (?:
-                    [\w$]* |
-                    \.?<[\w$]+(?:,\s+[\w$]+)*>    # {Array<string>} or {Object<string, number>} type application (optional .)
-                  )
-                )*
-              )
-            )
-                                                      # Check for suffix
-            (?:\[\])?                               # {string[]} type application, an array of strings
-            =?                                        # {string=} optional parameter
-          )
-        )})
-
+        (
+          (@)
+          (?:arg|argument|const|constant|member|namespace|param|var)
+        )
         \s+
+        (
+          [A-Za-z_$]
+          [\w$.\[\]]*
+        )
+    - begin: '((@)typedef)\s+(?={)'
+      beginCaptures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+      end: '(?=\s|\*/|[^{}\[\]A-Za-z_$])'
+      patterns:
+        - include: '#jsdoctype'
+        - name: entity.name.type.instance.jsdoc
+          match: '(?:[^@\s*/]|\*[^/])+'
+    - begin: >-
+        ((@)(?:arg|argument|const|constant|member|namespace|param|prop|property|var))\s+(?={)
+      beginCaptures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+      end: '(?=\s|\*/|[^{}\[\]A-Za-z_$])'
+      patterns:
+        - include: '#jsdoctype'
+        - match: '([A-Za-z_$][\w$.\[\]]*)'
+          name: variable.other.jsdoc
+        - name: variable.other.jsdoc
+          begin: '\['
+          end: '\]|(?=\*/)'
+          patterns:
+            - match: '(=)((?:[^\]*]|\*[^/])*)'
+              captures:
+                '1':
+                  name: keyword.operator.assignment.jsdoc
+                '2':
+                  name: source.embedded.js
+                  patterns:
+                    - include: '#inline-tags'
+                    - include: source.js
+            - include: '#brackets'
+            - include: '#quotes'
+    - begin: >-
+        ((@)(?:define|enum|exception|implements|modifies|namespace|private|protected|returns?|suppress|throws|type))\s+(?={)
+      beginCaptures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+      end: '(?=\s|\*/|[^{}\[\]A-Za-z_$])'
+      patterns:
+        - include: '#jsdoctype'
+    - captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: entity.name.type.instance.jsdoc
+      match: |-
+        (?x)
+        (
+          (@)
+          (?:alias|augments|callback|constructs|emits|event|fires|exports?
+          |extends|external|function|func|host|lends|listens|interface|memberof!?
+          |method|module|mixes|mixin|name|requires|see|this|typedef|uses)
+        )
+        \s+
+        (
+          (?:
+            [^{}@\s*] | \*[^/]
+          )+
+        )
+    - begin: '((@)(?:default(?:value)?|license|version))\s+(([''"]))'
+      beginCaptures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: variable.other.jsdoc
+        '4':
+          name: punctuation.definition.string.begin.jsdoc
+      contentName: variable.other.jsdoc
+      end: (\3)|(?=$|\*/)
+      endCaptures:
+        '0':
+          name: variable.other.jsdoc
+        '1':
+          name: punctuation.definition.string.end.jsdoc
+    - captures:
+        '1':
+          name: storage.type.class.jsdoc
+        '2':
+          name: punctuation.definition.block.tag.jsdoc
+        '3':
+          name: variable.other.jsdoc
+      match: '((@)(?:default(?:value)?|license|tutorial|variation|version))\s+([^\s*]+)'
+    - captures:
+        '1':
+          name: punctuation.definition.block.tag.jsdoc
+      match: >-
+        (?x) (@)
 
-        (?:-\s+)?                                    # optional hyphen before the description
+        (?:abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbles
 
-        ((?:(?!\*\/).)*)                            # The type description
-      captures:
-        '0': { name: other.meta.jsdoc }
-        '1': { name: entity.name.type.instance.jsdoc }
-        '2': { name: other.description.jsdoc }
+        |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright
 
+        |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception
+
+        |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func
+
+        |function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance|interface|kind
+
+        |lends|license|listens|main|member|memberof!?|method|mixes|mixins?|modifies|module|name|namespace
+
+        |noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve|private|prop
+
+        |property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule
+
+        |summary|suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation
+
+        |version|virtual|writeOnce)
+
+        \b
+      name: storage.type.class.jsdoc
+    - include: '#inline-tags'
+
+  brackets:
+    patterns:
+      - begin: '{'
+        end: '}|(?=\*/)'
+        patterns:
+          - include: '#brackets'
+      - begin: '\['
+        end: '\]|(?=\*/)'
+        patterns:
+          - include: '#brackets'
+
+  inline-tags:
+    patterns:
+      - captures:
+          '1':
+            name: punctuation.definition.bracket.square.begin.jsdoc
+          '2':
+            name: punctuation.definition.bracket.square.end.jsdoc
+        match: '(\[)[^\]]+(\])(?={@(?:link|linkcode|linkplain|tutorial))'
+        name: constant.other.description.jsdoc
+      - begin: '({)((@)(?:link(?:code|plain)?|tutorial))\s*'
+        beginCaptures:
+          '1':
+            name: punctuation.definition.bracket.curly.begin.jsdoc
+          '2':
+            name: storage.type.class.jsdoc
+          '3':
+            name: punctuation.definition.inline.tag.jsdoc
+        end: '}|(?=\*/)'
+        endCaptures:
+          '0':
+            name: punctuation.definition.bracket.curly.end.jsdoc
+        name: entity.name.type.instance.jsdoc
+        patterns:
+          - captures:
+              '1':
+                name: variable.other.link.underline.jsdoc
+              '2':
+                name: punctuation.separator.pipe.jsdoc
+            match: '\G((?=https?://)(?:[^|}\s*]|\*[/])+)(\|)?'
+          - captures:
+              '1':
+                name: variable.other.description.jsdoc
+              '2':
+                name: punctuation.separator.pipe.jsdoc
+            match: '\G((?:[^{}@\s|*]|\*[^/])+)(\|)?'
+
+  quotes:
+    patterns:
+      - begin: ''''
+        end: '''|(?=\*/)'
+        patterns:
+          - include: '#quotes'
+      - begin: '"'
+        end: '"|(?=\*/)'
+        patterns:
+          - include: '#quotes'
+
+  jsdoctype:
+    patterns:
+      - match: '\G{(?:[^}*]|\*[^/}])+$'
+        name: invalid.illegal.type.jsdoc
+      - begin: '\G({)'
+        beginCaptures:
+          '0':
+            name: entity.name.type.instance.jsdoc
+          '1':
+            name: punctuation.definition.bracket.curly.begin.jsdoc
+        contentName: entity.name.type.instance.jsdoc
+        end: '((}))\s*|(?=\*/)'
+        endCaptures:
+          '1':
+            name: entity.name.type.instance.jsdoc
+          '2':
+            name: punctuation.definition.bracket.curly.end.jsdoc
+        patterns:
+          - include: '#brackets'
 ...
