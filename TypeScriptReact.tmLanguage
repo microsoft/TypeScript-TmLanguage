@@ -1589,16 +1589,6 @@
         <array>
           <dict>
             <key>include</key>
-            <string>#type-object-members</string>
-          </dict>
-        </array>
-      </dict>
-      <key>type-object-members</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>include</key>
             <string>#comment</string>
           </dict>
           <dict>
@@ -2597,33 +2587,15 @@
             <string>#comment</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>meta.object.type.tsx</string>
             <key>begin</key>
-            <string>(?&lt;=[:|&amp;])\s*(\{)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.block.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;=[:])(?=\s*\{)</string>
             <key>end</key>
-            <string>\}</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.block.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;=\})</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#type-object-members</string>
+                <string>#type-object</string>
               </dict>
             </array>
           </dict>
@@ -2916,10 +2888,39 @@
             <string>#typeof-operator</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>keyword.operator.type.tsx</string>
-            <key>match</key>
+            <key>begin</key>
+            <string>([&amp;|])(?=\s*\{)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.type.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;=\})</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-object</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
             <string>[&amp;|]</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.type.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\S)</string>
           </dict>
           <dict>
             <key>name</key>
@@ -2952,33 +2953,15 @@
             <string>#comment</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>meta.object.type.tsx</string>
             <key>begin</key>
-            <string>(?:(?&lt;==&gt;)|(?&lt;=[|&amp;]))\s*(\{)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.block.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;==&gt;)(?=\s*\{)</string>
             <key>end</key>
-            <string>\}</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.block.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;=\})</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#type-object-members</string>
+                <string>#type-object</string>
               </dict>
             </array>
           </dict>
@@ -4528,33 +4511,15 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>name</key>
-            <string>meta.object.type.tsx</string>
             <key>begin</key>
-            <string>(?&lt;=[:|&amp;])\s*(\{)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.block.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;=[:])(?=\s*\{)</string>
             <key>end</key>
-            <string>\}</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.block.tsx</string>
-              </dict>
-            </dict>
+            <string>(?&lt;=\})</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#type-object-members</string>
+                <string>#type-object</string>
               </dict>
             </array>
           </dict>

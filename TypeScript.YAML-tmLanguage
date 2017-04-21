@@ -499,10 +499,6 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.block.ts }
     patterns:
-    - include: '#type-object-members'
-
-  type-object-members:
-    patterns:
     - include: '#comment'
     - include: '#method-declaration'
     - include: '#indexer-declaration'
@@ -518,6 +514,7 @@ repository:
     - include: '#punctuation-comma'
     - include: '#punctuation-semicolon'
     - include: '#type'
+    
 
   field-declaration:
     name: meta.field.declaration.ts
@@ -841,15 +838,10 @@ repository:
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
-    - name: meta.object.type.ts
-      begin: (?<=[:|&])\s*(\{)
-      beginCaptures:
-        '1': { name: punctuation.definition.block.ts }
-      end: \}
-      endCaptures:
-        '0': { name: punctuation.definition.block.ts }
+    - begin: (?<=[:])(?=\s*\{)
+      end: (?<=\})
       patterns:
-      - include: '#type-object-members'
+      - include: '#type-object'
     - include: '#type-predicate-operator'
     - include: '#type'
 
@@ -961,8 +953,19 @@ repository:
   type-operators:
     patterns:
     - include: '#typeof-operator'
-    - name: keyword.operator.type.ts
-      match: '[&|]'
+    # Handle the object types followed by | or & operator as { can be used as end of Type in many places and this avoids tripping that
+    - begin: ([&|])(?=\s*\{)
+      beginCaptures:
+         '0': { name: keyword.operator.type.ts }
+      end: (?<=\})
+      patterns:
+      - include: '#type-object'
+    # capture all white spaces followed by the | or & operator so that line break (which is end regex for many type patterns) 
+    # will be consumed and we will continue to be in type space
+    - begin: '[&|]'
+      beginCaptures:
+         '0': { name: keyword.operator.type.ts }
+      end: (?=\S)
     - name: keyword.operator.expression.keyof.ts
       match: (?<!\.|\$)\bkeyof\b(?!\$|\.)
 
@@ -975,15 +978,10 @@ repository:
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
-    - name: meta.object.type.ts
-      begin: (?:(?<==>)|(?<=[|&]))\s*(\{)
-      beginCaptures:
-        '1': { name: punctuation.definition.block.ts }
-      end: \}
-      endCaptures:
-        '0': { name: punctuation.definition.block.ts }
+    - begin: (?<==>)(?=\s*\{)
+      end: (?<=\})
       patterns:
-      - include: '#type-object-members'
+      - include: '#type-object'
     - include: '#type-predicate-operator'
     - include: '#type'
 
@@ -1672,15 +1670,10 @@ repository:
     patterns:
     # TODO: handle the fn and constructor type specifically.
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
-    - name: meta.object.type.ts
-      begin: (?<=[:|&])\s*(\{)
-      beginCaptures:
-        '1': { name: punctuation.definition.block.ts }
-      end: \}
-      endCaptures:
-        '0': { name: punctuation.definition.block.ts }
+    - begin: (?<=[:])(?=\s*\{)
+      end: (?<=\})
       patterns:
-      - include: '#type-object-members'
+      - include: '#type-object'
     - include: '#type-predicate-operator'
     - include: '#type'
 

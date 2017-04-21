@@ -1,0 +1,86 @@
+original file
+-----------------------------------
+function f(
+        arg: 'x' |
+             'y',
+        arg2: 1 |
+              2) {}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function f(
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^^
+            source.ts meta.function.ts meta.parameters.ts
+>        arg: 'x' |
+ ^^^^^^^^
+ source.ts meta.function.ts meta.parameters.ts
+         ^^^
+         source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts string.quoted.single.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                  ^
+                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                   ^^
+                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+>             'y',
+ ^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts string.quoted.single.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                  ^^
+                  source.ts meta.function.ts meta.parameters.ts
+>        arg2: 1 |
+ ^^^^^^^^
+ source.ts meta.function.ts meta.parameters.ts
+         ^^^^
+         source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                  ^^
+                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+>              2) {}
+ ^^^^^^^^^^^^^^
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.function.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
