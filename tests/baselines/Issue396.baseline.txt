@@ -36,7 +36,7 @@ Grammar: TypeScript.tmLanguage
          ^
          source.ts meta.var.expr.ts
           ^^^^^^^
-          source.ts meta.var.expr.ts support.function.ts
+          source.ts meta.var.expr.ts meta.function-call.ts support.function.ts
                  ^
                  source.ts meta.var.expr.ts meta.brace.round.ts
                   ^
@@ -53,11 +53,11 @@ Grammar: TypeScript.tmLanguage
                           source.ts
 >it.execute(function* builder(options) {
  ^^
- source.ts variable.other.object.ts
+ source.ts meta.function-call.ts variable.other.object.ts
    ^
-   source.ts punctuation.accessor.ts
+   source.ts meta.function-call.ts punctuation.accessor.ts
     ^^^^^^^
-    source.ts entity.name.function.ts
+    source.ts meta.function-call.ts entity.name.function.ts
            ^
            source.ts meta.brace.round.ts
             ^^^^^^^^
@@ -100,11 +100,11 @@ Grammar: TypeScript.tmLanguage
                         ^
                         source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
                          ^^
-                         source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts variable.other.object.ts
+                         source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.function-call.ts variable.other.object.ts
                            ^
-                           source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
+                           source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.function-call.ts punctuation.accessor.ts
                             ^^^^
-                            source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts entity.name.function.ts
+                            source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
                                 ^
                                 source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                  ^^^^^^
@@ -139,11 +139,11 @@ Grammar: TypeScript.tmLanguage
                    ^
                    source.ts meta.function.expression.ts meta.block.ts
                     ^^
-                    source.ts meta.function.expression.ts meta.block.ts variable.other.object.ts
+                    source.ts meta.function.expression.ts meta.block.ts meta.function-call.ts variable.other.object.ts
                       ^
-                      source.ts meta.function.expression.ts meta.block.ts punctuation.accessor.ts
+                      source.ts meta.function.expression.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
                        ^^^^^
-                       source.ts meta.function.expression.ts meta.block.ts support.function.ts
+                       source.ts meta.function.expression.ts meta.block.ts meta.function-call.ts support.function.ts
                             ^
                             source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                              ^^^^^^^^
@@ -170,11 +170,11 @@ Grammar: TypeScript.tmLanguage
                   ^
                   source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
                    ^^
-                   source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.ts
+                   source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts variable.other.object.ts
                      ^
-                     source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                     source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts punctuation.accessor.ts
                       ^^^^
-                      source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts entity.name.function.ts
+                      source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts entity.name.function.ts
                           ^
                           source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
                            ^^^^^^^
@@ -205,11 +205,11 @@ Grammar: TypeScript.tmLanguage
                      ^
                      source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
                       ^^
-                      source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.ts
+                      source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts variable.other.object.ts
                         ^
-                        source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                        source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts punctuation.accessor.ts
                          ^^^^
-                         source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts entity.name.function.ts
+                         source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts entity.name.function.ts
                              ^
                              source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
                               ^^^^^^^
@@ -223,9 +223,9 @@ Grammar: TypeScript.tmLanguage
                                              ^
                                              source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
                                               ^
-                                              source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                              source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts punctuation.accessor.ts
                                                ^^^^^^
-                                               source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts entity.name.function.ts
+                                               source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts entity.name.function.ts
                                                      ^
                                                      source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
                                                       ^

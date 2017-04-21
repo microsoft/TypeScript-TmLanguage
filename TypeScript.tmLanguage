@@ -3758,26 +3758,37 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>include</key>
-            <string>#literal</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#support-objects</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#object-identifiers</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#punctuation-accessor</string>
-          </dict>
-          <dict>
             <key>name</key>
-            <string>entity.name.function.ts</string>
-            <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+            <string>meta.function-call.ts</string>
+            <key>begin</key>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))</string>
+            <key>end</key>
+            <string>(?=\s*(&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\()</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#literal</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#support-objects</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#object-identifiers</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#punctuation-accessor</string>
+              </dict>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.ts</string>
+                <key>match</key>
+                <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+              </dict>
+            </array>
           </dict>
           <dict>
             <key>include</key>

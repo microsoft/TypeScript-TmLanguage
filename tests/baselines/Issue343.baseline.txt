@@ -7,11 +7,11 @@ Grammar: TypeScript.tmLanguage
 -----------------------------------
 >console.log(`${Math.round(responseTime / requests)} ns (${Math.round(requests / ( responseTime / 1e9))}/sec)`);
  ^^^^^^^
- source.ts support.class.console.ts
+ source.ts meta.function-call.ts support.class.console.ts
         ^
-        source.ts punctuation.accessor.ts
+        source.ts meta.function-call.ts punctuation.accessor.ts
          ^^^
-         source.ts support.function.console.ts
+         source.ts meta.function-call.ts support.function.console.ts
             ^
             source.ts meta.brace.round.ts
              ^
@@ -19,11 +19,11 @@ Grammar: TypeScript.tmLanguage
               ^^
               source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
                 ^^^^
-                source.ts string.template.ts meta.template.expression.ts support.constant.math.ts
+                source.ts string.template.ts meta.template.expression.ts meta.function-call.ts support.constant.math.ts
                     ^
-                    source.ts string.template.ts meta.template.expression.ts punctuation.accessor.ts
+                    source.ts string.template.ts meta.template.expression.ts meta.function-call.ts punctuation.accessor.ts
                      ^^^^^
-                     source.ts string.template.ts meta.template.expression.ts support.function.math.ts
+                     source.ts string.template.ts meta.template.expression.ts meta.function-call.ts support.function.math.ts
                           ^
                           source.ts string.template.ts meta.template.expression.ts meta.brace.round.ts
                            ^^^^^^^^^^^^
@@ -45,11 +45,11 @@ Grammar: TypeScript.tmLanguage
                                                          ^^
                                                          source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
                                                            ^^^^
-                                                           source.ts string.template.ts meta.template.expression.ts support.constant.math.ts
+                                                           source.ts string.template.ts meta.template.expression.ts meta.function-call.ts support.constant.math.ts
                                                                ^
-                                                               source.ts string.template.ts meta.template.expression.ts punctuation.accessor.ts
+                                                               source.ts string.template.ts meta.template.expression.ts meta.function-call.ts punctuation.accessor.ts
                                                                 ^^^^^
-                                                                source.ts string.template.ts meta.template.expression.ts support.function.math.ts
+                                                                source.ts string.template.ts meta.template.expression.ts meta.function-call.ts support.function.math.ts
                                                                      ^
                                                                      source.ts string.template.ts meta.template.expression.ts meta.brace.round.ts
                                                                       ^^^^^^^^

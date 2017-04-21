@@ -20,7 +20,7 @@ Grammar: TypeScript.tmLanguage
             ^
             source.ts meta.var.expr.ts
              ^
-             source.ts meta.var.expr.ts entity.name.function.ts
+             source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
               ^
               source.ts meta.var.expr.ts meta.brace.round.ts
                ^^^^
@@ -33,11 +33,11 @@ Grammar: TypeScript.tmLanguage
                      source.ts
 >$this.addClass("hehe");
  ^^^^^
- source.ts variable.other.object.ts
+ source.ts meta.function-call.ts variable.other.object.ts
       ^
-      source.ts punctuation.accessor.ts
+      source.ts meta.function-call.ts punctuation.accessor.ts
        ^^^^^^^^
-       source.ts entity.name.function.ts
+       source.ts meta.function-call.ts entity.name.function.ts
                ^
                source.ts meta.brace.round.ts
                 ^

@@ -1367,12 +1367,16 @@ repository:
     begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\()
     end: (?<=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\()
     patterns:
-    - include: '#literal'
-    - include: '#support-objects'
-    - include: '#object-identifiers'
-    - include: '#punctuation-accessor'
-    - name: entity.name.function.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+    - name: meta.function-call.ts
+      begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))
+      end: (?=\s*(<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\()
+      patterns:
+      - include: '#literal'
+      - include: '#support-objects'
+      - include: '#object-identifiers'
+      - include: '#punctuation-accessor'
+      - name: entity.name.function.ts
+        match: ([_$[:alpha:]][_$[:alnum:]]*)
     - include: '#comment'
     - name: meta.type.parameters.ts
       begin: \<
