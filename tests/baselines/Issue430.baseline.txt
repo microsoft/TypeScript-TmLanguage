@@ -1,0 +1,280 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+class c {
+render() {
+    return this.props.data.weekDays.filter((weekDay, index) => (this.state.showAll || index < 3)).map((weekDay, key) => (
+      <p key={key}>
+        {weekDay.label} {this.props.data[weekDay.id].start} - {this.props.data[weekDay.id].finish}
+      </p>
+    ))
+  }
+}
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>class c {
+ ^^^^^
+ source.tsx meta.class.tsx storage.type.class.tsx
+      ^
+      source.tsx meta.class.tsx
+       ^
+       source.tsx meta.class.tsx entity.name.type.class.tsx
+        ^
+        source.tsx meta.class.tsx
+         ^
+         source.tsx meta.class.tsx punctuation.definition.block.tsx
+          ^^
+          source.tsx meta.class.tsx
+>render() {
+ ^^^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.definition.method.tsx entity.name.function.tsx
+       ^
+       source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+        ^
+        source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+         ^
+         source.tsx meta.class.tsx meta.method.declaration.tsx
+          ^
+          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+           ^^
+           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+>    return this.props.data.weekDays.filter((weekDay, index) => (this.state.showAll || index < 3)).map((weekDay, key) => (
+ ^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+     ^^^^^^
+     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx keyword.control.flow.tsx
+           ^
+           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+            ^^^^
+            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx variable.language.this.tsx
+                ^
+                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.accessor.tsx
+                 ^^^^^
+                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx variable.other.object.property.tsx
+                      ^
+                      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.accessor.tsx
+                       ^^^^
+                       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx support.variable.property.dom.tsx
+                           ^
+                           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.accessor.tsx
+                            ^^^^^^^^
+                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx variable.other.object.property.tsx
+                                    ^
+                                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.accessor.tsx
+                                     ^^^^^^
+                                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx entity.name.function.tsx
+                                           ^
+                                           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+                                            ^
+                                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+                                             ^^^^^^^
+                                             source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                                                    ^
+                                                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                                                     ^
+                                                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx
+                                                      ^^^^^
+                                                      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                                                           ^
+                                                           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+                                                            ^
+                                                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx
+                                                             ^^
+                                                             source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+                                                               ^
+                                                               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx
+                                                                ^
+                                                                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+                                                                 ^^^^
+                                                                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx variable.language.this.tsx
+                                                                     ^
+                                                                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.accessor.tsx
+                                                                      ^^^^^
+                                                                      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx variable.other.object.property.tsx
+                                                                           ^
+                                                                           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.accessor.tsx
+                                                                            ^^^^^^^
+                                                                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx variable.other.property.tsx
+                                                                                   ^
+                                                                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+                                                                                    ^^
+                                                                                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx keyword.operator.logical.tsx
+                                                                                      ^
+                                                                                      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+                                                                                       ^^^^^
+                                                                                       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx variable.other.readwrite.tsx
+                                                                                            ^
+                                                                                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+                                                                                             ^
+                                                                                             source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx keyword.operator.relational.tsx
+                                                                                              ^
+                                                                                              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+                                                                                               ^
+                                                                                               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx constant.numeric.decimal.tsx
+                                                                                                ^
+                                                                                                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+                                                                                                 ^
+                                                                                                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+                                                                                                  ^
+                                                                                                  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.accessor.tsx
+                                                                                                   ^^^
+                                                                                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx entity.name.function.tsx
+                                                                                                      ^
+                                                                                                      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+                                                                                                       ^
+                                                                                                       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+                                                                                                        ^^^^^^^
+                                                                                                        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                                                                                                               ^
+                                                                                                               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx punctuation.separator.parameter.tsx
+                                                                                                                ^
+                                                                                                                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx
+                                                                                                                 ^^^
+                                                                                                                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+                                                                                                                    ^
+                                                                                                                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+                                                                                                                     ^
+                                                                                                                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx
+                                                                                                                      ^^
+                                                                                                                      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+                                                                                                                        ^
+                                                                                                                        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.arrow.tsx
+                                                                                                                         ^
+                                                                                                                         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+                                                                                                                          ^^
+                                                                                                                          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+>      <p key={key}>
+ ^^^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+       ^
+       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+        ^
+        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx
+         ^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx
+          ^^^
+          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx entity.other.attribute-name.tsx
+             ^
+             source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx keyword.operator.assignment.tsx
+              ^
+              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.embedded.expression.tsx punctuation.section.embedded.begin.tsx
+               ^^^
+               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.embedded.expression.tsx variable.other.readwrite.tsx
+                  ^
+                  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.embedded.expression.tsx punctuation.section.embedded.end.tsx
+                   ^
+                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                    ^^
+                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+>        {weekDay.label} {this.props.data[weekDay.id].start} - {this.props.data[weekDay.id].finish}
+ ^^^^^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+         ^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.section.embedded.begin.tsx
+          ^^^^^^^
+          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx variable.other.object.tsx
+                 ^
+                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.accessor.tsx
+                  ^^^^^
+                  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx support.variable.property.dom.tsx
+                       ^
+                       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.section.embedded.end.tsx
+                        ^
+                        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+                         ^
+                         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.section.embedded.begin.tsx
+                          ^^^^
+                          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx variable.language.this.tsx
+                              ^
+                              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.accessor.tsx
+                               ^^^^^
+                               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx variable.other.object.property.tsx
+                                    ^
+                                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.accessor.tsx
+                                     ^^^^
+                                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx support.variable.property.dom.tsx
+                                         ^
+                                         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx meta.brace.square.tsx
+                                          ^^^^^^^
+                                          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx variable.other.object.tsx
+                                                 ^
+                                                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx punctuation.accessor.tsx
+                                                  ^^
+                                                  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx support.variable.property.dom.tsx
+                                                    ^
+                                                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx meta.brace.square.tsx
+                                                     ^
+                                                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.accessor.tsx
+                                                      ^^^^^
+                                                      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx support.variable.property.dom.tsx
+                                                           ^
+                                                           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.section.embedded.end.tsx
+                                                            ^^^
+                                                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+                                                               ^
+                                                               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.section.embedded.begin.tsx
+                                                                ^^^^
+                                                                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx variable.language.this.tsx
+                                                                    ^
+                                                                    source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.accessor.tsx
+                                                                     ^^^^^
+                                                                     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx variable.other.object.property.tsx
+                                                                          ^
+                                                                          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.accessor.tsx
+                                                                           ^^^^
+                                                                           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx support.variable.property.dom.tsx
+                                                                               ^
+                                                                               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx meta.brace.square.tsx
+                                                                                ^^^^^^^
+                                                                                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx variable.other.object.tsx
+                                                                                       ^
+                                                                                       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx punctuation.accessor.tsx
+                                                                                        ^^
+                                                                                        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx support.variable.property.dom.tsx
+                                                                                          ^
+                                                                                          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx meta.array.literal.tsx meta.brace.square.tsx
+                                                                                           ^
+                                                                                           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.accessor.tsx
+                                                                                            ^^^^^^
+                                                                                            source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx variable.other.property.tsx
+                                                                                                  ^
+                                                                                                  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx meta.embedded.expression.tsx punctuation.section.embedded.end.tsx
+                                                                                                   ^^
+                                                                                                   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+>      </p>
+ ^^^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.jsx.children.tsx
+       ^^
+       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+         ^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx
+          ^
+          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+           ^^
+           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+>    ))
+ ^^^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+     ^
+     source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+      ^
+      source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.brace.round.tsx
+       ^^
+       source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+>  }
+ ^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+   ^
+   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+    ^^
+    source.tsx meta.class.tsx
+>}
+ ^
+ source.tsx meta.class.tsx punctuation.definition.block.tsx

@@ -150,7 +150,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
     ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
     ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
+    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
   ) |
   (:\s*(
     (&lt;) |
@@ -1713,7 +1713,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
     ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
     ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
+    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
   ) |
   (:\s*(
     (&lt;) |
@@ -2274,7 +2274,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
     ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
     ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
+    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
   ) |
   (:\s*(
     (&lt;) |
@@ -3576,7 +3576,7 @@
   |siblingBelow|size|source|specified|standby|start|status|statusbar|statusText|style|styleSheets|suffixes|summary
   |systemId|systemLanguage|tagName|tags|target|tBodies|text|textAlign|textDecoration|textIndent|textTransform|tFoot|tHead
   |title|toolbar|top|type|undefined|uniqueID|updateInterval|URL|URLUnencoded|useMap|userAgent|userLanguage|userProfile
-  |vAlign|value|valueType|vendor|vendorSub|version|visibility|vspace|whiteSpace|width|X[MS]LDocument|zIndex))\b(?!\$|\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+  |vAlign|value|valueType|vendor|vendorSub|version|visibility|vspace|whiteSpace|width|X[MS]LDocument|zIndex))\b(?!\$|\s*(&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\()</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -3773,9 +3773,9 @@
       <key>function-call</key>
       <dict>
         <key>begin</key>
-        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\()</string>
         <key>end</key>
-        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\()</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3860,7 +3860,7 @@
   ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)|
   ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
   ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-  ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)))</string>
+  ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4118,7 +4118,7 @@
   ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)|
   ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
   ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-  ((&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
+  ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -4443,7 +4443,7 @@
     ) |
     # arrow function possible to detect only with =&gt; on same line
     (
-      (&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+&gt;\s*)?                 # typeparameters
+      (&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                 # typeparameters
       \(([^()]|\([^()]*\))*\)                     # parameteres
       (\s*:\s*(.)*)?                              # return type
       \s*=&gt;                                       # arrow operator
