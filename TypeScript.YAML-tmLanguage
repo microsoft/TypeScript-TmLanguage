@@ -258,7 +258,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.type.ts }
-      '3': { name: entity.name.type.ts }
+      '3': { name: entity.name.type.alias.ts }
     end: (?=[};]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)
     patterns:
       - include: '#comment'
@@ -430,24 +430,41 @@ repository:
       match: ([_$[:alpha:]][_$[:alnum:]]*)
 
   class-or-interface-declaration:
-    name: meta.class.ts
-    begin: (?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b(?=\s+|/[/*])
-    beginCaptures:
-      '1': { name: keyword.control.export.ts }
-      '2': { name: storage.modifier.ts }
-      '3': { name: storage.type.class.ts }
-      '4': { name: storage.type.interface.ts }
-    end: (?<=\})
-    endCaptures:
-      '1': { name: punctuation.definition.block.ts }
     patterns:
-    - include: '#comment'
-    - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
-    - match: '[_$[:alpha:]][_$[:alnum:]]*'
-      captures:
-        '0': { name: 'entity.name.type.class.ts' }
-    - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
-    - include: '#class-or-interface-body'
+    - name: meta.class.ts
+      begin: (?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])
+      beginCaptures:
+        '1': { name: keyword.control.export.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: storage.type.class.ts }
+      end: (?<=\})
+      endCaptures:
+        '1': { name: punctuation.definition.block.ts }
+      patterns:
+      - include: '#comment'
+      - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
+      - match: '[_$[:alpha:]][_$[:alnum:]]*'
+        captures:
+          '0': { name: 'entity.name.type.class.ts' }
+      - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
+      - include: '#class-or-interface-body'
+    - name: meta.interface.ts
+      begin: (?<!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])
+      beginCaptures:
+        '1': { name: keyword.control.export.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: storage.type.interface.ts }
+      end: (?<=\})
+      endCaptures:
+        '1': { name: punctuation.definition.block.ts }
+      patterns:
+      - include: '#comment'
+      - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
+      - match: '[_$[:alpha:]][_$[:alnum:]]*'
+        captures:
+          '0': { name: 'entity.name.type.interface.ts' }
+      - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
+      - include: '#class-or-interface-body'
 
   class-or-interface-heritage:
     begin: (?<!\.|\$)(?:\b(extends|implements)\b)(?!\$|\.)

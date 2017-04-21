@@ -753,7 +753,7 @@
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>entity.name.type.ts</string>
+            <string>entity.name.type.alias.ts</string>
           </dict>
         </dict>
         <key>end</key>
@@ -1334,72 +1334,137 @@
       </dict>
       <key>class-or-interface-declaration</key>
       <dict>
-        <key>name</key>
-        <string>meta.class.ts</string>
-        <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(?:(class)|(interface))\b(?=\s+|/[/*])</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.export.ts</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>storage.modifier.ts</string>
-          </dict>
-          <key>3</key>
-          <dict>
-            <key>name</key>
-            <string>storage.type.class.ts</string>
-          </dict>
-          <key>4</key>
-          <dict>
-            <key>name</key>
-            <string>storage.type.interface.ts</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>(?&lt;=\})</string>
-        <key>endCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.block.ts</string>
-          </dict>
-        </dict>
         <key>patterns</key>
         <array>
           <dict>
-            <key>include</key>
-            <string>#comment</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#class-or-interface-heritage</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
-            <key>captures</key>
+            <key>name</key>
+            <string>meta.class.ts</string>
+            <key>begin</key>
+            <string>(?&lt;!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])</string>
+            <key>beginCaptures</key>
             <dict>
-              <key>0</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.type.class.ts</string>
+                <string>keyword.control.export.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.class.ts</string>
               </dict>
             </dict>
+            <key>end</key>
+            <string>(?&lt;=\})</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.ts</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#class-or-interface-heritage</string>
+              </dict>
+              <dict>
+                <key>match</key>
+                <string>[_$[:alpha:]][_$[:alnum:]]*</string>
+                <key>captures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>entity.name.type.class.ts</string>
+                  </dict>
+                </dict>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#type-parameters</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#class-or-interface-body</string>
+              </dict>
+            </array>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#type-parameters</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#class-or-interface-body</string>
+            <key>name</key>
+            <string>meta.interface.ts</string>
+            <key>begin</key>
+            <string>(?&lt;!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.export.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.interface.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;=\})</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.ts</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#class-or-interface-heritage</string>
+              </dict>
+              <dict>
+                <key>match</key>
+                <string>[_$[:alpha:]][_$[:alnum:]]*</string>
+                <key>captures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>entity.name.type.interface.ts</string>
+                  </dict>
+                </dict>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#type-parameters</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#class-or-interface-body</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
