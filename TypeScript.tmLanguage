@@ -5601,6 +5601,12 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>match</key>
+            <string>(?x)
+((@)access)
+\s+
+(private|protected|public)
+\b</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5619,12 +5625,6 @@
                 <string>constant.language.access-type.jsdoc</string>
               </dict>
             </dict>
-            <key>match</key>
-            <string>(?x)
-((@)access)
-\s+
-(private|protected|public)
-\b</string>
           </dict>
           <dict>
             <key>match</key>
@@ -5738,6 +5738,8 @@
                 <string>^\s\*\s+</string>
               </dict>
               <dict>
+                <key>contentName</key>
+                <string>constant.other.description.jsdoc</string>
                 <key>begin</key>
                 <string>\G(&lt;)caption(&gt;)</string>
                 <key>beginCaptures</key>
@@ -5758,8 +5760,6 @@
                     <string>punctuation.definition.bracket.angle.end.jsdoc</string>
                   </dict>
                 </dict>
-                <key>contentName</key>
-                <string>constant.other.description.jsdoc</string>
                 <key>end</key>
                 <string>(&lt;/)caption(&gt;)|(?=\*/)</string>
                 <key>endCaptures</key>
@@ -5789,20 +5789,15 @@
                   <key>0</key>
                   <dict>
                     <key>name</key>
-                    <string>source.embedded.js</string>
-                    <key>patterns</key>
-                    <array>
-                      <dict>
-                        <key>include</key>
-                        <string>source.js</string>
-                      </dict>
-                    </array>
+                    <string>source.embedded.ts</string>
                   </dict>
                 </dict>
               </dict>
             </array>
           </dict>
           <dict>
+            <key>match</key>
+            <string>(?x) ((@)kind) \s+ (class|constant|event|external|file|function|member|mixin|module|namespace|typedef) \b</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5821,14 +5816,25 @@
                 <string>constant.language.symbol-type.jsdoc</string>
               </dict>
             </dict>
-            <key>match</key>
-            <string>(?x)
-((@)kind)
-\s+
-(class|constant|event|external|file|function|member|mixin|module|namespace|typedef)
-\b</string>
           </dict>
           <dict>
+            <key>match</key>
+            <string>(?x)
+((@)see)
+\s+
+(?:
+  # URL
+  (
+    (?=https?://)
+    (?:[^\s*]|\*[^/])+
+  )
+  |
+  # JSDoc namepath
+  (
+    (?!https?://)
+    (?:[^@\s*/]|\*[^/])+
+  )
+)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5852,68 +5858,22 @@
                 <string>entity.name.type.instance.jsdoc</string>
               </dict>
             </dict>
-            <key>match</key>
-            <string>(?x)
-((@)see)
-\s+
-(?:
-  # URL
-  (
-    (?=https?://)
-    (?:[^\s*]|\*[^/])+
-  )
-  |
-  # JSDoc namepath
-  (
-    (?!https?://)
-    (?:[^@\s*/]|\*[^/])+
-  )
-)</string>
           </dict>
           <dict>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>storage.type.class.jsdoc</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.block.tag.jsdoc</string>
-              </dict>
-              <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>variable.other.jsdoc</string>
-                <key>patterns</key>
-                <array>
-                  <dict>
-                    <key>match</key>
-                    <string>,</string>
-                    <key>name</key>
-                    <string>punctuation.delimiter.object.comma.jsdoc</string>
-                  </dict>
-                </array>
-              </dict>
-            </dict>
             <key>match</key>
             <string>(?x)
 ((@)template)
 \s+
 # One or more valid identifiers
-(
-  [A-Za-z_$]        # First character: non-numeric word character
-  [\w$.\[\]]*    # Rest of identifier
-  (?:               # Possible list of additional identifiers
-    \s* , \s*
-    [A-Za-z_$]
-    [\w$.\[\]]*
+(?:
+  ([A-Za-z_$]        # First character: non-numeric word character
+  [\w$.\[\]]*)       # Rest of identifier
+  (?:                # Possible list of additional identifiers
+    \s* (,) \s*
+    ([A-Za-z_$]
+    [\w$.\[\]]*)
   )*
 )</string>
-          </dict>
-          <dict>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5931,7 +5891,19 @@
                 <key>name</key>
                 <string>variable.other.jsdoc</string>
               </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.delimiter.object.comma.jsdoc</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.jsdoc</string>
+              </dict>
             </dict>
+          </dict>
+          <dict>
             <key>match</key>
             <string>(?x)
 (
@@ -5943,6 +5915,24 @@
   [A-Za-z_$]
   [\w$.\[\]]*
 )</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.class.jsdoc</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.tag.jsdoc</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.jsdoc</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>begin</key>
@@ -6001,10 +5991,10 @@
                 <string>#jsdoctype</string>
               </dict>
               <dict>
-                <key>match</key>
-                <string>([A-Za-z_$][\w$.\[\]]*)</string>
                 <key>name</key>
                 <string>variable.other.jsdoc</string>
+                <key>match</key>
+                <string>([A-Za-z_$][\w$.\[\]]*)</string>
               </dict>
               <dict>
                 <key>name</key>
@@ -6028,18 +6018,7 @@
                       <key>2</key>
                       <dict>
                         <key>name</key>
-                        <string>source.embedded.js</string>
-                        <key>patterns</key>
-                        <array>
-                          <dict>
-                            <key>include</key>
-                            <string>#inline-tags</string>
-                          </dict>
-                          <dict>
-                            <key>include</key>
-                            <string>source.js</string>
-                          </dict>
-                        </array>
+                        <string>source.embedded.ts</string>
                       </dict>
                     </dict>
                   </dict>
@@ -6082,6 +6061,20 @@
             </array>
           </dict>
           <dict>
+            <key>match</key>
+            <string>(?x)
+(
+  (@)
+  (?:alias|augments|callback|constructs|emits|event|fires|exports?
+  |extends|external|function|func|host|lends|listens|interface|memberof!?
+  |method|module|mixes|mixin|name|requires|see|this|typedef|uses)
+)
+\s+
+(
+  (?:
+    [^{}@\s*] | \*[^/]
+  )+
+)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -6100,24 +6093,12 @@
                 <string>entity.name.type.instance.jsdoc</string>
               </dict>
             </dict>
-            <key>match</key>
-            <string>(?x)
-(
-  (@)
-  (?:alias|augments|callback|constructs|emits|event|fires|exports?
-  |extends|external|function|func|host|lends|listens|interface|memberof!?
-  |method|module|mixes|mixin|name|requires|see|this|typedef|uses)
-)
-\s+
-(
-  (?:
-    [^{}@\s*] | \*[^/]
-  )+
-)</string>
           </dict>
           <dict>
+            <key>contentName</key>
+            <string>variable.other.jsdoc</string>
             <key>begin</key>
-            <string>((@)(?:default(?:value)?|license|version))\s+((['"]))</string>
+            <string>((@)(?:default(?:value)?|license|version))\s+(([''"]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -6141,8 +6122,6 @@
                 <string>punctuation.definition.string.begin.jsdoc</string>
               </dict>
             </dict>
-            <key>contentName</key>
-            <string>variable.other.jsdoc</string>
             <key>end</key>
             <string>(\3)|(?=$|\*/)</string>
             <key>endCaptures</key>
@@ -6160,6 +6139,8 @@
             </dict>
           </dict>
           <dict>
+            <key>match</key>
+            <string>((@)(?:default(?:value)?|license|tutorial|variation|version))\s+([^\s*]+)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -6178,10 +6159,12 @@
                 <string>variable.other.jsdoc</string>
               </dict>
             </dict>
-            <key>match</key>
-            <string>((@)(?:default(?:value)?|license|tutorial|variation|version))\s+([^\s*]+)</string>
           </dict>
           <dict>
+            <key>name</key>
+            <string>storage.type.class.jsdoc</string>
+            <key>match</key>
+            <string>(?x) (@) (?:abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbles |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func |function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance|interface|kind |lends|license|listens|main|member|memberof!?|method|mixes|mixins?|modifies|module|name|namespace |noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve|private|prop |property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule |summary|suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation |version|virtual|writeOnce) \b</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -6190,21 +6173,6 @@
                 <string>punctuation.definition.block.tag.jsdoc</string>
               </dict>
             </dict>
-            <key>match</key>
-            <string>(?x) (@)
-(?:abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbles
-|callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright
-|default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception
-|exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func
-|function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance|interface|kind
-|lends|license|listens|main|member|memberof!?|method|mixes|mixins?|modifies|module|name|namespace
-|noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve|private|prop
-|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule
-|summary|suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation
-|version|virtual|writeOnce)
-\b</string>
-            <key>name</key>
-            <string>storage.type.class.jsdoc</string>
           </dict>
           <dict>
             <key>include</key>
@@ -6249,6 +6217,10 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>name</key>
+            <string>constant.other.description.jsdoc</string>
+            <key>match</key>
+            <string>(\[)[^\]]+(\])(?={@(?:link|linkcode|linkplain|tutorial))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -6262,12 +6234,10 @@
                 <string>punctuation.definition.bracket.square.end.jsdoc</string>
               </dict>
             </dict>
-            <key>match</key>
-            <string>(\[)[^\]]+(\])(?={@(?:link|linkcode|linkplain|tutorial))</string>
-            <key>name</key>
-            <string>constant.other.description.jsdoc</string>
           </dict>
           <dict>
+            <key>name</key>
+            <string>entity.name.type.instance.jsdoc</string>
             <key>begin</key>
             <string>({)((@)(?:link(?:code|plain)?|tutorial))\s*</string>
             <key>beginCaptures</key>
@@ -6298,11 +6268,11 @@
                 <string>punctuation.definition.bracket.curly.end.jsdoc</string>
               </dict>
             </dict>
-            <key>name</key>
-            <string>entity.name.type.instance.jsdoc</string>
             <key>patterns</key>
             <array>
               <dict>
+                <key>match</key>
+                <string>\G((?=https?://)(?:[^|}\s*]|\*[/])+)(\|)?</string>
                 <key>captures</key>
                 <dict>
                   <key>1</key>
@@ -6316,10 +6286,10 @@
                     <string>punctuation.separator.pipe.jsdoc</string>
                   </dict>
                 </dict>
-                <key>match</key>
-                <string>\G((?=https?://)(?:[^|}\s*]|\*[/])+)(\|)?</string>
               </dict>
               <dict>
+                <key>match</key>
+                <string>\G((?:[^{}@\s|*]|\*[^/])+)(\|)?</string>
                 <key>captures</key>
                 <dict>
                   <key>1</key>
@@ -6333,8 +6303,6 @@
                     <string>punctuation.separator.pipe.jsdoc</string>
                   </dict>
                 </dict>
-                <key>match</key>
-                <string>\G((?:[^{}@\s|*]|\*[^/])+)(\|)?</string>
               </dict>
             </array>
           </dict>
@@ -6377,12 +6345,14 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>match</key>
-            <string>\G{(?:[^}*]|\*[^/}])+$</string>
             <key>name</key>
             <string>invalid.illegal.type.jsdoc</string>
+            <key>match</key>
+            <string>\G{(?:[^}*]|\*[^/}])+$</string>
           </dict>
           <dict>
+            <key>contentName</key>
+            <string>entity.name.type.instance.jsdoc</string>
             <key>begin</key>
             <string>\G({)</string>
             <key>beginCaptures</key>
@@ -6398,8 +6368,6 @@
                 <string>punctuation.definition.bracket.curly.begin.jsdoc</string>
               </dict>
             </dict>
-            <key>contentName</key>
-            <string>entity.name.type.instance.jsdoc</string>
             <key>end</key>
             <string>((}))\s*|(?=\*/)</string>
             <key>endCaptures</key>
