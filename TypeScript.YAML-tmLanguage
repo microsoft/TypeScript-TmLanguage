@@ -51,14 +51,17 @@ repository:
       begin: |-
         (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
           (=\s*(
-            (async\s+) |
-            (function\s*[(<]) |
-            (function\s+) |
-            ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
-            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-            ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
-          ) |
+            ((async\s+)?(
+              (function\s*[(<]) |
+              (function\s+) |
+              ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+            )) |
+            ((async\s*)?(
+              ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+              ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+              ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+            ))
+          )) |
           (:\s*(
             (<) |
             ([(]\s*(
@@ -68,8 +71,8 @@ repository:
                 ([:,?=])|
                 ([)]\s*=>)
               ))
-            )))
-          )
+            ))
+          ))
         )
       beginCaptures:
         '1': { name: meta.definition.variable.ts entity.name.function.ts }
@@ -537,14 +540,17 @@ repository:
         match: |-
           (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
             (=\s*(
-              (async\s+) |
-              (function\s*[(<]) |
-              (function\s+) |
-              ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
-              ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-              ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-              ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
-            ) |
+              ((async\s+)?(
+                (function\s*[(<]) |
+                (function\s+) |
+                ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+              )) |
+              ((async\s*)?(
+                ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+                ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+                ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+              ))
+            )) |
             (:\s*(
               (<) |
               ([(]\s*(
@@ -554,8 +560,8 @@ repository:
                   ([:,?=])|
                   ([)]\s*=>)
                 ))
-              )))
-            )
+              ))
+            ))
           )
       - name: meta.definition.property.ts variable.object.property.ts
         match: '[_$[:alpha:]][_$[:alnum:]]*'
@@ -725,14 +731,17 @@ repository:
     - match: |-
         (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
           (=\s*(
-            (async\s+) |
-            (function\s*[(<]) |
-            (function\s+) |
-            ([_$[:alpha:]][_$[:alnum:]]*\s*=>) |
-            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-            ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))
-          ) |
+            ((async\s+)?(
+              (function\s*[(<]) |
+              (function\s+) |
+              ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+            )) |
+            ((async\s*)?(
+              ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+              ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+              ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+            ))
+          )) |
           (:\s*(
             (<) |
             ([(]\s*(
@@ -742,8 +751,8 @@ repository:
                 ([:,?=])|
                 ([)]\s*=>)
               ))
-            )))
-          )
+            ))
+          ))
         )
       captures:
         '1': { name: storage.modifier.ts }
@@ -1396,11 +1405,17 @@ repository:
     # function and method assignment
     - match: |-
         (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
-          (async\s+)|(function\s*[(<])|(function\s+)|
-          ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
-          ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-          ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-          ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)))
+          ((async\s+)?(
+            (function\s*[(<]) |
+            (function\s+) |
+            ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+          )) |
+          ((async\s*)?(
+            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+            ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+          ))
+        ))
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: entity.name.function.ts }
@@ -1515,11 +1530,17 @@ repository:
     - name: meta.object.member.ts
       begin: |-
         (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
-          (async\s+)|(function\s*[(<])|(function\s+)|
-          ([_$[:alpha:]][_$[:alnum:]]*\s*=>)|
-          ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-          ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-          ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>))))
+          ((async\s+)?(
+            (function\s*[(<]) |
+            (function\s+) |
+            ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+          )) |
+          ((async\s*)?(
+            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+            ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+          ))
+        )))
       beginCaptures:
         '0': { name: meta.object-literal.key.ts }
         '1': { name: entity.name.function.ts }
@@ -1613,7 +1634,7 @@ repository:
     patterns:
     # arrow with single parameter without parenthesis
     - name: meta.arrow.ts
-      match: (?:(?<!\.|\$)(\basync)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
+      match: (?:(?<!\.|\$)(\basync)\s+)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
       captures:
         '1': { name: storage.modifier.async.ts }
         '2': { name: variable.parameter.ts }
@@ -1622,8 +1643,8 @@ repository:
       begin: >-
         (?x)
         (?:
-          (?<!\.|\$)(\basync)(?=\s*[<(])
-        ) |
+          (?<!\.|\$)(\basync)
+        )?
         ((?<![})\]])\s*
           (?=
             # sure shot arrow functions even if => is on new line

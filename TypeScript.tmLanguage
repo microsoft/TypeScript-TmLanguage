@@ -144,14 +144,17 @@
             <key>begin</key>
             <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
   (=\s*(
-    (async\s+) |
-    (function\s*[(&lt;]) |
-    (function\s+) |
-    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
-    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
-  ) |
+    ((async\s+)?(
+      (function\s*[(&lt;]) |
+      (function\s+) |
+      ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+    )) |
+    ((async\s*)?(
+      ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+      ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
+      ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)
+    ))
+  )) |
   (:\s*(
     (&lt;) |
     ([(]\s*(
@@ -161,8 +164,8 @@
         ([:,?=])|
         ([)]\s*=&gt;)
       ))
-    )))
-  )
+    ))
+  ))
 )</string>
             <key>beginCaptures</key>
             <dict>
@@ -1693,14 +1696,17 @@
                 <key>match</key>
                 <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
   (=\s*(
-    (async\s+) |
-    (function\s*[(&lt;]) |
-    (function\s+) |
-    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
-    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
-  ) |
+    ((async\s+)?(
+      (function\s*[(&lt;]) |
+      (function\s+) |
+      ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+    )) |
+    ((async\s*)?(
+      ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+      ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
+      ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)
+    ))
+  )) |
   (:\s*(
     (&lt;) |
     ([(]\s*(
@@ -1710,8 +1716,8 @@
         ([:,?=])|
         ([)]\s*=&gt;)
       ))
-    )))
-  )
+    ))
+  ))
 )</string>
               </dict>
               <dict>
@@ -2254,14 +2260,17 @@
             <key>match</key>
             <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
   (=\s*(
-    (async\s+) |
-    (function\s*[(&lt;]) |
-    (function\s+) |
-    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;) |
-    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))
-  ) |
+    ((async\s+)?(
+      (function\s*[(&lt;]) |
+      (function\s+) |
+      ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+    )) |
+    ((async\s*)?(
+      ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+      ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
+      ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)
+    ))
+  )) |
   (:\s*(
     (&lt;) |
     ([(]\s*(
@@ -2271,8 +2280,8 @@
         ([:,?=])|
         ([)]\s*=&gt;)
       ))
-    )))
-  )
+    ))
+  ))
 )</string>
             <key>captures</key>
             <dict>
@@ -3846,11 +3855,17 @@
           <dict>
             <key>match</key>
             <string>(?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
-  (async\s+)|(function\s*[(&lt;])|(function\s+)|
-  ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)|
-  ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-  ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-  ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)))</string>
+  ((async\s+)?(
+    (function\s*[(&lt;]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+  )) |
+  ((async\s*)?(
+    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
+    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)
+  ))
+))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4162,11 +4177,17 @@
             <string>meta.object.member.ts</string>
             <key>begin</key>
             <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
-  (async\s+)|(function\s*[(&lt;])|(function\s+)|
-  ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)|
-  ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-  ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-  ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;))))</string>
+  ((async\s+)?(
+    (function\s*[(&lt;]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+  )) |
+  ((async\s*)?(
+    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
+    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
+    ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)
+  ))
+)))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -4455,7 +4476,7 @@
             <key>name</key>
             <string>meta.arrow.ts</string>
             <key>match</key>
-            <string>(?:(?&lt;!\.|\$)(\basync)\s*)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
+            <string>(?:(?&lt;!\.|\$)(\basync)\s+)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4475,8 +4496,8 @@
             <string>meta.arrow.ts</string>
             <key>begin</key>
             <string>(?x) (?:
-  (?&lt;!\.|\$)(\basync)(?=\s*[&lt;(])
-) | ((?&lt;![})\]])\s*
+  (?&lt;!\.|\$)(\basync)
+)? ((?&lt;![})\]])\s*
   (?=
     # sure shot arrow functions even if =&gt; is on new line
     (
