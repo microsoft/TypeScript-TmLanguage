@@ -1512,7 +1512,7 @@ repository:
     begin: (?<!\.|\$)\b(new)\b(?!\$|\.)
     beginCaptures:
       '1': { name: keyword.operator.new.ts }
-    end: (?<=\))|(?=[;),}]|$|((?<!\.|\$)\bnew\b(?!\$|\.)))
+    end: (?<=\))|(?=[;),}]|$|((?<!\.|\$)\bnew\b(?!\$|\.))|((?<!\.|\$)\bfunction((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))
     patterns:
     - include: '#paren-expression'
     - include: '#class-or-interface-declaration'

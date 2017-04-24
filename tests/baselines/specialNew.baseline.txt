@@ -1,0 +1,168 @@
+original file
+-----------------------------------
+let storeSomeObj = new function () {
+ this.hasNoColorization = function () {
+ let butThisDoes = "yay";
+ }
+
+ let noColorHereEither = "I'm not colorized";
+ }
+
+ let butOutSide = "all color is back to normal!";
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let storeSomeObj = new function () {
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^^^
+                    source.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts
+                       ^
+                       source.ts meta.var.expr.ts new.expr.ts
+                        ^^^^^^^^
+                        source.ts meta.var.expr.ts meta.function.expression.ts storage.type.function.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.function.expression.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.function.expression.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                     ^^
+                                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+> this.hasNoColorization = function () {
+ ^
+ source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+  ^^^^
+  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts variable.language.this.ts
+      ^
+      source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.accessor.ts
+       ^^^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts entity.name.function.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+                           ^^^^^^^^
+                           source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts storage.type.function.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                        ^^
+                                        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts
+> let butThisDoes = "yay";
+ ^
+ source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts
+  ^^^
+  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                     ^^^
+                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts string.quoted.double.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                          ^^
+                          source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts
+> }
+ ^
+ source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+   ^^
+   source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+>
+ ^^
+ source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+> let noColorHereEither = "I'm not colorized";
+ ^
+ source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+  ^^^
+  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+      ^^^^^^^^^^^^^^^^^
+      source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                           ^^^^^^^^^^^^^^^^^
+                           source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts string.quoted.double.ts
+                                            ^
+                                            source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                             ^
+                                             source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
+                                              ^^
+                                              source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+> }
+ ^
+ source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+   ^
+   source.ts meta.var.expr.ts
+>
+ ^^
+ source.ts
+> let butOutSide = "all color is back to normal!";
+ ^
+ source.ts
+  ^^^
+  source.ts meta.var.expr.ts storage.type.ts
+     ^
+     source.ts meta.var.expr.ts
+      ^^^^^^^^^^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.var.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    source.ts meta.var.expr.ts string.quoted.double.ts
+                                                ^
+                                                source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                 ^
+                                                 source.ts punctuation.terminator.statement.ts
