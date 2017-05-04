@@ -6527,9 +6527,9 @@
         <key>name</key>
         <string>meta.tag.without-attributes.tsx</string>
         <key>begin</key>
-        <string>(&lt;)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;)</string>
+        <string>(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;)</string>
         <key>end</key>
-        <string>(&lt;/)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;)</string>
+        <string>(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -6542,12 +6542,12 @@
             <key>name</key>
             <string>entity.name.tag.tsx</string>
           </dict>
-          <key>4</key>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>support.class.component.tsx</string>
           </dict>
-          <key>5</key>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6565,12 +6565,12 @@
             <key>name</key>
             <string>entity.name.tag.tsx</string>
           </dict>
-          <key>4</key>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>support.class.component.tsx</string>
           </dict>
-          <key>5</key>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6594,10 +6594,10 @@
   (?!(&lt;)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)) #look ahead is not start of tag without attributes
   (?!&lt;\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
   (?=(&lt;)\s*
-  ([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)
+  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -6620,12 +6620,12 @@
             <key>name</key>
             <string>entity.name.tag.tsx</string>
           </dict>
-          <key>5</key>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>support.class.component.tsx</string>
           </dict>
-          <key>6</key>
+          <key>5</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6644,10 +6644,10 @@
         <key>begin</key>
         <string>(?x)
   (?=(&lt;)\s*
-  ([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)
+  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -6670,12 +6670,12 @@
             <key>name</key>
             <string>entity.name.tag.tsx</string>
           </dict>
-          <key>5</key>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>support.class.component.tsx</string>
           </dict>
-          <key>6</key>
+          <key>5</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6706,7 +6706,7 @@
             <key>begin</key>
             <string>(?x)
   (&lt;)\s*
-  (([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))
+  ((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;)</string>
             <key>beginCaptures</key>
             <dict>
@@ -6720,7 +6720,7 @@
                 <key>name</key>
                 <string>entity.name.tag.tsx</string>
               </dict>
-              <key>4</key>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>support.class.component.tsx</string>

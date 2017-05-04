@@ -94,18 +94,18 @@ repository:
 
   jsx-tag-without-attributes:
     name: meta.tag.without-attributes.tsx
-    begin: (<)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>)
-    end: (</)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>)
+    begin: (<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>)
+    end: (</)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>)
     beginCaptures:
       '1': {name: punctuation.definition.tag.begin.tsx}
       '2': {name: entity.name.tag.tsx}
-      '4': {name: support.class.component.tsx}
-      '5': {name: punctuation.definition.tag.end.tsx}
+      '3': {name: support.class.component.tsx}
+      '4': {name: punctuation.definition.tag.end.tsx}
     endCaptures:
       '1': {name: punctuation.definition.tag.begin.tsx}
       '2': {name: entity.name.tag.tsx}
-      '4': {name: support.class.component.tsx}
-      '5': {name: punctuation.definition.tag.end.tsx}
+      '3': {name: support.class.component.tsx}
+      '4': {name: punctuation.definition.tag.end.tsx}
     contentName: meta.jsx.children.tsx
     patterns:
     - include: '#jsx-children'
@@ -120,14 +120,14 @@ repository:
         (?=(<)\s*
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
         (?=\s+(?!\?)|/?>))
-    end: (/>)|(?:(</)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+    end: (/>)|(?:(</)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
     endCaptures:
       '0': { name: meta.tag.tsx }
       '1': { name: punctuation.definition.tag.end.tsx }
       '2': { name: punctuation.definition.tag.begin.tsx }
       '3': { name: entity.name.tag.tsx }
-      '5': { name: support.class.component.tsx }
-      '6': { name: punctuation.definition.tag.end.tsx }
+      '4': { name: support.class.component.tsx }
+      '5': { name: punctuation.definition.tag.end.tsx }
     patterns:
     - include: '#jsx-tag'
 
@@ -138,14 +138,14 @@ repository:
         (?=(<)\s*
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
         (?=\s+(?!\?)|/?>))
-    end: (/>)|(?:(</)\s*(([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+    end: (/>)|(?:(</)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
     endCaptures:
       '0': { name: meta.tag.tsx }
       '1': { name: punctuation.definition.tag.end.tsx }
       '2': { name: punctuation.definition.tag.begin.tsx }
       '3': { name: entity.name.tag.tsx }
-      '5': { name: support.class.component.tsx }
-      '6': { name: punctuation.definition.tag.end.tsx }
+      '4': { name: support.class.component.tsx }
+      '5': { name: punctuation.definition.tag.end.tsx }
     patterns:
     - include: '#jsx-tag'
 
@@ -161,12 +161,12 @@ repository:
     - begin: |-
         (?x)
           (<)\s*
-          (([a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))
+          ((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))
           (?=\s+(?!\?)|/?>)
       beginCaptures:
         '1': { name: punctuation.definition.tag.begin.tsx }
         '2': { name: entity.name.tag.tsx }
-        '4': { name: support.class.component.tsx }
+        '3': { name: support.class.component.tsx }
       end: (?=[/]?>)
       patterns:
       - include: '#comment'
