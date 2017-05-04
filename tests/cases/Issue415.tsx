@@ -1,3 +1,4 @@
+// @onlyOwnGrammar - As this has jsx
 (<View />);
 (<dot.view />);
 (<dot.View />);
