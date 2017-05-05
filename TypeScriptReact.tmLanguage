@@ -6527,9 +6527,9 @@
         <key>name</key>
         <string>meta.tag.without-attributes.tsx</string>
         <key>begin</key>
-        <string>(&lt;)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)</string>
+        <string>(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;)</string>
         <key>end</key>
-        <string>(&lt;/)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)</string>
+        <string>(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -6543,6 +6543,11 @@
             <string>entity.name.tag.tsx</string>
           </dict>
           <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6561,6 +6566,11 @@
             <string>entity.name.tag.tsx</string>
           </dict>
           <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6587,7 +6597,7 @@
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -6611,6 +6621,11 @@
             <string>entity.name.tag.tsx</string>
           </dict>
           <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>5</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6632,7 +6647,7 @@
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -6656,6 +6671,11 @@
             <string>entity.name.tag.tsx</string>
           </dict>
           <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>5</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6686,7 +6706,7 @@
             <key>begin</key>
             <string>(?x)
   (&lt;)\s*
-  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
+  ((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;)</string>
             <key>beginCaptures</key>
             <dict>
@@ -6699,6 +6719,11 @@
               <dict>
                 <key>name</key>
                 <string>entity.name.tag.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>support.class.component.tsx</string>
               </dict>
             </dict>
             <key>end</key>
