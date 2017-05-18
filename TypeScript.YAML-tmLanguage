@@ -35,7 +35,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.ts }
-    end: (?=$|;|}|(\s+(of|in)\s+))
+    end: (?=$|^|;|}|(\s+(of|in)\s+))
     patterns:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
@@ -76,21 +76,21 @@ repository:
         )
       beginCaptures:
         '1': { name: meta.definition.variable.ts entity.name.function.ts }
-      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
       begin: ([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
-      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
       begin: ([_$[:alpha:]][_$[:alnum:]]*)
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
-      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
 
@@ -104,14 +104,14 @@ repository:
     patterns:
     - name: meta.object-binding-pattern-variable.ts
       begin: (?<!=|:|of|in)\s*(?=\{)
-      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#object-binding-pattern'
       - include: '#type-annotation'
       - include: '#comment'
     - name: meta.array-binding-pattern-variable.ts
       begin: (?<!=|:|of|in)\s*(?=\[)
-      end: (?=$|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#array-binding-pattern'
       - include: '#type-annotation'
@@ -541,11 +541,11 @@ repository:
     begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: '(?=\}|;|,|$)|(?<=\})'
+    end: (?=\}|;|,|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
     - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
-      end: (?=[};,=]|$)|(?<=\})
+      end: (?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
       patterns:
       - include: '#type-annotation'
       - include: '#string'
@@ -681,7 +681,7 @@ repository:
       '3': { name: storage.type.function.ts }
       '4': { name: keyword.generator.asterisk.ts }
       '5': { name: meta.definition.function.ts entity.name.function.ts }
-    end: (?=$|;)|(?<=\})
+    end: (?=$|^|;)|(?<=\})
     patterns:
     - include: '#comment'
     - include: '#type-parameters'
@@ -860,7 +860,7 @@ repository:
     begin: (?<=\))\s*(:)
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }
-    end: (?<![:|&])((?=$)|(?=[{};,]|//))
+    end: (?<![:|&])(?=$|^|[{};,]|//)
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
@@ -880,7 +880,7 @@ repository:
     begin: ":"
     beginCaptures:
       '0': { name: keyword.operator.type.annotation.ts }
-    end: (?=$|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)
+    end: (?=$|^|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)
     patterns:
     - include: '#comment'
     - include: '#type'
@@ -1055,7 +1055,7 @@ repository:
     - begin: (?<!=|!)(=)(?!=)(?=\s*\S)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=$|[,);}\]])
+      end: (?=$|^|[,);}\]])
       patterns:
       - include: '#expression'
     # if the expression doesnt start on same line do not use end of line as end of unless the complete line is blank
@@ -1611,7 +1611,7 @@ repository:
     - begin: (?<!\.|\$)\b(as)\s+
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?=$|[;,:})\]])
+      end: (?=$|^|[;,:})\]])
       patterns:
       - include: '#type'
     - name: keyword.operator.spread.ts
@@ -1999,20 +1999,20 @@ repository:
     - begin: (^[ \t]+)?(?=//)
       beginCaptures:
         '1': { name: punctuation.whitespace.comment.leading.ts }
-      end: (?=$)
+      end: (?=^[^/][^/])
       patterns:
       - name: comment.line.double-slash.ts
         begin: //
         beginCaptures:
           '0': { name: punctuation.definition.comment.ts }
-        end: (?=$)
+        end: (?=^)
 
   directives:
     name: comment.line.triple-slash.directive.ts
     begin: ^(///)\s*(?=<(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*((\'[^']*\')|(\"[^"]*\")))+\s*/>\s*$)
     beginCaptures:
       '1': { name: punctuation.definition.comment.ts }
-    end: (?=$)
+    end: (?=^)
     patterns:
     - name: meta.tag.ts
       begin: (<)(reference|amd-dependency|amd-module)

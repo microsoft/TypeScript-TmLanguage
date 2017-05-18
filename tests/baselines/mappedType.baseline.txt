@@ -167,7 +167,7 @@ Grammar: TypeScript.tmLanguage
                                         source.ts
                                           ^^
                                           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                             source.ts comment.line.double-slash.ts
 >type T2 = { [P in "x" | "y"]: P };  // { x: "x", y: "y" }
  ^^^^
@@ -232,7 +232,7 @@ Grammar: TypeScript.tmLanguage
                                    source.ts
                                      ^^
                                      source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                       ^^^^^^^^^^^^^^^^^^^^
+                                       ^^^^^^^^^^^^^^^^^^^^^
                                        source.ts comment.line.double-slash.ts
 >type T3 = { [P in "a" | "b"]: Item[P] };  // { a: string, b: number }
  ^^^^
@@ -303,7 +303,7 @@ Grammar: TypeScript.tmLanguage
                                          source.ts
                                            ^^
                                            source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                              source.ts comment.line.double-slash.ts
 >type T4 = { [P in keyof Item]: Date };  // { a: Date, b: Date, c: Date }
  ^^^^
@@ -356,7 +356,7 @@ Grammar: TypeScript.tmLanguage
                                        source.ts
                                          ^^
                                          source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                            source.ts comment.line.double-slash.ts
 >type T5 = { [P in keyof Item]: Item[P] };  // { a: string, b: number, c: boolean }
  ^^^^
@@ -415,7 +415,7 @@ Grammar: TypeScript.tmLanguage
                                           source.ts
                                             ^^
                                             source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                               source.ts comment.line.double-slash.ts
 >type T6 = { readonly [P in keyof Item]: Item[P] };  // { readonly a: string, readonly b: number, readonly c: boolean }
  ^^^^
@@ -478,7 +478,7 @@ Grammar: TypeScript.tmLanguage
                                                    source.ts
                                                      ^^
                                                      source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                                        source.ts comment.line.double-slash.ts
 >type T7 = { [P in keyof Item]: Array<Item[P]> };  // { a: string[], b: number[], c: boolean[] }
  ^^^^
@@ -543,7 +543,7 @@ Grammar: TypeScript.tmLanguage
                                                  source.ts
                                                    ^^
                                                    source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                                      source.ts comment.line.double-slash.ts
 >
  ^^
@@ -551,7 +551,7 @@ Grammar: TypeScript.tmLanguage
 >// Make all properties in T optional
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >type Partial<T> = {
  ^^^^
@@ -628,7 +628,7 @@ Grammar: TypeScript.tmLanguage
 >// Make all properties in T readonly
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >type Readonly<T> = {
  ^^^^
@@ -707,7 +707,7 @@ Grammar: TypeScript.tmLanguage
 >// Pick a set of properties from T
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >type Pick<T, K extends keyof T> = {
  ^^^^
@@ -794,7 +794,7 @@ Grammar: TypeScript.tmLanguage
 >// A type with a given set of properties of a given type
  ^^
  source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts meta.type.declaration.ts comment.line.double-slash.ts
 >type Record<K extends string | number, T> = {
  ^^^^
@@ -879,7 +879,7 @@ Grammar: TypeScript.tmLanguage
 >// A proxy for a given type
  ^^
  source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts meta.type.declaration.ts comment.line.double-slash.ts
 >type Proxy<T> = {
  ^^^^
@@ -961,7 +961,7 @@ Grammar: TypeScript.tmLanguage
 >// Proxify all properties in T
  ^^
  source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts meta.type.declaration.ts comment.line.double-slash.ts
 >type Proxify<T> = {
  ^^^^

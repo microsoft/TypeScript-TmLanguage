@@ -109,7 +109,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|;|}|(\s+(of|in)\s+))</string>
+        <string>(?=$|^|;|}|(\s+(of|in)\s+))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -176,7 +176,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -199,7 +199,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -222,7 +222,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -261,7 +261,7 @@
             <key>begin</key>
             <string>(?&lt;!=|:|of|in)\s*(?=\{)</string>
             <key>end</key>
-            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -284,7 +284,7 @@
             <key>begin</key>
             <string>(?&lt;!=|:|of|in)\s*(?=\[)</string>
             <key>end</key>
-            <string>(?=$|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -1729,7 +1729,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=\}|;|,|$)|(?&lt;=\})</string>
+        <string>(?=\}|;|,|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -1740,7 +1740,7 @@
             <key>begin</key>
             <string>(?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'[^']*\')|(?:\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
             <key>end</key>
-            <string>(?=[};,=]|$)|(?&lt;=\})</string>
+            <string>(?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'[^']*\')|(\"[^"]*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2133,7 +2133,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|;)|(?&lt;=\})</string>
+        <string>(?=$|^|;)|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2653,7 +2653,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;![:|&amp;])((?=$)|(?=[{};,]|//))</string>
+        <string>(?&lt;![:|&amp;])(?=$|^|[{};,]|//)</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2705,7 +2705,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$|[,);\}\]]|//)|(?==[^&gt;])|(?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)</string>
+        <string>(?=$|^|[,);\}\]]|//)|(?==[^&gt;])|(?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3182,7 +3182,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|[,);}\]])</string>
+            <string>(?=$|^|[,);}\]])</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4377,7 +4377,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|[;,:})\]])</string>
+            <string>(?=$|^|[;,:})\]])</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -5451,7 +5451,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$)</string>
+            <string>(?=^[^/][^/])</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -5468,7 +5468,7 @@
                   </dict>
                 </dict>
                 <key>end</key>
-                <string>(?=$)</string>
+                <string>(?=^)</string>
               </dict>
             </array>
           </dict>
@@ -5489,7 +5489,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=$)</string>
+        <string>(?=^)</string>
         <key>patterns</key>
         <array>
           <dict>
