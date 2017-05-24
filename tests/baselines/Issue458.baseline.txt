@@ -1,0 +1,92 @@
+original file
+-----------------------------------
+export class Blah {
+  get () {}
+}
+const x = {
+  get () {}
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export class Blah {
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^^^^
+              source.ts meta.class.ts entity.name.type.class.ts
+                  ^
+                  source.ts meta.class.ts
+                   ^
+                   source.ts meta.class.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts meta.class.ts
+>  get () {}
+ ^^
+ source.ts meta.class.ts
+   ^^^
+   source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts
+       ^
+       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>const x = {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.var.expr.ts meta.objectliteral.ts
+>  get () {}
+ ^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+   ^^^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.var.expr.ts meta.objectliteral.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
