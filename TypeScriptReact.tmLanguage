@@ -5441,7 +5441,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(^[ \t]+)?(?=//)</string>
+            <string>(^[ \t]+)?(//)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5449,28 +5449,16 @@
                 <key>name</key>
                 <string>punctuation.whitespace.comment.leading.tsx</string>
               </dict>
-            </dict>
-            <key>end</key>
-            <string>(?=^[^/][^/])</string>
-            <key>patterns</key>
-            <array>
+              <key>2</key>
               <dict>
                 <key>name</key>
-                <string>comment.line.double-slash.tsx</string>
-                <key>begin</key>
-                <string>//</string>
-                <key>beginCaptures</key>
-                <dict>
-                  <key>0</key>
-                  <dict>
-                    <key>name</key>
-                    <string>punctuation.definition.comment.tsx</string>
-                  </dict>
-                </dict>
-                <key>end</key>
-                <string>(?=^)</string>
+                <string>comment.line.double-slash.tsx punctuation.definition.comment.tsx</string>
               </dict>
-            </array>
+            </dict>
+            <key>end</key>
+            <string>(?=^)</string>
+            <key>contentName</key>
+            <string>comment.line.double-slash.tsx</string>
           </dict>
         </array>
       </dict>

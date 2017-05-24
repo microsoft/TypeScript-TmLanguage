@@ -17,10 +17,15 @@ function changeTsToTsx(str: string) {
     return str.replace(/\.ts/g, '.tsx');
 }
 
-function fixGrammarScopeNames(rule: any) {
-    if (typeof rule.name === 'string') {
-        rule.name = changeTsToTsx(rule.name);
+function fixRuleNames(rule: any, name: string) {
+    if (typeof rule[name] === 'string') {
+        rule[name] = changeTsToTsx(rule[name]);
     }
+}
+
+function fixGrammarScopeNames(rule: any) {
+    fixRuleNames(rule, "name");
+    fixRuleNames(rule, "contentName");
     for (var property in rule) {
         var value = rule[property];
         if (typeof value === 'object') {

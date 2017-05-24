@@ -1996,16 +1996,12 @@ repository:
       end: \*/
       endCaptures:
         '0': { name: punctuation.definition.comment.ts }
-    - begin: (^[ \t]+)?(?=//)
+    - begin: (^[ \t]+)?(//)
       beginCaptures:
         '1': { name: punctuation.whitespace.comment.leading.ts }
-      end: (?=^[^/][^/])
-      patterns:
-      - name: comment.line.double-slash.ts
-        begin: //
-        beginCaptures:
-          '0': { name: punctuation.definition.comment.ts }
-        end: (?=^)
+        '2': { name: comment.line.double-slash.ts punctuation.definition.comment.ts }
+      end: (?=^)
+      contentName: comment.line.double-slash.ts
 
   directives:
     name: comment.line.triple-slash.directive.ts
