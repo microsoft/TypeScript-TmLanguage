@@ -2390,7 +2390,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
+            <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=\s*
   (=\s*(
     ((async\s+)?(
       (function\s*[(&lt;]) |
@@ -2430,9 +2430,14 @@
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.function.tsx</string>
+                <string>entity.name.function.tsx variable.language.this.tsx</string>
               </dict>
               <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tsx</string>
+              </dict>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.optional.tsx</string>
@@ -2441,7 +2446,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)</string>
+            <string>(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)(?:((?&lt;!\.|\$)\bthis\b(?!\.|\$))|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2457,9 +2462,14 @@
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>variable.parameter.tsx</string>
+                <string>variable.parameter.tsx variable.language.this.tsx</string>
               </dict>
               <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter.tsx</string>
+              </dict>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.optional.tsx</string>

@@ -762,7 +762,7 @@ repository:
     # function assignment |
     # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
     - match: |-
-        (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)(?=\s*
+        (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=\s*
           (=\s*(
             ((async\s+)?(
               (function\s*[(<]) |
@@ -790,14 +790,16 @@ repository:
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
-        '3': { name: entity.name.function.ts }
-        '4': { name: keyword.operator.optional.ts }
-    - match: (?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)([_$[:alpha:]][_$[:alnum:]]*)\s*(\??)
+        '3': { name: entity.name.function.ts variable.language.this.ts }
+        '4': { name: entity.name.function.ts }
+        '5': { name: keyword.operator.optional.ts }
+    - match: (?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)(?:((?<!\.|\$)\bthis\b(?!\.|\$))|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
-        '3': { name: variable.parameter.ts }
-        '4': { name: keyword.operator.optional.ts }
+        '3': { name: variable.parameter.ts variable.language.this.ts }
+        '4': { name: variable.parameter.ts }
+        '5': { name: keyword.operator.optional.ts }
 
   destructuring-parameter:
     patterns:
