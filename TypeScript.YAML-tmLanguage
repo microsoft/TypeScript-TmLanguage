@@ -1714,7 +1714,7 @@ repository:
       begin: =>
       beginCaptures:
         '0': { name: storage.type.function.arrow.ts }
-      end: (?<=\})|((?!\{)(?=\S))
+      end: (?<=\}|\S)(?<!=>)|((?!\{)(?=\S))
       patterns:
       - include: '#decl-block'
       - include: '#expression'
