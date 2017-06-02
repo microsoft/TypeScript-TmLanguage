@@ -1078,7 +1078,7 @@ repository:
     - begin: (?<!=|!)(=)(?!=)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=[,);}\]])|(?=^\s*$)
+      end: (?=[,);}\]])|(?=^\s*$)|(?<=\S)(?<!=)
       patterns:
         - include: '#expression'
 
@@ -1504,9 +1504,9 @@ repository:
       begin: (?:(?<=return|throw|yield|await|default|[=(,:>*?]))\s*(<)(?!<?\=)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
-      end: \>
+      end: (\>)\s*
       endCaptures:
-        '0': { name: meta.brace.angle.ts }
+        '1': { name: meta.brace.angle.ts }
       patterns:
       - include: '#type'
     - name: cast.expr.ts
@@ -1517,9 +1517,9 @@ repository:
       begin: (?:(?<=^))\s*(<)(?=[_$[:alpha:]][_$[:alnum:]]*\s*>)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
-      end: \>
+      end: (\>)\s*
       endCaptures:
-        '0': { name: meta.brace.angle.ts }
+        '1': { name: meta.brace.angle.ts }
       patterns:
       - include: '#type'
 

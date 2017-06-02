@@ -1,0 +1,48 @@
+original file
+-----------------------------------
+const x =
+    1
+if (x) return x
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const x =
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^^
+          source.ts meta.var.expr.ts
+>    1
+ ^^^^
+ source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.var.expr.ts
+>if (x) return x
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.brace.round.ts
+       ^
+       source.ts
+        ^^^^^^
+        source.ts keyword.control.flow.ts
+              ^
+              source.ts
+               ^
+               source.ts variable.other.readwrite.ts

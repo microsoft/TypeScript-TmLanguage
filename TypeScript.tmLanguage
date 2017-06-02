@@ -3262,7 +3262,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=[,);}\]])|(?=^\s*$)</string>
+            <string>(?=[,);}\]])|(?=^\s*$)|(?&lt;=\S)(?&lt;!=)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4131,10 +4131,10 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>\&gt;</string>
+            <string>(\&gt;)\s*</string>
             <key>endCaptures</key>
             <dict>
-              <key>0</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
                 <string>meta.brace.angle.ts</string>
@@ -4162,10 +4162,10 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>\&gt;</string>
+            <string>(\&gt;)\s*</string>
             <key>endCaptures</key>
             <dict>
-              <key>0</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
                 <string>meta.brace.angle.ts</string>
