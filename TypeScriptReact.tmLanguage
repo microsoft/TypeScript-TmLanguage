@@ -2713,20 +2713,58 @@
       </dict>
       <key>return-type</key>
       <dict>
-        <key>name</key>
-        <string>meta.return.type.tsx</string>
-        <key>begin</key>
-        <string>(?&lt;=\))\s*(:)</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
+        <key>patterns</key>
+        <array>
           <dict>
             <key>name</key>
-            <string>keyword.operator.type.annotation.tsx</string>
+            <string>meta.return.type.tsx</string>
+            <key>begin</key>
+            <string>(?&lt;=\))\s*(:)(?=\s*\S)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.type.annotation.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;![:|&amp;])(?=$|^|[{};,]|//)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#return-type-core</string>
+              </dict>
+            </array>
           </dict>
-        </dict>
-        <key>end</key>
-        <string>(?&lt;![:|&amp;])(?=$|^|[{};,]|//)</string>
+          <dict>
+            <key>name</key>
+            <string>meta.return.type.tsx</string>
+            <key>begin</key>
+            <string>(?&lt;=\))\s*(:)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.type.annotation.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;![:|&amp;])((?=[{};,]|//|^\s*$)|((?&lt;=\S)(?=\s*$)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#return-type-core</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>return-type-core</key>
+      <dict>
         <key>patterns</key>
         <array>
           <dict>
@@ -2735,7 +2773,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?&lt;=[:])(?=\s*\{)</string>
+            <string>(?&lt;=[:|&amp;])(?=\s*\{)</string>
             <key>end</key>
             <string>(?&lt;=\})</string>
             <key>patterns</key>
@@ -2765,29 +2803,53 @@
       </dict>
       <key>type-annotation</key>
       <dict>
-        <key>name</key>
-        <string>meta.type.annotation.tsx</string>
-        <key>begin</key>
-        <string>:</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>0</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.type.annotation.tsx</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>(?=$|^|[,);\}\]]|//)|(?==[^&gt;])|(?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)</string>
         <key>patterns</key>
         <array>
           <dict>
-            <key>include</key>
-            <string>#comment</string>
+            <key>name</key>
+            <string>meta.type.annotation.tsx</string>
+            <key>begin</key>
+            <string>(:)(?=\s*\S)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.type.annotation.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;![:|&amp;])((?=$|^|[,);\}\]]|//)|(?==[^&gt;])|((?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#type</string>
+            <key>name</key>
+            <string>meta.type.annotation.tsx</string>
+            <key>begin</key>
+            <string>(:)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.type.annotation.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;![:|&amp;])((?=[,);\}\]]|//)|(?==[^&gt;])|(?=^\s*$)|((?&lt;=\S)(?=\s*$))|((?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
@@ -3079,20 +3141,58 @@
       </dict>
       <key>type-function-return-type</key>
       <dict>
-        <key>name</key>
-        <string>meta.type.function.return.tsx</string>
-        <key>begin</key>
-        <string>=&gt;</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>0</key>
+        <key>patterns</key>
+        <array>
           <dict>
             <key>name</key>
-            <string>storage.type.function.arrow.tsx</string>
+            <string>meta.type.function.return.tsx</string>
+            <key>begin</key>
+            <string>(=&gt;)(?=\s*\S)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.function.arrow.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;!=&gt;)(?&lt;![|&amp;])(?=[,\]\)\{\}=;&gt;]|//|$)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-function-return-type-core</string>
+              </dict>
+            </array>
           </dict>
-        </dict>
-        <key>end</key>
-        <string>(?&lt;!=&gt;)(?&lt;![|&amp;])(?=[,\]\)\{\}=;&gt;]|//|$)</string>
+          <dict>
+            <key>name</key>
+            <string>meta.type.function.return.tsx</string>
+            <key>begin</key>
+            <string>=&gt;</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.function.arrow.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;!=&gt;)(?&lt;![|&amp;])((?=[,\]\)\{\}=;&gt;]|//|^\s*$)|((?&lt;=\S)(?=\s*$)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-function-return-type-core</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>type-function-return-type-core</key>
+      <dict>
         <key>patterns</key>
         <array>
           <dict>

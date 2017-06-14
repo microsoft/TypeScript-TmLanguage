@@ -874,15 +874,29 @@ repository:
     - include: '#punctuation-comma'
 
   return-type:
-    name: meta.return.type.ts
-    begin: (?<=\))\s*(:)
-    beginCaptures:
-      '1': { name: keyword.operator.type.annotation.ts }
-    end: (?<![:|&])(?=$|^|[{};,]|//)
+    patterns:
+    # if type starts on same line use end of line as end
+    - name: meta.return.type.ts
+      begin: (?<=\))\s*(:)(?=\s*\S)
+      beginCaptures:
+        '1': { name: keyword.operator.type.annotation.ts }
+      end: (?<![:|&])(?=$|^|[{};,]|//)
+      patterns:
+      - include: '#return-type-core'
+    # if type starts on next line use modified line endings as end of type annotation eg. complete empty line
+    - name: meta.return.type.ts
+      begin: (?<=\))\s*(:)
+      beginCaptures:
+        '1': { name: keyword.operator.type.annotation.ts }
+      end: (?<![:|&])((?=[{};,]|//|^\s*$)|((?<=\S)(?=\s*$)))
+      patterns:
+      - include: '#return-type-core'
+
+  return-type-core:
     patterns:
     - include: '#comment'
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
-    - begin: (?<=[:])(?=\s*\{)
+    - begin: (?<=[:|&])(?=\s*\{)
       end: (?<=\})
       patterns:
       - include: '#type-object'
@@ -894,14 +908,23 @@ repository:
     match: (?<!\.|\$)\bis\b(?!\$|\.)
 
   type-annotation:
-    name: meta.type.annotation.ts
-    begin: ":"
-    beginCaptures:
-      '0': { name: keyword.operator.type.annotation.ts }
-    end: (?=$|^|[,);\}\]]|//)|(?==[^>])|(?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)
     patterns:
-    - include: '#comment'
-    - include: '#type'
+    # if type starts on same line use end of line as end
+    - name: meta.type.annotation.ts
+      begin: (:)(?=\s*\S)
+      beginCaptures:
+        '1': { name: keyword.operator.type.annotation.ts }
+      end: (?<![:|&])((?=$|^|[,);\}\]]|//)|(?==[^>])|((?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)))
+      patterns:
+      - include: '#type'
+    # if type starts on next line use modified line endings as end of type annotation eg. complete empty line
+    - name: meta.type.annotation.ts
+      begin: (:)
+      beginCaptures:
+        '1': { name: keyword.operator.type.annotation.ts }
+      end: (?<![:|&])((?=[,);\}\]]|//)|(?==[^>])|(?=^\s*$)|((?<=\S)(?=\s*$))|((?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)))
+      patterns:
+      - include: '#type'
 
   type:
     patterns:
@@ -1014,20 +1037,34 @@ repository:
       match: (?<!\.|\$)\bkeyof\b(?!\$|\.)
 
   type-function-return-type:
-    name: meta.type.function.return.ts
-    begin: '=>'
-    beginCaptures:
-      '0': { name: storage.type.function.arrow.ts }
-    end: (?<!=>)(?<![|&])(?=[,\]\)\{\}=;>]|//|$)
     patterns:
-    - include: '#comment'
-    # Handle returning of object type specifically here so as to not confuse it with the start of function block
-    - begin: (?<==>)(?=\s*\{)
-      end: (?<=\})
+    # if type starts on same line use end of line as end
+    - name: meta.type.function.return.ts
+      begin: (=>)(?=\s*\S)
+      beginCaptures:
+        '1': { name: storage.type.function.arrow.ts }
+      end: (?<!=>)(?<![|&])(?=[,\]\)\{\}=;>]|//|$)
       patterns:
-      - include: '#type-object'
-    - include: '#type-predicate-operator'
-    - include: '#type'
+      - include: '#type-function-return-type-core'
+    # if type starts on next line use modified line endings as end of type annotation eg. complete empty line
+    - name: meta.type.function.return.ts
+      begin: '=>'
+      beginCaptures:
+        '0': { name: storage.type.function.arrow.ts }
+      end: (?<!=>)(?<![|&])((?=[,\]\)\{\}=;>]|//|^\s*$)|((?<=\S)(?=\s*$)))
+      patterns:
+      - include: '#type-function-return-type-core'
+
+  type-function-return-type-core:
+      patterns:
+      - include: '#comment'
+      # Handle returning of object type specifically here so as to not confuse it with the start of function block
+      - begin: (?<==>)(?=\s*\{)
+        end: (?<=\})
+        patterns:
+        - include: '#type-object'
+      - include: '#type-predicate-operator'
+      - include: '#type'
 
   type-tuple:
     name: meta.type.tuple.ts
