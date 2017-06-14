@@ -1456,6 +1456,8 @@ repository:
       - include: '#support-objects'
       - include: '#object-identifiers'
       - include: '#punctuation-accessor'
+      - name: keyword.operator.expression.import.ts
+        match: (?![\.\$])\bimport(?=\s*[\(]\s*[\"\'\`])
       - name: entity.name.function.ts
         match: ([_$[:alpha:]][_$[:alnum:]]*)
     - include: '#comment'

@@ -1,0 +1,1 @@
+var x = await import("./file1");
