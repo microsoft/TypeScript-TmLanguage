@@ -1080,7 +1080,7 @@ repository:
     - begin: (?<!=|!)(=)(?!=)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=[,);}\]])|(?=^\s*$)|(?<=\S)(?<!=)
+      end: (?=[,);}\]])|(?=^\s*$)|(?<=\S)(?<!=)(?=\s*$)
       patterns:
         - include: '#expression'
 

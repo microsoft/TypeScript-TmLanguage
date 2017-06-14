@@ -1,0 +1,76 @@
+original file
+-----------------------------------
+const foo =
+    true || `${'hello'}.txt`
+
+function syntaxHighlightingIsBroken() {
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const foo =
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^^
+            source.ts meta.var.expr.ts
+>    true || `${'hello'}.txt`
+ ^^^^
+ source.ts meta.var.expr.ts
+     ^^^^
+     source.ts meta.var.expr.ts constant.language.boolean.true.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^^
+          source.ts meta.var.expr.ts keyword.operator.logical.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+              ^^
+              source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                ^
+                source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^^^^
+                 source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts string.quoted.single.ts
+                      ^
+                      source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                       ^
+                       source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                        ^^^^
+                        source.ts meta.var.expr.ts string.template.ts
+                            ^
+                            source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+                             ^
+                             source.ts meta.var.expr.ts
+>
+ ^^
+ source.ts
+>function syntaxHighlightingIsBroken() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                                    ^
+                                    source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                      ^
+                                      source.ts meta.function.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                        ^^
+                                        source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
