@@ -1,5 +1,4 @@
 import * as vt from 'vscode-textmate/release/main';
-import fs = require('fs');
 import path = require('path');
 
 const tsGrammarFileName = "TypeScript.tmLanguage"
@@ -87,7 +86,8 @@ function getBaseline(grammar: Grammar, outputLines: string[]) {
     return grammarInfo + outputLines.join('\n');
 }
 
-function getScopesAtMarkers(text: string, grammar: vt.IGrammar): { markerScopes: string, wholeBaseline: string } {
+export function generateScopes(text: string, parsedFileName: path.ParsedPath): { markerScopes: string, wholeBaseline: string } {
+    const grammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
     const oriLines = text.split('\n');
 
     let mainGrammar = initGrammar(grammar);
@@ -155,35 +155,4 @@ function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForTo
     }
     outputLines.push(startingSpaces + locatingString);
     outputLines.push(startingSpaces + preTextForToken + token.scopes.join(' ') + postTextForToken);
-}
-
-const generatedFolder = "generated";
-
-function ensureCleanGeneratedFolder() {
-    if (fs.existsSync(generatedFolder)) {
-        for (const fileName of fs.readdirSync(generatedFolder)) {
-            fs.unlinkSync(path.join(generatedFolder, fileName));
-        }
-        fs.rmdirSync(generatedFolder);
-    }
-    fs.mkdirSync(generatedFolder);
-}
-
-// Ensure generated folder
-ensureCleanGeneratedFolder();
-
-// Generate the new baselines
-for (var fileName of fs.readdirSync('cases')) {
-    const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
-    const parsedFileName = path.parse(fileName);
-    const grammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
-
-    const outputFileName = path.join(generatedFolder, parsedFileName.name + '.txt');
-    const { markerScopes, wholeBaseline } = getScopesAtMarkers(text, grammar);
-    if (markerScopes) {
-        fs.writeFileSync(outputFileName, markerScopes, "utf8");
-    }
-
-    const outputBaselineName = path.join(generatedFolder, parsedFileName.name + '.baseline.txt');
-    fs.writeFileSync(outputBaselineName, wholeBaseline, "utf8");
 }
