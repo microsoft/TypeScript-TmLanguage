@@ -4289,52 +4289,40 @@
           </dict>
           <dict>
             <key>name</key>
-            <string>meta.object.member.tsx</string>
+            <string>meta.object.member.tsx meta.object-literal.key.tsx</string>
             <key>begin</key>
-            <string>(?=(?:(?:\'.*\')|(?:\".*\")|(?:\[([^\[\]]|\[[^\[\]]*\])+\]))\s*:)</string>
+            <string>(?=\[)</string>
             <key>end</key>
-            <string>(?=,|\})</string>
+            <string>(?=:)</string>
             <key>patterns</key>
             <array>
               <dict>
-                <key>name</key>
-                <string>meta.object-literal.key.tsx</string>
-                <key>begin</key>
-                <string>(?=(?:(?:\'.*\')|(?:\".*\")|(?:\[([^\[\]]|\[[^\[\]]*\])+\]))\s*:)</string>
-                <key>end</key>
-                <string>:</string>
-                <key>endCaptures</key>
-                <dict>
-                  <key>0</key>
-                  <dict>
-                    <key>name</key>
-                    <string>punctuation.separator.key-value.tsx</string>
-                  </dict>
-                </dict>
-                <key>patterns</key>
-                <array>
-                  <dict>
-                    <key>include</key>
-                    <string>#string</string>
-                  </dict>
-                  <dict>
-                    <key>include</key>
-                    <string>#array-literal</string>
-                  </dict>
-                </array>
+                <key>include</key>
+                <string>#array-literal</string>
               </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.object.member.tsx meta.object-literal.key.tsx</string>
+            <key>begin</key>
+            <string>(?=[\'\"])</string>
+            <key>end</key>
+            <string>(?=:)</string>
+            <key>patterns</key>
+            <array>
               <dict>
                 <key>include</key>
-                <string>#expression</string>
+                <string>#string</string>
               </dict>
             </array>
           </dict>
           <dict>
             <key>name</key>
             <string>meta.object.member.tsx</string>
-            <key>begin</key>
-            <string>(?![_$[:alpha:]])([[:digit:]]+)\s*(:)</string>
-            <key>beginCaptures</key>
+            <key>match</key>
+            <string>(?![_$[:alpha:]])([[:digit:]]+)\s*(?=:)</string>
+            <key>captures</key>
             <dict>
               <key>0</key>
               <dict>
@@ -4346,27 +4334,13 @@
                 <key>name</key>
                 <string>constant.numeric.decimal.tsx</string>
               </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.separator.key-value.tsx</string>
-              </dict>
             </dict>
-            <key>end</key>
-            <string>(?=,|\})</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#expression</string>
-              </dict>
-            </array>
           </dict>
           <dict>
             <key>name</key>
             <string>meta.object.member.tsx</string>
-            <key>begin</key>
-            <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*(
+            <key>match</key>
+            <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:\s*(
   ((async\s+)?(
     (function\s*[(&lt;]) |
     (function\s+) |
@@ -4378,7 +4352,7 @@
     ((&lt;([^&lt;&gt;=]|=[^&lt;]|\&lt;([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=&gt;)
   ))
 )))</string>
-            <key>beginCaptures</key>
+            <key>captures</key>
             <dict>
               <key>0</key>
               <dict>
@@ -4390,49 +4364,23 @@
                 <key>name</key>
                 <string>entity.name.function.tsx</string>
               </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.separator.key-value.tsx</string>
-              </dict>
             </dict>
-            <key>end</key>
-            <string>(?=,|\})</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#expression</string>
-              </dict>
-            </array>
           </dict>
           <dict>
             <key>name</key>
             <string>meta.object.member.tsx</string>
-            <key>begin</key>
-            <string>(?:[_$[:alpha:]][_$[:alnum:]]*)\s*(:)</string>
-            <key>beginCaptures</key>
+            <key>match</key>
+            <string>(?:[_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)</string>
+            <key>captures</key>
             <dict>
               <key>0</key>
               <dict>
                 <key>name</key>
                 <string>meta.object-literal.key.tsx</string>
               </dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.separator.key-value.tsx</string>
-              </dict>
             </dict>
             <key>end</key>
             <string>(?=,|\})</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#expression</string>
-              </dict>
-            </array>
           </dict>
           <dict>
             <key>name</key>
@@ -4473,7 +4421,35 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#object-member-body</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#punctuation-comma</string>
+          </dict>
+        </array>
+      </dict>
+      <key>object-member-body</key>
+      <dict>
+        <key>name</key>
+        <string>meta.object.member.tsx</string>
+        <key>begin</key>
+        <string>:</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>meta.object-literal.key.tsx punctuation.separator.key-value.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?=,|\})</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#expression</string>
           </dict>
         </array>
       </dict>

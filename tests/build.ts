@@ -181,9 +181,9 @@ for (var fileName of fs.readdirSync('cases')) {
     const outputFileName = path.join(generatedFolder, parsedFileName.name + '.txt');
     const { markerScopes, wholeBaseline } = getScopesAtMarkers(text, grammar);
     if (markerScopes) {
-        fs.writeFile(outputFileName, markerScopes, "utf8");
+        fs.writeFileSync(outputFileName, markerScopes, "utf8");
     }
 
     const outputBaselineName = path.join(generatedFolder, parsedFileName.name + '.baseline.txt');
-    fs.writeFile(outputBaselineName, wholeBaseline, "utf8");
+    fs.writeFileSync(outputBaselineName, wholeBaseline, "utf8");
 }
