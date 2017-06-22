@@ -1,0 +1,404 @@
+original file
+-----------------------------------
+function* fn1() {}
+function * fn2() {}
+function *fn3() {}
+
+const foo = {
+    * fn4() {},
+    *fn5() {},
+    fn6: function*() {}, // Incorrect
+    fn7: function* () {}, // Incorrect
+    fn8: function *() {},
+}
+
+class Bar {
+    * fn9() {}
+    *fn10() {}
+    fn11 = function*() {} // Incorrect
+    fn12 = function* () {} // Incorrect
+    fn13 = function *() {}
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function* fn1() {}
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts keyword.generator.asterisk.ts
+          ^
+          source.ts meta.function.ts
+           ^^^
+           source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.function.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                   ^^
+                   source.ts
+>function * fn2() {}
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts keyword.generator.asterisk.ts
+           ^
+           source.ts meta.function.ts
+            ^^^
+            source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.function.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts
+>function *fn3() {}
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts keyword.generator.asterisk.ts
+           ^^^
+           source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.function.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                   ^^
+                   source.ts
+>
+ ^^
+ source.ts
+>const foo = {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+              ^^
+              source.ts meta.var.expr.ts meta.objectliteral.ts
+>    * fn4() {},
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts keyword.generator.asterisk.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                ^^
+                source.ts meta.var.expr.ts meta.objectliteral.ts
+>    *fn5() {},
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts keyword.generator.asterisk.ts
+      ^^^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+               ^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts
+>    fn6: function*() {}, // Incorrect
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+          ^^^^^^^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts storage.type.function.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts keyword.generator.asterisk.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts
+                          ^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                            ^^^^^^^^^^^^
+                            source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts
+>    fn7: function* () {}, // Incorrect
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+          ^^^^^^^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts storage.type.function.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts keyword.generator.asterisk.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts
+                           ^^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                             ^^^^^^^^^^^^
+                             source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts
+>    fn8: function *() {},
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+          ^^^^^^^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts storage.type.function.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts keyword.generator.asterisk.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                          ^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts
+>
+ ^^
+ source.ts
+>class Bar {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.class.ts
+>    * fn9() {}
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts keyword.generator.asterisk.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts
+       ^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.class.ts
+>    *fn10() {}
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts keyword.generator.asterisk.ts
+      ^^^^
+      source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.class.ts
+>    fn11 = function*() {} // Incorrect
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts storage.type.function.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts keyword.generator.asterisk.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts
+                           ^^
+                           source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                             ^^^^^^^^^^^^
+                             source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts
+>    fn12 = function* () {} // Incorrect
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts storage.type.function.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts keyword.generator.asterisk.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts
+                            ^^
+                            source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                              ^^^^^^^^^^^^
+                              source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts
+>    fn13 = function *() {}
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts storage.type.function.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts keyword.generator.asterisk.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

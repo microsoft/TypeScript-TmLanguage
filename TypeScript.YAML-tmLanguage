@@ -52,7 +52,7 @@ repository:
         (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
           (=\s*(
             ((async\s+)?(
-              (function\s*[(<]) |
+              (function\s*[(<*]) |
               (function\s+) |
               ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
             )) |
@@ -558,7 +558,7 @@ repository:
           (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
             (=\s*(
               ((async\s+)?(
-                (function\s*[(<]) |
+                (function\s*[(<*]) |
                 (function\s+) |
                 ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
               )) |
@@ -765,7 +765,7 @@ repository:
         (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=\s*
           (=\s*(
             ((async\s+)?(
-              (function\s*[(<]) |
+              (function\s*[(<*]) |
               (function\s+) |
               ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
             )) |
@@ -1480,7 +1480,7 @@ repository:
     - match: |-
         (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
           ((async\s+)?(
-            (function\s*[(<]) |
+            (function\s*[(<*]) |
             (function\s+) |
             ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
           )) |
@@ -1598,7 +1598,7 @@ repository:
       match: |-
         (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:\s*(
           ((async\s+)?(
-            (function\s*[(<]) |
+            (function\s*[(<*]) |
             (function\s+) |
             ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
           )) |
