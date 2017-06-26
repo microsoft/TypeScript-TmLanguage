@@ -92,6 +92,15 @@ repository:
     name: invalid.illegal.attribute.tsx
     match: \S+
 
+  jsx-tag-without-attributes-in-expression:
+    begin: |-
+      (?x)
+        (?<=[({\[,?=>:*]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+        (?=(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+    end: (?!\s*(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+    patterns:
+    - include: '#jsx-tag-without-attributes'
+
   jsx-tag-without-attributes:
     name: meta.tag.without-attributes.tsx
     begin: (<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>)
@@ -115,7 +124,6 @@ repository:
     begin: |-
       (?x)
         (?<=[({\[,?=>:*]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
-        (?!(<)\s*([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)) #look ahead is not start of tag without attributes
         (?!<\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
         (?=(<)\s*
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
@@ -194,7 +202,7 @@ repository:
 
   jsx:
     patterns:
-    - include: '#jsx-tag-without-attributes'
+    - include: '#jsx-tag-without-attributes-in-expression'
     - include: '#jsx-tag-in-expression'
     - include: '#jsx-tag-invalid'
 

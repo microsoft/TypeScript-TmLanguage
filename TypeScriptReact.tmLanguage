@@ -6665,6 +6665,22 @@
         <key>match</key>
         <string>\S+</string>
       </dict>
+      <key>jsx-tag-without-attributes-in-expression</key>
+      <dict>
+        <key>begin</key>
+        <string>(?x)
+  (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+  (?=(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
+        <key>end</key>
+        <string>(?!\s*(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#jsx-tag-without-attributes</string>
+          </dict>
+        </array>
+      </dict>
       <key>jsx-tag-without-attributes</key>
       <dict>
         <key>name</key>
@@ -6734,7 +6750,6 @@
         <key>begin</key>
         <string>(?x)
   (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
-  (?!(&lt;)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)) #look ahead is not start of tag without attributes
   (?!&lt;\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
   (?=(&lt;)\s*
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
@@ -6951,7 +6966,7 @@
         <array>
           <dict>
             <key>include</key>
-            <string>#jsx-tag-without-attributes</string>
+            <string>#jsx-tag-without-attributes-in-expression</string>
           </dict>
           <dict>
             <key>include</key>
