@@ -5574,13 +5574,23 @@
             <key>name</key>
             <string>comment.block.tsx</string>
             <key>begin</key>
-            <string>/\*</string>
+            <string>(/\*)(?:\s*((@)internal)(?=\s|(\*/)))?</string>
             <key>beginCaptures</key>
             <dict>
-              <key>0</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.definition.comment.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.internaldeclaration.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.decorator.internaldeclaration.tsx</string>
               </dict>
             </dict>
             <key>end</key>
@@ -5596,7 +5606,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(^[ \t]+)?(//)</string>
+            <string>(^[ \t]+)?((//)(?:\s*((@)internal)(?=\s|$))?)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5607,7 +5617,22 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>comment.line.double-slash.tsx punctuation.definition.comment.tsx</string>
+                <string>comment.line.double-slash.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.internaldeclaration.tsx</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.decorator.internaldeclaration.tsx</string>
               </dict>
             </dict>
             <key>end</key>

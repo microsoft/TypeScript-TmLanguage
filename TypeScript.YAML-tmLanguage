@@ -2043,16 +2043,21 @@ repository:
       patterns:
       - include: '#docblock'
     - name: comment.block.ts
-      begin: /\*
+      begin: (/\*)(?:\s*((@)internal)(?=\s|(\*/)))?
       beginCaptures:
-        '0': { name: punctuation.definition.comment.ts }
+        '1': { name: punctuation.definition.comment.ts }
+        '2': { name: storage.type.internaldeclaration.ts }
+        '3': { name: punctuation.decorator.internaldeclaration.ts }
       end: \*/
       endCaptures:
         '0': { name: punctuation.definition.comment.ts }
-    - begin: (^[ \t]+)?(//)
+    - begin: (^[ \t]+)?((//)(?:\s*((@)internal)(?=\s|$))?)
       beginCaptures:
         '1': { name: punctuation.whitespace.comment.leading.ts }
-        '2': { name: comment.line.double-slash.ts punctuation.definition.comment.ts }
+        '2': { name: comment.line.double-slash.ts }
+        '3': { name: punctuation.definition.comment.ts }
+        '4': { name: storage.type.internaldeclaration.ts }
+        '5': { name: punctuation.decorator.internaldeclaration.ts }
       end: (?=^)
       contentName: comment.line.double-slash.ts
 

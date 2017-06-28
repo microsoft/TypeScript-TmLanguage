@@ -1,0 +1,148 @@
+original file
+-----------------------------------
+/* @internal */
+export interface Pattern {
+        prefix: string;
+        suffix: string;
+}
+
+// @internal
+export interface Pattern2 {
+        prefix: string;
+        suffix: string;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>/* @internal */
+ ^^
+ source.ts comment.block.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.block.ts
+    ^
+    source.ts comment.block.ts storage.type.internaldeclaration.ts punctuation.decorator.internaldeclaration.ts
+     ^^^^^^^^
+     source.ts comment.block.ts storage.type.internaldeclaration.ts
+             ^
+             source.ts comment.block.ts
+              ^^
+              source.ts comment.block.ts punctuation.definition.comment.ts
+                ^^
+                source.ts
+>export interface Pattern {
+ ^^^^^^
+ source.ts meta.interface.ts keyword.control.export.ts
+       ^
+       source.ts meta.interface.ts
+        ^^^^^^^^^
+        source.ts meta.interface.ts storage.type.interface.ts
+                 ^
+                 source.ts meta.interface.ts
+                  ^^^^^^^
+                  source.ts meta.interface.ts entity.name.type.interface.ts
+                         ^
+                         source.ts meta.interface.ts
+                          ^
+                          source.ts meta.interface.ts punctuation.definition.block.ts
+                           ^^
+                           source.ts meta.interface.ts
+>        prefix: string;
+ ^^^^^^^^
+ source.ts meta.interface.ts
+         ^^^^^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.interface.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts meta.interface.ts
+>        suffix: string;
+ ^^^^^^^^
+ source.ts meta.interface.ts
+         ^^^^^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.interface.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts meta.interface.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>// @internal
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+    ^
+    source.ts comment.line.double-slash.ts storage.type.internaldeclaration.ts punctuation.decorator.internaldeclaration.ts
+     ^^^^^^^^
+     source.ts comment.line.double-slash.ts storage.type.internaldeclaration.ts
+             ^^
+             source.ts comment.line.double-slash.ts
+>export interface Pattern2 {
+ ^^^^^^
+ source.ts meta.interface.ts keyword.control.export.ts
+       ^
+       source.ts meta.interface.ts
+        ^^^^^^^^^
+        source.ts meta.interface.ts storage.type.interface.ts
+                 ^
+                 source.ts meta.interface.ts
+                  ^^^^^^^^
+                  source.ts meta.interface.ts entity.name.type.interface.ts
+                          ^
+                          source.ts meta.interface.ts
+                           ^
+                           source.ts meta.interface.ts punctuation.definition.block.ts
+                            ^^
+                            source.ts meta.interface.ts
+>        prefix: string;
+ ^^^^^^^^
+ source.ts meta.interface.ts
+         ^^^^^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.interface.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts meta.interface.ts
+>        suffix: string;
+ ^^^^^^^^
+ source.ts meta.interface.ts
+         ^^^^^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.interface.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts meta.interface.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts

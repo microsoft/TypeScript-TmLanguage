@@ -5628,13 +5628,23 @@
             <key>name</key>
             <string>comment.block.ts</string>
             <key>begin</key>
-            <string>/\*</string>
+            <string>(/\*)(?:\s*((@)internal)(?=\s|(\*/)))?</string>
             <key>beginCaptures</key>
             <dict>
-              <key>0</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.definition.comment.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.internaldeclaration.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.decorator.internaldeclaration.ts</string>
               </dict>
             </dict>
             <key>end</key>
@@ -5650,7 +5660,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(^[ \t]+)?(//)</string>
+            <string>(^[ \t]+)?((//)(?:\s*((@)internal)(?=\s|$))?)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5661,7 +5671,22 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>comment.line.double-slash.ts punctuation.definition.comment.ts</string>
+                <string>comment.line.double-slash.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.ts</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.internaldeclaration.ts</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.decorator.internaldeclaration.ts</string>
               </dict>
             </dict>
             <key>end</key>
