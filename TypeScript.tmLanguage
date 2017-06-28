@@ -5746,7 +5746,7 @@
           <dict>
             <key>match</key>
             <string>(?x)
-((@)access)
+((@)(?:access|api))
 \s+
 (private|protected|public)
 \b</string>
@@ -5968,7 +5968,15 @@
 (?:
   # URL
   (
-    (?=https?://)
+    (?!
+      # Avoid matching bare URIs (also acceptable as links)
+      https?://
+      |
+      # Avoid matching {@inline tags}; we match those below
+      (?:\[[^\[\]]*\])? # Possible description [preceding]{@tag}
+      {@(?:link|linkcode|linkplain|tutorial)\b
+    )
+    # Matched namepath
     (?:[^\s*]|\*[^/])+
   )
   |
@@ -6142,6 +6150,58 @@
               <dict>
                 <key>name</key>
                 <string>variable.other.jsdoc</string>
+                <key>match</key>
+                <string>(?x)
+(\[)\s*
+[\w$]+
+(?:
+  (?:\[\])?                                        # Foo[ ].bar properties within an array
+  \.                                                # Foo.Bar namespaced parameter
+  [\w$]+
+)*
+(?:
+  \s*
+  (=)                                                # [foo=bar] Default parameter value
+  \s*
+  (
+    # The inner regexes are to stop the match early at */ and to not stop at escaped quotes
+    (?:
+      "(?:(?:\*(?!/))|(?:\\(?!"))|[^*\\])*?" |  # [foo="bar"] Double-quoted
+      '(?:(?:\*(?!/))|(?:\\(?!'))|[^*\\])*?' |  # [foo='bar'] Single-quoted
+      \[ (?:(?:\*(?!/))|[^*])*? \] |              # [foo=[1,2]] Array literal
+      (?:(?:\*(?!/))|[^*])*?                        # Everything else
+    )*
+  )
+)?
+\s*(?:(\])((?:[^*\s]|\*[^\s/])+)?|(?=\*/))</string>
+                <key>captures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.optional-value.begin.bracket.square.jsdoc</string>
+                  </dict>
+                  <key>2</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.operator.assignment.jsdoc</string>
+                  </dict>
+                  <key>3</key>
+                  <dict>
+                    <key>name</key>
+                    <string>source.embedded.ts</string>
+                  </dict>
+                  <key>4</key>
+                  <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.optional-value.end.bracket.square.jsdoc</string>
+                  </dict>
+                  <key>5</key>
+                  <dict>
+                    <key>name</key>
+                    <string>invalid.illegal.syntax.jsdoc</string>
+                  </dict>
+                </dict>
                 <key>begin</key>
                 <string>\[</string>
                 <key>end</key>
@@ -6307,7 +6367,7 @@
             <key>name</key>
             <string>storage.type.class.jsdoc</string>
             <key>match</key>
-            <string>(?x) (@) (?:abstract|access|alias|arg|argument|async|attribute|augments|author|beta|borrows|bubbles |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func |function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance|interface|kind |lends|license|listens|main|member|memberof!?|method|mixes|mixins?|modifies|module|name|namespace |noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve|private|prop |property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule |summary|suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation |version|virtual|writeOnce) \b</string>
+            <string>(?x) (@) (?:abstract|access|alias|api|arg|argument|async|attribute|augments|author|beta|borrows|bubbles |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func |function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance|interface |internal|kind|lends|license|listens|main|member|memberof!?|method|mixes|mixins?|modifies|module |name|namespace|noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve |private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static |struct|submodule|summary|suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted |uses|var|variation|version|virtual|writeOnce) \b</string>
             <key>captures</key>
             <dict>
               <key>1</key>
