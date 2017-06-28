@@ -5,7 +5,7 @@ import plist = require('plist');
 
 function writePlistFile(grammar: any, fileName: string) {
     const text = plist.build(grammar);
-    fs.writeFileSync(fileName, text, "utf8");
+    fs.writeFileSync(fileName, text);
 }
 
 function readYaml(fileName: string) {

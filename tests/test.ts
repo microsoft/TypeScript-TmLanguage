@@ -34,7 +34,7 @@ for (const fileName of fs.readdirSync('cases')) {
 
 function addTestCase(file: string, generatedText: string) {
     const generatedFileName = path.join(generatedFolder, file);
-    fs.writeFileSync(generatedFileName, generatedText, "utf8");
+    fs.writeFileSync(generatedFileName, generatedText);
 
     it('Comparing generated' + file, () => {
         const baselineFile = path.join(baselineFolder, file);
