@@ -313,7 +313,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))</string>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))</string>
             <key>end</key>
             <string>(?=,|\})</string>
             <key>patterns</key>
@@ -349,7 +349,7 @@
       <key>object-binding-element-propertyName</key>
       <dict>
         <key>begin</key>
-        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))</string>
         <key>end</key>
         <string>(:)</string>
         <key>endCaptures</key>
@@ -881,7 +881,7 @@
               </dict>
               <dict>
                 <key>begin</key>
-                <string>(?=((\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\])))</string>
+                <string>(?=((\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\])))</string>
                 <key>end</key>
                 <string>(?=,|\}|$)</string>
                 <key>patterns</key>
@@ -1719,7 +1719,7 @@
         <key>name</key>
         <string>meta.field.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\()(?:(?&lt;!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
+        <string>(?&lt;!\()(?:(?&lt;!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1729,7 +1729,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=\}|;|,|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
+        <string>(?=\}|;|,|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -1738,9 +1738,9 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'.*\')|(?:\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
+            <string>(?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
             <key>end</key>
-            <string>(?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
+            <string>(?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -1813,7 +1813,7 @@
             <key>name</key>
             <string>meta.method.declaration.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
+            <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1876,7 +1876,7 @@
             <key>name</key>
             <string>meta.method.declaration.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
+            <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1945,7 +1945,7 @@
       <key>method-declaration-name</key>
       <dict>
         <key>begin</key>
-        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??)\s*[\(\&lt;])</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??)\s*[\(\&lt;])</string>
         <key>end</key>
         <string>(?=\(|\&lt;)</string>
         <key>patterns</key>
@@ -1977,7 +1977,7 @@
         <key>name</key>
         <string>meta.method.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
+        <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2033,7 +2033,7 @@
       <key>object-literal-method-overload-declaration</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
+        <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2560,7 +2560,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))</string>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))</string>
             <key>end</key>
             <string>(?=,|\})</string>
             <key>patterns</key>
@@ -5647,7 +5647,7 @@
         <key>name</key>
         <string>comment.line.triple-slash.directive.tsx</string>
         <key>begin</key>
-        <string>^(///)\s*(?=&lt;(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*((\'.*\')|(\".*\")))+\s*/&gt;\s*$)</string>
+        <string>^(///)\s*(?=&lt;(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*((\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")))+\s*/&gt;\s*$)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>

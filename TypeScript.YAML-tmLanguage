@@ -120,7 +120,7 @@ repository:
   object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
+    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
       end: (?=,|\})
       patterns:
       - include: '#object-binding-element-propertyName'
@@ -131,7 +131,7 @@ repository:
     - include: '#punctuation-comma'
 
   object-binding-element-propertyName:
-    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
     end: (:)
     endCaptures:
       '0': { name: punctuation.destructuring.ts }
@@ -294,7 +294,7 @@ repository:
         patterns:
         - include: '#comment'
         - include: '#variable-initializer'
-      - begin: (?=((\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\])))
+      - begin: (?=((\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\])))
         end: (?=,|\}|$)
         patterns:
         - include: '#string'
@@ -538,14 +538,14 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
+    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: (?=\}|;|,|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
+    end: (?=\}|;|,|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
-    - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(?:\'.*\')|(?:\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
-      end: (?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
+    - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
+      end: (?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
       patterns:
       - include: '#type-annotation'
       - include: '#string'
@@ -588,7 +588,7 @@ repository:
   method-declaration:
     patterns:
     - name: meta.method.declaration.ts
-      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
+      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -604,7 +604,7 @@ repository:
       - include: '#return-type'
       - include: '#decl-block'
     - name: meta.method.declaration.ts
-      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\<]))
+      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\<]))
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -622,7 +622,7 @@ repository:
       - include: '#decl-block'
 
   method-declaration-name:
-    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??)\s*[\(\<])
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??)\s*[\(\<])
     end: (?=\(|\<)
     patterns:
     - include: '#string'
@@ -634,7 +634,7 @@ repository:
 
   object-literal-method-declaration:
     name: meta.method.declaration.ts
-    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
+    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.async.ts } # captures keyword (async)
       '2': { name: storage.type.property.ts } # captures keyword (get|set)
@@ -650,7 +650,7 @@ repository:
     - include: '#decl-block'
 
   object-literal-method-overload-declaration:
-    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
+    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.async.ts } # captures keyword (async)
       '2': { name: storage.type.property.ts } # captures keyword (get|set)
@@ -826,7 +826,7 @@ repository:
   parameter-object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'.*\')|(\".*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
+    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
       end: (?=,|\})
       patterns:
       - include: '#object-binding-element-propertyName'
@@ -2063,7 +2063,7 @@ repository:
 
   directives:
     name: comment.line.triple-slash.directive.ts
-    begin: ^(///)\s*(?=<(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*((\'.*\')|(\".*\")))+\s*/>\s*$)
+    begin: ^(///)\s*(?=<(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*((\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")))+\s*/>\s*$)
     beginCaptures:
       '1': { name: punctuation.definition.comment.ts }
     end: (?=^)
