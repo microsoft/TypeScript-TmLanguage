@@ -1886,7 +1886,7 @@ repository:
         '1': {name: punctuation.definition.character-class.regexp}
       patterns:
       - name: constant.other.character-class.range.regexp
-        match: (?:.|(\\(?:[0-7]{3}|x\h\h|u\h\h\h\h))|(\\c[A-Z])|(\\.))\-(?:[^\]\\]|(\\(?:[0-7]{3}|x\h\h|u\h\h\h\h))|(\\c[A-Z])|(\\.))
+        match: (?:.|(\\(?:[0-7]{3}|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}))|(\\c[A-Z])|(\\.))\-(?:[^\]\\]|(\\(?:[0-7]{3}|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}))|(\\c[A-Z])|(\\.))
         captures:
           '1': {name: constant.character.numeric.regexp}
           '2': {name: constant.character.control.regexp}
@@ -1902,7 +1902,7 @@ repository:
     - name: constant.other.character-class.regexp
       match: \\[wWsSdDtrnvf]|\.
     - name: constant.character.numeric.regexp
-      match: \\([0-7]{3}|x\h\h|u\h\h\h\h)
+      match: \\([0-7]{3}|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4})
     - name: constant.character.control.regexp
       match: \\c[A-Z]
     - name: constant.character.escape.backslash.regexp
@@ -1928,7 +1928,7 @@ repository:
 
   string-character-escape:
     name: constant.character.escape.ts
-    match: \\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)
+    match: \\(x[0-9A-Fa-f]{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)
 
   template-substitution-element:
     name: meta.template.expression.ts
