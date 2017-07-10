@@ -1,0 +1,100 @@
+original file
+-----------------------------------
+declare module 'foo';
+declare module 'bar';
+declare module 'baz';
+interface Foo {
+    bar: string;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>declare module 'foo';
+ ^^^^^^^
+ source.ts storage.modifier.ts
+        ^
+        source.ts
+         ^^^^^^
+         source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+               ^
+               source.ts meta.namespace.declaration.ts
+                ^
+                source.ts meta.namespace.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^^
+                 source.ts meta.namespace.declaration.ts string.quoted.single.ts
+                    ^
+                    source.ts meta.namespace.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+                      ^^
+                      source.ts
+>declare module 'bar';
+ ^^^^^^^
+ source.ts storage.modifier.ts
+        ^
+        source.ts
+         ^^^^^^
+         source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+               ^
+               source.ts meta.namespace.declaration.ts
+                ^
+                source.ts meta.namespace.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^^
+                 source.ts meta.namespace.declaration.ts string.quoted.single.ts
+                    ^
+                    source.ts meta.namespace.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+                      ^^
+                      source.ts
+>declare module 'baz';
+ ^^^^^^^
+ source.ts storage.modifier.ts
+        ^
+        source.ts
+         ^^^^^^
+         source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+               ^
+               source.ts meta.namespace.declaration.ts
+                ^
+                source.ts meta.namespace.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^^
+                 source.ts meta.namespace.declaration.ts string.quoted.single.ts
+                    ^
+                    source.ts meta.namespace.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+                      ^^
+                      source.ts
+>interface Foo {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+              ^
+              source.ts meta.interface.ts
+               ^
+               source.ts meta.interface.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.interface.ts
+>    bar: string;
+ ^^^^
+ source.ts meta.interface.ts
+     ^^^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+        ^
+        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^^^^^
+          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                ^
+                source.ts meta.interface.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.interface.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts

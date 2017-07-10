@@ -259,7 +259,7 @@ repository:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.type.ts }
       '3': { name: entity.name.type.alias.ts }
-    end: (?=[};]|\bvar\b|\blet\b|\bconst\b|\btype\b|\bfunction\b|\bclass\b|\binterface\b|\bnamespace\b|\bmodule\b|\bimport\b|\benum\b|\bdeclare\b|\bexport\b|\babstract\b|\basync\b)
+    end: (?=[};]|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
     patterns:
       - include: '#comment'
       - include: '#type-parameters'
@@ -309,7 +309,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.namespace.ts }
-    end: (?<=\})
+    end: (?<=\})|(?=;|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
     patterns:
     - include: '#comment'
     - include: '#string'
@@ -376,14 +376,14 @@ repository:
         '1': { name: keyword.control.export.ts }
         '2': { name: keyword.operator.assignment.ts }
         '3': { name: keyword.control.default.ts }
-      end: (?=;|\bexport\b|\bfunction\b|\bclass\b|\binterface\b|\blet\b|\bvar\b|\bconst\b|\bimport\b|\benum\b|\bnamespace\b|\bmodule\b|\btype\b|\babstract\b|\bdeclare\b|\basync\b|$)
+      end: (?=;|$|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
       patterns:
       - include: '#expression'
     - name: meta.export.ts
       begin: (?<!\.|\$)\b(export)(?!(\s*:)|(\$))\b
       beginCaptures:
         '0': { name: keyword.control.export.ts }
-      end: (?=;|\bexport\b|\bfunction\b|\bclass\b|\binterface\b|\blet\b|\bvar\b|\bconst\b|\bimport\b|\benum\b|\bnamespace\b|\bmodule\b|\btype\b|\babstract\b|\bdeclare\b|\basync\b|$)
+      end: (?=;|$|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
       patterns:
       - include: '#import-export-declaration'
   
