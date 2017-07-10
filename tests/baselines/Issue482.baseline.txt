@@ -1,0 +1,68 @@
+original file
+-----------------------------------
+let a = 1;
+let b = [new Object]
+let c = 1
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let a = 1;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts constant.numeric.decimal.ts
+          ^
+          source.ts punctuation.terminator.statement.ts
+           ^^
+           source.ts
+>let b = [new Object]
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+          ^^^
+          source.ts meta.var.expr.ts meta.array.literal.ts new.expr.ts keyword.operator.new.ts
+             ^
+             source.ts meta.var.expr.ts meta.array.literal.ts new.expr.ts
+              ^^^^^^
+              source.ts meta.var.expr.ts meta.array.literal.ts new.expr.ts entity.name.type.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+                     ^
+                     source.ts meta.var.expr.ts
+>let c = 1
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts constant.numeric.decimal.ts
