@@ -1,0 +1,60 @@
+original file
+-----------------------------------
+const C = class<T> {
+    private data = 0;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const C = class<T> {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^^^^^
+           source.ts meta.var.expr.ts meta.class.ts storage.type.class.ts
+                ^
+                source.ts meta.var.expr.ts meta.class.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.class.ts meta.type.parameters.ts entity.name.type.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.class.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.class.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.class.ts punctuation.definition.block.ts
+                     ^^
+                     source.ts meta.var.expr.ts meta.class.ts
+>    private data = 0;
+ ^^^^
+ source.ts meta.var.expr.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts meta.class.ts storage.modifier.ts
+            ^
+            source.ts meta.var.expr.ts meta.class.ts
+             ^^^^
+             source.ts meta.var.expr.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.class.ts meta.field.declaration.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.class.ts meta.field.declaration.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.class.ts punctuation.terminator.statement.ts
+                      ^^
+                      source.ts meta.var.expr.ts meta.class.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.class.ts punctuation.definition.block.ts
