@@ -1,0 +1,52 @@
+original file
+-----------------------------------
+import a from 'a' // test
+import b from 'b'
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>import a from 'a' // test
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts variable.other.readwrite.alias.ts
+         ^
+         source.ts meta.import.ts
+          ^^^^
+          source.ts meta.import.ts keyword.control.from.ts
+              ^
+              source.ts meta.import.ts
+               ^
+               source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                ^
+                source.ts meta.import.ts string.quoted.single.ts
+                 ^
+                 source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.import.ts
+                   ^^
+                   source.ts meta.import.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                     ^^^^^^^
+                     source.ts meta.import.ts comment.line.double-slash.ts
+>import b from 'b'
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts variable.other.readwrite.alias.ts
+         ^
+         source.ts meta.import.ts
+          ^^^^
+          source.ts meta.import.ts keyword.control.from.ts
+              ^
+              source.ts meta.import.ts
+               ^
+               source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                ^
+                source.ts meta.import.ts string.quoted.single.ts
+                 ^
+                 source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
