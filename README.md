@@ -3,7 +3,7 @@
 
 This repository contains TmLanguage files that are consumed by TypeScript editors and plugins such as [Visual Studio Code](https://github.com/Microsoft/vscode), [The TypeScript Sublime Plugin](https://github.com/Microsoft/TypeScript-Sublime-Plugin), [Atom TypeScript](https://github.com/TypeStrong/atom-typescript), and possibly others.
 
-Latest version of the grammer can be also found as a [VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar).
+Latest version of the grammar can be also found as a [VSCode extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar).
 
 # Contributing
 
