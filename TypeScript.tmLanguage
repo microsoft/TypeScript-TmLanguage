@@ -5304,6 +5304,20 @@
         <key>name</key>
         <string>string.template.ts</string>
         <key>begin</key>
+        <string>(?=([_$[:alpha:]][_$[:alnum:]]*)?`)</string>
+        <key>end</key>
+        <string>(?&lt;=`)</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#standard-template-string</string>
+          </dict>
+        </array>
+      </dict>
+      <key>standard-template-string</key>
+      <dict>
+        <key>begin</key>
         <string>([_$[:alpha:]][_$[:alnum:]]*)?(`)</string>
         <key>beginCaptures</key>
         <dict>
