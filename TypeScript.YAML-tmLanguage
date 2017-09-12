@@ -2297,7 +2297,7 @@ repository:
                 "(?:(?:\*(?!/))|(?:\\(?!"))|[^*\\])*?" |  # [foo="bar"] Double-quoted
                 '(?:(?:\*(?!/))|(?:\\(?!'))|[^*\\])*?' |  # [foo='bar'] Single-quoted
                 \[ (?:(?:\*(?!/))|[^*])*? \] |              # [foo=[1,2]] Array literal
-                (?:(?:\*(?!/))|[^*])*?                        # Everything else
+                (?:(?:\*(?!/))|[\d\w\s])*?                        # Everything else
               )*
             )
           )?
