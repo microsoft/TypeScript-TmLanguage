@@ -355,7 +355,7 @@ repository:
 
   import-declaration:
     name: meta.import.ts
-    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*:)|(\$|\.))\b
+    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*[:\(])|(\$|\.))\b
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: keyword.control.import.ts }
@@ -1627,7 +1627,6 @@ repository:
       match: (?:[_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)
       captures:
         '0': { name: meta.object-literal.key.ts }
-      end: (?=,|\})
     - name: meta.object.member.ts
       begin: \.\.\.
       beginCaptures:

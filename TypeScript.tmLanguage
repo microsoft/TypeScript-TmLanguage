@@ -1091,7 +1091,7 @@
         <key>name</key>
         <string>meta.import.ts</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*:)|(\$|\.))\b</string>
+        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*[:\(])|(\$|\.))\b</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -4451,8 +4451,6 @@
                 <string>meta.object-literal.key.ts</string>
               </dict>
             </dict>
-            <key>end</key>
-            <string>(?=,|\})</string>
           </dict>
           <dict>
             <key>name</key>

@@ -1,0 +1,232 @@
+original file
+-----------------------------------
+        if (platform.isWindows) {
+            this._processReady.then(() => {
+                if (!this._isDisposed) {
+                    import('vs/workbench/parts/terminal/electron-browser/windowsShellHelper').then((module) => {
+                        this._windowsShellHelper = new module.WindowsShellHelper(this._processId, this._shellLaunchConfig.executable, this, this._xterm);
+                    });
+                }
+            });
+        }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>        if (platform.isWindows) {
+ ^^^^^^^^
+ source.ts
+         ^^
+         source.ts keyword.control.conditional.ts
+           ^
+           source.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^^^^^^^^
+             source.ts variable.other.object.ts
+                     ^
+                     source.ts punctuation.accessor.ts
+                      ^^^^^^^^^
+                      source.ts variable.other.property.ts
+                               ^
+                               source.ts meta.brace.round.ts
+                                ^
+                                source.ts
+                                 ^
+                                 source.ts meta.block.ts punctuation.definition.block.ts
+                                  ^^
+                                  source.ts meta.block.ts
+>            this._processReady.then(() => {
+ ^^^^^^^^^^^^
+ source.ts meta.block.ts
+             ^^^^
+             source.ts meta.block.ts meta.function-call.ts variable.language.this.ts
+                 ^
+                 source.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                  ^^^^^^^^^^^^^
+                  source.ts meta.block.ts meta.function-call.ts variable.other.object.property.ts
+                               ^
+                               source.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                                ^^^^
+                                source.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                                    ^
+                                    source.ts meta.block.ts meta.brace.round.ts
+                                     ^
+                                     source.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                       ^
+                                       source.ts meta.block.ts meta.arrow.ts
+                                        ^^
+                                        source.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                          ^
+                                          source.ts meta.block.ts meta.arrow.ts
+                                           ^
+                                           source.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                            ^^
+                                            source.ts meta.block.ts meta.arrow.ts meta.block.ts
+>                if (!this._isDisposed) {
+ ^^^^^^^^^^^^^^^^
+ source.ts meta.block.ts meta.arrow.ts meta.block.ts
+                 ^^
+                 source.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.conditional.ts
+                   ^
+                   source.ts meta.block.ts meta.arrow.ts meta.block.ts
+                    ^
+                    source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                     ^
+                     source.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.operator.logical.ts
+                      ^^^^
+                      source.ts meta.block.ts meta.arrow.ts meta.block.ts variable.language.this.ts
+                          ^
+                          source.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+                           ^^^^^^^^^^^
+                           source.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.property.ts
+                                      ^
+                                      source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                       ^
+                                       source.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                        ^
+                                        source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                         ^^
+                                         source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
+>                    import('vs/workbench/parts/terminal/electron-browser/windowsShellHelper').then((module) => {
+ ^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
+                     ^^^^^^
+                     source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.function-call.ts keyword.operator.expression.import.ts
+                           ^
+                           source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                            ^
+                            source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts string.quoted.single.ts
+                                                                                            ^
+                                                                                            source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                             ^
+                                                                                             source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                                                              ^
+                                                                                              source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                                                                                               ^^^^
+                                                                                               source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                                                                                                   ^
+                                                                                                   source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                                                                                    ^
+                                                                                                    source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                                                                     ^^^^^^
+                                                                                                     source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                                                                                                           ^
+                                                                                                           source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                                                            ^
+                                                                                                            source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts
+                                                                                                             ^^
+                                                                                                             source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                                                                               ^
+                                                                                                               source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts
+                                                                                                                ^
+                                                                                                                source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                                                                                                 ^^
+                                                                                                                 source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
+>                        this._windowsShellHelper = new module.WindowsShellHelper(this._processId, this._shellLaunchConfig.executable, this, this._xterm);
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
+                         ^^^^
+                         source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts variable.language.this.ts
+                             ^
+                             source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+                              ^^^^^^^^^^^^^^^^^^^
+                              source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.property.ts
+                                                 ^
+                                                 source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                                  ^
+                                                  source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.operator.assignment.ts
+                                                   ^
+                                                   source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                                    ^^^
+                                                    source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                                                       ^
+                                                       source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts
+                                                        ^^^^^^
+                                                        source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts entity.name.type.module.ts
+                                                              ^
+                                                              source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.accessor.ts
+                                                               ^^^^^^^^^^^^^^^^^^
+                                                               source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                                                                 ^
+                                                                                 source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                                  ^^^^
+                                                                                  source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.language.this.ts
+                                                                                      ^
+                                                                                      source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.accessor.ts
+                                                                                       ^^^^^^^^^^
+                                                                                       source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.other.property.ts
+                                                                                                 ^
+                                                                                                 source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.separator.comma.ts
+                                                                                                  ^
+                                                                                                  source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts
+                                                                                                   ^^^^
+                                                                                                   source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.language.this.ts
+                                                                                                       ^
+                                                                                                       source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.accessor.ts
+                                                                                                        ^^^^^^^^^^^^^^^^^^
+                                                                                                        source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.other.object.property.ts
+                                                                                                                          ^
+                                                                                                                          source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.accessor.ts
+                                                                                                                           ^^^^^^^^^^
+                                                                                                                           source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.other.property.ts
+                                                                                                                                     ^
+                                                                                                                                     source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.separator.comma.ts
+                                                                                                                                      ^
+                                                                                                                                      source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts
+                                                                                                                                       ^^^^
+                                                                                                                                       source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.language.this.ts
+                                                                                                                                           ^
+                                                                                                                                           source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.separator.comma.ts
+                                                                                                                                            ^
+                                                                                                                                            source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts
+                                                                                                                                             ^^^^
+                                                                                                                                             source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.language.this.ts
+                                                                                                                                                 ^
+                                                                                                                                                 source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts punctuation.accessor.ts
+                                                                                                                                                  ^^^^^^
+                                                                                                                                                  source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts variable.other.property.ts
+                                                                                                                                                        ^
+                                                                                                                                                        source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                                                                                                         ^
+                                                                                                                                                         source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                                                                                                                                                          ^^
+                                                                                                                                                          source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
+>                    });
+ ^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
+                     ^
+                     source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                      ^
+                      source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                       ^
+                       source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
+>                }
+ ^^^^^^^^^^^^^^^^
+ source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
+                 ^
+                 source.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                  ^^
+                  source.ts meta.block.ts meta.arrow.ts meta.block.ts
+>            });
+ ^^^^^^^^^^^^
+ source.ts meta.block.ts meta.arrow.ts meta.block.ts
+             ^
+             source.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.block.ts meta.brace.round.ts
+               ^
+               source.ts meta.block.ts punctuation.terminator.statement.ts
+                ^^
+                source.ts meta.block.ts
+>        }
+ ^^^^^^^^
+ source.ts meta.block.ts
+         ^
+         source.ts meta.block.ts punctuation.definition.block.ts
