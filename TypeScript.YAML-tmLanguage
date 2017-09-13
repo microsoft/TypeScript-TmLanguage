@@ -59,7 +59,7 @@ repository:
             ((async\s*)?(
               ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
               ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-              ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+              ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
             ))
           )) |
           (:\s*(
@@ -577,7 +577,7 @@ repository:
               ((async\s*)?(
                 ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
                 ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-                ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+                ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
               ))
             )) |
             (:\s*(
@@ -784,7 +784,7 @@ repository:
             ((async\s*)?(
               ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
               ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-              ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+              ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
             ))
           )) |
           (:\s*(
@@ -1344,7 +1344,7 @@ repository:
           |siblingBelow|size|source|specified|standby|start|status|statusbar|statusText|style|styleSheets|suffixes|summary
           |systemId|systemLanguage|tagName|tags|target|tBodies|text|textAlign|textDecoration|textIndent|textTransform|tFoot|tHead
           |title|toolbar|top|type|undefined|uniqueID|updateInterval|URL|URLUnencoded|useMap|userAgent|userLanguage|userProfile
-          |vAlign|value|valueType|vendor|vendorSub|version|visibility|vspace|whiteSpace|width|X[MS]LDocument|zIndex))\b(?!\$|\s*(<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\()
+          |vAlign|value|valueType|vendor|vendorSub|version|visibility|vspace|whiteSpace|width|X[MS]LDocument|zIndex))\b(?!\$|\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: support.constant.dom.ts }
@@ -1457,12 +1457,12 @@ repository:
         '4': { name: support.function.dom.ts }
 
   function-call:
-    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\()
-    end: (?<=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\()
+    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
+    end: (?<=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
     patterns:
     - name: meta.function-call.ts
       begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))
-      end: (?=\s*(<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\()
+      end: (?=\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
       patterns:
       - include: '#literal'
       - include: '#support-objects'
@@ -1499,7 +1499,7 @@ repository:
           ((async\s*)?(
             ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
             ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-            ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+            ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
           ))
         ))
       captures:
@@ -1617,7 +1617,7 @@ repository:
           ((async\s*)?(
             ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
             ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
-            ((<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
+            ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\(([^()]|\([^()]*\))*\)(\s*:\s*(.)*)?\s*=>)
           ))
         )))
       captures:
@@ -1747,7 +1747,7 @@ repository:
             ) |
             # arrow function possible to detect only with => on same line
             (
-              (<([^<>=]|=[^<]|\<([^=<>]|=[^<])+\>)+>\s*)?                 # typeparameters
+              (<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?                 # typeparameters
               \(([^()]|\([^()]*\))*\)                     # parameteres
               (\s*:\s*(.)*)?                              # return type
               \s*=>                                       # arrow operator

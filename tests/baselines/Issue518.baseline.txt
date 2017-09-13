@@ -1,0 +1,136 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+(<a title={i >= 2 && i < 3 ? "first branch" : i > (j - 2) * 4 ? "second branch" : "third branch" } />)
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>(<a title={i >= 2 && i < 3 ? "first branch" : i > (j - 2) * 4 ? "second branch" : "third branch" } />)
+ ^
+ source.tsx meta.brace.round.tsx
+  ^
+  source.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+   ^
+   source.tsx meta.tag.tsx entity.name.tag.tsx
+    ^
+    source.tsx meta.tag.tsx
+     ^^^^^
+     source.tsx meta.tag.tsx entity.other.attribute-name.tsx
+          ^
+          source.tsx meta.tag.tsx keyword.operator.assignment.tsx
+           ^
+           source.tsx meta.tag.tsx meta.embedded.expression.tsx punctuation.section.embedded.begin.tsx
+            ^
+            source.tsx meta.tag.tsx meta.embedded.expression.tsx variable.other.readwrite.tsx
+             ^
+             source.tsx meta.tag.tsx meta.embedded.expression.tsx
+              ^^
+              source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.relational.tsx
+                ^
+                source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                 ^
+                 source.tsx meta.tag.tsx meta.embedded.expression.tsx constant.numeric.decimal.tsx
+                  ^
+                  source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                   ^^
+                   source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.logical.tsx
+                     ^
+                     source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                      ^
+                      source.tsx meta.tag.tsx meta.embedded.expression.tsx variable.other.readwrite.tsx
+                       ^
+                       source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                        ^
+                        source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.relational.tsx
+                         ^
+                         source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                          ^
+                          source.tsx meta.tag.tsx meta.embedded.expression.tsx constant.numeric.decimal.tsx
+                           ^
+                           source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                            ^
+                            source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.ternary.tsx
+                             ^
+                             source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                              ^
+                              source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx punctuation.definition.string.begin.tsx
+                               ^^^^^^^^^^^^
+                               source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx
+                                           ^
+                                           source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx punctuation.definition.string.end.tsx
+                                            ^
+                                            source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                             ^
+                                             source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.ternary.tsx
+                                              ^
+                                              source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                               ^
+                                               source.tsx meta.tag.tsx meta.embedded.expression.tsx variable.other.readwrite.tsx
+                                                ^
+                                                source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                 ^
+                                                 source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.relational.tsx
+                                                  ^
+                                                  source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                   ^
+                                                   source.tsx meta.tag.tsx meta.embedded.expression.tsx meta.brace.round.tsx
+                                                    ^
+                                                    source.tsx meta.tag.tsx meta.embedded.expression.tsx variable.other.readwrite.tsx
+                                                     ^
+                                                     source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                      ^
+                                                      source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.arithmetic.tsx
+                                                       ^
+                                                       source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                        ^
+                                                        source.tsx meta.tag.tsx meta.embedded.expression.tsx constant.numeric.decimal.tsx
+                                                         ^
+                                                         source.tsx meta.tag.tsx meta.embedded.expression.tsx meta.brace.round.tsx
+                                                          ^
+                                                          source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                           ^
+                                                           source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.arithmetic.tsx
+                                                            ^
+                                                            source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                             ^
+                                                             source.tsx meta.tag.tsx meta.embedded.expression.tsx constant.numeric.decimal.tsx
+                                                              ^
+                                                              source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                               ^
+                                                               source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.ternary.tsx
+                                                                ^
+                                                                source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                                 ^
+                                                                 source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx punctuation.definition.string.begin.tsx
+                                                                  ^^^^^^^^^^^^^
+                                                                  source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx
+                                                                               ^
+                                                                               source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx punctuation.definition.string.end.tsx
+                                                                                ^
+                                                                                source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                                                 ^
+                                                                                 source.tsx meta.tag.tsx meta.embedded.expression.tsx keyword.operator.ternary.tsx
+                                                                                  ^
+                                                                                  source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                                                   ^
+                                                                                   source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx punctuation.definition.string.begin.tsx
+                                                                                    ^^^^^^^^^^^^
+                                                                                    source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx
+                                                                                                ^
+                                                                                                source.tsx meta.tag.tsx meta.embedded.expression.tsx string.quoted.double.tsx punctuation.definition.string.end.tsx
+                                                                                                 ^
+                                                                                                 source.tsx meta.tag.tsx meta.embedded.expression.tsx
+                                                                                                  ^
+                                                                                                  source.tsx meta.tag.tsx meta.embedded.expression.tsx punctuation.section.embedded.end.tsx
+                                                                                                   ^
+                                                                                                   source.tsx meta.tag.tsx
+                                                                                                    ^^
+                                                                                                    source.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                                                                                                      ^
+                                                                                                      source.tsx meta.brace.round.tsx
