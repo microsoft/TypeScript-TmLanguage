@@ -1639,6 +1639,11 @@ repository:
       match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\}|$)
       captures:
         '1': { name: variable.other.readwrite.ts }
+    - name: meta.object.member.ts
+      begin: (?=[_$[:alpha:]][_$[:alnum:]]*\s*=)
+      end: (?=,|\}|$)
+      patterns:
+      - include: '#expression'
     - include: '#object-member-body'
     - include: '#punctuation-comma'
 
