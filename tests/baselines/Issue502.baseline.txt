@@ -1,0 +1,100 @@
+original file
+-----------------------------------
+class Foo {
+    bar () {
+        [...this.foobar()];
+        [... this.foobar()];
+    }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Foo {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.class.ts
+>    bar () {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        [...this.foobar()];
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+          ^^^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts keyword.operator.spread.ts
+             ^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.function-call.ts variable.language.this.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.function-call.ts punctuation.accessor.ts
+                  ^^^^^^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.function-call.ts entity.name.function.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.round.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                            ^^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>        [... this.foobar()];
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+          ^^^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts keyword.operator.spread.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts
+              ^^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.function-call.ts variable.language.this.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.function-call.ts punctuation.accessor.ts
+                   ^^^^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.function-call.ts entity.name.function.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.round.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.round.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+                             ^^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
