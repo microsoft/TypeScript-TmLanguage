@@ -34,11 +34,11 @@ for (const fileName of fs.readdirSync('cases')) {
             markerScopes = result.markerScopes;
         });
 
-        it('Comparing generated', () => {
+        it('Comparing whole baseline', () => {
             assertBaselinesMatch(parsedFileName.name + '.baseline.txt', wholeBaseline);
         });
 
-        it('Comparing generated scopes', () => {
+        it('Comparing marker scopes', () => {
             if (markerScopes) {
                 assertBaselinesMatch(parsedFileName.name + '.txt', markerScopes);
             }
