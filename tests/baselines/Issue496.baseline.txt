@@ -1,0 +1,90 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has cast expression
+var x = 0;
+var y = 1;
+var z = <number>x + <number>y;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has cast expression
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>var x = 0;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts constant.numeric.decimal.ts
+          ^
+          source.ts punctuation.terminator.statement.ts
+           ^^
+           source.ts
+>var y = 1;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts constant.numeric.decimal.ts
+          ^
+          source.ts punctuation.terminator.statement.ts
+           ^^
+           source.ts
+>var z = <number>x + <number>y;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts cast.expr.ts
+         ^
+         source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
+          ^^^^^^
+          source.ts meta.var.expr.ts cast.expr.ts support.type.primitive.ts
+                ^
+                source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                    ^
+                    source.ts meta.var.expr.ts cast.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
+                      ^^^^^^
+                      source.ts meta.var.expr.ts cast.expr.ts support.type.primitive.ts
+                            ^
+                            source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
+                             ^
+                             source.ts meta.var.expr.ts variable.other.readwrite.ts
+                              ^
+                              source.ts punctuation.terminator.statement.ts
