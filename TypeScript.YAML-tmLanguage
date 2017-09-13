@@ -1680,7 +1680,7 @@ repository:
     - begin: (?<!\.|\$)\b(as)\s+
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?=$|^|[;,:})\]])
+      end: (?=$|^|[;,:})\]]|((?<!\.|\$)\b(as)\s+))
       patterns:
       - include: '#type'
     - name: keyword.operator.spread.ts
