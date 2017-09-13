@@ -22,14 +22,29 @@ ensureCleanGeneratedFolder();
 // Generate the new baselines
 for (const fileName of fs.readdirSync('cases')) {
     describe("Generating baseline for " + fileName, () => {
+        const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
+        const parsedFileName = path.parse(fileName);
+
+        const generateScopes = (() => {
+            let result: { markerScopes: string, wholeBaseline: string };
+            return () => {
+                if (!result) {
+                    result = build.generateScopes(text, parsedFileName);
+                }
+                return result;
+            }
+        })();
+        
         it('Comparing generated', () => {
-            const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
-            const parsedFileName = path.parse(fileName);
-            const { markerScopes, wholeBaseline } = build.generateScopes(text, parsedFileName);
+            const { markerScopes, wholeBaseline } = generateScopes();
+            assertBaselinesMatch(parsedFileName.name + '.baseline.txt', wholeBaseline);
+        });
+
+        it('Comparing generated scopes', () => {
+            const { markerScopes } = generateScopes();
             if (markerScopes) {
                 assertBaselinesMatch(parsedFileName.name + '.txt', markerScopes);
             }
-            assertBaselinesMatch(parsedFileName.name + '.baseline.txt', wholeBaseline);
         });
     });
 }
@@ -41,8 +56,7 @@ function assertBaselinesMatch(file: string, generatedText: string) {
     const baselineFile = path.join(baselineFolder, file);
     if (fs.existsSync(baselineFile)) {
         chai.assert.equal(generatedText, fs.readFileSync(baselineFile, 'utf8'), "Expected baselines to match: " + file);
-    }
-    else {
+    } else {
         chai.assert(false, "New generated baseline");
     }
 }
