@@ -41,6 +41,15 @@ repository:
     - include: '#var-single-variable'
     - include: '#variable-initializer'
     - include: '#comment'
+    - begin: (,)\s*(?!\S)
+      beginCaptures:
+        '1': { name: punctuation.separator.comma.ts }
+      end: (?<!,)((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$))
+      patterns:
+      - include: '#comment'
+      - include: '#destructuring-variable'
+      - include: '#var-single-variable'
+      - include: '#punctuation-comma'
     - include: '#punctuation-comma'
 
   var-single-variable:

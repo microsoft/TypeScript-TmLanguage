@@ -129,6 +129,39 @@
             <string>#comment</string>
           </dict>
           <dict>
+            <key>begin</key>
+            <string>(,)\s*(?!\S)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.separator.comma.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;!,)((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#destructuring-variable</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#var-single-variable</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#punctuation-comma</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
             <key>include</key>
             <string>#punctuation-comma</string>
           </dict>

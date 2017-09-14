@@ -1,0 +1,110 @@
+original file
+-----------------------------------
+let a: number = w,
+b: string = x, // string is not colored
+c: any = y, // any is not colored
+d: boolean = z; // boolean is not colored
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let a: number = w,
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+        ^^^^^^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^^
+                   source.ts meta.var.expr.ts
+>b: string = x, // string is not colored
+ ^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+  ^
+  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+   ^
+   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+    ^^^^^^
+    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts punctuation.separator.comma.ts
+               ^
+               source.ts meta.var.expr.ts
+                ^^
+                source.ts meta.var.expr.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts comment.line.double-slash.ts
+>c: any = y, // any is not colored
+ ^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+  ^
+  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+   ^
+   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+    ^^^
+    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts punctuation.separator.comma.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^
+             source.ts meta.var.expr.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+               ^^^^^^^^^^^^^^^^^^^^^
+               source.ts meta.var.expr.ts comment.line.double-slash.ts
+>d: boolean = z; // boolean is not colored
+ ^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+  ^
+  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+   ^
+   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+    ^^^^^^^
+    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^
+              source.ts meta.var.expr.ts variable.other.readwrite.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+                ^
+                source.ts
+                 ^^
+                 source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+                   source.ts comment.line.double-slash.ts
