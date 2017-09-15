@@ -5,8 +5,8 @@ const tsGrammarFileName = "TypeScript.tmLanguage"
 const tsReactGrammarFileName = "TypeScriptReact.tmLanguage"
 
 const register = new vt.Registry();
-const tsGrammar = register.loadGrammarFromPathSync("../" + tsGrammarFileName);
-const tsReactGrammar = register.loadGrammarFromPathSync("../" + tsReactGrammarFileName);
+const tsGrammar = register.loadGrammarFromPathSync(path.join(__dirname, '..', tsGrammarFileName));
+const tsReactGrammar = register.loadGrammarFromPathSync(path.join(__dirname, '..', tsReactGrammarFileName));
 
 const marker = '^^';
 

@@ -3,8 +3,9 @@ import path = require('path');
 import chai = require('chai');
 import build = require('./build');
 
-const generatedFolder = "generated";
-const baselineFolder = "baselines";
+const generatedFolder = path.join(__dirname, 'generated');
+const baselineFolder = path.join(__dirname, 'baselines');
+const casesFolder = path.join(__dirname, 'cases');
 
 function ensureCleanGeneratedFolder() {
     if (fs.existsSync(generatedFolder)) {
@@ -20,8 +21,8 @@ function ensureCleanGeneratedFolder() {
 ensureCleanGeneratedFolder();
 
 // Generate the new baselines
-for (const fileName of fs.readdirSync('cases')) {
-    const text = fs.readFileSync(path.join('./cases', fileName), 'utf8');
+for (const fileName of fs.readdirSync(casesFolder)) {
+    const text = fs.readFileSync(path.join(casesFolder, fileName), 'utf8');
     const parsedFileName = path.parse(fileName);
 
     let wholeBaseline: string;
