@@ -6059,6 +6059,12 @@
 (?:
   # URL
   (
+    (?=https?://)
+    (?:[^\s*]|\*[^/])+
+  )
+  |
+  # JSDoc namepath
+  (
     (?!
       # Avoid matching bare URIs (also acceptable as links)
       https?://
@@ -6068,12 +6074,6 @@
       {@(?:link|linkcode|linkplain|tutorial)\b
     )
     # Matched namepath
-    (?:[^\s*]|\*[^/])+
-  )
-  |
-  # JSDoc namepath
-  (
-    (?!https?://)
     (?:[^@\s*/]|\*[^/])+
   )
 )</string>
@@ -6107,13 +6107,13 @@
 ((@)template)
 \s+
 # One or more valid identifiers
-(?:
-  ([A-Za-z_$]        # First character: non-numeric word character
-  [\w$.\[\]]*)       # Rest of identifier
+(
+  [A-Za-z_$]         # First character: non-numeric word character
+  [\w$.\[\]]*        # Rest of identifier
   (?:                # Possible list of additional identifiers
-    \s* (,) \s*
-    ([A-Za-z_$]
-    [\w$.\[\]]*)
+    \s* , \s*
+    [A-Za-z_$]
+    [\w$.\[\]]*
   )*
 )</string>
             <key>captures</key>
@@ -6129,16 +6129,6 @@
                 <string>punctuation.definition.block.tag.jsdoc</string>
               </dict>
               <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>variable.other.jsdoc</string>
-              </dict>
-              <key>4</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.delimiter.object.comma.jsdoc</string>
-              </dict>
-              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.jsdoc</string>
@@ -6256,11 +6246,11 @@
   \s*
   (
     # The inner regexes are to stop the match early at */ and to not stop at escaped quotes
-    (?:
-      "(?:(?:\*(?!/))|(?:\\(?!"))|[^*\\])*?" |  # [foo="bar"] Double-quoted
-      '(?:(?:\*(?!/))|(?:\\(?!'))|[^*\\])*?' |  # [foo='bar'] Single-quoted
-      \[ (?:(?:\*(?!/))|[^*])*? \] |              # [foo=[1,2]] Array literal
-      (?:(?:\*(?!/))|[^*])*?                        # Everything else
+    (?&gt;
+      "(?:(?:\*(?!/))|(?:\\(?!"))|[^*\\])*?" |                      # [foo="bar"] Double-quoted
+      '(?:(?:\*(?!/))|(?:\\(?!'))|[^*\\])*?' |                      # [foo='bar'] Single-quoted
+      \[ (?:(?:\*(?!/))|[^*])*? \] |                                # [foo=[1,2]] Array literal
+      (?:(?:\*(?!/))|\s(?!\s*\])|\[.*?(?:\]|(?=\*/))|[^*\s\[\]])*   # Everything else
     )*
   )
 )?
@@ -6293,44 +6283,19 @@
                     <string>invalid.illegal.syntax.jsdoc</string>
                   </dict>
                 </dict>
-                <key>begin</key>
-                <string>\[</string>
-                <key>end</key>
-                <string>\]|(?=\*/)</string>
-                <key>patterns</key>
-                <array>
-                  <dict>
-                    <key>match</key>
-                    <string>(=)((?:[^\]*]|\*[^/])*)</string>
-                    <key>captures</key>
-                    <dict>
-                      <key>1</key>
-                      <dict>
-                        <key>name</key>
-                        <string>keyword.operator.assignment.jsdoc</string>
-                      </dict>
-                      <key>2</key>
-                      <dict>
-                        <key>name</key>
-                        <string>source.embedded.ts</string>
-                      </dict>
-                    </dict>
-                  </dict>
-                  <dict>
-                    <key>include</key>
-                    <string>#brackets</string>
-                  </dict>
-                  <dict>
-                    <key>include</key>
-                    <string>#quotes</string>
-                  </dict>
-                </array>
               </dict>
             </array>
           </dict>
           <dict>
             <key>begin</key>
-            <string>((@)(?:define|enum|exception|implements|modifies|namespace|private|protected|returns?|suppress|throws|type))\s+(?={)</string>
+            <string>(?x)
+(
+  (@)
+  (?:define|enum|exception|export|extends|lends|implements|modifies
+  |namespace|private|protected|returns?|suppress|this|throws|type
+  |yields?)
+)
+\s+(?={)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -6458,7 +6423,7 @@
             <key>name</key>
             <string>storage.type.class.jsdoc</string>
             <key>match</key>
-            <string>(?x) (@) (?:abstract|access|alias|api|arg|argument|async|attribute|augments|author|beta|borrows|bubbles |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func |function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance|interface |internal|kind|lends|license|listens|main|member|memberof!?|method|mixes|mixins?|modifies|module |name|namespace|noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve |private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static |struct|submodule|summary|suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted |uses|var|variation|version|virtual|writeOnce) \b</string>
+            <string>(?x) (@) (?:abstract|access|alias|api|arg|argument|async|attribute|augments|author|beta|borrows|bubbles |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func |function|generator|global|hideconstructor|host|ignore|implements|implicitCast|inherit[Dd]oc |inner|instance|interface|internal|kind|lends|license|listens|main|member|memberof!?|method |mixes|mixins?|modifies|module|name|namespace|noalias|nocollapse|nocompile|nosideeffects |override|overview|package|param|polymer(?:Behavior)?|preserve|private|prop|property|protected |public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary |suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation |version|virtual|writeOnce|yields?) \b</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -6597,38 +6562,6 @@
                     <string>punctuation.separator.pipe.jsdoc</string>
                   </dict>
                 </dict>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>quotes</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>'</string>
-            <key>end</key>
-            <string>'|(?=\*/)</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#quotes</string>
-              </dict>
-            </array>
-          </dict>
-          <dict>
-            <key>begin</key>
-            <string>"</string>
-            <key>end</key>
-            <string>"|(?=\*/)</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#quotes</string>
               </dict>
             </array>
           </dict>

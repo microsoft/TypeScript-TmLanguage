@@ -2206,6 +2206,12 @@ repository:
         (?:
           # URL
           (
+            (?=https?://)
+            (?:[^\s*]|\*[^/])+
+          )
+          |
+          # JSDoc namepath
+          (
             (?!
               # Avoid matching bare URIs (also acceptable as links)
               https?://
@@ -2215,12 +2221,6 @@ repository:
               {@(?:link|linkcode|linkplain|tutorial)\b
             )
             # Matched namepath
-            (?:[^\s*]|\*[^/])+
-          )
-          |
-          # JSDoc namepath
-          (
-            (?!https?://)
             (?:[^@\s*/]|\*[^/])+
           )
         )
@@ -2235,21 +2235,24 @@ repository:
         ((@)template)
         \s+
         # One or more valid identifiers
-        (?:
-          ([A-Za-z_$]        # First character: non-numeric word character
-          [\w$.\[\]]*)       # Rest of identifier
+        (
+          [A-Za-z_$]         # First character: non-numeric word character
+          [\w$.\[\]]*        # Rest of identifier
           (?:                # Possible list of additional identifiers
-            \s* (,) \s*
-            ([A-Za-z_$]
-            [\w$.\[\]]*)
+            \s* , \s*
+            [A-Za-z_$]
+            [\w$.\[\]]*
           )*
         )
       captures:
         '1': { name: storage.type.class.jsdoc }
         '2': { name: punctuation.definition.block.tag.jsdoc }
-        '3': { name: variable.other.jsdoc }
-        '4': { name: punctuation.delimiter.object.comma.jsdoc }
-        '5': { name: variable.other.jsdoc }
+        '3':  
+          name: variable.other.jsdoc
+          # Commenting out the embedded pattern matching since sublime doesnt support this
+          # patterns:
+          # - name: punctuation.delimiter.object.comma.jsdoc
+          #   match: ','
     # Tags followed by an identifier token 
     # -  @<tag> identifier 
     - match: |-
@@ -2307,11 +2310,11 @@ repository:
             \s*
             (
               # The inner regexes are to stop the match early at */ and to not stop at escaped quotes
-              (?:
-                "(?:(?:\*(?!/))|(?:\\(?!"))|[^*\\])*?" |  # [foo="bar"] Double-quoted
-                '(?:(?:\*(?!/))|(?:\\(?!'))|[^*\\])*?' |  # [foo='bar'] Single-quoted
-                \[ (?:(?:\*(?!/))|[^*])*? \] |              # [foo=[1,2]] Array literal
-                (?:(?:\*(?!/))|[^*])*?                        # Everything else
+              (?>
+                "(?:(?:\*(?!/))|(?:\\(?!"))|[^*\\])*?" |                      # [foo="bar"] Double-quoted
+                '(?:(?:\*(?!/))|(?:\\(?!'))|[^*\\])*?' |                      # [foo='bar'] Single-quoted
+                \[ (?:(?:\*(?!/))|[^*])*? \] |                                # [foo=[1,2]] Array literal
+                (?:(?:\*(?!/))|\s(?!\s*\])|\[.*?(?:\]|(?=\*/))|[^*\s\[\]])*   # Everything else
               )*
             )
           )?
@@ -2327,25 +2330,17 @@ repository:
             #   - include: source.js
           '4': { name: punctuation.definition.optional-value.end.bracket.square.jsdoc }
           '5': { name: invalid.illegal.syntax.jsdoc }
-
-        begin: '\['
-        end: '\]|(?=\*/)'
-        patterns:
-        - match: (=)((?:[^\]*]|\*[^/])*)
-          captures:
-            '1': { name: keyword.operator.assignment.jsdoc }
-            '2':
-              name: source.embedded.ts
-              # Commenting out the embedded pattern matching since sublime doesnt support this
-              # patterns:
-              # - include: '#inline-tags'
-              # - include: source.ts
-        - include: '#brackets'
-        - include: '#quotes'
     # Tags followed by a type expression 
     # -  @<tag> {type} 
-    - begin: >-
-        ((@)(?:define|enum|exception|implements|modifies|namespace|private|protected|returns?|suppress|throws|type))\s+(?={)
+    - begin: |-
+        (?x)
+        (
+          (@)
+          (?:define|enum|exception|export|extends|lends|implements|modifies
+          |namespace|private|protected|returns?|suppress|this|throws|type
+          |yields?)
+        )
+        \s+(?={)
       beginCaptures:
         '1': { name: storage.type.class.jsdoc }
         '2': { name: punctuation.definition.block.tag.jsdoc }
@@ -2407,12 +2402,13 @@ repository:
         |callback|chainable|class|classdesc|code|config|const|constant|constructor|constructs|copyright
         |default|defaultvalue|define|deprecated|desc|description|dict|emits|enum|event|example|exception
         |exports?|extends|extension(?:_?for)?|external|externs|file|fileoverview|final|fires|for|func
-        |function|global|host|ignore|implements|implicitCast|inherit[Dd]oc|inner|instance|interface
-        |internal|kind|lends|license|listens|main|member|memberof!?|method|mixes|mixins?|modifies|module
-        |name|namespace|noalias|nocollapse|nocompile|nosideeffects|override|overview|package|param|preserve
-        |private|prop|property|protected|public|read[Oo]nly|record|require[ds]|returns?|see|since|static
-        |struct|submodule|summary|suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted
-        |uses|var|variation|version|virtual|writeOnce)
+        |function|generator|global|hideconstructor|host|ignore|implements|implicitCast|inherit[Dd]oc
+        |inner|instance|interface|internal|kind|lends|license|listens|main|member|memberof!?|method
+        |mixes|mixins?|modifies|module|name|namespace|noalias|nocollapse|nocompile|nosideeffects
+        |override|overview|package|param|polymer(?:Behavior)?|preserve|private|prop|property|protected
+        |public|read[Oo]nly|record|require[ds]|returns?|see|since|static|struct|submodule|summary
+        |suppress|template|this|throws|todo|tutorial|type|typedef|unrestricted|uses|var|variation
+        |version|virtual|writeOnce|yields?)
         \b
       captures:
         '1': { name: punctuation.definition.block.tag.jsdoc }
@@ -2457,18 +2453,6 @@ repository:
         captures:
           '1': { name: variable.other.description.jsdoc }
           '2': { name: punctuation.separator.pipe.jsdoc }
-
-  quotes:
-  # Balanced quotes
-    patterns:
-    - begin: ''''
-      end: '''|(?=\*/)'
-      patterns:
-      - include: '#quotes'
-    - begin: '"'
-      end: '"|(?=\*/)'
-      patterns:
-      - include: '#quotes'
 
   jsdoctype:
   # {type}
