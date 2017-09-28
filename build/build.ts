@@ -85,7 +85,9 @@ function updateGrammarVariables(grammar: any) {
         delete grammar.variables;
         const variableReplacers: VariableReplacer[] = [];
         for (const variableName in variables) {
-            variableReplacers.push([new RegExp(`{{${variableName}}}`, "gim"), variables[variableName]]);
+            // Replace the pattern with earlier variables
+            const pattern = replacePatternVariables(variables[variableName], variableReplacers);
+            variableReplacers.push([new RegExp(`{{${variableName}}}`, "gim"), pattern]);
         }
         transformGrammarRepository(
             grammar,
