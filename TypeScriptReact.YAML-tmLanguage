@@ -16,7 +16,7 @@ repository:
     - include: '#jsx'
 
   # Overrides:
-  
+
   # We need to override this to make sure cast is not matched from typescript
   # We can safely include jsx because thats the first rule matched anyways so it wont impact at all
   cast:
@@ -24,74 +24,13 @@ repository:
     - include: '#jsx'
 
   # jsx syntax is taken from https://github.com/babel/babel-sublime
-  jsx-tag-attributes:
+  jsx:
     patterns:
-      - include: '#jsx-tag-attribute-name'
-      - include: '#jsx-tag-attribute-assignment'
-      - include: '#jsx-string-double-quoted'
-      - include: '#jsx-string-single-quoted'
-      - include: '#jsx-evaluated-code'
+    - include: '#jsx-tag-without-attributes-in-expression'
+    - include: '#jsx-tag-in-expression'
+    - include: '#jsx-tag-invalid'
 
-  jsx-tag-attribute-name:
-    match: |-
-      (?x)
-        \s*
-        ([_$a-zA-Z][-$\w]*)
-        (?=\s|=|/?>|/\*|//)
-    captures:
-      '1': {name: entity.other.attribute-name.tsx}
-
-  jsx-tag-attribute-assignment:
-    name: keyword.operator.assignment.tsx
-    match: =(?=\s*(?:'|"|{|/\*|//|\n))
-
-  jsx-string-double-quoted:
-    name: string.quoted.double.tsx
-    begin: '"'
-    end: '"'
-    beginCaptures:
-      '0': {name: punctuation.definition.string.begin.tsx}
-    endCaptures:
-      '0': {name: punctuation.definition.string.end.tsx}
-    patterns:
-    - include: '#jsx-entities'
-
-  jsx-string-single-quoted:
-    name: string.quoted.single.tsx
-    begin: "'"
-    end: "'"
-    beginCaptures:
-      '0': {name: punctuation.definition.string.begin.tsx}
-    endCaptures:
-      '0': {name: punctuation.definition.string.end.tsx}
-    patterns:
-    - include: '#jsx-entities'
-
-  jsx-entities:
-    patterns:
-    - name: constant.character.entity.tsx
-      match: (&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)
-      captures:
-        '1': {name: punctuation.definition.entity.tsx}
-        '3': {name: punctuation.definition.entity.tsx}
-    - name: invalid.illegal.bad-ampersand.tsx
-      match: '&'
-
-  jsx-evaluated-code:
-    name: meta.embedded.expression.tsx
-    begin: \{
-    end: \}
-    beginCaptures:
-      '0': { name: punctuation.section.embedded.begin.tsx }
-    endCaptures:
-      '0': { name: punctuation.section.embedded.end.tsx }
-    patterns:
-    - include: '#expression'
-
-  jsx-tag-attributes-illegal:
-    name: invalid.illegal.attribute.tsx
-    match: \S+
-
+  #jsx tags
   jsx-tag-without-attributes-in-expression:
     begin: |-
       (?x)
@@ -192,6 +131,7 @@ repository:
     name: invalid.illegal.tag.incomplete.tsx
     match: <\s*>
 
+  #jsx children
   jsx-children:
     patterns:
     - include: '#jsx-tag-without-attributes'
@@ -200,10 +140,74 @@ repository:
     - include: '#jsx-evaluated-code'
     - include: '#jsx-entities'
 
-  jsx:
+  #entities and evaluated code
+  jsx-evaluated-code:
+    name: meta.embedded.expression.tsx
+    begin: \{
+    end: \}
+    beginCaptures:
+      '0': { name: punctuation.section.embedded.begin.tsx }
+    endCaptures:
+      '0': { name: punctuation.section.embedded.end.tsx }
     patterns:
-    - include: '#jsx-tag-without-attributes-in-expression'
-    - include: '#jsx-tag-in-expression'
-    - include: '#jsx-tag-invalid'
+    - include: '#expression'
+
+  jsx-entities:
+    patterns:
+    - name: constant.character.entity.tsx
+      match: (&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)
+      captures:
+        '1': {name: punctuation.definition.entity.tsx}
+        '3': {name: punctuation.definition.entity.tsx}
+    - name: invalid.illegal.bad-ampersand.tsx
+      match: '&'
+
+  #jsx attributes
+  jsx-tag-attributes:
+    patterns:
+    - include: '#jsx-tag-attribute-name'
+    - include: '#jsx-tag-attribute-assignment'
+    - include: '#jsx-string-double-quoted'
+    - include: '#jsx-string-single-quoted'
+    - include: '#jsx-evaluated-code'
+
+  jsx-tag-attribute-name:
+    match: |-
+      (?x)
+        \s*
+        ([_$a-zA-Z][-$\w]*)
+        (?=\s|=|/?>|/\*|//)
+    captures:
+      '1': {name: entity.other.attribute-name.tsx}
+
+  jsx-tag-attribute-assignment:
+    name: keyword.operator.assignment.tsx
+    match: =(?=\s*(?:'|"|{|/\*|//|\n))
+
+  jsx-string-double-quoted:
+    name: string.quoted.double.tsx
+    begin: '"'
+    end: '"'
+    beginCaptures:
+      '0': {name: punctuation.definition.string.begin.tsx}
+    endCaptures:
+      '0': {name: punctuation.definition.string.end.tsx}
+    patterns:
+    - include: '#jsx-entities'
+
+  jsx-string-single-quoted:
+    name: string.quoted.single.tsx
+    begin: "'"
+    end: "'"
+    beginCaptures:
+      '0': {name: punctuation.definition.string.begin.tsx}
+    endCaptures:
+      '0': {name: punctuation.definition.string.end.tsx}
+    patterns:
+    - include: '#jsx-entities'
+
+  jsx-tag-attributes-illegal:
+    name: invalid.illegal.attribute.tsx
+    match: \S+
 
 ...
