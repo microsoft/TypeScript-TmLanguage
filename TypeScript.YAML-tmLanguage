@@ -5,6 +5,10 @@ scopeName: source.ts
 fileTypes: [ts]
 uuid: ef98eb90-bf9b-11e4-bb52-0800200c9a66
 
+variables:
+  identifier: '[_$[:alpha:]][_$[:alnum:]]*'
+  constantIdentifier: '[[:upper:]][_$[:digit:][:upper:]]*'
+
 patterns:
 - include: '#directives'
 - include: '#statements'
@@ -123,16 +127,16 @@ repository:
       # function assignment |
       # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
       begin: |-
-        (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
+        (?x)({{identifier}})(?=\s*
           (=\s*(
             ((async\s+)?(
               (function\s*[(<*]) |
               (function\s+) |
-              ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+              ({{identifier}}\s*=>)
             )) |
             ((async\s*)?(
-              ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-              ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+              ([(]\s*(([)]\s*:)|({{identifier}}\s*:)|(\.\.\.) )) |
+              ([<]\s*{{identifier}}((\s+extends\s*[^=>])|(\s*[,]))) |
               ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?\s*=>)
             ))
           )) |
@@ -154,14 +158,14 @@ repository:
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
-      begin: ([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
+      begin: ({{constantIdentifier}})(?![_$[:alnum:]])
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
-      begin: ([_$[:alpha:]][_$[:alnum:]]*)
+      begin: ({{identifier}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
@@ -194,7 +198,7 @@ repository:
   object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
+    - begin: (?=(({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
       end: (?=,|\})
       patterns:
       - include: '#object-binding-element-propertyName'
@@ -205,7 +209,7 @@ repository:
     - include: '#punctuation-comma'
 
   object-binding-element-propertyName:
-    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
+    begin: (?=(({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
     end: (:)
     endCaptures:
       '0': { name: punctuation.destructuring.ts }
@@ -213,7 +217,7 @@ repository:
     - include: '#string'
     - include: '#array-literal'
     - name: variable.object.property.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+      match: ({{identifier}})
 
   binding-element:
     patterns:
@@ -224,7 +228,7 @@ repository:
     - include: '#variable-initializer'
 
   destructuring-variable-rest:
-    match: (?:(\.\.\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)
+    match: (?:(\.\.\.)\s*)?({{identifier}})
     captures:
       '1': { name: keyword.operator.rest.ts }
       '2': { name: meta.definition.variable.ts variable.other.readwrite.ts }
@@ -260,16 +264,16 @@ repository:
     # function assignment |
     # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
     - match: |-
-        (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=\s*
+        (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)(?:(this)|({{identifier}}))\s*(\??)(?=\s*
           (=\s*(
             ((async\s+)?(
               (function\s*[(<*]) |
               (function\s+) |
-              ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+              ({{identifier}}\s*=>)
             )) |
             ((async\s*)?(
-              ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-              ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+              ([(]\s*(([)]\s*:)|({{identifier}}\s*:)|(\.\.\.) )) |
+              ([<]\s*{{identifier}}((\s+extends\s*[^=>])|(\s*[,]))) |
               ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?\s*=>)
             ))
           )) |
@@ -291,7 +295,7 @@ repository:
         '3': { name: entity.name.function.ts variable.language.this.ts }
         '4': { name: entity.name.function.ts }
         '5': { name: keyword.operator.optional.ts }
-    - match: (?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)(?:((?<!\.|\$)\bthis\b(?!\.|\$))|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)
+    - match: (?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:)(?:((?<!\.|\$)\bthis\b(?!\.|\$))|({{identifier}}))\s*(\??)
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
@@ -324,7 +328,7 @@ repository:
   parameter-object-binding-element:
     patterns:
     - include: '#comment'
-    - begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
+    - begin: (?=(({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(:))
       end: (?=,|\})
       patterns:
       - include: '#object-binding-element-propertyName'
@@ -343,7 +347,7 @@ repository:
     - include: '#variable-initializer'
 
   destructuring-parameter-rest:
-    match: (?:(\.\.\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)
+    match: (?:(\.\.\.)\s*)?({{identifier}})
     captures:
       '1': { name: keyword.operator.rest.ts }
       '2': { name: variable.parameter.ts }
@@ -373,14 +377,14 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
+    begin: (?<!\()(?:(?<!\.|\$)\b(readonly)\s+)?(?=(({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: (?=\}|;|,|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
+    end: (?=\}|;|,|$|(^(?!(({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
-    - begin: (?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
-      end: (?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
+    - begin: (?=((?:{{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))
+      end: (?=[};,=]|$|(^(?!(({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?<=\})
       patterns:
       - include: '#type-annotation'
       - include: '#string'
@@ -390,16 +394,16 @@ repository:
         # function assignment |
         # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
         match: |-
-          (?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
+          (?x)({{identifier}})(?=(\?\s*)?\s*
             (=\s*(
               ((async\s+)?(
                 (function\s*[(<*]) |
                 (function\s+) |
-                ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+                ({{identifier}}\s*=>)
               )) |
               ((async\s*)?(
-                ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-                ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+                ([(]\s*(([)]\s*:)|({{identifier}}\s*:)|(\.\.\.) )) |
+                ([<]\s*{{identifier}}((\s+extends\s*[^=>])|(\s*[,]))) |
                 ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?\s*=>)
               ))
             )) |
@@ -416,7 +420,7 @@ repository:
             ))
           )
       - name: meta.definition.property.ts variable.object.property.ts
-        match: '[_$[:alpha:]][_$[:alnum:]]*'
+        match: '{{identifier}}'
       - name: keyword.operator.optional.ts
         match: \?
 
@@ -440,7 +444,7 @@ repository:
   #functions, methods, function expressions, arrows, indexers
   function-declaration:
     name: meta.function.ts
-    begin: (?<!\.|\$)\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*
+    begin: (?<!\.|\$)\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))({{identifier}}))?\s*
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.async.ts }
@@ -453,7 +457,7 @@ repository:
 
   function-expression:
     name: meta.function.expression.ts
-    begin: (?<!\.|\$)\b(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*
+    begin: (?<!\.|\$)\b(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))({{identifier}}))?\s*
     beginCaptures:
       '1': { name: storage.modifier.async.ts }
       '2': { name: storage.type.function.ts }
@@ -475,7 +479,7 @@ repository:
     patterns:
     # method, accessor
     - name: meta.method.declaration.ts
-      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
+      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -488,7 +492,7 @@ repository:
       - include: '#function-body'
     # new, constructor or call signature
     - name: meta.method.declaration.ts
-      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\<]))
+      begin: (?<!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\<]))
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -503,7 +507,7 @@ repository:
 
   object-literal-method-declaration:
     name: meta.method.declaration.ts
-    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
+    begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
     beginCaptures:
       '1': { name: storage.modifier.async.ts } # captures keyword (async)
       '2': { name: storage.type.property.ts } # captures keyword (get|set)
@@ -512,7 +516,7 @@ repository:
     patterns:
     - include: '#method-declaration-name'
     - include: '#function-body'
-    - begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
+    - begin: (?<!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\<])
       beginCaptures:
         '1': { name: storage.modifier.async.ts } # captures keyword (async)
         '2': { name: storage.type.property.ts } # captures keyword (get|set)
@@ -522,13 +526,13 @@ repository:
       - include: '#method-declaration-name'
 
   method-declaration-name:
-    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??)\s*[\(\<])
+    begin: (?=(({{identifier}})|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??)\s*[\(\<])
     end: (?=\(|\<)
     patterns:
     - include: '#string'
     - include: '#array-literal'
     - name: meta.definition.method.ts entity.name.function.ts
-      match: '[_$[:alpha:]][_$[:alnum:]]*'
+      match: '{{identifier}}'
     - name: keyword.operator.optional.ts
       match: \?
 
@@ -536,7 +540,7 @@ repository:
     patterns:
     # arrow with single parameter without parenthesis
     - name: meta.arrow.ts
-      match: (?:(?<!\.|\$)(\basync)\s+)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==>)
+      match: (?:(?<!\.|\$)(\basync)\s+)?({{identifier}})\s*(?==>)
       captures:
         '1': { name: storage.modifier.async.ts }
         '2': { name: variable.parameter.ts }
@@ -554,11 +558,11 @@ repository:
               [(]\s*
               (
                 ([)]\s*:) |                                                                        # ():
-                ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                      # [(]param: | [(]...param:
+                ((\.\.\.\s*)?{{identifier}}\s*:)                                      # [(]param: | [(]...param:
               )
             ) |
             (
-              [<]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=>]                                  # < typeparam extends
+              [<]\s*{{identifier}}\s+extends\s*[^=>]                                  # < typeparam extends
             ) |
             # arrow function possible to detect only with => on same line
             (
@@ -590,7 +594,7 @@ repository:
 
   indexer-declaration:
     name: meta.indexer.declaration.ts
-    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)
+    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)\s*({{identifier}})\s*(?=:)
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: meta.brace.square.ts }
@@ -604,7 +608,7 @@ repository:
 
   indexer-mapped-type-declaration:
     name: meta.indexer.mappedtype.declaration.ts
-    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s+(in)\s+
+    begin: (?:(?<!\.|\$)\b(readonly)\s*)?(\[)\s*({{identifier}})\s+(in)\s+
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: meta.brace.square.ts }
@@ -661,7 +665,7 @@ repository:
     patterns:
     - include: '#comment'
     - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
-    - match: '[_$[:alpha:]][_$[:alnum:]]*'
+    - match: '{{identifier}}'
       captures:
         '0': { name: 'entity.name.type.class.ts' }
     - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
@@ -678,7 +682,7 @@ repository:
     patterns:
     - include: '#comment'
     - include: '#class-or-interface-heritage' # Must be before object-name to consume the "extends" keyword.
-    - match: '[_$[:alpha:]][_$[:alnum:]]*'
+    - match: '{{identifier}}'
       captures:
         '0': { name: 'entity.name.type.interface.ts' }
     - include: '#type-parameters' # Must be applied after object-name e.g. interface KeyValuePair<K, V>
@@ -695,11 +699,11 @@ repository:
     - include: '#comment'
     - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
-    - match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)(?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)*\s*([,<{]|extends|implements|//|/\*))
+    - match: ({{identifier}})\s*(\.)(?=\s*{{identifier}}(\s*\.\s*{{identifier}})*\s*([,<{]|extends|implements|//|/\*))
       captures:
         '1': { name: entity.name.type.module.ts }
         '2': { name: punctuation.accessor.ts }
-    - match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\s*([,<{]|extends|implements|//|/\*))
+    - match: ({{identifier}})(?=\s*([,<{]|extends|implements|//|/\*))
       captures:
         '1': { name: entity.other.inherited-class.ts }
     - include: '#expression'
@@ -739,7 +743,7 @@ repository:
   #enum
   enum-declaration:
     name: meta.enum.declaration.ts
-    begin: (?<!\.|\$)(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)
+    begin: (?<!\.|\$)(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+({{identifier}})
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts}
@@ -756,7 +760,7 @@ repository:
         '0': { name: punctuation.definition.block.ts }
       patterns:
       - include: '#comment'
-      - begin: ([_$[:alpha:]][_$[:alnum:]]*)
+      - begin: ({{identifier}})
         beginCaptures:
           '0': { name: variable.other.enummember.ts }
         end: (?=,|\}|$)
@@ -784,14 +788,14 @@ repository:
     - include: '#comment'
     - include: '#string'
     - name: entity.name.type.module.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+      match: ({{identifier}})
     - include: '#punctuation-accessor'
     - include: '#decl-block'
 
   #type alias
   type-alias-declaration:
     name: meta.type.declaration.ts
-    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(type)\b\s+([_$[:alpha:]][_$[:alnum:]]*)\s*
+    begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(type)\b\s+({{identifier}})\s*
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.type.ts }
@@ -809,7 +813,7 @@ repository:
   import-equals-declaration:
     patterns:
     - name: meta.import-equals.external.ts
-      begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(require)\s*(\()
+      begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)\s+({{identifier}})\s*(=)\s*(require)\s*(\()
       beginCaptures:
         '1': { name: keyword.control.export.ts }
         '2': { name: keyword.control.import.ts }
@@ -824,7 +828,7 @@ repository:
         - include: '#comment'
         - include: '#string'
     - name: meta.import-equals.internal.ts
-      begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(?!require\b)
+      begin: (?<!\.|\$)(?:(\bexport)\s+)?\b(import)\s+({{identifier}})\s*(=)\s*(?!require\b)
       beginCaptures:
         '1': { name: keyword.control.export.ts }
         '2': { name: keyword.control.import.ts }
@@ -833,12 +837,12 @@ repository:
       end: (?=;|$|^)
       patterns:
         - include: '#comment'
-        - match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
+        - match: ({{identifier}})\s*(\.)
           captures:
             '1': { name: entity.name.type.module.ts }
             '2': { name: punctuation.accessor.ts }
         - name: variable.other.readwrite.ts
-          match: ([_$[:alpha:]][_$[:alnum:]]*)
+          match: ({{identifier}})
 
   import-declaration:
     name: meta.import.ts
@@ -852,7 +856,7 @@ repository:
 
   export-declaration:
     patterns:
-    - match: (?<!\.|\$)\b(export)\s+(as)\s+(namespace)\s+([_$[:alpha:]][_$[:alnum:]]*)
+    - match: (?<!\.|\$)\b(export)\s+(as)\s+(namespace)\s+({{identifier}})
       captures:
         '1': { name: keyword.control.export.ts }
         '2': { name: keyword.control.as.ts }
@@ -900,8 +904,8 @@ repository:
     - include: '#comment'
     - comment: (default|*|name) as alias
       match: |-
-        (?x) (?: \b(default)\b | (\*) | ([_$[:alpha:]][_$[:alnum:]]*)) \s+
-          (as) \s+ (?: (\b default \b | \*) | ([_$[:alpha:]][_$[:alnum:]]*))
+        (?x) (?: \b(default)\b | (\*) | ({{identifier}})) \s+
+          (as) \s+ (?: (\b default \b | \*) | ({{identifier}}))
       captures:
         '1': { name: keyword.control.default.ts }
         '2': { name: constant.language.import-export-all.ts }
@@ -915,7 +919,7 @@ repository:
     - name: keyword.control.default.ts
       match: \b(default)\b
     - name: variable.other.readwrite.alias.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)
+      match: ({{identifier}})
 
   #control statements and loops
   switch-statement:
@@ -1022,15 +1026,15 @@ repository:
         '1': { name: constant.numeric.decimal.ts }
     - name: meta.object.member.ts
       match: |-
-        (?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:\s*(
+        (?x)(?:({{identifier}})\s*(?=:\s*(
           ((async\s+)?(
             (function\s*[(<*]) |
             (function\s+) |
-            ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+            ({{identifier}}\s*=>)
           )) |
           ((async\s*)?(
-            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+            ([(]\s*(([)]\s*:)|({{identifier}}\s*:)|(\.\.\.) )) |
+            ([<]\s*{{identifier}}((\s+extends\s*[^=>])|(\s*[,]))) |
             ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?\s*=>)
           ))
         )))
@@ -1038,7 +1042,7 @@ repository:
         '0': { name: meta.object-literal.key.ts }
         '1': { name: entity.name.function.ts }
     - name: meta.object.member.ts
-      match: (?:[_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)
+      match: (?:{{identifier}})\s*(?=:)
       captures:
         '0': { name: meta.object-literal.key.ts }
     - name: meta.object.member.ts
@@ -1049,11 +1053,11 @@ repository:
       patterns:
       - include: '#expression'
     - name: meta.object.member.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(?=,|\}|$)
+      match: ({{identifier}})\s*(?=,|\}|$)
       captures:
         '1': { name: variable.other.readwrite.ts }
     - name: meta.object.member.ts
-      begin: (?=[_$[:alpha:]][_$[:alnum:]]*\s*=)
+      begin: (?={{identifier}}\s*=)
       end: (?=,|\}|$)
       patterns:
       - include: '#expression'
@@ -1080,11 +1084,11 @@ repository:
 
   #function call and new expression
   function-call:
-    begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
-    end: (?<=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
+    begin: (?=(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}})\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
+    end: (?<=\))(?!(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}})\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
     patterns:
     - name: meta.function-call.ts
-      begin: (?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))
+      begin: (?=(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}}))
       end: (?=\s*(<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\()
       patterns:
       - include: '#literal'
@@ -1094,7 +1098,7 @@ repository:
       - name: keyword.operator.expression.import.ts
         match: (?![\.\$])\bimport(?=\s*[\(]\s*[\"\'\`])
       - name: entity.name.function.ts
-        match: ([_$[:alpha:]][_$[:alnum:]]*)
+        match: ({{identifier}})
     - include: '#comment'
     - name: meta.type.parameters.ts
       begin: \<
@@ -1113,7 +1117,7 @@ repository:
     begin: (?<!\.|\$)\b(new)\b(?!\$|\.)
     beginCaptures:
       '1': { name: keyword.operator.new.ts }
-    end: (?<=\))|(?=[;),}\]]|$|((?<!\.|\$)\bnew\b(?!\$|\.))|((?<!\.|\$)\bfunction((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))
+    end: (?<=\))|(?=[;),}\]]|$|((?<!\.|\$)\bnew\b(?!\$|\.))|((?<!\.|\$)\bfunction((\s+{{identifier}})|(\s*[\(]))))
     patterns:
     - include: '#paren-expression'
     - include: '#class-declaration'
@@ -1151,7 +1155,7 @@ repository:
       # < appears on new line allow only <Identifier> as type assertion
       # This allows treating '<' on new line as relation operator in other cases.
       # People writing one operator on new line and second one on same line should be rare to allow this.
-      begin: (?:(?<=^))\s*(<)(?=[_$[:alpha:]][_$[:alnum:]]*\s*>)
+      begin: (?:(?<=^))\s*(<)(?={{identifier}}\s*>)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
       end: (\>)\s*
@@ -1577,15 +1581,15 @@ repository:
     - include: '#object-identifiers'
     # function and method assignment
     - match: |-
-        (?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
+        (?x)(?:(\.)\s*)?({{identifier}})(?=\s*=\s*(
           ((async\s+)?(
             (function\s*[(<*]) |
             (function\s+) |
-            ([_$[:alpha:]][_$[:alnum:]]*\s*=>)
+            ({{identifier}}\s*=>)
           )) |
           ((async\s*)?(
-            ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-            ([<]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=>])|(\s*[,]))) |
+            ([(]\s*(([)]\s*:)|({{identifier}}\s*:)|(\.\.\.) )) |
+            ([<]\s*{{identifier}}((\s+extends\s*[^=>])|(\s*[,]))) |
             ((<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?\s*=>)
           ))
         ))
@@ -1593,33 +1597,33 @@ repository:
         '1': { name: punctuation.accessor.ts }
         '2': { name: entity.name.function.ts }
     # const properties
-    - match: (\.)\s*([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
+    - match: (\.)\s*({{constantIdentifier}})(?![_$[:alnum:]])
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: variable.other.constant.property.ts }
     # properties
-    - match: (\.)\s*([_$[:alpha:]][_$[:alnum:]]*)
+    - match: (\.)\s*({{identifier}})
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: variable.other.property.ts }
     # const
     - name: variable.other.constant.ts
-      match: ([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])
+      match: ({{constantIdentifier}})(?![_$[:alnum:]])
     # vars
     - name: variable.other.readwrite.ts
-      match: '[_$[:alpha:]][_$[:alnum:]]*'
+      match: '{{identifier}}'
 
   object-identifiers:
     patterns:
     # class
     - name: support.class.ts
-      match: ([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))
+      match: ({{identifier}})(?=\s*\.\s*prototype\b(?!\$))
     # object properties
     - match: |-
         (?x)(\.)\s*(?:
-          ([[:upper:]][_$[:digit:][:upper:]]*) |
-          ([_$[:alpha:]][_$[:alnum:]]*)
-        )(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)
+          ({{constantIdentifier}}) |
+          ({{identifier}})
+        )(?=\s*\.\s*{{identifier}})
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: variable.other.constant.object.property.ts }
@@ -1627,9 +1631,9 @@ repository:
     # objects
     - match: |-
         (?x)(?:
-          ([[:upper:]][_$[:digit:][:upper:]]*) |
-          ([_$[:alpha:]][_$[:alnum:]]*)
-        )(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)
+          ({{constantIdentifier}}) |
+          ({{identifier}})
+        )(?=\s*\.\s*{{identifier}})
       captures:
         '1': { name: variable.other.constant.object.ts }
         '2': { name: variable.other.object.ts }
@@ -1888,12 +1892,12 @@ repository:
   #name of the type
   type-name:
     patterns:
-    - match: ([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)
+    - match: ({{identifier}})\s*(\.)
       captures:
         '1': { name: entity.name.type.module.ts }
         '2': { name: punctuation.accessor.ts }
     - name: entity.name.type.ts
-      match: '[_$[:alpha:]][_$[:alnum:]]*'
+      match: '{{identifier}}'
 
   #punctuations
   punctuation-comma:
@@ -1944,7 +1948,7 @@ repository:
 
   template:
     name: string.template.ts
-    begin: '([_$[:alpha:]][_$[:alnum:]]*)?(`)'
+    begin: '({{identifier}})?(`)'
     beginCaptures:
       '1': { name: entity.name.function.tagged-template.ts }
       '2': { name: punctuation.definition.string.template.begin.ts }
