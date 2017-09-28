@@ -390,30 +390,46 @@
             <string>meta.var-single-variable.expr.tsx</string>
             <key>begin</key>
             <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
-  (=\s*(
-    ((async\s+)?(
-      (function\s*[(&lt;*]) |
-      (function\s+) |
-      ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
-    )) |
-    ((async\s*)?(
-      ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-      ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-      ((&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?\s*=&gt;)
-    ))
+# function assignment |
+(=\s*(
+  ((async\s+)?(
+    (function\s*[(&lt;*]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
-  (:\s*(
-    (&lt;) |
-    ([(]\s*(
-      ([)]) |
-      (\.\.\.) |
-      ([_$[:alnum:]]+\s*(
-        ([:,?=])|
-        ([)]\s*=&gt;)
-      ))
+  ((async\s*)?(
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  \((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)    # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
+  ))
+)) |
+# typeannotation is fn type: &lt; | () | (... | (param: | (param, | (param? | (param= | (param) =&gt;
+(:\s*(
+  (&lt;) |
+  ([(]\s*(
+    ([)]) |
+    (\.\.\.) |
+    ([_$[:alnum:]]+\s*(
+      ([:,?=])|
+      ([)]\s*=&gt;)
     ))
   ))
-)</string>
+)))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -762,30 +778,46 @@
           <dict>
             <key>match</key>
             <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=\s*
-  (=\s*(
-    ((async\s+)?(
-      (function\s*[(&lt;*]) |
-      (function\s+) |
-      ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
-    )) |
-    ((async\s*)?(
-      ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-      ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-      ((&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?\s*=&gt;)
-    ))
+# function assignment |
+(=\s*(
+  ((async\s+)?(
+    (function\s*[(&lt;*]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
-  (:\s*(
-    (&lt;) |
-    ([(]\s*(
-      ([)]) |
-      (\.\.\.) |
-      ([_$[:alnum:]]+\s*(
-        ([:,?=])|
-        ([)]\s*=&gt;)
-      ))
+  ((async\s*)?(
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  \((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)    # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
+  ))
+)) |
+# typeannotation is fn type: &lt; | () | (... | (param: | (param, | (param? | (param= | (param) =&gt;
+(:\s*(
+  (&lt;) |
+  ([(]\s*(
+    ([)]) |
+    (\.\.\.) |
+    ([_$[:alnum:]]+\s*(
+      ([:,?=])|
+      ([)]\s*=&gt;)
     ))
   ))
-)</string>
+)))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -1106,7 +1138,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?=((?:[_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
             <key>end</key>
             <string>(?=[};,=]|$|(^(?!(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
             <key>patterns</key>
@@ -1132,30 +1164,46 @@
                 <string>meta.definition.property.tsx entity.name.function.tsx</string>
                 <key>match</key>
                 <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
-  (=\s*(
-    ((async\s+)?(
-      (function\s*[(&lt;*]) |
-      (function\s+) |
-      ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
-    )) |
-    ((async\s*)?(
-      ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-      ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-      ((&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?\s*=&gt;)
-    ))
+# function assignment |
+(=\s*(
+  ((async\s+)?(
+    (function\s*[(&lt;*]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
-  (:\s*(
-    (&lt;) |
-    ([(]\s*(
-      ([)]) |
-      (\.\.\.) |
-      ([_$[:alnum:]]+\s*(
-        ([:,?=])|
-        ([)]\s*=&gt;)
-      ))
+  ((async\s*)?(
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  \((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)    # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
+  ))
+)) |
+# typeannotation is fn type: &lt; | () | (... | (param: | (param, | (param? | (param= | (param) =&gt;
+(:\s*(
+  (&lt;) |
+  ([(]\s*(
+    ([)]) |
+    (\.\.\.) |
+    ([_$[:alnum:]]+\s*(
+      ([:,?=])|
+      ([)]\s*=&gt;)
     ))
   ))
-)</string>
+)))</string>
               </dict>
               <dict>
                 <key>name</key>
@@ -1566,23 +1614,23 @@
 )? ((?&lt;![})!\]])\s*
   (?=
     # sure shot arrow functions even if =&gt; is on new line
-    (
-      [(]\s*
-      (
-        ([)]\s*:) |                                                                        # ():
-        ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                      # [(]param: | [(]...param:
-      )
-    ) |
-    (
-      [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                  # &lt; typeparam extends
-    ) |
-    # arrow function possible to detect only with =&gt; on same line
-    (
-      (&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?  # typeparameters
-      \((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)           # parameteres
-      (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                       # return type
-      \s*=&gt;                                                                                # arrow operator
-    )
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  \((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)    # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
   )
 )</string>
             <key>beginCaptures</key>
@@ -3048,9 +3096,24 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
   ((async\s*)?(
-    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?\s*=&gt;)
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  \((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)    # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
   ))
 )))</string>
             <key>captures</key>
@@ -3644,7 +3707,7 @@
   (?:\b[0-9]+(\.)[0-9]+[eE][+-]?[0-9]+\b)| # 1.1E+3
   (?:\b[0-9]+(\.)[eE][+-]?[0-9]+\b)|       # 1.E+3
   (?:\B(\.)[0-9]+[eE][+-]?[0-9]+\b)|       # .1E+3
-  (?:\b[0-9]+[eE][+-]?[0-9]+\b)|            # 1E+3
+  (?:\b[0-9]+[eE][+-]?[0-9]+\b)|           # 1E+3
   (?:\b[0-9]+(\.)[0-9]+\b)|                # 1.1
   (?:\b[0-9]+(\.)\B)|                      # 1.
   (?:\B(\.)[0-9]+\b)|                      # .1
@@ -4212,9 +4275,24 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
   ((async\s*)?(
-    ([(]\s*(([)]\s*:)|([_$[:alpha:]][_$[:alnum:]]*\s*:)|(\.\.\.) )) |
-    ([&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s*[^=&gt;])|(\s*[,]))) |
-    ((&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)(\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?\s*=&gt;)
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*[_$[:alpha:]\{\(]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  \((\s*[_$[:alpha:]\{\(]([^()]|\((\s*[_$[:alpha:]\{\(]\{\(][^()]*)?\))*)?\)    # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
   ))
 ))</string>
             <key>captures</key>
