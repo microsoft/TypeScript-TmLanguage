@@ -17,20 +17,25 @@ function changeTsToTsx(str: string) {
     return str.replace(/\.ts/g, '.tsx');
 }
 
-function fixRuleNames(rule: any, name: string) {
-    if (typeof rule[name] === 'string') {
-        rule[name] = changeTsToTsx(rule[name]);
+function transformGrammarRule(rule: any, propertyNames: string[], transformProperty: (ruleProperty: string) => string) {
+    for (const propertyName of propertyNames) {
+        if (typeof rule[propertyName] === 'string') {
+            rule[propertyName] = transformProperty(rule[propertyName]);
+        }
+    }
+
+    for (var propertyName in rule) {
+        var value = rule[propertyName];
+        if (typeof value === 'object') {
+            transformGrammarRule(value, propertyNames, transformProperty);
+        }
     }
 }
 
-function fixGrammarScopeNames(rule: any) {
-    fixRuleNames(rule, "name");
-    fixRuleNames(rule, "contentName");
-    for (var property in rule) {
-        var value = rule[property];
-        if (typeof value === 'object') {
-            fixGrammarScopeNames(value);
-        }
+function transformGrammarRepository(grammar: any, propertyNames: string[], transformProperty: (ruleProperty: string) => string) {
+    const repository = grammar.repository;
+    for (let key in repository) {
+        transformGrammarRule(repository[key], propertyNames, transformProperty);
     }
 }
 
@@ -45,12 +50,10 @@ function changeTsToTsxGrammar(grammar: any) {
     }
 
     // Update scope names to .tsx
-    const repository = grammar.repository;
-    for (let key in repository) {
-        fixGrammarScopeNames(repository[key]);
-    }
+    transformGrammarRepository(grammar, ["name", "contentName"], changeTsToTsx);
 
     // Add repository items
+    const repository = grammar.repository;
     const updatesRepository = tsxUpdates.repository;
     for (let key in updatesRepository) {
         switch(key) {
@@ -67,8 +70,34 @@ function changeTsToTsxGrammar(grammar: any) {
     return grammar;
 }
 
+function replacePatternVariables(pattern: string, variableReplacers: VariableReplacer[]) {
+    let result = pattern;
+    for (const [variableName, value] of variableReplacers) {
+        result = result.replace(variableName, value);
+    }
+    return result;
+}
+
+type VariableReplacer = [RegExp, string];
+function updateGrammarVariables(grammar: any) {
+    if (grammar.variables !== undefined) {
+        const variables = grammar.variables;
+        delete grammar.variables;
+        const variableReplacers: VariableReplacer[] = [];
+        for (const variableName in variables) {
+            variableReplacers.push([new RegExp(`{{${variableName}}}`, "gim"), variables[variableName]]);
+        }
+        transformGrammarRepository(
+            grammar,
+            ["begin", "end", "match"],
+            pattern => replacePatternVariables(pattern, variableReplacers)
+        );
+    }
+    return grammar;
+}
+
 function buildGrammar() {
-    const tsGrammar = readYaml("../TypeScript.YAML-tmLanguage");
+    const tsGrammar = updateGrammarVariables(readYaml("../TypeScript.YAML-tmLanguage"));
 
     // Write TypeScript.tmLanguage
     writePlistFile(tsGrammar, "../TypeScript.tmLanguage");
