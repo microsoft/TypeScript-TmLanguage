@@ -1,0 +1,74 @@
+original file
+-----------------------------------
+if (a++ < b) {
+}
+
+export class A extends B {
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>if (a++ < b) {
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^^
+      source.ts keyword.operator.increment.ts
+        ^
+        source.ts
+         ^
+         source.ts keyword.operator.relational.ts
+          ^
+          source.ts
+           ^
+           source.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts
+              ^
+              source.ts meta.block.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.block.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>export class A extends B {
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^
+              source.ts meta.class.ts entity.name.type.class.ts
+               ^
+               source.ts meta.class.ts
+                ^^^^^^^
+                source.ts meta.class.ts storage.modifier.ts
+                       ^
+                       source.ts meta.class.ts
+                        ^
+                        source.ts meta.class.ts entity.other.inherited-class.ts
+                         ^
+                         source.ts meta.class.ts
+                          ^
+                          source.ts meta.class.ts punctuation.definition.block.ts
+                           ^^
+                           source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

@@ -1089,7 +1089,7 @@ repository:
       # If '<' is preceeded by 'return', 'throw', 'yield', or 'await', it's most likely a type assertion
       # If '=', '(', ',', ':', or '>' are followed by a '<', it is also likely a type assertion as otherwise it would be a syntax error
       # '<=' and '<<=' are cannot be type assertions, as they are assignment operators.
-      begin: (?:(?<=return|throw|yield|await|default|[=(,:>+*?]))\s*(<)(?!<?\=)
+      begin: (?:(?<=return|throw|yield|await|default|[=(,:>*?]|[^+]\+))\s*(<)(?!<?\=)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
       end: (\>)\s*
