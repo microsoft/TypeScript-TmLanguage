@@ -12,7 +12,7 @@ variables:
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   propertyName: (({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
-  typeParameters: (<\s*[_$[:alpha:]\{\(]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(]([^=<>]|=[^<])+\>)+>\s*)
+  typeParameters: (<\s*[_$[:alpha:]\{\(\[]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(\[]([^=<>]|=[^<])+\>)+>\s*)
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (
