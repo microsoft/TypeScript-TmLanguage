@@ -2707,11 +2707,8 @@
             <string>#comment</string>
           </dict>
           <dict>
-            <key>comment</key>
-            <string>(default|*|name) as alias</string>
             <key>match</key>
-            <string>(?x) (?: \b(default)\b | (\*) | ([_$[:alpha:]][_$[:alnum:]]*)) \s+
-  (as) \s+ (?: (\b default \b | \*) | ([_$[:alpha:]][_$[:alnum:]]*))</string>
+            <string>(?&lt;!\.|\$)(?:(\bdefault)|(\*)|(\b[_$[:alpha:]][_$[:alnum:]]*))\s+(as)\s+(\b[_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2735,11 +2732,6 @@
                 <string>keyword.control.as.tsx</string>
               </dict>
               <key>5</key>
-              <dict>
-                <key>name</key>
-                <string>invalid.illegal.tsx</string>
-              </dict>
-              <key>6</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.readwrite.alias.tsx</string>

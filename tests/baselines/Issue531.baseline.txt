@@ -1,0 +1,56 @@
+original file
+-----------------------------------
+class Test { }
+export {
+ Test as default
+};
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Test { }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+           ^
+           source.ts meta.class.ts
+            ^
+            source.ts meta.class.ts punctuation.definition.block.ts
+             ^
+             source.ts meta.class.ts
+              ^
+              source.ts meta.class.ts punctuation.definition.block.ts
+               ^^
+               source.ts
+>export {
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^^
+         source.ts meta.export.ts meta.block.ts
+> Test as default
+ ^
+ source.ts meta.export.ts meta.block.ts
+  ^^^^
+  source.ts meta.export.ts meta.block.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.export.ts meta.block.ts
+       ^^
+       source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^^^^
+          source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                 ^^
+                 source.ts meta.export.ts meta.block.ts
+>};
+ ^
+ source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts punctuation.terminator.statement.ts

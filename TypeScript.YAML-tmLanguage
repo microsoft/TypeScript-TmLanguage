@@ -860,17 +860,14 @@ repository:
   import-export-clause:
     patterns:
     - include: '#comment'
-    - comment: (default|*|name) as alias
-      match: |-
-        (?x) (?: \b(default)\b | (\*) | ({{identifier}})) \s+
-          (as) \s+ (?: (\b default \b | \*) | ({{identifier}}))
+    #(default|*|name) as alias
+    - match: (?<!\.|\$)(?:(\bdefault)|(\*)|(\b{{identifier}}))\s+(as)\s+(\b{{identifier}})
       captures:
         '1': { name: keyword.control.default.ts }
         '2': { name: constant.language.import-export-all.ts }
         '3': { name: variable.other.readwrite.ts }
         '4': { name: keyword.control.as.ts }
-        '5': { name: invalid.illegal.ts }
-        '6': { name: variable.other.readwrite.alias.ts }
+        '5': { name: variable.other.readwrite.alias.ts }
     - include: '#punctuation-comma'
     - name: constant.language.import-export-all.ts
       match: \*
