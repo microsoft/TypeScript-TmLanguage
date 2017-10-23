@@ -28,22 +28,21 @@ repository:
     patterns:
     - include: '#jsx-tag-without-attributes-in-expression'
     - include: '#jsx-tag-in-expression'
-    - include: '#jsx-tag-invalid'
 
   #jsx tags
   jsx-tag-without-attributes-in-expression:
     begin: |-
       (?x)
         (?<=[({\[,?=>:*]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
-        (?=(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
-    end: (?!\s*(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+        (?=(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
+    end: (?!\s*(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
     patterns:
     - include: '#jsx-tag-without-attributes'
 
   jsx-tag-without-attributes:
     name: meta.tag.without-attributes.tsx
-    begin: (<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>)
-    end: (</)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>)
+    begin: (<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>)
+    end: (</)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>)
     beginCaptures:
       '1': {name: punctuation.definition.tag.begin.tsx}
       '2': {name: entity.name.tag.tsx}
@@ -128,16 +127,11 @@ repository:
       patterns:
       - include: '#jsx-children'
 
-  jsx-tag-invalid:
-    name: invalid.illegal.tag.incomplete.tsx
-    match: <\s*>
-
   #jsx children
   jsx-children:
     patterns:
     - include: '#jsx-tag-without-attributes'
     - include: '#jsx-child-tag'
-    - include: '#jsx-tag-invalid'
     - include: '#jsx-evaluated-code'
     - include: '#jsx-entities'
 

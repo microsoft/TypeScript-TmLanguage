@@ -1,0 +1,154 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+<></>;
+<><span></span><><span></span></><div></div></>;
+
+<>
+    <span>hi</span>
+    <div>
+        <span>inside</span>
+    </div>
+</>;
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+><></>;
+ ^
+ source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+  ^
+  source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+   ^^
+   source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+     ^
+     source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+      ^
+      source.tsx punctuation.terminator.statement.tsx
+><><span></span><><span></span></><div></div></>;
+ ^
+ source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+  ^
+  source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+   ^
+   source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+    ^^^^
+    source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+        ^
+        source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+         ^^
+         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+           ^^^^
+           source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+               ^
+               source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                ^
+                source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                 ^
+                 source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                  ^
+                  source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                   ^^^^
+                   source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                       ^
+                       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                        ^^
+                        source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                          ^^^^
+                          source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                              ^
+                              source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                               ^^
+                               source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                 ^
+                                 source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                  ^
+                                  source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                   ^^^
+                                   source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                      ^
+                                      source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                       ^^
+                                       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                         ^^^
+                                         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                                            ^
+                                            source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                             ^^
+                                             source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                                               ^
+                                               source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                                                ^
+                                                source.tsx punctuation.terminator.statement.tsx
+>
+ ^
+ source.tsx
+><>
+ ^
+ source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+  ^
+  source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>    <span>hi</span>
+ ^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+     ^
+     source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+      ^^^^
+      source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+          ^
+          source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+           ^^
+           source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+             ^^
+             source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+               ^^^^
+               source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                   ^
+                   source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>    <div>
+ ^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+     ^
+     source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+      ^^^
+      source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+         ^
+         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>        <span>inside</span>
+ ^^^^^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+         ^
+         source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+          ^^^^
+          source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+              ^
+              source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+               ^^^^^^
+               source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+                     ^^
+                     source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                       ^^^^
+                       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+                           ^
+                           source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+>    </div>
+ ^^^^
+ source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+     ^^
+     source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+       ^^^
+       source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx
+          ^
+          source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+></>;
+ ^^
+ source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+   ^
+   source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+    ^
+    source.tsx punctuation.terminator.statement.tsx
