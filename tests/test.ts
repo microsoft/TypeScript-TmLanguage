@@ -55,7 +55,6 @@ function assertBaselinesMatch(file: string, generatedText: string) {
     if (fs.existsSync(baselineFile)) {
         chai.assert.equal(generatedText, fs.readFileSync(baselineFile, 'utf8'), "Expected baselines to match: " + file);
     } else {
-        fs.writeFileSync(baselineFile, generatedText) ;
         chai.assert(false, "New generated baseline");
     }
 }

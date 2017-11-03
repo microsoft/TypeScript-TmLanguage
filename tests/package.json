@@ -5,8 +5,10 @@
   "description": "",
   "main": "test.ts",
   "scripts": {
-    "pretest": "node ../build/build.js && tsc",
-    "test": "mocha --full-trace test.js"
+    "pretest": "tsc -p ../build && node ../build/build.js && tsc",
+    "test": "mocha --full-trace test.js",
+    "diff": "cross-env-shell $DIFF baselines generated",
+    "accept": "cpx generated/* baselines"
   },
   "dependencies": {
     "@types/chai": "latest",
@@ -16,5 +18,9 @@
     "mocha": "latest",
     "typescript": "latest",
     "vscode-textmate": "latest"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "cross-env": "^5.1.1"
   }
 }

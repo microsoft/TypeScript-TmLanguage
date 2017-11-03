@@ -30,4 +30,7 @@ npm install         # Installs dependencies required for building
 cd ../tests
 npm install         # Installs dependencies required for testing
 npm test            # Compiles & runs tests
+
+npm run diff        # Diffs the test baselines with generated one using tool set in environment variable DIFF
+npm run accept      # Accepts the test baselines
 ```
