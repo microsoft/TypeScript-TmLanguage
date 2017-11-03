@@ -13,6 +13,7 @@ variables:
   propertyName: (({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
   typeParameters: (<\s*[_$[:alpha:]\{\(\[]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(\[]([^=<>]|=[^<])+\>)+>\s*)
+  typeArguments: (<\s*[_$[:alpha:]\{\(\[\"\'\`]([^<>]|\<\s*[_$[:alpha:]\{\(\[\"\'\`][^<>]+\>)+>\s*)
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (
@@ -1028,12 +1029,12 @@ repository:
 
   #function call and new expression
   function-call:
-    begin: (?=(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}})\s*{{typeParameters}}?\()
-    end: (?<=\))(?!(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}})\s*{{typeParameters}}?\()
+    begin: (?=(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}})\s*{{typeArguments}}?\()
+    end: (?<=\))(?!(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}})\s*{{typeArguments}}?\()
     patterns:
     - name: meta.function-call.ts
       begin: (?=(({{identifier}}\s*\.\s*)*|(\.\s*)?)({{identifier}}))
-      end: (?=\s*{{typeParameters}}?\()
+      end: (?=\s*{{typeArguments}}?\()
       patterns:
       - include: '#literal'
       - include: '#support-objects'
