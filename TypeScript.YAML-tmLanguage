@@ -29,7 +29,7 @@ variables:
     # arrow function possible to detect only with => on same line
     (
       {{typeParameters}}?                                                           # typeparameters
-      \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[_$[:alpha:]\{\[][^()]*)?\))*)?\)         # parameteres
+      \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
       (\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?                                # return type
       \s*=>                                                                         # arrow operator
     )

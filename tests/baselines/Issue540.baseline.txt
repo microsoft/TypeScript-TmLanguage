@@ -1,0 +1,610 @@
+original file
+-----------------------------------
+// 1. Correct highlighting
+doSomething = (param, { a = "default" } = {}) => {
+    //noop
+}
+
+// 2. Incorrect highlighting - limitation of grammar
+doSomething = (param, { 
+    a = "default" 
+} = {}) => {
+    //noop
+}
+
+// 3. Correct highlighting
+doSomething(param, {
+    a = "default"
+} = {}) {
+    //noop
+}
+
+// 4. Correct highlighting
+doSomething(param, { a = "default" } = {}) {
+    //noop
+}
+
+// 5. Correct highlighting (notice config module)
+doSomething(param, {
+    a = config.get("a") 
+} = {}) {
+    //noop
+}
+
+// 6. Correct highlighting (notice config module)
+doSomething(param, { a = config.get("a") } = {}) {
+    //noop
+}
+
+// 7. Incorrect highlighting (notice config module) while 1. does
+doSomething = (param, { a = config.get("a")  } = {}) => {
+    //noop
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// 1. Correct highlighting
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>doSomething = (param, { a = "default" } = {}) => {
+ ^^^^^^^^^^^
+ source.ts entity.name.function.ts
+            ^
+            source.ts
+             ^
+             source.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.arrow.ts
+               ^
+               source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^^^^^
+                source.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                     ^
+                     source.ts meta.arrow.ts meta.parameters.ts punctuation.separator.parameter.ts
+                      ^
+                      source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                       ^
+                       source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+                        ^
+                        source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                         ^
+                         source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts variable.parameter.ts
+                          ^
+                          source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                           ^
+                           source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                             ^
+                             source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^^^^^
+                              source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts
+                                     ^
+                                     source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                      ^
+                                      source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                                       ^
+                                       source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+                                        ^
+                                        source.ts meta.arrow.ts meta.parameters.ts
+                                         ^
+                                         source.ts meta.arrow.ts meta.parameters.ts keyword.operator.assignment.ts
+                                          ^
+                                          source.ts meta.arrow.ts meta.parameters.ts
+                                           ^
+                                           source.ts meta.arrow.ts meta.parameters.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                            ^
+                                            source.ts meta.arrow.ts meta.parameters.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                             ^
+                                             source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                              ^
+                                              source.ts meta.arrow.ts
+                                               ^^
+                                               source.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                 ^
+                                                 source.ts meta.arrow.ts
+                                                  ^
+                                                  source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                                   ^^
+                                                   source.ts meta.arrow.ts meta.block.ts
+>    //noop
+ ^^^^
+ source.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^
+       source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>// 2. Incorrect highlighting - limitation of grammar
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>doSomething = (param, { 
+ ^^^^^^^^^^^
+ source.ts variable.other.readwrite.ts
+            ^
+            source.ts
+             ^
+             source.ts keyword.operator.assignment.ts
+              ^
+              source.ts
+               ^
+               source.ts meta.brace.round.ts
+                ^^^^^
+                source.ts variable.other.readwrite.ts
+                     ^
+                     source.ts punctuation.separator.comma.ts
+                      ^
+                      source.ts
+                       ^
+                       source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                        ^^^
+                        source.ts meta.objectliteral.ts
+>    a = "default" 
+ ^^^^
+ source.ts meta.objectliteral.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.objectliteral.ts meta.object.member.ts
+       ^
+       source.ts meta.objectliteral.ts meta.object.member.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.objectliteral.ts meta.object.member.ts
+         ^
+         source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+          ^^^^^^^
+          source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                 ^
+                 source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                  ^^
+                  source.ts meta.objectliteral.ts meta.object.member.ts
+>} = {}) => {
+ ^
+ source.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.objectliteral.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.objectliteral.ts punctuation.definition.block.ts
+       ^
+       source.ts meta.brace.round.ts
+        ^
+        source.ts
+         ^^
+         source.ts meta.arrow.ts storage.type.function.arrow.ts
+           ^
+           source.ts meta.arrow.ts
+            ^
+            source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+             ^^
+             source.ts meta.arrow.ts meta.block.ts
+>    //noop
+ ^^^^
+ source.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^
+       source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>// 3. Correct highlighting
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>doSomething(param, {
+ ^^^^^^^^^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^^^^^
+             source.ts variable.other.readwrite.ts
+                  ^
+                  source.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts
+                    ^
+                    source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                     ^^
+                     source.ts meta.objectliteral.ts
+>    a = "default"
+ ^^^^
+ source.ts meta.objectliteral.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.objectliteral.ts meta.object.member.ts
+       ^
+       source.ts meta.objectliteral.ts meta.object.member.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.objectliteral.ts meta.object.member.ts
+         ^
+         source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+          ^^^^^^^
+          source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                 ^
+                 source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.objectliteral.ts meta.object.member.ts
+>} = {}) {
+ ^
+ source.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.objectliteral.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.objectliteral.ts punctuation.definition.block.ts
+       ^
+       source.ts meta.brace.round.ts
+        ^
+        source.ts
+         ^
+         source.ts meta.block.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.block.ts
+>    //noop
+ ^^^^
+ source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^
+       source.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>// 4. Correct highlighting
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>doSomething(param, { a = "default" } = {}) {
+ ^^^^^^^^^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^^^^^
+             source.ts variable.other.readwrite.ts
+                  ^
+                  source.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts
+                    ^
+                    source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.objectliteral.ts
+                      ^
+                      source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.objectliteral.ts meta.object.member.ts
+                        ^
+                        source.ts meta.objectliteral.ts meta.object.member.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.objectliteral.ts meta.object.member.ts
+                          ^
+                          source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                           ^^^^^^^
+                           source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                                  ^
+                                  source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                   ^
+                                   source.ts meta.objectliteral.ts meta.object.member.ts
+                                    ^
+                                    source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                     ^
+                                     source.ts
+                                      ^
+                                      source.ts keyword.operator.assignment.ts
+                                       ^
+                                       source.ts
+                                        ^
+                                        source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                          ^
+                                          source.ts meta.brace.round.ts
+                                           ^
+                                           source.ts
+                                            ^
+                                            source.ts meta.block.ts punctuation.definition.block.ts
+                                             ^^
+                                             source.ts meta.block.ts
+>    //noop
+ ^^^^
+ source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^
+       source.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>// 5. Correct highlighting (notice config module)
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>doSomething(param, {
+ ^^^^^^^^^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^^^^^
+             source.ts variable.other.readwrite.ts
+                  ^
+                  source.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts
+                    ^
+                    source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                     ^^
+                     source.ts meta.objectliteral.ts
+>    a = config.get("a") 
+ ^^^^
+ source.ts meta.objectliteral.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.objectliteral.ts meta.object.member.ts
+       ^
+       source.ts meta.objectliteral.ts meta.object.member.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.objectliteral.ts meta.object.member.ts
+         ^^^^^^
+         source.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts variable.other.object.ts
+               ^
+               source.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts punctuation.accessor.ts
+                ^^^
+                source.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts support.function.dom.ts
+                   ^
+                   source.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                    ^
+                    source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                     ^
+                     source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                      ^
+                      source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                       ^
+                       source.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                        ^^
+                        source.ts meta.objectliteral.ts meta.object.member.ts
+>} = {}) {
+ ^
+ source.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.objectliteral.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.objectliteral.ts punctuation.definition.block.ts
+       ^
+       source.ts meta.brace.round.ts
+        ^
+        source.ts
+         ^
+         source.ts meta.block.ts punctuation.definition.block.ts
+          ^^
+          source.ts meta.block.ts
+>    //noop
+ ^^^^
+ source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^
+       source.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>// 6. Correct highlighting (notice config module)
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>doSomething(param, { a = config.get("a") } = {}) {
+ ^^^^^^^^^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^^^^^
+             source.ts variable.other.readwrite.ts
+                  ^
+                  source.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts
+                    ^
+                    source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.objectliteral.ts
+                      ^
+                      source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.objectliteral.ts meta.object.member.ts
+                        ^
+                        source.ts meta.objectliteral.ts meta.object.member.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.objectliteral.ts meta.object.member.ts
+                          ^^^^^^
+                          source.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts variable.other.object.ts
+                                ^
+                                source.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts punctuation.accessor.ts
+                                 ^^^
+                                 source.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts support.function.dom.ts
+                                    ^
+                                    source.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                     ^
+                                     source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                      ^
+                                      source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                                       ^
+                                       source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                        ^
+                                        source.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                         ^
+                                         source.ts meta.objectliteral.ts meta.object.member.ts
+                                          ^
+                                          source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                           ^
+                                           source.ts
+                                            ^
+                                            source.ts keyword.operator.assignment.ts
+                                             ^
+                                             source.ts
+                                              ^
+                                              source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                               ^
+                                               source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                ^
+                                                source.ts meta.brace.round.ts
+                                                 ^
+                                                 source.ts
+                                                  ^
+                                                  source.ts meta.block.ts punctuation.definition.block.ts
+                                                   ^^
+                                                   source.ts meta.block.ts
+>    //noop
+ ^^^^
+ source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^
+       source.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>// 7. Incorrect highlighting (notice config module) while 1. does
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>doSomething = (param, { a = config.get("a")  } = {}) => {
+ ^^^^^^^^^^^
+ source.ts entity.name.function.ts
+            ^
+            source.ts
+             ^
+             source.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.arrow.ts
+               ^
+               source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^^^^^
+                source.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                     ^
+                     source.ts meta.arrow.ts meta.parameters.ts punctuation.separator.parameter.ts
+                      ^
+                      source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                       ^
+                       source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+                        ^
+                        source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                         ^
+                         source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts variable.parameter.ts
+                          ^
+                          source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                           ^
+                           source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                             ^^^^^^
+                             source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts meta.function-call.ts variable.other.object.ts
+                                   ^
+                                   source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts meta.function-call.ts punctuation.accessor.ts
+                                    ^^^
+                                    source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts meta.function-call.ts support.function.dom.ts
+                                       ^
+                                       source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts meta.brace.round.ts
+                                        ^
+                                        source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                         ^
+                                         source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts
+                                          ^
+                                          source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                           ^
+                                           source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts meta.brace.round.ts
+                                            ^^
+                                            source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts
+                                              ^
+                                              source.ts meta.arrow.ts meta.parameters.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+                                               ^
+                                               source.ts meta.arrow.ts meta.parameters.ts
+                                                ^
+                                                source.ts meta.arrow.ts meta.parameters.ts keyword.operator.assignment.ts
+                                                 ^
+                                                 source.ts meta.arrow.ts meta.parameters.ts
+                                                  ^
+                                                  source.ts meta.arrow.ts meta.parameters.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                   ^
+                                                   source.ts meta.arrow.ts meta.parameters.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                    ^
+                                                    source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                     ^
+                                                     source.ts meta.arrow.ts
+                                                      ^^
+                                                      source.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                        ^
+                                                        source.ts meta.arrow.ts
+                                                         ^
+                                                         source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                                          ^^
+                                                          source.ts meta.arrow.ts meta.block.ts
+>    //noop
+ ^^^^
+ source.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^
+       source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
