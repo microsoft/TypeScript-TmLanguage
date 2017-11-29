@@ -1,0 +1,188 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has cast
+let x = -<any>5;
+x = -<number>-x;
+x = +<number>x;
+<number>1 && <number>2 & <number>3 | <number>4 + <number>5 ^ <number>6 && (<number>5)
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has cast
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>let x = -<any>5;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+          ^
+          source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
+           ^^^
+           source.ts meta.var.expr.ts cast.expr.ts support.type.primitive.ts
+              ^
+              source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
+               ^
+               source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts
+>x = -<number>-x;
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts keyword.operator.arithmetic.ts
+      ^
+      source.ts cast.expr.ts meta.brace.angle.ts
+       ^^^^^^
+       source.ts cast.expr.ts support.type.primitive.ts
+             ^
+             source.ts cast.expr.ts meta.brace.angle.ts
+              ^
+              source.ts keyword.operator.arithmetic.ts
+               ^
+               source.ts variable.other.readwrite.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts
+>x = +<number>x;
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts keyword.operator.arithmetic.ts
+      ^
+      source.ts cast.expr.ts meta.brace.angle.ts
+       ^^^^^^
+       source.ts cast.expr.ts support.type.primitive.ts
+             ^
+             source.ts cast.expr.ts meta.brace.angle.ts
+              ^
+              source.ts variable.other.readwrite.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+                ^^
+                source.ts
+><number>1 && <number>2 & <number>3 | <number>4 + <number>5 ^ <number>6 && (<number>5)
+ ^
+ source.ts cast.expr.ts meta.brace.angle.ts
+  ^^^^^^
+  source.ts cast.expr.ts support.type.primitive.ts
+        ^
+        source.ts cast.expr.ts meta.brace.angle.ts
+         ^
+         source.ts constant.numeric.decimal.ts
+          ^
+          source.ts
+           ^^
+           source.ts keyword.operator.logical.ts
+             ^
+             source.ts cast.expr.ts
+              ^
+              source.ts cast.expr.ts meta.brace.angle.ts
+               ^^^^^^
+               source.ts cast.expr.ts support.type.primitive.ts
+                     ^
+                     source.ts cast.expr.ts meta.brace.angle.ts
+                      ^
+                      source.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts
+                        ^
+                        source.ts keyword.operator.bitwise.ts
+                         ^
+                         source.ts cast.expr.ts
+                          ^
+                          source.ts cast.expr.ts meta.brace.angle.ts
+                           ^^^^^^
+                           source.ts cast.expr.ts support.type.primitive.ts
+                                 ^
+                                 source.ts cast.expr.ts meta.brace.angle.ts
+                                  ^
+                                  source.ts constant.numeric.decimal.ts
+                                   ^
+                                   source.ts
+                                    ^
+                                    source.ts keyword.operator.bitwise.ts
+                                     ^
+                                     source.ts cast.expr.ts
+                                      ^
+                                      source.ts cast.expr.ts meta.brace.angle.ts
+                                       ^^^^^^
+                                       source.ts cast.expr.ts support.type.primitive.ts
+                                             ^
+                                             source.ts cast.expr.ts meta.brace.angle.ts
+                                              ^
+                                              source.ts constant.numeric.decimal.ts
+                                               ^
+                                               source.ts
+                                                ^
+                                                source.ts keyword.operator.arithmetic.ts
+                                                 ^
+                                                 source.ts cast.expr.ts
+                                                  ^
+                                                  source.ts cast.expr.ts meta.brace.angle.ts
+                                                   ^^^^^^
+                                                   source.ts cast.expr.ts support.type.primitive.ts
+                                                         ^
+                                                         source.ts cast.expr.ts meta.brace.angle.ts
+                                                          ^
+                                                          source.ts constant.numeric.decimal.ts
+                                                           ^
+                                                           source.ts
+                                                            ^
+                                                            source.ts keyword.operator.bitwise.ts
+                                                             ^
+                                                             source.ts cast.expr.ts
+                                                              ^
+                                                              source.ts cast.expr.ts meta.brace.angle.ts
+                                                               ^^^^^^
+                                                               source.ts cast.expr.ts support.type.primitive.ts
+                                                                     ^
+                                                                     source.ts cast.expr.ts meta.brace.angle.ts
+                                                                      ^
+                                                                      source.ts constant.numeric.decimal.ts
+                                                                       ^
+                                                                       source.ts
+                                                                        ^^
+                                                                        source.ts keyword.operator.logical.ts
+                                                                          ^
+                                                                          source.ts
+                                                                           ^
+                                                                           source.ts meta.brace.round.ts
+                                                                            ^
+                                                                            source.ts cast.expr.ts meta.brace.angle.ts
+                                                                             ^^^^^^
+                                                                             source.ts cast.expr.ts support.type.primitive.ts
+                                                                                   ^
+                                                                                   source.ts cast.expr.ts meta.brace.angle.ts
+                                                                                    ^
+                                                                                    source.ts constant.numeric.decimal.ts
+                                                                                     ^
+                                                                                     source.ts meta.brace.round.ts
