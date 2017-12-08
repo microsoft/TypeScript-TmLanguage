@@ -12,8 +12,14 @@ variables:
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   propertyName: (({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
-  typeParameters: (<\s*[_$[:alpha:]\{\(\[]([^<>=]|=[^<]|\<\s*[_$[:alpha:]\{\(\[]([^=<>]|=[^<])+\>)+>\s*)
-  typeArguments: (<\s*[_$[:alpha:]\{\(\[\"\'\`]([^<>]|\<\s*[_$[:alpha:]\{\(\[\"\'\`][^<>]+\>)+>\s*)
+  matchingParenthesis: (\([^\(\)]*\))
+  # Identifier start | matching braces | matching parenthesis | matching square brackets
+  typeParamersStart: ([_$[:alpha:]]|(\{[^\{\}]*\})|{{matchingParenthesis}}|(\[[^\[\]]*\]))
+  typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
+  # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
+  typeArgumentsStart: ({{typeParamersStart}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))
+  typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}'
+  typeArguments: (<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*\>)*>\s*)
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (

@@ -411,7 +411,7 @@
 ) |
 # arrow function possible to detect only with =&gt; on same line
 (
-  (&lt;\s*[_$[:alpha:]\{\(\[]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(\[]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
   (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
   \s*=&gt;                                                                         # arrow operator
@@ -799,7 +799,7 @@
 ) |
 # arrow function possible to detect only with =&gt; on same line
 (
-  (&lt;\s*[_$[:alpha:]\{\(\[]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(\[]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
   (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
   \s*=&gt;                                                                         # arrow operator
@@ -1185,7 +1185,7 @@
 ) |
 # arrow function possible to detect only with =&gt; on same line
 (
-  (&lt;\s*[_$[:alpha:]\{\(\[]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(\[]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
   (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
   \s*=&gt;                                                                         # arrow operator
@@ -1626,7 +1626,7 @@
 ) |
 # arrow function possible to detect only with =&gt; on same line
 (
-  (&lt;\s*[_$[:alpha:]\{\(\[]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(\[]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
   (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
   \s*=&gt;                                                                         # arrow operator
@@ -3101,7 +3101,7 @@
 ) |
 # arrow function possible to detect only with =&gt; on same line
 (
-  (&lt;\s*[_$[:alpha:]\{\(\[]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(\[]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
   (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
   \s*=&gt;                                                                         # arrow operator
@@ -3250,9 +3250,9 @@
       <key>function-call</key>
       <dict>
         <key>begin</key>
-        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;\s*[_$[:alpha:]\{\(\[\"\'\`]([^&lt;&gt;]|\&lt;\s*[_$[:alpha:]\{\(\[\"\'\`][^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
         <key>end</key>
-        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;\s*[_$[:alpha:]\{\(\[\"\'\`]([^&lt;&gt;]|\&lt;\s*[_$[:alpha:]\{\(\[\"\'\`][^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3261,7 +3261,7 @@
             <key>begin</key>
             <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))</string>
             <key>end</key>
-            <string>(?=\s*(&lt;\s*[_$[:alpha:]\{\(\[\"\'\`]([^&lt;&gt;]|\&lt;\s*[_$[:alpha:]\{\(\[\"\'\`][^&lt;&gt;]+\&gt;)+&gt;\s*)?\()</string>
+            <string>(?=\s*(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4056,7 +4056,7 @@
   |siblingBelow|size|source|specified|standby|start|status|statusbar|statusText|style|styleSheets|suffixes|summary
   |systemId|systemLanguage|tagName|tags|target|tBodies|text|textAlign|textDecoration|textIndent|textTransform|tFoot|tHead
   |title|toolbar|top|type|undefined|uniqueID|updateInterval|URL|URLUnencoded|useMap|userAgent|userLanguage|userProfile
-  |vAlign|value|valueType|vendor|vendorSub|version|visibility|vspace|whiteSpace|width|X[MS]LDocument|zIndex))\b(?!\$|\s*(&lt;\s*[_$[:alpha:]\{\(\[]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(\[]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?\()</string>
+  |vAlign|value|valueType|vendor|vendorSub|version|visibility|vspace|whiteSpace|width|X[MS]LDocument|zIndex))\b(?!\$|\s*(&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?\()</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4280,7 +4280,7 @@
 ) |
 # arrow function possible to detect only with =&gt; on same line
 (
-  (&lt;\s*[_$[:alpha:]\{\(\[]([^&lt;&gt;=]|=[^&lt;]|\&lt;\s*[_$[:alpha:]\{\(\[]([^=&lt;&gt;]|=[^&lt;])+\&gt;)+&gt;\s*)?                                                           # typeparameters
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
   (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
   \s*=&gt;                                                                         # arrow operator
