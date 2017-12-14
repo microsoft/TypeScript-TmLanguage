@@ -1,0 +1,74 @@
+original file
+-----------------------------------
+class a extends b, c { 
+}
+class a2 extends b, c
+{ 
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class a extends b, c { 
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^^^^^^^
+         source.ts meta.class.ts storage.modifier.ts
+                ^
+                source.ts meta.class.ts
+                 ^
+                 source.ts meta.class.ts entity.other.inherited-class.ts
+                  ^
+                  source.ts meta.class.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts meta.class.ts
+                    ^
+                    source.ts meta.class.ts entity.other.inherited-class.ts
+                     ^
+                     source.ts meta.class.ts
+                      ^
+                      source.ts meta.class.ts punctuation.definition.block.ts
+                       ^^^
+                       source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>class a2 extends b, c
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^
+       source.ts meta.class.ts entity.name.type.class.ts
+         ^
+         source.ts meta.class.ts
+          ^^^^^^^
+          source.ts meta.class.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts
+                  ^
+                  source.ts meta.class.ts entity.other.inherited-class.ts
+                   ^
+                   source.ts meta.class.ts punctuation.separator.comma.ts
+                    ^
+                    source.ts meta.class.ts
+                     ^
+                     source.ts meta.class.ts entity.other.inherited-class.ts
+                      ^^
+                      source.ts meta.class.ts
+>{ 
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^^
+  source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

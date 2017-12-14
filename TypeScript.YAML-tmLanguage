@@ -126,6 +126,12 @@ repository:
 
   expression:
     patterns:
+    - include: '#expressionWithoutIdentifiers'
+    - include: '#identifiers'
+    - include: '#expressionPunctuations'
+
+  expressionWithoutIdentifiers:
+    patterns:
     - include: '#string'
     - include: '#regex'
     - include: '#template'
@@ -141,8 +147,10 @@ repository:
     - include: '#function-call'
     - include: '#literal'
     - include: '#support-objects'
-    - include: '#identifiers'
     - include: '#paren-expression'
+
+  expressionPunctuations:
+    patterns:
     - include: '#punctuation-comma'
     - include: '#punctuation-accessor'
 
@@ -658,20 +666,22 @@ repository:
     beginCaptures:
       '1': { name: storage.modifier.ts }
     end: (?=\{)
-    endCaptures:
-      '1': { name: punctuation.definition.block.ts }
     patterns:
     - include: '#comment'
     - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
-    - match: ({{identifier}})\s*(\.)(?=\s*{{identifier}}(\s*\.\s*{{identifier}})*\s*([,<{]|extends|implements|//|/\*))
+    # match expressions before matching identifiers
+    - include: '#expressionWithoutIdentifiers'
+    # identifiers are treated as inherited class
+    - match: ({{identifier}})\s*(\.)(?=\s*{{identifier}}(\s*\.\s*{{identifier}})*\s*)
       captures:
         '1': { name: entity.name.type.module.ts }
         '2': { name: punctuation.accessor.ts }
-    - match: ({{identifier}})(?=\s*([,<{]|extends|implements|//|/\*))
+    - match: ({{identifier}})
       captures:
         '1': { name: entity.other.inherited-class.ts }
-    - include: '#expression'
+    # match punctuations of the expression
+    - include: '#expressionPunctuations'
 
   class-or-interface-body:
     begin: \{

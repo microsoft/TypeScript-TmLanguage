@@ -199,6 +199,24 @@
         <array>
           <dict>
             <key>include</key>
+            <string>#expressionWithoutIdentifiers</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#identifiers</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#expressionPunctuations</string>
+          </dict>
+        </array>
+      </dict>
+      <key>expressionWithoutIdentifiers</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
             <string>#string</string>
           </dict>
           <dict>
@@ -259,12 +277,14 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#identifiers</string>
-          </dict>
-          <dict>
-            <key>include</key>
             <string>#paren-expression</string>
           </dict>
+        </array>
+      </dict>
+      <key>expressionPunctuations</key>
+      <dict>
+        <key>patterns</key>
+        <array>
           <dict>
             <key>include</key>
             <string>#punctuation-comma</string>
@@ -2009,14 +2029,6 @@
         </dict>
         <key>end</key>
         <string>(?=\{)</string>
-        <key>endCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.block.ts</string>
-          </dict>
-        </dict>
         <key>patterns</key>
         <array>
           <dict>
@@ -2032,8 +2044,12 @@
             <string>#type-parameters</string>
           </dict>
           <dict>
+            <key>include</key>
+            <string>#expressionWithoutIdentifiers</string>
+          </dict>
+          <dict>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)(?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)*\s*([,&lt;{]|extends|implements|//|/\*))</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)(?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)*\s*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2050,7 +2066,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*([,&lt;{]|extends|implements|//|/\*))</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2062,7 +2078,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#expression</string>
+            <string>#expressionPunctuations</string>
           </dict>
         </array>
       </dict>

@@ -57,7 +57,7 @@ function changeTsToTsxGrammar(grammar: any) {
     const updatesRepository = tsxUpdates.repository;
     for (let key in updatesRepository) {
         switch(key) {
-            case "expression":
+            case "expressionWithoutIdentifiers":
                 // Update expression
                 repository[key].patterns.unshift(updatesRepository[key].patterns[0]);
                 break;
