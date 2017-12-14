@@ -281,6 +281,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#paren-expression-possibly-arrow</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#paren-expression</string>
           </dict>
         </array>
@@ -418,6 +422,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
   ((async\s*)?(
+    ([\(]\s*$) |                                                                # during lookup treat ( followed by line end as arrow
     # sure shot arrow functions even if =&gt; is on new line
 (
   [(]\s*
@@ -433,7 +438,7 @@
 (
   (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                                  # return type
   \s*=&gt;                                                                         # arrow operator
 )
   ))
@@ -806,6 +811,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
   ((async\s*)?(
+    ([\(]\s*$) |                                                                # during lookup treat ( followed by line end as arrow
     # sure shot arrow functions even if =&gt; is on new line
 (
   [(]\s*
@@ -821,7 +827,7 @@
 (
   (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                                  # return type
   \s*=&gt;                                                                         # arrow operator
 )
   ))
@@ -1192,6 +1198,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
   ((async\s*)?(
+    ([\(]\s*$) |                                                                # during lookup treat ( followed by line end as arrow
     # sure shot arrow functions even if =&gt; is on new line
 (
   [(]\s*
@@ -1207,7 +1214,7 @@
 (
   (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                                  # return type
   \s*=&gt;                                                                         # arrow operator
 )
   ))
@@ -1648,7 +1655,7 @@
 (
   (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                                  # return type
   \s*=&gt;                                                                         # arrow operator
 )
   )
@@ -1835,6 +1842,16 @@
             <string>punctuation.definition.parameters.end.tsx</string>
           </dict>
         </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#function-parameters-body</string>
+          </dict>
+        </array>
+      </dict>
+      <key>function-parameters-body</key>
+      <dict>
         <key>patterns</key>
         <array>
           <dict>
@@ -3104,6 +3121,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
   ((async\s*)?(
+    ([\(]\s*$) |                                                                # during lookup treat ( followed by line end as arrow
     # sure shot arrow functions even if =&gt; is on new line
 (
   [(]\s*
@@ -3119,7 +3137,7 @@
 (
   (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                                  # return type
   \s*=&gt;                                                                         # arrow operator
 )
   ))
@@ -3387,6 +3405,57 @@
           </dict>
         </array>
       </dict>
+      <key>paren-expression-possibly-arrow</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>(\()(?=\s*$)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.round.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\)</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.round.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#expressionWithoutIdentifiers</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#function-parameters-body</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#identifiers</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#expressionPunctuations</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#possibly-arrow-return-type</string>
+          </dict>
+        </array>
+      </dict>
       <key>paren-expression</key>
       <dict>
         <key>begin</key>
@@ -3414,10 +3483,6 @@
           <dict>
             <key>include</key>
             <string>#expression</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#punctuation-comma</string>
           </dict>
         </array>
       </dict>
@@ -4283,6 +4348,7 @@
     ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
   )) |
   ((async\s*)?(
+    ([\(]\s*$) |                                                                # during lookup treat ( followed by line end as arrow
     # sure shot arrow functions even if =&gt; is on new line
 (
   [(]\s*
@@ -4298,7 +4364,7 @@
 (
   (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
   \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                                  # return type
   \s*=&gt;                                                                         # arrow operator
 )
   ))
@@ -4573,6 +4639,40 @@
         </dict>
         <key>end</key>
         <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#arrow-return-type-body</string>
+          </dict>
+        </array>
+      </dict>
+      <key>possibly-arrow-return-type</key>
+      <dict>
+        <key>begin</key>
+        <string>(?&lt;=\))\s*(:)(?=\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+\s*=&gt;)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>meta.arrow.tsx meta.return.type.arrow.tsx keyword.operator.type.annotation.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
+        <key>contentName</key>
+        <string>meta.arrow.tsx meta.return.type.arrow.tsx</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#arrow-return-type-body</string>
+          </dict>
+        </array>
+      </dict>
+      <key>arrow-return-type-body</key>
+      <dict>
         <key>patterns</key>
         <array>
           <dict>

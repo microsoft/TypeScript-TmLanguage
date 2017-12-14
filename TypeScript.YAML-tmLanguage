@@ -20,6 +20,7 @@ variables:
   typeArgumentsStart: ({{typeParamersStart}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}'
   typeArguments: (<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*\>)*>\s*)
+  returnTypeOfArrow: '\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+'
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (
@@ -36,7 +37,7 @@ variables:
     (
       {{typeParameters}}?                                                           # typeparameters
       \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-      (\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?                                # return type
+      (\s*:{{returnTypeOfArrow}})?                                                  # return type
       \s*=>                                                                         # arrow operator
     )
   functionOrArrowLookup: |-
@@ -47,6 +48,7 @@ variables:
         ({{identifier}}\s*=>)
       )) |
       ((async\s*)?(
+        ([\(]\s*$) |                                                                # during lookup treat ( followed by line end as arrow
         {{arrowLookup}}
       ))
     )
@@ -66,6 +68,7 @@ variables:
         ))
       ))
     ))
+  arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
 
 patterns:
 - include: '#directives'
@@ -147,6 +150,7 @@ repository:
     - include: '#function-call'
     - include: '#literal'
     - include: '#support-objects'
+    - include: '#paren-expression-possibly-arrow'
     - include: '#paren-expression'
 
   expressionPunctuations:
@@ -548,7 +552,7 @@ repository:
         )
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
-      end: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
+      end: '{{arrowFunctionEnd}}'
       patterns:
       - include: '#comment'
       - include: '#type-parameters'
@@ -602,6 +606,10 @@ repository:
     end: \)
     endCaptures:
       '0': { name: punctuation.definition.parameters.end.ts }
+    patterns:
+    - include: '#function-parameters-body'
+
+  function-parameters-body:
     patterns:
     - include: '#comment'
     - include: '#decorator'
@@ -1084,6 +1092,23 @@ repository:
     - include: '#class-declaration'
     - include: '#type'
 
+  # when ( is followed by end of line, it could be arrow parameter decarations, so inside this match as if parameter falling back to expression
+  # but do this only from expression and as last resort
+  paren-expression-possibly-arrow:
+    patterns:
+    - begin: (\()(?=\s*$)
+      beginCaptures:
+        '1': {name: meta.brace.round.ts }
+      end: \)
+      endCaptures:
+        '0': {name: meta.brace.round.ts }
+      patterns:
+      - include: '#expressionWithoutIdentifiers'
+      - include: '#function-parameters-body'
+      - include: '#identifiers'
+      - include: '#expressionPunctuations'
+    - include: '#possibly-arrow-return-type'
+
   paren-expression:
     begin: \(
     beginCaptures:
@@ -1093,7 +1118,6 @@ repository:
       '0': {name: meta.brace.round.ts }
     patterns:
     - include: '#expression'
-    - include: '#punctuation-comma'
 
   #cast expression
   cast:
@@ -1645,7 +1669,21 @@ repository:
     begin: '(?<=\))\s*(:)'
     beginCaptures:
       '1': { name: keyword.operator.type.annotation.ts }
-    end: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
+    end: '{{arrowFunctionEnd}}'
+    patterns:
+    - include: '#arrow-return-type-body'
+
+  #This is the check if the exoression '): something =>'' can be matched as return type of arrow
+  possibly-arrow-return-type:
+    begin: (?<=\))\s*(:)(?={{returnTypeOfArrow}}\s*=>)
+    beginCaptures:
+      '1': { name: meta.arrow.ts meta.return.type.arrow.ts keyword.operator.type.annotation.ts }
+    end: '{{arrowFunctionEnd}}'
+    contentName: meta.arrow.ts meta.return.type.arrow.ts
+    patterns:
+    - include: '#arrow-return-type-body'
+
+  arrow-return-type-body:
     patterns:
     # TODO: handle the fn and constructor type specifically.
     # Handle returning of object type specifically here so as to not confuse it with the start of function block
