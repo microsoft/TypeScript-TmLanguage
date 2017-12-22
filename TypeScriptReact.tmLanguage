@@ -147,49 +147,49 @@
             <key>name</key>
             <string>keyword.control.trycatch.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(catch|finally|throw|try)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(catch|finally|throw|try)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.loop.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(break|continue|do|goto|while)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(break|continue|do|goto|while)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.flow.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(return)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(return)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.switch.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(case|default|switch)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(case|default|switch)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.conditional.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(else|if)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(else|if)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.with.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(with)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(with)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.other.debugger.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(debugger)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(debugger)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>storage.modifier.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(declare)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(declare)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
         </array>
       </dict>
@@ -304,7 +304,7 @@
         <key>name</key>
         <string>meta.decorator.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\@</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))\@</string>
         <key>beginCaptures</key>
         <dict>
           <key>0</key>
@@ -328,7 +328,7 @@
         <key>name</key>
         <string>meta.var.expr.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(var|let|const(?!\s+enum\b))\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(var|let|const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -797,7 +797,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=\s*
+            <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))\s*(\??)(?=\s*
 # function assignment |
 (=\s*(
   ((async\s+)?(
@@ -869,7 +869,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)(?:((?&lt;!\.|\$)\bthis\b(?!\.|\$))|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)</string>
+            <string>(?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?&lt;!=|:)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))\s*(\??)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -1139,7 +1139,7 @@
         <key>name</key>
         <string>meta.field.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\()(?:(?&lt;!\.|\$)\b(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
+        <string>(?&lt;!\()(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(readonly)\s+)?(?=(([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1294,7 +1294,7 @@
         <key>name</key>
         <string>meta.function.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1338,7 +1338,7 @@
         <key>name</key>
         <string>meta.function.expression.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1406,7 +1406,7 @@
             <key>name</key>
             <string>meta.method.declaration.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1453,7 +1453,7 @@
             <key>name</key>
             <string>meta.method.declaration.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!\$|\.|:))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!:)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))?\s*[\(\&lt;]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1508,7 +1508,7 @@
         <key>name</key>
         <string>meta.method.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1541,7 +1541,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=((([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\??))\s*[\(\&lt;])</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1610,7 +1610,7 @@
             <key>name</key>
             <string>meta.arrow.tsx</string>
             <key>match</key>
-            <string>(?:(?&lt;!\.|\$)(\basync)\s+)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
+            <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(\basync)\s+)?([_$[:alpha:]][_$[:alnum:]]*)\s*(?==&gt;)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -1630,7 +1630,7 @@
             <string>meta.arrow.tsx</string>
             <key>begin</key>
             <string>(?x) (?:
-  (?&lt;!\.|\$)(\basync)
+  (?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(\basync)
 )? ((?&lt;![})!\]])\s*
   (?=
     # sure shot arrow functions even if =&gt; is on new line
@@ -1717,7 +1717,7 @@
         <key>name</key>
         <string>meta.indexer.declaration.tsx</string>
         <key>begin</key>
-        <string>(?:(?&lt;!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)</string>
+        <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1764,7 +1764,7 @@
         <key>name</key>
         <string>meta.indexer.mappedtype.declaration.tsx</string>
         <key>begin</key>
-        <string>(?:(?&lt;!\.|\$)\b(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s+(in)\s+</string>
+        <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s+(in)\s+</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1874,7 +1874,7 @@
         <key>name</key>
         <string>meta.class.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(export)\s+)?\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1908,7 +1908,7 @@
         <key>name</key>
         <string>meta.class.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(class)\b(?=\s+|[&lt;{]|/[/*])</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(class)\b(?=\s+|[&lt;{]|/[/*])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1966,7 +1966,7 @@
         <key>name</key>
         <string>meta.interface.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(?:(export)\s+)?\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(export)\s+)?\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2022,7 +2022,7 @@
       <key>class-or-interface-heritage</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:\b(extends|implements)\b)(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:\b(extends|implements)\b)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2177,21 +2177,21 @@
         <key>name</key>
         <string>storage.modifier.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(abstract|public|protected|private|readonly|static)\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(abstract|public|protected|private|readonly|static)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>property-accessor</key>
       <dict>
         <key>name</key>
         <string>storage.type.property.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(get|set)\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(get|set)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>enum-declaration</key>
       <dict>
         <key>name</key>
         <string>meta.enum.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2313,7 +2313,7 @@
         <key>name</key>
         <string>meta.namespace.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(namespace|module)\s+(?=[_$[:alpha:]"'`])</string>
+        <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(namespace|module)\s+(?=[_$[:alpha:]"'`]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2360,7 +2360,7 @@
         <key>name</key>
         <string>meta.type.declaration.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(type)\b\s+([_$[:alpha:]][_$[:alnum:]]*)\s*</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(type)\b\s+([_$[:alpha:]][_$[:alnum:]]*)\s*</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2417,7 +2417,7 @@
             <key>name</key>
             <string>meta.import-equals.external.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(require)\s*(\()</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(require)\s*(\()</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -2477,7 +2477,7 @@
             <key>name</key>
             <string>meta.import-equals.internal.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(?!require\b)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(?!require\b)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -2541,7 +2541,7 @@
         <key>name</key>
         <string>meta.import.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?:(\bexport)\s+)?\b(import)(?!(\s*[:\(])|(\$|\.))\b</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(import)(?!\s*[:\(])(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2571,7 +2571,7 @@
         <array>
           <dict>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(export)\s+(as)\s+(namespace)\s+([_$[:alpha:]][_$[:alnum:]]*)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(export)\s+(as)\s+(namespace)\s+([_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2600,7 +2600,7 @@
             <key>name</key>
             <string>meta.export.default.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\b(export)(?:(?:\s*(=))|(?:\s+(default)(?=\s+)))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(export)(?:(?:\s*(=))|(?:\s+(default)(?=\s+)))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -2633,7 +2633,7 @@
             <key>name</key>
             <string>meta.export.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\b(export)(?!(\s*:)|(\$))\b</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(export)(?!\s*:)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -2724,7 +2724,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;!\.|\$)(?:(\bdefault)|(\*)|(\b[_$[:alpha:]][_$[:alnum:]]*))\s+(as)\s+(\b[_$[:alpha:]][_$[:alnum:]]*)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bdefault)|(\*)|(\b[_$[:alpha:]][_$[:alnum:]]*))\s+(as)\s+(\b[_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2783,7 +2783,7 @@
         <key>name</key>
         <string>switch-statement.expr.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)(?=\bswitch\s*\()</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?=\bswitch\s*\()</string>
         <key>end</key>
         <string>\}</string>
         <key>endCaptures</key>
@@ -2800,7 +2800,7 @@
             <key>name</key>
             <string>switch-expression.expr.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\b(switch)\s*(\()</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(switch)\s*(\()</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -2853,7 +2853,7 @@
                 <key>name</key>
                 <string>case-clause.expr.tsx</string>
                 <key>begin</key>
-                <string>(?&lt;!\.|\$)\b(case|default(?=:))\b(?!\$|\.)</string>
+                <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(case|default(?=:))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
                 <key>beginCaptures</key>
                 <dict>
                   <key>1</key>
@@ -2891,7 +2891,7 @@
       <key>for-loop</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(for)(?:\s+(await))?\s*(\()</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(for)(?:\s+(await))?\s*(\()</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3300,7 +3300,7 @@
                 <key>name</key>
                 <string>keyword.operator.expression.import.tsx</string>
                 <key>match</key>
-                <string>(?![\.\$])\bimport(?=\s*[\(]\s*[\"\'\`])</string>
+                <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))import(?=\s*[\(]\s*[\"\'\`]))</string>
               </dict>
               <dict>
                 <key>name</key>
@@ -3360,7 +3360,7 @@
         <key>name</key>
         <string>new.expr.tsx</string>
         <key>begin</key>
-        <string>(?&lt;!\.|\$)\b(new)\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3370,7 +3370,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\))|(?=[;),}\]]|$|((?&lt;!\.|\$)\bnew\b(?!\$|\.))|((?&lt;!\.|\$)\bfunction((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
+        <string>(?&lt;=\))|(?=[;),}\]]|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))new(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3439,11 +3439,11 @@
             <key>name</key>
             <string>keyword.control.flow.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(await)\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(await)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(yield)\b(?!\$|\.)(?:\s*(\*))?</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(yield)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))(?:\s*(\*))?</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -3462,31 +3462,31 @@
             <key>name</key>
             <string>keyword.operator.expression.delete.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bdelete\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))delete(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.expression.in.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bin\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))in(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.expression.of.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bof\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))of(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.expression.instanceof.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\binstanceof\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))instanceof(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.operator.new.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bnew\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))new(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>include</key>
@@ -3496,11 +3496,11 @@
             <key>name</key>
             <string>keyword.operator.expression.void.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bvoid\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))void(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\b(as)\s+</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -3510,7 +3510,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,:})\]]|((?&lt;!\.|\$)\b(as)\s+))</string>
+            <string>(?=$|^|[;,:})\]]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3610,7 +3610,7 @@
         <key>name</key>
         <string>keyword.operator.expression.typeof.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\btypeof\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))typeof(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>literal</key>
       <dict>
@@ -3770,13 +3770,13 @@
             <key>name</key>
             <string>constant.language.boolean.true.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\btrue\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))true(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>constant.language.boolean.false.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bfalse\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))false(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
         </array>
       </dict>
@@ -3785,28 +3785,28 @@
         <key>name</key>
         <string>constant.language.null.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\bnull\b(?!\$)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))null(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>this-literal</key>
       <dict>
         <key>name</key>
         <string>variable.language.this.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\$)((?&lt;=\.\.\.)|(?&lt;!\.))\bthis\b(?!\$)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))this\b(?!\$)</string>
       </dict>
       <key>super-literal</key>
       <dict>
         <key>name</key>
         <string>variable.language.super.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\bsuper\b(?!\$)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))super\b(?!\$)</string>
       </dict>
       <key>undefined-literal</key>
       <dict>
         <key>name</key>
         <string>constant.language.undefined.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\bundefined\b(?!\$)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))undefined(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>numericConstant-literal</key>
       <dict>
@@ -3816,13 +3816,13 @@
             <key>name</key>
             <string>constant.language.nan.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bNaN\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))NaN(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>constant.language.infinity.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bInfinity\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))Infinity(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
         </array>
       </dict>
@@ -3834,13 +3834,13 @@
             <key>name</key>
             <string>variable.language.arguments.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(arguments)\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(arguments)\b(?!\$)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>support.class.builtin.tsx</string>
             <key>match</key>
-            <string>(?x)(?&lt;!\.|\$)\b(Array|ArrayBuffer|Atomics|Boolean|DataView|Date|Float32Array|Float64Array|Function|Generator
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(Array|ArrayBuffer|Atomics|Boolean|DataView|Date|Float32Array|Float64Array|Function|Generator
   |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Promise|Proxy
   |Reflect|RegExp|Set|SharedArrayBuffer|SIMD|String|Symbol|TypedArray
   |Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|WeakMap|WeakSet)\b(?!\$)</string>
@@ -3849,18 +3849,18 @@
             <key>name</key>
             <string>support.class.error.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b((Eval|Internal|Range|Reference|Syntax|Type|URI)?Error)\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))((Eval|Internal|Range|Reference|Syntax|Type|URI)?Error)\b(?!\$)</string>
           </dict>
           <dict>
             <key>name</key>
             <string>support.function.tsx</string>
             <key>match</key>
-            <string>(?x)(?&lt;!\.|\$)\b(clear(Interval|Timeout)|decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|eval|
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(clear(Interval|Timeout)|decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|eval|
   isFinite|isNaN|parseFloat|parseInt|require|set(Interval|Timeout)|super|unescape|uneval)(?=\s*\()</string>
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?&lt;!\.|\$)\b(Math)(?:\s*(\.)\s*(?:
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(Math)(?:\s*(\.)\s*(?:
   (abs|acos|acosh|asin|asinh|atan|atan2|atanh|cbrt|ceil|clz32|cos|cosh|exp|
   expm1|floor|fround|hypot|imul|log|log10|log1p|log2|max|min|pow|random|
   round|sign|sin|sinh|sqrt|tan|tanh|trunc)
@@ -3892,7 +3892,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?&lt;!\.|\$)\b(console)(?:\s*(\.)\s*(
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(console)(?:\s*(\.)\s*(
   assert|clear|count|debug|dir|error|group|groupCollapsed|groupEnd|info|log
   |profile|profileEnd|table|time|timeEnd|timeStamp|trace|warn))?\b(?!\$)</string>
             <key>captures</key>
@@ -3916,7 +3916,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(JSON)(?:\s*(\.)\s*(parse|stringify))?\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(JSON)(?:\s*(\.)\s*(parse|stringify))?\b(?!\$)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -3963,7 +3963,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x) (?&lt;!\.|\$) \b (?:
+            <string>(?x) (?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.)) \b (?:
   (document|event|navigator|performance|screen|window)
   |
   (AnalyserNode|ArrayBufferView|Attr|AudioBuffer|AudioBufferSourceNode|AudioContext|AudioDestinationNode|AudioListener
@@ -4096,12 +4096,12 @@
             <key>name</key>
             <string>support.class.node.tsx</string>
             <key>match</key>
-            <string>(?x)(?&lt;!\.|\$)\b(Buffer|EventEmitter|Server|Pipe|Socket|REPLServer|ReadStream|WriteStream|Stream
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(Buffer|EventEmitter|Server|Pipe|Socket|REPLServer|ReadStream|WriteStream|Stream
   |Inflate|Deflate|InflateRaw|DeflateRaw|GZip|GUnzip|Unzip|Zip)\b(?!\$)</string>
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?&lt;!\.|\$)\b(process)(?:(\.)(?:
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(process)(?:(\.)(?:
   (arch|argv|config|connected|env|execArgv|execPath|exitCode|mainModule|pid|platform|release|stderr|stdin|stdout|title|version|versions)
   |
   (abort|chdir|cwd|disconnect|exit|[sg]ete?[gu]id|send|[sg]etgroups|initgroups|kill|memoryUsage|nextTick|umask|uptime|hrtime)
@@ -4132,7 +4132,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(?:(exports)|(module)(?:(\.)(exports|id|filename|loaded|parent|children))?)\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(exports)|(module)(?:(\.)(exports|id|filename|loaded|parent|children))?)\b(?!\$)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4161,7 +4161,7 @@
             <key>name</key>
             <string>support.variable.object.node.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(global|GLOBAL|root|__dirname|__filename)\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(global|GLOBAL|root|__dirname|__filename)\b(?!\$)</string>
           </dict>
           <dict>
             <key>match</key>
@@ -4632,7 +4632,7 @@
             <key>name</key>
             <string>storage.modifier.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(extends)\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(extends)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
@@ -4713,14 +4713,14 @@
         <key>name</key>
         <string>support.type.primitive.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(string|number|boolean|symbol|any|void|never)\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(string|number|boolean|symbol|any|void|never)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>type-builtin-literals</key>
       <dict>
         <key>name</key>
         <string>support.type.builtin.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\b(this|true|false|undefined|null|object)\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(this|true|false|undefined|null|object)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>type-tuple</key>
       <dict>
@@ -4887,7 +4887,7 @@
             <key>name</key>
             <string>meta.type.constructor.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\b(new)\b(?=\s*\&lt;)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\b(?=\s*\&lt;)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4901,7 +4901,7 @@
             <key>name</key>
             <string>meta.type.constructor.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!\.|\$)\b(new)\b\s*(?=\()</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\b\s*(?=\()</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5078,7 +5078,7 @@
             <key>name</key>
             <string>keyword.operator.expression.keyof.tsx</string>
             <key>match</key>
-            <string>(?&lt;!\.|\$)\bkeyof\b(?!\$|\.)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))keyof(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
         </array>
       </dict>
@@ -5087,7 +5087,7 @@
         <key>name</key>
         <string>keyword.operator.expression.is.tsx</string>
         <key>match</key>
-        <string>(?&lt;!\.|\$)\bis\b(?!\$|\.)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))is(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>type-name</key>
       <dict>
