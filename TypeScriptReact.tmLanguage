@@ -2053,7 +2053,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)(?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)*\s*)</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))(?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s*\??\.\s*[_$[:alpha:]][_$[:alnum:]]*)*\s*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2065,6 +2065,11 @@
               <dict>
                 <key>name</key>
                 <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
             </dict>
           </dict>
@@ -2511,7 +2516,7 @@
               </dict>
               <dict>
                 <key>match</key>
-                <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)</string>
+                <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))</string>
                 <key>captures</key>
                 <dict>
                   <key>1</key>
@@ -2523,6 +2528,11 @@
                   <dict>
                     <key>name</key>
                     <string>punctuation.accessor.tsx</string>
+                  </dict>
+                  <key>3</key>
+                  <dict>
+                    <key>name</key>
+                    <string>punctuation.accessor.optional.tsx</string>
                   </dict>
                 </dict>
               </dict>
@@ -3236,10 +3246,10 @@
       <key>ternary-expression</key>
       <dict>
         <key>begin</key>
-        <string>(\?)</string>
+        <string>(?!\?\.\s*[^[:digit:]])(\?)</string>
         <key>beginCaptures</key>
         <dict>
-          <key>0</key>
+          <key>1</key>
           <dict>
             <key>name</key>
             <string>keyword.operator.ternary.tsx</string>
@@ -3266,18 +3276,18 @@
       <key>function-call</key>
       <dict>
         <key>begin</key>
-        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
+        <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\??\.\s*)*|(\??\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(\?\.\s*)?(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
         <key>end</key>
-        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
+        <string>(?&lt;=\))(?!(([_$[:alpha:]][_$[:alnum:]]*\s*\??\.\s*)*|(\??\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)\s*(\?\.\s*)?(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
         <key>patterns</key>
         <array>
           <dict>
             <key>name</key>
             <string>meta.function-call.tsx</string>
             <key>begin</key>
-            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\.\s*)*|(\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))</string>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\??\.\s*)*|(\??\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))</string>
             <key>end</key>
-            <string>(?=\s*(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
+            <string>(?=\s*(\?\.\s*)?(&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\))|\&lt;\s*(([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\([^\(\)]*\)))*\&gt;)*&gt;\s*)?\()</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3313,6 +3323,12 @@
           <dict>
             <key>include</key>
             <string>#comment</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.function-call.tsx punctuation.accessor.optional.tsx</string>
+            <key>match</key>
+            <string>\?\.</string>
           </dict>
           <dict>
             <key>name</key>
@@ -3860,7 +3876,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(Math)(?:\s*(\.)\s*(?:
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(Math)(?:\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(?:
   (abs|acos|acosh|asin|asinh|atan|atan2|atanh|cbrt|ceil|clz32|cos|cosh|exp|
   expm1|floor|fround|hypot|imul|log|log10|log1p|log2|max|min|pow|random|
   round|sign|sin|sinh|sqrt|tan|tanh|trunc)
@@ -3881,9 +3897,14 @@
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>support.function.math.tsx</string>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
               <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>support.function.math.tsx</string>
+              </dict>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>support.constant.property.math.tsx</string>
@@ -3892,7 +3913,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(console)(?:\s*(\.)\s*(
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(console)(?:\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(
   assert|clear|count|debug|dir|error|group|groupCollapsed|groupEnd|info|log
   |profile|profileEnd|table|time|timeEnd|timeStamp|trace|warn))?\b(?!\$)</string>
             <key>captures</key>
@@ -3910,13 +3931,18 @@
               <key>3</key>
               <dict>
                 <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
                 <string>support.function.console.tsx</string>
               </dict>
             </dict>
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(JSON)(?:\s*(\.)\s*(parse|stringify))?\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(JSON)(?:\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(parse|stringify))?\b(?!\$)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -3932,13 +3958,18 @@
               <key>3</key>
               <dict>
                 <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
                 <string>support.function.json.tsx</string>
               </dict>
             </dict>
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x) (\.) \s* (?:
+            <string>(?x) (?:(\.)|(\?\.(?!\s*[[:digit:]]))) \s* (?:
   (constructor|length|prototype|__proto__)
   |
   (EPSILON|MAX_SAFE_INTEGER|MAX_VALUE|MIN_SAFE_INTEGER|MIN_VALUE|NEGATIVE_INFINITY|POSITIVE_INFINITY))\b(?!\$)</string>
@@ -3952,9 +3983,14 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>support.variable.property.tsx</string>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
               <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>support.variable.property.tsx</string>
+              </dict>
+              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>support.constant.tsx</string>
@@ -4041,7 +4077,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x) (\.) \s* (?:
+            <string>(?x) (?:(\.)|(\?\.(?!\s*[[:digit:]]))) \s* (?:
   (ATTRIBUTE_NODE|CDATA_SECTION_NODE|COMMENT_NODE|DOCUMENT_FRAGMENT_NODE|DOCUMENT_NODE|DOCUMENT_TYPE_NODE
   |DOMSTRING_SIZE_ERR|ELEMENT_NODE|ENTITY_NODE|ENTITY_REFERENCE_NODE|HIERARCHY_REQUEST_ERR|INDEX_SIZE_ERR
   |INUSE_ATTRIBUTE_ERR|INVALID_CHARACTER_ERR|NO_DATA_ALLOWED_ERR|NO_MODIFICATION_ALLOWED_ERR|NOT_FOUND_ERR
@@ -4083,9 +4119,14 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>support.constant.dom.tsx</string>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
               <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>support.constant.dom.tsx</string>
+              </dict>
+              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>support.variable.property.dom.tsx</string>
@@ -4101,7 +4142,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(process)(?:(\.)(?:
+            <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(process)(?:(?:(\.)|(\?\.(?!\s*[[:digit:]])))(?:
   (arch|argv|config|connected|env|execArgv|execPath|exitCode|mainModule|pid|platform|release|stderr|stdin|stdout|title|version|versions)
   |
   (abort|chdir|cwd|disconnect|exit|[sg]ete?[gu]id|send|[sg]etgroups|initgroups|kill|memoryUsage|nextTick|umask|uptime|hrtime)
@@ -4121,9 +4162,14 @@
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>support.variable.property.process.tsx</string>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
               <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>support.variable.property.process.tsx</string>
+              </dict>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>support.function.process.tsx</string>
@@ -4132,7 +4178,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(exports)|(module)(?:(\.)(exports|id|filename|loaded|parent|children))?)\b(?!\$)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(exports)|(module)(?:(?:(\.)|(\?\.(?!\s*[[:digit:]])))(exports|id|filename|loaded|parent|children))?)\b(?!\$)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4153,6 +4199,11 @@
               <key>4</key>
               <dict>
                 <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
                 <string>support.type.object.module.tsx</string>
               </dict>
             </dict>
@@ -4165,7 +4216,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x) (\.) \s*
+            <string>(?x) (?:(\.)|(\?\.(?!\s*[[:digit:]]))) \s*
 (?:
  (on(?:Rowsinserted|Rowsdelete|Rowenter|Rowexit|Resize|Resizestart|Resizeend|Reset|
    Readystatechange|Mouseout|Mouseover|Mousedown|Mouseup|Mousemove|
@@ -4250,14 +4301,19 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>support.function.event-handler.tsx</string>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>support.function.tsx</string>
+                <string>support.function.event-handler.tsx</string>
               </dict>
               <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>support.function.tsx</string>
+              </dict>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>support.function.dom.tsx</string>
@@ -4276,7 +4332,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(?:(\.)\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
+            <string>(?x)(?:(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
   ((async\s+)?(
     (function\s*[(&lt;*]) |
     (function\s+) |
@@ -4313,13 +4369,18 @@
               <key>2</key>
               <dict>
                 <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
                 <string>entity.name.function.tsx</string>
               </dict>
             </dict>
           </dict>
           <dict>
             <key>match</key>
-            <string>(\.)\s*([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+            <string>(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4328,6 +4389,11 @@
                 <string>punctuation.accessor.tsx</string>
               </dict>
               <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.constant.property.tsx</string>
@@ -4336,7 +4402,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(\.)\s*([_$[:alpha:]][_$[:alnum:]]*)</string>
+            <string>(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*([_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4345,6 +4411,11 @@
                 <string>punctuation.accessor.tsx</string>
               </dict>
               <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.property.tsx</string>
@@ -4373,14 +4444,14 @@
             <key>name</key>
             <string>support.class.tsx</string>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\.\s*prototype\b(?!\$))</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*\??\.\s*prototype\b(?!\$))</string>
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)(\.)\s*(?:
+            <string>(?x)(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(?:
   ([[:upper:]][_$[:digit:][:upper:]]*) |
   ([_$[:alpha:]][_$[:alnum:]]*)
-)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
+)(?=\s*\??\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -4391,9 +4462,14 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.constant.object.property.tsx</string>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
               <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.constant.object.property.tsx</string>
+              </dict>
+              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.object.property.tsx</string>
@@ -4405,7 +4481,7 @@
             <string>(?x)(?:
   ([[:upper:]][_$[:digit:][:upper:]]*) |
   ([_$[:alpha:]][_$[:alnum:]]*)
-)(?=\s*\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
+)(?=\s*\??\.\s*[_$[:alpha:]][_$[:alnum:]]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5095,7 +5171,7 @@
         <array>
           <dict>
             <key>match</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(\.)</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5107,6 +5183,11 @@
               <dict>
                 <key>name</key>
                 <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
               </dict>
             </dict>
           </dict>
@@ -5134,10 +5215,21 @@
       </dict>
       <key>punctuation-accessor</key>
       <dict>
-        <key>name</key>
-        <string>punctuation.accessor.tsx</string>
         <key>match</key>
-        <string>\.</string>
+        <string>(?:(\.)|(\?\.(?!\s*[[:digit:]])))</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.accessor.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.accessor.optional.tsx</string>
+          </dict>
+        </dict>
       </dict>
       <key>string</key>
       <dict>

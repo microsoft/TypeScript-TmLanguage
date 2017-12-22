@@ -1,0 +1,86 @@
+original file
+-----------------------------------
+const array = a?.b?.c?.d?.g;
+const prop = obj?.[expr];
+func?.(...args);
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const array = a?.b?.c?.d?.g;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^
+               source.ts meta.var.expr.ts variable.other.object.ts
+                ^^
+                source.ts meta.var.expr.ts punctuation.accessor.optional.ts
+                  ^
+                  source.ts meta.var.expr.ts variable.other.object.property.ts
+                   ^^
+                   source.ts meta.var.expr.ts punctuation.accessor.optional.ts
+                     ^
+                     source.ts meta.var.expr.ts variable.other.object.property.ts
+                      ^^
+                      source.ts meta.var.expr.ts punctuation.accessor.optional.ts
+                        ^
+                        source.ts meta.var.expr.ts variable.other.object.property.ts
+                         ^^
+                         source.ts meta.var.expr.ts punctuation.accessor.optional.ts
+                           ^
+                           source.ts meta.var.expr.ts variable.other.property.ts
+                            ^
+                            source.ts punctuation.terminator.statement.ts
+                             ^^
+                             source.ts
+>const prop = obj?.[expr];
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^
+              source.ts meta.var.expr.ts variable.other.readwrite.ts
+                 ^^
+                 source.ts meta.var.expr.ts punctuation.accessor.optional.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+                    ^^^^
+                    source.ts meta.var.expr.ts meta.array.literal.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts
+                          ^^
+                          source.ts
+>func?.(...args);
+ ^^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+     ^^
+     source.ts meta.function-call.ts punctuation.accessor.optional.ts
+       ^
+       source.ts meta.brace.round.ts
+        ^^^
+        source.ts keyword.operator.spread.ts
+           ^^^^
+           source.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.brace.round.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
