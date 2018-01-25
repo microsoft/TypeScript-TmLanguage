@@ -542,7 +542,7 @@
             <key>name</key>
             <string>meta.object-binding-pattern-variable.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!=|:|of|in)\s*(?=\{)</string>
+            <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\{)</string>
             <key>end</key>
             <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
@@ -565,7 +565,7 @@
             <key>name</key>
             <string>meta.array-binding-pattern-variable.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!=|:|of|in)\s*(?=\[)</string>
+            <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\[)</string>
             <key>end</key>
             <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
@@ -2983,7 +2983,7 @@
         <key>name</key>
         <string>meta.objectliteral.tsx</string>
         <key>begin</key>
-        <string>(?&lt;=[=(,\[?+!]|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
+        <string>(?&lt;=[=(,\[?+!]|^await|[^\._$[:alnum:]]await|^return|[^\._$[:alnum:]]return|^yield|[^\._$[:alnum:]]yield|^throw|[^\._$[:alnum:]]throw|^in|[^\._$[:alnum:]]in|^of|[^\._$[:alnum:]]of|^typeof|[^\._$[:alnum:]]typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -5409,7 +5409,7 @@
             <key>name</key>
             <string>string.regexp.tsx</string>
             <key>begin</key>
-            <string>(?&lt;=[=(:,\[?+!]|return|case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
+            <string>(?&lt;=[=(:,\[?+!]|^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -6683,7 +6683,7 @@
       <dict>
         <key>begin</key>
         <string>(?x)
-  (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+  (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|^return|[^\._$[:alnum:]]return|^default|[^\._$[:alnum:]]default|^)\s*
   (?=(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
         <key>end</key>
         <string>(?!\s*(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
@@ -6763,7 +6763,7 @@
       <dict>
         <key>begin</key>
         <string>(?x)
-  (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+  (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|^return|[^\._$[:alnum:]]return|^default|[^\._$[:alnum:]]default|^)\s*
   (?!&lt;\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
   (?=(&lt;)\s*
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))

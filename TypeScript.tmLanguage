@@ -538,7 +538,7 @@
             <key>name</key>
             <string>meta.object-binding-pattern-variable.ts</string>
             <key>begin</key>
-            <string>(?&lt;!=|:|of|in)\s*(?=\{)</string>
+            <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\{)</string>
             <key>end</key>
             <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
@@ -561,7 +561,7 @@
             <key>name</key>
             <string>meta.array-binding-pattern-variable.ts</string>
             <key>begin</key>
-            <string>(?&lt;!=|:|of|in)\s*(?=\[)</string>
+            <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\[)</string>
             <key>end</key>
             <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
             <key>patterns</key>
@@ -2979,7 +2979,7 @@
         <key>name</key>
         <string>meta.objectliteral.ts</string>
         <key>begin</key>
-        <string>(?&lt;=[=(,\[?+!]|await|return|yield|throw|in|of|typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
+        <string>(?&lt;=[=(,\[?+!]|^await|[^\._$[:alnum:]]await|^return|[^\._$[:alnum:]]return|^yield|[^\._$[:alnum:]]yield|^throw|[^\._$[:alnum:]]throw|^in|[^\._$[:alnum:]]in|^of|[^\._$[:alnum:]]of|^typeof|[^\._$[:alnum:]]typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3441,7 +3441,7 @@
             <key>name</key>
             <string>cast.expr.ts</string>
             <key>begin</key>
-            <string>(?:(?&lt;=return|throw|yield|await|default|[=(,:&gt;*?\&amp;\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(&lt;)(?!&lt;?\=)</string>
+            <string>(?:(?&lt;=^return|[^\._$[:alnum:]]return|^throw|[^\._$[:alnum:]]throw|^yield|[^\._$[:alnum:]]yield|^await|[^\._$[:alnum:]]await|^default|[^\._$[:alnum:]]default|[=(,:&gt;*?\&amp;\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(&lt;)(?!&lt;?\=)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5463,7 +5463,7 @@
             <key>name</key>
             <string>string.regexp.ts</string>
             <key>begin</key>
-            <string>(?&lt;=[=(:,\[?+!]|return|case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
+            <string>(?&lt;=[=(:,\[?+!]|^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>

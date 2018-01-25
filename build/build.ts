@@ -1,6 +1,6 @@
 import fs = require('fs');
 import path = require('path');
-import yaml = require('js-yaml'); 
+import yaml = require('js-yaml');
 import plist = require('plist');
 
 function writePlistFile(grammar: any, fileName: string) {
@@ -39,8 +39,8 @@ function transformGrammarRepository(grammar: any, propertyNames: string[], trans
     }
 }
 
-function changeTsToTsxGrammar(grammar: any) {
-    const tsxUpdates = readYaml("../TypeScriptReact.YAML-tmLanguage");
+function changeTsToTsxGrammar(grammar: any, variables: any) {
+    const tsxUpdates = updateGrammarVariables(readYaml("../TypeScriptReact.YAML-tmLanguage"), variables);
 
     // Update name, file types, scope name and uuid
     for (let key in tsxUpdates) {
@@ -62,7 +62,7 @@ function changeTsToTsxGrammar(grammar: any) {
                 repository[key].patterns.unshift(updatesRepository[key].patterns[0]);
                 break;
             default:
-                // Add jsx 
+                // Add jsx
                 repository[key] = updatesRepository[key];
         }
     }
@@ -79,33 +79,33 @@ function replacePatternVariables(pattern: string, variableReplacers: VariableRep
 }
 
 type VariableReplacer = [RegExp, string];
-function updateGrammarVariables(grammar: any) {
-    if (grammar.variables !== undefined) {
-        const variables = grammar.variables;
-        delete grammar.variables;
-        const variableReplacers: VariableReplacer[] = [];
-        for (const variableName in variables) {
-            // Replace the pattern with earlier variables
-            const pattern = replacePatternVariables(variables[variableName], variableReplacers);
-            variableReplacers.push([new RegExp(`{{${variableName}}}`, "gim"), pattern]);
-        }
-        transformGrammarRepository(
-            grammar,
-            ["begin", "end", "match"],
-            pattern => replacePatternVariables(pattern, variableReplacers)
-        );
+function updateGrammarVariables(grammar: any, variables: any) {
+    delete grammar.variables;
+    const variableReplacers: VariableReplacer[] = [];
+    for (const variableName in variables) {
+        // Replace the pattern with earlier variables
+        const pattern = replacePatternVariables(variables[variableName], variableReplacers);
+        variableReplacers.push([new RegExp(`{{${variableName}}}`, "gim"), pattern]);
     }
+    transformGrammarRepository(
+        grammar,
+        ["begin", "end", "match"],
+        pattern => replacePatternVariables(pattern, variableReplacers)
+    );
     return grammar;
 }
 
 function buildGrammar() {
-    const tsGrammar = updateGrammarVariables(readYaml("../TypeScript.YAML-tmLanguage"));
+    const tsGrammarBeforeTransformation = readYaml("../TypeScript.YAML-tmLanguage");
+    const variables = tsGrammarBeforeTransformation.variables;
+
+    const tsGrammar = updateGrammarVariables(tsGrammarBeforeTransformation, variables);
 
     // Write TypeScript.tmLanguage
     writePlistFile(tsGrammar, "../TypeScript.tmLanguage");
 
     // Write TypeScriptReact.tmLangauge
-    const tsxGrammar = changeTsToTsxGrammar(tsGrammar);
+    const tsxGrammar = changeTsToTsxGrammar(tsGrammar, variables);
     writePlistFile(tsxGrammar, "../TypeScriptReact.tmLanguage");
 }
 

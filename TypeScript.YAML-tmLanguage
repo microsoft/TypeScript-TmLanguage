@@ -16,6 +16,16 @@ variables:
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   propertyName: (({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
+  nonPropertyLookBehind: '[^\._$[:alnum:]]'
+  lookBehindReturn: '^return|{{nonPropertyLookBehind}}return'
+  lookBehindThrow: '^throw|{{nonPropertyLookBehind}}throw'
+  lookBehindYield: '^yield|{{nonPropertyLookBehind}}yield'
+  lookBehindAwait: '^await|{{nonPropertyLookBehind}}await'
+  lookBehindDefault: '^default|{{nonPropertyLookBehind}}default'
+  lookBehindIn: '^in|{{nonPropertyLookBehind}}in'
+  lookBehindOf: '^of|{{nonPropertyLookBehind}}of'
+  lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
+  lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   matchingParenthesis: (\([^\(\)]*\))
   # Identifier start | matching braces | matching parenthesis | matching square brackets
   typeParamersStart: ([_$[:alpha:]]|(\{[^\{\}]*\})|{{matchingParenthesis}}|(\[[^\[\]]*\]))
@@ -226,14 +236,14 @@ repository:
   destructuring-variable:
     patterns:
     - name: meta.object-binding-pattern-variable.ts
-      begin: (?<!=|:|of|in)\s*(?=\{)
+      begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\{)
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#object-binding-pattern'
       - include: '#type-annotation'
       - include: '#comment'
     - name: meta.array-binding-pattern-variable.ts
-      begin: (?<!=|:|of|in)\s*(?=\[)
+      begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\[)
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#array-binding-pattern'
@@ -965,7 +975,7 @@ repository:
   #object literals
   after-operator-block-as-object-literal:
     name: meta.objectliteral.ts
-    begin: (?<=[=(,\[?+!]|await|return|yield|throw|in|of|typeof|&&|\|\||\*)\s*(\{)
+    begin: (?<=[=(,\[?+!]|{{lookBehindAwait}}|{{lookBehindReturn}}|{{lookBehindYield}}|{{lookBehindThrow}}|{{lookBehindIn}}|{{lookBehindOf}}|{{lookBehindTypeof}}|&&|\|\||\*)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.ts }
     end: \}
@@ -1113,7 +1123,7 @@ repository:
       # If '<' is preceeded by 'return', 'throw', 'yield', or 'await', it's most likely a type assertion
       # If '=', '(', ',', ':', or '>' are followed by a '<', it is also likely a type assertion as otherwise it would be a syntax error
       # '<=' and '<<=' are cannot be type assertions, as they are assignment operators.
-      begin: (?:(?<=return|throw|yield|await|default|[=(,:>*?\&\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(<)(?!<?\=)
+      begin: (?:(?<={{lookBehindReturn}}|{{lookBehindThrow}}|{{lookBehindYield}}|{{lookBehindAwait}}|{{lookBehindDefault}}|[=(,:>*?\&\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(<)(?!<?\=)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
       end: (\>)\s*
@@ -1951,7 +1961,7 @@ repository:
   regex:
     patterns:
     - name: string.regexp.ts
-      begin: (?<=[=(:,\[?+!]|return|case|=>|&&|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
+      begin: (?<=[=(:,\[?+!]|{{lookBehindReturn}}|{{lookBehindCase}}|=>|&&|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
       beginCaptures:
         '1': {name: punctuation.definition.string.begin.ts}
       end: (/)([gimuy]*)

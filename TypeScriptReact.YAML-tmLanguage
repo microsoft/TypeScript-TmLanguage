@@ -33,7 +33,7 @@ repository:
   jsx-tag-without-attributes-in-expression:
     begin: |-
       (?x)
-        (?<=[({\[,?=>:*]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+        (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
         (?=(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
     end: (?!\s*(<)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
     patterns:
@@ -61,7 +61,7 @@ repository:
     # We need to differentiate between the relational '<' operator and the beginning of a tag using the surrounding context.
     begin: |-
       (?x)
-        (?<=[({\[,?=>:*]|&&|\|\||\?|\Wreturn|^return|\Wdefault|^)\s*
+        (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
         (?!<\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
         (?=(<)\s*
         ([_$a-zA-Z][-$\w.]*(?<!\.|-))
