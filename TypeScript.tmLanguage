@@ -445,6 +445,33 @@
       ([)]\s*=&gt;)
     ))
   ))
+)) |
+(:\s*(=&gt;|(\([^\(\)]*\))|(&lt;[^&lt;&gt;]*&gt;)|[^&lt;&gt;(),=])+=\s*(
+  ((async\s+)?(
+    (function\s*[(&lt;*]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+  )) |
+  ((async\s*)?(
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
+  \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
+  ))
 )))</string>
             <key>beginCaptures</key>
             <dict>
@@ -833,6 +860,33 @@
       ([)]\s*=&gt;)
     ))
   ))
+)) |
+(:\s*(=&gt;|(\([^\(\)]*\))|(&lt;[^&lt;&gt;]*&gt;)|[^&lt;&gt;(),=])+=\s*(
+  ((async\s+)?(
+    (function\s*[(&lt;*]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+  )) |
+  ((async\s*)?(
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
+  \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
+  ))
 )))</string>
             <key>captures</key>
             <dict>
@@ -1218,6 +1272,33 @@
       ([:,?=])|
       ([)]\s*=&gt;)
     ))
+  ))
+)) |
+(:\s*(=&gt;|(\([^\(\)]*\))|(&lt;[^&lt;&gt;]*&gt;)|[^&lt;&gt;(),=])+=\s*(
+  ((async\s+)?(
+    (function\s*[(&lt;*]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+  )) |
+  ((async\s*)?(
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  [(]\s*
+  (
+    ([)]\s*:) |                                                                 # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                            # [(]param: | [(]...param:
+  )
+) |
+(
+  [&lt;]\s*[_$[:alpha:]][_$[:alnum:]]*\s+extends\s*[^=&gt;]                                        # &lt; typeparam extends
+) |
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{[^\{\}]*\})|(\([^\(\)]*\))|(\[[^\[\]]*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?                                                           # typeparameters
+  \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
+  (\s*:\s*([^&lt;&gt;\(\)]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\))+)?                                # return type
+  \s*=&gt;                                                                         # arrow operator
+)
   ))
 )))</string>
               </dict>

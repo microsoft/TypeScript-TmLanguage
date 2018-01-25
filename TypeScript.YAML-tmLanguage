@@ -80,7 +80,8 @@ variables:
           ([)]\s*=>)
         ))
       ))
-    ))
+    )) |
+    (:\s*(=>|{{matchingParenthesis}}|(<[^<>]*>)|[^<>(),=])+={{functionOrArrowLookup}})
 
 patterns:
 - include: '#directives'
