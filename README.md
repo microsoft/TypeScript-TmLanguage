@@ -1,5 +1,5 @@
 # TypeScript-TmLanguage
-[![Build status](https://ci.appveyor.com/api/projects/status/i7fp97q9nc5uw5kf?svg=true)](https://ci.appveyor.com/project/zhengbli/typescript-tmlanguage)
+[![Build status](https://travis-ci.org/Microsoft/TypeScript-TmLanguage.svg?branch=master)](https://travis-ci.org/Microsoft/TypeScript-TmLanguage)
 
 This repository contains TmLanguage files that are consumed by TypeScript editors and plugins such as [Visual Studio Code](https://github.com/Microsoft/vscode), [The TypeScript Sublime Plugin](https://github.com/Microsoft/TypeScript-Sublime-Plugin), [Atom TypeScript](https://github.com/TypeStrong/atom-typescript), and possibly others.
 
