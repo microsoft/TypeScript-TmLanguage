@@ -3,6 +3,22 @@ import path = require('path');
 import yaml = require('js-yaml');
 import plist = require('plist');
 
+enum Language {
+    TypeScript = "TypeScript",
+    TypeScriptReact = "TypeScriptReact"
+}
+
+enum Extension {
+    TmLanguage = "tmLanguage",
+    TmTheme = "tmTheme",
+    YamlTmLangauge = "YAML-tmLanguage",
+    YamlTmTheme = "YAML-tmTheme"
+}
+
+function file(language: Language, extension: Extension) {
+    return path.join(__dirname, '..', `${language}.${extension}`);
+}
+
 function writePlistFile(grammar: any, fileName: string) {
     const text = plist.build(grammar);
     fs.writeFileSync(fileName, text);
@@ -40,7 +56,7 @@ function transformGrammarRepository(grammar: any, propertyNames: string[], trans
 }
 
 function changeTsToTsxGrammar(grammar: any, variables: any) {
-    const tsxUpdates = updateGrammarVariables(readYaml("../TypeScriptReact.YAML-tmLanguage"), variables);
+    const tsxUpdates = updateGrammarVariables(readYaml(file(Language.TypeScriptReact, Extension.YamlTmLangauge)), variables);
 
     // Update name, file types, scope name and uuid
     for (let key in tsxUpdates) {
@@ -96,21 +112,21 @@ function updateGrammarVariables(grammar: any, variables: any) {
 }
 
 function buildGrammar() {
-    const tsGrammarBeforeTransformation = readYaml("../TypeScript.YAML-tmLanguage");
+    const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLangauge));
     const variables = tsGrammarBeforeTransformation.variables;
 
     const tsGrammar = updateGrammarVariables(tsGrammarBeforeTransformation, variables);
 
     // Write TypeScript.tmLanguage
-    writePlistFile(tsGrammar, "../TypeScript.tmLanguage");
+    writePlistFile(tsGrammar, file(Language.TypeScript, Extension.TmLanguage));
 
     // Write TypeScriptReact.tmLangauge
     const tsxGrammar = changeTsToTsxGrammar(tsGrammar, variables);
-    writePlistFile(tsxGrammar, "../TypeScriptReact.tmLanguage");
+    writePlistFile(tsxGrammar, file(Language.TypeScriptReact, Extension.TmLanguage));
 }
 
 function changeTsToTsxTheme(theme: any) {
-    const tsxUpdates = readYaml("../TypeScriptReact.YAML-tmTheme");
+    const tsxUpdates = readYaml(file(Language.TypeScriptReact, Extension.YamlTmTheme));
 
     // Update name, uuid
     for (let key in tsxUpdates) {
@@ -132,14 +148,14 @@ function changeTsToTsxTheme(theme: any) {
 }
 
 function buildTheme() {
-    const tsTheme = readYaml("../TypeScript.YAML-tmTheme");
+    const tsTheme = readYaml(file(Language.TypeScript, Extension.YamlTmTheme));
 
     // Write TypeScript.tmTheme
-    writePlistFile(tsTheme, "../TypeScript.tmTheme");
+    writePlistFile(tsTheme, file(Language.TypeScript, Extension.TmTheme));
 
     // Write TypeScriptReact.thTheme
     const tsxTheme = changeTsToTsxTheme(tsTheme);
-    writePlistFile(tsxTheme, "../TypeScriptReact.tmTheme");
+    writePlistFile(tsxTheme, file(Language.TypeScriptReact, Extension.TmTheme));
 }
 
 buildGrammar();
