@@ -1,0 +1,406 @@
+original file
+-----------------------------------
+const COULOMB = 8.957_551_787e9; // N-m^2 / C^2
+const PLANCK  = 6.626_070_040e-34; // J-s
+const JENNY   = 867_5309; // C-A-L^2
+let bits = 0b1100_1100;
+let routine = 0xC0FFEE_F00D_BED;
+
+1_000_000_000
+1.1_00_01
+1e1_0
+1e+1_0
+1e-1_0
+1.1e10_0
+1.1e+10_0
+1.1e-10_0
+12_34_56
+1_22_333
+1_2.3_4
+1_2.3_4e5_6
+1_2.3_4e+5_6
+1_2.3_4e-5_6
+
+0x00_11;
+0X0_1;
+0x1100_0011;
+0X0_11_0101;
+
+0o00_11;
+0O0_1;
+0o1100_0011;
+0O0_11_0101;
+
+0b00_11;
+0B0_1;
+0b1100_0011;
+0B0_11_0101;
+
+// Verify the following are not classified as a number
+_1_2;
+0b_1;
+0x_1;
+0o_1;
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const COULOMB = 8.957_551_787e9; // N-m^2 / C^2
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                  ^
+                  source.ts meta.var.expr.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+                   ^^^^^^^^^^^^^
+                   source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+                                 ^
+                                 source.ts
+                                  ^^
+                                  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                    ^^^^^^^^^^^^^^
+                                    source.ts comment.line.double-slash.ts
+>const PLANCK  = 6.626_070_040e-34; // J-s
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                  ^
+                  source.ts meta.var.expr.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+                   ^^^^^^^^^^^^^^^
+                   source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                  ^
+                                  source.ts punctuation.terminator.statement.ts
+                                   ^
+                                   source.ts
+                                    ^^
+                                    source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                      ^^^^^^
+                                      source.ts comment.line.double-slash.ts
+>const JENNY   = 867_5309; // C-A-L^2
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+            ^^^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^^^^^^^^
+                 source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts
+                          ^
+                          source.ts
+                           ^^
+                           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                             ^^^^^^^^^^
+                             source.ts comment.line.double-slash.ts
+>let bits = 0b1100_1100;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^^^^^^^^^^
+            source.ts meta.var.expr.ts constant.numeric.binary.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts
+>let routine = 0xC0FFEE_F00D_BED;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^^^^^^^^^^^^^^^^^
+               source.ts meta.var.expr.ts constant.numeric.hex.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+                                 ^^
+                                 source.ts
+>
+ ^^
+ source.ts
+>1_000_000_000
+ ^^^^^^^^^^^^^
+ source.ts constant.numeric.decimal.ts
+              ^^
+              source.ts
+>1.1_00_01
+ ^
+ source.ts constant.numeric.decimal.ts
+  ^
+  source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+   ^^^^^^^
+   source.ts constant.numeric.decimal.ts
+          ^^
+          source.ts
+>1e1_0
+ ^^^^^
+ source.ts constant.numeric.decimal.ts
+      ^^
+      source.ts
+>1e+1_0
+ ^^^^^^
+ source.ts constant.numeric.decimal.ts
+       ^^
+       source.ts
+>1e-1_0
+ ^^^^^^
+ source.ts constant.numeric.decimal.ts
+       ^^
+       source.ts
+>1.1e10_0
+ ^
+ source.ts constant.numeric.decimal.ts
+  ^
+  source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+   ^^^^^^
+   source.ts constant.numeric.decimal.ts
+         ^^
+         source.ts
+>1.1e+10_0
+ ^
+ source.ts constant.numeric.decimal.ts
+  ^
+  source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+   ^^^^^^^
+   source.ts constant.numeric.decimal.ts
+          ^^
+          source.ts
+>1.1e-10_0
+ ^
+ source.ts constant.numeric.decimal.ts
+  ^
+  source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+   ^^^^^^^
+   source.ts constant.numeric.decimal.ts
+          ^^
+          source.ts
+>12_34_56
+ ^^^^^^^^
+ source.ts constant.numeric.decimal.ts
+         ^^
+         source.ts
+>1_22_333
+ ^^^^^^^^
+ source.ts constant.numeric.decimal.ts
+         ^^
+         source.ts
+>1_2.3_4
+ ^^^
+ source.ts constant.numeric.decimal.ts
+    ^
+    source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+     ^^^
+     source.ts constant.numeric.decimal.ts
+        ^^
+        source.ts
+>1_2.3_4e5_6
+ ^^^
+ source.ts constant.numeric.decimal.ts
+    ^
+    source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+     ^^^^^^^
+     source.ts constant.numeric.decimal.ts
+            ^^
+            source.ts
+>1_2.3_4e+5_6
+ ^^^
+ source.ts constant.numeric.decimal.ts
+    ^
+    source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+     ^^^^^^^^
+     source.ts constant.numeric.decimal.ts
+             ^^
+             source.ts
+>1_2.3_4e-5_6
+ ^^^
+ source.ts constant.numeric.decimal.ts
+    ^
+    source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+     ^^^^^^^^
+     source.ts constant.numeric.decimal.ts
+             ^^
+             source.ts
+>
+ ^^
+ source.ts
+>0x00_11;
+ ^^^^^^^
+ source.ts constant.numeric.hex.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+         ^^
+         source.ts
+>0X0_1;
+ ^^^^^
+ source.ts constant.numeric.hex.ts
+      ^
+      source.ts punctuation.terminator.statement.ts
+       ^^
+       source.ts
+>0x1100_0011;
+ ^^^^^^^^^^^
+ source.ts constant.numeric.hex.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts
+>0X0_11_0101;
+ ^^^^^^^^^^^
+ source.ts constant.numeric.hex.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts
+>
+ ^^
+ source.ts
+>0o00_11;
+ ^^^^^^^
+ source.ts constant.numeric.octal.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+         ^^
+         source.ts
+>0O0_1;
+ ^^^^^
+ source.ts constant.numeric.octal.ts
+      ^
+      source.ts punctuation.terminator.statement.ts
+       ^^
+       source.ts
+>0o1100_0011;
+ ^^^^^^^^^^^
+ source.ts constant.numeric.octal.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts
+>0O0_11_0101;
+ ^^^^^^^^^^^
+ source.ts constant.numeric.octal.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts
+>
+ ^^
+ source.ts
+>0b00_11;
+ ^^^^^^^
+ source.ts constant.numeric.binary.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+         ^^
+         source.ts
+>0B0_1;
+ ^^^^^
+ source.ts constant.numeric.binary.ts
+      ^
+      source.ts punctuation.terminator.statement.ts
+       ^^
+       source.ts
+>0b1100_0011;
+ ^^^^^^^^^^^
+ source.ts constant.numeric.binary.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts
+>0B0_11_0101;
+ ^^^^^^^^^^^
+ source.ts constant.numeric.binary.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts
+>
+ ^^
+ source.ts
+>// Verify the following are not classified as a number
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>_1_2;
+ ^^^^
+ source.ts variable.other.readwrite.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+      ^^
+      source.ts
+>0b_1;
+ ^
+ source.ts
+  ^^^
+  source.ts variable.other.readwrite.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+      ^^
+      source.ts
+>0x_1;
+ ^
+ source.ts
+  ^^^
+  source.ts variable.other.readwrite.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+      ^^
+      source.ts
+>0o_1;
+ ^
+ source.ts
+  ^^^
+  source.ts variable.other.readwrite.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+      ^^
+      source.ts
+>
+ ^
+ source.ts
