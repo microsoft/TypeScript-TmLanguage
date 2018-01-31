@@ -27,8 +27,10 @@ variables:
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   matchingParenthesis: (\([^\(\)]*\))
+  matchingBraces: (\{[^\{\}]*\})
+  matchingBrackets: (\[[^\[\]]*\])
   # Identifier start | matching braces | matching parenthesis | matching square brackets
-  typeParamersStart: ([_$[:alpha:]]|(\{[^\{\}]*\})|{{matchingParenthesis}}|(\[[^\[\]]*\]))
+  typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
   typeArgumentsStart: ({{typeParamersStart}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))
@@ -40,19 +42,19 @@ variables:
     (
       [(]\s*
       (
-        ([)]\s*:) |                                                                 # ():
-        ((\.\.\.\s*)?{{identifier}}\s*:)                                            # [(]param: | [(]...param:
+        ([)]\s*:) |                                                                                       # ():
+        ((\.\.\.\s*)?{{identifier}}\s*:)                                                                  # [(]param: | [(]...param:
       )
     ) |
     (
-      [<]\s*{{identifier}}\s+extends\s*[^=>]                                        # < typeparam extends
+      [<]\s*{{identifier}}\s+extends\s*[^=>]                                                              # < typeparam extends
     ) |
     # arrow function possible to detect only with => on same line
     (
-      {{typeParameters}}?                                                           # typeparameters
-      \(\s*([_$[:alpha:]\{\[]([^()]|\((\s*[^()]*)?\))*)?\)                          # parameteres
-      (\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?                                # return type
-      \s*=>                                                                         # arrow operator
+      {{typeParameters}}?                                                                                 # typeparameters
+      \(\s*(([_$[:alpha:]]|{{matchingBraces}}|{{matchingBrackets}})([^()]|{{matchingParenthesis}})*)?\)   # parameters
+      (\s*:\s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+)?                                                      # return type
+      \s*=>                                                                                               # arrow operator
     )
   functionOrArrowLookup: |-
     \s*(
