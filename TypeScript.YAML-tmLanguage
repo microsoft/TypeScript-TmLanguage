@@ -899,13 +899,14 @@ repository:
     patterns:
     - include: '#comment'
     #(default|*|name) as alias
-    - match: '{{startOfIdentifier}}(?:(\bdefault)|(\*)|(\b{{identifier}}))\s+(as)\s+(\b{{identifier}})'
+    - match: '{{startOfIdentifier}}(?:(\bdefault)|(\*)|(\b{{identifier}}))\s+(as)\s+(?:(\bdefault{{endOfIdentifier}})|(\b{{identifier}}))'
       captures:
         '1': { name: keyword.control.default.ts }
         '2': { name: constant.language.import-export-all.ts }
         '3': { name: variable.other.readwrite.ts }
         '4': { name: keyword.control.as.ts }
-        '5': { name: variable.other.readwrite.alias.ts }
+        '5': { name: keyword.control.default.ts }
+        '6': { name: variable.other.readwrite.alias.ts }
     - include: '#punctuation-comma'
     - name: constant.language.import-export-all.ts
       match: \*

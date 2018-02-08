@@ -2815,7 +2815,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bdefault)|(\*)|(\b[_$[:alpha:]][_$[:alnum:]]*))\s+(as)\s+(\b[_$[:alpha:]][_$[:alnum:]]*)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bdefault)|(\*)|(\b[_$[:alpha:]][_$[:alnum:]]*))\s+(as)\s+(?:(\bdefault(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|(\b[_$[:alpha:]][_$[:alnum:]]*))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -2839,6 +2839,11 @@
                 <string>keyword.control.as.tsx</string>
               </dict>
               <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.default.tsx</string>
+              </dict>
+              <key>6</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.readwrite.alias.tsx</string>

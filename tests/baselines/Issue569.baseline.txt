@@ -1,0 +1,56 @@
+original file
+-----------------------------------
+export { default as x } 
+export { x as default }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export { default as x } 
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^^^^
+          source.ts meta.export.ts meta.block.ts keyword.control.default.ts
+                 ^
+                 source.ts meta.export.ts meta.block.ts
+                  ^^
+                  source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+                    ^
+                    source.ts meta.export.ts meta.block.ts
+                     ^
+                     source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                      ^
+                      source.ts meta.export.ts meta.block.ts
+                       ^
+                       source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                        ^^
+                        source.ts meta.export.ts
+>export { x as default }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^
+          source.ts meta.export.ts meta.block.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.export.ts meta.block.ts
+            ^^
+            source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^^^^^^^
+               source.ts meta.export.ts meta.block.ts keyword.control.default.ts
+                      ^
+                      source.ts meta.export.ts meta.block.ts
+                       ^
+                       source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
