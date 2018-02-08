@@ -4899,6 +4899,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#type-conditional</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#type-operators</string>
           </dict>
           <dict>
@@ -5053,6 +5057,24 @@
             <string>#type</string>
           </dict>
         </array>
+      </dict>
+      <key>type-conditional</key>
+      <dict>
+        <key>match</key>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))([_$[:alpha:]][_$[:alnum:]]*)\s+(extends)\s+</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.type.ts</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.ts</string>
+          </dict>
+        </dict>
       </dict>
       <key>type-paren-or-function-parameters</key>
       <dict>
@@ -5290,6 +5312,12 @@
             <string>keyword.operator.expression.keyof.ts</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))keyof(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.ternary.ts</string>
+            <key>match</key>
+            <string>(\?|\:)</string>
           </dict>
         </array>
       </dict>

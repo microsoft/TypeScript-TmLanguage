@@ -1723,6 +1723,7 @@ repository:
     - include: '#type-parameters'
     - include: '#type-tuple'
     - include: '#type-object'
+    - include: '#type-conditional'
     - include: '#type-operators'
     - include: '#type-fn-type-parameters'
     - include: '#type-paren-or-function-parameters'
@@ -1773,6 +1774,13 @@ repository:
     - include: '#punctuation-comma'
     - include: '#punctuation-semicolon'
     - include: '#type'
+
+  #conditional type
+  type-conditional:
+    match: '{{startOfIdentifier}}({{identifier}})\s+(extends)\s+'
+    captures:
+      '1': { name: entity.name.type.ts }
+      '2': { name: storage.modifier.ts }
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -1872,6 +1880,8 @@ repository:
       end: (?=\S)
     - name: keyword.operator.expression.keyof.ts
       match: '{{startOfIdentifier}}keyof{{endOfIdentifier}}'
+    - name: keyword.operator.ternary.ts
+      match: (\?|\:)
 
   type-predicate-operator:
     name: keyword.operator.expression.is.ts
