@@ -1883,6 +1883,8 @@ repository:
       match: '{{startOfIdentifier}}keyof{{endOfIdentifier}}'
     - name: keyword.operator.ternary.ts
       match: (\?|\:)
+    - name: keyword.operator.expression.infer.ts
+      match: '{{startOfIdentifier}}infer(?=\s+[_$[:alpha:]])'
 
   type-predicate-operator:
     name: keyword.operator.expression.is.ts
