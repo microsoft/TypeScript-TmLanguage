@@ -6804,9 +6804,9 @@
         <key>begin</key>
         <string>(?x)
   (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|^return|[^\._$[:alnum:]]return|^default|[^\._$[:alnum:]]default|^)\s*
-  (?=(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
+  (?=(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
         <key>end</key>
-        <string>(?!\s*(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
+        <string>(?!\s*(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -6820,9 +6820,9 @@
         <key>name</key>
         <string>meta.tag.without-attributes.tsx</string>
         <key>begin</key>
-        <string>(&lt;)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;)</string>
+        <string>(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;)</string>
         <key>end</key>
-        <string>(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;)</string>
+        <string>(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -6833,14 +6833,24 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>entity.name.tag.tsx</string>
+            <string>entity.name.tag.namespace.tsx</string>
           </dict>
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>support.class.component.tsx</string>
+            <string>punctuation.separator.namespace.tsx</string>
           </dict>
           <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.tag.tsx</string>
+          </dict>
+          <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>6</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6856,14 +6866,24 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>entity.name.tag.tsx</string>
+            <string>entity.name.tag.namespace.tsx</string>
           </dict>
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>support.class.component.tsx</string>
+            <string>punctuation.separator.namespace.tsx</string>
           </dict>
           <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.tag.tsx</string>
+          </dict>
+          <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>6</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6886,10 +6906,11 @@
   (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|^return|[^\._$[:alnum:]]return|^default|[^\._$[:alnum:]]default|^)\s*
   (?!&lt;\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
   (?=(&lt;)\s*
+  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-):)?
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -6910,14 +6931,24 @@
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>entity.name.tag.tsx</string>
+            <string>entity.name.tag.namespace.tsx</string>
           </dict>
           <key>4</key>
           <dict>
             <key>name</key>
-            <string>support.class.component.tsx</string>
+            <string>punctuation.separator.namespace.tsx</string>
           </dict>
           <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.tag.tsx</string>
+          </dict>
+          <key>6</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>7</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6936,10 +6967,11 @@
         <key>begin</key>
         <string>(?x)
   (?=(&lt;)\s*
+  ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-):)?
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))\s*(&gt;))</string>
         <key>endCaptures</key>
         <dict>
           <key>0</key>
@@ -6960,14 +6992,24 @@
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>entity.name.tag.tsx</string>
+            <string>entity.name.tag.namespace.tsx</string>
           </dict>
           <key>4</key>
           <dict>
             <key>name</key>
-            <string>support.class.component.tsx</string>
+            <string>punctuation.separator.namespace.tsx</string>
           </dict>
           <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.tag.tsx</string>
+          </dict>
+          <key>6</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>7</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.tag.end.tsx</string>
@@ -6988,16 +7030,18 @@
         <key>begin</key>
         <string>(?x)
   (?=(&lt;)\s*
+  (?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?
   ([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;))</string>
         <key>end</key>
-        <string>(?=(/&gt;)|(?:(&lt;/)\s*([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)))</string>
+        <string>(?=(/&gt;)|(?:(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?([_$a-zA-Z][-$\w.]*(?&lt;!\.|-))\s*(&gt;)))</string>
         <key>patterns</key>
         <array>
           <dict>
             <key>begin</key>
             <string>(?x)
   (&lt;)\s*
+  (?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?
   ((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))
   (?=\s+(?!\?)|/?&gt;)</string>
             <key>beginCaptures</key>
@@ -7010,9 +7054,19 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.tag.tsx</string>
+                <string>entity.name.tag.namespace.tsx</string>
               </dict>
               <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.separator.namespace.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.tag.tsx</string>
+              </dict>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>support.class.component.tsx</string>
@@ -7179,11 +7233,22 @@
         <key>match</key>
         <string>(?x)
   \s*
+  (?:([_$a-zA-Z][-$\w.]*)(:))?
   ([_$a-zA-Z][-$\w]*)
   (?=\s|=|/?&gt;|/\*|//)</string>
         <key>captures</key>
         <dict>
           <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>entity.other.attribute-name.namespace.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.separator.namespace.tsx</string>
+          </dict>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>entity.other.attribute-name.tsx</string>
