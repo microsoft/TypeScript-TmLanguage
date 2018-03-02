@@ -29,6 +29,7 @@ variables:
   matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
+  inlineComment: \/\*([^\*]|(\*[^\/]))*\*\/
   # Identifier start | matching braces | matching parenthesis | matching square brackets
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
@@ -462,6 +463,7 @@ repository:
       '5': { name: meta.definition.function.ts entity.name.function.ts }
     end: (?=$|^|;)|(?<=\})
     patterns:
+    - include: '#function-name'
     - include: '#function-body'
 
   function-expression:
@@ -474,7 +476,12 @@ repository:
       '4': { name: meta.definition.function.ts entity.name.function.ts }
     end: (?<=\})
     patterns:
+    - include: '#function-name'
     - include: '#function-body'
+
+  function-name:
+    name: meta.definition.function.ts entity.name.function.ts
+    match: '{{identifier}}'
 
   function-body:
     patterns:
@@ -483,6 +490,8 @@ repository:
     - include: '#function-parameters'
     - include: '#return-type'
     - include: '#decl-block'
+    - name: keyword.generator.asterisk.ts
+      match: \*
 
   method-declaration:
     patterns:
@@ -721,6 +730,7 @@ repository:
     - include: '#variable-initializer'
     - include: '#access-modifier'
     - include: '#property-accessor'
+    - include: '#async-modifier'
     - include: '#after-operator-block-as-object-literal'
     - include: '#decl-block'
     - include: '#expression'
@@ -734,6 +744,10 @@ repository:
   property-accessor:
     name: storage.type.property.ts
     match: '{{startOfIdentifier}}(get|set){{endOfIdentifier}}'
+
+  async-modifier:
+    name: storage.modifier.async.ts
+    match:  '{{startOfIdentifier}}(async){{endOfIdentifier}}'
 
   #enum
   enum-declaration:
@@ -1159,6 +1173,14 @@ repository:
     patterns:
     - name: keyword.control.flow.ts
       match: '{{startOfIdentifier}}(await){{endOfIdentifier}}'
+    - begin: '{{startOfIdentifier}}(yield){{endOfIdentifier}}(?=\s*{{inlineComment}}\s*\*)'
+      beginCaptures:
+        '1': { name: keyword.control.flow.ts }
+      end: \*
+      endCaptures:
+        '0': { name: keyword.generator.asterisk.ts }
+      patterns:
+      - include: '#comment'
     - match: '{{startOfIdentifier}}(yield){{endOfIdentifier}}(?:\s*(\*))?'
       captures:
         '1': { name: keyword.control.flow.ts }

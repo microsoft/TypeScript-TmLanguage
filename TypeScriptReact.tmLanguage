@@ -1410,6 +1410,10 @@
         <array>
           <dict>
             <key>include</key>
+            <string>#function-name</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#function-body</string>
           </dict>
         </array>
@@ -1449,9 +1453,20 @@
         <array>
           <dict>
             <key>include</key>
+            <string>#function-name</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#function-body</string>
           </dict>
         </array>
+      </dict>
+      <key>function-name</key>
+      <dict>
+        <key>name</key>
+        <string>meta.definition.function.tsx entity.name.function.tsx</string>
+        <key>match</key>
+        <string>[_$[:alpha:]][_$[:alnum:]]*</string>
       </dict>
       <key>function-body</key>
       <dict>
@@ -1476,6 +1491,12 @@
           <dict>
             <key>include</key>
             <string>#decl-block</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.generator.asterisk.tsx</string>
+            <key>match</key>
+            <string>\*</string>
           </dict>
         </array>
       </dict>
@@ -2238,6 +2259,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#async-modifier</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#after-operator-block-as-object-literal</string>
           </dict>
           <dict>
@@ -2271,6 +2296,13 @@
         <string>storage.type.property.tsx</string>
         <key>match</key>
         <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(get|set)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+      </dict>
+      <key>async-modifier</key>
+      <dict>
+        <key>name</key>
+        <string>storage.modifier.async.tsx</string>
+        <key>match</key>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(async)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
       </dict>
       <key>enum-declaration</key>
       <dict>
@@ -3557,6 +3589,35 @@
             <string>keyword.control.flow.tsx</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(await)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(yield)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))(?=\s*\/\*([^\*]|(\*[^\/]))*\*\/\s*\*)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.flow.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\*</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.generator.asterisk.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
           </dict>
           <dict>
             <key>match</key>
