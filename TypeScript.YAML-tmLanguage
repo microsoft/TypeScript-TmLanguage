@@ -1005,14 +1005,19 @@ repository:
     - include: '#object-literal-method-declaration'
     - name: meta.object.member.ts meta.object-literal.key.ts
       begin: (?=\[)
-      end: (?=:)
+      end: (?=:)|((?<=[\]])(?=\s*[\(\<]))
       patterns:
       - include: '#array-literal'
     - name: meta.object.member.ts meta.object-literal.key.ts
       begin: (?=[\'\"])
-      end: (?=:)
+      end: (?=:)|((?<=[\'\"])(?=\s*[\(\<]))
       patterns:
       - include: '#string'
+    - name: meta.method.declaration.ts
+      begin: (?<=[\]\'\"])(?=\s*[\(\<])
+      end: (?=\}|;|,)|(?<=\})
+      patterns:
+      - include: '#function-body'
     - name: meta.object.member.ts
       match: (?![_$[:alpha:]])([[:digit:]]+)\s*(?=:)
       captures:

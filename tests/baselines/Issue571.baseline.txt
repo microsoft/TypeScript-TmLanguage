@@ -1,0 +1,150 @@
+original file
+-----------------------------------
+const o = {
+	["a" +
+		"b"]() {
+		return 0; // no highlighting!
+	},
+	'a\
+	'() {
+		return 0; // no highlighting!
+	}
+};
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const o = {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+            ^^
+            source.ts meta.var.expr.ts meta.objectliteral.ts
+>	["a" +
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+  ^
+  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts meta.brace.square.ts
+   ^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+    ^
+    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts string.quoted.double.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.end.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts keyword.operator.arithmetic.ts
+        ^^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts
+>		"b"]() {
+ ^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts
+   ^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+    ^
+    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts string.quoted.double.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts string.quoted.double.ts punctuation.definition.string.end.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts meta.array.literal.ts meta.brace.square.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+           ^^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+>		return 0; // no highlighting!
+ ^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+             ^^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+               ^^^^^^^^^^^^^^^^^^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts comment.line.double-slash.ts
+>	},
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+   ^
+   source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+    ^^
+    source.ts meta.var.expr.ts meta.objectliteral.ts
+>	'a\
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+  ^
+  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+   ^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts
+    ^^
+    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts constant.character.escape.ts
+>	'() {
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts
+  ^
+  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts punctuation.definition.string.end.ts
+   ^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+    ^
+    source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+       ^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+>		return 0; // no highlighting!
+ ^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts constant.numeric.decimal.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+             ^^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+               ^^^^^^^^^^^^^^^^^^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts comment.line.double-slash.ts
+>	}
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+   ^^
+   source.ts meta.var.expr.ts meta.objectliteral.ts
+>};
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts punctuation.terminator.statement.ts

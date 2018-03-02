@@ -3142,7 +3142,7 @@
             <key>begin</key>
             <string>(?=\[)</string>
             <key>end</key>
-            <string>(?=:)</string>
+            <string>(?=:)|((?&lt;=[\]])(?=\s*[\(\&lt;]))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3157,12 +3157,27 @@
             <key>begin</key>
             <string>(?=[\'\"])</string>
             <key>end</key>
-            <string>(?=:)</string>
+            <string>(?=:)|((?&lt;=[\'\"])(?=\s*[\(\&lt;]))</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
                 <string>#string</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.method.declaration.ts</string>
+            <key>begin</key>
+            <string>(?&lt;=[\]\'\"])(?=\s*[\(\&lt;])</string>
+            <key>end</key>
+            <string>(?=\}|;|,)|(?&lt;=\})</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#function-body</string>
               </dict>
             </array>
           </dict>
