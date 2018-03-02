@@ -965,18 +965,24 @@ repository:
       - include: '#statements'
 
   for-loop:
-    begin: '{{startOfIdentifier}}(for)(?:\s+(await))?\s*(\()'
+    begin: '{{startOfIdentifier}}for(?=((\s+|(\s*{{inlineComment}}\s*))await)?\s*({{inlineComment}}\s*)?(\())'
     beginCaptures:
-      '1': { name: keyword.control.loop.ts }
-      '2': { name: keyword.control.loop.ts }
-      '3': { name: meta.brace.round.ts }
-    end: \)
-    endCaptures:
-      '0': { name: meta.brace.round.ts }
+      '0': { name: keyword.control.loop.ts }
+    end: (?<=\))
     patterns:
-    - include: '#var-expr'
-    - include: '#expression'
-    - include: '#punctuation-semicolon'
+    - include: '#comment'
+    - name: keyword.control.loop.ts
+      match: await
+    - begin: \(
+      beginCaptures:
+        '0': { name: meta.brace.round.ts }
+      end: \)
+      endCaptures:
+        '0': { name: meta.brace.round.ts }
+      patterns:
+      - include: '#var-expr'
+      - include: '#expression'
+      - include: '#punctuation-semicolon'
 
   #blocks
   decl-block:

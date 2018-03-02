@@ -3015,48 +3015,65 @@
       <key>for-loop</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(for)(?:\s+(await))?\s*(\()</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))for(?=((\s+|(\s*\/\*([^\*]|(\*[^\/]))*\*\/\s*))await)?\s*(\/\*([^\*]|(\*[^\/]))*\*\/\s*)?(\())</string>
         <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.loop.ts</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.loop.ts</string>
-          </dict>
-          <key>3</key>
-          <dict>
-            <key>name</key>
-            <string>meta.brace.round.ts</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>\)</string>
-        <key>endCaptures</key>
         <dict>
           <key>0</key>
           <dict>
             <key>name</key>
-            <string>meta.brace.round.ts</string>
+            <string>keyword.control.loop.ts</string>
           </dict>
         </dict>
+        <key>end</key>
+        <string>(?&lt;=\))</string>
         <key>patterns</key>
         <array>
           <dict>
             <key>include</key>
-            <string>#var-expr</string>
+            <string>#comment</string>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#expression</string>
+            <key>name</key>
+            <string>keyword.control.loop.ts</string>
+            <key>match</key>
+            <string>await</string>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#punctuation-semicolon</string>
+            <key>begin</key>
+            <string>\(</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.round.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\)</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>meta.brace.round.ts</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#var-expr</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#punctuation-semicolon</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
