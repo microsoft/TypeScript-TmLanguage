@@ -26,9 +26,9 @@ variables:
   lookBehindOf: '^of|{{nonPropertyLookBehind}}of'
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
-  matchingParenthesis: (\([^\(\)]*\))
-  matchingBraces: (\{[^\{\}]*\})
-  matchingBrackets: (\[[^\[\]]*\])
+  matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
+  matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
+  matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
   # Identifier start | matching braces | matching parenthesis | matching square brackets
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
