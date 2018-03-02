@@ -28,7 +28,7 @@ variables:
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   matchingParenthesis: (\([^\(\)]*\))
   matchingBraces: (\{[^\{\}]*\})
-  matchingBrackets: (\[[^\[\]]*\])
+  matchingBrackets: (\[[^\]]*\])
   # Identifier start | matching braces | matching parenthesis | matching square brackets
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
