@@ -1,0 +1,32 @@
+{
+  "name": "typescript-tmlanguage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TextMate grammar files for TypeScript for VS Code, Sublime Text, and Atom",
+  "main": "build/build.js",
+  "scripts": {
+    "build": "npm run build:grammar && npm run build:tests",
+    "build:grammar": "tsc -p build && node build/build.js",
+    "build:tests": "tsc -p tests",
+    "pretest": "npm run build",
+    "test": "mocha --full-trace tests/test.js",
+    "diff": "cross-env-shell $DIFF tests/baselines tests/generated",
+    "accept": "cpx tests/generated/* tests/baselines"
+  },
+  "dependencies": {
+    "chai": "latest",
+    "js-yaml": "latest",
+    "mocha": "latest",
+    "plist": "latest",
+    "typescript": "latest",
+    "vscode-textmate": "latest",
+    "@types/chai": "latest",
+    "@types/js-yaml": "latest",
+    "@types/mocha": "latest",
+    "@types/node": "latest"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "cross-env": "^5.1.1"
+  }
+}

@@ -1,0 +1,196 @@
+original file
+-----------------------------------
+let myFunc = function<T,U>(txt:string,num:number){}
+
+class MyClass {
+  myProp = myFunc<number, () => void>("syntax highlight is incorrect", 1);
+}
+
+let myProp = myFunc<number, () => void>("syntax highlight is correct here", 1);
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let myFunc = function<T,U>(txt:string,num:number){}
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts entity.name.function.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^^^^^^
+              source.ts meta.var.expr.ts meta.function.expression.ts storage.type.function.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.function.expression.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.function.expression.ts meta.type.parameters.ts entity.name.type.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.function.expression.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.function.expression.ts meta.type.parameters.ts entity.name.type.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.function.expression.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                            ^^^
+                            source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                ^^^^^^
+                                source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                       ^^^
+                                       source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                           ^^^^^^
+                                           source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                                   ^
+                                                   source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts
+>
+ ^^
+ source.ts
+>class MyClass {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+              ^
+              source.ts meta.class.ts
+               ^
+               source.ts meta.class.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.class.ts
+>  myProp = myFunc<number, () => void>("syntax highlight is incorrect", 1);
+ ^^
+ source.ts meta.class.ts
+   ^^^^^^
+   source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts
+            ^^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts entity.name.function.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                   ^^^^^^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                            ^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                             ^
+                             source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts
+                              ^^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.function.return.ts
+                                 ^^^^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts meta.type.function.return.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.class.ts meta.field.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                      ^
+                                      source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                       ^
+                                       source.ts meta.class.ts meta.field.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                        source.ts meta.class.ts meta.field.declaration.ts string.quoted.double.ts
+                                                                     ^
+                                                                     source.ts meta.class.ts meta.field.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                                      ^
+                                                                      source.ts meta.class.ts meta.field.declaration.ts punctuation.separator.comma.ts
+                                                                       ^
+                                                                       source.ts meta.class.ts meta.field.declaration.ts
+                                                                        ^
+                                                                        source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                                                                         ^
+                                                                         source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                                                          ^
+                                                                          source.ts meta.class.ts punctuation.terminator.statement.ts
+                                                                           ^^
+                                                                           source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>let myProp = myFunc<number, () => void>("syntax highlight is correct here", 1);
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^^^^
+              source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                     ^^^^^^
+                     source.ts meta.var.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.type.parameters.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.type.parameters.ts
+                                ^^
+                                source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.function.return.ts
+                                   ^^^^
+                                   source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.function.return.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.brace.round.ts
+                                         ^
+                                         source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                          source.ts meta.var.expr.ts string.quoted.double.ts
+                                                                          ^
+                                                                          source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                                           ^
+                                                                           source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                                                                            ^
+                                                                            source.ts meta.var.expr.ts
+                                                                             ^
+                                                                             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                                                              ^
+                                                                              source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                               ^
+                                                                               source.ts punctuation.terminator.statement.ts

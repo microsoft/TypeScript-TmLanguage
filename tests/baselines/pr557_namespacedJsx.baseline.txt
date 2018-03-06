@@ -1,0 +1,256 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+const valid1 = <standard-tag standard-attribute="foo" />;
+
+const valid2 = <namespaced:tag namespaced:boolean-attr>foo</namespaced:tag>;
+
+const valid3 = <namespaced:Klass.comp.onent namespaced:attr="foo" />;
+
+const invalid1 = <too:much:Namespace />;
+
+const invalid2 = <namespaced-:Klass.Component too:much:namespace-attribute>foo</namespaced-:Klass.Component>;
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>const valid1 = <standard-tag standard-attribute="foo" />;
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+              ^
+              source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+               ^
+               source.tsx meta.var.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                 ^^^^^^^^^^^^
+                 source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx
+                              ^^^^^^^^^^^^^^^^^^
+                              source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+                                                ^
+                                                source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+                                                 ^
+                                                 source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.double.tsx punctuation.definition.string.begin.tsx
+                                                  ^^^
+                                                  source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.double.tsx
+                                                     ^
+                                                     source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.double.tsx punctuation.definition.string.end.tsx
+                                                      ^
+                                                      source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx
+                                                       ^^
+                                                       source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                                                         ^
+                                                         source.tsx punctuation.terminator.statement.tsx
+>
+ ^
+ source.tsx
+>const valid2 = <namespaced:tag namespaced:boolean-attr>foo</namespaced:tag>;
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+              ^
+              source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+               ^
+               source.tsx meta.var.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                 ^^^^^^^^^^
+                 source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.namespace.tsx
+                           ^
+                           source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.separator.namespace.tsx
+                            ^^^
+                            source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.tsx
+                               ^
+                               source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx
+                                ^^^^^^^^^^
+                                source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.namespace.tsx
+                                          ^
+                                          source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx punctuation.separator.namespace.tsx
+                                           ^^^^^^^^^^^^
+                                           source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+                                                       ^
+                                                       source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                                                        ^^^
+                                                        source.tsx meta.var.expr.tsx meta.tag.tsx meta.jsx.children.tsx
+                                                           ^^
+                                                           source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                                                             ^^^^^^^^^^
+                                                             source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.namespace.tsx
+                                                                       ^
+                                                                       source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.separator.namespace.tsx
+                                                                        ^^^
+                                                                        source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.tsx
+                                                                           ^
+                                                                           source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                                                                            ^
+                                                                            source.tsx punctuation.terminator.statement.tsx
+>
+ ^
+ source.tsx
+>const valid3 = <namespaced:Klass.comp.onent namespaced:attr="foo" />;
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+             ^
+             source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+              ^
+              source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+               ^
+               source.tsx meta.var.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                 ^^^^^^^^^^
+                 source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.namespace.tsx
+                           ^
+                           source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.separator.namespace.tsx
+                            ^^^^^^^^^^^^^^^^
+                            source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+                                            ^
+                                            source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx
+                                             ^^^^^^^^^^
+                                             source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.namespace.tsx
+                                                       ^
+                                                       source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx punctuation.separator.namespace.tsx
+                                                        ^^^^
+                                                        source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+                                                            ^
+                                                            source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+                                                             ^
+                                                             source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.double.tsx punctuation.definition.string.begin.tsx
+                                                              ^^^
+                                                              source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.double.tsx
+                                                                 ^
+                                                                 source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.double.tsx punctuation.definition.string.end.tsx
+                                                                  ^
+                                                                  source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx
+                                                                   ^^
+                                                                   source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                                                                     ^
+                                                                     source.tsx punctuation.terminator.statement.tsx
+>
+ ^
+ source.tsx
+>const invalid1 = <too:much:Namespace />;
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx keyword.operator.relational.tsx
+                   ^^^
+                   source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                      ^
+                      source.tsx meta.var.expr.tsx
+                       ^^^^
+                       source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                           ^
+                           source.tsx meta.var.expr.tsx
+                            ^^^^^^^^^
+                            source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                                     ^
+                                     source.tsx meta.var.expr.tsx
+                                      ^
+                                      source.tsx meta.var.expr.tsx keyword.operator.arithmetic.tsx
+                                       ^
+                                       source.tsx meta.var.expr.tsx keyword.operator.relational.tsx
+                                        ^
+                                        source.tsx punctuation.terminator.statement.tsx
+>
+ ^
+ source.tsx
+>const invalid2 = <namespaced-:Klass.Component too:much:namespace-attribute>foo</namespaced-:Klass.Component>;
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+               ^
+               source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx keyword.operator.relational.tsx
+                   ^^^^^^^^^^
+                   source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                             ^
+                             source.tsx meta.var.expr.tsx keyword.operator.arithmetic.tsx
+                              ^
+                              source.tsx meta.var.expr.tsx
+                               ^^^^^
+                               source.tsx meta.var.expr.tsx variable.other.object.tsx
+                                    ^
+                                    source.tsx meta.var.expr.tsx punctuation.accessor.tsx
+                                     ^^^^^^^^^
+                                     source.tsx meta.var.expr.tsx variable.other.property.tsx
+                                              ^
+                                              source.tsx meta.var.expr.tsx
+                                               ^^^
+                                               source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                                                  ^
+                                                  source.tsx meta.var.expr.tsx
+                                                   ^^^^
+                                                   source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                                                       ^
+                                                       source.tsx meta.var.expr.tsx
+                                                        ^^^^^^^^^
+                                                        source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                                                                 ^
+                                                                 source.tsx meta.var.expr.tsx keyword.operator.arithmetic.tsx
+                                                                  ^^^^^^^^^
+                                                                  source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                                                                           ^
+                                                                           source.tsx meta.var.expr.tsx keyword.operator.relational.tsx
+                                                                            ^^^
+                                                                            source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                                                                               ^
+                                                                               source.tsx meta.var.expr.tsx keyword.operator.relational.tsx
+                                                                                ^
+                                                                                source.tsx meta.var.expr.tsx keyword.operator.arithmetic.tsx
+                                                                                 ^^^^^^^^^^
+                                                                                 source.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+                                                                                           ^
+                                                                                           source.tsx meta.var.expr.tsx keyword.operator.arithmetic.tsx
+                                                                                            ^
+                                                                                            source.tsx meta.var.expr.tsx
+                                                                                             ^^^^^
+                                                                                             source.tsx meta.var.expr.tsx variable.other.object.tsx
+                                                                                                  ^
+                                                                                                  source.tsx meta.var.expr.tsx punctuation.accessor.tsx
+                                                                                                   ^^^^^^^^^
+                                                                                                   source.tsx meta.var.expr.tsx variable.other.property.tsx
+                                                                                                            ^
+                                                                                                            source.tsx meta.var.expr.tsx keyword.operator.relational.tsx
+                                                                                                             ^
+                                                                                                             source.tsx punctuation.terminator.statement.tsx

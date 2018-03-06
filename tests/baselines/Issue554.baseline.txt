@@ -1,0 +1,144 @@
+original file
+-----------------------------------
+async function f(x: Promise<object>) {
+    return { ...await x };
+}
+...new Object()
+...function f() {}
+...typeof x
+...void x
+...undefined
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>async function f(x: Promise<object>) {
+ ^^^^^
+ source.ts meta.function.ts storage.modifier.async.ts
+      ^
+      source.ts meta.function.ts
+       ^^^^^^^^
+       source.ts meta.function.ts storage.type.function.ts
+               ^
+               source.ts meta.function.ts
+                ^
+                source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                    ^
+                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                     ^^^^^^^
+                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                            ^
+                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                             ^^^^^^
+                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.parameters.ts support.type.builtin.ts
+                                   ^
+                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                    ^
+                                    source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                     ^
+                                     source.ts meta.function.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                       ^^
+                                       source.ts meta.function.ts meta.block.ts
+>    return { ...await x };
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.objectliteral.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.objectliteral.ts
+              ^^^
+              source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts keyword.operator.spread.ts
+                 ^^^^^
+                 source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts keyword.control.flow.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                           ^^
+                           source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>...new Object()
+ ^^^
+ source.ts keyword.operator.spread.ts
+    ^^^
+    source.ts new.expr.ts keyword.operator.new.ts
+       ^
+       source.ts new.expr.ts
+        ^^^^^^
+        source.ts new.expr.ts entity.name.type.ts
+              ^
+              source.ts new.expr.ts meta.brace.round.ts
+               ^
+               source.ts new.expr.ts meta.brace.round.ts
+                ^^
+                source.ts
+>...function f() {}
+ ^^^
+ source.ts keyword.operator.spread.ts
+    ^^^^^^^^
+    source.ts meta.function.ts storage.type.function.ts
+            ^
+            source.ts meta.function.ts
+             ^
+             source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.function.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                   ^^
+                   source.ts
+>...typeof x
+ ^^^
+ source.ts keyword.operator.spread.ts
+    ^^^^^^
+    source.ts keyword.operator.expression.typeof.ts
+          ^
+          source.ts
+           ^
+           source.ts variable.other.readwrite.ts
+            ^^
+            source.ts
+>...void x
+ ^^^
+ source.ts keyword.operator.spread.ts
+    ^^^^
+    source.ts keyword.operator.expression.void.ts
+        ^
+        source.ts
+         ^
+         source.ts variable.other.readwrite.ts
+          ^^
+          source.ts
+>...undefined
+ ^^^
+ source.ts keyword.operator.spread.ts
+    ^^^^^^^^^
+    source.ts constant.language.undefined.ts

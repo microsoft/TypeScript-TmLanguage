@@ -1,0 +1,94 @@
+original file
+-----------------------------------
+class Thing {
+    foo: SomeFunc = () => void 0;
+    bar = () => void 0;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Thing {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+            ^
+            source.ts meta.class.ts
+             ^
+             source.ts meta.class.ts punctuation.definition.block.ts
+              ^^
+              source.ts meta.class.ts
+>    foo: SomeFunc = () => void 0;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^^^^^^^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                        ^^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                           ^^^^
+                           source.ts meta.class.ts meta.field.declaration.ts keyword.operator.expression.void.ts
+                               ^
+                               source.ts meta.class.ts meta.field.declaration.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                                 ^
+                                 source.ts meta.class.ts punctuation.terminator.statement.ts
+                                  ^^
+                                  source.ts meta.class.ts
+>    bar = () => void 0;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+              ^^
+              source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                 ^^^^
+                 source.ts meta.class.ts meta.field.declaration.ts keyword.operator.expression.void.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts meta.class.ts punctuation.terminator.statement.ts
+                        ^^
+                        source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

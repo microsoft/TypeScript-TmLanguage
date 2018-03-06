@@ -1,0 +1,252 @@
+original file
+-----------------------------------
+type Diff1<T, U> = T extends U ? never : T
+type TypeName<T> =
+    T extends string ? "string" :
+        T extends number ? "number" :
+            T extends boolean ? "boolean" :
+                T extends undefined ? "undefined" :
+                    T extends Function ? "function" :
+                        "object";
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>type Diff1<T, U> = T extends U ? never : T
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+           ^
+           source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^
+                    source.ts meta.type.declaration.ts entity.name.type.ts
+                     ^
+                     source.ts meta.type.declaration.ts
+                      ^^^^^^^
+                      source.ts meta.type.declaration.ts storage.modifier.ts
+                             ^
+                             source.ts meta.type.declaration.ts
+                              ^
+                              source.ts meta.type.declaration.ts entity.name.type.ts
+                               ^
+                               source.ts meta.type.declaration.ts
+                                ^
+                                source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts
+                                  ^^^^^
+                                  source.ts meta.type.declaration.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts entity.name.type.ts
+                                           ^^
+                                           source.ts meta.type.declaration.ts
+>type TypeName<T> =
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                   ^^
+                   source.ts meta.type.declaration.ts
+>    T extends string ? "string" :
+ ^^^^
+ source.ts meta.type.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts entity.name.type.ts
+      ^
+      source.ts meta.type.declaration.ts
+       ^^^^^^^
+       source.ts meta.type.declaration.ts storage.modifier.ts
+              ^
+              source.ts meta.type.declaration.ts
+               ^^^^^^
+               source.ts meta.type.declaration.ts support.type.primitive.ts
+                     ^
+                     source.ts meta.type.declaration.ts
+                      ^
+                      source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                       ^
+                       source.ts meta.type.declaration.ts
+                        ^
+                        source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                         ^^^^^^
+                         source.ts meta.type.declaration.ts string.quoted.double.ts
+                               ^
+                               source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                ^
+                                source.ts meta.type.declaration.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                  ^^
+                                  source.ts meta.type.declaration.ts
+>        T extends number ? "number" :
+ ^^^^^^^^
+ source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts entity.name.type.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^^^^^^^
+           source.ts meta.type.declaration.ts storage.modifier.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^^^^^^
+                   source.ts meta.type.declaration.ts support.type.primitive.ts
+                         ^
+                         source.ts meta.type.declaration.ts
+                          ^
+                          source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                           ^
+                           source.ts meta.type.declaration.ts
+                            ^
+                            source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                             ^^^^^^
+                             source.ts meta.type.declaration.ts string.quoted.double.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                      ^^
+                                      source.ts meta.type.declaration.ts
+>            T extends boolean ? "boolean" :
+ ^^^^^^^^^^^^
+ source.ts meta.type.declaration.ts
+             ^
+             source.ts meta.type.declaration.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts
+               ^^^^^^^
+               source.ts meta.type.declaration.ts storage.modifier.ts
+                      ^
+                      source.ts meta.type.declaration.ts
+                       ^^^^^^^
+                       source.ts meta.type.declaration.ts support.type.primitive.ts
+                              ^
+                              source.ts meta.type.declaration.ts
+                               ^
+                               source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                ^
+                                source.ts meta.type.declaration.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                  ^^^^^^^
+                                  source.ts meta.type.declaration.ts string.quoted.double.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                            ^^
+                                            source.ts meta.type.declaration.ts
+>                T extends undefined ? "undefined" :
+ ^^^^^^^^^^^^^^^^
+ source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts entity.name.type.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^^^^^^^
+                   source.ts meta.type.declaration.ts storage.modifier.ts
+                          ^
+                          source.ts meta.type.declaration.ts
+                           ^^^^^^^^^
+                           source.ts meta.type.declaration.ts support.type.builtin.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                        ^^^^^^^^^
+                                        source.ts meta.type.declaration.ts string.quoted.double.ts
+                                                 ^
+                                                 source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                  ^
+                                                  source.ts meta.type.declaration.ts
+                                                   ^
+                                                   source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                                    ^^
+                                                    source.ts meta.type.declaration.ts
+>                    T extends Function ? "function" :
+ ^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.type.declaration.ts
+                     ^
+                     source.ts meta.type.declaration.ts entity.name.type.ts
+                      ^
+                      source.ts meta.type.declaration.ts
+                       ^^^^^^^
+                       source.ts meta.type.declaration.ts storage.modifier.ts
+                              ^
+                              source.ts meta.type.declaration.ts
+                               ^^^^^^^^
+                               source.ts meta.type.declaration.ts entity.name.type.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                           ^^^^^^^^
+                                           source.ts meta.type.declaration.ts string.quoted.double.ts
+                                                   ^
+                                                   source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                    ^
+                                                    source.ts meta.type.declaration.ts
+                                                     ^
+                                                     source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                                      ^^
+                                                      source.ts meta.type.declaration.ts
+>                        "object";
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.type.declaration.ts
+                         ^
+                         source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^^^^^^
+                          source.ts meta.type.declaration.ts string.quoted.double.ts
+                                ^
+                                source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
