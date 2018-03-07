@@ -166,10 +166,10 @@ repository:
     - include: '#new-expr'
     - include: '#object-literal'
     - include: '#expression-operators'
+    - include: '#paren-expression-possibly-arrow'
     - include: '#function-call'
     - include: '#literal'
     - include: '#support-objects'
-    - include: '#paren-expression-possibly-arrow'
     - include: '#paren-expression'
 
   expressionPunctuations:
@@ -1145,12 +1145,13 @@ repository:
   # but do this only from expression and as last resort
   paren-expression-possibly-arrow:
     patterns:
-    - begin: (\()(?=\s*$)
+    - begin: (?:{{startOfIdentifier}}(\basync)\s*)?(\()(?=\s*$)
       beginCaptures:
-        '1': {name: meta.brace.round.ts }
+        '1': { name: storage.modifier.async.ts }
+        '2': { name: meta.brace.round.ts }
       end: \)
       endCaptures:
-        '0': {name: meta.brace.round.ts }
+        '0': { name: meta.brace.round.ts }
       patterns:
       - include: '#expressionWithoutIdentifiers'
       - include: '#function-parameters-body'
