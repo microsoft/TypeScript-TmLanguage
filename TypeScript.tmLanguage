@@ -257,6 +257,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#instanceof-expr</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#object-literal</string>
           </dict>
           <dict>
@@ -3543,6 +3547,28 @@
             <key>include</key>
             <string>#class-declaration</string>
           </dict>
+          <dict>
+            <key>include</key>
+            <string>#type</string>
+          </dict>
+        </array>
+      </dict>
+      <key>instanceof-expr</key>
+      <dict>
+        <key>begin</key>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(instanceof)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.expression.instanceof.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?&lt;=\))|(?=[;),}\]:]|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
+        <key>patterns</key>
+        <array>
           <dict>
             <key>include</key>
             <string>#type</string>
