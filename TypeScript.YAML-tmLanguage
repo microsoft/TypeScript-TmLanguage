@@ -58,6 +58,7 @@ variables:
       (\s*:{{returnTypeOfArrow}})?                                                                        # return type
       \s*=>                                                                                               # arrow operator
     )
+  possiblyMultilineArrow: ({{typeParameters}}?[\(]\s*$)  # during lookup treat <typeparameters>?( followed by line end as arrow
   functionOrArrowLookup: |-
     \s*(
       ((async\s+)?(
@@ -66,7 +67,7 @@ variables:
         ({{identifier}}\s*=>)
       )) |
       ((async\s*)?(
-        ([\(]\s*$) |                                                                # during lookup treat ( followed by line end as arrow
+        {{possiblyMultilineArrow}} |
         {{arrowLookup}}
       ))
     )
@@ -161,13 +162,13 @@ repository:
     - include: '#function-expression'
     - include: '#class-expression'
     - include: '#arrow-function'
+    - include: '#paren-expression-possibly-arrow'
     - include: '#cast'
     - include: '#ternary-expression'
     - include: '#new-expr'
     - include: '#instanceof-expr'
     - include: '#object-literal'
     - include: '#expression-operators'
-    - include: '#paren-expression-possibly-arrow'
     - include: '#function-call'
     - include: '#literal'
     - include: '#support-objects'
@@ -1154,6 +1155,12 @@ repository:
   # but do this only from expression and as last resort
   paren-expression-possibly-arrow:
     patterns:
+    - begin: (?:{{startOfIdentifier}}(\basync))?(?=\s*{{typeParameters}}\(\s*$)
+      beginCaptures:
+        '1': { name: storage.modifier.async.ts }
+      end: (?<=>)(?!<)
+      patterns:
+      - include: '#type-parameters'
     - begin: (?:{{startOfIdentifier}}(\basync)\s*)?(\()(?=\s*$)
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
