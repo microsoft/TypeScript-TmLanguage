@@ -164,6 +164,7 @@ repository:
     - include: '#cast'
     - include: '#ternary-expression'
     - include: '#new-expr'
+    - include: '#instanceof-expr'
     - include: '#object-literal'
     - include: '#expression-operators'
     - include: '#paren-expression-possibly-arrow'
@@ -1139,6 +1140,14 @@ repository:
     patterns:
     - include: '#paren-expression'
     - include: '#class-declaration'
+    - include: '#type'
+
+  instanceof-expr:
+    begin: '{{startOfIdentifier}}(instanceof){{endOfIdentifier}}'
+    beginCaptures:
+      '1': { name: keyword.operator.expression.instanceof.ts }
+    end: (?<=\))|(?=[;),}\]:]|$|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
+    patterns:
     - include: '#type'
 
   # when ( is followed by end of line, it could be arrow parameter decarations, so inside this match as if parameter falling back to expression

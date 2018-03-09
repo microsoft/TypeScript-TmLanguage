@@ -1,0 +1,98 @@
+original file
+-----------------------------------
+if (targetAttribute) {
+    if (!(targetAttribute instanceof Attribute)) {
+        targetAttribute = new Attribute(targetAttribute);
+    }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>if (targetAttribute) {
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^^^^^^^^^^^^^^^
+     source.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.brace.round.ts
+                     ^
+                     source.ts
+                      ^
+                      source.ts meta.block.ts punctuation.definition.block.ts
+                       ^^
+                       source.ts meta.block.ts
+>    if (!(targetAttribute instanceof Attribute)) {
+ ^^^^
+ source.ts meta.block.ts
+     ^^
+     source.ts meta.block.ts keyword.control.conditional.ts
+       ^
+       source.ts meta.block.ts
+        ^
+        source.ts meta.block.ts meta.brace.round.ts
+         ^
+         source.ts meta.block.ts keyword.operator.logical.ts
+          ^
+          source.ts meta.block.ts meta.brace.round.ts
+           ^^^^^^^^^^^^^^^
+           source.ts meta.block.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.block.ts
+                           ^^^^^^^^^^
+                           source.ts meta.block.ts keyword.operator.expression.instanceof.ts
+                                     ^
+                                     source.ts meta.block.ts
+                                      ^^^^^^^^^
+                                      source.ts meta.block.ts entity.name.type.ts
+                                               ^
+                                               source.ts meta.block.ts meta.brace.round.ts
+                                                ^
+                                                source.ts meta.block.ts meta.brace.round.ts
+                                                 ^
+                                                 source.ts meta.block.ts
+                                                  ^
+                                                  source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+                                                   ^^
+                                                   source.ts meta.block.ts meta.block.ts
+>        targetAttribute = new Attribute(targetAttribute);
+ ^^^^^^^^
+ source.ts meta.block.ts meta.block.ts
+         ^^^^^^^^^^^^^^^
+         source.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.block.ts meta.block.ts
+                         ^
+                         source.ts meta.block.ts meta.block.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.block.ts meta.block.ts
+                           ^^^
+                           source.ts meta.block.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                              ^
+                              source.ts meta.block.ts meta.block.ts new.expr.ts
+                               ^^^^^^^^^
+                               source.ts meta.block.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                        ^
+                                        source.ts meta.block.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                         ^^^^^^^^^^^^^^^
+                                         source.ts meta.block.ts meta.block.ts new.expr.ts variable.other.readwrite.ts
+                                                        ^
+                                                        source.ts meta.block.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                         ^
+                                                         source.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+                                                          ^^
+                                                          source.ts meta.block.ts meta.block.ts
+>    }
+ ^^^^
+ source.ts meta.block.ts meta.block.ts
+     ^
+     source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+      ^^
+      source.ts meta.block.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
