@@ -8,6 +8,15 @@ scopeName: source.tsx
 fileTypes: [tsx]
 uuid: 805375ec-d614-41f5-8993-5843fe63ea82
 
+variables:
+  jsxTagOrAtrributeIdentifier: '[_$a-zA-Z][-$\w.]'
+  jsxTagNamespace: (?:({{jsxTagOrAtrributeIdentifier}}*)(?<!\.|-)(:))?
+  jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}*))(?<!\.|-))
+  jsxOpeningTagWithoutAttributes: (<){{jsxTagName}}?\s*(>)
+  jsxClosingTag: (</){{jsxTagName}}?\s*(>)
+  jsxTagStart: (<){{jsxTagName}}(?=\s+(?!\?)|\/?>)
+  jsxTagStartLookahead: (?={{jsxTagStart}})
+
 repository:
   # Additions:
   # expression repository need to include jsx first followed by whaterver ts grammar says
@@ -34,15 +43,15 @@ repository:
     begin: |-
       (?x)
         (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
-        (?=(<)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
-    end: (?!\s*(<)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
+        (?={{jsxOpeningTagWithoutAttributes}})
+    end: (?!\s*{{jsxOpeningTagWithoutAttributes}})
     patterns:
     - include: '#jsx-tag-without-attributes'
 
   jsx-tag-without-attributes:
     name: meta.tag.without-attributes.tsx
-    begin: (<)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>)
-    end: (</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>)
+    begin: '{{jsxOpeningTagWithoutAttributes}}'
+    end: '{{jsxClosingTag}}'
     beginCaptures:
       '1': {name: punctuation.definition.tag.begin.tsx}
       '2': {name: entity.name.tag.namespace.tsx}
@@ -67,11 +76,8 @@ repository:
       (?x)
         (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
         (?!<\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
-        (?=(<)\s*
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-):)?
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
-        (?=\s+(?!\?)|/?>))
-    end: (/>)|(?:(</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+        {{jsxTagStartLookahead}}
+    end: (/>)|(?:{{jsxClosingTag}})
     endCaptures:
       '0': { name: meta.tag.tsx }
       '1': { name: punctuation.definition.tag.end.tsx }
@@ -86,13 +92,8 @@ repository:
 
   jsx-child-tag:
     # Because this would be included from the jsx-children, this doesnt need to inspect surrounding context
-    begin: |-
-      (?x)
-        (?=(<)\s*
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-):)?
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
-        (?=\s+(?!\?)|/?>))
-    end: (/>)|(?:(</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+    begin: '{{jsxTagStartLookahead}}'
+    end: (/>)|(?:{{jsxClosingTag}})
     endCaptures:
      '0': { name: meta.tag.tsx }
      '1': { name: punctuation.definition.tag.end.tsx }
@@ -107,20 +108,10 @@ repository:
 
   jsx-tag:
     name: meta.tag.tsx
-    begin: |-
-      (?x)
-        (?=(<)\s*
-        (?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
-        (?=\s+(?!\?)|/?>))
-    end: (?=(/>)|(?:(</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
+    begin: '{{jsxTagStartLookahead}}'
+    end: (?=(/>)|(?:{{jsxClosingTag}}))
     patterns:
-    - begin: |-
-        (?x)
-          (<)\s*
-          (?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?
-          ((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))
-          (?=\s+(?!\?)|/?>)
+    - begin: '{{jsxTagStart}}'
       beginCaptures:
         '1': { name: punctuation.definition.tag.begin.tsx }
         '2': { name: entity.name.tag.namespace.tsx }
@@ -184,7 +175,7 @@ repository:
     match: |-
       (?x)
         \s*
-        (?:([_$a-zA-Z][-$\w.]*)(:))?
+        (?:({{jsxTagOrAtrributeIdentifier}}*)(:))?
         ([_$a-zA-Z][-$\w]*)
         (?=\s|=|/?>|/\*|//)
     captures:

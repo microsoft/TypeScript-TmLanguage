@@ -55,8 +55,17 @@ function transformGrammarRepository(grammar: any, propertyNames: string[], trans
     }
 }
 
-function changeTsToTsxGrammar(grammar: any, variables: any) {
-    const tsxUpdates = updateGrammarVariables(readYaml(file(Language.TypeScriptReact, Extension.YamlTmLangauge)), variables);
+function getTsxGrammar() {
+    let variables: any;
+    const tsxUpdatesBeforeTransformation = readYaml(file(Language.TypeScriptReact, Extension.YamlTmLangauge));
+    const grammar = getTsGrammar(tsGrammarVariables => {
+        variables = tsGrammarVariables;
+        for (const variableName in tsxUpdatesBeforeTransformation.variables) {
+            variables[variableName] = tsxUpdatesBeforeTransformation.variables[variableName];
+        }
+        return variables;
+    });
+    const tsxUpdates = updateGrammarVariables(tsxUpdatesBeforeTransformation, variables);
 
     // Update name, file types, scope name and uuid
     for (let key in tsxUpdates) {
@@ -86,6 +95,11 @@ function changeTsToTsxGrammar(grammar: any, variables: any) {
     return grammar;
 }
 
+function getTsGrammar(getVariables: (tsGrammarVariables: any) => any) {
+    const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLangauge));
+    return updateGrammarVariables(tsGrammarBeforeTransformation, getVariables(tsGrammarBeforeTransformation.variables));
+}
+
 function replacePatternVariables(pattern: string, variableReplacers: VariableReplacer[]) {
     let result = pattern;
     for (const [variableName, value] of variableReplacers) {
@@ -112,16 +126,13 @@ function updateGrammarVariables(grammar: any, variables: any) {
 }
 
 function buildGrammar() {
-    const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLangauge));
-    const variables = tsGrammarBeforeTransformation.variables;
-
-    const tsGrammar = updateGrammarVariables(tsGrammarBeforeTransformation, variables);
+    const tsGrammar = getTsGrammar(grammarVariables => grammarVariables);
 
     // Write TypeScript.tmLanguage
     writePlistFile(tsGrammar, file(Language.TypeScript, Extension.TmLanguage));
 
     // Write TypeScriptReact.tmLangauge
-    const tsxGrammar = changeTsToTsxGrammar(tsGrammar, variables);
+    const tsxGrammar = getTsxGrammar();
     writePlistFile(tsxGrammar, file(Language.TypeScriptReact, Extension.TmLanguage));
 }
 
