@@ -1,0 +1,154 @@
+original file
+-----------------------------------
+               if (s & (TypeFlags.Number | TypeFlags.NumberLiteral) && !(s & TypeFlags.EnumLiteral) && (
+                    t & TypeFlags.Enum || t & TypeFlags.NumberLiteral && t & TypeFlags.EnumLiteral)) return true;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>               if (s & (TypeFlags.Number | TypeFlags.NumberLiteral) && !(s & TypeFlags.EnumLiteral) && (
+ ^^^^^^^^^^^^^^^
+ source.ts
+                ^^
+                source.ts keyword.control.conditional.ts
+                  ^
+                  source.ts
+                   ^
+                   source.ts meta.brace.round.ts
+                    ^
+                    source.ts variable.other.readwrite.ts
+                     ^
+                     source.ts
+                      ^
+                      source.ts keyword.operator.bitwise.ts
+                       ^
+                       source.ts
+                        ^
+                        source.ts meta.brace.round.ts
+                         ^^^^^^^^^
+                         source.ts variable.other.object.ts
+                                  ^
+                                  source.ts punctuation.accessor.ts
+                                   ^^^^^^
+                                   source.ts variable.other.property.ts
+                                         ^
+                                         source.ts
+                                          ^
+                                          source.ts keyword.operator.bitwise.ts
+                                           ^
+                                           source.ts
+                                            ^^^^^^^^^
+                                            source.ts variable.other.object.ts
+                                                     ^
+                                                     source.ts punctuation.accessor.ts
+                                                      ^^^^^^^^^^^^^
+                                                      source.ts variable.other.property.ts
+                                                                   ^
+                                                                   source.ts meta.brace.round.ts
+                                                                    ^
+                                                                    source.ts
+                                                                     ^^
+                                                                     source.ts keyword.operator.logical.ts
+                                                                       ^
+                                                                       source.ts
+                                                                        ^
+                                                                        source.ts keyword.operator.logical.ts
+                                                                         ^
+                                                                         source.ts meta.brace.round.ts
+                                                                          ^
+                                                                          source.ts variable.other.readwrite.ts
+                                                                           ^
+                                                                           source.ts
+                                                                            ^
+                                                                            source.ts keyword.operator.bitwise.ts
+                                                                             ^
+                                                                             source.ts
+                                                                              ^^^^^^^^^
+                                                                              source.ts variable.other.object.ts
+                                                                                       ^
+                                                                                       source.ts punctuation.accessor.ts
+                                                                                        ^^^^^^^^^^^
+                                                                                        source.ts variable.other.property.ts
+                                                                                                   ^
+                                                                                                   source.ts meta.brace.round.ts
+                                                                                                    ^
+                                                                                                    source.ts
+                                                                                                     ^^
+                                                                                                     source.ts keyword.operator.logical.ts
+                                                                                                       ^
+                                                                                                       source.ts
+                                                                                                        ^
+                                                                                                        source.ts meta.brace.round.ts
+                                                                                                         ^^
+                                                                                                         source.ts
+>                    t & TypeFlags.Enum || t & TypeFlags.NumberLiteral && t & TypeFlags.EnumLiteral)) return true;
+ ^^^^^^^^^^^^^^^^^^^^
+ source.ts
+                     ^
+                     source.ts variable.other.readwrite.ts
+                      ^
+                      source.ts
+                       ^
+                       source.ts keyword.operator.bitwise.ts
+                        ^
+                        source.ts
+                         ^^^^^^^^^
+                         source.ts variable.other.object.ts
+                                  ^
+                                  source.ts punctuation.accessor.ts
+                                   ^^^^
+                                   source.ts variable.other.property.ts
+                                       ^
+                                       source.ts
+                                        ^^
+                                        source.ts keyword.operator.logical.ts
+                                          ^
+                                          source.ts
+                                           ^
+                                           source.ts variable.other.readwrite.ts
+                                            ^
+                                            source.ts
+                                             ^
+                                             source.ts keyword.operator.bitwise.ts
+                                              ^
+                                              source.ts
+                                               ^^^^^^^^^
+                                               source.ts variable.other.object.ts
+                                                        ^
+                                                        source.ts punctuation.accessor.ts
+                                                         ^^^^^^^^^^^^^
+                                                         source.ts variable.other.property.ts
+                                                                      ^
+                                                                      source.ts
+                                                                       ^^
+                                                                       source.ts keyword.operator.logical.ts
+                                                                         ^
+                                                                         source.ts
+                                                                          ^
+                                                                          source.ts variable.other.readwrite.ts
+                                                                           ^
+                                                                           source.ts
+                                                                            ^
+                                                                            source.ts keyword.operator.bitwise.ts
+                                                                             ^
+                                                                             source.ts
+                                                                              ^^^^^^^^^
+                                                                              source.ts variable.other.object.ts
+                                                                                       ^
+                                                                                       source.ts punctuation.accessor.ts
+                                                                                        ^^^^^^^^^^^
+                                                                                        source.ts variable.other.property.ts
+                                                                                                   ^
+                                                                                                   source.ts meta.brace.round.ts
+                                                                                                    ^
+                                                                                                    source.ts meta.brace.round.ts
+                                                                                                     ^
+                                                                                                     source.ts
+                                                                                                      ^^^^^^
+                                                                                                      source.ts keyword.control.flow.ts
+                                                                                                            ^
+                                                                                                            source.ts
+                                                                                                             ^^^^
+                                                                                                             source.ts constant.language.boolean.true.ts
+                                                                                                                 ^
+                                                                                                                 source.ts punctuation.terminator.statement.ts

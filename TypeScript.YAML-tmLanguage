@@ -30,6 +30,7 @@ variables:
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
   inlineComment: \/\*([^\*]|(\*[^\/]))*\*\/
+  lookBehindOfPossiblyMultilineArrow: (?<=[(=,]|=>)
   # Identifier start | matching braces | matching parenthesis | matching square brackets
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
@@ -1155,13 +1156,21 @@ repository:
   # but do this only from expression and as last resort
   paren-expression-possibly-arrow:
     patterns:
-    - begin: (?:{{startOfIdentifier}}(\basync))?(?=\s*{{typeParameters}}\(\s*$)
+    - begin: '{{lookBehindOfPossiblyMultilineArrow}}\s*(async)?(?=\s*{{typeParameters}}\(\s*$)'
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
-      end: (?<=>)(?!<)
+      end: (?<=\))
       patterns:
       - include: '#type-parameters'
-    - begin: (?:{{startOfIdentifier}}(\basync)\s*)?(\()(?=\s*$)
+      - begin: \(
+        beginCaptures:
+          '0': { name: meta.brace.round.ts }
+        end: \)
+        endCaptures:
+          '0': { name: meta.brace.round.ts }
+        patterns:
+        - include: '#expression-inside-possibly-arrow-parens'
+    - begin: '{{lookBehindOfPossiblyMultilineArrow}}\s*(async)?\s*(\()(?=\s*$)'
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
         '2': { name: meta.brace.round.ts }
@@ -1169,11 +1178,15 @@ repository:
       endCaptures:
         '0': { name: meta.brace.round.ts }
       patterns:
-      - include: '#expressionWithoutIdentifiers'
-      - include: '#function-parameters-body'
-      - include: '#identifiers'
-      - include: '#expressionPunctuations'
+      - include: '#expression-inside-possibly-arrow-parens'
     - include: '#possibly-arrow-return-type'
+
+  expression-inside-possibly-arrow-parens:
+    patterns:
+    - include: '#expressionWithoutIdentifiers'
+    - include: '#function-parameters-body'
+    - include: '#identifiers'
+    - include: '#expressionPunctuations'
 
   paren-expression:
     begin: \(

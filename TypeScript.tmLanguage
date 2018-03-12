@@ -3602,7 +3602,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(\basync))?(?=\s*(&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)\(\s*$)</string>
+            <string>(?&lt;=[(=,]|=&gt;)\s*(async)?(?=\s*(&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)\(\s*$)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -3612,18 +3612,47 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?&lt;=&gt;)(?!&lt;)</string>
+            <string>(?&lt;=\))</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
                 <string>#type-parameters</string>
               </dict>
+              <dict>
+                <key>begin</key>
+                <string>\(</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.brace.round.ts</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>\)</string>
+                <key>endCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.brace.round.ts</string>
+                  </dict>
+                </dict>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#expression-inside-possibly-arrow-parens</string>
+                  </dict>
+                </array>
+              </dict>
             </array>
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(\basync)\s*)?(\()(?=\s*$)</string>
+            <string>(?&lt;=[(=,]|=&gt;)\s*(async)?\s*(\()(?=\s*$)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -3651,25 +3680,35 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#expressionWithoutIdentifiers</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#function-parameters-body</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#identifiers</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#expressionPunctuations</string>
+                <string>#expression-inside-possibly-arrow-parens</string>
               </dict>
             </array>
           </dict>
           <dict>
             <key>include</key>
             <string>#possibly-arrow-return-type</string>
+          </dict>
+        </array>
+      </dict>
+      <key>expression-inside-possibly-arrow-parens</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#expressionWithoutIdentifiers</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#function-parameters-body</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#identifiers</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#expressionPunctuations</string>
           </dict>
         </array>
       </dict>
