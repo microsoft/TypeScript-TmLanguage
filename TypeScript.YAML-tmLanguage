@@ -1095,9 +1095,9 @@ repository:
     begin: (?!\?\.\s*[^[:digit:]])(\?)
     beginCaptures:
       '1': { name: keyword.operator.ternary.ts }
-    end: (:)
+    end: \s*(:)
     endCaptures:
-      '0': { name: keyword.operator.ternary.ts }
+      '1': { name: keyword.operator.ternary.ts }
     patterns:
     - include: '#expression'
 
