@@ -14,7 +14,7 @@ variables:
   jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}*))(?<!\.|-))
   jsxOpeningTagWithoutAttributes: (<){{jsxTagName}}?\s*(>)
   jsxClosingTag: (</){{jsxTagName}}?\s*(>)
-  jsxTagStart: (<){{jsxTagName}}(?=(?:\s*{{typeArguments}})?\s+(?!\?)|\/?>)
+  jsxTagStart: (<){{jsxTagName}}(?=({{typeArguments}})?\s+(?!\?)|\/?>)
   jsxTagStartLookahead: (?={{jsxTagStart}})
   jsxLookBehindInExpression: (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
 
@@ -100,12 +100,10 @@ repository:
         '4': { name: entity.name.tag.tsx }
         '5': { name: support.class.component.tsx }
       end: (?=[/]?>)
-      contentName: meta.tag.attributes.tsx
       patterns:
       - include: '#comment'
       - include: '#type-arguments'
       - include: '#jsx-tag-attributes'
-      - include: '#jsx-tag-attributes-illegal'
     - begin: (>)
       beginCaptures:
         '1': { name: punctuation.definition.tag.end.tsx }
@@ -147,12 +145,16 @@ repository:
 
   #jsx attributes
   jsx-tag-attributes:
+    name: meta.tag.attributes.tsx
+    begin: \s+
+    end: (?=[/]?>)
     patterns:
     - include: '#jsx-tag-attribute-name'
     - include: '#jsx-tag-attribute-assignment'
     - include: '#jsx-string-double-quoted'
     - include: '#jsx-string-single-quoted'
     - include: '#jsx-evaluated-code'
+    - include: '#jsx-tag-attributes-illegal'
 
   jsx-tag-attribute-name:
     match: |-
