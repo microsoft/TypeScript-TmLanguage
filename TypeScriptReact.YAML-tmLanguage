@@ -16,6 +16,7 @@ variables:
   jsxClosingTag: (</){{jsxTagName}}?\s*(>)
   jsxTagStart: (<){{jsxTagName}}(?=(?:\s*{{typeArguments}})?\s+(?!\?)|\/?>)
   jsxTagStartLookahead: (?={{jsxTagStart}})
+  jsxLookBehindInExpression: (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
 
 repository:
   # Additions:
@@ -40,11 +41,8 @@ repository:
 
   #jsx tags
   jsx-tag-without-attributes-in-expression:
-    begin: |-
-      (?x)
-        (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
-        (?={{jsxOpeningTagWithoutAttributes}})
-    end: (?!\s*{{jsxOpeningTagWithoutAttributes}})
+    begin: '{{jsxLookBehindInExpression}}(?={{jsxOpeningTagWithoutAttributes}})'
+    end: (?!{{jsxOpeningTagWithoutAttributes}})
     patterns:
     - include: '#jsx-tag-without-attributes'
 
@@ -74,28 +72,18 @@ repository:
     # We need to differentiate between the relational '<' operator and the beginning of a tag using the surrounding context.
     begin: |-
       (?x)
-        (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
+        {{jsxLookBehindInExpression}}
         (?!<\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
         {{jsxTagStartLookahead}}
-    end: (/>)|(?:{{jsxClosingTag}})
-    endCaptures:
-      '0': { name: meta.tag.tsx }
-      '1': { name: punctuation.definition.tag.end.tsx }
-      '2': { name: punctuation.definition.tag.begin.tsx }
-      '3': { name: entity.name.tag.namespace.tsx }
-      '4': { name: punctuation.separator.namespace.tsx }
-      '5': { name: entity.name.tag.tsx }
-      '6': { name: support.class.component.tsx }
-      '7': { name: punctuation.definition.tag.end.tsx }
+    end: (?!{{jsxTagStart}})
     patterns:
     - include: '#jsx-tag'
 
-  jsx-child-tag:
-    # Because this would be included from the jsx-children, this doesnt need to inspect surrounding context
+  jsx-tag:
+    name: meta.tag.tsx
     begin: '{{jsxTagStartLookahead}}'
     end: (/>)|(?:{{jsxClosingTag}})
     endCaptures:
-     '0': { name: meta.tag.tsx }
      '1': { name: punctuation.definition.tag.end.tsx }
      '2': { name: punctuation.definition.tag.begin.tsx }
      '3': { name: entity.name.tag.namespace.tsx }
@@ -103,13 +91,6 @@ repository:
      '5': { name: entity.name.tag.tsx }
      '6': { name: support.class.component.tsx }
      '7': { name: punctuation.definition.tag.end.tsx }
-    patterns:
-    - include: '#jsx-tag'
-
-  jsx-tag:
-    name: meta.tag.tsx
-    begin: '{{jsxTagStartLookahead}}'
-    end: (?=(/>)|(?:{{jsxClosingTag}}))
     patterns:
     - begin: '{{jsxTagStart}}'
       beginCaptures:
@@ -137,7 +118,8 @@ repository:
   jsx-children:
     patterns:
     - include: '#jsx-tag-without-attributes'
-    - include: '#jsx-child-tag'
+    # Because this would be included from the jsx-children, this doesnt need to inspect surrounding context
+    - include: '#jsx-tag'
     - include: '#jsx-evaluated-code'
     - include: '#jsx-entities'
 

@@ -6926,11 +6926,9 @@
       <key>jsx-tag-without-attributes-in-expression</key>
       <dict>
         <key>begin</key>
-        <string>(?x)
-  (?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|^return|[^\._$[:alnum:]]return|^default|[^\._$[:alnum:]]default|^)\s*
-  (?=(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
+        <string>(?&lt;=[({\[,?=&gt;:*]|&amp;&amp;|\|\||\?|^return|[^\._$[:alnum:]]return|^default|[^\._$[:alnum:]]default|^)\s*(?=(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
         <key>end</key>
-        <string>(?!\s*(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
+        <string>(?!(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -7031,107 +7029,7 @@
   (?!&lt;\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=&gt;])|,)) # look ahead is not type parameter of arrow
   (?=(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))(?=(?:\s*&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?!=)\&gt;)*(?!=)&gt;)?\s+(?!\?)|\/?&gt;))</string>
         <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
-        <key>endCaptures</key>
-        <dict>
-          <key>0</key>
-          <dict>
-            <key>name</key>
-            <string>meta.tag.tsx</string>
-          </dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.tag.end.tsx</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.tag.begin.tsx</string>
-          </dict>
-          <key>3</key>
-          <dict>
-            <key>name</key>
-            <string>entity.name.tag.namespace.tsx</string>
-          </dict>
-          <key>4</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.separator.namespace.tsx</string>
-          </dict>
-          <key>5</key>
-          <dict>
-            <key>name</key>
-            <string>entity.name.tag.tsx</string>
-          </dict>
-          <key>6</key>
-          <dict>
-            <key>name</key>
-            <string>support.class.component.tsx</string>
-          </dict>
-          <key>7</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.tag.end.tsx</string>
-          </dict>
-        </dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>include</key>
-            <string>#jsx-tag</string>
-          </dict>
-        </array>
-      </dict>
-      <key>jsx-child-tag</key>
-      <dict>
-        <key>begin</key>
-        <string>(?=(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))(?=(?:\s*&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?!=)\&gt;)*(?!=)&gt;)?\s+(?!\?)|\/?&gt;))</string>
-        <key>end</key>
-        <string>(/&gt;)|(?:(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
-        <key>endCaptures</key>
-        <dict>
-          <key>0</key>
-          <dict>
-            <key>name</key>
-            <string>meta.tag.tsx</string>
-          </dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.tag.end.tsx</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.tag.begin.tsx</string>
-          </dict>
-          <key>3</key>
-          <dict>
-            <key>name</key>
-            <string>entity.name.tag.namespace.tsx</string>
-          </dict>
-          <key>4</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.separator.namespace.tsx</string>
-          </dict>
-          <key>5</key>
-          <dict>
-            <key>name</key>
-            <string>entity.name.tag.tsx</string>
-          </dict>
-          <key>6</key>
-          <dict>
-            <key>name</key>
-            <string>support.class.component.tsx</string>
-          </dict>
-          <key>7</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.tag.end.tsx</string>
-          </dict>
-        </dict>
+        <string>(?!(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))(?=(?:\s*&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?!=)\&gt;)*(?!=)&gt;)?\s+(?!\?)|\/?&gt;))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -7147,7 +7045,45 @@
         <key>begin</key>
         <string>(?=(&lt;)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))(?=(?:\s*&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?!=)\&gt;)*(?!=)&gt;)?\s+(?!\?)|\/?&gt;))</string>
         <key>end</key>
-        <string>(?=(/&gt;)|(?:(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;)))</string>
+        <string>(/&gt;)|(?:(&lt;/)\s*(?:([_$a-zA-Z][-$\w.]*)(?&lt;!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?&lt;!\.|-))?\s*(&gt;))</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.tag.end.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.tag.begin.tsx</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.tag.namespace.tsx</string>
+          </dict>
+          <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.separator.namespace.tsx</string>
+          </dict>
+          <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.tag.tsx</string>
+          </dict>
+          <key>6</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.component.tsx</string>
+          </dict>
+          <key>7</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.tag.end.tsx</string>
+          </dict>
+        </dict>
         <key>patterns</key>
         <array>
           <dict>
@@ -7240,7 +7176,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#jsx-child-tag</string>
+            <string>#jsx-tag</string>
           </dict>
           <dict>
             <key>include</key>
