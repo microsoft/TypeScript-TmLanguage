@@ -1245,7 +1245,7 @@ repository:
     - name: keyword.operator.arithmetic.ts
       match: '%|\*|/|-|\+'
     # capture the arithmetic sign followed by variable or parenthesized expression so that it is not interpreted as regex
-    - match: (?<=[_$[:alnum:])])\s*(/)(?![/*])
+    - match: (?<=[_$[:alnum:])\]])\s*(/)(?![/*])
       captures:
         '1': { name: keyword.operator.arithmetic.ts }
 
@@ -2033,7 +2033,7 @@ repository:
       - include: '#regexp'
     # Check if complete regexp syntax
     - name: string.regexp.ts
-      begin: (?<![_$[:alnum:])])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
+      begin: (?<![_$[:alnum:])\]])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.ts}
       end: (/)([gimuy]*)
