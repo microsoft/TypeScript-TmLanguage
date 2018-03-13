@@ -37,9 +37,9 @@ variables:
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
   typeArgumentsStart: ({{typeParamersStart}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
-  typeArguments: (<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?!=)\>)*(?!=)>\s*)
+  typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?!=)\>)*(?!=)>'
+  functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
   returnTypeOfArrow: \s*([^<>\(\)]|\<[^<>]+\>|\([^\(\)]+\))+
-  functionCallLookup: \s*(\?\.\s*)?{{typeArguments}}?\(
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (
@@ -1121,16 +1121,7 @@ repository:
     - include: '#comment'
     - name: meta.function-call.ts punctuation.accessor.optional.ts
       match: \?\.
-    - name: meta.type.parameters.ts
-      begin: \<
-      beginCaptures:
-        '0': { name: punctuation.definition.typeparameters.begin.ts }
-      end: \>
-      endCaptures:
-        '0': { name: punctuation.definition.typeparameters.end.ts }
-      patterns:
-      - include: '#type'
-      - include: '#punctuation-comma'
+    - include: '#type-arguments'
     - include: '#paren-expression'
 
   new-expr:
@@ -1290,7 +1281,7 @@ repository:
     - name: keyword.operator.arithmetic.ts
       match: '%|\*|/|-|\+'
     # capture the arithmetic sign followed by variable or parenthesized expression so that it is not interpreted as regex
-    - match: (?<=[_$[:alnum:])])\s*(/)(?![/*])
+    - match: (?<=[_$[:alnum:])\]])\s*(/)(?![/*])
       captures:
         '1': { name: keyword.operator.arithmetic.ts }
 
@@ -1814,6 +1805,19 @@ repository:
     - include: '#type'
     - include: '#punctuation-comma'
 
+  #type arguments
+  type-arguments:
+    name: meta.type.parameters.ts
+    begin: \<
+    beginCaptures:
+      '0': { name: punctuation.definition.typeparameters.begin.ts }
+    end: \>
+    endCaptures:
+      '0': { name: punctuation.definition.typeparameters.end.ts }
+    patterns:
+    - include: '#type'
+    - include: '#punctuation-comma'
+
   #different types
   type:
     patterns:
@@ -2092,7 +2096,7 @@ repository:
       - include: '#regexp'
     # Check if complete regexp syntax
     - name: string.regexp.ts
-      begin: (?<![_$[:alnum:])])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
+      begin: (?<![_$[:alnum:])\]])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
       beginCaptures:
         '0': {name: punctuation.definition.string.begin.ts}
       end: (/)([gimuy]*)

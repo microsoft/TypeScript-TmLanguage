@@ -1,0 +1,40 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+<MyComponent<number> data={12} />
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+><MyComponent<number> data={12} />
+ ^
+ source.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+  ^^^^^^^^^^^
+  source.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+             ^
+             source.tsx meta.tag.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+              ^^^^^^
+              source.tsx meta.tag.tsx meta.type.parameters.tsx support.type.primitive.tsx
+                    ^
+                    source.tsx meta.tag.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                     ^
+                     source.tsx meta.tag.tsx meta.tag.attributes.tsx
+                      ^^^^
+                      source.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+                          ^
+                          source.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+                           ^
+                           source.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx punctuation.section.embedded.begin.tsx
+                            ^^
+                            source.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx constant.numeric.decimal.tsx
+                              ^
+                              source.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx punctuation.section.embedded.end.tsx
+                               ^
+                               source.tsx meta.tag.tsx meta.tag.attributes.tsx
+                                ^^
+                                source.tsx meta.tag.tsx punctuation.definition.tag.end.tsx

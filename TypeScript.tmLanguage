@@ -3502,39 +3502,8 @@
             <string>\?\.</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>meta.type.parameters.ts</string>
-            <key>begin</key>
-            <string>\&lt;</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.typeparameters.begin.ts</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>\&gt;</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.typeparameters.end.ts</string>
-              </dict>
-            </dict>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#type</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#punctuation-comma</string>
-              </dict>
-            </array>
+            <key>include</key>
+            <string>#type-arguments</string>
           </dict>
           <dict>
             <key>include</key>
@@ -4001,7 +3970,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;=[_$[:alnum:])])\s*(/)(?![/*])</string>
+            <string>(?&lt;=[_$[:alnum:])\]])\s*(/)(?![/*])</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5153,6 +5122,42 @@
           </dict>
         </array>
       </dict>
+      <key>type-arguments</key>
+      <dict>
+        <key>name</key>
+        <string>meta.type.parameters.ts</string>
+        <key>begin</key>
+        <string>\&lt;</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.typeparameters.begin.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>\&gt;</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.typeparameters.end.ts</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#type</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#punctuation-comma</string>
+          </dict>
+        </array>
+      </dict>
       <key>type</key>
       <dict>
         <key>patterns</key>
@@ -5906,7 +5911,7 @@
             <key>name</key>
             <string>string.regexp.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:])])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
+            <string>(?&lt;![_$[:alnum:])\]])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>

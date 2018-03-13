@@ -10,6 +10,14 @@ uuid: 805375ec-d614-41f5-8993-5843fe63ea82
 
 variables:
   possiblyMultilineArrow: ([\(]\s*$)  # during lookup treat ( followed by line end as arrow
+  jsxTagOrAtrributeIdentifier: '[_$a-zA-Z][-$\w.]'
+  jsxTagNamespace: (?:({{jsxTagOrAtrributeIdentifier}}*)(?<!\.|-)(:))?
+  jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}*))(?<!\.|-))
+  jsxOpeningTagWithoutAttributes: (<){{jsxTagName}}?\s*(>)
+  jsxClosingTag: (</){{jsxTagName}}?\s*(>)
+  jsxTagStart: (<){{jsxTagName}}(?=({{typeArguments}})?\s+(?!\?)|\/?>)
+  jsxTagStartLookahead: (?={{jsxTagStart}})
+  jsxLookBehindInExpression: (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
 
 repository:
   # Additions:
@@ -34,18 +42,15 @@ repository:
 
   #jsx tags
   jsx-tag-without-attributes-in-expression:
-    begin: |-
-      (?x)
-        (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
-        (?=(<)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
-    end: (?!\s*(<)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>))
+    begin: '{{jsxLookBehindInExpression}}(?={{jsxOpeningTagWithoutAttributes}})'
+    end: (?!{{jsxOpeningTagWithoutAttributes}})
     patterns:
     - include: '#jsx-tag-without-attributes'
 
   jsx-tag-without-attributes:
     name: meta.tag.without-attributes.tsx
-    begin: (<)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>)
-    end: (</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))?\s*(>)
+    begin: '{{jsxOpeningTagWithoutAttributes}}'
+    end: '{{jsxClosingTag}}'
     beginCaptures:
       '1': {name: punctuation.definition.tag.begin.tsx}
       '2': {name: entity.name.tag.namespace.tsx}
@@ -68,36 +73,18 @@ repository:
     # We need to differentiate between the relational '<' operator and the beginning of a tag using the surrounding context.
     begin: |-
       (?x)
-        (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
+        {{jsxLookBehindInExpression}}
         (?!<\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
-        (?=(<)\s*
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-):)?
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
-        (?=\s+(?!\?)|/?>))
-    end: (/>)|(?:(</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
-    endCaptures:
-      '0': { name: meta.tag.tsx }
-      '1': { name: punctuation.definition.tag.end.tsx }
-      '2': { name: punctuation.definition.tag.begin.tsx }
-      '3': { name: entity.name.tag.namespace.tsx }
-      '4': { name: punctuation.separator.namespace.tsx }
-      '5': { name: entity.name.tag.tsx }
-      '6': { name: support.class.component.tsx }
-      '7': { name: punctuation.definition.tag.end.tsx }
+        {{jsxTagStartLookahead}}
+    end: (?!{{jsxTagStart}})
     patterns:
     - include: '#jsx-tag'
 
-  jsx-child-tag:
-    # Because this would be included from the jsx-children, this doesnt need to inspect surrounding context
-    begin: |-
-      (?x)
-        (?=(<)\s*
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-):)?
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
-        (?=\s+(?!\?)|/?>))
-    end: (/>)|(?:(</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))\s*(>))
+  jsx-tag:
+    name: meta.tag.tsx
+    begin: '{{jsxTagStartLookahead}}'
+    end: (/>)|(?:{{jsxClosingTag}})
     endCaptures:
-     '0': { name: meta.tag.tsx }
      '1': { name: punctuation.definition.tag.end.tsx }
      '2': { name: punctuation.definition.tag.begin.tsx }
      '3': { name: entity.name.tag.namespace.tsx }
@@ -106,24 +93,7 @@ repository:
      '6': { name: support.class.component.tsx }
      '7': { name: punctuation.definition.tag.end.tsx }
     patterns:
-    - include: '#jsx-tag'
-
-  jsx-tag:
-    name: meta.tag.tsx
-    begin: |-
-      (?x)
-        (?=(<)\s*
-        (?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?
-        ([_$a-zA-Z][-$\w.]*(?<!\.|-))
-        (?=\s+(?!\?)|/?>))
-    end: (?=(/>)|(?:(</)\s*(?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?([_$a-zA-Z][-$\w.]*(?<!\.|-))\s*(>)))
-    patterns:
-    - begin: |-
-        (?x)
-          (<)\s*
-          (?:([_$a-zA-Z][-$\w.]*)(?<!\.|-)(:))?
-          ((?:[a-z][a-z0-9]*|([_$a-zA-Z][-$\w.]*))(?<!\.|-))
-          (?=\s+(?!\?)|/?>)
+    - begin: '{{jsxTagStart}}'
       beginCaptures:
         '1': { name: punctuation.definition.tag.begin.tsx }
         '2': { name: entity.name.tag.namespace.tsx }
@@ -131,11 +101,10 @@ repository:
         '4': { name: entity.name.tag.tsx }
         '5': { name: support.class.component.tsx }
       end: (?=[/]?>)
-      contentName: meta.tag.attributes.tsx
       patterns:
       - include: '#comment'
+      - include: '#type-arguments'
       - include: '#jsx-tag-attributes'
-      - include: '#jsx-tag-attributes-illegal'
     - begin: (>)
       beginCaptures:
         '1': { name: punctuation.definition.tag.end.tsx }
@@ -148,7 +117,8 @@ repository:
   jsx-children:
     patterns:
     - include: '#jsx-tag-without-attributes'
-    - include: '#jsx-child-tag'
+    # Because this would be included from the jsx-children, this doesnt need to inspect surrounding context
+    - include: '#jsx-tag'
     - include: '#jsx-evaluated-code'
     - include: '#jsx-entities'
 
@@ -176,18 +146,22 @@ repository:
 
   #jsx attributes
   jsx-tag-attributes:
+    name: meta.tag.attributes.tsx
+    begin: \s+
+    end: (?=[/]?>)
     patterns:
     - include: '#jsx-tag-attribute-name'
     - include: '#jsx-tag-attribute-assignment'
     - include: '#jsx-string-double-quoted'
     - include: '#jsx-string-single-quoted'
     - include: '#jsx-evaluated-code'
+    - include: '#jsx-tag-attributes-illegal'
 
   jsx-tag-attribute-name:
     match: |-
       (?x)
         \s*
-        (?:([_$a-zA-Z][-$\w.]*)(:))?
+        (?:({{jsxTagOrAtrributeIdentifier}}*)(:))?
         ([_$a-zA-Z][-$\w]*)
         (?=\s|=|/?>|/\*|//)
     captures:
