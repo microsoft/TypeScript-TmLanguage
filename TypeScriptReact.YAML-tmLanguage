@@ -14,7 +14,7 @@ variables:
   jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}*))(?<!\.|-))
   jsxOpeningTagWithoutAttributes: (<){{jsxTagName}}?\s*(>)
   jsxClosingTag: (</){{jsxTagName}}?\s*(>)
-  jsxTagStart: (<){{jsxTagName}}(?=\s+(?!\?)|\/?>)
+  jsxTagStart: (<){{jsxTagName}}(?=(?:\s*{{typeArguments}})?\s+(?!\?)|\/?>)
   jsxTagStartLookahead: (?={{jsxTagStart}})
 
 repository:
@@ -122,6 +122,7 @@ repository:
       contentName: meta.tag.attributes.tsx
       patterns:
       - include: '#comment'
+      - include: '#type-arguments'
       - include: '#jsx-tag-attributes'
       - include: '#jsx-tag-attributes-illegal'
     - begin: (>)

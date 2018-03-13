@@ -36,8 +36,8 @@ variables:
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
   typeArgumentsStart: ({{typeParamersStart}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
-  typeArguments: (<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?!=)\>)*(?!=)>\s*)
-  functionCallLookup: \s*(\?\.\s*)?{{typeArguments}}?\(
+  typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?!=)\>)*(?!=)>'
+  functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (
@@ -1111,16 +1111,7 @@ repository:
     - include: '#comment'
     - name: meta.function-call.ts punctuation.accessor.optional.ts
       match: \?\.
-    - name: meta.type.parameters.ts
-      begin: \<
-      beginCaptures:
-        '0': { name: punctuation.definition.typeparameters.begin.ts }
-      end: \>
-      endCaptures:
-        '0': { name: punctuation.definition.typeparameters.end.ts }
-      patterns:
-      - include: '#type'
-      - include: '#punctuation-comma'
+    - include: '#type-arguments'
     - include: '#paren-expression'
 
   new-expr:
@@ -1752,6 +1743,19 @@ repository:
       match: '{{startOfIdentifier}}(extends){{endOfIdentifier}}'
     - name: keyword.operator.assignment.ts
       match: \=(?!>)
+    - include: '#type'
+    - include: '#punctuation-comma'
+
+  #type arguments
+  type-arguments:
+    name: meta.type.parameters.ts
+    begin: \<
+    beginCaptures:
+      '0': { name: punctuation.definition.typeparameters.begin.ts }
+    end: \>
+    endCaptures:
+      '0': { name: punctuation.definition.typeparameters.end.ts }
+    patterns:
     - include: '#type'
     - include: '#punctuation-comma'
 
