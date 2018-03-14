@@ -1238,10 +1238,8 @@
                 <string>#comment</string>
               </dict>
               <dict>
-                <key>name</key>
-                <string>meta.definition.property.tsx entity.name.function.tsx</string>
                 <key>match</key>
-                <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
+                <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(\?)?(?=(\?\s*)?\s*
 # function assignment |
 (=\s*(
   ((async\s+)?(
@@ -1309,6 +1307,19 @@
 )
   ))
 )))</string>
+                <key>captures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.definition.property.tsx entity.name.function.tsx</string>
+                  </dict>
+                  <key>2</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.operator.optional.tsx</string>
+                  </dict>
+                </dict>
               </dict>
               <dict>
                 <key>name</key>
