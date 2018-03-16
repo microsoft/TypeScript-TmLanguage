@@ -1,0 +1,78 @@
+original file
+-----------------------------------
+interface Foo {
+  a: () => void;
+  b?: () => void;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>interface Foo {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+              ^
+              source.ts meta.interface.ts
+               ^
+               source.ts meta.interface.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.interface.ts
+>  a: () => void;
+ ^^
+ source.ts meta.interface.ts
+   ^
+   source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+    ^
+    source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+      ^
+      source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+       ^
+       source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+        ^
+        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+         ^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.return.ts storage.type.function.arrow.ts
+           ^
+           source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.return.ts
+            ^^^^
+            source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.return.ts support.type.primitive.ts
+                ^
+                source.ts meta.interface.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.interface.ts
+>  b?: () => void;
+ ^^
+ source.ts meta.interface.ts
+   ^
+   source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+    ^
+    source.ts meta.interface.ts meta.field.declaration.ts keyword.operator.optional.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+      ^
+      source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+       ^
+       source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+        ^
+        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+         ^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^
+          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.return.ts storage.type.function.arrow.ts
+            ^
+            source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.return.ts
+             ^^^^
+             source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.function.return.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.interface.ts punctuation.terminator.statement.ts
+                  ^^
+                  source.ts meta.interface.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts

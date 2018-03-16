@@ -431,11 +431,13 @@ repository:
       - include: '#string'
       - include: '#array-literal'
       - include: '#comment'
-      - name: meta.definition.property.ts entity.name.function.ts
-        # function assignment |
-        # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
-        match: |-
-          (?x)({{identifier}})(?=(\?\s*)?{{functionLikeAssignmentOrType}})
+      # function assignment |
+      # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+      - match: |-
+          (?x)({{identifier}})(\?)?(?=(\?\s*)?{{functionLikeAssignmentOrType}})
+        captures:
+          '1': { name: meta.definition.property.ts entity.name.function.ts }
+          '2': { name: keyword.operator.optional.ts }
       - name: meta.definition.property.ts variable.object.property.ts
         match: '{{identifier}}'
       - name: keyword.operator.optional.ts
@@ -1990,6 +1992,8 @@ repository:
       match: (\?|\:)
     - name: keyword.operator.expression.infer.ts
       match: '{{startOfIdentifier}}infer(?=\s+[_$[:alpha:]])'
+    - name: keyword.operator.expression.import.ts
+      match: '{{startOfIdentifier}}import(?=\s*\()'
 
   type-predicate-operator:
     name: keyword.operator.expression.is.ts

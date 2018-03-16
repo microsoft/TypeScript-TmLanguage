@@ -1242,10 +1242,8 @@
                 <string>#comment</string>
               </dict>
               <dict>
-                <key>name</key>
-                <string>meta.definition.property.ts entity.name.function.ts</string>
                 <key>match</key>
-                <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=(\?\s*)?\s*
+                <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(\?)?(?=(\?\s*)?\s*
 # function assignment |
 (=\s*(
   ((async\s+)?(
@@ -1315,6 +1313,19 @@
 )
   ))
 )))</string>
+                <key>captures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.definition.property.ts entity.name.function.ts</string>
+                  </dict>
+                  <key>2</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.operator.optional.ts</string>
+                  </dict>
+                </dict>
               </dict>
               <dict>
                 <key>name</key>
@@ -5621,6 +5632,12 @@
             <string>keyword.operator.expression.infer.ts</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))infer(?=\s+[_$[:alpha:]])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.expression.import.ts</string>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))import(?=\s*\()</string>
           </dict>
         </array>
       </dict>
