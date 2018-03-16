@@ -895,7 +895,7 @@ repository:
   import-export-declaration:
     patterns:
     - include: '#comment'
-    - include: '#string'
+    - include: '#import-path'
     - include: '#import-export-block'
     - name: keyword.control.from.ts
       match: \bfrom\b
@@ -931,6 +931,37 @@ repository:
       match: \b(default)\b
     - name: variable.other.readwrite.alias.ts
       match: ({{identifier}})
+
+  import-path:
+    patterns:
+    - include: '#import-path-string-double'
+    - include: '#import-path-string-single'
+
+  import-path-string-double:
+    name: string.quoted.double.ts
+    contentName: meta.import.path.ts
+    begin: '"'
+    beginCaptures:
+      '0': { name: punctuation.definition.string.begin.ts }
+    end: '(")|((?:[^\\\n])$)'
+    endCaptures:
+      '1': { name: punctuation.definition.string.end.ts }
+      '2': { name: invalid.illegal.newline.ts }
+    patterns:
+    - include: '#string-character-escape'
+
+  import-path-string-single:
+    name: string.quoted.single.ts
+    contentName: meta.import.path.ts
+    begin: "'"
+    beginCaptures:
+      '0': { name: punctuation.definition.string.begin.ts }
+    end: (\')|((?:[^\\\n])$)
+    endCaptures:
+      '1': { name: punctuation.definition.string.end.ts }
+      '2': { name: invalid.illegal.newline.ts }
+    patterns:
+    - include: '#string-character-escape'
 
   #control statements and loops
   switch-statement:

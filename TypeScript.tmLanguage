@@ -2798,7 +2798,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#string</string>
+            <string>#import-path</string>
           </dict>
           <dict>
             <key>include</key>
@@ -2914,6 +2914,98 @@
             <string>variable.other.readwrite.alias.ts</string>
             <key>match</key>
             <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+          </dict>
+        </array>
+      </dict>
+      <key>import-path</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#import-path-string-double</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#import-path-string-single</string>
+          </dict>
+        </array>
+      </dict>
+      <key>import-path-string-double</key>
+      <dict>
+        <key>name</key>
+        <string>string.quoted.double.ts</string>
+        <key>contentName</key>
+        <string>meta.import.path.ts</string>
+        <key>begin</key>
+        <string>"</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.begin.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(")|((?:[^\\\n])$)</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.end.ts</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>invalid.illegal.newline.ts</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#string-character-escape</string>
+          </dict>
+        </array>
+      </dict>
+      <key>import-path-string-single</key>
+      <dict>
+        <key>name</key>
+        <string>string.quoted.single.ts</string>
+        <key>contentName</key>
+        <string>meta.import.path.ts</string>
+        <key>begin</key>
+        <string>'</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.begin.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(\')|((?:[^\\\n])$)</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.end.ts</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>invalid.illegal.newline.ts</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#string-character-escape</string>
           </dict>
         </array>
       </dict>
