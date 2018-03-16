@@ -2802,7 +2802,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#string</string>
+            <string>#import-path</string>
           </dict>
           <dict>
             <key>include</key>
@@ -2918,6 +2918,102 @@
             <string>variable.other.readwrite.alias.tsx</string>
             <key>match</key>
             <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+          </dict>
+        </array>
+      </dict>
+      <key>import-path</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#import-path-string-double</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#import-path-string-single</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#string</string>
+          </dict>
+        </array>
+      </dict>
+      <key>import-path-string-double</key>
+      <dict>
+        <key>name</key>
+        <string>string.quoted.double.tsx</string>
+        <key>contentName</key>
+        <string>meta.import.path.tsx</string>
+        <key>begin</key>
+        <string>"</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.begin.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(")|((?:[^\\\n])$)</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.end.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>invalid.illegal.newline.tsx</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#string-character-escape</string>
+          </dict>
+        </array>
+      </dict>
+      <key>import-path-string-single</key>
+      <dict>
+        <key>name</key>
+        <string>string.quoted.single.tsx</string>
+        <key>contentName</key>
+        <string>meta.import.path.tsx</string>
+        <key>begin</key>
+        <string>'</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.begin.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(\')|((?:[^\\\n])$)</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.string.end.tsx</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>invalid.illegal.newline.tsx</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#string-character-escape</string>
           </dict>
         </array>
       </dict>
