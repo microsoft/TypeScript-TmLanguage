@@ -1,0 +1,28 @@
+original file
+-----------------------------------
+import a
+    from b;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>import a
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts variable.other.readwrite.alias.ts
+         ^^
+         source.ts meta.import.ts
+>    from b;
+ ^^^^
+ source.ts meta.import.ts
+     ^^^^
+     source.ts meta.import.ts keyword.control.from.ts
+         ^
+         source.ts meta.import.ts
+          ^
+          source.ts meta.import.ts variable.other.readwrite.alias.ts
+           ^
+           source.ts punctuation.terminator.statement.ts

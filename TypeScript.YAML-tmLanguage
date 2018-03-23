@@ -26,6 +26,7 @@ variables:
   lookBehindOf: '^of|{{nonPropertyLookBehind}}of'
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
+  lookBehindImport: '^import|{{nonPropertyLookBehind}}import'
   matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
@@ -865,6 +866,14 @@ repository:
       '2': { name: keyword.control.import.ts }
     end: (?=;|$|^)
     patterns:
+    - include: '#comment'
+    - include: '#string'
+    - begin: (?<={{lookBehindImport}})(?!\s*["'])
+      end: \bfrom\b
+      endCaptures:
+        '0': { name: keyword.control.from.ts }
+      patterns:
+      - include: '#import-export-declaration'
     - include: '#import-export-declaration'
 
   export-declaration:

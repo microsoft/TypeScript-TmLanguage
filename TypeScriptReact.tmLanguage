@@ -2699,6 +2699,35 @@
         <array>
           <dict>
             <key>include</key>
+            <string>#comment</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#string</string>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;=^import|[^\._$[:alnum:]]import)(?!\s*["'])</string>
+            <key>end</key>
+            <string>\bfrom\b</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.from.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#import-export-declaration</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#import-export-declaration</string>
           </dict>
         </array>
