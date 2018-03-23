@@ -16,7 +16,7 @@ variables:
   jsxClosingTag: (</){{jsxTagName}}?\s*(>)
   jsxTagStart: (<){{jsxTagName}}(?=({{typeArguments}})?\s+(?!\?)|\/?>)
   jsxTagStartLookahead: (?={{jsxTagStart}})
-  jsxLookBehindInExpression: (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
+  jsxLookBehindInExpression: (?<!\+\+|--)(?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
 
 repository:
   # Additions:

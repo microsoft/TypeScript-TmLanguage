@@ -3129,7 +3129,7 @@
         <key>name</key>
         <string>meta.objectliteral.ts</string>
         <key>begin</key>
-        <string>(?&lt;=[=(,\[?+!]|^await|[^\._$[:alnum:]]await|^return|[^\._$[:alnum:]]return|^yield|[^\._$[:alnum:]]yield|^throw|[^\._$[:alnum:]]throw|^in|[^\._$[:alnum:]]in|^of|[^\._$[:alnum:]]of|^typeof|[^\._$[:alnum:]]typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
+        <string>(?&lt;!\+\+|--)(?&lt;=[=(,\[?+!]|^await|[^\._$[:alnum:]]await|^return|[^\._$[:alnum:]]return|^yield|[^\._$[:alnum:]]yield|^throw|[^\._$[:alnum:]]throw|^in|[^\._$[:alnum:]]in|^of|[^\._$[:alnum:]]of|^typeof|[^\._$[:alnum:]]typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3597,7 +3597,7 @@
             <key>name</key>
             <string>cast.expr.ts</string>
             <key>begin</key>
-            <string>(?:(?&lt;=^return|[^\._$[:alnum:]]return|^throw|[^\._$[:alnum:]]throw|^yield|[^\._$[:alnum:]]yield|^await|[^\._$[:alnum:]]await|^default|[^\._$[:alnum:]]default|[=(,:&gt;*?\&amp;\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(&lt;)(?!&lt;?\=)</string>
+            <string>(?:(?&lt;!\+\+|--)(?&lt;=^return|[^\._$[:alnum:]]return|^throw|[^\._$[:alnum:]]throw|^yield|[^\._$[:alnum:]]yield|^await|[^\._$[:alnum:]]await|^default|[^\._$[:alnum:]]default|[=(,:&gt;*?\&amp;\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(&lt;)(?!&lt;?\=)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -4096,7 +4096,7 @@
             <string>support.class.builtin.ts</string>
             <key>match</key>
             <string>(?x)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(Array|ArrayBuffer|Atomics|Boolean|DataView|Date|Float32Array|Float64Array|Function|Generator
-  |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Promise|Proxy
+  |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Proxy
   |Reflect|RegExp|Set|SharedArrayBuffer|SIMD|String|Symbol|TypedArray
   |Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|WeakMap|WeakSet)\b(?!\$)</string>
           </dict>
@@ -4105,6 +4105,12 @@
             <string>support.class.error.ts</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))((Eval|Internal|Range|Reference|Syntax|Type|URI)?Error)\b(?!\$)</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>support.class.promise.ts</string>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(Promise)\b(?!\$)</string>
           </dict>
           <dict>
             <key>name</key>
@@ -4528,6 +4534,8 @@
    slice|splitText|stepDown|stepUp|stopImmediatePropagation|stopPropagation|
    submit|substringData|supports|surroundContents|takeRecords|terminate|toBlob|
    toDataURL|toggle|toString|values|write|writeln
+ ) |
+ (all|catch|finally|race|reject|resolve|then
  )
 )(?=\s*\()</string>
             <key>captures</key>
@@ -4556,6 +4564,11 @@
               <dict>
                 <key>name</key>
                 <string>support.function.dom.ts</string>
+              </dict>
+              <key>6</key>
+              <dict>
+                <key>name</key>
+                <string>support.function.promise.ts</string>
               </dict>
             </dict>
           </dict>
@@ -5719,7 +5732,7 @@
             <key>name</key>
             <string>string.regexp.ts</string>
             <key>begin</key>
-            <string>(?&lt;=[=(:,\[?+!]|^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
+            <string>(?&lt;!\+\+|--)(?&lt;=[=(:,\[?+!]|^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimsuy]*(?!\s*[a-zA-Z0-9_$]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5729,7 +5742,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(/)([gimuy]*)</string>
+            <string>(/)([gimsuy]*)</string>
             <key>endCaptures</key>
             <dict>
               <key>1</key>
@@ -5755,7 +5768,7 @@
             <key>name</key>
             <string>string.regexp.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:])\]])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))</string>
+            <string>(?&lt;![_$[:alnum:])\]]|\+\+|--)\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimsuy]*(?!\s*[a-zA-Z0-9_$]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -5765,7 +5778,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(/)([gimuy]*)</string>
+            <string>(/)([gimsuy]*)</string>
             <key>endCaptures</key>
             <dict>
               <key>1</key>
@@ -5800,10 +5813,21 @@
             <string>\\[bB]|\^|\$</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>keyword.other.back-reference.regexp</string>
             <key>match</key>
-            <string>\\[1-9]\d*</string>
+            <string>\\[1-9]\d*|\\k&lt;([a-zA-Z_$][\w$]*)&gt;</string>
+            <key>captures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.other.back-reference.regexp</string>
+              </dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.regexp</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>name</key>
@@ -5821,7 +5845,7 @@
             <key>name</key>
             <string>meta.group.assertion.regexp</string>
             <key>begin</key>
-            <string>(\()((\?=)|(\?!))</string>
+            <string>(\()((\?=)|(\?!)|(\?&lt;=)|(\?&lt;!))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5843,6 +5867,16 @@
               <dict>
                 <key>name</key>
                 <string>meta.assertion.negative-look-ahead.regexp</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>meta.assertion.look-behind.regexp</string>
+              </dict>
+              <key>6</key>
+              <dict>
+                <key>name</key>
+                <string>meta.assertion.negative-look-behind.regexp</string>
               </dict>
             </dict>
             <key>end</key>
@@ -5867,7 +5901,7 @@
             <key>name</key>
             <string>meta.group.regexp</string>
             <key>begin</key>
-            <string>\((\?:)?</string>
+            <string>\((?:(\?:)|(?:\?&lt;([a-zA-Z_$][\w$]*)&gt;))?</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -5879,6 +5913,11 @@
               <dict>
                 <key>name</key>
                 <string>punctuation.definition.group.no-capture.regexp</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.regexp</string>
               </dict>
             </dict>
             <key>end</key>
