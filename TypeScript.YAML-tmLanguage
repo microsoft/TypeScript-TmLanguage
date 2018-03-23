@@ -1826,10 +1826,9 @@ repository:
 
   #conditional type
   type-conditional:
-    match: '{{startOfIdentifier}}({{identifier}})\s+(extends)\s+'
+    match: '{{startOfIdentifier}}(extends)\s+'
     captures:
-      '1': { name: entity.name.type.ts }
-      '2': { name: storage.modifier.ts }
+      '1': { name: storage.modifier.ts }
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
