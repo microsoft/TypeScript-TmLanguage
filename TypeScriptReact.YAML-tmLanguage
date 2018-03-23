@@ -17,7 +17,7 @@ variables:
   jsxClosingTag: (</){{jsxTagName}}?\s*(>)
   jsxTagStart: (<){{jsxTagName}}(?=({{typeArguments}})?\s+(?!\?)|\/?>)
   jsxTagStartLookahead: (?={{jsxTagStart}})
-  jsxLookBehindInExpression: (?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
+  jsxLookBehindInExpression: (?<!\+\+|--)(?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
 
 repository:
   # Additions:
@@ -150,6 +150,7 @@ repository:
     begin: \s+
     end: (?=[/]?>)
     patterns:
+    - include: '#comment'
     - include: '#jsx-tag-attribute-name'
     - include: '#jsx-tag-attribute-assignment'
     - include: '#jsx-string-double-quoted'

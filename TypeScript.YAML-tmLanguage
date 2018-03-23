@@ -26,6 +26,7 @@ variables:
   lookBehindOf: '^of|{{nonPropertyLookBehind}}of'
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
+  lookBehindImport: '^import|{{nonPropertyLookBehind}}import'
   matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
@@ -35,7 +36,7 @@ variables:
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
-  typeArgumentsStart: ({{typeParamersStart}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))
+  typeArgumentsStart: ({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\<\>\,]|=>|&(?!&)|\|(?!\|)))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?!=)\>)*(?!=)>'
   functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
@@ -875,6 +876,14 @@ repository:
       '2': { name: keyword.control.import.ts }
     end: (?=;|$|^)
     patterns:
+    - include: '#comment'
+    - include: '#string'
+    - begin: (?<={{lookBehindImport}})(?!\s*["'])
+      end: \bfrom\b
+      endCaptures:
+        '0': { name: keyword.control.from.ts }
+      patterns:
+      - include: '#import-export-declaration'
     - include: '#import-export-declaration'
 
   export-declaration:
@@ -1012,7 +1021,7 @@ repository:
   #object literals
   after-operator-block-as-object-literal:
     name: meta.objectliteral.ts
-    begin: (?<=[=(,\[?+!]|{{lookBehindAwait}}|{{lookBehindReturn}}|{{lookBehindYield}}|{{lookBehindThrow}}|{{lookBehindIn}}|{{lookBehindOf}}|{{lookBehindTypeof}}|&&|\|\||\*)\s*(\{)
+    begin: (?<!\+\+|--)(?<=[=(,\[?+!]|{{lookBehindAwait}}|{{lookBehindReturn}}|{{lookBehindYield}}|{{lookBehindThrow}}|{{lookBehindIn}}|{{lookBehindOf}}|{{lookBehindTypeof}}|&&|\|\||\*)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.ts }
     end: \}
@@ -1199,7 +1208,7 @@ repository:
       # If '<' is preceeded by 'return', 'throw', 'yield', or 'await', it's most likely a type assertion
       # If '=', '(', ',', ':', or '>' are followed by a '<', it is also likely a type assertion as otherwise it would be a syntax error
       # '<=' and '<<=' are cannot be type assertions, as they are assignment operators.
-      begin: (?:(?<={{lookBehindReturn}}|{{lookBehindThrow}}|{{lookBehindYield}}|{{lookBehindAwait}}|{{lookBehindDefault}}|[=(,:>*?\&\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(<)(?!<?\=)
+      begin: (?:(?<!\+\+|--)(?<={{lookBehindReturn}}|{{lookBehindThrow}}|{{lookBehindYield}}|{{lookBehindAwait}}|{{lookBehindDefault}}|[=(,:>*?\&\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(<)(?!<?\=)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
       end: (\>)\s*
@@ -1386,11 +1395,13 @@ repository:
     - name: support.class.builtin.ts
       match: |-
         (?x){{startOfIdentifier}}(Array|ArrayBuffer|Atomics|Boolean|DataView|Date|Float32Array|Float64Array|Function|Generator
-          |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Promise|Proxy
+          |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Proxy
           |Reflect|RegExp|Set|SharedArrayBuffer|SIMD|String|Symbol|TypedArray
           |Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|WeakMap|WeakSet)\b(?!\$)
     - name: support.class.error.ts
       match: '{{startOfIdentifier}}((Eval|Internal|Range|Reference|Syntax|Type|URI)?Error)\b(?!\$)'
+    - name: support.class.promise.ts
+      match: '{{startOfIdentifier}}(Promise)\b(?!\$)'
     # known builtin function calls
     - name: support.function.ts
       match: |-
@@ -1643,6 +1654,8 @@ repository:
           slice|splitText|stepDown|stepUp|stopImmediatePropagation|stopPropagation|
           submit|substringData|supports|surroundContents|takeRecords|terminate|toBlob|
           toDataURL|toggle|toString|values|write|writeln
+        ) |
+        (all|catch|finally|race|reject|resolve|then
         )
        )(?=\s*\()
       captures:
@@ -1651,6 +1664,7 @@ repository:
         '3': { name: support.function.event-handler.ts }
         '4': { name: support.function.ts }
         '5': { name: support.function.dom.ts }
+        '6': { name: support.function.promise.ts }
 
   identifiers:
     patterns:
@@ -1885,10 +1899,9 @@ repository:
 
   #conditional type
   type-conditional:
-    match: '{{startOfIdentifier}}({{identifier}})\s+(extends)\s+'
+    match: '{{startOfIdentifier}}(extends)\s+'
     captures:
-      '1': { name: entity.name.type.ts }
-      '2': { name: storage.modifier.ts }
+      '1': { name: storage.modifier.ts }
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -2089,24 +2102,24 @@ repository:
   regex:
     patterns:
     - name: string.regexp.ts
-      begin: (?<=[=(:,\[?+!]|{{lookBehindReturn}}|{{lookBehindCase}}|=>|&&|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
+      begin: (?<!\+\+|--)(?<=[=(:,\[?+!]|{{lookBehindReturn}}|{{lookBehindCase}}|=>|&&|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimsuy]*(?!\s*[a-zA-Z0-9_$]))
       beginCaptures:
-        '1': {name: punctuation.definition.string.begin.ts}
-      end: (/)([gimuy]*)
+        '1': { name: punctuation.definition.string.begin.ts }
+      end: (/)([gimsuy]*)
       endCaptures:
-        '1': {name: punctuation.definition.string.end.ts}
-        '2': {name: keyword.other.ts}
+        '1': { name: punctuation.definition.string.end.ts }
+        '2': { name: keyword.other.ts}
       patterns:
       - include: '#regexp'
     # Check if complete regexp syntax
     - name: string.regexp.ts
-      begin: (?<![_$[:alnum:])\]])\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimuy]*(?!\s*[a-zA-Z0-9_$]))
+      begin: (?<![_$[:alnum:])\]]|\+\+|--)\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/(?![\/*])[gimsuy]*(?!\s*[a-zA-Z0-9_$]))
       beginCaptures:
-        '0': {name: punctuation.definition.string.begin.ts}
-      end: (/)([gimuy]*)
+        '0': { name: punctuation.definition.string.begin.ts }
+      end: (/)([gimsuy]*)
       endCaptures:
-        '1': {name: punctuation.definition.string.end.ts}
-        '2': {name: keyword.other.ts}
+        '1': { name: punctuation.definition.string.end.ts }
+        '2': { name: keyword.other.ts }
       patterns:
       - include: '#regexp'
 
@@ -2114,52 +2127,57 @@ repository:
     patterns:
     - name: keyword.control.anchor.regexp
       match: \\[bB]|\^|\$
-    - name: keyword.other.back-reference.regexp
-      match: \\[1-9]\d*
+    - match: \\[1-9]\d*|\\k<([a-zA-Z_$][\w$]*)>
+      captures:
+        '0': { name: keyword.other.back-reference.regexp }
+        '1': { name: variable.other.regexp }
     - name: keyword.operator.quantifier.regexp
       match: '[?+*]|\{(\d+,\d+|\d+,|,\d+|\d+)\}\??'
     - name: keyword.operator.or.regexp
       match: \|
     - name: meta.group.assertion.regexp
-      begin: (\()((\?=)|(\?!))
+      begin: (\()((\?=)|(\?!)|(\?<=)|(\?<!))
       beginCaptures:
-        '1': {name: punctuation.definition.group.regexp}
-        '2': {name: punctuation.definition.group.assertion.regexp}
-        '3': {name: meta.assertion.look-ahead.regexp}
-        '4': {name: meta.assertion.negative-look-ahead.regexp}
+        '1': { name: punctuation.definition.group.regexp }
+        '2': { name: punctuation.definition.group.assertion.regexp }
+        '3': { name: meta.assertion.look-ahead.regexp }
+        '4': { name: meta.assertion.negative-look-ahead.regexp }
+        '5': { name: meta.assertion.look-behind.regexp }
+        '6': { name: meta.assertion.negative-look-behind.regexp }
       end: (\))
       endCaptures:
-        '1': {name: punctuation.definition.group.regexp}
+        '1': {name: punctuation.definition.group.regexp }
       patterns:
       - include: '#regexp'
     - name: meta.group.regexp
-      begin: \((\?:)?
+      begin: \((?:(\?:)|(?:\?<([a-zA-Z_$][\w$]*)>))?
       beginCaptures:
-        '0': {name: punctuation.definition.group.regexp}
-        '1': {name: punctuation.definition.group.no-capture.regexp}
+        '0': { name: punctuation.definition.group.regexp }
+        '1': { name: punctuation.definition.group.no-capture.regexp }
+        '2': { name: variable.other.regexp }
       end: \)
       endCaptures:
-        '0': {name: punctuation.definition.group.regexp}
+        '0': { name: punctuation.definition.group.regexp }
       patterns:
       - include: '#regexp'
     - name: constant.other.character-class.set.regexp
       begin: (\[)(\^)?
       beginCaptures:
-        '1': {name: punctuation.definition.character-class.regexp}
-        '2': {name: keyword.operator.negation.regexp}
+        '1': { name: punctuation.definition.character-class.regexp }
+        '2': { name: keyword.operator.negation.regexp }
       end: (\])
       endCaptures:
-        '1': {name: punctuation.definition.character-class.regexp}
+        '1': {name: punctuation.definition.character-class.regexp }
       patterns:
       - name: constant.other.character-class.range.regexp
         match: (?:.|(\\(?:[0-7]{3}|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}))|(\\c[A-Z])|(\\.))\-(?:[^\]\\]|(\\(?:[0-7]{3}|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}))|(\\c[A-Z])|(\\.))
         captures:
-          '1': {name: constant.character.numeric.regexp}
-          '2': {name: constant.character.control.regexp}
-          '3': {name: constant.character.escape.backslash.regexp}
-          '4': {name: constant.character.numeric.regexp}
-          '5': {name: constant.character.control.regexp}
-          '6': {name: constant.character.escape.backslash.regexp}
+          '1': { name: constant.character.numeric.regexp }
+          '2': { name: constant.character.control.regexp }
+          '3': { name: constant.character.escape.backslash.regexp }
+          '4': { name: constant.character.numeric.regexp }
+          '5': { name: constant.character.control.regexp }
+          '6': { name: constant.character.escape.backslash.regexp }
       - include: '#regex-character-class'
     - include: '#regex-character-class'
 

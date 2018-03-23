@@ -6,3 +6,7 @@ type TypeName<T> =
                 T extends undefined ? "undefined" :
                     T extends Function ? "function" :
                         "object";
+type Extracted<Struct>  = {
+	[K in keyof Struct]: Struct[K] extends FooBar ? ExtractFooBar<Struct[K]> : Struct[K];
+
+}
