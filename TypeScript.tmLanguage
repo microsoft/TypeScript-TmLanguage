@@ -1877,32 +1877,37 @@
         <key>name</key>
         <string>meta.indexer.mappedtype.declaration.ts</string>
         <key>begin</key>
-        <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s+(in)\s+</string>
+        <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))([+-])?(readonly)\s*)?(\[)\s*([_$[:alpha:]][_$[:alnum:]]*)\s+(in)\s+</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>storage.modifier.ts</string>
+            <string>keyword.operator.type.modifier.ts</string>
           </dict>
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>meta.brace.square.ts</string>
+            <string>storage.modifier.ts</string>
           </dict>
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>entity.name.type.ts</string>
+            <string>meta.brace.square.ts</string>
           </dict>
           <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.type.ts</string>
+          </dict>
+          <key>5</key>
           <dict>
             <key>name</key>
             <string>keyword.operator.expression.in.ts</string>
           </dict>
         </dict>
         <key>end</key>
-        <string>(\])\s*(\?\s*)?|$</string>
+        <string>(\])([+-])?\s*(\?\s*)?|$</string>
         <key>endCaptures</key>
         <dict>
           <key>1</key>
@@ -1911,6 +1916,11 @@
             <string>meta.brace.square.ts</string>
           </dict>
           <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.type.modifier.ts</string>
+          </dict>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>keyword.operator.optional.ts</string>

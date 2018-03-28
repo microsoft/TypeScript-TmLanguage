@@ -613,16 +613,18 @@ repository:
 
   indexer-mapped-type-declaration:
     name: meta.indexer.mappedtype.declaration.ts
-    begin: (?:{{startOfIdentifier}}(readonly)\s*)?(\[)\s*({{identifier}})\s+(in)\s+
+    begin: (?:{{startOfIdentifier}}([+-])?(readonly)\s*)?(\[)\s*({{identifier}})\s+(in)\s+
     beginCaptures:
-      '1': { name: storage.modifier.ts }
-      '2': { name: meta.brace.square.ts }
-      '3': { name: entity.name.type.ts }
-      '4': { name: keyword.operator.expression.in.ts }
-    end: (\])\s*(\?\s*)?|$
+      '1': { name: keyword.operator.type.modifier.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: meta.brace.square.ts }
+      '4': { name: entity.name.type.ts }
+      '5': { name: keyword.operator.expression.in.ts }
+    end: (\])([+-])?\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.ts }
-      '2': { name: keyword.operator.optional.ts }
+      '2': { name: keyword.operator.type.modifier.ts }
+      '3': { name: keyword.operator.optional.ts }
     patterns:
     - include: '#type'
 

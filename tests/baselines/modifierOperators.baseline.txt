@@ -1,0 +1,226 @@
+original file
+-----------------------------------
+type Mutable<T> = {
+    -readonly [P in keyof T]: T[P]
+}
+type Required<T> = {
+    [P in keyof T]-?: T[P];
+}
+type ReadonlyAndPartial<T> = {
+    +readonly [P in keyof T]+?: T[P];
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>type Mutable<T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                    ^^
+                    source.ts meta.type.declaration.ts meta.object.type.ts
+>    -readonly [P in keyof T]: T[P]
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.modifier.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts storage.modifier.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                  ^^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                     ^^^^^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.type.declaration.ts
+>type Required<T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                     ^^
+                     source.ts meta.type.declaration.ts meta.object.type.ts
+>    [P in keyof T]-?: T[P];
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+        ^^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+          ^
+          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+           ^^^^^
+           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                  ^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.modifier.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.optional.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                            ^^
+                            source.ts meta.type.declaration.ts meta.object.type.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^^
+  source.ts meta.type.declaration.ts
+>type ReadonlyAndPartial<T> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^^^^^^^^^^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                           ^
+                           source.ts meta.type.declaration.ts
+                            ^
+                            source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                             ^
+                             source.ts meta.type.declaration.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                               ^^
+                               source.ts meta.type.declaration.ts meta.object.type.ts
+>    +readonly [P in keyof T]+?: T[P];
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.modifier.ts
+      ^^^^^^^^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts storage.modifier.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                 ^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                  ^^
+                  source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                     ^^^^^
+                     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.modifier.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.optional.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts entity.name.type.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+                                      ^^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts
+>}
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
