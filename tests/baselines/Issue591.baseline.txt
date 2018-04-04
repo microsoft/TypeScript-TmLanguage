@@ -1,0 +1,52 @@
+original file
+-----------------------------------
+if (a instanceof B || c instanceof D) {
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>if (a instanceof B || c instanceof D) {
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^
+      source.ts
+       ^^^^^^^^^^
+       source.ts keyword.operator.expression.instanceof.ts
+                 ^
+                 source.ts
+                  ^
+                  source.ts entity.name.type.ts
+                   ^
+                   source.ts
+                    ^^
+                    source.ts keyword.operator.logical.ts
+                      ^
+                      source.ts
+                       ^
+                       source.ts variable.other.readwrite.ts
+                        ^
+                        source.ts
+                         ^^^^^^^^^^
+                         source.ts keyword.operator.expression.instanceof.ts
+                                   ^
+                                   source.ts
+                                    ^
+                                    source.ts entity.name.type.ts
+                                     ^
+                                     source.ts meta.brace.round.ts
+                                      ^
+                                      source.ts
+                                       ^
+                                       source.ts meta.block.ts punctuation.definition.block.ts
+                                        ^^
+                                        source.ts meta.block.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
