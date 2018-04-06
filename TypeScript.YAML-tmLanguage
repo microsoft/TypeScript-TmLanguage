@@ -16,6 +16,7 @@ variables:
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   propertyName: (({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
+  endOfStatement: ';|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\breturn\b|\btype\b|\bvar\b'
   nonPropertyLookBehind: '[^\._$[:alnum:]]'
   lookBehindReturn: '^return|{{nonPropertyLookBehind}}return'
   lookBehindThrow: '^throw|{{nonPropertyLookBehind}}throw'
@@ -808,7 +809,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.namespace.ts }
-    end: (?<=\})|(?=;|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
+    end: (?<=\})|(?={{endOfStatement}})
     patterns:
     - include: '#comment'
     - include: '#string'
@@ -825,7 +826,7 @@ repository:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.type.ts }
       '3': { name: entity.name.type.alias.ts }
-    end: (?=[};]|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
+    end: (?=\}|{{endOfStatement}})
     patterns:
       - include: '#comment'
       - include: '#type-parameters'
@@ -902,14 +903,14 @@ repository:
         '1': { name: keyword.control.export.ts }
         '2': { name: keyword.operator.assignment.ts }
         '3': { name: keyword.control.default.ts }
-      end: (?=;|$|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
+      end: (?=$|{{endOfStatement}})
       patterns:
       - include: '#expression'
     - name: meta.export.ts
       begin: '{{startOfIdentifier}}(export)(?!\s*:){{endOfIdentifier}}'
       beginCaptures:
         '0': { name: keyword.control.export.ts }
-      end: (?=;|$|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\btype\b|\bvar\b)
+      end: (?=$|{{endOfStatement}})
       patterns:
       - include: '#import-export-declaration'
 
