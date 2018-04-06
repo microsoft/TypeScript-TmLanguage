@@ -36,7 +36,7 @@ variables:
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
-  typeArgumentsStart: ({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\<\>\,]|=>|&(?!&)|\|(?!\|)))
+  typeArgumentsStart: ({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?!=)\>)*(?!=)>'
   functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
@@ -619,16 +619,18 @@ repository:
 
   indexer-mapped-type-declaration:
     name: meta.indexer.mappedtype.declaration.ts
-    begin: (?:{{startOfIdentifier}}(readonly)\s*)?(\[)\s*({{identifier}})\s+(in)\s+
+    begin: (?:{{startOfIdentifier}}([+-])?(readonly)\s*)?(\[)\s*({{identifier}})\s+(in)\s+
     beginCaptures:
-      '1': { name: storage.modifier.ts }
-      '2': { name: meta.brace.square.ts }
-      '3': { name: entity.name.type.ts }
-      '4': { name: keyword.operator.expression.in.ts }
-    end: (\])\s*(\?\s*)?|$
+      '1': { name: keyword.operator.type.modifier.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: meta.brace.square.ts }
+      '4': { name: entity.name.type.ts }
+      '5': { name: keyword.operator.expression.in.ts }
+    end: (\])([+-])?\s*(\?\s*)?|$
     endCaptures:
       '1': { name: meta.brace.square.ts }
-      '2': { name: keyword.operator.optional.ts }
+      '2': { name: keyword.operator.type.modifier.ts }
+      '3': { name: keyword.operator.optional.ts }
     patterns:
     - include: '#type'
 
@@ -1140,7 +1142,7 @@ repository:
     begin: '{{startOfIdentifier}}(new){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.operator.new.ts }
-    end: (?<=\))|(?=[;),}\]:]|$|({{startOfIdentifier}}new{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
+    end: (?<=\))|(?=[;),}\]:]|\|\||\&\&|$|({{startOfIdentifier}}new{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
     patterns:
     - include: '#paren-expression'
     - include: '#class-declaration'
@@ -1150,7 +1152,7 @@ repository:
     begin: '{{startOfIdentifier}}(instanceof){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.operator.expression.instanceof.ts }
-    end: (?<=\))|(?=[;),}\]:]|$|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
+    end: (?<=\))|(?=[;),}\]:]|\|\||\&\&|$|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
     patterns:
     - include: '#type'
 
