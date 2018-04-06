@@ -9,6 +9,7 @@ fileTypes: [tsx]
 uuid: 805375ec-d614-41f5-8993-5843fe63ea82
 
 variables:
+  possiblyMultilineArrow: ([\(]\s*$)  # during lookup treat ( followed by line end as arrow
   jsxTagOrAtrributeIdentifier: '[_$a-zA-Z][-$\w.]'
   jsxTagNamespace: (?:({{jsxTagOrAtrributeIdentifier}}*)(?<!\.|-)(:))?
   jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}*))(?<!\.|-))

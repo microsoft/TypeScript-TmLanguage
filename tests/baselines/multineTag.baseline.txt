@@ -1,0 +1,52 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - contains jsx
+const something = <T>(
+    sometext
+    )
+</T>;
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - contains jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>const something = <T>(
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.readwrite.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                 ^
+                 source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                  ^
+                  source.tsx meta.var.expr.tsx
+                   ^
+                   source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+                    ^
+                    source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx support.class.component.tsx
+                     ^
+                     source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+                      ^^^
+                      source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+>    sometext
+ ^^^^^^^^^^^^^^
+ source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+>    )
+ ^^^^^^^
+ source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
+></T>;
+ ^^
+ source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
+   ^
+   source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx support.class.component.tsx
+    ^
+    source.tsx meta.var.expr.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
+     ^
+     source.tsx punctuation.terminator.statement.tsx

@@ -1,0 +1,118 @@
+original file
+-----------------------------------
+const modifiersRelated = relation === comparableRelation || (
+                    relation === identityRelation ? getMappedTypeModifiers(source) === getMappedTypeModifiers(target) :
+                        getCombinedMappedTypeOptionality(source) <= getCombinedMappedTypeOptionality(target));
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const modifiersRelated = relation === comparableRelation || (
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.var.expr.ts
+                          ^^^^^^^^
+                          source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                  ^
+                                  source.ts meta.var.expr.ts
+                                   ^^^
+                                   source.ts meta.var.expr.ts keyword.operator.comparison.ts
+                                      ^
+                                      source.ts meta.var.expr.ts
+                                       ^^^^^^^^^^^^^^^^^^
+                                       source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                         ^
+                                                         source.ts meta.var.expr.ts
+                                                          ^^
+                                                          source.ts meta.var.expr.ts keyword.operator.logical.ts
+                                                            ^
+                                                            source.ts meta.var.expr.ts
+                                                             ^
+                                                             source.ts meta.var.expr.ts meta.brace.round.ts
+                                                              ^^
+                                                              source.ts meta.var.expr.ts
+>                    relation === identityRelation ? getMappedTypeModifiers(source) === getMappedTypeModifiers(target) :
+ ^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.var.expr.ts
+                     ^^^^^^^^
+                     source.ts meta.var.expr.ts variable.other.readwrite.ts
+                             ^
+                             source.ts meta.var.expr.ts
+                              ^^^
+                              source.ts meta.var.expr.ts keyword.operator.comparison.ts
+                                 ^
+                                 source.ts meta.var.expr.ts
+                                  ^^^^^^^^^^^^^^^^
+                                  source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts
+                                                   ^
+                                                   source.ts meta.var.expr.ts keyword.operator.ternary.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts
+                                                     ^^^^^^^^^^^^^^^^^^^^^^
+                                                     source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                                                                           ^
+                                                                           source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                            ^^^^^^
+                                                                            source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                                                  ^
+                                                                                  source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                                   ^
+                                                                                   source.ts meta.var.expr.ts
+                                                                                    ^^^
+                                                                                    source.ts meta.var.expr.ts keyword.operator.comparison.ts
+                                                                                       ^
+                                                                                       source.ts meta.var.expr.ts
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^
+                                                                                        source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                                                                                                              ^
+                                                                                                              source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                                                               ^^^^^^
+                                                                                                               source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                                                                                     ^
+                                                                                                                     source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                                                                      ^
+                                                                                                                      source.ts meta.var.expr.ts
+                                                                                                                       ^
+                                                                                                                       source.ts meta.var.expr.ts keyword.operator.ternary.ts
+                                                                                                                        ^^
+                                                                                                                        source.ts meta.var.expr.ts
+>                        getCombinedMappedTypeOptionality(source) <= getCombinedMappedTypeOptionality(target));
+ ^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.var.expr.ts
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                                                         ^
+                                                         source.ts meta.var.expr.ts meta.brace.round.ts
+                                                          ^^^^^^
+                                                          source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                                ^
+                                                                source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                 ^
+                                                                 source.ts meta.var.expr.ts
+                                                                  ^^
+                                                                  source.ts meta.var.expr.ts keyword.operator.relational.ts
+                                                                    ^
+                                                                    source.ts meta.var.expr.ts
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                                     source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                                                                                                     ^
+                                                                                                     source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                                                      ^^^^^^
+                                                                                                      source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                                                                            ^
+                                                                                                            source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                                                             ^
+                                                                                                             source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                                                              ^
+                                                                                                              source.ts punctuation.terminator.statement.ts
