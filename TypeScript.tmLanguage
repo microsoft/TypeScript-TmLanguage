@@ -3061,15 +3061,7 @@
                   </dict>
                 </dict>
                 <key>end</key>
-                <string>:</string>
-                <key>endCaptures</key>
-                <dict>
-                  <key>0</key>
-                  <dict>
-                    <key>name</key>
-                    <string>punctuation.definition.section.case-statement.ts</string>
-                  </dict>
-                </dict>
+                <string>(?=:)</string>
                 <key>patterns</key>
                 <array>
                   <dict>
@@ -3077,6 +3069,54 @@
                     <string>#expression</string>
                   </dict>
                 </array>
+              </dict>
+              <dict>
+                <key>begin</key>
+                <string>(:)\s*(\{)</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>case-clause.expr.ts punctuation.definition.section.case-statement.ts</string>
+                  </dict>
+                  <key>2</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.block.ts punctuation.definition.block.ts</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>\}</string>
+                <key>endCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.block.ts punctuation.definition.block.ts</string>
+                  </dict>
+                </dict>
+                <key>contentName</key>
+                <string>meta.block.ts</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#statements</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>match</key>
+                <string>(:)</string>
+                <key>captures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>case-clause.expr.ts punctuation.definition.section.case-statement.ts</string>
+                  </dict>
+                </dict>
               </dict>
               <dict>
                 <key>include</key>
@@ -3188,7 +3228,7 @@
         <key>name</key>
         <string>meta.objectliteral.ts</string>
         <key>begin</key>
-        <string>(?&lt;!\+\+|--)(?&lt;=[=(,\[?+!]|^await|[^\._$[:alnum:]]await|^return|[^\._$[:alnum:]]return|^yield|[^\._$[:alnum:]]yield|^throw|[^\._$[:alnum:]]throw|^in|[^\._$[:alnum:]]in|^of|[^\._$[:alnum:]]of|^typeof|[^\._$[:alnum:]]typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
+        <string>(?&lt;!\+\+|--)(?&lt;=[:=(,\[?+!]|^await|[^\._$[:alnum:]]await|^return|[^\._$[:alnum:]]return|^yield|[^\._$[:alnum:]]yield|^throw|[^\._$[:alnum:]]throw|^in|[^\._$[:alnum:]]in|^of|[^\._$[:alnum:]]of|^typeof|[^\._$[:alnum:]]typeof|&amp;&amp;|\|\||\*)\s*(\{)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>

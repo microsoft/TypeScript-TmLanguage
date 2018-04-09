@@ -1,0 +1,84 @@
+original file
+-----------------------------------
+function f() {
+    return foo ? { a: true } : { b: false }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function f() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.function.ts
+              ^
+              source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.function.ts meta.block.ts
+>    return foo ? { a: true } : { b: false }
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts
+            ^^^
+            source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.function.ts meta.block.ts
+                ^
+                source.ts meta.function.ts meta.block.ts keyword.operator.ternary.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.objectliteral.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                       ^^^^
+                       source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts constant.language.boolean.true.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts keyword.operator.ternary.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.objectliteral.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.objectliteral.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                                     ^^^^^
+                                     source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts constant.language.boolean.false.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                            ^^
+                                            source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

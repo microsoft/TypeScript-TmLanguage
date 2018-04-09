@@ -982,11 +982,23 @@ repository:
         begin: '{{startOfIdentifier}}(case|default(?=:)){{endOfIdentifier}}'
         beginCaptures:
           '1': { name: keyword.control.switch.ts }
-        end: ':'
-        endCaptures:
-          '0': { name: punctuation.definition.section.case-statement.ts }
+        end: (?=:)
         patterns:
         - include: '#expression'
+      # case block
+      - begin: (:)\s*(\{)
+        beginCaptures:
+          '1': { name: case-clause.expr.ts punctuation.definition.section.case-statement.ts }
+          '2': { name: meta.block.ts punctuation.definition.block.ts }
+        end: \}
+        endCaptures:
+          '0': { name: meta.block.ts punctuation.definition.block.ts }
+        contentName: meta.block.ts
+        patterns:
+        - include: '#statements'
+      - match: (:)
+        captures:
+          '0': { name: case-clause.expr.ts punctuation.definition.section.case-statement.ts }
       - include: '#statements'
 
   for-loop:
@@ -1024,7 +1036,7 @@ repository:
   #object literals
   after-operator-block-as-object-literal:
     name: meta.objectliteral.ts
-    begin: (?<!\+\+|--)(?<=[=(,\[?+!]|{{lookBehindAwait}}|{{lookBehindReturn}}|{{lookBehindYield}}|{{lookBehindThrow}}|{{lookBehindIn}}|{{lookBehindOf}}|{{lookBehindTypeof}}|&&|\|\||\*)\s*(\{)
+    begin: (?<!\+\+|--)(?<=[:=(,\[?+!]|{{lookBehindAwait}}|{{lookBehindReturn}}|{{lookBehindYield}}|{{lookBehindThrow}}|{{lookBehindIn}}|{{lookBehindOf}}|{{lookBehindTypeof}}|&&|\|\||\*)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.ts }
     end: \}
