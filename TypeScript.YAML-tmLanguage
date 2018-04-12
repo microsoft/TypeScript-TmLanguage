@@ -33,6 +33,7 @@ variables:
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
   inlineComment: \/\*([^\*]|(\*[^\/]))*\*\/
   lookBehindOfPossiblyMultilineArrow: (?<=[(=,]|=>)
+  lookBehindOfObjectMemberPossiblyMultilineArrow: (?<=:)
   # Identifier start | matching braces | matching parenthesis | matching square brackets
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
@@ -1113,6 +1114,29 @@ repository:
         '0': { name: meta.object-literal.key.ts punctuation.separator.key-value.ts }
       end: (?=,|\})
       patterns:
+      - begin: '{{lookBehindOfObjectMemberPossiblyMultilineArrow}}\s*(async)?(?=\s*{{typeParameters}}\(\s*$)'
+        beginCaptures:
+          '1': { name: storage.modifier.async.ts }
+        end: (?<=\))
+        patterns:
+        - include: '#type-parameters'
+        - begin: \(
+          beginCaptures:
+            '0': { name: meta.brace.round.ts }
+          end: \)
+          endCaptures:
+            '0': { name: meta.brace.round.ts }
+          patterns:
+          - include: '#expression-inside-possibly-arrow-parens'
+      - begin: '{{lookBehindOfObjectMemberPossiblyMultilineArrow}}\s*(async)?\s*(\()(?=\s*$)'
+        beginCaptures:
+          '1': { name: storage.modifier.async.ts }
+          '2': { name: meta.brace.round.ts }
+        end: \)
+        endCaptures:
+          '0': { name: meta.brace.round.ts }
+        patterns:
+        - include: '#expression-inside-possibly-arrow-parens'
       - include: '#expression'
     - include: '#punctuation-comma'
 
