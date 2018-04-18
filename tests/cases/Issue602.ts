@@ -1,0 +1,1 @@
+let result = foo instanceof Foo ? foo.bar() : null;

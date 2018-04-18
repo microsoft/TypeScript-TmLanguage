@@ -1190,7 +1190,7 @@ repository:
     begin: '{{startOfIdentifier}}(instanceof){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.operator.expression.instanceof.ts }
-    end: (?<=\))|(?=[;),}\]:]|\|\||\&\&|$|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
+    end: (?<=\))|(?=[;),}\]:?]|\|\||\&\&|$|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
     patterns:
     - include: '#type'
 
