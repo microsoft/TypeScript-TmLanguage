@@ -5937,42 +5937,70 @@
       </dict>
       <key>template</key>
       <dict>
-        <key>name</key>
-        <string>string.template.tsx</string>
-        <key>begin</key>
-        <string>([_$[:alpha:]][_$[:alnum:]]*)?(`)</string>
-        <key>beginCaptures</key>
-        <dict>
-          <key>1</key>
-          <dict>
-            <key>name</key>
-            <string>entity.name.function.tagged-template.tsx</string>
-          </dict>
-          <key>2</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.string.template.begin.tsx</string>
-          </dict>
-        </dict>
-        <key>end</key>
-        <string>`</string>
-        <key>endCaptures</key>
-        <dict>
-          <key>0</key>
-          <dict>
-            <key>name</key>
-            <string>punctuation.definition.string.template.end.tsx</string>
-          </dict>
-        </dict>
         <key>patterns</key>
         <array>
           <dict>
-            <key>include</key>
-            <string>#template-substitution-element</string>
+            <key>name</key>
+            <string>string.template.tsx</string>
+            <key>begin</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(&lt;\s*(((keyof|infer)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?!=)\&gt;)*(?!=)&gt;\s*)`)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tagged-template.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=`)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-parameters</string>
+              </dict>
+            </array>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#string-character-escape</string>
+            <key>name</key>
+            <string>string.template.tsx</string>
+            <key>begin</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)?(`)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tagged-template.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.template.begin.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>`</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.template.end.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#template-substitution-element</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#string-character-escape</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>

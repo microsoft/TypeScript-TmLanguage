@@ -1,0 +1,62 @@
+original file
+-----------------------------------
+let a = tag<string | number> `${100} ${"hello"}`;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let a = tag<string | number> `${100} ${"hello"}`;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^^^
+         source.ts meta.var.expr.ts string.template.ts entity.name.function.tagged-template.ts
+            ^
+            source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+             ^^^^^^
+             source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts support.type.primitive.ts
+                   ^
+                   source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts
+                    ^
+                    source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts keyword.operator.type.ts
+                     ^
+                     source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts
+                      ^^^^^^
+                      source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts support.type.primitive.ts
+                            ^
+                            source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                             ^
+                             source.ts meta.var.expr.ts string.template.ts
+                              ^
+                              source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+                               ^^
+                               source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                 ^^^
+                                 source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts constant.numeric.decimal.ts
+                                    ^
+                                    source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                     ^
+                                     source.ts meta.var.expr.ts string.template.ts
+                                      ^^
+                                      source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                        ^
+                                        source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                         ^^^^^
+                                         source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts string.quoted.double.ts
+                                              ^
+                                              source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                               ^
+                                               source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                ^
+                                                source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                 ^
+                                                 source.ts punctuation.terminator.statement.ts
