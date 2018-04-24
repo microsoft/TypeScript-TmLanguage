@@ -527,29 +527,40 @@ repository:
 
   method-declaration:
     patterns:
+    # constructor signature
+    - name: meta.method.declaration.ts
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?\b(constructor)\b(?!:){{endOfIdentifier}}'
+      beginCaptures:
+        '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+        '2': { name: storage.modifier.ts } # captures keyword (abstract)
+        '3': { name: storage.modifier.async.ts } # captures keyword (async)
+        '4': { name: storage.type.ts } # captures keyword (constructor)
+      end: (?=\}|;|,|$)|(?<=\})
+      patterns:
+      - include: '#method-declaration-name'
+      - include: '#function-body'
+    # new or call signature
+    - name: meta.method.declaration.ts
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(new)\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?)(?=\s*[\(\<])'
+      beginCaptures:
+        '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+        '2': { name: storage.modifier.ts } # captures keyword (abstract)
+        '3': { name: storage.modifier.async.ts } # captures keyword (async)
+        '4': { name: keyword.operator.new.ts } # captures keyword (new)
+        '5': { name: keyword.generator.asterisk.ts } # captures keyword (*)
+      end: (?=\}|;|,|$)|(?<=\})
+      patterns:
+      - include: '#method-declaration-name'
+      - include: '#function-body'
     # method, accessor
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)(?:(\*)\s*)?(?=({{propertyName}}\s*(\??))\s*[\(\<])'
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=({{propertyName}}\s*(\??))\s*[\(\<])'
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
         '3': { name: storage.modifier.async.ts } # captures keyword (async)
         '4': { name: storage.type.property.ts } # captures keyword (get|set)
         '5': { name: keyword.generator.asterisk.ts } # captures keyword (*)
-      end: (?=\}|;|,|$)|(?<=\})
-      patterns:
-      - include: '#method-declaration-name'
-      - include: '#function-body'
-    # new, constructor or call signature
-    - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(?:(new)|(constructor))\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?(?=({{propertyName}}\s*(\??))?\s*[\(\<]))'
-      beginCaptures:
-        '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
-        '2': { name: storage.modifier.ts } # captures keyword (abstract)
-        '3': { name: storage.modifier.async.ts } # captures keyword (async)
-        '4': { name: keyword.operator.new.ts } # captures keyword (new)
-        '5': { name: storage.type.ts } # captures keyword (constructor)
-        '6': { name: keyword.generator.asterisk.ts } # captures keyword (*)
       end: (?=\}|;|,|$)|(?<=\})
       patterns:
       - include: '#method-declaration-name'

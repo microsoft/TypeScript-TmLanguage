@@ -1,0 +1,82 @@
+original file
+-----------------------------------
+interface Foo {
+    new: number;
+}
+
+interface Foo2 {
+    new?: number;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>interface Foo {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+              ^
+              source.ts meta.interface.ts
+               ^
+               source.ts meta.interface.ts punctuation.definition.block.ts
+                ^^
+                source.ts meta.interface.ts
+>    new: number;
+ ^^^^
+ source.ts meta.interface.ts
+     ^^^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+        ^
+        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^^^^^
+          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                ^
+                source.ts meta.interface.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.interface.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
+  ^^
+  source.ts
+>
+ ^^
+ source.ts
+>interface Foo2 {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+               ^
+               source.ts meta.interface.ts
+                ^
+                source.ts meta.interface.ts punctuation.definition.block.ts
+                 ^^
+                 source.ts meta.interface.ts
+>    new?: number;
+ ^^^^
+ source.ts meta.interface.ts
+     ^^^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+        ^
+        source.ts meta.interface.ts meta.field.declaration.ts keyword.operator.optional.ts
+         ^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+          ^
+          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^^^^^^
+           source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.interface.ts punctuation.terminator.statement.ts
+                  ^^
+                  source.ts meta.interface.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
