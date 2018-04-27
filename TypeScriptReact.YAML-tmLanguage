@@ -15,7 +15,7 @@ variables:
   jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}*))(?<!\.|-))
   jsxOpeningTagWithoutAttributes: (<){{jsxTagName}}?\s*(>)
   jsxClosingTag: (</){{jsxTagName}}?\s*(>)
-  jsxTagStart: (<){{jsxTagName}}(?=({{typeArguments}})?\s+(?!\?)|\/?>)
+  jsxTagStart: (<){{jsxTagName}}(?=(({{typeArguments}}\s*)|(\s+))(?!\?)|\/?>)
   jsxTagStartLookahead: (?={{jsxTagStart}})
   jsxLookBehindInExpression: (?<!\+\+|--)(?<=[({\[,?=>:*]|&&|\|\||\?|{{lookBehindReturn}}|{{lookBehindDefault}}|^)\s*
 
