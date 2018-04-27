@@ -19,7 +19,7 @@ function file(language: Language, extension: Extension) {
     return path.join(__dirname, '..', `${language}.${extension}`);
 }
 
-function writePlistFile(grammar: any, fileName: string) {
+function writePlistFile(grammar: TmGrammar | TmTheme, fileName: string) {
     const text = plist.build(grammar);
     fs.writeFileSync(fileName, text);
 }
@@ -35,20 +35,21 @@ function changeTsToTsx(str: string) {
 
 function transformGrammarRule(rule: any, propertyNames: string[], transformProperty: (ruleProperty: string) => string) {
     for (const propertyName of propertyNames) {
-        if (typeof rule[propertyName] === 'string') {
-            rule[propertyName] = transformProperty(rule[propertyName]);
+        const value = rule[propertyName];
+        if (typeof value === 'string') {
+            rule[propertyName] = transformProperty(value);
         }
     }
 
     for (var propertyName in rule) {
-        var value = rule[propertyName];
+        const value = rule[propertyName];
         if (typeof value === 'object') {
             transformGrammarRule(value, propertyNames, transformProperty);
         }
     }
 }
 
-function transformGrammarRepository(grammar: any, propertyNames: string[], transformProperty: (ruleProperty: string) => string) {
+function transformGrammarRepository(grammar: TmGrammar, propertyNames: string[], transformProperty: (ruleProperty: string) => string) {
     const repository = grammar.repository;
     for (let key in repository) {
         transformGrammarRule(repository[key], propertyNames, transformProperty);
@@ -56,8 +57,8 @@ function transformGrammarRepository(grammar: any, propertyNames: string[], trans
 }
 
 function getTsxGrammar() {
-    let variables: any;
-    const tsxUpdatesBeforeTransformation = readYaml(file(Language.TypeScriptReact, Extension.YamlTmLangauge));
+    let variables: MapLike<string>;
+    const tsxUpdatesBeforeTransformation = readYaml(file(Language.TypeScriptReact, Extension.YamlTmLangauge)) as TmGrammar;
     const grammar = getTsGrammar(tsGrammarVariables => {
         variables = tsGrammarVariables;
         for (const variableName in tsxUpdatesBeforeTransformation.variables) {
@@ -68,11 +69,10 @@ function getTsxGrammar() {
     const tsxUpdates = updateGrammarVariables(tsxUpdatesBeforeTransformation, variables);
 
     // Update name, file types, scope name and uuid
-    for (let key in tsxUpdates) {
-        if (key !== "repository") {
-            grammar[key] = tsxUpdates[key];
-        }
-    }
+    grammar.name = tsxUpdates.name;
+    grammar.scopeName = tsxUpdates.scopeName;
+    grammar.fileTypes = tsxUpdates.fileTypes;
+    grammar.uuid = tsxUpdates.uuid;
 
     // Update scope names to .tsx
     transformGrammarRepository(grammar, ["name", "contentName"], changeTsToTsx);
@@ -84,7 +84,7 @@ function getTsxGrammar() {
         switch(key) {
             case "expressionWithoutIdentifiers":
                 // Update expression
-                repository[key].patterns.unshift(updatesRepository[key].patterns[0]);
+                (repository[key] as TmGrammarRepositoryPatterns).patterns.unshift((updatesRepository[key] as TmGrammarRepositoryPatterns).patterns[0]);
                 break;
             default:
                 // Add jsx
@@ -95,8 +95,8 @@ function getTsxGrammar() {
     return grammar;
 }
 
-function getTsGrammar(getVariables: (tsGrammarVariables: any) => any) {
-    const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLangauge));
+function getTsGrammar(getVariables: (tsGrammarVariables: MapLike<string>) => MapLike<string>) {
+    const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLangauge)) as TmGrammar;
     return updateGrammarVariables(tsGrammarBeforeTransformation, getVariables(tsGrammarBeforeTransformation.variables));
 }
 
@@ -109,7 +109,7 @@ function replacePatternVariables(pattern: string, variableReplacers: VariableRep
 }
 
 type VariableReplacer = [RegExp, string];
-function updateGrammarVariables(grammar: any, variables: any) {
+function updateGrammarVariables(grammar: TmGrammar, variables: MapLike<string>) {
     delete grammar.variables;
     const variableReplacers: VariableReplacer[] = [];
     for (const variableName in variables) {
@@ -136,15 +136,12 @@ function buildGrammar() {
     writePlistFile(tsxGrammar, file(Language.TypeScriptReact, Extension.TmLanguage));
 }
 
-function changeTsToTsxTheme(theme: any) {
-    const tsxUpdates = readYaml(file(Language.TypeScriptReact, Extension.YamlTmTheme));
+function changeTsToTsxTheme(theme: TmTheme) {
+    const tsxUpdates = readYaml(file(Language.TypeScriptReact, Extension.YamlTmTheme)) as TmTheme;
 
     // Update name, uuid
-    for (let key in tsxUpdates) {
-        if (key !== "settings") {
-            theme[key] = tsxUpdates[key];
-        }
-    }
+    theme.name = tsxUpdates.name;
+    theme.uuid = tsxUpdates.uuid;
 
     // Update scope names to .tsx
     const settings = theme.settings;
@@ -159,7 +156,7 @@ function changeTsToTsxTheme(theme: any) {
 }
 
 function buildTheme() {
-    const tsTheme = readYaml(file(Language.TypeScript, Extension.YamlTmTheme));
+    const tsTheme = readYaml(file(Language.TypeScript, Extension.YamlTmTheme)) as TmTheme;
 
     // Write TypeScript.tmTheme
     writePlistFile(tsTheme, file(Language.TypeScript, Extension.TmTheme));
