@@ -1,0 +1,66 @@
+original file
+-----------------------------------
+const example = () => (
+  {example: "`x=y`"} // everything after this line is highlighted like a string
+)
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const example = () => (
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts entity.name.function.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts meta.arrow.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.arrow.ts
+                    ^^
+                    source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.arrow.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.arrow.ts meta.brace.round.ts
+>  {example: "`x=y`"} // everything after this line is highlighted like a string
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+   ^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+    ^^^^^^^
+    source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts variable.object.property.ts
+           ^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.destructuring.ts
+            ^
+            source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+             ^
+             source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+              ^^^^^
+              source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.arrow.ts
+                      ^^
+                      source.ts meta.var.expr.ts meta.arrow.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        source.ts meta.var.expr.ts meta.arrow.ts comment.line.double-slash.ts
+>)
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.brace.round.ts
+>
+ ^
+ source.ts
