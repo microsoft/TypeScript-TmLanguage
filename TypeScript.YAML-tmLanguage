@@ -910,7 +910,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: keyword.control.import.ts }
-    end: (?=;|$|^)
+    end: (?<!{{lookBehindImport}})(?=;|$|^)
     patterns:
     - include: '#comment'
     - include: '#string'

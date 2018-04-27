@@ -1,0 +1,36 @@
+original file
+-----------------------------------
+import
+{
+    Foo
+}
+from "foo"
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>import
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+>{
+ ^
+ source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+>    Foo
+ ^^^^
+ source.ts meta.import.ts meta.block.ts
+     ^^^
+     source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+>}
+ ^
+ source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+>from "foo"
+ ^^^^
+ source.ts meta.import.ts keyword.control.from.ts
+     ^
+     source.ts meta.import.ts
+      ^
+      source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+       ^^^
+       source.ts meta.import.ts string.quoted.double.ts
+          ^
+          source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
