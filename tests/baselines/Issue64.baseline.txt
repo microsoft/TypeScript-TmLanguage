@@ -41,8 +41,6 @@ Grammar: TypeScript.tmLanguage
                                        source.ts variable.other.property.ts
                                                ^
                                                source.ts punctuation.separator.comma.ts
-                                                ^^
-                                                source.ts
 >  'res.sendfile: Use res.sendFile instead');
  ^^
  source.ts
@@ -56,18 +54,16 @@ Grammar: TypeScript.tmLanguage
                                            source.ts meta.brace.round.ts
                                             ^
                                             source.ts punctuation.terminator.statement.ts
-                                             ^^
-                                             source.ts
 >
- ^^
+ ^
  source.ts
 >// some comment
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >
- ^^
+ ^
  source.ts
 >res.download = function download(path, filename, fn) {
  ^^^
@@ -110,14 +106,12 @@ Grammar: TypeScript.tmLanguage
                                                      source.ts meta.function.ts
                                                       ^
                                                       source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                                       ^^
-                                                       source.ts meta.function.ts meta.block.ts
 >  // something
  ^^
  source.ts meta.function.ts meta.block.ts punctuation.whitespace.comment.leading.ts
    ^^
    source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-     ^^^^^^^^^^^^
+     ^^^^^^^^^^^
      source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^

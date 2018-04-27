@@ -36,7 +36,7 @@ Grammar: TypeScript.tmLanguage
 >// @onlyOwnGrammar - As this has type assertion
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >class Foo {
  ^^^^^
@@ -49,8 +49,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.class.ts
            ^
            source.ts meta.class.ts punctuation.definition.block.ts
-            ^^
-            source.ts meta.class.ts
 >    constructor(public x: string) {}
  ^^^^
  source.ts meta.class.ts
@@ -78,15 +76,11 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
                                     ^
                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                                     ^^
-                                     source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >const foo1 = <Foo> { x: '1' };
  ^^^^^
@@ -131,8 +125,6 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
                               ^
                               source.ts punctuation.terminator.statement.ts
-                               ^^
-                               source.ts
 >const foo2 = <Foo> {
  ^^^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -156,8 +148,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.var.expr.ts cast.expr.ts
                     ^
                     source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
-                     ^^
-                     source.ts meta.var.expr.ts meta.objectliteral.ts
 >    x: '2'
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -173,15 +163,11 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts
           ^
           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
-           ^^
-           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
 >};
  ^
  source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
   ^
   source.ts punctuation.terminator.statement.ts
-   ^^
-   source.ts
 >const foo3 =
  ^^^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -193,8 +179,6 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
             ^
             source.ts meta.var.expr.ts keyword.operator.assignment.ts
-             ^^
-             source.ts meta.var.expr.ts
 >    <Foo> {
  ^^^^
  source.ts meta.var.expr.ts cast.expr.ts
@@ -208,8 +192,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.var.expr.ts cast.expr.ts
            ^
            source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
-            ^^
-            source.ts meta.var.expr.ts meta.objectliteral.ts
 >        x: '3'
  ^^^^^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -225,8 +207,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts
               ^
               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
-               ^^
-               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
 >    };
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
@@ -234,10 +214,8 @@ Grammar: TypeScript.tmLanguage
      source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
       ^
       source.ts punctuation.terminator.statement.ts
-       ^^
-       source.ts
 >
- ^^
+ ^
  source.ts
 >let foos: Foo[] = <Foo[]> [
  ^^^
@@ -276,8 +254,6 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.var.expr.ts cast.expr.ts
                            ^
                            source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
-                            ^^
-                            source.ts meta.var.expr.ts meta.array.literal.ts
 >    new Foo('4'),
  ^^^^
  source.ts meta.var.expr.ts meta.array.literal.ts
@@ -299,8 +275,6 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.var.expr.ts meta.array.literal.ts new.expr.ts meta.brace.round.ts
                  ^
                  source.ts meta.var.expr.ts meta.array.literal.ts punctuation.separator.comma.ts
-                  ^^
-                  source.ts meta.var.expr.ts meta.array.literal.ts
 >    <Foo>{ x: '5' },
  ^^^^
  source.ts meta.var.expr.ts meta.array.literal.ts cast.expr.ts
@@ -332,8 +306,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts punctuation.definition.block.ts
                     ^
                     source.ts meta.var.expr.ts meta.array.literal.ts punctuation.separator.comma.ts
-                     ^^
-                     source.ts meta.var.expr.ts meta.array.literal.ts
 >    <Foo>{
  ^^^^
  source.ts meta.var.expr.ts meta.array.literal.ts cast.expr.ts
@@ -345,8 +317,6 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.var.expr.ts meta.array.literal.ts cast.expr.ts meta.brace.angle.ts
           ^
           source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts punctuation.definition.block.ts
-           ^^
-           source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts
 >        x: '6'
  ^^^^^^^^
  source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts
@@ -362,8 +332,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts
               ^
               source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
-               ^^
-               source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts meta.object.member.ts
 >    },
  ^^^^
  source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts meta.object.member.ts
@@ -371,17 +339,13 @@ Grammar: TypeScript.tmLanguage
      source.ts meta.var.expr.ts meta.array.literal.ts meta.objectliteral.ts punctuation.definition.block.ts
       ^
       source.ts meta.var.expr.ts meta.array.literal.ts punctuation.separator.comma.ts
-       ^^
-       source.ts meta.var.expr.ts meta.array.literal.ts
 >];
  ^
  source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
   ^
   source.ts punctuation.terminator.statement.ts
-   ^^
-   source.ts
 >
- ^^
+ ^
  source.ts
 >let obj = Object.assign(new Foo('7'), <Foo> { x: '8' },
  ^^^
@@ -454,8 +418,6 @@ Grammar: TypeScript.tmLanguage
                                                       source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
                                                        ^
                                                        source.ts meta.var.expr.ts punctuation.separator.comma.ts
-                                                        ^^
-                                                        source.ts meta.var.expr.ts
 >    <Foo>{ x: '9' }, <Foo> { x: '10' }, <Foo>{
  ^^^^
  source.ts meta.var.expr.ts cast.expr.ts
@@ -529,8 +491,6 @@ Grammar: TypeScript.tmLanguage
                                              source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
                                               ^
                                               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
-                                               ^^
-                                               source.ts meta.var.expr.ts meta.objectliteral.ts
 >        x: '11'
  ^^^^^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -546,8 +506,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts
                ^
                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
-                ^^
-                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
 >    },
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
@@ -555,8 +513,6 @@ Grammar: TypeScript.tmLanguage
      source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
       ^
       source.ts meta.var.expr.ts punctuation.separator.comma.ts
-       ^^
-       source.ts meta.var.expr.ts
 >    <Foo>{
  ^^^^
  source.ts meta.var.expr.ts cast.expr.ts
@@ -568,8 +524,6 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.var.expr.ts cast.expr.ts meta.brace.angle.ts
           ^
           source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
-           ^^
-           source.ts meta.var.expr.ts meta.objectliteral.ts
 >        x: '12'
  ^^^^^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -585,8 +539,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts
                ^
                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
-                ^^
-                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
 >    });
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts

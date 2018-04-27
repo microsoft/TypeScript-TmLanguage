@@ -30,8 +30,6 @@ Grammar: TypeScript.tmLanguage
                            source.ts meta.function.ts
                             ^
                             source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                             ^^
-                             source.ts meta.function.ts meta.block.ts
 >  num = Number(num)
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -51,8 +49,6 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                    ^
                    source.ts meta.function.ts meta.block.ts meta.brace.round.ts
-                    ^^
-                    source.ts meta.function.ts meta.block.ts
 >  if (num < 10000) {
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -78,8 +74,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.function.ts meta.block.ts
                     ^
                     source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                     ^^
-                     source.ts meta.function.ts meta.block.ts meta.block.ts
 >    return num
  ^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts
@@ -89,15 +83,11 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.function.ts meta.block.ts meta.block.ts
             ^^^
             source.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
-               ^^
-               source.ts meta.function.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.function.ts meta.block.ts meta.block.ts
    ^
    source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.function.ts meta.block.ts
 >  return (num/10000).toString().replace(/(\.[\d]{1})\d+$/,"$1") + 'w '
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -175,13 +165,9 @@ Grammar: TypeScript.tmLanguage
                                                                     source.ts meta.function.ts meta.block.ts string.quoted.single.ts
                                                                       ^
                                                                       source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
-                                                                       ^^
-                                                                       source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >let hbAnimIndex = 0;
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -199,8 +185,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.var.expr.ts constant.numeric.decimal.ts
                     ^
                     source.ts punctuation.terminator.statement.ts
-                     ^^
-                     source.ts
 >let hbAnimNode = null;
  ^^^
  source.ts meta.var.expr.ts storage.type.ts

@@ -25,8 +25,6 @@ Grammar: TypeScript.tmLanguage
                     source.ts meta.function.ts
                      ^
                      source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                      ^^
-                      source.ts meta.function.ts meta.block.ts
 >    const query = createQuery<[number[]], Table<Columns>>(`
  ^^^^
  source.ts meta.function.ts meta.block.ts
@@ -74,10 +72,8 @@ Grammar: TypeScript.tmLanguage
                                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                                            ^
                                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
-                                                            ^^
-                                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts
 >        some SQL here
- ^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts
 >    `)
  ^^^^
@@ -86,8 +82,6 @@ Grammar: TypeScript.tmLanguage
      source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
       ^
       source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
-       ^
-       source.ts meta.function.ts meta.block.ts meta.var.expr.ts
 >    return database.execute(query)
  ^^^^
  source.ts meta.function.ts meta.block.ts
@@ -107,8 +101,6 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
                                   ^
                                   source.ts meta.function.ts meta.block.ts meta.brace.round.ts
-                                   ^^
-                                   source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

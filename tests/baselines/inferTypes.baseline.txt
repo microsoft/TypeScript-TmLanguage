@@ -139,8 +139,6 @@ Grammar: TypeScript.tmLanguage
                                                                                                                          source.ts meta.type.declaration.ts support.type.primitive.ts
                                                                                                                             ^
                                                                                                                             source.ts punctuation.terminator.statement.ts
-                                                                                                                             ^^
-                                                                                                                             source.ts
 >type ArgumentType<T extends (x: any) => any> = T extends (a: infer A) => any ? A : any;
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts
@@ -236,8 +234,6 @@ Grammar: TypeScript.tmLanguage
                                                                                     source.ts meta.type.declaration.ts meta.type.function.return.ts support.type.primitive.ts
                                                                                        ^
                                                                                        source.ts punctuation.terminator.statement.ts
-                                                                                        ^^
-                                                                                        source.ts
 >type X1<T extends { x: any, y: any }> = T extends { x: infer X, y: infer Y } ? [X, Y] : any;
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts
@@ -363,8 +359,6 @@ Grammar: TypeScript.tmLanguage
                                                                                          source.ts meta.type.declaration.ts support.type.primitive.ts
                                                                                             ^
                                                                                             source.ts punctuation.terminator.statement.ts
-                                                                                             ^^
-                                                                                             source.ts
 >type B1<S> = S extends A1<infer T, infer U> ? [T, U] : never;
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts

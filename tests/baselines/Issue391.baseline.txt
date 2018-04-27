@@ -58,8 +58,6 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.var.expr.ts meta.brace.round.ts
                                           ^
                                           source.ts punctuation.terminator.statement.ts
-                                           ^^
-                                           source.ts
 >var ctrl = require('./controllers');
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -87,8 +85,6 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.var.expr.ts meta.brace.round.ts
                                     ^
                                     source.ts punctuation.terminator.statement.ts
-                                     ^^
-                                     source.ts
 >var utils = require('./../utils');
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -116,8 +112,6 @@ Grammar: TypeScript.tmLanguage
                                  source.ts meta.var.expr.ts meta.brace.round.ts
                                   ^
                                   source.ts punctuation.terminator.statement.ts
-                                   ^^
-                                   source.ts
 >var Promise = require('bluebird');
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -145,8 +139,6 @@ Grammar: TypeScript.tmLanguage
                                  source.ts meta.var.expr.ts meta.brace.round.ts
                                   ^
                                   source.ts punctuation.terminator.statement.ts
-                                   ^^
-                                   source.ts
 >var deligate = require('./core');
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -174,8 +166,6 @@ Grammar: TypeScript.tmLanguage
                                 source.ts meta.var.expr.ts meta.brace.round.ts
                                  ^
                                  source.ts punctuation.terminator.statement.ts
-                                  ^^
-                                  source.ts
 >var log = require('./../log');
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -203,10 +193,8 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.var.expr.ts meta.brace.round.ts
                               ^
                               source.ts punctuation.terminator.statement.ts
-                               ^^
-                               source.ts
 >
- ^^
+ ^
  source.ts
 >var constructor = deligate.then(function(bot)
  ^^^
@@ -237,13 +225,9 @@ Grammar: TypeScript.tmLanguage
                                           source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
                                              ^
                                              source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
-                                              ^^
-                                              source.ts meta.var.expr.ts meta.function.expression.ts
 >{
  ^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
 >    bot.sendMessage(110224344, 'here is the index');
  ^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
@@ -271,8 +255,6 @@ Grammar: TypeScript.tmLanguage
                                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                                                     ^
                                                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                     ^^
-                                                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
 >    bot.on('message', function(message)
  ^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
@@ -302,15 +284,11 @@ Grammar: TypeScript.tmLanguage
                                 source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
                                        ^
                                        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
-                                        ^^
-                                        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts
 >    {
  ^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts
      ^
      source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-      ^^
-      source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts
 >        if(utils.telegram.is_command(message.text))
  ^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts
@@ -340,15 +318,11 @@ Grammar: TypeScript.tmLanguage
                                                   source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                                                    ^
                                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
-                                                    ^^
-                                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts
 >        {
  ^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts
          ^
          source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-          ^^
-          source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >            ctrl.commands(message).catch(function(error_log)
  ^^^^^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -378,15 +352,11 @@ Grammar: TypeScript.tmLanguage
                                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
                                                             ^
                                                             source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
-                                                             ^^
-                                                             source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts
 >            {
  ^^^^^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts
              ^
              source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-              ^^
-              source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts
 >                bot.sendMessage(message.chat.id, interface.text.errors.redirect);
  ^^^^^^^^^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts
@@ -430,8 +400,6 @@ Grammar: TypeScript.tmLanguage
                                                                                 source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                                                                                  ^
                                                                                  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                  ^^
-                                                                                  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts
 >                log.uncaughtException(error_log);
  ^^^^^^^^^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts
@@ -449,8 +417,6 @@ Grammar: TypeScript.tmLanguage
                                                 source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                                                  ^
                                                  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                  ^^
-                                                  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts
 >            });
  ^^^^^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.function.expression.ts meta.block.ts
@@ -460,15 +426,11 @@ Grammar: TypeScript.tmLanguage
               source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
                ^
                source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                ^^
-                source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >        }
  ^^^^^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts
          ^
          source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-          ^^
-          source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts
 >    });
  ^^^^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function.expression.ts meta.block.ts
@@ -478,10 +440,8 @@ Grammar: TypeScript.tmLanguage
       source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
        ^
        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-        ^^
-        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
 >    return '  ? Telegram WebHook Set: Successfull!';
  ^^^^
@@ -498,8 +458,6 @@ Grammar: TypeScript.tmLanguage
                                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                     ^
                                                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                     ^^
-                                                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
 >});
  ^
  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
@@ -507,10 +465,8 @@ Grammar: TypeScript.tmLanguage
   source.ts meta.var.expr.ts meta.brace.round.ts
    ^
    source.ts punctuation.terminator.statement.ts
-    ^^
-    source.ts
 >
- ^^
+ ^
  source.ts
 >module.exports = constructor;
  ^^^^^^
@@ -529,8 +485,6 @@ Grammar: TypeScript.tmLanguage
                   source.ts variable.other.readwrite.ts
                              ^
                              source.ts punctuation.terminator.statement.ts
-                              ^^
-                              source.ts
 >
  ^
  source.ts

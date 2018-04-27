@@ -35,8 +35,6 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.namespace.declaration.ts
           ^
           source.ts meta.namespace.declaration.ts meta.block.ts punctuation.definition.block.ts
-           ^^
-           source.ts meta.namespace.declaration.ts meta.block.ts
 >    function* f(s: string): Iterable<any>
  ^^^^
  source.ts meta.namespace.declaration.ts meta.block.ts
@@ -72,8 +70,6 @@ Grammar: TypeScript.tmLanguage
                                       source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts support.type.primitive.ts
                                          ^
                                          source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
-                                          ^
-                                          source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.return.type.ts
 >    function* f(s: number): Iterable<any>
  ^^^^
  source.ts meta.namespace.declaration.ts meta.block.ts
@@ -109,8 +105,6 @@ Grammar: TypeScript.tmLanguage
                                       source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts support.type.primitive.ts
                                          ^
                                          source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.return.type.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
-                                          ^
-                                          source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.return.type.ts
 >    function* f(s: any): Iterable<any> { }
  ^^^^
  source.ts meta.namespace.declaration.ts meta.block.ts
@@ -154,15 +148,11 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.block.ts
                                           ^
                                           source.ts meta.namespace.declaration.ts meta.block.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                           ^^
-                                           source.ts meta.namespace.declaration.ts meta.block.ts
 >}
  ^
  source.ts meta.namespace.declaration.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >const a = 10, b = 10;
  ^^^^^
@@ -195,8 +185,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.var.expr.ts constant.numeric.decimal.ts
                      ^
                      source.ts punctuation.terminator.statement.ts
-                      ^^
-                      source.ts
 >class c {
  ^^^^^
  source.ts meta.class.ts storage.type.class.ts
@@ -208,8 +196,6 @@ Grammar: TypeScript.tmLanguage
         source.ts meta.class.ts
          ^
          source.ts meta.class.ts punctuation.definition.block.ts
-          ^^
-          source.ts meta.class.ts
 >    *method() {
  ^^^^
  source.ts meta.class.ts
@@ -225,15 +211,11 @@ Grammar: TypeScript.tmLanguage
               source.ts meta.class.ts meta.method.declaration.ts
                ^
                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                ^^
-                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >    }
  ^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
      ^
      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-      ^^
-      source.ts meta.class.ts
 >    *[a*b]() {
  ^^^^
  source.ts meta.class.ts
@@ -257,15 +239,11 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.class.ts meta.method.declaration.ts
               ^
               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-               ^^
-               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >    }
  ^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
      ^
      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-      ^^
-      source.ts meta.class.ts
 >    *'some*string'() {
  ^^^^
  source.ts meta.class.ts
@@ -285,15 +263,11 @@ Grammar: TypeScript.tmLanguage
                      source.ts meta.class.ts meta.method.declaration.ts
                       ^
                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                       ^^
-                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >    }
  ^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
      ^
      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-      ^^
-      source.ts meta.class.ts
 >    * overload(s: string): string
  ^^^^
  source.ts meta.class.ts
@@ -321,8 +295,6 @@ Grammar: TypeScript.tmLanguage
                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
                             ^^^^^^
                             source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
-                                  ^
-                                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
 >    * overload(n: number): number
  ^^^^
  source.ts meta.class.ts
@@ -350,8 +322,6 @@ Grammar: TypeScript.tmLanguage
                            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
                             ^^^^^^
                             source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
-                                  ^
-                                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
 >    * overload<T extends (string | number)>(sn: T): T {
  ^^^^
  source.ts meta.class.ts
@@ -409,8 +379,6 @@ Grammar: TypeScript.tmLanguage
                                                       source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
                                                        ^
                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                                                        ^^
-                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >        return sn;
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
@@ -422,15 +390,11 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts
                   ^
                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
-                   ^^
-                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >    }
  ^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
      ^
      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-      ^^
-      source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts

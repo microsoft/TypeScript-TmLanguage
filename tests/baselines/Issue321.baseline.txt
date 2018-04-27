@@ -75,8 +75,6 @@ Grammar: TypeScript.tmLanguage
                                                                                 source.ts meta.class.ts
                                                                                  ^
                                                                                  source.ts meta.class.ts punctuation.definition.block.ts
-                                                                                  ^^
-                                                                                  source.ts meta.class.ts
 >    public getChildren(debugService: debug.IDebugService): TPromise<debug.IExpression[]> {
  ^^^^
  source.ts meta.class.ts
@@ -126,8 +124,6 @@ Grammar: TypeScript.tmLanguage
                                                                                          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
                                                                                           ^
                                                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                                                                                           ^^
-                                                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >        if (!this.cacheChildren || !this.children) {
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
@@ -165,8 +161,6 @@ Grammar: TypeScript.tmLanguage
                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                                                     ^
                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                                     ^^
-                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
 >            const session = debugService.activeSession;
  ^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
@@ -190,14 +184,12 @@ Grammar: TypeScript.tmLanguage
                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts variable.other.property.ts
                                                        ^
                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                                        ^^
-                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
 >            // only variables with reference > 0 have children.
  ^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.whitespace.comment.leading.ts
              ^^
              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
 >            if (!session || this.reference <= 0) {
  ^^^^^^^^^^^^
@@ -238,8 +230,6 @@ Grammar: TypeScript.tmLanguage
                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
                                                   ^
                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                                   ^^
-                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
 >                this.children = TPromise.as([]);
  ^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
@@ -271,8 +261,6 @@ Grammar: TypeScript.tmLanguage
                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                                 ^
                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                                 ^^
-                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
 >            } else {
  ^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
@@ -286,17 +274,15 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
                     ^
                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                     ^^
-                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
 >                // Check if object has named variables, fetch them independent from indexed variables #9670
  ^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts punctuation.whitespace.comment.leading.ts
                  ^^
                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
 >                this.children = (!!this.namedVariables ? this.fetchVariables(session, undefined, undefined, 'named') : TPromise.as([])).then(childrenArray => {
  ^^^^^^^^^^^^^^^^
@@ -403,14 +389,12 @@ Grammar: TypeScript.tmLanguage
                                                                                                                                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts
                                                                                                                                                                ^
                                                                                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                                                                                                                                                                ^^
-                                                                                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                    // Use a dynamic chunk size based on the number of elements #9774
  ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
                      ^^
                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
 >                    let chunkSize = ExpressionContainer.BASE_CHUNK_SIZE;
  ^^^^^^^^^^^^^^^^^^^^
@@ -435,8 +419,6 @@ Grammar: TypeScript.tmLanguage
                                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.other.constant.property.ts
                                                                         ^
                                                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                         ^^
-                                                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                    while (this.indexedVariables > chunkSize * ExpressionContainer.BASE_CHUNK_SIZE) {
  ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
@@ -478,8 +460,6 @@ Grammar: TypeScript.tmLanguage
                                                                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
                                                                                                      ^
                                                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                                                                                      ^^
-                                                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
 >                        chunkSize *= ExpressionContainer.BASE_CHUNK_SIZE;
  ^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
@@ -499,17 +479,13 @@ Grammar: TypeScript.tmLanguage
                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts variable.other.constant.property.ts
                                                                          ^
                                                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                          ^^
-                                                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
 >                    }
  ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
                      ^
                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                      ^^
-                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                    if (this.indexedVariables > chunkSize) {
  ^^^^^^^^^^^^^^^^^^^^
@@ -540,14 +516,12 @@ Grammar: TypeScript.tmLanguage
                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
                                                             ^
                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                                             ^^
-                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
 >                        // There are a lot of children, create fake intermediate values that represent chunks #9537
  ^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.whitespace.comment.leading.ts
                          ^^
                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
 >                        const numberOfChunks = Math.ceil(this.indexedVariables / chunkSize);
  ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -590,8 +564,6 @@ Grammar: TypeScript.tmLanguage
                                                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                                                                             ^
                                                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                             ^^
-                                                                                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
 >                        for (let i = 0; i < numberOfChunks; i++) {
  ^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
@@ -643,8 +615,6 @@ Grammar: TypeScript.tmLanguage
                                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
                                                                   ^
                                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                                                   ^^
-                                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
 >                            const start = this.startOfVariables + i * chunkSize;
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
@@ -684,8 +654,6 @@ Grammar: TypeScript.tmLanguage
                                                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
                                                                                 ^
                                                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                 ^^
-                                                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
 >                            const count = Math.min(chunkSize, this.indexedVariables - i * chunkSize);
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
@@ -741,8 +709,6 @@ Grammar: TypeScript.tmLanguage
                                                                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                                                                                      ^
                                                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                                      ^^
-                                                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
 >                            childrenArray.push(new Variable(this, this.reference, `[${start}..${start + count - 1}]`, '', null, count, null, true, start));
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
@@ -860,17 +826,13 @@ Grammar: TypeScript.tmLanguage
                                                                                                                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                                                                                                                                            ^
                                                                                                                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                                                                                            ^^
-                                                                                                                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
 >                        }
  ^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts
                          ^
                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                          ^^
-                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
 >                        return childrenArray;
  ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -883,17 +845,13 @@ Grammar: TypeScript.tmLanguage
                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
                                              ^
                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                                              ^^
-                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
 >                    }
  ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts
                      ^
                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                      ^^
-                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                    const start = this.getChildrenInChunks ? this.startOfVariables : undefined;
  ^^^^^^^^^^^^^^^^^^^^
@@ -938,8 +896,6 @@ Grammar: TypeScript.tmLanguage
                                                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.var.expr.ts constant.language.undefined.ts
                                                                                                ^
                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                                ^^
-                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                    const count = this.getChildrenInChunks ? this.indexedVariables : undefined;
  ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
@@ -983,8 +939,6 @@ Grammar: TypeScript.tmLanguage
                                                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.var.expr.ts constant.language.undefined.ts
                                                                                                ^
                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                                ^^
-                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                    return this.fetchVariables(session, start, count, 'indexed')
  ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
@@ -1026,8 +980,6 @@ Grammar: TypeScript.tmLanguage
                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                                                 ^
                                                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
-                                                                                 ^^
-                                                                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                        .then(variables => arrays.distinct(childrenArray.concat(variables), child => child.name));
  ^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
@@ -1089,8 +1041,6 @@ Grammar: TypeScript.tmLanguage
                                                                                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
                                                                                                                   ^
                                                                                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                                                                   ^^
-                                                                                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
 >                });
  ^^^^^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.arrow.ts meta.block.ts
@@ -1100,24 +1050,18 @@ Grammar: TypeScript.tmLanguage
                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts meta.brace.round.ts
                    ^
                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                    ^^
-                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
 >            }
  ^^^^^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts
              ^
              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-              ^^
-              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
 >        }
  ^^^^^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
          ^
          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-          ^^
-          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >        return this.children;
  ^^^^^^^^
@@ -1134,15 +1078,11 @@ Grammar: TypeScript.tmLanguage
                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.property.ts
                              ^
                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
-                              ^^
-                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >    }
  ^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
      ^
      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-      ^^
-      source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts

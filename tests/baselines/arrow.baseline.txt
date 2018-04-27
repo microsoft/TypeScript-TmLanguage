@@ -40,13 +40,9 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.var.expr.ts meta.arrow.ts
                     ^
                     source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                     ^^
-                     source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >}
  ^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-  ^
-  source.ts meta.var.expr.ts
 >class C {
  ^^^^^
  source.ts meta.class.ts storage.type.class.ts
@@ -58,13 +54,9 @@ Grammar: TypeScript.tmLanguage
         source.ts meta.class.ts
          ^
          source.ts meta.class.ts punctuation.definition.block.ts
-          ^^
-          source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >function foo() {
  ^^^^^^^^
  source.ts meta.function.ts storage.type.function.ts
@@ -80,8 +72,6 @@ Grammar: TypeScript.tmLanguage
                source.ts meta.function.ts
                 ^
                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                 ^^
-                 source.ts meta.function.ts meta.block.ts
 >    return <T extends C>(a: T) => {
  ^^^^
  source.ts meta.function.ts meta.block.ts
@@ -123,8 +113,6 @@ Grammar: TypeScript.tmLanguage
                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts
                                    ^
                                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                                    ^^
-                                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
 >        return a;
  ^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
@@ -136,8 +124,6 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
                  ^
                  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                  ^^
-                  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
 >    };
  ^^^^
  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
@@ -145,8 +131,6 @@ Grammar: TypeScript.tmLanguage
      source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
       ^
       source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
-       ^^
-       source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

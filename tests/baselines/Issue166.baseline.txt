@@ -72,8 +72,6 @@ Grammar: TypeScript.tmLanguage
                                            source.ts meta.type.declaration.ts support.type.primitive.ts
                                                  ^
                                                  source.ts punctuation.terminator.statement.ts
-                                                  ^^
-                                                  source.ts
 >type x1 = string |
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts
@@ -93,8 +91,6 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.type.declaration.ts
                   ^
                   source.ts meta.type.declaration.ts keyword.operator.type.ts
-                   ^^
-                   source.ts meta.type.declaration.ts
 >    "aaa" |
  ^^^^
  source.ts meta.type.declaration.ts
@@ -108,8 +104,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.type.declaration.ts
            ^
            source.ts meta.type.declaration.ts keyword.operator.type.ts
-            ^^
-            source.ts meta.type.declaration.ts
 >    "bbb" | "ccc" | number;
  ^^^^
  source.ts meta.type.declaration.ts
@@ -141,8 +135,6 @@ Grammar: TypeScript.tmLanguage
                      source.ts meta.type.declaration.ts support.type.primitive.ts
                            ^
                            source.ts punctuation.terminator.statement.ts
-                            ^^
-                            source.ts
 >type x2 = string | /*comment*/ "aaa" | "bbb" | "ccc" | number; /*comment*/
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts
@@ -220,8 +212,6 @@ Grammar: TypeScript.tmLanguage
                                                                   source.ts comment.block.ts
                                                                          ^^
                                                                          source.ts comment.block.ts punctuation.definition.comment.ts
-                                                                           ^^
-                                                                           source.ts
 >type x3 = string | "aaa" | //comment
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts
@@ -257,7 +247,7 @@ Grammar: TypeScript.tmLanguage
                            source.ts meta.type.declaration.ts
                             ^^
                             source.ts meta.type.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                              ^^^^^^^^^
+                              ^^^^^^^^
                               source.ts meta.type.declaration.ts comment.line.double-slash.ts
 >    "bbb" | "ccc" | number; //comment
  ^^^^

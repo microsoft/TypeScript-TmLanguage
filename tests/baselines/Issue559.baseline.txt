@@ -58,10 +58,8 @@ Grammar: TypeScript.tmLanguage
                                                   source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
                                                    ^
                                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                                                    ^
-                                                    source.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts
 >class MyClass {
  ^^^^^
@@ -74,8 +72,6 @@ Grammar: TypeScript.tmLanguage
               source.ts meta.class.ts
                ^
                source.ts meta.class.ts punctuation.definition.block.ts
-                ^^
-                source.ts meta.class.ts
 >  myProp = myFunc<number, () => void>("syntax highlight is incorrect", 1);
  ^^
  source.ts meta.class.ts
@@ -129,15 +125,11 @@ Grammar: TypeScript.tmLanguage
                                                                          source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
                                                                           ^
                                                                           source.ts meta.class.ts punctuation.terminator.statement.ts
-                                                                           ^^
-                                                                           source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >let myProp = myFunc<number, () => void>("syntax highlight is correct here", 1);
  ^^^

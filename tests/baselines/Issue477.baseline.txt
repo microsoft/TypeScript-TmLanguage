@@ -42,8 +42,6 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
                   ^
                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                   ^^
-                   source.ts
 >function * fn2() {}
  ^^^^^^^^
  source.ts meta.function.ts storage.type.function.ts
@@ -65,8 +63,6 @@ Grammar: TypeScript.tmLanguage
                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
                    ^
                    source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                    ^^
-                    source.ts
 >function *fn3() {}
  ^^^^^^^^
  source.ts meta.function.ts storage.type.function.ts
@@ -86,10 +82,8 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
                   ^
                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                   ^^
-                   source.ts
 >
- ^^
+ ^
  source.ts
 >const foo = {
  ^^^^^
@@ -106,8 +100,6 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.var.expr.ts
              ^
              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
-              ^^
-              source.ts meta.var.expr.ts meta.objectliteral.ts
 >    * fn4() {},
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -129,8 +121,6 @@ Grammar: TypeScript.tmLanguage
               source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
                ^
                source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
-                ^^
-                source.ts meta.var.expr.ts meta.objectliteral.ts
 >    *fn5() {},
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -150,8 +140,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
               ^
               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
-               ^^
-               source.ts meta.var.expr.ts meta.objectliteral.ts
 >    fn6: function*() {}, // Incorrect
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -181,7 +169,7 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.var.expr.ts meta.objectliteral.ts
                           ^^
                           source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                            ^^^^^^^^^^^^
+                            ^^^^^^^^^^^
                             source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts
 >    fn7: function* () {}, // Incorrect
  ^^^^
@@ -214,7 +202,7 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.var.expr.ts meta.objectliteral.ts
                            ^^
                            source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                             ^^^^^^^^^^^^
+                             ^^^^^^^^^^^
                              source.ts meta.var.expr.ts meta.objectliteral.ts comment.line.double-slash.ts
 >    fn8: function *() {},
  ^^^^
@@ -243,15 +231,11 @@ Grammar: TypeScript.tmLanguage
                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
                          ^
                          source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
-                          ^^
-                          source.ts meta.var.expr.ts meta.objectliteral.ts
 >}
  ^
  source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
-  ^
-  source.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts
 >class Bar {
  ^^^^^
@@ -264,8 +248,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.class.ts
            ^
            source.ts meta.class.ts punctuation.definition.block.ts
-            ^^
-            source.ts meta.class.ts
 >    * fn9() {}
  ^^^^
  source.ts meta.class.ts
@@ -285,8 +267,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
               ^
               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-               ^^
-               source.ts meta.class.ts
 >    *fn10() {}
  ^^^^
  source.ts meta.class.ts
@@ -304,8 +284,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
               ^
               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-               ^^
-               source.ts meta.class.ts
 >    fn11 = function*() {} // Incorrect
  ^^^^
  source.ts meta.class.ts
@@ -335,7 +313,7 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.class.ts meta.field.declaration.ts
                            ^^
                            source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                             ^^^^^^^^^^^^
+                             ^^^^^^^^^^^
                              source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts
 >    fn12 = function* () {} // Incorrect
  ^^^^
@@ -368,7 +346,7 @@ Grammar: TypeScript.tmLanguage
                            source.ts meta.class.ts meta.field.declaration.ts
                             ^^
                             source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                              ^^^^^^^^^^^^
+                              ^^^^^^^^^^^
                               source.ts meta.class.ts meta.field.declaration.ts comment.line.double-slash.ts
 >    fn13 = function *() {}
  ^^^^
@@ -397,8 +375,6 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
                           ^
                           source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                           ^
-                           source.ts meta.class.ts meta.field.declaration.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts

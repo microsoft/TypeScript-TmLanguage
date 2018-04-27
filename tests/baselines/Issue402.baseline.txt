@@ -82,8 +82,6 @@ Grammar: TypeScript.tmLanguage
                                                                                                            source.ts meta.function.expression.ts
                                                                                                             ^
                                                                                                             source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                                                                                                             ^^
-                                                                                                             source.ts meta.function.expression.ts meta.block.ts
 >  const guestContents = webContents.fromId(guestId)
  ^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -111,8 +109,6 @@ Grammar: TypeScript.tmLanguage
                                             source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
                                                    ^
                                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
-                                                    ^
-                                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
 >  if (guestContents == null) return
  ^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -138,10 +134,8 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.function.expression.ts meta.block.ts
                               ^^^^^^
                               source.ts meta.function.expression.ts meta.block.ts keyword.control.flow.ts
-                                    ^^
-                                    source.ts meta.function.expression.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.function.expression.ts meta.block.ts
 >  if (canAccessWindow(event.sender, guestContents)) {
  ^^
@@ -176,8 +170,6 @@ Grammar: TypeScript.tmLanguage
                                                     source.ts meta.function.expression.ts meta.block.ts
                                                      ^
                                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                                      ^^
-                                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >    guestContents[method](...args)
  ^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -197,8 +189,6 @@ Grammar: TypeScript.tmLanguage
                               source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
                                   ^
                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                                   ^^
-                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >  } else {
  ^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -212,8 +202,6 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.function.expression.ts meta.block.ts
           ^
           source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-           ^^
-           source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >    console.error(`Blocked ${event.sender.getURL()} from calling ${method} on its opener.`)
  ^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -261,24 +249,18 @@ Grammar: TypeScript.tmLanguage
                                                                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
                                                                                            ^
                                                                                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                                                                                            ^^
-                                                                                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
    ^
    source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.function.expression.ts meta.block.ts
 >})
  ^
  source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
   ^
   source.ts meta.brace.round.ts
-   ^^
-   source.ts
 >
- ^^
+ ^
  source.ts
 >ipcMain.on('ELECTRON_GUEST_WINDOW_MANAGER_WEB_CONTENTS_METHOD_SYNC', function (event, guestId, method, ...args) {
  ^^^^^^^
@@ -333,8 +315,6 @@ Grammar: TypeScript.tmLanguage
                                                                                                                 source.ts meta.function.expression.ts
                                                                                                                  ^
                                                                                                                  source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                                                                                                                  ^^
-                                                                                                                  source.ts meta.function.expression.ts meta.block.ts
 >  const guestContents = webContents.fromId(guestId)
  ^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -362,8 +342,6 @@ Grammar: TypeScript.tmLanguage
                                             source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
                                                    ^
                                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
-                                                    ^
-                                                    source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
 >  if (guestContents == null) {
  ^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -389,8 +367,6 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.function.expression.ts meta.block.ts
                               ^
                               source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                               ^^
-                               source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >    event.returnValue = null
  ^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -408,24 +384,18 @@ Grammar: TypeScript.tmLanguage
                         source.ts meta.function.expression.ts meta.block.ts meta.block.ts
                          ^^^^
                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts constant.language.null.ts
-                             ^^
-                             source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >    return
  ^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
      ^^^^^^
      source.ts meta.function.expression.ts meta.block.ts meta.block.ts keyword.control.flow.ts
-           ^^
-           source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
    ^
    source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.function.expression.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.function.expression.ts meta.block.ts
 >  if (canAccessWindow(event.sender, guestContents)) {
  ^^
@@ -460,8 +430,6 @@ Grammar: TypeScript.tmLanguage
                                                     source.ts meta.function.expression.ts meta.block.ts
                                                      ^
                                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                                      ^^
-                                                      source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >    event.returnValue = guestContents[method](...args)
  ^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -493,8 +461,6 @@ Grammar: TypeScript.tmLanguage
                                                   source.ts meta.function.expression.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
                                                       ^
                                                       source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                                                       ^^
-                                                       source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >  } else {
  ^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -508,8 +474,6 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.function.expression.ts meta.block.ts
           ^
           source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-           ^^
-           source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >    console.error(`Blocked ${event.sender.getURL()} from calling ${method} on its opener.`)
  ^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -557,8 +521,6 @@ Grammar: TypeScript.tmLanguage
                                                                                           source.ts meta.function.expression.ts meta.block.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
                                                                                            ^
                                                                                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                                                                                            ^^
-                                                                                            source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >    event.returnValue = null
  ^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
@@ -576,15 +538,11 @@ Grammar: TypeScript.tmLanguage
                         source.ts meta.function.expression.ts meta.block.ts meta.block.ts
                          ^^^^
                          source.ts meta.function.expression.ts meta.block.ts meta.block.ts constant.language.null.ts
-                             ^^
-                             source.ts meta.function.expression.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.function.expression.ts meta.block.ts meta.block.ts
    ^
    source.ts meta.function.expression.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.function.expression.ts meta.block.ts
 >})
  ^
  source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts

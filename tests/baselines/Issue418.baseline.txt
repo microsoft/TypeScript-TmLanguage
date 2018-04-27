@@ -48,8 +48,6 @@ Grammar: TypeScript.tmLanguage
                        source.ts meta.function.ts
                         ^
                         source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                         ^^
-                         source.ts meta.function.ts meta.block.ts
 >  let res = []
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -69,8 +67,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
               ^
               source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
-               ^
-               source.ts meta.function.ts meta.block.ts meta.var.expr.ts
 >  let ia = 0
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -88,8 +84,6 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.function.ts meta.block.ts meta.var.expr.ts
             ^
             source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
-             ^
-             source.ts meta.function.ts meta.block.ts meta.var.expr.ts
 >  let ib = 0
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -107,8 +101,6 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.function.ts meta.block.ts meta.var.expr.ts
             ^
             source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
-             ^
-             source.ts meta.function.ts meta.block.ts meta.var.expr.ts
 >  while (ia < as.length && ib < bs.length) { // coloring broken
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -162,7 +154,7 @@ Grammar: TypeScript.tmLanguage
                                              source.ts meta.function.ts meta.block.ts meta.block.ts
                                               ^^
                                               source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                                ^^^^^^^^^^^^^^^^^^
+                                                ^^^^^^^^^^^^^^^^^
                                                 source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
 >    if (as[ia] < bs[ib]) {
  ^^^^
@@ -201,8 +193,6 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.function.ts meta.block.ts meta.block.ts
                           ^
                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                           ^^
-                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
 >      res.push(as[ia++]) // coloring broken
  ^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
@@ -230,7 +220,7 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
                           ^^
                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                            ^^^^^^^^^^^^^^^^^^
+                            ^^^^^^^^^^^^^^^^^
                             source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
 >    } else {
  ^^^^
@@ -245,8 +235,6 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.function.ts meta.block.ts meta.block.ts
             ^
             source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-             ^^
-             source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
 >      res.push(bs[ib++]) // coloring broken
  ^^^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
@@ -274,22 +262,18 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
                           ^^
                           source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                            ^^^^^^^^^^^^^^^^^^
+                            ^^^^^^^^^^^^^^^^^
                             source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
 >    }
  ^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts
      ^
      source.ts meta.function.ts meta.block.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-      ^^
-      source.ts meta.function.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.function.ts meta.block.ts meta.block.ts
    ^
    source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.function.ts meta.block.ts
 >  return res.concat(as.slice(ia)).concat(bs.slice(ib)) // coloring broken
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -343,15 +327,13 @@ Grammar: TypeScript.tmLanguage
                                                        source.ts meta.function.ts meta.block.ts
                                                         ^^
                                                         source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                                          ^^^^^^^^^^^^^^^^^^
+                                                          ^^^^^^^^^^^^^^^^^
                                                           source.ts meta.function.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >function mergesort(array) {
  ^^^^^^^^
@@ -370,8 +352,6 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.function.ts
                            ^
                            source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                            ^^
-                            source.ts meta.function.ts meta.block.ts
 >  if (array.length < 2) {
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -401,8 +381,6 @@ Grammar: TypeScript.tmLanguage
                         source.ts meta.function.ts meta.block.ts
                          ^
                          source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                          ^^
-                          source.ts meta.function.ts meta.block.ts meta.block.ts
 >    return array
  ^^^^
  source.ts meta.function.ts meta.block.ts meta.block.ts
@@ -412,15 +390,11 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.function.ts meta.block.ts meta.block.ts
             ^^^^^
             source.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
-                 ^^
-                 source.ts meta.function.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.function.ts meta.block.ts meta.block.ts
    ^
    source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.function.ts meta.block.ts
 >  const mid = Math.floor(array.length / 2)
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -460,8 +434,6 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.function.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
                                           ^
                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
-                                           ^
-                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts
 >  return merge(mergesort(array.slice(0, mid)), mergesort(array.slice(mid)))
  ^^
  source.ts meta.function.ts meta.block.ts
@@ -521,8 +493,6 @@ Grammar: TypeScript.tmLanguage
                                                                           source.ts meta.function.ts meta.block.ts meta.brace.round.ts
                                                                            ^
                                                                            source.ts meta.function.ts meta.block.ts meta.brace.round.ts
-                                                                            ^^
-                                                                            source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

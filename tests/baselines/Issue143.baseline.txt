@@ -58,10 +58,8 @@ Grammar: TypeScript.tmLanguage
                                                                 source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                                                  ^
                                                                  source.ts punctuation.terminator.statement.ts
-                                                                  ^^
-                                                                  source.ts
 >
- ^^
+ ^
  source.ts
 >@Directive({selector: 'button[counting]'})
  ^
@@ -88,8 +86,6 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.decorator.ts meta.objectliteral.ts punctuation.definition.block.ts
                                           ^
                                           source.ts meta.decorator.ts meta.brace.round.ts
-                                           ^^
-                                           source.ts
 >class CountClicks {
  ^^^^^
  source.ts meta.class.ts storage.type.class.ts
@@ -101,8 +97,6 @@ Grammar: TypeScript.tmLanguage
                   source.ts meta.class.ts
                    ^
                    source.ts meta.class.ts punctuation.definition.block.ts
-                    ^^
-                    source.ts meta.class.ts
 >  numberOfClicks = 0;
  ^^
  source.ts meta.class.ts
@@ -118,8 +112,6 @@ Grammar: TypeScript.tmLanguage
                     source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
                      ^
                      source.ts meta.class.ts punctuation.terminator.statement.ts
-                      ^^
-                      source.ts meta.class.ts
 >  @HostListener('click', ['$event.target']) onClick(btn) {
  ^^
  source.ts meta.class.ts
@@ -165,8 +157,6 @@ Grammar: TypeScript.tmLanguage
                                                          source.ts meta.class.ts meta.method.declaration.ts
                                                           ^
                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                                                           ^^
-                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >    console.log("button", btn, "number of clicks:", this.numberOfClicks++);
  ^^^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
@@ -216,20 +206,14 @@ Grammar: TypeScript.tmLanguage
                                                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
                                                                            ^
                                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                            ^^
-                                                                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
 >  }
  ^^
  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
    ^
    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >@Component({
  ^
  source.ts meta.decorator.ts punctuation.decorator.ts
@@ -239,8 +223,6 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.decorator.ts meta.brace.round.ts
             ^
             source.ts meta.decorator.ts meta.objectliteral.ts punctuation.definition.block.ts
-             ^^
-             source.ts meta.decorator.ts meta.objectliteral.ts
 >  selector: 'my-app',
  ^^
  source.ts meta.decorator.ts meta.objectliteral.ts
@@ -258,8 +240,6 @@ Grammar: TypeScript.tmLanguage
                     source.ts meta.decorator.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
                      ^
                      source.ts meta.decorator.ts meta.objectliteral.ts punctuation.separator.comma.ts
-                      ^^
-                      source.ts meta.decorator.ts meta.objectliteral.ts
 >  template: `<button counting>Increment</button>`,
  ^^
  source.ts meta.decorator.ts meta.objectliteral.ts
@@ -277,8 +257,6 @@ Grammar: TypeScript.tmLanguage
                                                  source.ts meta.decorator.ts meta.objectliteral.ts meta.object.member.ts string.template.ts punctuation.definition.string.template.end.ts
                                                   ^
                                                   source.ts meta.decorator.ts meta.objectliteral.ts punctuation.separator.comma.ts
-                                                   ^^
-                                                   source.ts meta.decorator.ts meta.objectliteral.ts
 >  directives: [CountClicks]
  ^^
  source.ts meta.decorator.ts meta.objectliteral.ts
@@ -294,15 +272,11 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.decorator.ts meta.objectliteral.ts meta.object.member.ts meta.array.literal.ts variable.other.readwrite.ts
                            ^
                            source.ts meta.decorator.ts meta.objectliteral.ts meta.object.member.ts meta.array.literal.ts meta.brace.square.ts
-                            ^^
-                            source.ts meta.decorator.ts meta.objectliteral.ts meta.object.member.ts
 >})
  ^
  source.ts meta.decorator.ts meta.objectliteral.ts punctuation.definition.block.ts
   ^
   source.ts meta.decorator.ts meta.brace.round.ts
-   ^^
-   source.ts
 >export class AppComponent {
  ^^^^^^
  source.ts meta.class.ts keyword.control.export.ts
@@ -318,8 +292,6 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.class.ts
                            ^
                            source.ts meta.class.ts punctuation.definition.block.ts
-                            ^^
-                            source.ts meta.class.ts
 >  constructor() { console.clear(); }
  ^^
  source.ts meta.class.ts
@@ -351,8 +323,6 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                                     ^
                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                                     ^^
-                                     source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts

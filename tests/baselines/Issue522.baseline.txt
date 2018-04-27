@@ -43,8 +43,6 @@ Grammar: TypeScript.tmLanguage
                                        source.ts meta.var.expr.ts meta.arrow.ts
                                         ^
                                         source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                                         ^^
-                                         source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >  const array = a?.b?.c?.d?.g;
  ^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
@@ -80,28 +78,22 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.other.property.ts
                               ^
                               source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                               ^^
-                               source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >  /**
  ^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
    ^^^
    source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts comment.block.documentation.ts punctuation.definition.comment.ts
-      ^^
-      source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts comment.block.documentation.ts
 >   * No TypeEror, but syntax highlighting is broken
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts comment.block.documentation.ts
 >   */
  ^^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts comment.block.documentation.ts
     ^^
     source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts comment.block.documentation.ts punctuation.definition.comment.ts
-      ^^
-      source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >  const test = a?.b?.f?.f;
  ^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
@@ -133,10 +125,8 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.other.property.ts
                           ^
                           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                           ^^
-                           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >  for (let i = 0; i < array.length; i++) {
  ^^
@@ -193,8 +183,6 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
                                           ^
                                           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-                                           ^^
-                                           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts
 >    console.log(array[i]);
  ^^^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts
@@ -218,24 +206,18 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts meta.brace.round.ts
                           ^
                           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
-                           ^^
-                           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts
 >  }
  ^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts
    ^
    source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-    ^^
-    source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >};
  ^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
   ^
   source.ts punctuation.terminator.statement.ts
-   ^^
-   source.ts
 >
- ^^
+ ^
  source.ts
 >brokenSyntaxHighlighting();
  ^^^^^^^^^^^^^^^^^^^^^^^^

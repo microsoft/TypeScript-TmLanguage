@@ -20,8 +20,6 @@ Grammar: TypeScript.tmLanguage
    source.ts comment.block.ts
                        ^^
                        source.ts comment.block.ts punctuation.definition.comment.ts
-                         ^^
-                         source.ts
 >let it = require('./it');
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -49,8 +47,6 @@ Grammar: TypeScript.tmLanguage
                         source.ts meta.var.expr.ts meta.brace.round.ts
                          ^
                          source.ts punctuation.terminator.statement.ts
-                          ^^
-                          source.ts
 >it.execute(function* builder(options) {
  ^^
  source.ts meta.function-call.ts variable.other.object.ts
@@ -78,8 +74,6 @@ Grammar: TypeScript.tmLanguage
                                       source.ts meta.function.expression.ts
                                        ^
                                        source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                                        ^^
-                                        source.ts meta.function.expression.ts meta.block.ts
 >   let metaData = yield it.read(option.metaFile);
  ^^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -117,8 +111,6 @@ Grammar: TypeScript.tmLanguage
                                                 source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                                  ^
                                                  source.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                  ^^
-                                                  source.ts meta.function.expression.ts meta.block.ts
 >   it.meta = yield it.parse(metaData, {
  ^^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -154,8 +146,6 @@ Grammar: TypeScript.tmLanguage
                                       source.ts meta.function.expression.ts meta.block.ts
                                        ^
                                        source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
-                                        ^^
-                                        source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts
 >      ICON: yield it.read(options.icon),
  ^^^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts
@@ -187,8 +177,6 @@ Grammar: TypeScript.tmLanguage
                                        source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
                                         ^
                                         source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts punctuation.separator.comma.ts
-                                         ^^
-                                         source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts
 >      ICON64: (yield it.read(options.icon64)).base64()
  ^^^^^^
  source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts
@@ -230,8 +218,6 @@ Grammar: TypeScript.tmLanguage
                                                      source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
                                                       ^
                                                       source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
-                                                       ^^
-                                                       source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
 >   });
  ^^^
  source.ts meta.function.expression.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
@@ -241,8 +227,6 @@ Grammar: TypeScript.tmLanguage
      source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
       ^
       source.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-       ^^
-       source.ts meta.function.expression.ts meta.block.ts
 >});
  ^
  source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts

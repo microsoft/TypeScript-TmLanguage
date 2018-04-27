@@ -27,8 +27,6 @@ Grammar: TypeScript.tmLanguage
                     source.ts meta.function.ts
                      ^
                      source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                      ^^
-                      source.ts meta.function.ts meta.block.ts
 >    const query = query<[number], number>(`
  ^^^^
  source.ts meta.function.ts meta.block.ts
@@ -66,13 +64,11 @@ Grammar: TypeScript.tmLanguage
                                           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                            ^
                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
-                                            ^^
-                                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts
 >        SELECT *
- ^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts
 >        FROM statistics
- ^^^^^^^^^^^^^^^^^^^^^^^^^
+ ^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts
 >        WHERE unit_id = $1`)
  ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,10 +77,8 @@ Grammar: TypeScript.tmLanguage
                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
                             ^
                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
-                             ^
-                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts meta.function.ts meta.block.ts
 >    return database.execute(query, [id])
  ^^^^
@@ -115,8 +109,6 @@ Grammar: TypeScript.tmLanguage
                                        source.ts meta.function.ts meta.block.ts meta.array.literal.ts meta.brace.square.ts
                                         ^
                                         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
-                                         ^^
-                                         source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

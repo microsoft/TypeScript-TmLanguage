@@ -29,8 +29,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.class.ts
            ^
            source.ts meta.class.ts punctuation.definition.block.ts
-            ^^
-            source.ts meta.class.ts
 >    bar(a: Foo, b: string) { }
  ^^^^
  source.ts meta.class.ts
@@ -68,15 +66,11 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
                               ^
                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                               ^^
-                               source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >function foo(a: Foo, b: string) { }
  ^^^^^^^^
@@ -117,10 +111,8 @@ Grammar: TypeScript.tmLanguage
                                   source.ts meta.function.ts meta.block.ts
                                    ^
                                    source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                    ^^
-                                    source.ts
 >
- ^^
+ ^
  source.ts
 >const bar = function (a: Foo, b: string) { }
  ^^^^^
@@ -171,10 +163,8 @@ Grammar: TypeScript.tmLanguage
                                            source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts
                                             ^
                                             source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                                             ^
-                                             source.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts
 >const baz = (a: Foo, b: string) => { };
  ^^^^^
@@ -227,10 +217,8 @@ Grammar: TypeScript.tmLanguage
                                       source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
                                        ^
                                        source.ts punctuation.terminator.statement.ts
-                                        ^^
-                                        source.ts
 >
- ^^
+ ^
  source.ts
 >const qux = {
  ^^^^^
@@ -247,8 +235,6 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.var.expr.ts
              ^
              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
-              ^^
-              source.ts meta.var.expr.ts meta.objectliteral.ts
 >    bar(a: Foo, b: string) { },
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -288,8 +274,6 @@ Grammar: TypeScript.tmLanguage
                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
                                ^
                                source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
-                                ^^
-                                source.ts meta.var.expr.ts meta.objectliteral.ts
 >    set bar2(x: string) { }
  ^^^^
  source.ts meta.var.expr.ts meta.objectliteral.ts
@@ -319,8 +303,6 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
                            ^
                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
-                            ^^
-                            source.ts meta.var.expr.ts meta.objectliteral.ts
 >}
  ^
  source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts

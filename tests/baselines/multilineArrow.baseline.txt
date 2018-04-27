@@ -20,7 +20,7 @@ Grammar: TypeScript.tmLanguage
 >// @onlyOwnGrammar - As this has type parameters that would be jsx in tsx files
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >const method1 = <T>(
  ^^^^^
@@ -43,8 +43,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
                     ^
                     source.ts meta.var.expr.ts meta.brace.round.ts
-                     ^^
-                     source.ts meta.var.expr.ts
 >    param1: T,
  ^^^^
  source.ts meta.var.expr.ts
@@ -58,8 +56,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.var.expr.ts meta.type.annotation.ts entity.name.type.ts
               ^
               source.ts meta.var.expr.ts punctuation.separator.parameter.ts
-               ^^
-               source.ts meta.var.expr.ts
 >    param2: T
  ^^^^
  source.ts meta.var.expr.ts
@@ -71,8 +67,6 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.var.expr.ts meta.type.annotation.ts
              ^
              source.ts meta.var.expr.ts meta.type.annotation.ts entity.name.type.ts
-              ^
-              source.ts meta.var.expr.ts meta.type.annotation.ts
 >): Promise<T> => {
  ^
  source.ts meta.var.expr.ts meta.brace.round.ts
@@ -96,8 +90,6 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.var.expr.ts meta.arrow.ts
                   ^
                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                   ^^
-                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >    return param1;
  ^^^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
@@ -109,15 +101,11 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
                   ^
                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                   ^^
-                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >};
  ^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
   ^
   source.ts punctuation.terminator.statement.ts
-   ^^
-   source.ts
 >const method2 = async <T>(
  ^^^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -143,8 +131,6 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
                           ^
                           source.ts meta.var.expr.ts meta.brace.round.ts
-                           ^^
-                           source.ts meta.var.expr.ts
 >    param1: T,
  ^^^^
  source.ts meta.var.expr.ts
@@ -158,8 +144,6 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.var.expr.ts meta.type.annotation.ts entity.name.type.ts
               ^
               source.ts meta.var.expr.ts punctuation.separator.parameter.ts
-               ^^
-               source.ts meta.var.expr.ts
 >    param2: T
  ^^^^
  source.ts meta.var.expr.ts
@@ -171,8 +155,6 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.var.expr.ts meta.type.annotation.ts
              ^
              source.ts meta.var.expr.ts meta.type.annotation.ts entity.name.type.ts
-              ^
-              source.ts meta.var.expr.ts meta.type.annotation.ts
 >): Promise<T> => {
  ^
  source.ts meta.var.expr.ts meta.brace.round.ts
@@ -196,8 +178,6 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.var.expr.ts meta.arrow.ts
                   ^
                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                   ^^
-                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >    return param1;
  ^^^^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
@@ -209,8 +189,6 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
                   ^
                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
-                   ^^
-                   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
 >};
  ^
  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts

@@ -67,8 +67,6 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.type.declaration.ts
                                           ^
                                           source.ts meta.type.declaration.ts entity.name.type.ts
-                                           ^^
-                                           source.ts meta.type.declaration.ts
 >type TypeName<T> =
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts
@@ -86,8 +84,6 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.type.declaration.ts
                   ^
                   source.ts meta.type.declaration.ts keyword.operator.assignment.ts
-                   ^^
-                   source.ts meta.type.declaration.ts
 >    T extends string ? "string" :
  ^^^^
  source.ts meta.type.declaration.ts
@@ -117,8 +113,6 @@ Grammar: TypeScript.tmLanguage
                                 source.ts meta.type.declaration.ts
                                  ^
                                  source.ts meta.type.declaration.ts keyword.operator.ternary.ts
-                                  ^^
-                                  source.ts meta.type.declaration.ts
 >        T extends number ? "number" :
  ^^^^^^^^
  source.ts meta.type.declaration.ts
@@ -148,8 +142,6 @@ Grammar: TypeScript.tmLanguage
                                     source.ts meta.type.declaration.ts
                                      ^
                                      source.ts meta.type.declaration.ts keyword.operator.ternary.ts
-                                      ^^
-                                      source.ts meta.type.declaration.ts
 >            T extends boolean ? "boolean" :
  ^^^^^^^^^^^^
  source.ts meta.type.declaration.ts
@@ -179,8 +171,6 @@ Grammar: TypeScript.tmLanguage
                                           source.ts meta.type.declaration.ts
                                            ^
                                            source.ts meta.type.declaration.ts keyword.operator.ternary.ts
-                                            ^^
-                                            source.ts meta.type.declaration.ts
 >                T extends undefined ? "undefined" :
  ^^^^^^^^^^^^^^^^
  source.ts meta.type.declaration.ts
@@ -210,8 +200,6 @@ Grammar: TypeScript.tmLanguage
                                                   source.ts meta.type.declaration.ts
                                                    ^
                                                    source.ts meta.type.declaration.ts keyword.operator.ternary.ts
-                                                    ^^
-                                                    source.ts meta.type.declaration.ts
 >                    T extends Function ? "function" :
  ^^^^^^^^^^^^^^^^^^^^
  source.ts meta.type.declaration.ts
@@ -241,8 +229,6 @@ Grammar: TypeScript.tmLanguage
                                                     source.ts meta.type.declaration.ts
                                                      ^
                                                      source.ts meta.type.declaration.ts keyword.operator.ternary.ts
-                                                      ^^
-                                                      source.ts meta.type.declaration.ts
 >                        "object";
  ^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts meta.type.declaration.ts
@@ -254,8 +240,6 @@ Grammar: TypeScript.tmLanguage
                                 source.ts meta.type.declaration.ts string.quoted.double.ts punctuation.definition.string.end.ts
                                  ^
                                  source.ts punctuation.terminator.statement.ts
-                                  ^^
-                                  source.ts
 >type Extracted<Struct>  = {
  ^^^^
  source.ts meta.type.declaration.ts storage.type.type.ts
@@ -277,8 +261,6 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.type.declaration.ts
                            ^
                            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
-                            ^^
-                            source.ts meta.type.declaration.ts meta.object.type.ts
 >	[K in keyof Struct]: Struct[K] extends FooBar ? ExtractFooBar<Struct[K]> : Struct[K];
  ^
  source.ts meta.type.declaration.ts meta.object.type.ts
@@ -356,10 +338,8 @@ Grammar: TypeScript.tmLanguage
                                                                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
                                                                                       ^
                                                                                       source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
-                                                                                       ^^
-                                                                                       source.ts meta.type.declaration.ts meta.object.type.ts
 >
- ^^
+ ^
  source.ts meta.type.declaration.ts meta.object.type.ts
 >}
  ^

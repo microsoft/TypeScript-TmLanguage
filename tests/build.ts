@@ -88,7 +88,7 @@ function getBaseline(grammar: Grammar, outputLines: string[]) {
 
 export function generateScopes(text: string, parsedFileName: path.ParsedPath): { markerScopes: string, wholeBaseline: string } {
     const grammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
-    const oriLines = text.split('\n');
+    const oriLines = text.split(/\r\n|\r|\n/);
 
     let mainGrammar = initGrammar(grammar);
     let otherGrammar: Grammar = null;

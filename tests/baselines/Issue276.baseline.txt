@@ -15,8 +15,6 @@ Grammar: TypeScript.tmLanguage
 >/**
  ^^^
  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
-    ^^
-    source.ts comment.block.documentation.ts
 > * @param {string} value
  ^^^
  source.ts comment.block.documentation.ts
@@ -36,8 +34,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts comment.block.documentation.ts
                     ^^^^^
                     source.ts comment.block.documentation.ts variable.other.jsdoc
-                         ^^
-                         source.ts comment.block.documentation.ts
 > * @param {string[]} arrayValue
  ^^^
  source.ts comment.block.documentation.ts
@@ -61,8 +57,6 @@ Grammar: TypeScript.tmLanguage
                      source.ts comment.block.documentation.ts
                       ^^^^^^^^^^
                       source.ts comment.block.documentation.ts variable.other.jsdoc
-                                ^^
-                                source.ts comment.block.documentation.ts
 > * @param {string} [optionalValue]
  ^^^
  source.ts comment.block.documentation.ts
@@ -86,15 +80,11 @@ Grammar: TypeScript.tmLanguage
                      source.ts comment.block.documentation.ts variable.other.jsdoc
                                   ^
                                   source.ts comment.block.documentation.ts variable.other.jsdoc punctuation.definition.optional-value.end.bracket.square.jsdoc
-                                   ^^
-                                   source.ts comment.block.documentation.ts
 > */
  ^
  source.ts comment.block.documentation.ts
   ^^
   source.ts comment.block.documentation.ts punctuation.definition.comment.ts
-    ^^
-    source.ts
 >function test(value: string, arrayValue: string[], optionalValue?: string) {
  ^^^^^^^^
  source.ts meta.function.ts storage.type.function.ts
@@ -148,10 +138,8 @@ Grammar: TypeScript.tmLanguage
                                                                            source.ts meta.function.ts
                                                                             ^
                                                                             source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                                                             ^^
-                                                                             source.ts meta.function.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.function.ts meta.block.ts
 >}
  ^

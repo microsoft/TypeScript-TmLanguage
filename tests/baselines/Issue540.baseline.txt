@@ -47,7 +47,7 @@ Grammar: TypeScript.tmLanguage
 >// 1. Correct highlighting
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >doSomething = (param, { a = "default" } = {}) => {
  ^^^^^^^^^^^
@@ -108,27 +108,23 @@ Grammar: TypeScript.tmLanguage
                                                  source.ts meta.arrow.ts
                                                   ^
                                                   source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                                                   ^^
-                                                   source.ts meta.arrow.ts meta.block.ts
 >    //noop
  ^^^^
  source.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^
+       ^^^^^
        source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^
  source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >// 2. Incorrect highlighting - limitation of grammar
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >doSomething = (param, { 
  ^^^^^^^^^^^
@@ -149,7 +145,7 @@ Grammar: TypeScript.tmLanguage
                       source.ts
                        ^
                        source.ts meta.objectliteral.ts punctuation.definition.block.ts
-                        ^^^
+                        ^^
                         source.ts meta.objectliteral.ts
 >    a = "default" 
  ^^^^
@@ -168,7 +164,7 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
                  ^
                  source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                  ^^
+                  ^
                   source.ts meta.objectliteral.ts meta.object.member.ts
 >} = {}) => {
  ^
@@ -193,27 +189,23 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.arrow.ts
             ^
             source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-             ^^
-             source.ts meta.arrow.ts meta.block.ts
 >    //noop
  ^^^^
  source.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^
+       ^^^^^
        source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^
  source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >// 3. Correct highlighting
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >doSomething(param, {
  ^^^^^^^^^^^
@@ -228,8 +220,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts
                     ^
                     source.ts meta.objectliteral.ts punctuation.definition.block.ts
-                     ^^
-                     source.ts meta.objectliteral.ts
 >    a = "default"
  ^^^^
  source.ts meta.objectliteral.ts
@@ -247,8 +237,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
                  ^
                  source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                  ^
-                  source.ts meta.objectliteral.ts meta.object.member.ts
 >} = {}) {
  ^
  source.ts meta.objectliteral.ts punctuation.definition.block.ts
@@ -268,27 +256,23 @@ Grammar: TypeScript.tmLanguage
         source.ts
          ^
          source.ts meta.block.ts punctuation.definition.block.ts
-          ^^
-          source.ts meta.block.ts
 >    //noop
  ^^^^
  source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^
+       ^^^^^
        source.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >// 4. Correct highlighting
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >doSomething(param, { a = "default" } = {}) {
  ^^^^^^^^^^^
@@ -339,27 +323,23 @@ Grammar: TypeScript.tmLanguage
                                            source.ts
                                             ^
                                             source.ts meta.block.ts punctuation.definition.block.ts
-                                             ^^
-                                             source.ts meta.block.ts
 >    //noop
  ^^^^
  source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^
+       ^^^^^
        source.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >// 5. Correct highlighting (notice config module)
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >doSomething(param, {
  ^^^^^^^^^^^
@@ -374,8 +354,6 @@ Grammar: TypeScript.tmLanguage
                    source.ts
                     ^
                     source.ts meta.objectliteral.ts punctuation.definition.block.ts
-                     ^^
-                     source.ts meta.objectliteral.ts
 >    a = config.get("a") 
  ^^^^
  source.ts meta.objectliteral.ts
@@ -403,7 +381,7 @@ Grammar: TypeScript.tmLanguage
                       source.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
                        ^
                        source.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
-                        ^^
+                        ^
                         source.ts meta.objectliteral.ts meta.object.member.ts
 >} = {}) {
  ^
@@ -424,27 +402,23 @@ Grammar: TypeScript.tmLanguage
         source.ts
          ^
          source.ts meta.block.ts punctuation.definition.block.ts
-          ^^
-          source.ts meta.block.ts
 >    //noop
  ^^^^
  source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^
+       ^^^^^
        source.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >// 6. Correct highlighting (notice config module)
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >doSomething(param, { a = config.get("a") } = {}) {
  ^^^^^^^^^^^
@@ -505,27 +479,23 @@ Grammar: TypeScript.tmLanguage
                                                  source.ts
                                                   ^
                                                   source.ts meta.block.ts punctuation.definition.block.ts
-                                                   ^^
-                                                   source.ts meta.block.ts
 >    //noop
  ^^^^
  source.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^
+       ^^^^^
        source.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >// 7. Incorrect highlighting (notice config module) while 1. does
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >doSomething = (param, { a = config.get("a")  } = {}) => {
  ^^^^^^^^^^^
@@ -596,14 +566,12 @@ Grammar: TypeScript.tmLanguage
                                                         source.ts meta.arrow.ts
                                                          ^
                                                          source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
-                                                          ^^
-                                                          source.ts meta.arrow.ts meta.block.ts
 >    //noop
  ^^^^
  source.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^
+       ^^^^^
        source.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
 >}
  ^

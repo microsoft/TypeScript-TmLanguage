@@ -47,8 +47,6 @@ Grammar: TypeScript.tmLanguage
                                  source.ts meta.function.ts meta.return.type.ts meta.type.function.return.ts
                                   ^
                                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                   ^^
-                                   source.ts meta.function.ts meta.block.ts
 >    return true ? x => f() : x => 0;
  ^^^^
  source.ts meta.function.ts meta.block.ts
@@ -96,13 +94,9 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
                                     ^
                                     source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
-                                     ^^
-                                     source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >const x = 0; // no highlight in rest of file
  ^^^^^
  source.ts meta.var.expr.ts storage.type.ts

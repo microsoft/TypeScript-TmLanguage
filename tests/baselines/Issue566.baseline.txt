@@ -71,7 +71,7 @@ Grammar: TypeScript.tmLanguage
                                  source.ts
                                   ^^
                                   source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                    ^^^^^^^^^^^^^^
+                                    ^^^^^^^^^^^^^
                                     source.ts comment.line.double-slash.ts
 >const PLANCK  = 6.626_070_040e-34; // J-s
  ^^^^^
@@ -98,7 +98,7 @@ Grammar: TypeScript.tmLanguage
                                    source.ts
                                     ^^
                                     source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                                      ^^^^^^
+                                      ^^^^^
                                       source.ts comment.line.double-slash.ts
 >const JENNY   = 867_5309; // C-A-L^2
  ^^^^^
@@ -121,7 +121,7 @@ Grammar: TypeScript.tmLanguage
                           source.ts
                            ^^
                            source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-                             ^^^^^^^^^^
+                             ^^^^^^^^^
                              source.ts comment.line.double-slash.ts
 >let bits = 0b1100_1100;
  ^^^
@@ -140,8 +140,6 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.var.expr.ts constant.numeric.binary.ts
                        ^
                        source.ts punctuation.terminator.statement.ts
-                        ^^
-                        source.ts
 >let routine = 0xC0FFEE_F00D_BED;
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -159,16 +157,12 @@ Grammar: TypeScript.tmLanguage
                source.ts meta.var.expr.ts constant.numeric.hex.ts
                                 ^
                                 source.ts punctuation.terminator.statement.ts
-                                 ^^
-                                 source.ts
 >
- ^^
+ ^
  source.ts
 >1_000_000_000
  ^^^^^^^^^^^^^
  source.ts constant.numeric.decimal.ts
-              ^^
-              source.ts
 >1.1_00_01
  ^
  source.ts constant.numeric.decimal.ts
@@ -176,23 +170,15 @@ Grammar: TypeScript.tmLanguage
   source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
    ^^^^^^^
    source.ts constant.numeric.decimal.ts
-          ^^
-          source.ts
 >1e1_0
  ^^^^^
  source.ts constant.numeric.decimal.ts
-      ^^
-      source.ts
 >1e+1_0
  ^^^^^^
  source.ts constant.numeric.decimal.ts
-       ^^
-       source.ts
 >1e-1_0
  ^^^^^^
  source.ts constant.numeric.decimal.ts
-       ^^
-       source.ts
 >1.1e10_0
  ^
  source.ts constant.numeric.decimal.ts
@@ -200,8 +186,6 @@ Grammar: TypeScript.tmLanguage
   source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
    ^^^^^^
    source.ts constant.numeric.decimal.ts
-         ^^
-         source.ts
 >1.1e+10_0
  ^
  source.ts constant.numeric.decimal.ts
@@ -209,8 +193,6 @@ Grammar: TypeScript.tmLanguage
   source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
    ^^^^^^^
    source.ts constant.numeric.decimal.ts
-          ^^
-          source.ts
 >1.1e-10_0
  ^
  source.ts constant.numeric.decimal.ts
@@ -218,18 +200,12 @@ Grammar: TypeScript.tmLanguage
   source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
    ^^^^^^^
    source.ts constant.numeric.decimal.ts
-          ^^
-          source.ts
 >12_34_56
  ^^^^^^^^
  source.ts constant.numeric.decimal.ts
-         ^^
-         source.ts
 >1_22_333
  ^^^^^^^^
  source.ts constant.numeric.decimal.ts
-         ^^
-         source.ts
 >1_2.3_4
  ^^^
  source.ts constant.numeric.decimal.ts
@@ -237,8 +213,6 @@ Grammar: TypeScript.tmLanguage
     source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
      ^^^
      source.ts constant.numeric.decimal.ts
-        ^^
-        source.ts
 >1_2.3_4e5_6
  ^^^
  source.ts constant.numeric.decimal.ts
@@ -246,8 +220,6 @@ Grammar: TypeScript.tmLanguage
     source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
      ^^^^^^^
      source.ts constant.numeric.decimal.ts
-            ^^
-            source.ts
 >1_2.3_4e+5_6
  ^^^
  source.ts constant.numeric.decimal.ts
@@ -255,8 +227,6 @@ Grammar: TypeScript.tmLanguage
     source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
      ^^^^^^^^
      source.ts constant.numeric.decimal.ts
-             ^^
-             source.ts
 >1_2.3_4e-5_6
  ^^^
  source.ts constant.numeric.decimal.ts
@@ -264,116 +234,88 @@ Grammar: TypeScript.tmLanguage
     source.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
      ^^^^^^^^
      source.ts constant.numeric.decimal.ts
-             ^^
-             source.ts
 >
- ^^
+ ^
  source.ts
 >0x00_11;
  ^^^^^^^
  source.ts constant.numeric.hex.ts
         ^
         source.ts punctuation.terminator.statement.ts
-         ^^
-         source.ts
 >0X0_1;
  ^^^^^
  source.ts constant.numeric.hex.ts
       ^
       source.ts punctuation.terminator.statement.ts
-       ^^
-       source.ts
 >0x1100_0011;
  ^^^^^^^^^^^
  source.ts constant.numeric.hex.ts
             ^
             source.ts punctuation.terminator.statement.ts
-             ^^
-             source.ts
 >0X0_11_0101;
  ^^^^^^^^^^^
  source.ts constant.numeric.hex.ts
             ^
             source.ts punctuation.terminator.statement.ts
-             ^^
-             source.ts
 >
- ^^
+ ^
  source.ts
 >0o00_11;
  ^^^^^^^
  source.ts constant.numeric.octal.ts
         ^
         source.ts punctuation.terminator.statement.ts
-         ^^
-         source.ts
 >0O0_1;
  ^^^^^
  source.ts constant.numeric.octal.ts
       ^
       source.ts punctuation.terminator.statement.ts
-       ^^
-       source.ts
 >0o1100_0011;
  ^^^^^^^^^^^
  source.ts constant.numeric.octal.ts
             ^
             source.ts punctuation.terminator.statement.ts
-             ^^
-             source.ts
 >0O0_11_0101;
  ^^^^^^^^^^^
  source.ts constant.numeric.octal.ts
             ^
             source.ts punctuation.terminator.statement.ts
-             ^^
-             source.ts
 >
- ^^
+ ^
  source.ts
 >0b00_11;
  ^^^^^^^
  source.ts constant.numeric.binary.ts
         ^
         source.ts punctuation.terminator.statement.ts
-         ^^
-         source.ts
 >0B0_1;
  ^^^^^
  source.ts constant.numeric.binary.ts
       ^
       source.ts punctuation.terminator.statement.ts
-       ^^
-       source.ts
 >0b1100_0011;
  ^^^^^^^^^^^
  source.ts constant.numeric.binary.ts
             ^
             source.ts punctuation.terminator.statement.ts
-             ^^
-             source.ts
 >0B0_11_0101;
  ^^^^^^^^^^^
  source.ts constant.numeric.binary.ts
             ^
             source.ts punctuation.terminator.statement.ts
-             ^^
-             source.ts
 >
- ^^
+ ^
  source.ts
 >// Verify the following are not classified as a number
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    source.ts comment.line.double-slash.ts
 >_1_2;
  ^^^^
  source.ts variable.other.readwrite.ts
      ^
      source.ts punctuation.terminator.statement.ts
-      ^^
-      source.ts
 >0b_1;
  ^
  source.ts
@@ -381,8 +323,6 @@ Grammar: TypeScript.tmLanguage
   source.ts variable.other.readwrite.ts
      ^
      source.ts punctuation.terminator.statement.ts
-      ^^
-      source.ts
 >0x_1;
  ^
  source.ts
@@ -390,8 +330,6 @@ Grammar: TypeScript.tmLanguage
   source.ts variable.other.readwrite.ts
      ^
      source.ts punctuation.terminator.statement.ts
-      ^^
-      source.ts
 >0o_1;
  ^
  source.ts
@@ -399,8 +337,6 @@ Grammar: TypeScript.tmLanguage
   source.ts variable.other.readwrite.ts
      ^
      source.ts punctuation.terminator.statement.ts
-      ^^
-      source.ts
 >
  ^
  source.ts

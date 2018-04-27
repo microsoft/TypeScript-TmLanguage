@@ -44,13 +44,9 @@ Grammar: TypeScript.tmLanguage
            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
             ^
             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
-             ^
-             source.ts meta.function.ts
 >{
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts meta.block.ts
 >	let t = 0
  ^
  source.ts meta.block.ts
@@ -68,8 +64,6 @@ Grammar: TypeScript.tmLanguage
          source.ts meta.block.ts meta.var.expr.ts
           ^
           source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
-           ^
-           source.ts meta.block.ts meta.var.expr.ts
 >	let TAU440 = Math.PI*2 * 440
  ^
  source.ts meta.block.ts
@@ -103,10 +97,8 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.block.ts meta.var.expr.ts
                            ^^^
                            source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
-                              ^
-                              source.ts meta.block.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts meta.block.ts
 >	onmessage = function(e)
  ^
@@ -127,15 +119,11 @@ Grammar: TypeScript.tmLanguage
                        source.ts meta.block.ts meta.function.ts meta.parameters.ts variable.parameter.ts
                         ^
                         source.ts meta.block.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
-                         ^
-                         source.ts meta.block.ts meta.function.ts
 >	{
  ^
  source.ts meta.block.ts
   ^
   source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-   ^^
-   source.ts meta.block.ts meta.block.ts
 >		let b = new Float64Array(e.data.bufferSize)
  ^^
  source.ts meta.block.ts meta.block.ts
@@ -171,8 +159,6 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.block.ts meta.block.ts meta.var.expr.ts new.expr.ts variable.other.property.ts
                                              ^
                                              source.ts meta.block.ts meta.block.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
-                                              ^
-                                              source.ts meta.block.ts meta.block.ts meta.var.expr.ts
 >		let s = e.data.sampleRate
  ^^
  source.ts meta.block.ts meta.block.ts
@@ -198,10 +184,8 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.block.ts meta.block.ts meta.var.expr.ts punctuation.accessor.ts
                   ^^^^^^^^^^
                   source.ts meta.block.ts meta.block.ts meta.var.expr.ts variable.other.property.ts
-                            ^
-                            source.ts meta.block.ts meta.block.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts meta.block.ts meta.block.ts
 >		for (let i = 0; i < b.length; i++) b[i] = Math.sin(TAU440 * t++/s * Math.sin(t++/s*.5))
  ^^
@@ -326,10 +310,8 @@ Grammar: TypeScript.tmLanguage
                                                                                         source.ts meta.block.ts meta.block.ts meta.brace.round.ts
                                                                                          ^
                                                                                          source.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                                                                                          ^^
-                                                                                          source.ts meta.block.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.block.ts meta.block.ts
 >		postMessage(b)
  ^^
@@ -342,22 +324,16 @@ Grammar: TypeScript.tmLanguage
                source.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
                 ^
                 source.ts meta.block.ts meta.block.ts meta.brace.round.ts
-                 ^^
-                 source.ts meta.block.ts meta.block.ts
 >	}
  ^
  source.ts meta.block.ts meta.block.ts
   ^
   source.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
-   ^^
-   source.ts meta.block.ts
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >
- ^^
+ ^
  source.ts
 >let a = new AudioContext()
  ^^^
@@ -382,8 +358,6 @@ Grammar: TypeScript.tmLanguage
                          source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
                           ^
                           source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
-                           ^
-                           source.ts meta.var.expr.ts
 >let s = a.createScriptProcessor(0,1,1)
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -417,8 +391,6 @@ Grammar: TypeScript.tmLanguage
                                      source.ts meta.var.expr.ts constant.numeric.decimal.ts
                                       ^
                                       source.ts meta.var.expr.ts meta.brace.round.ts
-                                       ^
-                                       source.ts meta.var.expr.ts
 >let b = new Float64Array(s.bufferSize)
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -448,8 +420,6 @@ Grammar: TypeScript.tmLanguage
                             source.ts meta.var.expr.ts new.expr.ts variable.other.property.ts
                                       ^
                                       source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
-                                       ^
-                                       source.ts meta.var.expr.ts
 >let w = new Worker(URL.createObjectURL(new Blob(["("+f+"())"],{type:"application/javascript"})))
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -531,10 +501,8 @@ Grammar: TypeScript.tmLanguage
                                                                                                source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
                                                                                                 ^
                                                                                                 source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
-                                                                                                 ^
-                                                                                                 source.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts
 >w.onmessage = e => b = e.data
  ^
@@ -571,8 +539,6 @@ Grammar: TypeScript.tmLanguage
                          source.ts punctuation.accessor.ts
                           ^^^^
                           source.ts support.variable.property.dom.ts
-                              ^^
-                              source.ts
 >s.connect(a.destination)
  ^
  source.ts meta.function-call.ts variable.other.object.ts
@@ -590,10 +556,8 @@ Grammar: TypeScript.tmLanguage
              source.ts variable.other.property.ts
                         ^
                         source.ts meta.brace.round.ts
-                         ^^
-                         source.ts
 >
- ^^
+ ^
  source.ts
 >s.onaudioprocess = function(e)
  ^
@@ -616,13 +580,9 @@ Grammar: TypeScript.tmLanguage
                              source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
                               ^
                               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
-                               ^
-                               source.ts meta.function.ts
 >{
  ^
  source.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts meta.block.ts
 >	w.postMessage({ bufferSize: s.bufferSize, sampleRate: a.sampleRate })
  ^
  source.ts meta.block.ts
@@ -672,8 +632,6 @@ Grammar: TypeScript.tmLanguage
                                                                      source.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
                                                                       ^
                                                                       source.ts meta.block.ts meta.brace.round.ts
-                                                                       ^^
-                                                                       source.ts meta.block.ts
 >	e.outputBuffer.getChannelData(0).set(b)
  ^
  source.ts meta.block.ts
@@ -703,8 +661,6 @@ Grammar: TypeScript.tmLanguage
                                        source.ts meta.block.ts variable.other.readwrite.ts
                                         ^
                                         source.ts meta.block.ts meta.brace.round.ts
-                                         ^^
-                                         source.ts meta.block.ts
 >}
  ^
  source.ts meta.block.ts punctuation.definition.block.ts

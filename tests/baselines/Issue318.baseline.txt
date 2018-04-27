@@ -24,8 +24,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.function-call.ts entity.name.function.ts
               ^
               source.ts meta.brace.round.ts
-               ^^
-               source.ts
 >        /^display prompt in branch "([^"]*)"$/,
  ^^^^^^^^
  source.ts
@@ -57,8 +55,6 @@ Grammar: TypeScript.tmLanguage
                                               source.ts string.regexp.ts punctuation.definition.string.end.ts
                                                ^
                                                source.ts punctuation.separator.comma.ts
-                                                ^^
-                                                source.ts
 >        async function (branchName) {
  ^^^^^^^^
  source.ts
@@ -80,8 +76,6 @@ Grammar: TypeScript.tmLanguage
                                     source.ts meta.function.expression.ts
                                      ^
                                      source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                                      ^^
-                                      source.ts meta.function.expression.ts meta.block.ts
 >            const expected = application.prompt(branchName);
  ^^^^^^^^^^^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -111,8 +105,6 @@ Grammar: TypeScript.tmLanguage
                                                            source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                                             ^
                                                             source.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                             ^^
-                                                             source.ts meta.function.expression.ts meta.block.ts
 >            const actual = await application.getOnceOut();
  ^^^^^^^^^^^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -144,8 +136,6 @@ Grammar: TypeScript.tmLanguage
                                                          source.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                                           ^
                                                           source.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                           ^^
-                                                           source.ts meta.function.expression.ts meta.block.ts
 >            expect(actual).to.be.equal(expected);
  ^^^^^^^^^^^^
  source.ts meta.function.expression.ts meta.block.ts
@@ -177,15 +167,11 @@ Grammar: TypeScript.tmLanguage
                                                 source.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                                                  ^
                                                  source.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                  ^^
-                                                  source.ts meta.function.expression.ts meta.block.ts
 >        }
  ^^^^^^^^
  source.ts meta.function.expression.ts meta.block.ts
          ^
          source.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-          ^^
-          source.ts
 >    );
  ^^^^
  source.ts
@@ -193,8 +179,6 @@ Grammar: TypeScript.tmLanguage
      source.ts meta.brace.round.ts
       ^
       source.ts punctuation.terminator.statement.ts
-       ^^
-       source.ts
 >
  ^
  source.ts

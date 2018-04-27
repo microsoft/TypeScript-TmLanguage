@@ -40,17 +40,13 @@ Grammar: TypeScript.tmLanguage
                       source.ts meta.function.ts
                        ^
                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                        ^^
-                        source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >// rest
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^
+   ^^^^^^
    source.ts comment.line.double-slash.ts
 >let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
  ^^^
@@ -141,8 +137,6 @@ Grammar: TypeScript.tmLanguage
                                                source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
                                                 ^
                                                 source.ts punctuation.terminator.statement.ts
-                                                 ^^
-                                                 source.ts
 >[a, b, ...rest] = [1, 2, 3, 4, 5];
  ^
  source.ts meta.array.literal.ts meta.brace.square.ts
@@ -202,8 +196,6 @@ Grammar: TypeScript.tmLanguage
                                  source.ts meta.array.literal.ts meta.brace.square.ts
                                   ^
                                   source.ts punctuation.terminator.statement.ts
-                                   ^^
-                                   source.ts
 >var { x, ...{ y, z } } = o;
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -251,8 +243,6 @@ Grammar: TypeScript.tmLanguage
                           source.ts meta.var.expr.ts variable.other.readwrite.ts
                            ^
                            source.ts punctuation.terminator.statement.ts
-                            ^^
-                            source.ts
 >const [x, ...[y, z]] = ['a', 'b', 'c'];
  ^^^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -320,12 +310,10 @@ Grammar: TypeScript.tmLanguage
                                       source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
                                        ^
                                        source.ts punctuation.terminator.statement.ts
-                                        ^^
-                                        source.ts
 >// spread
  ^^
  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^
+   ^^^^^^^^
    source.ts comment.line.double-slash.ts
 >let n = { x, y, ...z };
  ^^^
@@ -366,8 +354,6 @@ Grammar: TypeScript.tmLanguage
                       source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
                        ^
                        source.ts punctuation.terminator.statement.ts
-                        ^^
-                        source.ts
 >function f<T, U>(t: T, u: U): { id: string, ...T, ...U } {
  ^^^^^^^^
  source.ts meta.function.ts storage.type.function.ts
@@ -451,8 +437,6 @@ Grammar: TypeScript.tmLanguage
                                                          source.ts meta.function.ts meta.return.type.ts
                                                           ^
                                                           source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                                           ^^
-                                                           source.ts meta.function.ts meta.block.ts
 >    return { id: 'id', ...t, ...u };
  ^^^^
  source.ts meta.function.ts meta.block.ts
@@ -498,13 +482,9 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.function.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
                                     ^
                                     source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
-                                     ^^
-                                     source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-  ^^
-  source.ts
 >function myFunction(v, w, x, y, z) { }
  ^^^^^^^^
  source.ts meta.function.ts storage.type.function.ts
@@ -550,8 +530,6 @@ Grammar: TypeScript.tmLanguage
                                      source.ts meta.function.ts meta.block.ts
                                       ^
                                       source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                       ^^
-                                       source.ts
 >var args = [0, 1];
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -579,8 +557,6 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
                   ^
                   source.ts punctuation.terminator.statement.ts
-                   ^^
-                   source.ts
 >myFunction(-1, ...args, 2, ...[3]);
  ^^^^^^^^^^
  source.ts meta.function-call.ts entity.name.function.ts
@@ -620,8 +596,6 @@ Grammar: TypeScript.tmLanguage
                                   source.ts meta.brace.round.ts
                                    ^
                                    source.ts punctuation.terminator.statement.ts
-                                    ^^
-                                    source.ts
 >var parts = ['shoulders', 'knees'];
  ^^^
  source.ts meta.var.expr.ts storage.type.ts
@@ -657,8 +631,6 @@ Grammar: TypeScript.tmLanguage
                                   source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
                                    ^
                                    source.ts punctuation.terminator.statement.ts
-                                    ^^
-                                    source.ts
 >var lyrics = ['head', ...parts, 'and', 'toes'];
  ^^^
  source.ts meta.var.expr.ts storage.type.ts

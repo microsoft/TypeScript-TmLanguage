@@ -20,8 +20,6 @@ Grammar: TypeScript.tmLanguage
           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
            ^
            source.ts meta.var.expr.ts keyword.operator.assignment.ts
-            ^^
-            source.ts meta.var.expr.ts
 >    true || `${'hello'}.txt`
  ^^^^
  source.ts meta.var.expr.ts
@@ -49,10 +47,8 @@ Grammar: TypeScript.tmLanguage
                         source.ts meta.var.expr.ts string.template.ts
                             ^
                             source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
-                             ^
-                             source.ts meta.var.expr.ts
 >
- ^^
+ ^
  source.ts
 >function syntaxHighlightingIsBroken() {
  ^^^^^^^^
@@ -69,8 +65,6 @@ Grammar: TypeScript.tmLanguage
                                       source.ts meta.function.ts
                                        ^
                                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
-                                        ^^
-                                        source.ts meta.function.ts meta.block.ts
 >}
  ^
  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

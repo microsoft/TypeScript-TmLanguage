@@ -33,8 +33,6 @@ Grammar: TypeScript.tmLanguage
     source.ts comment.block.documentation.ts
                                   ^^
                                   source.ts comment.block.documentation.ts punctuation.definition.comment.ts
-                                    ^^
-                                    source.ts
 >export class FormType extends Type {
  ^^^^^^
  source.ts meta.class.ts keyword.control.export.ts
@@ -58,10 +56,8 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.class.ts
                                     ^
                                     source.ts meta.class.ts punctuation.definition.block.ts
-                                     ^^
-                                     source.ts meta.class.ts
 >
- ^^
+ ^
  source.ts meta.class.ts
 >  /** @internal Original FormType instance */
  ^^
@@ -78,8 +74,6 @@ Grammar: TypeScript.tmLanguage
                 source.ts meta.class.ts comment.block.documentation.ts
                                             ^^
                                             source.ts meta.class.ts comment.block.documentation.ts punctuation.definition.comment.ts
-                                              ^^
-                                              source.ts meta.class.ts
 >  static Original = function () {
  ^^
  source.ts meta.class.ts
@@ -107,8 +101,6 @@ Grammar: TypeScript.tmLanguage
                                 source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts
                                  ^
                                  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
-                                  ^^
-                                  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >    let type = new FormType;
  ^^^^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
@@ -132,17 +124,15 @@ Grammar: TypeScript.tmLanguage
                     source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts new.expr.ts entity.name.type.ts
                             ^
                             source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                             ^^
-                             source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >    // define embed field
  ^^^^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^^^^^^^^^^^^^^^^
+       ^^^^^^^^^^^^^^^^^^^^
        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts
 >    type.defineField(DesignID.Embed, new BooleanAtom(false));
  ^^^^
@@ -181,17 +171,15 @@ Grammar: TypeScript.tmLanguage
                                                             source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                                                              ^
                                                              source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                              ^^
-                                                              source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >    // define plan choice
  ^^^^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^^^^^^^^^^^^^^^^
+       ^^^^^^^^^^^^^^^^^^^^
        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts
 >    type.defineField(DesignID.Plan, PlanChoice.Original);
  ^^^^
@@ -224,17 +212,15 @@ Grammar: TypeScript.tmLanguage
                                                         source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
                                                          ^
                                                          source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                          ^^
-                                                          source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >    // define fields list
  ^^^^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^^^^^^^^^^^^^^^^
+       ^^^^^^^^^^^^^^^^^^^^
        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts
 >    let fields =
  ^^^^
@@ -249,8 +235,6 @@ Grammar: TypeScript.tmLanguage
                source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
                 ^
                 source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
-                 ^^
-                 source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
 >      type.defineField(DesignID.Fields, new Ordering(new FieldDesign));
  ^^^^^^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts
@@ -292,14 +276,12 @@ Grammar: TypeScript.tmLanguage
                                                                       source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts meta.var.expr.ts meta.brace.round.ts
                                                                        ^
                                                                        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                                                                        ^^
-                                                                        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >    // embed field list
  ^^^^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.whitespace.comment.leading.ts
      ^^
      source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-       ^^^^^^^^^^^^^^^^^^^
+       ^^^^^^^^^^^^^^^^^^
        source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts comment.line.double-slash.ts
 >    fields.embed = true;
  ^^^^
@@ -320,10 +302,8 @@ Grammar: TypeScript.tmLanguage
                     source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts constant.language.boolean.true.ts
                         ^
                         source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                         ^^
-                         source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >
- ^^
+ ^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >    return type;
  ^^^^
@@ -336,8 +316,6 @@ Grammar: TypeScript.tmLanguage
             source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts variable.other.readwrite.ts
                 ^
                 source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
-                 ^^
-                 source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
 >  } ();
  ^^
  source.ts meta.class.ts meta.field.declaration.ts meta.function.expression.ts meta.block.ts
@@ -351,8 +329,6 @@ Grammar: TypeScript.tmLanguage
       source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
        ^
        source.ts meta.class.ts punctuation.terminator.statement.ts
-        ^^
-        source.ts meta.class.ts
 >}
  ^
  source.ts meta.class.ts punctuation.definition.block.ts
