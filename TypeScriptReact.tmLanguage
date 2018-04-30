@@ -4685,6 +4685,60 @@
           </dict>
           <dict>
             <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(import)\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(meta)\b(?!\$)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.import.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>support.variable.property.importmeta.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(target)\b(?!\$)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.new.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>support.variable.property.target.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
             <string>(?x) (?:(\.)|(\?\.(?!\s*[[:digit:]]))) \s* (?:
   (constructor|length|prototype|__proto__)
   |

@@ -1,0 +1,178 @@
+original file
+-----------------------------------
+const size = import.meta.scriptElement.dataset.size || 300;
+export function Date(...args) {
+  if (new.target) {
+    // [[Construct]] branch
+    initializeDate(this, ...args);
+  } else {
+    // [[Call]] branch
+    return ToDateString(clockGetTime());
+  }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const size = import.meta.scriptElement.dataset.size || 300;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^^^^
+              source.ts meta.var.expr.ts keyword.control.import.ts
+                    ^
+                    source.ts meta.var.expr.ts punctuation.accessor.ts
+                     ^^^^
+                     source.ts meta.var.expr.ts support.variable.property.importmeta.ts
+                         ^
+                         source.ts meta.var.expr.ts punctuation.accessor.ts
+                          ^^^^^^^^^^^^^
+                          source.ts meta.var.expr.ts variable.other.object.property.ts
+                                       ^
+                                       source.ts meta.var.expr.ts punctuation.accessor.ts
+                                        ^^^^^^^
+                                        source.ts meta.var.expr.ts variable.other.object.property.ts
+                                               ^
+                                               source.ts meta.var.expr.ts punctuation.accessor.ts
+                                                ^^^^
+                                                source.ts meta.var.expr.ts support.variable.property.dom.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts
+                                                     ^^
+                                                     source.ts meta.var.expr.ts keyword.operator.logical.ts
+                                                       ^
+                                                       source.ts meta.var.expr.ts
+                                                        ^^^
+                                                        source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                                           ^
+                                                           source.ts punctuation.terminator.statement.ts
+>export function Date(...args) {
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^
+                 source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                     ^
+                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                      ^^^
+                      source.ts meta.function.ts meta.parameters.ts keyword.operator.rest.ts
+                         ^^^^
+                         source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                             ^
+                             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                              ^
+                              source.ts meta.function.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  if (new.target) {
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.ts meta.block.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+       ^^^
+       source.ts meta.function.ts meta.block.ts keyword.operator.new.ts
+          ^
+          source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+           ^^^^^^
+           source.ts meta.function.ts meta.block.ts support.variable.property.target.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>    // [[Construct]] branch
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^^^^^^
+       source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
+>    initializeDate(this, ...args);
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+     ^^^^^^^^^^^^^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                    ^^^^
+                    source.ts meta.function.ts meta.block.ts meta.block.ts variable.language.this.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.block.ts
+                          ^^^
+                          source.ts meta.function.ts meta.block.ts meta.block.ts keyword.operator.spread.ts
+                             ^^^^
+                             source.ts meta.function.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+>  } else {
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^
+    source.ts meta.function.ts meta.block.ts
+     ^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>    // [[Call]] branch
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^
+       source.ts meta.function.ts meta.block.ts meta.block.ts comment.line.double-slash.ts
+>    return ToDateString(clockGetTime());
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.block.ts
+            ^^^^^^^^^^^^
+            source.ts meta.function.ts meta.block.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                         ^^^^^^^^^^^^
+                         source.ts meta.function.ts meta.block.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+>  }
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
