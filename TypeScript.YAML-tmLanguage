@@ -14,6 +14,7 @@ variables:
   constantIdentifier: '[[:upper:]][_$[:digit:][:upper:]]*'
   quotedStrings: (\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
+  label: ({{identifier}})\s*(:)
   hexNumber: \b(?<!\$)0(x|X)[0-9a-fA-F][0-9a-fA-F_]*\b(?!\$)
   binaryNumber: \b(?<!\$)0(b|B)[01][01_]*\b(?!\$)
   octalNumber: \b(?<!\$)0(o|O)?[0-7][0-7_]*\b(?!\$)
@@ -130,7 +131,7 @@ repository:
     - include: '#control-statement'
     - include: '#after-operator-block-as-object-literal'
     - include: '#decl-block'
-    # add label
+    - include: '#label'
     - include: '#expression'
     - include: '#punctuation-semicolon'
 
@@ -168,6 +169,21 @@ repository:
       match: '{{startOfIdentifier}}(debugger){{endOfIdentifier}}'
     - name: storage.modifier.ts
       match: '{{startOfIdentifier}}(declare){{endOfIdentifier}}'
+
+  label:
+    patterns:
+    # handle declaration block followed by label so as to not confuse it with { followed by ternary operator which would be object literal
+    - begin: '{{label}}(?=\s*\{)'
+      beginCaptures:
+        '1': { name: entity.name.label.ts }
+        '2': { name: punctuation.separator.label.ts }
+      end: (?<=\{)
+      patterns:
+        - include: '#decl-block'
+    - match: '{{label}}'
+      captures:
+        '1': { name: entity.name.label.ts }
+        '2': { name: punctuation.separator.label.ts }
 
   expression:
     patterns:

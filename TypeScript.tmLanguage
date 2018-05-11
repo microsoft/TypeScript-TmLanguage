@@ -73,6 +73,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#label</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#expression</string>
           </dict>
           <dict>
@@ -190,6 +194,55 @@
             <string>storage.modifier.ts</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(declare)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+          </dict>
+        </array>
+      </dict>
+      <key>label</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(:)(?=\s*\{)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.label.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.separator.label.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;=\{)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#decl-block</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(:)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.label.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.separator.label.ts</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>

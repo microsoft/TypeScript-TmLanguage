@@ -1,0 +1,112 @@
+original file
+-----------------------------------
+class Test {
+  constructor() {
+    hola: {
+      const x = 1;
+      console.log('bad highlight');
+      break hola;
+    }
+  }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Test {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+           ^
+           source.ts meta.class.ts
+            ^
+            source.ts meta.class.ts punctuation.definition.block.ts
+>  constructor() {
+ ^^
+ source.ts meta.class.ts
+   ^^^^^^^^^^^
+   source.ts meta.class.ts meta.method.declaration.ts storage.type.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    hola: {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts entity.name.label.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.separator.label.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>      const x = 1;
+ ^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+       ^^^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+>      console.log('bad highlight');
+ ^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+       ^^^^^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.function-call.ts support.class.console.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+               ^^^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.function-call.ts support.function.console.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                    ^^^^^^^^^^^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+>      break hola;
+ ^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+       ^^^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts keyword.control.loop.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>  }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+>}
+ ^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
