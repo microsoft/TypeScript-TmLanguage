@@ -1,0 +1,64 @@
+original file
+-----------------------------------
+class C {
+    'm'?(): void;
+}
+const x = 0;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class C {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>    'm'?(): void;
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts string.quoted.single.ts
+       ^
+       source.ts meta.class.ts meta.method.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts keyword.operator.optional.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+             ^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>const x = 0;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts constant.numeric.decimal.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
