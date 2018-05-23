@@ -1,0 +1,64 @@
+original file
+-----------------------------------
+interface I {
+    x: number extends number
+        ? string
+        : boolean;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>interface I {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+            ^
+            source.ts meta.interface.ts
+             ^
+             source.ts meta.interface.ts punctuation.definition.block.ts
+>    x: number extends number
+ ^^^^
+ source.ts meta.interface.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+      ^
+      source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+       ^
+       source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+        ^^^^^^
+        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+              ^
+              source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+               ^^^^^^^
+               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts storage.modifier.ts
+                      ^
+                      source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+                       ^^^^^^
+                       source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+>        ? string
+ ^^^^^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+         ^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.ternary.ts
+          ^
+          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^^^^^^
+           source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+>        : boolean;
+ ^^^^^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+         ^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.ternary.ts
+          ^
+          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^^^^^^^
+           source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.interface.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts

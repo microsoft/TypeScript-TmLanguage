@@ -881,10 +881,12 @@ repository:
     patterns:
       - include: '#comment'
       - include: '#type-parameters'
-      - include: '#type'
-      - match: '(=)\s*'
-        captures:
+      - begin: '(=)\s*'
+        beginCaptures:
           '1': { name: keyword.operator.assignment.ts }
+        end: (?=\}|{{endOfStatement}})
+        patterns:
+        - include: '#type'
 
   #import and export
   import-equals-declaration:
@@ -2010,9 +2012,21 @@ repository:
 
   #conditional type
   type-conditional:
-    match: '{{startOfIdentifier}}(extends)\s+'
-    captures:
-      '1': { name: storage.modifier.ts }
+    patterns:
+    - begin: '{{startOfIdentifier}}(extends)\s+'
+      beginCaptures:
+        '1': { name: storage.modifier.ts }
+      end: (?<=:)
+      patterns:
+      - begin: \?
+        beginCaptures:
+          '0': { name: keyword.operator.ternary.ts }
+        end: ':'
+        endCaptures:
+          '0': { name: keyword.operator.ternary.ts }
+        patterns:
+        - include: '#type'
+      - include: '#type'
 
   # Parenthesis can contain either types and function parameters
   # (number | string) or (param: number, param2: string)
@@ -2070,7 +2084,7 @@ repository:
       begin: (=>)(?=\s*\S)
       beginCaptures:
         '1': { name: storage.type.function.arrow.ts }
-      end: (?<!=>)(?<![|&])(?=[,\]\)\{\}=;>]|//|$)
+      end: (?<!=>)(?<![|&])(?=[,\]\)\{\}=;>:\?]|//|$)
       patterns:
       - include: '#type-function-return-type-core'
     # if type starts on next line use modified line endings as end of type annotation eg. complete empty line
@@ -2078,7 +2092,7 @@ repository:
       begin: '=>'
       beginCaptures:
         '0': { name: storage.type.function.arrow.ts }
-      end: (?<!=>)(?<![|&])((?=[,\]\)\{\}=;>]|//|^\s*$)|((?<=\S)(?=\s*$)))
+      end: (?<!=>)(?<![|&])((?=[,\]\)\{\}=;:\?>]|//|^\s*$)|((?<=\S)(?=\s*$)))
       patterns:
       - include: '#type-function-return-type-core'
 

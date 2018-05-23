@@ -2767,13 +2767,9 @@
             <string>#type-parameters</string>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#type</string>
-          </dict>
-          <dict>
-            <key>match</key>
+            <key>begin</key>
             <string>(=)\s*</string>
-            <key>captures</key>
+            <key>beginCaptures</key>
             <dict>
               <key>1</key>
               <dict>
@@ -2781,6 +2777,15 @@
                 <string>keyword.operator.assignment.ts</string>
               </dict>
             </dict>
+            <key>end</key>
+            <string>(?=\}|;|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\breturn\b|\btype\b|\bvar\b)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
@@ -5875,16 +5880,59 @@
       </dict>
       <key>type-conditional</key>
       <dict>
-        <key>match</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(extends)\s+</string>
-        <key>captures</key>
-        <dict>
-          <key>1</key>
+        <key>patterns</key>
+        <array>
           <dict>
-            <key>name</key>
-            <string>storage.modifier.ts</string>
+            <key>begin</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(extends)\s+</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;=:)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>begin</key>
+                <string>\?</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.operator.ternary.ts</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>:</string>
+                <key>endCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.operator.ternary.ts</string>
+                  </dict>
+                </dict>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#type</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
           </dict>
-        </dict>
+        </array>
       </dict>
       <key>type-paren-or-function-parameters</key>
       <dict>
@@ -6009,7 +6057,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?&lt;!=&gt;)(?&lt;![|&amp;])(?=[,\]\)\{\}=;&gt;]|//|$)</string>
+            <string>(?&lt;!=&gt;)(?&lt;![|&amp;])(?=[,\]\)\{\}=;&gt;:\?]|//|$)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -6032,7 +6080,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?&lt;!=&gt;)(?&lt;![|&amp;])((?=[,\]\)\{\}=;&gt;]|//|^\s*$)|((?&lt;=\S)(?=\s*$)))</string>
+            <string>(?&lt;!=&gt;)(?&lt;![|&amp;])((?=[,\]\)\{\}=;:\?&gt;]|//|^\s*$)|((?&lt;=\S)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
               <dict>
