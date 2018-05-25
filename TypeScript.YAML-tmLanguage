@@ -363,11 +363,11 @@ repository:
 
   parameter-name:
     patterns:
-    - match: \s*\b(public|protected|private|readonly)(?=\s+(public|protected|private|readonly)\s+)
+    - match: '{{startOfIdentifier}}(public|protected|private|readonly)\s+(?=(public|protected|private|readonly)\s+)'
       captures:
         '1': { name: storage.modifier.ts }
     - match: |-
-        (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?={{functionLikeAssignmentOrType}})
+        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?={{functionLikeAssignmentOrType}})
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
@@ -375,7 +375,7 @@ repository:
         '4': { name: entity.name.function.ts }
         '5': { name: keyword.operator.optional.ts }
     - match: |-
-        (?x)(?:\s*\b(public|private|protected|readonly)\s+)?(\.\.\.)?\s*(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)
+        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
@@ -723,7 +723,7 @@ repository:
   class-expression:
     name: meta.class.ts
     # allows anonymous class
-    begin: '{{startOfIdentifier}}(class)\b(?=\s+|[<{]|/[/*])'
+    begin: '{{startOfIdentifier}}(class)\b(?=\s+|[<{]|\/[\/*])'
     beginCaptures:
       '1': { name: storage.type.class.ts }
     end: (?<=\})
