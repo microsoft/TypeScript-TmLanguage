@@ -1089,7 +1089,7 @@ repository:
   #object literals
   after-operator-block-as-object-literal:
     name: meta.objectliteral.ts
-    begin: (?<!\+\+|--)(?<=[:=(,\[?+!]|{{lookBehindAwait}}|{{lookBehindReturn}}|{{lookBehindYield}}|{{lookBehindThrow}}|{{lookBehindIn}}|{{lookBehindOf}}|{{lookBehindTypeof}}|&&|\|\||\*)\s*(\{)
+    begin: (?<!\+\+|--)(?<=[:=(,\[?+!>]|{{lookBehindAwait}}|{{lookBehindReturn}}|{{lookBehindYield}}|{{lookBehindThrow}}|{{lookBehindIn}}|{{lookBehindOf}}|{{lookBehindTypeof}}|&&|\|\||\*)\s*(\{)
     beginCaptures:
       '1': { name: punctuation.definition.block.ts }
     end: \}

@@ -1,0 +1,100 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this hasc cast
+// From Microsoft/TypeScript#24410
+a
+	.map(b => {
+		return <C>{
+			c: { }
+		};
+	})
+
+// comment
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this hasc cast
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>// From Microsoft/TypeScript#24410
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>a
+ ^
+ source.ts variable.other.readwrite.ts
+>	.map(b => {
+ ^
+ source.ts
+  ^
+  source.ts meta.function-call.ts punctuation.accessor.ts
+   ^^^
+   source.ts meta.function-call.ts entity.name.function.ts
+      ^
+      source.ts meta.brace.round.ts
+       ^
+       source.ts meta.arrow.ts variable.parameter.ts
+        ^
+        source.ts meta.arrow.ts
+         ^^
+         source.ts meta.arrow.ts storage.type.function.arrow.ts
+           ^
+           source.ts meta.arrow.ts
+            ^
+            source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>		return <C>{
+ ^^
+ source.ts meta.arrow.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.arrow.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.arrow.ts meta.block.ts cast.expr.ts
+          ^
+          source.ts meta.arrow.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+           ^
+           source.ts meta.arrow.ts meta.block.ts cast.expr.ts entity.name.type.ts
+            ^
+            source.ts meta.arrow.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+             ^
+             source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+>			c: { }
+ ^^^
+ source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts
+    ^
+    source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+     ^
+     source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+      ^
+      source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+       ^
+       source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+        ^
+        source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+         ^
+         source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+>		};
+ ^^
+ source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts
+   ^
+   source.ts meta.arrow.ts meta.block.ts meta.objectliteral.ts punctuation.definition.block.ts
+    ^
+    source.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+>	})
+ ^
+ source.ts meta.arrow.ts meta.block.ts
+  ^
+  source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+   ^
+   source.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>// comment
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^
+   source.ts comment.line.double-slash.ts
