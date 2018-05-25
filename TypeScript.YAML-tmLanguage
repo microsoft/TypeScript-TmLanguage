@@ -153,10 +153,14 @@ repository:
     patterns:
     - include: '#switch-statement'
     - include: '#for-loop'
+    - name: keyword.control.trycatch.flow.ts
+      match: '{{startOfIdentifier}}(throw){{endOfIdentifier}}'
     - name: keyword.control.trycatch.ts
-      match: '{{startOfIdentifier}}(catch|finally|throw|try){{endOfIdentifier}}'
+      match: '{{startOfIdentifier}}(catch|finally|try){{endOfIdentifier}}'
+    - name: keyword.control.loop.flow.ts
+      match: '{{startOfIdentifier}}(break|continue|goto){{endOfIdentifier}}'
     - name: keyword.control.loop.ts
-      match: '{{startOfIdentifier}}(break|continue|do|goto|while){{endOfIdentifier}}'
+      match: '{{startOfIdentifier}}(do|while){{endOfIdentifier}}'
     - name: keyword.control.flow.ts
       match: '{{startOfIdentifier}}(return){{endOfIdentifier}}'
     - name: keyword.control.switch.ts
