@@ -149,15 +149,27 @@
           </dict>
           <dict>
             <key>name</key>
+            <string>keyword.control.trycatch.flow.ts</string>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(throw)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+          </dict>
+          <dict>
+            <key>name</key>
             <string>keyword.control.trycatch.ts</string>
             <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(catch|finally|throw|try)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(catch|finally|try)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.loop.flow.ts</string>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(break|continue|goto)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
             <string>keyword.control.loop.ts</string>
             <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(break|continue|do|goto|while)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(do|while)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
           <dict>
             <key>name</key>
