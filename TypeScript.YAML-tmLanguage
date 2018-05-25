@@ -1249,36 +1249,18 @@ repository:
   # but do this only from expression and as last resort
   paren-expression-possibly-arrow:
     patterns:
-    - begin: '{{lookBehindOfPossiblyMultilineArrowWithDestructuring}}\s*(async)?(?=\s*{{typeParameters}}\(\s*[\{\[]\s*$)'
+    - begin: '{{lookBehindOfPossiblyMultilineArrowWithDestructuring}}\s*(async)?(?=\s*({{typeParameters}})?\(\s*[\{\[]\s*$)'
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
       end: (?<=\))
       patterns:
       - include: '#paren-expression-possibly-arrow-with-typeparameters'
-    - begin: '{{lookBehindOfPossiblyMultilineArrow}}\s*(async)?(?=\s*{{typeParameters}}\(\s*$)'
+    - begin: '{{lookBehindOfPossiblyMultilineArrow}}\s*(async)?(?=\s*({{typeParameters}})?\(\s*$)'
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
       end: (?<=\))
       patterns:
       - include: '#paren-expression-possibly-arrow-with-typeparameters'
-    - begin: '{{lookBehindOfPossiblyMultilineArrowWithDestructuring}}\s*(async)?\s*(\()(?=\s*[\{\[]\s*$)'
-      beginCaptures:
-        '1': { name: storage.modifier.async.ts }
-        '2': { name: meta.brace.round.ts }
-      end: \)
-      endCaptures:
-        '0': { name: meta.brace.round.ts }
-      patterns:
-      - include: '#expression-inside-possibly-arrow-parens'
-    - begin: '{{lookBehindOfPossiblyMultilineArrow}}\s*(async)?\s*(\()(?=\s*$)'
-      beginCaptures:
-        '1': { name: storage.modifier.async.ts }
-        '2': { name: meta.brace.round.ts }
-      end: \)
-      endCaptures:
-        '0': { name: meta.brace.round.ts }
-      patterns:
-      - include: '#expression-inside-possibly-arrow-parens'
     - include: '#possibly-arrow-return-type'
 
   paren-expression-possibly-arrow-with-typeparameters:
