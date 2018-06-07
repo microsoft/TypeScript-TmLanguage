@@ -60,7 +60,7 @@ Grammar: TypeScript.tmLanguage
              ^
              source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
               ^
-              source.ts meta.type.declaration.ts meta.object.type.ts
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts
                ^
                source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
                 ^
@@ -72,7 +72,7 @@ Grammar: TypeScript.tmLanguage
                         ^
                         source.ts meta.type.declaration.ts meta.object.type.ts punctuation.separator.comma.ts
                          ^
-                         source.ts meta.type.declaration.ts meta.object.type.ts
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts
                           ^
                           source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
                            ^
@@ -84,7 +84,7 @@ Grammar: TypeScript.tmLanguage
                                    ^
                                    source.ts meta.type.declaration.ts meta.object.type.ts punctuation.separator.comma.ts
                                     ^
-                                    source.ts meta.type.declaration.ts meta.object.type.ts
+                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts
                                      ^
                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
                                       ^
@@ -118,7 +118,7 @@ Grammar: TypeScript.tmLanguage
            ^
            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
             ^
-            source.ts meta.type.declaration.ts meta.object.type.ts
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
              ^
              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
               ^
@@ -183,7 +183,7 @@ Grammar: TypeScript.tmLanguage
            ^
            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
             ^
-            source.ts meta.type.declaration.ts meta.object.type.ts
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
              ^
              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
               ^
@@ -248,7 +248,7 @@ Grammar: TypeScript.tmLanguage
            ^
            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
             ^
-            source.ts meta.type.declaration.ts meta.object.type.ts
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
              ^
              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
               ^
@@ -319,7 +319,7 @@ Grammar: TypeScript.tmLanguage
            ^
            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
             ^
-            source.ts meta.type.declaration.ts meta.object.type.ts
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
              ^
              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
               ^
@@ -372,7 +372,7 @@ Grammar: TypeScript.tmLanguage
            ^
            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
             ^
-            source.ts meta.type.declaration.ts meta.object.type.ts
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
              ^
              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
               ^
@@ -494,7 +494,7 @@ Grammar: TypeScript.tmLanguage
            ^
            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
             ^
-            source.ts meta.type.declaration.ts meta.object.type.ts
+            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
              ^
              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
               ^
@@ -574,7 +574,7 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
 >    [P in keyof T]?: T[P];
  ^^^^
- source.ts meta.type.declaration.ts meta.object.type.ts
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
      ^
      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
       ^
@@ -736,7 +736,7 @@ Grammar: TypeScript.tmLanguage
                                    source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
 >    [P in K]: T[P];
  ^^^^
- source.ts meta.type.declaration.ts meta.object.type.ts
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
      ^
      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
       ^
@@ -821,7 +821,7 @@ Grammar: TypeScript.tmLanguage
                                              source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
 >    [_ in K]: T;
  ^^^^
- source.ts meta.type.declaration.ts meta.object.type.ts
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
      ^
      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
       ^
@@ -878,7 +878,7 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
 >    get(): T;
  ^^^^
- source.ts meta.type.declaration.ts meta.object.type.ts
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts
      ^^^
      source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
         ^
@@ -895,7 +895,7 @@ Grammar: TypeScript.tmLanguage
              source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
 >    set(value: T): void;
  ^^^^
- source.ts meta.type.declaration.ts meta.object.type.ts
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts
      ^^^
      source.ts meta.type.declaration.ts meta.object.type.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
         ^
@@ -952,7 +952,7 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
 >    [P in keyof T]: Proxy<T[P]>;
  ^^^^
- source.ts meta.type.declaration.ts meta.object.type.ts
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
      ^
      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
       ^

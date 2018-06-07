@@ -187,7 +187,7 @@ Grammar: TypeScript.tmLanguage
                       ^
                       source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
                        ^
-                       source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts
+                       source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
                         ^^^^^
                         source.ts meta.function.ts meta.block.ts meta.objectliteral.ts meta.object.member.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
                              ^
@@ -442,7 +442,7 @@ Grammar: TypeScript.tmLanguage
                                                           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
 >    x: {
  ^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
      ^
      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
       ^
@@ -453,7 +453,7 @@ Grammar: TypeScript.tmLanguage
         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
 >        a: number;
  ^^^^^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
          ^
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
           ^
@@ -466,7 +466,7 @@ Grammar: TypeScript.tmLanguage
                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
 >        b: number;
  ^^^^^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
          ^
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
           ^
@@ -486,7 +486,7 @@ Grammar: TypeScript.tmLanguage
       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
 >    y: {
  ^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
      ^
      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
       ^
@@ -497,7 +497,7 @@ Grammar: TypeScript.tmLanguage
         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
 >        c: string;
  ^^^^^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
          ^
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
           ^
@@ -510,7 +510,7 @@ Grammar: TypeScript.tmLanguage
                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
 >        d: string;
  ^^^^^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
          ^
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
           ^
@@ -530,7 +530,7 @@ Grammar: TypeScript.tmLanguage
       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
 >    z: [number, {
  ^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
      ^
      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
       ^
@@ -549,7 +549,7 @@ Grammar: TypeScript.tmLanguage
                  source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
 >        hello: string;
  ^^^^^^^^
- source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts
+ source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
          ^^^^^
          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
               ^
@@ -625,7 +625,7 @@ Grammar: TypeScript.tmLanguage
               ^
               source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
                ^
-               source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts
+               source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
                 ^^^^^
                 source.ts meta.function.ts meta.block.ts cast.expr.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
                      ^
@@ -768,7 +768,7 @@ Grammar: TypeScript.tmLanguage
                                   ^
                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts punctuation.definition.block.ts
                                    ^
-                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts
+                                   source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts
                                     ^^^^^
                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
                                          ^

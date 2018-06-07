@@ -1,0 +1,92 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx 
+bar => (
+    [
+        <Baz key={`bar-${bar.id}`} />,
+        <Qux />
+    ]
+)
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx 
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>bar => (
+ ^^^
+ source.tsx meta.arrow.tsx variable.parameter.tsx
+    ^
+    source.tsx meta.arrow.tsx
+     ^^
+     source.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+       ^
+       source.tsx meta.arrow.tsx
+        ^
+        source.tsx meta.arrow.tsx meta.brace.round.tsx
+>    [
+ ^^^^
+ source.tsx meta.arrow.tsx meta.array.literal.tsx
+     ^
+     source.tsx meta.arrow.tsx meta.array.literal.tsx meta.brace.square.tsx
+>        <Baz key={`bar-${bar.id}`} />,
+ ^^^^^^^^
+ source.tsx meta.arrow.tsx meta.array.literal.tsx
+         ^
+         source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+             ^
+             source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx
+              ^^^
+              source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+                 ^
+                 source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+                  ^
+                  source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx punctuation.section.embedded.begin.tsx
+                   ^
+                   source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx punctuation.definition.string.template.begin.tsx
+                    ^^^^
+                    source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx
+                        ^^
+                        source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx meta.template.expression.tsx punctuation.definition.template-expression.begin.tsx
+                          ^^^
+                          source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx meta.template.expression.tsx meta.embedded.line.tsx variable.other.object.tsx
+                             ^
+                             source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx meta.template.expression.tsx meta.embedded.line.tsx punctuation.accessor.tsx
+                              ^^
+                              source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx meta.template.expression.tsx meta.embedded.line.tsx support.variable.property.dom.tsx
+                                ^
+                                source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx meta.template.expression.tsx punctuation.definition.template-expression.end.tsx
+                                 ^
+                                 source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx string.template.tsx punctuation.definition.string.template.end.tsx
+                                  ^
+                                  source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx meta.embedded.expression.tsx punctuation.section.embedded.end.tsx
+                                   ^
+                                   source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx
+                                    ^^
+                                    source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                                      ^
+                                      source.tsx meta.arrow.tsx meta.array.literal.tsx punctuation.separator.comma.tsx
+>        <Qux />
+ ^^^^^^^^
+ source.tsx meta.arrow.tsx meta.array.literal.tsx
+         ^
+         source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+             ^
+             source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx meta.tag.attributes.tsx
+              ^^
+              source.tsx meta.arrow.tsx meta.array.literal.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+>    ]
+ ^^^^
+ source.tsx meta.arrow.tsx meta.array.literal.tsx
+     ^
+     source.tsx meta.arrow.tsx meta.array.literal.tsx meta.brace.square.tsx
+>)
+ ^
+ source.tsx meta.arrow.tsx meta.brace.round.tsx

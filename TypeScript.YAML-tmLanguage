@@ -462,14 +462,14 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?={{propertyName}}\s*(\?\s*)?(=|:))
+    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(\?\s*)?(=|:))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: (?x)(?=\}|;|,|$|(^(?!{{propertyName}}\s*(\?\s*)?(=|:))))|(?<=\})
+    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
     - begin: (?x)(?={{propertyName}}\s*(\?\s*)?(=|:))
-      end: (?x)(?=[};,=]|$|(^(?!{{propertyName}}\s*(\?\s*)?(=|:))))|(?<=\})
+      end: (?x)(?=[};,=]|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:))))|(?<=\})
       patterns:
       - include: '#type-annotation'
       - include: '#string'
@@ -551,7 +551,7 @@ repository:
     patterns:
     # constructor signature
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?\b(constructor)\b(?!:){{endOfIdentifier}}'
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?\s*\b(constructor)\b(?!:){{endOfIdentifier}}'
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -563,7 +563,7 @@ repository:
       - include: '#function-body'
     # new or call signature
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\b(new)\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?)(?=\s*[\(\<])'
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\s*\b(new)\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?)(?=\s*[\(\<])'
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -576,7 +576,7 @@ repository:
       - include: '#function-body'
     # method, accessor
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=({{propertyName}}\s*(\??))\s*[\(\<])'
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*[\(\<])'
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -590,7 +590,7 @@ repository:
 
   object-literal-method-declaration:
     name: meta.method.declaration.ts
-    begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=({{propertyName}}\s*(\??))\s*[\(\<])'
+    begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*[\(\<])'
     beginCaptures:
       '1': { name: storage.modifier.async.ts } # captures keyword (async)
       '2': { name: storage.type.property.ts } # captures keyword (get|set)
@@ -599,7 +599,7 @@ repository:
     patterns:
     - include: '#method-declaration-name'
     - include: '#function-body'
-    - begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=({{propertyName}}\s*(\??))\s*[\(\<])'
+    - begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*[\(\<])'
       beginCaptures:
         '1': { name: storage.modifier.async.ts } # captures keyword (async)
         '2': { name: storage.type.property.ts } # captures keyword (get|set)
@@ -661,7 +661,7 @@ repository:
 
   indexer-declaration:
     name: meta.indexer.declaration.ts
-    begin: (?:{{startOfIdentifier}}(readonly)\s*)?(\[)\s*({{identifier}})\s*(?=:)
+    begin: (?:{{startOfIdentifier}}(readonly)\s*)?\s*(\[)\s*({{identifier}})\s*(?=:)
     beginCaptures:
       '1': { name: storage.modifier.ts }
       '2': { name: meta.brace.square.ts }
@@ -675,7 +675,7 @@ repository:
 
   indexer-mapped-type-declaration:
     name: meta.indexer.mappedtype.declaration.ts
-    begin: (?:{{startOfIdentifier}}([+-])?(readonly)\s*)?(\[)\s*({{identifier}})\s+(in)\s+
+    begin: (?:{{startOfIdentifier}}([+-])?(readonly)\s*)?\s*(\[)\s*({{identifier}})\s+(in)\s+
     beginCaptures:
       '1': { name: keyword.operator.type.modifier.ts }
       '2': { name: storage.modifier.ts }
@@ -1410,9 +1410,9 @@ repository:
 
   array-literal:
     name: meta.array.literal.ts
-    begin: \[
+    begin: \s*(\[)
     beginCaptures:
-      '0': { name: meta.brace.square.ts }
+      '1': { name: meta.brace.square.ts }
     end: \]
     endCaptures:
       '0': { name: meta.brace.square.ts }
