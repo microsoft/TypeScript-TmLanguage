@@ -1,0 +1,76 @@
+original file
+-----------------------------------
+const f = (...args) => {}
+const f = (a, ...args) => {}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const f = (...args) => {}
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts meta.arrow.ts
+           ^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^^^
+            source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts keyword.operator.rest.ts
+               ^^^^
+               source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.arrow.ts
+                     ^^
+                     source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.arrow.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>const f = (a, ...args) => {}
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts meta.arrow.ts
+           ^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+             ^
+             source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.separator.parameter.ts
+              ^
+              source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts
+               ^^^
+               source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts keyword.operator.rest.ts
+                  ^^^^
+                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.arrow.ts
+                        ^^
+                        source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.arrow.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
