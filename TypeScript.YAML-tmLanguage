@@ -155,6 +155,10 @@ repository:
     - include: '#for-loop'
     - name: keyword.control.trycatch.ts
       match: '{{startOfIdentifier}}(catch|finally|throw|try){{endOfIdentifier}}'
+    - match: '{{startOfIdentifier}}(break|continue|goto)\s+({{identifier}}){{endOfIdentifier}}'
+      captures:
+        '1': { name: keyword.control.loop.ts }
+        '2': { name: entity.name.label.ts }
     - name: keyword.control.loop.ts
       match: '{{startOfIdentifier}}(break|continue|do|goto|while){{endOfIdentifier}}'
     - name: keyword.control.flow.ts
