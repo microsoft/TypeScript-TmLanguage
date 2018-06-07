@@ -1,0 +1,70 @@
+original file
+-----------------------------------
+console.log(1);
+foo: {
+    console.log(1);
+}
+console.log(1);
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>console.log(1);
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.brace.round.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+>foo: {
+ ^^^
+ source.ts entity.name.label.ts
+    ^
+    source.ts punctuation.separator.label.ts
+     ^
+     source.ts
+      ^
+      source.ts meta.block.ts punctuation.definition.block.ts
+>    console.log(1);
+ ^^^^
+ source.ts meta.block.ts
+     ^^^^^^^
+     source.ts meta.block.ts meta.function-call.ts support.class.console.ts
+            ^
+            source.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+             ^^^
+             source.ts meta.block.ts meta.function-call.ts support.function.console.ts
+                ^
+                source.ts meta.block.ts meta.brace.round.ts
+                 ^
+                 source.ts meta.block.ts constant.numeric.decimal.ts
+                  ^
+                  source.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+>console.log(1);
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.brace.round.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
