@@ -1,5 +1,5 @@
 
-**[TS and JS Grammar Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar) version:**  0.0.41 / latest
+**[TS and JS Grammar Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar) version:**  0.0.42 / latest
 
 **Code**
 
