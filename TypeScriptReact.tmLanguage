@@ -530,6 +530,7 @@
     ))
   ))
 )) |
+(:\s*([\(]\s*([\{\[]\s*)?$)) |
 (:\s*(=&gt;|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(&lt;[^&lt;&gt;]*&gt;)|[^&lt;&gt;(),=])+=\s*(
   ((async\s+)?(
     (function\s*[(&lt;*]) |
@@ -975,6 +976,7 @@
     ))
   ))
 )) |
+(:\s*([\(]\s*([\{\[]\s*)?$)) |
 (:\s*(=&gt;|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(&lt;[^&lt;&gt;]*&gt;)|[^&lt;&gt;(),=])+=\s*(
   ((async\s+)?(
     (function\s*[(&lt;*]) |
@@ -1443,6 +1445,7 @@
     ))
   ))
 )) |
+(:\s*([\(]\s*([\{\[]\s*)?$)) |
 (:\s*(=&gt;|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(&lt;[^&lt;&gt;]*&gt;)|[^&lt;&gt;(),=])+=\s*(
   ((async\s+)?(
     (function\s*[(&lt;*]) |
@@ -5857,11 +5860,96 @@
         <array>
           <dict>
             <key>include</key>
-            <string>#type</string>
+            <string>#destructuring-parameter</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?&lt;!=|:)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=\s*(:\s*(
+  (&lt;) |
+  ([(]\s*(
+    ([)]) |
+    (\.\.\.) |
+    ([_$[:alnum:]]+\s*(
+      ([:,?=])|
+      ([)]\s*=&gt;)
+    ))
+  ))
+)) |
+(:\s*([\(]\s*([\{\[]\s*)?$)))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.rest.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tsx variable.language.this.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tsx</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.optional.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?&lt;!=|:)(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(this)|([_$[:alpha:]][_$[:alnum:]]*))\s*(\??)(?=:)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.rest.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter.tsx variable.language.this.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter.tsx</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.optional.tsx</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>include</key>
-            <string>#function-parameters</string>
+            <string>#type-annotation</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>punctuation.separator.parameter.tsx</string>
+            <key>match</key>
+            <string>,</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#type</string>
           </dict>
         </array>
       </dict>

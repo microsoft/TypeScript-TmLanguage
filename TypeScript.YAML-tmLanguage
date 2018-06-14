@@ -94,11 +94,7 @@ variables:
         {{arrowLookup}}
       ))
     )
-  functionLikeAssignmentOrType: |-
-    \s*
-    # function assignment |
-    (={{functionOrArrowLookup}}) |
-    # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+  functionLikeType: |-
     (:\s*(
       (<) |
       ([(]\s*(
@@ -110,6 +106,13 @@ variables:
         ))
       ))
     )) |
+    (:\s*{{possiblyMultilineArrow}})
+  functionLikeAssignmentOrType: |-
+    \s*
+    # function assignment |
+    (={{functionOrArrowLookup}}) |
+    # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+    {{functionLikeType}} |
     (:\s*(=>|{{matchingParenthesis}}|(<[^<>]*>)|[^<>(),=])+={{functionOrArrowLookup}})
   arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
 
@@ -2027,8 +2030,28 @@ repository:
     endCaptures:
       '0': { name: meta.brace.round.ts }
     patterns:
+    - include: '#destructuring-parameter'
+    #parameter name only if followed by type annotation
+    - match: |-
+        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}}))\s*(\??)(?=\s*{{functionLikeType}})
+      captures:
+        '1': { name: storage.modifier.ts }
+        '2': { name: keyword.operator.rest.ts }
+        '3': { name: entity.name.function.ts variable.language.this.ts }
+        '4': { name: entity.name.function.ts }
+        '5': { name: keyword.operator.optional.ts }
+    - match: |-
+        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}}))\s*(\??)(?=:)
+      captures:
+        '1': { name: storage.modifier.ts }
+        '2': { name: keyword.operator.rest.ts }
+        '3': { name: variable.parameter.ts variable.language.this.ts }
+        '4': { name: variable.parameter.ts }
+        '5': { name: keyword.operator.optional.ts }
+    - include: '#type-annotation'
+    - name: punctuation.separator.parameter.ts
+      match: ','
     - include: '#type'
-    - include: '#function-parameters'
 
   type-fn-type-parameters:
     patterns:
