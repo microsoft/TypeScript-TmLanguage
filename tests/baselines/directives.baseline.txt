@@ -1,6 +1,7 @@
 original file
 -----------------------------------
 ///<reference path="somePath.ts"/>
+///<reference lib="es2015"/>
 ///<amd-dependency path="somePath.ts"/>
 ///<amd-module name="modulename"/>
 ///<amd-dependency path="someOtherPath.ts" name="someOtherModule"/>
@@ -29,6 +30,27 @@ Grammar: TypeScript.tmLanguage
                                 source.ts comment.line.triple-slash.directive.ts meta.tag.ts string.quoted.double.ts punctuation.definition.string.end.ts
                                  ^^
                                  source.ts comment.line.triple-slash.directive.ts meta.tag.ts punctuation.definition.tag.directive.ts
+>///<reference lib="es2015"/>
+ ^^^
+ source.ts comment.line.triple-slash.directive.ts punctuation.definition.comment.ts
+    ^
+    source.ts comment.line.triple-slash.directive.ts meta.tag.ts punctuation.definition.tag.directive.ts
+     ^^^^^^^^^
+     source.ts comment.line.triple-slash.directive.ts meta.tag.ts entity.name.tag.directive.ts
+              ^
+              source.ts comment.line.triple-slash.directive.ts meta.tag.ts
+               ^^^
+               source.ts comment.line.triple-slash.directive.ts meta.tag.ts entity.other.attribute-name.directive.ts
+                  ^
+                  source.ts comment.line.triple-slash.directive.ts meta.tag.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts comment.line.triple-slash.directive.ts meta.tag.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                    ^^^^^^
+                    source.ts comment.line.triple-slash.directive.ts meta.tag.ts string.quoted.double.ts
+                          ^
+                          source.ts comment.line.triple-slash.directive.ts meta.tag.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                           ^^
+                           source.ts comment.line.triple-slash.directive.ts meta.tag.ts punctuation.definition.tag.directive.ts
 >///<amd-dependency path="somePath.ts"/>
  ^^^
  source.ts comment.line.triple-slash.directive.ts punctuation.definition.comment.ts

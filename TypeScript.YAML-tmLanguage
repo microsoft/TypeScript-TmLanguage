@@ -2369,7 +2369,7 @@ repository:
 
   directives:
     name: comment.line.triple-slash.directive.ts
-    begin: ^(///)\s*(?=<(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|name)\s*=\s*({{quotedStrings}}))+\s*/>\s*$)
+    begin: ^(///)\s*(?=<(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|lib|name)\s*=\s*({{quotedStrings}}))+\s*/>\s*$)
     beginCaptures:
       '1': { name: punctuation.definition.comment.ts }
     end: (?=^)
@@ -2384,7 +2384,7 @@ repository:
         '0': { name: punctuation.definition.tag.directive.ts }
       patterns:
       - name: entity.other.attribute-name.directive.ts
-        match: 'path|types|no-default-lib|name'
+        match: 'path|types|no-default-lib|lib|name'
       - name: keyword.operator.assignment.ts
         match: '='
       - include: '#string'
