@@ -249,7 +249,7 @@ repository:
     - begin: (,)\s*(?!\S)
       beginCaptures:
         '1': { name: punctuation.separator.comma.ts }
-      end: (?<!,)((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$))
+      end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
       patterns:
       - include: '#comment'
       - include: '#destructuring-variable'
