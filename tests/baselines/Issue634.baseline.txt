@@ -1,0 +1,28 @@
+original file
+-----------------------------------
+eval;
+eval();
+package;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>eval;
+ ^^^^
+ source.ts variable.other.readwrite.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+>eval();
+ ^^^^
+ source.ts meta.function-call.ts support.function.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^
+      source.ts meta.brace.round.ts
+       ^
+       source.ts punctuation.terminator.statement.ts
+>package;
+ ^^^^^^^
+ source.ts keyword.control.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
