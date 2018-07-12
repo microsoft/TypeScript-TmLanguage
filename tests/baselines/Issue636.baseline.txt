@@ -1,0 +1,138 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+class Baz { }
+
+class F {
+	public *foo() {
+		yield <Baz />;
+	}
+	
+	public fuu() {
+		return <Baz />;
+	}
+}
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>class Baz { }
+ ^^^^^
+ source.tsx meta.class.tsx storage.type.class.tsx
+      ^
+      source.tsx meta.class.tsx
+       ^^^
+       source.tsx meta.class.tsx entity.name.type.class.tsx
+          ^
+          source.tsx meta.class.tsx
+           ^
+           source.tsx meta.class.tsx punctuation.definition.block.tsx
+            ^
+            source.tsx meta.class.tsx
+             ^
+             source.tsx meta.class.tsx punctuation.definition.block.tsx
+>
+ ^
+ source.tsx
+>class F {
+ ^^^^^
+ source.tsx meta.class.tsx storage.type.class.tsx
+      ^
+      source.tsx meta.class.tsx
+       ^
+       source.tsx meta.class.tsx entity.name.type.class.tsx
+        ^
+        source.tsx meta.class.tsx
+         ^
+         source.tsx meta.class.tsx punctuation.definition.block.tsx
+>	public *foo() {
+ ^
+ source.tsx meta.class.tsx
+  ^^^^^^
+  source.tsx meta.class.tsx meta.method.declaration.tsx storage.modifier.tsx
+        ^
+        source.tsx meta.class.tsx meta.method.declaration.tsx
+         ^
+         source.tsx meta.class.tsx meta.method.declaration.tsx keyword.generator.asterisk.tsx
+          ^^^
+          source.tsx meta.class.tsx meta.method.declaration.tsx meta.definition.method.tsx entity.name.function.tsx
+             ^
+             source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+              ^
+              source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+               ^
+               source.tsx meta.class.tsx meta.method.declaration.tsx
+                ^
+                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+>		yield <Baz />;
+ ^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+   ^^^^^
+   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx keyword.control.flow.tsx
+        ^
+        source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+         ^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+          ^^^
+          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+             ^
+             source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.tag.attributes.tsx
+              ^^
+              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                ^
+                source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.terminator.statement.tsx
+>	}
+ ^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+  ^
+  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+>	
+ ^^
+ source.tsx meta.class.tsx
+>	public fuu() {
+ ^
+ source.tsx meta.class.tsx
+  ^^^^^^
+  source.tsx meta.class.tsx meta.method.declaration.tsx storage.modifier.tsx
+        ^
+        source.tsx meta.class.tsx meta.method.declaration.tsx
+         ^^^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.definition.method.tsx entity.name.function.tsx
+            ^
+            source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+             ^
+             source.tsx meta.class.tsx meta.method.declaration.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+              ^
+              source.tsx meta.class.tsx meta.method.declaration.tsx
+               ^
+               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+>		return <Baz />;
+ ^^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+   ^^^^^^
+   source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx keyword.control.flow.tsx
+         ^
+         source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+          ^
+          source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+           ^^^
+           source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+              ^
+              source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx meta.tag.attributes.tsx
+               ^^
+               source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                 ^
+                 source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.terminator.statement.tsx
+>	}
+ ^
+ source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx
+  ^
+  source.tsx meta.class.tsx meta.method.declaration.tsx meta.block.tsx punctuation.definition.block.tsx
+>}
+ ^
+ source.tsx meta.class.tsx punctuation.definition.block.tsx
