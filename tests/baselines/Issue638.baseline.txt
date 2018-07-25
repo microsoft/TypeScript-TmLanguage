@@ -1,0 +1,50 @@
+original file
+-----------------------------------
+const
+  a = 1,
+  b: string = 'x'
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+>  a = 1,
+ ^^
+ source.ts meta.var.expr.ts
+   ^
+   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+    ^
+    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+     ^
+     source.ts meta.var.expr.ts keyword.operator.assignment.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts constant.numeric.decimal.ts
+        ^
+        source.ts meta.var.expr.ts punctuation.separator.comma.ts
+>  b: string = 'x'
+ ^^
+ source.ts meta.var.expr.ts
+   ^
+   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+    ^
+    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+      ^^^^^^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^
+               source.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                ^
+                source.ts meta.var.expr.ts string.quoted.single.ts
+                 ^
+                 source.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts

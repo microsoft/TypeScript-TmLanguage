@@ -33,13 +33,16 @@ variables:
   # any use of property name needs to ignore line breaks in regular expression because of decimal number regex (maintained for readability)
   propertyName: ({{anyNumber}}|({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
-  endOfStatement: ';|\babstract\b|\basync\b|\bclass\b|\bconst\b|\bdeclare\b|\benum\b|\bexport\b|\bfunction\b|\bimport\b|\binterface\b|\blet\b|\bmodule\b|\bnamespace\b|\breturn\b|\btype\b|\bvar\b'
+  endOfStatement: ';|^\s*abstract\b|^\s*async\b|^\s*class\b|^\s*const\b|^\s*declare\b|^\s*enum\b|^\s*export\b|^\s*function\b|^\s*import\b|^\s*interface\b|^\s*let\b|^\s*module\b|^\s*namespace\b|^\s*return\b|^\s*type\b|^\s*var\b'
   nonPropertyLookBehind: '[^\._$[:alnum:]]'
   lookBehindReturn: '^return|{{nonPropertyLookBehind}}return'
   lookBehindThrow: '^throw|{{nonPropertyLookBehind}}throw'
   lookBehindYield: '^yield|{{nonPropertyLookBehind}}yield'
   lookBehindAwait: '^await|{{nonPropertyLookBehind}}await'
   lookBehindDefault: '^default|{{nonPropertyLookBehind}}default'
+  lookBehindConst: '^const|{{nonPropertyLookBehind}}const'
+  lookBehindLet: '^let|{{nonPropertyLookBehind}}let'
+  lookBehindVar: '^var|{{nonPropertyLookBehind}}var'
   lookBehindIn: '^in|{{nonPropertyLookBehind}}in'
   lookBehindOf: '^of|{{nonPropertyLookBehind}}of'
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
@@ -243,7 +246,7 @@ repository:
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.type.ts }
-    end: (?=$|^|;|}|(\s+(of|in)\s+))
+    end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindConst}}|{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
     patterns:
     - include: '#destructuring-variable'
     - include: '#var-single-variable'
