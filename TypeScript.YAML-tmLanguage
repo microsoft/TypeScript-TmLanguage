@@ -241,27 +241,51 @@ repository:
 
   #variable, parameters, fields
   var-expr:
-    name: meta.var.expr.ts
-    begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(var|let|const(?!\s+enum\b)){{endOfIdentifier}}'
-    beginCaptures:
-      '1': { name: keyword.control.export.ts }
-      '2': { name: storage.type.ts }
-    end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindConst}}|{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
     patterns:
-    - include: '#destructuring-variable'
-    - include: '#var-single-variable'
-    - include: '#variable-initializer'
-    - include: '#comment'
-    - begin: (,)\s*(?!\S)
+    # let/var
+    - name: meta.var.expr.ts
+      begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(var|let){{endOfIdentifier}}'
       beginCaptures:
-        '1': { name: punctuation.separator.comma.ts }
-      end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
+        '1': { name: keyword.control.export.ts }
+        '2': { name: storage.type.ts }
+      end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
       patterns:
-      - include: '#comment'
       - include: '#destructuring-variable'
       - include: '#var-single-variable'
+      - include: '#variable-initializer'
+      - include: '#comment'
+      - begin: (,)\s*(?!\S)
+        beginCaptures:
+          '1': { name: punctuation.separator.comma.ts }
+        end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
+        patterns:
+        - include: '#comment'
+        - include: '#destructuring-variable'
+        - include: '#var-single-variable'
+        - include: '#punctuation-comma'
       - include: '#punctuation-comma'
-    - include: '#punctuation-comma'
+    # const
+    - name: meta.var.expr.ts
+      begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(const(?!\s+enum\b)){{endOfIdentifier}}'
+      beginCaptures:
+        '1': { name: keyword.control.export.ts }
+        '2': { name: storage.type.ts }
+      end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindConst}})(?=\s*$)))
+      patterns:
+      - include: '#destructuring-const'
+      - include: '#var-single-const'
+      - include: '#variable-initializer'
+      - include: '#comment'
+      - begin: (,)\s*(?!\S)
+        beginCaptures:
+          '1': { name: punctuation.separator.comma.ts }
+        end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
+        patterns:
+        - include: '#comment'
+        - include: '#destructuring-const'
+        - include: '#var-single-const'
+        - include: '#punctuation-comma'
+      - include: '#punctuation-comma'
 
   var-single-variable:
     patterns:
@@ -284,6 +308,24 @@ repository:
       begin: ({{identifier}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#var-single-variable-type-annotation'
+
+  var-single-const:
+    patterns:
+    - name: meta.var-single-variable.expr.ts
+      begin: |-
+        (?x)({{identifier}})(?={{functionLikeAssignmentOrType}})
+      beginCaptures:
+        '1': { name: meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts }
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#var-single-variable-type-annotation'
+    - name: meta.var-single-variable.expr.ts
+      begin: ({{identifier}})
+      beginCaptures:
+        '1': { name: meta.definition.variable.ts variable.other.constant.ts }
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
@@ -311,6 +353,23 @@ repository:
       - include: '#type-annotation'
       - include: '#comment'
 
+  destructuring-const:
+    patterns:
+    - name: meta.object-binding-pattern-variable.ts
+      begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\{)
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#object-binding-pattern-const'
+      - include: '#type-annotation'
+      - include: '#comment'
+    - name: meta.array-binding-pattern-variable.ts
+      begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\[)
+      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      patterns:
+      - include: '#array-binding-pattern-const'
+      - include: '#type-annotation'
+      - include: '#comment'
+
   object-binding-element:
     patterns:
     - include: '#comment'
@@ -321,6 +380,19 @@ repository:
       - include: '#binding-element'
     - include: '#object-binding-pattern'
     - include: '#destructuring-variable-rest'
+    - include: '#variable-initializer'
+    - include: '#punctuation-comma'
+
+  object-binding-element-const:
+    patterns:
+    - include: '#comment'
+    - begin: (?x)(?={{propertyName}}\s*(:))
+      end: (?=,|\})
+      patterns:
+      - include: '#object-binding-element-propertyName'
+      - include: '#binding-element-const'
+    - include: '#object-binding-pattern-const'
+    - include: '#destructuring-variable-rest-const'
     - include: '#variable-initializer'
     - include: '#punctuation-comma'
 
@@ -345,11 +417,26 @@ repository:
     - include: '#destructuring-variable-rest'
     - include: '#variable-initializer'
 
+  binding-element-const:
+    patterns:
+    - include: '#comment'
+    - include: '#string'
+    - include: '#object-binding-pattern-const'
+    - include: '#array-binding-pattern-const'
+    - include: '#destructuring-variable-rest-const'
+    - include: '#variable-initializer'
+
   destructuring-variable-rest:
     match: (?:(\.\.\.)\s*)?({{identifier}})
     captures:
       '1': { name: keyword.operator.rest.ts }
       '2': { name: meta.definition.variable.ts variable.other.readwrite.ts }
+
+  destructuring-variable-rest-const:
+    match: (?:(\.\.\.)\s*)?({{identifier}})
+    captures:
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: meta.definition.variable.ts variable.other.constant.ts }
 
   object-binding-pattern:
     begin: (?:(\.\.\.)\s*)?(\{)
@@ -362,6 +449,17 @@ repository:
     patterns:
     - include: '#object-binding-element'
 
+  object-binding-pattern-const:
+    begin: (?:(\.\.\.)\s*)?(\{)
+    beginCaptures:
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: punctuation.definition.binding-pattern.object.ts }
+    end: \}
+    endCaptures:
+      '0': { name: punctuation.definition.binding-pattern.object.ts }
+    patterns:
+    - include: '#object-binding-element-const'
+
   array-binding-pattern:
     begin: (?:(\.\.\.)\s*)?(\[)
     beginCaptures:
@@ -372,6 +470,18 @@ repository:
       '0': { name: punctuation.definition.binding-pattern.array.ts }
     patterns:
     - include: '#binding-element'
+    - include: '#punctuation-comma'
+
+  array-binding-pattern-const:
+    begin: (?:(\.\.\.)\s*)?(\[)
+    beginCaptures:
+      '1': { name: keyword.operator.rest.ts }
+      '2': { name: punctuation.definition.binding-pattern.array.ts }
+    end: \]
+    endCaptures:
+      '0': { name: punctuation.definition.binding-pattern.array.ts }
+    patterns:
+    - include: '#binding-element-const'
     - include: '#punctuation-comma'
 
   parameter-name:
