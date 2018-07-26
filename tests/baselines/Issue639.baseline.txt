@@ -1,0 +1,190 @@
+original file
+-----------------------------------
+var g = function() {console.log(1);};
+var x = (function(){}/0); // bad highlighting
+var y = (function(){}/0/g);
+var z = (function(){}/0/g)/g(function(){}/0/g);
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>var g = function() {console.log(1);};
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts entity.name.function.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^^^^^^^^
+         source.ts meta.var.expr.ts meta.function.expression.ts storage.type.function.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.function.expression.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                     ^^^^^^^
+                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function-call.ts support.class.console.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                             ^^^
+                             source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.function-call.ts support.function.console.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts constant.numeric.decimal.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts meta.brace.round.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.terminator.statement.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                     ^
+                                     source.ts punctuation.terminator.statement.ts
+>var x = (function(){}/0); // bad highlighting
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts meta.brace.round.ts
+          ^^^^^^^^
+          source.ts meta.var.expr.ts meta.function.expression.ts storage.type.function.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                       ^
+                       source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.brace.round.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts
+                          ^
+                          source.ts
+                           ^^
+                           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                             ^^^^^^^^^^^^^^^^^^
+                             source.ts comment.line.double-slash.ts
+>var y = (function(){}/0/g);
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts meta.brace.round.ts
+          ^^^^^^^^
+          source.ts meta.var.expr.ts meta.function.expression.ts storage.type.function.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                       ^
+                       source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                        ^
+                        source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                         ^
+                         source.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.brace.round.ts
+                           ^
+                           source.ts punctuation.terminator.statement.ts
+>var z = (function(){}/0/g)/g(function(){}/0/g);
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts meta.brace.round.ts
+          ^^^^^^^^
+          source.ts meta.var.expr.ts meta.function.expression.ts storage.type.function.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                       ^
+                       source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                        ^
+                        source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                         ^
+                         source.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.brace.round.ts
+                           ^
+                           source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.brace.round.ts
+                              ^^^^^^^^
+                              source.ts meta.var.expr.ts meta.function.expression.ts storage.type.function.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+                                          ^
+                                          source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                                           ^
+                                           source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                            ^
+                                            source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                                             ^
+                                             source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.brace.round.ts
+                                               ^
+                                               source.ts punctuation.terminator.statement.ts
