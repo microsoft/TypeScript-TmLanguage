@@ -509,18 +509,20 @@ repository:
   destructuring-parameter:
     patterns:
     - name: meta.parameter.object-binding-pattern.ts
-      begin: (?<!=|:)\s*(\{)
+      begin: (?<!=|:)\s*(?:(\.\.\.)\s*)?(\{)
       beginCaptures:
-        '1': { name: punctuation.definition.binding-pattern.object.ts }
+        '1': { name: keyword.operator.rest.ts }
+        '2': { name: punctuation.definition.binding-pattern.object.ts }
       end: \}
       endCaptures:
         '0': { name: punctuation.definition.binding-pattern.object.ts }
       patterns:
       - include: '#parameter-object-binding-element'
     - name: meta.paramter.array-binding-pattern.ts
-      begin: (?<!=|:)\s*(\[)
+      begin: (?<!=|:)\s*(?:(\.\.\.)\s*)?(\[)
       beginCaptures:
-        '1': { name: punctuation.definition.binding-pattern.array.ts }
+        '1': { name: keyword.operator.rest.ts }
+        '2': { name: punctuation.definition.binding-pattern.array.ts }
       end: \]
       endCaptures:
         '0': { name: punctuation.definition.binding-pattern.array.ts }

@@ -1515,10 +1515,15 @@
             <key>name</key>
             <string>meta.parameter.object-binding-pattern.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!=|:)\s*(\{)</string>
+            <string>(?&lt;!=|:)\s*(?:(\.\.\.)\s*)?(\{)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.rest.tsx</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.definition.binding-pattern.object.tsx</string>
@@ -1546,10 +1551,15 @@
             <key>name</key>
             <string>meta.paramter.array-binding-pattern.tsx</string>
             <key>begin</key>
-            <string>(?&lt;!=|:)\s*(\[)</string>
+            <string>(?&lt;!=|:)\s*(?:(\.\.\.)\s*)?(\[)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.rest.tsx</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.definition.binding-pattern.array.tsx</string>
