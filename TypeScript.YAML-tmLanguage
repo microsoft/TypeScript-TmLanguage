@@ -52,6 +52,7 @@ variables:
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
   inlineComment: \/\*([^\*]|(\*[^\/]))*\*\/
+  startOfDeclaration: '{{startOfIdentifier}}(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?'
   lookBehindOfPossiblyMultilineArrowWithDestructuring: (?<=[(=,])
   lookBehindOfPossiblyMultilineArrow: (?<=[(=,]|=>)
   lookBehindOfObjectMemberPossiblyMultilineArrow: (?<=:)
@@ -144,17 +145,19 @@ repository:
 
   declaration:
     patterns:
-     - include: '#decorator'
-     - include: '#var-expr'
-     - include: '#function-declaration'
-     - include: '#class-declaration'
-     - include: '#interface-declaration'
-     - include: '#enum-declaration'
-     - include: '#namespace-declaration'
-     - include: '#type-alias-declaration'
-     - include: '#import-equals-declaration'
-     - include: '#import-declaration'
-     - include: '#export-declaration'
+    - include: '#decorator'
+    - include: '#var-expr'
+    - include: '#function-declaration'
+    - include: '#class-declaration'
+    - include: '#interface-declaration'
+    - include: '#enum-declaration'
+    - include: '#namespace-declaration'
+    - include: '#type-alias-declaration'
+    - include: '#import-equals-declaration'
+    - include: '#import-declaration'
+    - include: '#export-declaration'
+    - name: storage.modifier.ts
+      match: '{{startOfIdentifier}}(declare){{endOfIdentifier}}'
 
   control-statement:
     patterns:
@@ -180,8 +183,6 @@ repository:
       match: '{{startOfIdentifier}}(package){{endOfIdentifier}}'
     - name: keyword.other.debugger.ts
       match: '{{startOfIdentifier}}(debugger){{endOfIdentifier}}'
-    - name: storage.modifier.ts
-      match: '{{startOfIdentifier}}(declare){{endOfIdentifier}}'
 
   label:
     patterns:
@@ -244,10 +245,11 @@ repository:
     patterns:
     # let/var
     - name: meta.var.expr.ts
-      begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(var|let){{endOfIdentifier}}'
+      begin: '{{startOfDeclaration}}\b(var|let){{endOfIdentifier}}'
       beginCaptures:
         '1': { name: keyword.control.export.ts }
-        '2': { name: storage.type.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: storage.type.ts }
       end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
       patterns:
       - include: '#destructuring-variable'
@@ -266,10 +268,11 @@ repository:
       - include: '#punctuation-comma'
     # const
     - name: meta.var.expr.ts
-      begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(const(?!\s+enum\b)){{endOfIdentifier}}'
+      begin: '{{startOfDeclaration}}\b(const(?!\s+enum\b)){{endOfIdentifier}}'
       beginCaptures:
         '1': { name: keyword.control.export.ts }
-        '2': { name: storage.type.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: storage.type.ts }
       end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindConst}})(?=\s*$)))
       patterns:
       - include: '#destructuring-const'
@@ -629,13 +632,14 @@ repository:
   #functions, methods, function expressions, arrows, indexers
   function-declaration:
     name: meta.function.ts
-    begin: '{{startOfIdentifier}}(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))({{identifier}}))?\s*'
+    begin: '{{startOfDeclaration}}(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?<=\*))({{identifier}}))?\s*'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
-      '2': { name: storage.modifier.async.ts }
-      '3': { name: storage.type.function.ts }
-      '4': { name: keyword.generator.asterisk.ts }
-      '5': { name: meta.definition.function.ts entity.name.function.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: storage.modifier.async.ts }
+      '4': { name: storage.type.function.ts }
+      '5': { name: keyword.generator.asterisk.ts }
+      '6': { name: meta.definition.function.ts entity.name.function.ts }
     end: (?=$|^|;)|(?<=\})
     patterns:
     - include: '#function-name'
@@ -836,11 +840,12 @@ repository:
   #class declaration and expression, interface
   class-declaration:
     name: meta.class.ts
-    begin: '{{startOfIdentifier}}(?:(export)\s+)?\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])'
+    begin: '{{startOfDeclaration}}\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts }
-      '3': { name: storage.type.class.ts }
+      '3': { name: storage.modifier.ts }
+      '4': { name: storage.type.class.ts }
     end: (?<=\})
     patterns:
     - include: '#class-declaration-or-expression-patterns'
@@ -867,11 +872,12 @@ repository:
 
   interface-declaration:
     name: meta.interface.ts
-    begin: '{{startOfIdentifier}}(?:(export)\s+)?\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])'
+    begin: '{{startOfDeclaration}}\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts }
-      '3': { name: storage.type.interface.ts }
+      '3': { name: storage.modifier.ts }
+      '4': { name: storage.type.interface.ts }
     end: (?<=\})
     patterns:
     - include: '#comment'
@@ -945,12 +951,13 @@ repository:
   #enum
   enum-declaration:
     name: meta.enum.declaration.ts
-    begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+({{identifier}})'
+    begin: '{{startOfDeclaration}}(?:\b(const)\s+)?\b(enum)\s+({{identifier}})'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts}
-      '3': { name: storage.type.enum.ts }
-      '4': { name: entity.name.type.enum.ts }
+      '3': { name: storage.modifier.ts}
+      '4': { name: storage.type.enum.ts }
+      '5': { name: entity.name.type.enum.ts }
     end: (?<=\})
     patterns:
     - include: '#comment'
@@ -981,10 +988,11 @@ repository:
   #namespace
   namespace-declaration:
     name: meta.namespace.declaration.ts
-    begin: (?:{{startOfIdentifier}}(?:(\bexport)\s+)?\b(namespace|module)\s+(?=[_$[:alpha:]"'`]))
+    begin: (?:{{startOfDeclaration}}\b(namespace|module)\s+(?=[_$[:alpha:]"'`]))
     beginCaptures:
       '1': { name: keyword.control.export.ts }
-      '2': { name: storage.type.namespace.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: storage.type.namespace.ts }
     end: (?<=\})|(?={{endOfStatement}})
     patterns:
     - include: '#comment'
@@ -997,11 +1005,12 @@ repository:
   #type alias
   type-alias-declaration:
     name: meta.type.declaration.ts
-    begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(type)\b\s+({{identifier}})\s*'
+    begin: '{{startOfDeclaration}}\b(type)\b\s+({{identifier}})\s*'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
-      '2': { name: storage.type.type.ts }
-      '3': { name: entity.name.type.alias.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: storage.type.type.ts }
+      '4': { name: entity.name.type.alias.ts }
     end: (?=\}|{{endOfStatement}})
     patterns:
       - include: '#comment'
@@ -1017,14 +1026,15 @@ repository:
   import-equals-declaration:
     patterns:
     - name: meta.import-equals.external.ts
-      begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(import)\s+({{identifier}})\s*(=)\s*(require)\s*(\()'
+      begin: '{{startOfDeclaration}}\b(import)\s+({{identifier}})\s*(=)\s*(require)\s*(\()'
       beginCaptures:
         '1': { name: keyword.control.export.ts }
-        '2': { name: keyword.control.import.ts }
-        '3': { name: variable.other.readwrite.alias.ts }
-        '4': { name: keyword.operator.assignment.ts }
-        '5': { name: keyword.control.require.ts }
-        '6': { name: meta.brace.round.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: keyword.control.import.ts }
+        '4': { name: variable.other.readwrite.alias.ts }
+        '5': { name: keyword.operator.assignment.ts }
+        '6': { name: keyword.control.require.ts }
+        '7': { name: meta.brace.round.ts }
       end: \)
       endCaptures:
         '0': { name: meta.brace.round.ts }
@@ -1032,12 +1042,13 @@ repository:
         - include: '#comment'
         - include: '#string'
     - name: meta.import-equals.internal.ts
-      begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(import)\s+({{identifier}})\s*(=)\s*(?!require\b)'
+      begin: '{{startOfDeclaration}}\b(import)\s+({{identifier}})\s*(=)\s*(?!require\b)'
       beginCaptures:
         '1': { name: keyword.control.export.ts }
-        '2': { name: keyword.control.import.ts }
-        '3': { name: variable.other.readwrite.alias.ts }
-        '4': { name: keyword.operator.assignment.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: keyword.control.import.ts }
+        '4': { name: variable.other.readwrite.alias.ts }
+        '5': { name: keyword.operator.assignment.ts }
       end: (?=;|$|^)
       patterns:
         - include: '#comment'
@@ -1051,10 +1062,11 @@ repository:
 
   import-declaration:
     name: meta.import.ts
-    begin: '{{startOfIdentifier}}(?:(\bexport)\s+)?\b(import)(?!\s*[:\(]){{endOfIdentifier}}'
+    begin: '{{startOfDeclaration}}\b(import)(?!\s*[:\(]){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
-      '2': { name: keyword.control.import.ts }
+      '2': { name: storage.modifier.ts }
+      '3': { name: keyword.control.import.ts }
     end: (?<!{{lookBehindImport}})(?=;|$|^)
     patterns:
     - include: '#comment'

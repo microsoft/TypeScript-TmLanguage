@@ -133,6 +133,12 @@
             <key>include</key>
             <string>#export-declaration</string>
           </dict>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.ts</string>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(declare)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+          </dict>
         </array>
       </dict>
       <key>control-statement</key>
@@ -211,12 +217,6 @@
             <string>keyword.other.debugger.ts</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(debugger)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>storage.modifier.ts</string>
-            <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(declare)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
           </dict>
         </array>
       </dict>
@@ -411,7 +411,7 @@
             <key>name</key>
             <string>meta.var.expr.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -420,6 +420,11 @@
                 <string>keyword.control.export.ts</string>
               </dict>
               <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>storage.type.ts</string>
@@ -488,7 +493,7 @@
             <key>name</key>
             <string>meta.var.expr.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -497,6 +502,11 @@
                 <string>keyword.control.export.ts</string>
               </dict>
               <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>storage.type.ts</string>
@@ -2002,7 +2012,7 @@
         <key>name</key>
         <string>meta.function.ts</string>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(export)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?(?:(async)\s+)?(function\b)(?:\s*(\*))?(?:(?:\s+|(?&lt;=\*))([_$[:alpha:]][_$[:alnum:]]*))?\s*</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2013,19 +2023,24 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>storage.modifier.async.ts</string>
+            <string>storage.modifier.ts</string>
           </dict>
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>storage.type.function.ts</string>
+            <string>storage.modifier.async.ts</string>
           </dict>
           <key>4</key>
           <dict>
             <key>name</key>
-            <string>keyword.generator.asterisk.ts</string>
+            <string>storage.type.function.ts</string>
           </dict>
           <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.generator.asterisk.ts</string>
+          </dict>
+          <key>6</key>
           <dict>
             <key>name</key>
             <string>meta.definition.function.ts entity.name.function.ts</string>
@@ -2701,7 +2716,7 @@
         <key>name</key>
         <string>meta.class.ts</string>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(export)\s+)?\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(?:(abstract)\s+)?\b(class)\b(?=\s+|/[/*])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2715,6 +2730,11 @@
             <string>storage.modifier.ts</string>
           </dict>
           <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.ts</string>
+          </dict>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>storage.type.class.ts</string>
@@ -2793,7 +2813,7 @@
         <key>name</key>
         <string>meta.interface.ts</string>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(export)\s+)?\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(?:(abstract)\s+)?\b(interface)\b(?=\s+|/[/*])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -2807,6 +2827,11 @@
             <string>storage.modifier.ts</string>
           </dict>
           <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.ts</string>
+          </dict>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>storage.type.interface.ts</string>
@@ -3034,7 +3059,7 @@
         <key>name</key>
         <string>meta.enum.declaration.ts</string>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?(?:\b(const)\s+)?\b(enum)\s+([_$[:alpha:]][_$[:alnum:]]*)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3050,9 +3075,14 @@
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>storage.type.enum.ts</string>
+            <string>storage.modifier.ts</string>
           </dict>
           <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.enum.ts</string>
+          </dict>
+          <key>5</key>
           <dict>
             <key>name</key>
             <string>entity.name.type.enum.ts</string>
@@ -3156,7 +3186,7 @@
         <key>name</key>
         <string>meta.namespace.declaration.ts</string>
         <key>begin</key>
-        <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(namespace|module)\s+(?=[_$[:alpha:]"'`]))</string>
+        <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(namespace|module)\s+(?=[_$[:alpha:]"'`]))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3165,6 +3195,11 @@
             <string>keyword.control.export.ts</string>
           </dict>
           <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.ts</string>
+          </dict>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>storage.type.namespace.ts</string>
@@ -3203,7 +3238,7 @@
         <key>name</key>
         <string>meta.type.declaration.ts</string>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(type)\b\s+([_$[:alpha:]][_$[:alnum:]]*)\s*</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(type)\b\s+([_$[:alpha:]][_$[:alnum:]]*)\s*</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3214,9 +3249,14 @@
           <key>2</key>
           <dict>
             <key>name</key>
-            <string>storage.type.type.ts</string>
+            <string>storage.modifier.ts</string>
           </dict>
           <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.type.ts</string>
+          </dict>
+          <key>4</key>
           <dict>
             <key>name</key>
             <string>entity.name.type.alias.ts</string>
@@ -3265,7 +3305,7 @@
             <key>name</key>
             <string>meta.import-equals.external.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(require)\s*(\()</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(require)\s*(\()</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -3276,24 +3316,29 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.control.import.ts</string>
+                <string>storage.modifier.ts</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.readwrite.alias.ts</string>
+                <string>keyword.control.import.ts</string>
               </dict>
               <key>4</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.assignment.ts</string>
+                <string>variable.other.readwrite.alias.ts</string>
               </dict>
               <key>5</key>
               <dict>
                 <key>name</key>
-                <string>keyword.control.require.ts</string>
+                <string>keyword.operator.assignment.ts</string>
               </dict>
               <key>6</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.require.ts</string>
+              </dict>
+              <key>7</key>
               <dict>
                 <key>name</key>
                 <string>meta.brace.round.ts</string>
@@ -3325,7 +3370,7 @@
             <key>name</key>
             <string>meta.import-equals.internal.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(?!require\b)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(import)\s+([_$[:alpha:]][_$[:alnum:]]*)\s*(=)\s*(?!require\b)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -3336,14 +3381,19 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.control.import.ts</string>
+                <string>storage.modifier.ts</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.readwrite.alias.ts</string>
+                <string>keyword.control.import.ts</string>
               </dict>
               <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.readwrite.alias.ts</string>
+              </dict>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.assignment.ts</string>
@@ -3394,7 +3444,7 @@
         <key>name</key>
         <string>meta.import.ts</string>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?\b(import)(?!\s*[:\(])(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(import)(?!\s*[:\(])(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -3403,6 +3453,11 @@
             <string>keyword.control.export.ts</string>
           </dict>
           <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.ts</string>
+          </dict>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>keyword.control.import.ts</string>
