@@ -1,0 +1,92 @@
+original file
+-----------------------------------
+export class TestClient {
+    private readonly test1;
+    private readonly test2?;
+    private readonly test3;
+    private readonly test4;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export class TestClient {
+ ^^^^^^
+ source.ts meta.class.ts keyword.control.export.ts
+       ^
+       source.ts meta.class.ts
+        ^^^^^
+        source.ts meta.class.ts storage.type.class.ts
+             ^
+             source.ts meta.class.ts
+              ^^^^^^^^^^
+              source.ts meta.class.ts entity.name.type.class.ts
+                        ^
+                        source.ts meta.class.ts
+                         ^
+                         source.ts meta.class.ts punctuation.definition.block.ts
+>    private readonly test1;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts
+             ^^^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts storage.modifier.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts
+                      ^^^^^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                           ^
+                           source.ts meta.class.ts punctuation.terminator.statement.ts
+>    private readonly test2?;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts
+             ^^^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts storage.modifier.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts
+                      ^^^^^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts keyword.operator.optional.ts
+                            ^
+                            source.ts meta.class.ts punctuation.terminator.statement.ts
+>    private readonly test3;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts
+             ^^^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts storage.modifier.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts
+                      ^^^^^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                           ^
+                           source.ts meta.class.ts punctuation.terminator.statement.ts
+>    private readonly test4;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts
+             ^^^^^^^^
+             source.ts meta.class.ts meta.field.declaration.ts storage.modifier.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts
+                      ^^^^^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                           ^
+                           source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

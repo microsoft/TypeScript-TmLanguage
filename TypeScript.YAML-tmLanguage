@@ -586,31 +586,28 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(\?\s*)?(=|:))
+    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(\?\s*)?(=|:|;|$))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:))))|(?<=\})
+    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:|;|$))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
-    - begin: (?x)(?={{propertyName}}\s*(\?\s*)?(=|:))
-      end: (?x)(?=[};,=]|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:))))|(?<=\})
-      patterns:
-      - include: '#type-annotation'
-      - include: '#string'
-      - include: '#array-literal'
-      - include: '#numeric-literal'
-      - include: '#comment'
-      # function assignment |
-      # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
-      - match: |-
-          (?x)({{identifier}})(\?)?(?=(\?\s*)?{{functionLikeAssignmentOrType}})
-        captures:
-          '1': { name: meta.definition.property.ts entity.name.function.ts }
-          '2': { name: keyword.operator.optional.ts }
-      - name: meta.definition.property.ts variable.object.property.ts
-        match: '{{identifier}}'
-      - name: keyword.operator.optional.ts
-        match: \?
+    - include: '#type-annotation'
+    - include: '#string'
+    - include: '#array-literal'
+    - include: '#numeric-literal'
+    - include: '#comment'
+    # function assignment |
+    # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
+    - match: |-
+        (?x)({{identifier}})(\?)?(?=(\?\s*)?{{functionLikeAssignmentOrType}})
+      captures:
+        '1': { name: meta.definition.property.ts entity.name.function.ts }
+        '2': { name: keyword.operator.optional.ts }
+    - name: meta.definition.property.ts variable.object.property.ts
+      match: '{{identifier}}'
+    - name: keyword.operator.optional.ts
+      match: \?
 
   variable-initializer:
     patterns:

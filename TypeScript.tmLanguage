@@ -1783,7 +1783,7 @@
   (?:\b[0-9][0-9_]*(\.)\B)|                                  # 1.
   (?:\B(\.)[0-9][0-9_]*\b)|                                  # .1
   (?:\b[0-9][0-9_]*\b(?!\.))                                 # 1
-)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
+)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:|;|$))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1802,7 +1802,7 @@
   (?:\b[0-9][0-9_]*(\.)\B)|                                  # 1.
   (?:\B(\.)[0-9][0-9_]*\b)|                                  # .1
   (?:\b[0-9][0-9_]*\b(?!\.))                                 # 1
-)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
+)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:|;|$))))|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -1810,53 +1810,28 @@
             <string>#variable-initializer</string>
           </dict>
           <dict>
-            <key>begin</key>
-            <string>(?x)(?=((\b(?&lt;!\$)0(x|X)[0-9a-fA-F][0-9a-fA-F_]*\b(?!\$))|(\b(?&lt;!\$)0(b|B)[01][01_]*\b(?!\$))|(\b(?&lt;!\$)0(o|O)?[0-7][0-7_]*\b(?!\$))|((?&lt;!\$)(?:
-  (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)| # 1.1E+3
-  (?:\b[0-9][0-9_]*(\.)[eE][+-]?[0-9][0-9_]*\b)|             # 1.E+3
-  (?:\B(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)|             # .1E+3
-  (?:\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)|                 # 1E+3
-  (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*\b)|                      # 1.1
-  (?:\b[0-9][0-9_]*(\.)\B)|                                  # 1.
-  (?:\B(\.)[0-9][0-9_]*\b)|                                  # .1
-  (?:\b[0-9][0-9_]*\b(?!\.))                                 # 1
-)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))</string>
-            <key>end</key>
-            <string>(?x)(?=[};,=]|$|(^(?!\s*((\b(?&lt;!\$)0(x|X)[0-9a-fA-F][0-9a-fA-F_]*\b(?!\$))|(\b(?&lt;!\$)0(b|B)[01][01_]*\b(?!\$))|(\b(?&lt;!\$)0(o|O)?[0-7][0-7_]*\b(?!\$))|((?&lt;!\$)(?:
-  (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)| # 1.1E+3
-  (?:\b[0-9][0-9_]*(\.)[eE][+-]?[0-9][0-9_]*\b)|             # 1.E+3
-  (?:\B(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)|             # .1E+3
-  (?:\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)|                 # 1E+3
-  (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*\b)|                      # 1.1
-  (?:\b[0-9][0-9_]*(\.)\B)|                                  # 1.
-  (?:\B(\.)[0-9][0-9_]*\b)|                                  # .1
-  (?:\b[0-9][0-9_]*\b(?!\.))                                 # 1
-)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:))))|(?&lt;=\})</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#type-annotation</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#string</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#array-literal</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#numeric-literal</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-              <dict>
-                <key>match</key>
-                <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(\?)?(?=(\?\s*)?\s*
+            <key>include</key>
+            <string>#type-annotation</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#string</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#array-literal</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#numeric-literal</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#comment</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(\?)?(?=(\?\s*)?\s*
 # function assignment |
 (=\s*(
   ((async\s+)?(
@@ -1929,33 +1904,31 @@
 )
   ))
 )))</string>
-                <key>captures</key>
-                <dict>
-                  <key>1</key>
-                  <dict>
-                    <key>name</key>
-                    <string>meta.definition.property.ts entity.name.function.ts</string>
-                  </dict>
-                  <key>2</key>
-                  <dict>
-                    <key>name</key>
-                    <string>keyword.operator.optional.ts</string>
-                  </dict>
-                </dict>
-              </dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
               <dict>
                 <key>name</key>
-                <string>meta.definition.property.ts variable.object.property.ts</string>
-                <key>match</key>
-                <string>[_$[:alpha:]][_$[:alnum:]]*</string>
+                <string>meta.definition.property.ts entity.name.function.ts</string>
               </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.optional.ts</string>
-                <key>match</key>
-                <string>\?</string>
               </dict>
-            </array>
+            </dict>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.definition.property.ts variable.object.property.ts</string>
+            <key>match</key>
+            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.optional.ts</string>
+            <key>match</key>
+            <string>\?</string>
           </dict>
         </array>
       </dict>
