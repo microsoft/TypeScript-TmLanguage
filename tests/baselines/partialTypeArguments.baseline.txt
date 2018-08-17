@@ -1,0 +1,354 @@
+original file
+-----------------------------------
+const instance1 = new Foo<*, *>(0, "");
+const result1 = foo<*, string>(0, "");
+const tagged1 = tag<*, string>`tags ${12} ${""}`;
+type A = Foo<*, string>;
+const instance2 = new Foo<number, *>(0, "");
+const result2 = foo<number, *>(0, "");
+const tagged2 = tag<number, *>`tags ${12} ${""}`;
+type A2 = Foo<string, *>;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const instance1 = new Foo<*, *>(0, "");
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.var.expr.ts
+                   ^^^
+                   source.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts
+                      ^
+                      source.ts meta.var.expr.ts new.expr.ts
+                       ^^^
+                       source.ts meta.var.expr.ts new.expr.ts entity.name.type.ts
+                          ^
+                          source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                           ^
+                           source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts keyword.operator.type.ts
+                            ^
+                            source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                             ^
+                             source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts
+                              ^
+                              source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts keyword.operator.type.ts
+                               ^
+                               source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                ^
+                                source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                                 ^
+                                 source.ts meta.var.expr.ts new.expr.ts constant.numeric.decimal.ts
+                                  ^
+                                  source.ts meta.var.expr.ts new.expr.ts punctuation.separator.comma.ts
+                                   ^
+                                   source.ts meta.var.expr.ts new.expr.ts
+                                    ^
+                                    source.ts meta.var.expr.ts new.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                     ^
+                                     source.ts meta.var.expr.ts new.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                      ^
+                                      source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts
+>const result1 = foo<*, string>(0, "");
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^^^
+                 source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.type.parameters.ts keyword.operator.type.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.type.parameters.ts
+                        ^^^^^^
+                        source.ts meta.var.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.brace.round.ts
+                                ^
+                                source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                 ^
+                                 source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                                  ^
+                                  source.ts meta.var.expr.ts
+                                   ^
+                                   source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                    ^
+                                    source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.brace.round.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
+>const tagged1 = tag<*, string>`tags ${12} ${""}`;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^^^
+                 source.ts meta.var.expr.ts string.template.ts entity.name.function.tagged-template.ts
+                    ^
+                    source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                     ^
+                     source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts keyword.operator.type.ts
+                      ^
+                      source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                       ^
+                       source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts
+                        ^^^^^^
+                        source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts support.type.primitive.ts
+                              ^
+                              source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                               ^
+                               source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+                                ^^^^^
+                                source.ts meta.var.expr.ts string.template.ts
+                                     ^^
+                                     source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                       ^^
+                                       source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts constant.numeric.decimal.ts
+                                         ^
+                                         source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                          ^
+                                          source.ts meta.var.expr.ts string.template.ts
+                                           ^^
+                                           source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                             ^
+                                             source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                              ^
+                                              source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                               ^
+                                               source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                ^
+                                                source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                 ^
+                                                 source.ts punctuation.terminator.statement.ts
+>type A = Foo<*, string>;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^^^
+          source.ts meta.type.declaration.ts entity.name.type.ts
+             ^
+             source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts keyword.operator.type.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts
+                 ^^^^^^
+                 source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+>const instance2 = new Foo<number, *>(0, "");
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.var.expr.ts
+                   ^^^
+                   source.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts
+                      ^
+                      source.ts meta.var.expr.ts new.expr.ts
+                       ^^^
+                       source.ts meta.var.expr.ts new.expr.ts entity.name.type.ts
+                          ^
+                          source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                           ^^^^^^
+                           source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                                 ^
+                                 source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                  ^
+                                  source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts
+                                   ^
+                                   source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts keyword.operator.type.ts
+                                    ^
+                                    source.ts meta.var.expr.ts new.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                     ^
+                                     source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                                      ^
+                                      source.ts meta.var.expr.ts new.expr.ts constant.numeric.decimal.ts
+                                       ^
+                                       source.ts meta.var.expr.ts new.expr.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.var.expr.ts new.expr.ts
+                                         ^
+                                         source.ts meta.var.expr.ts new.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                          ^
+                                          source.ts meta.var.expr.ts new.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                           ^
+                                           source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                                            ^
+                                            source.ts punctuation.terminator.statement.ts
+>const result2 = foo<number, *>(0, "");
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^^^
+                 source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                     ^^^^^^
+                     source.ts meta.var.expr.ts meta.type.parameters.ts support.type.primitive.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.type.parameters.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.type.parameters.ts keyword.operator.type.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.brace.round.ts
+                                ^
+                                source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                 ^
+                                 source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                                  ^
+                                  source.ts meta.var.expr.ts
+                                   ^
+                                   source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                    ^
+                                    source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.brace.round.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
+>const tagged2 = tag<number, *>`tags ${12} ${""}`;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^^^
+                 source.ts meta.var.expr.ts string.template.ts entity.name.function.tagged-template.ts
+                    ^
+                    source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                     ^^^^^^
+                     source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts support.type.primitive.ts
+                           ^
+                           source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                            ^
+                            source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts
+                             ^
+                             source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts keyword.operator.type.ts
+                              ^
+                              source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                               ^
+                               source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+                                ^^^^^
+                                source.ts meta.var.expr.ts string.template.ts
+                                     ^^
+                                     source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                       ^^
+                                       source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts constant.numeric.decimal.ts
+                                         ^
+                                         source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                          ^
+                                          source.ts meta.var.expr.ts string.template.ts
+                                           ^^
+                                           source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                             ^
+                                             source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                              ^
+                                              source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                               ^
+                                               source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                ^
+                                                source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                 ^
+                                                 source.ts punctuation.terminator.statement.ts
+>type A2 = Foo<string, *>;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+        ^
+        source.ts meta.type.declaration.ts
+         ^
+         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.type.declaration.ts
+           ^^^
+           source.ts meta.type.declaration.ts entity.name.type.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+               ^^^^^^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.type.parameters.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.type.parameters.ts keyword.operator.type.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts

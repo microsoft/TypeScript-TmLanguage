@@ -60,7 +60,7 @@ variables:
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*>\s*)
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
-  typeArgumentsStart: (((keyof|infer)\s+)|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
+  typeArgumentsStart: (((keyof|infer)\s+)|(\*(?=\s*[,>]))|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?!=)\>)*(?!=)>'
   functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
@@ -2250,7 +2250,7 @@ repository:
     patterns:
     - include: '#typeof-operator'
     # Handle the object types followed by | or & operator as { can be used as end of Type in many places and this avoids tripping that
-    - begin: ([&|])(?=\s*\{)
+    - begin: ([&|\*])(?=\s*\{)
       beginCaptures:
         '0': { name: keyword.operator.type.ts }
       end: (?<=\})
@@ -2258,7 +2258,7 @@ repository:
       - include: '#type-object'
     # capture all white spaces followed by the | or & operator so that line break (which is end regex for many type patterns)
     # will be consumed and we will continue to be in type space
-    - begin: '[&|]'
+    - begin: '[&|\*]'
       beginCaptures:
         '0': { name: keyword.operator.type.ts }
       end: (?=\S)
