@@ -1,0 +1,56 @@
+original file
+-----------------------------------
+interface DagEdge {
+    a?,
+    b
+}
+var a = 1;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>interface DagEdge {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^^^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+                  ^
+                  source.ts meta.interface.ts
+                   ^
+                   source.ts meta.interface.ts punctuation.definition.block.ts
+>    a?,
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+      ^
+      source.ts meta.interface.ts meta.field.declaration.ts keyword.operator.optional.ts
+       ^
+       source.ts meta.interface.ts punctuation.separator.comma.ts
+>    b
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
+>var a = 1;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts constant.numeric.decimal.ts
+          ^
+          source.ts punctuation.terminator.statement.ts

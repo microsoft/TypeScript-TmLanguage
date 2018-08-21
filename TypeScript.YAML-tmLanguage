@@ -588,10 +588,10 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(\?\s*)?(=|:|;|$))
+    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(\?\s*)?(=|:|;|,|$))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:|;|$))))|(?<=\})
+    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:|;|,|$))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
     - include: '#type-annotation'
