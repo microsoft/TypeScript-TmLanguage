@@ -1,0 +1,44 @@
+original file
+-----------------------------------
+export default interface IFoo {
+    x: string;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export default interface IFoo {
+ ^^^^^^
+ source.ts meta.export.default.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.default.ts
+        ^^^^^^^
+        source.ts meta.export.default.ts keyword.control.default.ts
+               ^
+               source.ts meta.export.default.ts
+                ^^^^^^^^^
+                source.ts meta.export.default.ts meta.interface.ts storage.type.interface.ts
+                         ^
+                         source.ts meta.export.default.ts meta.interface.ts
+                          ^^^^
+                          source.ts meta.export.default.ts meta.interface.ts entity.name.type.interface.ts
+                              ^
+                              source.ts meta.export.default.ts meta.interface.ts
+                               ^
+                               source.ts meta.export.default.ts meta.interface.ts punctuation.definition.block.ts
+>    x: string;
+ ^^^^
+ source.ts meta.export.default.ts meta.interface.ts meta.field.declaration.ts
+     ^
+     source.ts meta.export.default.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+      ^
+      source.ts meta.export.default.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+       ^
+       source.ts meta.export.default.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+        ^^^^^^
+        source.ts meta.export.default.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+              ^
+              source.ts meta.export.default.ts meta.interface.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.export.default.ts meta.interface.ts punctuation.definition.block.ts

@@ -1095,6 +1095,7 @@ repository:
         '3': { name: keyword.control.default.ts }
       end: (?=$|{{endOfStatement}})
       patterns:
+      - include: '#interface-declaration'
       - include: '#expression'
     - name: meta.export.ts
       begin: '{{startOfIdentifier}}(export)(?!\s*:){{endOfIdentifier}}'
