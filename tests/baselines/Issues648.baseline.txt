@@ -1,0 +1,103 @@
+original file
+-----------------------------------
+<Test
+    a=''
+    b_c='111'
+    d=''
+/>
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+><Test
+ ^
+ source.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+  ^^^^
+  source.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+>    a=''
+ ^^^^
+ source.tsx meta.tag.tsx meta.tag.attributes.tsx
+     ^
+     source.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+      ^
+      source.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+       ^
+       source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+        ^
+        source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+>    b_c='111'
+ ^^^^
+ source.tsx meta.tag.tsx meta.tag.attributes.tsx
+     ^^^
+     source.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+        ^
+        source.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+         ^
+         source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+          ^^^
+          source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx
+             ^
+             source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+>    d=''
+ ^^^^
+ source.tsx meta.tag.tsx meta.tag.attributes.tsx
+     ^
+     source.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+      ^
+      source.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+       ^
+       source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+        ^
+        source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+>/>
+ ^^
+ source.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+><Test
+ ^
+ source.ts keyword.operator.relational.ts
+  ^^^^
+  source.ts variable.other.readwrite.ts
+>    a=''
+ ^^^^
+ source.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^
+      source.ts keyword.operator.assignment.ts
+       ^
+       source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^
+        source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+>    b_c='111'
+ ^^^^
+ source.ts
+     ^^^
+     source.ts variable.other.readwrite.ts
+        ^
+        source.ts keyword.operator.assignment.ts
+         ^
+         source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+          ^^^
+          source.ts string.quoted.single.ts
+             ^
+             source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+>    d=''
+ ^^^^
+ source.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^
+      source.ts keyword.operator.assignment.ts
+       ^
+       source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+        ^
+        source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+>/>
+ ^
+ source.ts keyword.operator.arithmetic.ts
+  ^
+  source.ts keyword.operator.relational.ts
