@@ -33,7 +33,8 @@ variables:
   # any use of property name needs to ignore line breaks in regular expression because of decimal number regex (maintained for readability)
   propertyName: ({{anyNumber}}|({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
-  endOfStatement: ';|^\s*abstract\b|^\s*async\b|^\s*class\b|^\s*const\b|^\s*declare\b|^\s*enum\b|^\s*export\b|^\s*function\b|^\s*import\b|^\s*interface\b|^\s*let\b|^\s*module\b|^\s*namespace\b|^\s*return\b|^\s*type\b|^\s*var\b'
+  constructsAndModifiers: '(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b'
+  endOfStatement: ';|(?:^\s*{{constructsAndModifiers}})'
   varExprStart: '{{startOfDeclaration}}\b(var|let){{endOfIdentifier}}'
   constExprStart: '{{startOfDeclaration}}\b(const(?!\s+enum\b)){{endOfIdentifier}}'
   nonPropertyLookBehind: '[^\._$[:alnum:]]'
@@ -159,7 +160,7 @@ repository:
     - include: '#import-declaration'
     - include: '#export-declaration'
     - name: storage.modifier.ts
-      match: '{{startOfIdentifier}}(declare){{endOfIdentifier}}'
+      match: '{{startOfIdentifier}}(declare|export){{endOfIdentifier}}'
 
   control-statement:
     patterns:
@@ -1108,7 +1109,7 @@ repository:
       - include: '#interface-declaration'
       - include: '#expression'
     - name: meta.export.ts
-      begin: '{{startOfIdentifier}}(export)(?!\s*:){{endOfIdentifier}}'
+      begin: '{{startOfIdentifier}}(export)(?!\s*:)((?=\s*[\{*])|((?=\s*{{identifier}}(\s|,))(?!\s*{{constructsAndModifiers}})))'
       beginCaptures:
         '0': { name: keyword.control.export.ts }
       end: (?=$|{{endOfStatement}})

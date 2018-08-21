@@ -1,0 +1,32 @@
+original file
+-----------------------------------
+export /* comment */ class MyClass{
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export /* comment */ class MyClass{
+ ^^^^^^
+ source.ts storage.modifier.ts
+       ^
+       source.ts
+        ^^
+        source.ts comment.block.ts punctuation.definition.comment.ts
+          ^^^^^^^^^
+          source.ts comment.block.ts
+                   ^^
+                   source.ts comment.block.ts punctuation.definition.comment.ts
+                     ^
+                     source.ts
+                      ^^^^^
+                      source.ts meta.class.ts storage.type.class.ts
+                           ^
+                           source.ts meta.class.ts
+                            ^^^^^^^
+                            source.ts meta.class.ts entity.name.type.class.ts
+                                   ^
+                                   source.ts meta.class.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
