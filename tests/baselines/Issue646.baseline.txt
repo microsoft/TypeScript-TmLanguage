@@ -1,0 +1,160 @@
+original file
+-----------------------------------
+// Good
+const foo = 5; // The json data that the extension sent
+console.log(`${foo}`)
+
+// Good
+const foo = 5
+console.log(`${foo}`)
+
+// Bad
+const foo = 5 // The json data that the extension sent
+console.log(`${foo}`)
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// Good
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^
+   source.ts comment.line.double-slash.ts
+>const foo = 5; // The json data that the extension sent
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+               ^
+               source.ts
+                ^^
+                source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  source.ts comment.line.double-slash.ts
+>console.log(`${foo}`)
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts string.template.ts punctuation.definition.string.template.begin.ts
+              ^^
+              source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                ^^^
+                source.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                   ^
+                   source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                    ^
+                    source.ts string.template.ts punctuation.definition.string.template.end.ts
+                     ^
+                     source.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>// Good
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^
+   source.ts comment.line.double-slash.ts
+>const foo = 5
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+>console.log(`${foo}`)
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts string.template.ts punctuation.definition.string.template.begin.ts
+              ^^
+              source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                ^^^
+                source.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                   ^
+                   source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                    ^
+                    source.ts string.template.ts punctuation.definition.string.template.end.ts
+                     ^
+                     source.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>// Bad
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^
+   source.ts comment.line.double-slash.ts
+>const foo = 5 // The json data that the extension sent
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^^
+               source.ts meta.var.expr.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.var.expr.ts comment.line.double-slash.ts
+>console.log(`${foo}`)
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts string.template.ts punctuation.definition.string.template.begin.ts
+              ^^
+              source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                ^^^
+                source.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                   ^
+                   source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                    ^
+                    source.ts string.template.ts punctuation.definition.string.template.end.ts
+                     ^
+                     source.ts meta.brace.round.ts

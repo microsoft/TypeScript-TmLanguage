@@ -2491,7 +2491,7 @@ repository:
         '3': { name: punctuation.definition.comment.ts }
         '4': { name: storage.type.internaldeclaration.ts }
         '5': { name: punctuation.decorator.internaldeclaration.ts }
-      end: (?=^)
+      end: (?=$)
       contentName: comment.line.double-slash.ts
 
   directives:
@@ -2499,7 +2499,7 @@ repository:
     begin: ^(///)\s*(?=<(reference|amd-dependency|amd-module)(\s+(path|types|no-default-lib|lib|name)\s*=\s*({{quotedStrings}}))+\s*/>\s*$)
     beginCaptures:
       '1': { name: punctuation.definition.comment.ts }
-    end: (?=^)
+    end: (?=$)
     patterns:
     - name: meta.tag.ts
       begin: (<)(reference|amd-dependency|amd-module)
