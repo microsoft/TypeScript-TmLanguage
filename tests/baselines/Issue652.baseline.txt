@@ -1,0 +1,50 @@
+original file
+-----------------------------------
+const test2 = "x" + 
+	"y"; statement;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const test2 = "x" + 
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^
+               source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                ^
+                source.ts meta.var.expr.ts string.quoted.double.ts
+                 ^
+                 source.ts meta.var.expr.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.var.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                    ^
+                    source.ts meta.var.expr.ts
+>	"y"; statement;
+ ^
+ source.ts
+  ^
+  source.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+   ^
+   source.ts string.quoted.double.ts
+    ^
+    source.ts string.quoted.double.ts punctuation.definition.string.end.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+      ^
+      source.ts
+       ^^^^^^^^^
+       source.ts variable.other.readwrite.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
