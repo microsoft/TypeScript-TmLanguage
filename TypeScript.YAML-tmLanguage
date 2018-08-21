@@ -34,6 +34,8 @@ variables:
   propertyName: ({{anyNumber}}|({{identifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
   endOfStatement: ';|^\s*abstract\b|^\s*async\b|^\s*class\b|^\s*const\b|^\s*declare\b|^\s*enum\b|^\s*export\b|^\s*function\b|^\s*import\b|^\s*interface\b|^\s*let\b|^\s*module\b|^\s*namespace\b|^\s*return\b|^\s*type\b|^\s*var\b'
+  varExprStart: '{{startOfDeclaration}}\b(var|let){{endOfIdentifier}}'
+  constExprStart: '{{startOfDeclaration}}\b(const(?!\s+enum\b)){{endOfIdentifier}}'
   nonPropertyLookBehind: '[^\._$[:alnum:]]'
   lookBehindReturn: '^return|{{nonPropertyLookBehind}}return'
   lookBehindThrow: '^throw|{{nonPropertyLookBehind}}throw'
@@ -245,13 +247,15 @@ repository:
     patterns:
     # let/var
     - name: meta.var.expr.ts
-      begin: '{{startOfDeclaration}}\b(var|let){{endOfIdentifier}}'
-      beginCaptures:
-        '1': { name: keyword.control.export.ts }
-        '2': { name: storage.modifier.ts }
-        '3': { name: storage.type.ts }
-      end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
+      begin: (?={{varExprStart}})
+      end: (?!{{varExprStart}})((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
       patterns:
+      - begin: '{{varExprStart}}\s*'
+        beginCaptures:
+          '1': { name: keyword.control.export.ts }
+          '2': { name: storage.modifier.ts }
+          '3': { name: storage.type.ts }
+        end: (?=\S)
       - include: '#destructuring-variable'
       - include: '#var-single-variable'
       - include: '#variable-initializer'
@@ -269,13 +273,19 @@ repository:
       - include: '#punctuation-comma'
     # const
     - name: meta.var.expr.ts
-      begin: '{{startOfDeclaration}}\b(const(?!\s+enum\b)){{endOfIdentifier}}'
+      begin: (?={{constExprStart}})
       beginCaptures:
         '1': { name: keyword.control.export.ts }
         '2': { name: storage.modifier.ts }
         '3': { name: storage.type.ts }
-      end: ((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<=\S)(?<!{{lookBehindConst}})(?=\s*$)))
+      end: (?!{{constExprStart}})((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindConst}})(?=\s*$)))
       patterns:
+      - begin: '{{constExprStart}}\s*'
+        beginCaptures:
+          '1': { name: keyword.control.export.ts }
+          '2': { name: storage.modifier.ts }
+          '3': { name: storage.type.ts }
+        end: (?=\S)
       - include: '#destructuring-const'
       - include: '#var-single-const'
       - include: '#variable-initializer'

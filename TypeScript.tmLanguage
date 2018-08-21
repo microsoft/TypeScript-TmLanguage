@@ -411,29 +411,35 @@
             <key>name</key>
             <string>meta.var.expr.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.export.ts</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>storage.modifier.ts</string>
-              </dict>
-              <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>storage.type.ts</string>
-              </dict>
-            </dict>
+            <string>(?=(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))</string>
             <key>end</key>
-            <string>((?=;|}|(\s+(of|in)\s+)|^\s*$|;|^\s*abstract\b|^\s*async\b|^\s*class\b|^\s*const\b|^\s*declare\b|^\s*enum\b|^\s*export\b|^\s*function\b|^\s*import\b|^\s*interface\b|^\s*let\b|^\s*module\b|^\s*namespace\b|^\s*return\b|^\s*type\b|^\s*var\b)|((?&lt;=\S)(?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|(\s+(of|in)\s+)|^\s*$|;|^\s*abstract\b|^\s*async\b|^\s*class\b|^\s*const\b|^\s*declare\b|^\s*enum\b|^\s*export\b|^\s*function\b|^\s*import\b|^\s*interface\b|^\s*let\b|^\s*module\b|^\s*namespace\b|^\s*return\b|^\s*type\b|^\s*var\b)|((?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>begin</key>
+                <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))\s*</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.control.export.ts</string>
+                  </dict>
+                  <key>2</key>
+                  <dict>
+                    <key>name</key>
+                    <string>storage.modifier.ts</string>
+                  </dict>
+                  <key>3</key>
+                  <dict>
+                    <key>name</key>
+                    <string>storage.type.ts</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?=\S)</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#destructuring-variable</string>
@@ -497,7 +503,7 @@
             <key>name</key>
             <string>meta.var.expr.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+            <string>(?=(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -517,9 +523,33 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>((?=;|}|(\s+(of|in)\s+)|^\s*$|;|^\s*abstract\b|^\s*async\b|^\s*class\b|^\s*const\b|^\s*declare\b|^\s*enum\b|^\s*export\b|^\s*function\b|^\s*import\b|^\s*interface\b|^\s*let\b|^\s*module\b|^\s*namespace\b|^\s*return\b|^\s*type\b|^\s*var\b)|((?&lt;=\S)(?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|(\s+(of|in)\s+)|^\s*$|;|^\s*abstract\b|^\s*async\b|^\s*class\b|^\s*const\b|^\s*declare\b|^\s*enum\b|^\s*export\b|^\s*function\b|^\s*import\b|^\s*interface\b|^\s*let\b|^\s*module\b|^\s*namespace\b|^\s*return\b|^\s*type\b|^\s*var\b)|((?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>begin</key>
+                <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))\s*</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.control.export.ts</string>
+                  </dict>
+                  <key>2</key>
+                  <dict>
+                    <key>name</key>
+                    <string>storage.modifier.ts</string>
+                  </dict>
+                  <key>3</key>
+                  <dict>
+                    <key>name</key>
+                    <string>storage.type.ts</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?=\S)</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#destructuring-const</string>
