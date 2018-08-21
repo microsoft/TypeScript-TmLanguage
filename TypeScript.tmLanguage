@@ -452,7 +452,7 @@
               </dict>
               <dict>
                 <key>begin</key>
-                <string>(,)\s*(?!\S)</string>
+                <string>(,)\s*((?!\S)|(?=\/\/))</string>
                 <key>beginCaptures</key>
                 <dict>
                   <key>1</key>
@@ -465,6 +465,10 @@
                 <string>(?&lt;!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$)))</string>
                 <key>patterns</key>
                 <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#single-line-comment-consuming-line-ending</string>
+                  </dict>
                   <dict>
                     <key>include</key>
                     <string>#comment</string>
@@ -534,7 +538,7 @@
               </dict>
               <dict>
                 <key>begin</key>
-                <string>(,)\s*(?!\S)</string>
+                <string>(,)\s*((?!\S)|(?=\/\/))</string>
                 <key>beginCaptures</key>
                 <dict>
                   <key>1</key>
@@ -547,6 +551,10 @@
                 <string>(?&lt;!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$)))</string>
                 <key>patterns</key>
                 <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#single-line-comment-consuming-line-ending</string>
+                  </dict>
                   <dict>
                     <key>include</key>
                     <string>#comment</string>
@@ -7412,6 +7420,43 @@
             <string>comment.line.double-slash.ts</string>
           </dict>
         </array>
+      </dict>
+      <key>single-line-comment-consuming-line-ending</key>
+      <dict>
+        <key>begin</key>
+        <string>(^[ \t]+)?((//)(?:\s*((@)internal)(?=\s|$))?)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.whitespace.comment.leading.ts</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>comment.line.double-slash.ts</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.comment.ts</string>
+          </dict>
+          <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.internaldeclaration.ts</string>
+          </dict>
+          <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.decorator.internaldeclaration.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>(?=^)</string>
+        <key>contentName</key>
+        <string>comment.line.double-slash.ts</string>
       </dict>
       <key>directives</key>
       <dict>

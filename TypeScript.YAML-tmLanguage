@@ -256,11 +256,12 @@ repository:
       - include: '#var-single-variable'
       - include: '#variable-initializer'
       - include: '#comment'
-      - begin: (,)\s*(?!\S)
+      - begin: (,)\s*((?!\S)|(?=\/\/))
         beginCaptures:
           '1': { name: punctuation.separator.comma.ts }
         end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
         patterns:
+        - include: '#single-line-comment-consuming-line-ending'
         - include: '#comment'
         - include: '#destructuring-variable'
         - include: '#var-single-variable'
@@ -279,11 +280,12 @@ repository:
       - include: '#var-single-const'
       - include: '#variable-initializer'
       - include: '#comment'
-      - begin: (,)\s*(?!\S)
+      - begin: (,)\s*((?!\S)|(?=\/\/))
         beginCaptures:
           '1': { name: punctuation.separator.comma.ts }
         end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
         patterns:
+        - include: '#single-line-comment-consuming-line-ending'
         - include: '#comment'
         - include: '#destructuring-const'
         - include: '#var-single-const'
@@ -2493,6 +2495,17 @@ repository:
         '5': { name: punctuation.decorator.internaldeclaration.ts }
       end: (?=$)
       contentName: comment.line.double-slash.ts
+
+  single-line-comment-consuming-line-ending:
+    begin: (^[ \t]+)?((//)(?:\s*((@)internal)(?=\s|$))?)
+    beginCaptures:
+      '1': { name: punctuation.whitespace.comment.leading.ts }
+      '2': { name: comment.line.double-slash.ts }
+      '3': { name: punctuation.definition.comment.ts }
+      '4': { name: storage.type.internaldeclaration.ts }
+      '5': { name: punctuation.decorator.internaldeclaration.ts }
+    end: (?=^)
+    contentName: comment.line.double-slash.ts
 
   directives:
     name: comment.line.triple-slash.directive.ts
