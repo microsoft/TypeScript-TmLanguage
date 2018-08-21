@@ -1,0 +1,114 @@
+original file
+-----------------------------------
+function doesSomething2(value: number) {
+  if (value as number < 10) {
+    return "huh"
+  } else {
+    return null;
+  }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function doesSomething2(value: number) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^^^^^^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                        ^
+                        source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                         ^^^^^
+                         source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                              ^
+                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                ^^^^^^
+                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                       ^
+                                       source.ts meta.function.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  if (value as number < 10) {
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.ts meta.block.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+       ^^^^^
+       source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.function.ts meta.block.ts
+             ^^
+             source.ts meta.function.ts meta.block.ts keyword.control.as.ts
+               ^
+               source.ts meta.function.ts meta.block.ts
+                ^^^^^^
+                source.ts meta.function.ts meta.block.ts support.type.primitive.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts
+                         ^^
+                         source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>    return "huh"
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.block.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+             ^^^
+             source.ts meta.function.ts meta.block.ts meta.block.ts string.quoted.double.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+>  } else {
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+    ^
+    source.ts meta.function.ts meta.block.ts
+     ^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>    return null;
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.block.ts
+            ^^^^
+            source.ts meta.function.ts meta.block.ts meta.block.ts constant.language.null.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+>  }
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
