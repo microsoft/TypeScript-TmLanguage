@@ -1,5 +1,6 @@
 original file
 -----------------------------------
+// @onlyOwnGrammar - As this has jsx
 <Test
     a=''
     b_c='111'
@@ -9,6 +10,11 @@ original file
 
 Grammar: TypeScriptReact.tmLanguage
 -----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
 ><Test
  ^
  source.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
@@ -52,52 +58,3 @@ Grammar: TypeScriptReact.tmLanguage
 >/>
  ^^
  source.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
-
-
-Grammar: TypeScript.tmLanguage
------------------------------------
-><Test
- ^
- source.ts keyword.operator.relational.ts
-  ^^^^
-  source.ts variable.other.readwrite.ts
->    a=''
- ^^^^
- source.ts
-     ^
-     source.ts variable.other.readwrite.ts
-      ^
-      source.ts keyword.operator.assignment.ts
-       ^
-       source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
-        ^
-        source.ts string.quoted.single.ts punctuation.definition.string.end.ts
->    b_c='111'
- ^^^^
- source.ts
-     ^^^
-     source.ts variable.other.readwrite.ts
-        ^
-        source.ts keyword.operator.assignment.ts
-         ^
-         source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
-          ^^^
-          source.ts string.quoted.single.ts
-             ^
-             source.ts string.quoted.single.ts punctuation.definition.string.end.ts
->    d=''
- ^^^^
- source.ts
-     ^
-     source.ts variable.other.readwrite.ts
-      ^
-      source.ts keyword.operator.assignment.ts
-       ^
-       source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
-        ^
-        source.ts string.quoted.single.ts punctuation.definition.string.end.ts
->/>
- ^
- source.ts keyword.operator.arithmetic.ts
-  ^
-  source.ts keyword.operator.relational.ts
