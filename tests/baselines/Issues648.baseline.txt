@@ -1,0 +1,60 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+<Test
+    a=''
+    b_c='111'
+    d=''
+/>
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+><Test
+ ^
+ source.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+  ^^^^
+  source.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+>    a=''
+ ^^^^
+ source.tsx meta.tag.tsx meta.tag.attributes.tsx
+     ^
+     source.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+      ^
+      source.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+       ^
+       source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+        ^
+        source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+>    b_c='111'
+ ^^^^
+ source.tsx meta.tag.tsx meta.tag.attributes.tsx
+     ^^^
+     source.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+        ^
+        source.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+         ^
+         source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+          ^^^
+          source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx
+             ^
+             source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+>    d=''
+ ^^^^
+ source.tsx meta.tag.tsx meta.tag.attributes.tsx
+     ^
+     source.tsx meta.tag.tsx meta.tag.attributes.tsx entity.other.attribute-name.tsx
+      ^
+      source.tsx meta.tag.tsx meta.tag.attributes.tsx keyword.operator.assignment.tsx
+       ^
+       source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.begin.tsx
+        ^
+        source.tsx meta.tag.tsx meta.tag.attributes.tsx string.quoted.single.tsx punctuation.definition.string.end.tsx
+>/>
+ ^^
+ source.tsx meta.tag.tsx punctuation.definition.tag.end.tsx

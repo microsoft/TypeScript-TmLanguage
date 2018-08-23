@@ -11,7 +11,7 @@ uuid: 805375ec-d614-41f5-8993-5843fe63ea82
 variables:
   #possiblyMultilineArrowExpressionBeforeEndOfLine: ({{typeParameters}})?\(
   possiblyMultilineArrow: ((<\s*$)|([\(]\s*([\{\[]\s*)?$))  # during lookup treat ( followed by line end as arrow
-  jsxTagOrAtrributeIdentifier: '[_$[:alpha:]][-$[:alnum:].]*'
+  jsxTagOrAtrributeIdentifier: '[_$[:alpha:]][-_$[:alnum:].]*'
   jsxTagNamespace: (?:({{jsxTagOrAtrributeIdentifier}})(?<!\.|-)(:))?
   jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}))(?<!\.|-))
   jsxOpeningTagWithoutAttributes: (<){{jsxTagName}}?\s*(>)
@@ -164,7 +164,7 @@ repository:
       (?x)
         \s*
         (?:({{jsxTagOrAtrributeIdentifier}})(:))?
-        ([_$[:alpha:]][-$[:alnum:]]*)
+        ([_$[:alpha:]][-_$[:alnum:]]*)
         (?=\s|=|/?>|/\*|//)
     captures:
       '1': {name: entity.other.attribute-name.namespace.tsx}
