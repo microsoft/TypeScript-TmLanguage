@@ -12,7 +12,7 @@ variables:
   propertyAccessPreIdentifier: \??\.\s*
   identifier: '[_$[:alpha:]][_$[:alnum:]]*'
   constantIdentifier: '[[:upper:]][_$[:digit:][:upper:]]*'
-  quotedStrings: (\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")
+  quotedStrings: (\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\`([^\`\\]|\\\`|\\)*\`)
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   label: ({{identifier}})\s*(:)
   hexNumber: \b(?<!\$)0(x|X)[0-9a-fA-F][0-9a-fA-F_]*\b(?!\$)
@@ -136,7 +136,6 @@ repository:
   statements:
     patterns:
     - include: '#string'
-    - include: '#template'
     - include: '#comment'
     - include: '#declaration'
     - include: '#control-statement'
@@ -212,7 +211,6 @@ repository:
     patterns:
     - include: '#string'
     - include: '#regex'
-    - include: '#template'
     - include: '#comment'
     - include: '#function-expression'
     - include: '#class-expression'
@@ -2321,6 +2319,7 @@ repository:
     patterns:
     - include: '#qstring-single'
     - include: '#qstring-double'
+    - include: '#template'
 
   qstring-double:
     name: string.quoted.double.ts

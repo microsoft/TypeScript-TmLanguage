@@ -1,0 +1,184 @@
+original file
+-----------------------------------
+// breaks when '{' start in a new line behind a '('
+const foo = () => (
+  {
+    num: 1,
+    foo: 'foo',
+    bar: `bar`,
+    //  '=' break all following highlighting
+    baz: `baz=${123}`,
+  }
+);
+
+class TestColor extends Foo {
+  public init() {}
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// breaks when '{' start in a new line behind a '('
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const foo = () => (
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts meta.arrow.ts
+             ^
+             source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.var.expr.ts meta.arrow.ts
+                ^^
+                source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.arrow.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.arrow.ts meta.brace.round.ts
+>  {
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+   ^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+>    num: 1,
+ ^^^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts variable.object.property.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.destructuring.ts
+         ^^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+           ^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.separator.comma.ts
+>    foo: 'foo',
+ ^^^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts variable.object.property.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.destructuring.ts
+         ^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+          ^
+          source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+           ^^^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts
+              ^
+              source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.quoted.single.ts punctuation.definition.string.end.ts
+               ^
+               source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.separator.comma.ts
+>    bar: `bar`,
+ ^^^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts variable.object.property.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.destructuring.ts
+         ^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+          ^
+          source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts punctuation.definition.string.template.begin.ts
+           ^^^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts
+              ^
+              source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts punctuation.definition.string.template.end.ts
+               ^
+               source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.separator.comma.ts
+>    //  '=' break all following highlighting
+ ^^^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts comment.line.double-slash.ts
+>    baz: `baz=${123}`,
+ ^^^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts variable.object.property.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.destructuring.ts
+         ^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+          ^
+          source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts punctuation.definition.string.template.begin.ts
+           ^^^^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts
+               ^^
+               source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                 ^^^
+                 source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts constant.numeric.decimal.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts string.template.ts punctuation.definition.string.template.end.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.separator.comma.ts
+>  }
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts
+   ^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.parameter.object-binding-pattern.ts punctuation.definition.binding-pattern.object.ts
+>);
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.brace.round.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>class TestColor extends Foo {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+                ^
+                source.ts meta.class.ts
+                 ^^^^^^^
+                 source.ts meta.class.ts storage.modifier.ts
+                        ^
+                        source.ts meta.class.ts
+                         ^^^
+                         source.ts meta.class.ts entity.other.inherited-class.ts
+                            ^
+                            source.ts meta.class.ts
+                             ^
+                             source.ts meta.class.ts punctuation.definition.block.ts
+>  public init() {}
+ ^^
+ source.ts meta.class.ts
+   ^^^^^^
+   source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts
+          ^^^^
+          source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
