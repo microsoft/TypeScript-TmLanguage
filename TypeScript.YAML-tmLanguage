@@ -1107,7 +1107,7 @@ repository:
       - include: '#interface-declaration'
       - include: '#expression'
     - name: meta.export.ts
-      begin: '{{startOfIdentifier}}(export)(?!\s*:)((?=\s*[\{*])|((?=\s*{{identifier}}(\s|,))(?!\s*{{constructsAndModifiers}})))'
+      begin: '{{startOfIdentifier}}(export)\b(?!(\$)|(\s*:))((?=\s*[\{*])|((?=\s*{{identifier}}(\s|,))(?!\s*{{constructsAndModifiers}})))'
       beginCaptures:
         '0': { name: keyword.control.export.ts }
       end: (?=$|{{endOfStatement}})
