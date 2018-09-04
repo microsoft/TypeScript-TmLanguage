@@ -1,0 +1,114 @@
+original file
+-----------------------------------
+export default function foo(): void;
+export default function foo(bar: string): void;
+export default function foo(bar?: string): void
+{ }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export default function foo(): void;
+ ^^^^^^
+ source.ts meta.export.default.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.default.ts
+        ^^^^^^^
+        source.ts meta.export.default.ts keyword.control.default.ts
+               ^
+               source.ts meta.export.default.ts
+                ^^^^^^^^
+                source.ts meta.export.default.ts meta.function.expression.ts storage.type.function.ts
+                        ^
+                        source.ts meta.export.default.ts meta.function.expression.ts
+                         ^^^
+                         source.ts meta.export.default.ts meta.function.expression.ts meta.definition.function.ts entity.name.function.ts
+                            ^
+                            source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^
+                             source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                              ^
+                              source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts
+                                ^^^^
+                                source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts support.type.primitive.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+>export default function foo(bar: string): void;
+ ^^^^^^
+ source.ts meta.export.default.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.default.ts
+        ^^^^^^^
+        source.ts meta.export.default.ts keyword.control.default.ts
+               ^
+               source.ts meta.export.default.ts
+                ^^^^^^^^
+                source.ts meta.export.default.ts meta.function.expression.ts storage.type.function.ts
+                        ^
+                        source.ts meta.export.default.ts meta.function.expression.ts
+                         ^^^
+                         source.ts meta.export.default.ts meta.function.expression.ts meta.definition.function.ts entity.name.function.ts
+                            ^
+                            source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^^^
+                             source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                 ^
+                                 source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts
+                                  ^^^^^^
+                                  source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                        ^
+                                        source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                         ^
+                                         source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                          ^
+                                          source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts
+                                           ^^^^
+                                           source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts support.type.primitive.ts
+                                               ^
+                                               source.ts punctuation.terminator.statement.ts
+>export default function foo(bar?: string): void
+ ^^^^^^
+ source.ts meta.export.default.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.default.ts
+        ^^^^^^^
+        source.ts meta.export.default.ts keyword.control.default.ts
+               ^
+               source.ts meta.export.default.ts
+                ^^^^^^^^
+                source.ts meta.export.default.ts meta.function.expression.ts storage.type.function.ts
+                        ^
+                        source.ts meta.export.default.ts meta.function.expression.ts
+                         ^^^
+                         source.ts meta.export.default.ts meta.function.expression.ts meta.definition.function.ts entity.name.function.ts
+                            ^
+                            source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^^^
+                             source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts variable.parameter.ts
+                                ^
+                                source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts keyword.operator.optional.ts
+                                 ^
+                                 source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                  ^
+                                  source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts
+                                   ^^^^^^
+                                   source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                         ^
+                                         source.ts meta.export.default.ts meta.function.expression.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                          ^
+                                          source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                           ^
+                                           source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts
+                                            ^^^^
+                                            source.ts meta.export.default.ts meta.function.expression.ts meta.return.type.ts support.type.primitive.ts
+>{ }
+ ^
+ source.ts meta.export.default.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.export.default.ts meta.function.expression.ts meta.block.ts
+   ^
+   source.ts meta.export.default.ts meta.function.expression.ts meta.block.ts punctuation.definition.block.ts
