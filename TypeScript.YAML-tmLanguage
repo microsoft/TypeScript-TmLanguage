@@ -1138,7 +1138,7 @@ repository:
     patterns:
     - include: '#comment'
     #(default|*|name) as alias
-    - match: '{{startOfIdentifier}}(?:(\bdefault)|(\*)|(\b{{identifier}}))\s+(as)\s+(?:(\bdefault{{endOfIdentifier}})|(\b{{identifier}}))'
+    - match: '{{startOfIdentifier}}(?:(\bdefault)|(\*)|(\b{{identifier}}))\s+(as)\s+(?:(default{{endOfIdentifier}})|({{identifier}}))'
       captures:
         '1': { name: keyword.control.default.ts }
         '2': { name: constant.language.import-export-all.ts }
