@@ -3,6 +3,9 @@ original file
 switch (0) // discard and renew state per mode
 {
 }
+this.foo({
+   one, two, three // some comment
+})
 -----------------------------------
 
 Grammar: TypeScript.tmLanguage
@@ -30,3 +33,42 @@ Grammar: TypeScript.tmLanguage
 >}
  ^
  source.ts switch-statement.expr.ts punctuation.definition.block.ts
+>this.foo({
+ ^^^^
+ source.ts meta.function-call.ts variable.language.this.ts
+     ^
+     source.ts meta.function-call.ts punctuation.accessor.ts
+      ^^^
+      source.ts meta.function-call.ts entity.name.function.ts
+         ^
+         source.ts meta.brace.round.ts
+          ^
+          source.ts meta.objectliteral.ts punctuation.definition.block.ts
+>   one, two, three // some comment
+ ^^^
+ source.ts meta.objectliteral.ts
+    ^^^
+    source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.objectliteral.ts punctuation.separator.comma.ts
+        ^
+        source.ts meta.objectliteral.ts
+         ^^^
+         source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.objectliteral.ts punctuation.separator.comma.ts
+             ^
+             source.ts meta.objectliteral.ts
+              ^^^^^
+              source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.objectliteral.ts meta.object.member.ts
+                    ^^
+                    source.ts meta.objectliteral.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                      ^^^^^^^^^^^^^
+                      source.ts meta.objectliteral.ts comment.line.double-slash.ts
+>})
+ ^
+ source.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.brace.round.ts

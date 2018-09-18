@@ -1299,12 +1299,12 @@ repository:
       patterns:
       - include: '#expression'
     - name: meta.object.member.ts
-      match: ({{identifier}})\s*(?=,|\}|$)
+      match: ({{identifier}})\s*(?=,|\}|$|\/\/|\/\*)
       captures:
         '1': { name: variable.other.readwrite.ts }
     - name: meta.object.member.ts
       begin: (?={{identifier}}\s*=)
-      end: (?=,|\}|$)
+      end: (?=,|\}|$|\/\/|\/\*)
       patterns:
       - include: '#expression'
     # object member body:
