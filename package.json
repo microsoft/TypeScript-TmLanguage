@@ -6,8 +6,8 @@
   "main": "build/build.js",
   "scripts": {
     "build": "npm run build:grammar && npm run build:tests",
-    "build:grammar": "tsc -p build && node build/build.js",
-    "build:tests": "tsc -p tests",
+    "build:grammar": "tsc -b build -v && node build/build.js",
+    "build:tests": "tsc -b tests -v",
     "pretest": "npm run build",
     "test": "mocha --full-trace tests/test.js",
     "diff": "cross-env-shell $DIFF tests/baselines tests/generated",
