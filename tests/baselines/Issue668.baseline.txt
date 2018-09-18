@@ -1,0 +1,202 @@
+original file
+-----------------------------------
+class c {
+	readonly options: string[] = _.map(this.objects, 'name').
+	  concat('Blob', 'Time', 'String', 'Boolean', 'Date', 'Datetime', 'Decimal', 'Double', 'ID', 'Integer', 'Long', 'Object')
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class c {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>	readonly options: string[] = _.map(this.objects, 'name').
+ ^
+ source.ts meta.class.ts
+  ^^^^^^^^
+  source.ts meta.class.ts meta.field.declaration.ts storage.modifier.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^^^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                    ^^^^^^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                            ^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                             ^
+                             source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts
+                               ^
+                               source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts variable.other.object.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts punctuation.accessor.ts
+                                 ^^^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts entity.name.function.ts
+                                    ^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                     ^^^^
+                                     source.ts meta.class.ts meta.field.declaration.ts variable.language.this.ts
+                                         ^
+                                         source.ts meta.class.ts meta.field.declaration.ts punctuation.accessor.ts
+                                          ^^^^^^^
+                                          source.ts meta.class.ts meta.field.declaration.ts variable.other.property.ts
+                                                 ^
+                                                 source.ts meta.class.ts meta.field.declaration.ts punctuation.separator.comma.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.field.declaration.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                    ^^^^
+                                                    source.ts meta.class.ts meta.field.declaration.ts string.quoted.single.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.field.declaration.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                         ^
+                                                         source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                                                          ^
+                                                          source.ts meta.class.ts meta.field.declaration.ts punctuation.accessor.ts
+>	  concat('Blob', 'Time', 'String', 'Boolean', 'Date', 'Datetime', 'Decimal', 'Double', 'ID', 'Integer', 'Long', 'Object')
+ ^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+    ^^^^^^
+    source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+            ^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                    ^^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                            ^^^^^^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                      ^^^^^^^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                             ^
+                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                               ^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                ^
+                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                 ^^^^
+                                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                      ^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                        ^
+                                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                         ^^^^^^^^
+                                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                                 ^
+                                                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                  ^
+                                                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                   ^
+                                                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                                    ^
+                                                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                                     ^^^^^^^
+                                                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                                            ^
+                                                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                             ^
+                                                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                              ^
+                                                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                                               ^
+                                                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                                                ^^^^^^
+                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                                                      ^
+                                                                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                       ^
+                                                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                        ^
+                                                                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                                                         ^
+                                                                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                                                          ^^
+                                                                                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                                                            ^
+                                                                                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                             ^
+                                                                                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                              ^
+                                                                                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                                                               ^
+                                                                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                                                                ^^^^^^^
+                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                                                                       ^
+                                                                                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                                        ^
+                                                                                                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                                         ^
+                                                                                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                                                                          ^
+                                                                                                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                                                                           ^^^^
+                                                                                                           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                                                                               ^
+                                                                                                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                                                ^
+                                                                                                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                                                                                 ^
+                                                                                                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts
+                                                                                                                  ^
+                                                                                                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                                                                                   ^^^^^^
+                                                                                                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts
+                                                                                                                         ^
+                                                                                                                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                                                          ^
+                                                                                                                          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
