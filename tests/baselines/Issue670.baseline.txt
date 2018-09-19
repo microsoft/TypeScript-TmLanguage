@@ -1,0 +1,130 @@
+original file
+-----------------------------------
+const Foo = {
+    /*good*/foooo/*good*/:/*good*/ 123/*good*/, 
+    /*good*/'foo'/*BAD*/: 456, 
+    /*good*/"fooo"/*BAD*/: 789, 
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const Foo = {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+>    /*good*/foooo/*good*/:/*good*/ 123/*good*/, 
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts
+           ^^
+           source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+             ^^^^^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                  ^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+                    ^^^^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts
+                        ^^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                           ^^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts comment.block.ts punctuation.definition.comment.ts
+                             ^^^^
+                             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts comment.block.ts
+                                 ^^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts comment.block.ts punctuation.definition.comment.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                                    ^^^
+                                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                                       ^^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts comment.block.ts punctuation.definition.comment.ts
+                                         ^^^^
+                                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts comment.block.ts
+                                             ^^
+                                             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts comment.block.ts punctuation.definition.comment.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                                                ^^
+                                                source.ts meta.var.expr.ts meta.objectliteral.ts
+>    /*good*/'foo'/*BAD*/: 456, 
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts
+           ^^
+           source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+              ^^^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                  ^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts comment.block.ts punctuation.definition.comment.ts
+                    ^^^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts comment.block.ts
+                       ^^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts comment.block.ts punctuation.definition.comment.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                           ^^^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                               ^^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts
+>    /*good*/"fooo"/*BAD*/: 789, 
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts
+           ^^
+           source.ts meta.var.expr.ts meta.objectliteral.ts comment.block.ts punctuation.definition.comment.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+              ^^^^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.double.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                   ^^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts comment.block.ts punctuation.definition.comment.ts
+                     ^^^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts comment.block.ts
+                        ^^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts comment.block.ts punctuation.definition.comment.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                            ^^^
+                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                                ^^
+                                source.ts meta.var.expr.ts meta.objectliteral.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts

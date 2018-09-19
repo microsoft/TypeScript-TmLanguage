@@ -1266,11 +1266,13 @@ repository:
       begin: (?=\[)
       end: (?=:)|((?<=[\]])(?=\s*[\(\<]))
       patterns:
+      - include: '#comment'
       - include: '#array-literal'
     - name: meta.object.member.ts meta.object-literal.key.ts
       begin: (?=[\'\"])
       end: (?=:)|((?<=[\'\"])(?=\s*[\(\<]))
       patterns:
+      - include: '#comment'
       - include: '#string'
     - name: meta.method.declaration.ts
       begin: (?<=[\]\'\"])(?=\s*[\(\<])
@@ -1278,18 +1280,18 @@ repository:
       patterns:
       - include: '#function-body'
     - name: meta.object.member.ts
-      match: (?![_$[:alpha:]])([[:digit:]]+)\s*(?=:)
+      match: (?![_$[:alpha:]])([[:digit:]]+)\s*(?=({{inlineComment}}\s*)*:)
       captures:
         '0': { name: meta.object-literal.key.ts }
         '1': { name: constant.numeric.decimal.ts }
     - name: meta.object.member.ts
       match: |-
-        (?x)(?:({{identifier}})\s*(?=:{{functionOrArrowLookup}}))
+        (?x)(?:({{identifier}})\s*(?=({{inlineComment}}\s*)*:(\s*{{inlineComment}})*{{functionOrArrowLookup}}))
       captures:
         '0': { name: meta.object-literal.key.ts }
         '1': { name: entity.name.function.ts }
     - name: meta.object.member.ts
-      match: (?:{{identifier}})\s*(?=:)
+      match: (?:{{identifier}})\s*(?=({{inlineComment}}\s*)*:)
       captures:
         '0': { name: meta.object-literal.key.ts }
     - name: meta.object.member.ts

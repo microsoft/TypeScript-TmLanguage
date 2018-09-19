@@ -4077,6 +4077,10 @@
             <array>
               <dict>
                 <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#array-literal</string>
               </dict>
             </array>
@@ -4090,6 +4094,10 @@
             <string>(?=:)|((?&lt;=[\'\"])(?=\s*[\(\&lt;]))</string>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#string</string>
@@ -4115,7 +4123,7 @@
             <key>name</key>
             <string>meta.object.member.tsx</string>
             <key>match</key>
-            <string>(?![_$[:alpha:]])([[:digit:]]+)\s*(?=:)</string>
+            <string>(?![_$[:alpha:]])([[:digit:]]+)\s*(?=(\/\*([^\*]|(\*[^\/]))*\*\/\s*)*:)</string>
             <key>captures</key>
             <dict>
               <key>0</key>
@@ -4134,7 +4142,7 @@
             <key>name</key>
             <string>meta.object.member.tsx</string>
             <key>match</key>
-            <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(?=:\s*(
+            <string>(?x)(?:([_$[:alpha:]][_$[:alnum:]]*)\s*(?=(\/\*([^\*]|(\*[^\/]))*\*\/\s*)*:(\s*\/\*([^\*]|(\*[^\/]))*\*\/)*\s*(
   ((async\s+)?(
     (function\s*[(&lt;*]) |
     (function\s+) |
@@ -4181,7 +4189,7 @@
             <key>name</key>
             <string>meta.object.member.tsx</string>
             <key>match</key>
-            <string>(?:[_$[:alpha:]][_$[:alnum:]]*)\s*(?=:)</string>
+            <string>(?:[_$[:alpha:]][_$[:alnum:]]*)\s*(?=(\/\*([^\*]|(\*[^\/]))*\*\/\s*)*:)</string>
             <key>captures</key>
             <dict>
               <key>0</key>
