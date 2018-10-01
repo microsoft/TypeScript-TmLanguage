@@ -1,0 +1,374 @@
+original file
+-----------------------------------
+export function computed<K extends string | symbol>(...watchedProps: K[]) {
+  if (watchedProps.length < 1) throw new Error('@computed() decorator must have at least one property argument');
+
+  return <V, T extends Record<K, any>>(
+    _target: T,
+    _prop: string | symbol,
+    desc: TypedPropertyDescriptor<V>
+  ) => {
+    if (!desc.get) throw new Error('The `@computed()` decorator must be used on `get` method.');
+    if (desc.set) throw new Error('The `@computed()` decorator cannot be used with `set` method.');
+    if (desc.value) throw new Error('The `@computed()` decorator cannot be used with a regular function.');
+    // ....
+  };
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export function computed<K extends string | symbol>(...watchedProps: K[]) {
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^
+                 source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                         ^
+                         source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                          ^
+                          source.ts meta.function.ts meta.type.parameters.ts entity.name.type.ts
+                           ^
+                           source.ts meta.function.ts meta.type.parameters.ts
+                            ^^^^^^^
+                            source.ts meta.function.ts meta.type.parameters.ts storage.modifier.ts
+                                   ^
+                                   source.ts meta.function.ts meta.type.parameters.ts
+                                    ^^^^^^
+                                    source.ts meta.function.ts meta.type.parameters.ts support.type.primitive.ts
+                                          ^
+                                          source.ts meta.function.ts meta.type.parameters.ts
+                                           ^
+                                           source.ts meta.function.ts meta.type.parameters.ts keyword.operator.type.ts
+                                            ^
+                                            source.ts meta.function.ts meta.type.parameters.ts
+                                             ^^^^^^
+                                             source.ts meta.function.ts meta.type.parameters.ts support.type.primitive.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                     ^^^
+                                                     source.ts meta.function.ts meta.parameters.ts keyword.operator.rest.ts
+                                                        ^^^^^^^^^^^^
+                                                        source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                                    ^
+                                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                                     ^
+                                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                                      ^
+                                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                                                       ^
+                                                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                        ^
+                                                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                          ^
+                                                                          source.ts meta.function.ts
+                                                                           ^
+                                                                           source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  if (watchedProps.length < 1) throw new Error('@computed() decorator must have at least one property argument');
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.ts meta.block.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+       ^^^^^^^^^^^^
+       source.ts meta.function.ts meta.block.ts variable.other.object.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts punctuation.accessor.ts
+                    ^^^^^^
+                    source.ts meta.function.ts meta.block.ts support.variable.property.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts
+                                ^^^^^
+                                source.ts meta.function.ts meta.block.ts keyword.control.trycatch.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts
+                                      ^^^
+                                      source.ts meta.function.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts new.expr.ts
+                                          ^^^^^
+                                          source.ts meta.function.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts meta.function.ts meta.block.ts new.expr.ts string.quoted.single.ts
+                                                                                                               ^
+                                                                                                               source.ts meta.function.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                                                ^
+                                                                                                                source.ts meta.function.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                                                                 ^
+                                                                                                                 source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts meta.function.ts meta.block.ts
+>  return <V, T extends Record<K, any>>(
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.type.parameters.ts entity.name.type.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.type.parameters.ts punctuation.separator.comma.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.type.parameters.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.type.parameters.ts entity.name.type.ts
+               ^
+               source.ts meta.function.ts meta.block.ts meta.type.parameters.ts
+                ^^^^^^^
+                source.ts meta.function.ts meta.block.ts meta.type.parameters.ts storage.modifier.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.type.parameters.ts
+                        ^^^^^^
+                        source.ts meta.function.ts meta.block.ts meta.type.parameters.ts entity.name.type.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.type.parameters.ts meta.type.parameters.ts entity.name.type.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.type.parameters.ts meta.type.parameters.ts
+                                  ^^^
+                                  source.ts meta.function.ts meta.block.ts meta.type.parameters.ts meta.type.parameters.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+>    _target: T,
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^^
+     source.ts meta.function.ts meta.block.ts variable.parameter.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.type.annotation.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.type.annotation.ts entity.name.type.ts
+               ^
+               source.ts meta.function.ts meta.block.ts punctuation.separator.parameter.ts
+>    _prop: string | symbol,
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^
+     source.ts meta.function.ts meta.block.ts variable.parameter.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.type.annotation.ts
+            ^^^^^^
+            source.ts meta.function.ts meta.block.ts meta.type.annotation.ts support.type.primitive.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.type.annotation.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.type.annotation.ts keyword.operator.type.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.type.annotation.ts
+                     ^^^^^^
+                     source.ts meta.function.ts meta.block.ts meta.type.annotation.ts support.type.primitive.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts punctuation.separator.parameter.ts
+>    desc: TypedPropertyDescriptor<V>
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^
+     source.ts meta.function.ts meta.block.ts variable.parameter.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+          ^
+          source.ts meta.function.ts meta.block.ts meta.type.annotation.ts
+           ^^^^^^^^^^^^^^^^^^^^^^^
+           source.ts meta.function.ts meta.block.ts meta.type.annotation.ts entity.name.type.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts meta.type.annotation.ts meta.type.parameters.ts entity.name.type.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+>  ) => {
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+    ^
+    source.ts meta.function.ts meta.block.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.arrow.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>    if (!desc.get) throw new Error('The `@computed()` decorator must be used on `get` method.');
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.conditional.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+         ^
+         source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.operator.logical.ts
+          ^^^^
+          source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.object.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+               ^^^
+               source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.property.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+                    ^^^^^
+                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.trycatch.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+                          ^^^
+                          source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts
+                              ^^^^^
+                              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts
+                                                                                              ^
+                                                                                              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                               ^
+                                                                                               source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                                                ^
+                                                                                                source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+>    if (desc.set) throw new Error('The `@computed()` decorator cannot be used with `set` method.');
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.conditional.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+         ^^^^
+         source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.object.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+              ^^^
+              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.property.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+                   ^^^^^
+                   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.trycatch.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+                         ^^^
+                         source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts
+                             ^^^^^
+                             source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts
+                                                                                                 ^
+                                                                                                 source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                                  ^
+                                                                                                  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                                                   ^
+                                                                                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+>    if (desc.value) throw new Error('The `@computed()` decorator cannot be used with a regular function.');
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.conditional.ts
+       ^
+       source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+         ^^^^
+         source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.object.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+              ^^^^^
+              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts support.variable.property.dom.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+                     ^^^^^
+                     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.trycatch.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+                           ^^^
+                           source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts keyword.operator.new.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts
+                               ^^^^^
+                               source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts entity.name.type.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                      source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts
+                                                                                                         ^
+                                                                                                         source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                                                          ^
+                                                                                                          source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts new.expr.ts meta.brace.round.ts
+                                                                                                           ^
+                                                                                                           source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+>    // ....
+ ^^^^
+ source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+       ^^^^^
+       source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
+>  };
+ ^^
+ source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts
+   ^
+   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+    ^
+    source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
