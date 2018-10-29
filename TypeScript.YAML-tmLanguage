@@ -2176,7 +2176,6 @@ repository:
     endCaptures:
       '0': { name: meta.brace.round.ts }
     patterns:
-    - include: '#destructuring-parameter'
     #parameter name only if followed by type annotation
     - match: |-
         (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}}))\s*(\??)(?=\s*{{functionLikeType}})
