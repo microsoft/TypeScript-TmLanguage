@@ -2526,9 +2526,13 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?&lt;=\}|\S)(?&lt;!=&gt;)|((?!\{)(?=\S))</string>
+            <string>((?&lt;=\}|\S)(?&lt;!=&gt;)|((?!\{)(?=\S)))(?!\/[\/\*])</string>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>include</key>
+                <string>#single-line-comment-consuming-line-ending</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#decl-block</string>

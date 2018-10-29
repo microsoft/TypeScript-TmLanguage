@@ -788,8 +788,9 @@ repository:
       begin: =>
       beginCaptures:
         '0': { name: storage.type.function.arrow.ts }
-      end: (?<=\}|\S)(?<!=>)|((?!\{)(?=\S))
+      end: ((?<=\}|\S)(?<!=>)|((?!\{)(?=\S)))(?!\/[\/\*])
       patterns:
+      - include: '#single-line-comment-consuming-line-ending'
       - include: '#decl-block'
       - include: '#expression'
 
