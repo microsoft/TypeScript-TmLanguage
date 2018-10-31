@@ -648,7 +648,7 @@ repository:
       '4': { name: storage.type.function.ts }
       '5': { name: keyword.generator.asterisk.ts }
       '6': { name: meta.definition.function.ts entity.name.function.ts }
-    end: (?=$|^|;)|(?<=\})
+    end: (?={{endOfStatement}})|(?<=\})
     patterns:
     - include: '#function-name'
     - include: '#function-body'
