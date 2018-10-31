@@ -2514,6 +2514,10 @@
                 <key>include</key>
                 <string>#arrow-return-type</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#possibly-arrow-return-type</string>
+              </dict>
             </array>
           </dict>
           <dict>
@@ -5983,7 +5987,7 @@
       <key>possibly-arrow-return-type</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;=\))\s*(:)(?=\s*([^&lt;&gt;\(\)\{\}]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\)|\{[^\{\}]+\})+\s*=&gt;)</string>
+        <string>(?&lt;=\)|^)\s*(:)(?=\s*([^&lt;&gt;\(\)\{\}]|\&lt;[^&lt;&gt;]+\&gt;|\([^\(\)]+\)|\{[^\{\}]+\})+\s*=&gt;)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>

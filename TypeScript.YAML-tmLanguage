@@ -783,6 +783,7 @@ repository:
       - include: '#function-parameters'
       # return type of the arrow
       - include: '#arrow-return-type'
+      - include: '#possibly-arrow-return-type'
     # arrow operator
     - name: meta.arrow.ts
       begin: =>
@@ -2033,7 +2034,7 @@ repository:
 
   #This is the check if the exoression '): something =>'' can be matched as return type of arrow
   possibly-arrow-return-type:
-    begin: (?<=\))\s*(:)(?={{returnTypeOfArrow}}\s*=>)
+    begin: (?<=\)|^)\s*(:)(?={{returnTypeOfArrow}}\s*=>)
     beginCaptures:
       '1': { name: meta.arrow.ts meta.return.type.arrow.ts keyword.operator.type.annotation.ts }
     end: '{{arrowFunctionEnd}}'
