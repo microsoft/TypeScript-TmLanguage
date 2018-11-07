@@ -1,0 +1,1528 @@
+original file
+-----------------------------------
+// All bases should allow "n" suffix
+const bin = 0b101, binBig = 0b101n; // 5, 5n
+const oct = 0o567, octBig = 0o567n; // 375, 375n
+const hex = 0xC0B, hexBig = 0xC0Bn; // 3083, 3083n
+const dec = 123,   decBig = 123n;
+
+// Test literals whose values overflow a 53-bit integer
+// These should be represented exactly in the emitted JS
+const largeBin = 0b10101010101010101010101010101010101010101010101010101010101n; // 384307168202282325n
+const largeOct = 0o123456712345671234567n; // 1505852261029722487n
+const largeDec = 12345678091234567890n;
+const largeHex = 0x1234567890abcdefn; // 1311768467294899695n
+
+// Test literals with separators
+const separatedBin = 0b010_10_1n; // 21n
+const separatedOct = 0o1234_567n; // 342391n
+const separatedDec = 123_456_789n;
+const separatedHex = 0x0_abcdefn; // 11259375n
+
+// Test parsing literals of different bit sizes
+// to ensure that parsePseudoBigInt() allocates enough space
+const zero         = 0b0n;
+const oneBit       = 0b1n;
+const twoBit       = 0b11n; // 3n
+const threeBit     = 0b111n; // 7n
+const fourBit      = 0b1111n; // 15n
+const fiveBit      = 0b11111n; // 31n
+const sixBit       = 0b111111n; // 63n
+const sevenBit     = 0b1111111n; // 127n
+const eightBit     = 0b11111111n; // 255n
+const nineBit      = 0b111111111n; // 511n
+const tenBit       = 0b1111111111n; // 1023n
+const elevenBit    = 0b11111111111n; // 2047n
+const twelveBit    = 0b111111111111n; // 4095n
+const thirteenBit  = 0b1111111111111n; // 8191n
+const fourteenBit  = 0b11111111111111n; // 16383n
+const fifteenBit   = 0b111111111111111n; // 32767n
+const sixteenBit   = 0b1111111111111111n; // 65535n
+const seventeenBit = 0b11111111111111111n; // 131071n
+
+// Test negative literals
+const neg = -123n;
+const negHex: -16n = -0x10n;
+
+// Test normalization of bigints -- all of these should succeed
+const negZero: 0n = -0n;
+const baseChange: 255n = 0xFFn;
+const leadingZeros: 0xFFn = 0x000000FFn;
+
+// Plus not allowed on literals
+const unaryPlus = +123n;
+const unaryPlusHex = +0x123n;
+
+// Parsing errors
+// In separate blocks because they each declare an "n" variable
+{ const legacyOct = 0123n; }
+{ const scientific = 1e2n; }
+{ const decimal = 4.1n; }
+{ const leadingDecimal = .1n; }
+const emptyBinary = 0bn; // should error but infer 0n
+const emptyOct = 0on; // should error but infer 0n
+const emptyHex = 0xn; // should error but infer 0n
+const leadingSeparator = _123n;
+const trailingSeparator = 123_n;
+const doubleSeparator = 123_456__789n;
+
+// Using literals as types
+const oneTwoOrThree = (x: 1n | 2n | 3n): bigint => x ** 2n;
+oneTwoOrThree(0n); oneTwoOrThree(1n); oneTwoOrThree(2n); oneTwoOrThree(3n);
+oneTwoOrThree(0);  oneTwoOrThree(1);  oneTwoOrThree(2);  oneTwoOrThree(3);
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// All bases should allow "n" suffix
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const bin = 0b101, binBig = 0b101n; // 5, 5n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^^^^
+             source.ts meta.var.expr.ts constant.numeric.binary.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^^^^^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                           ^
+                           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.var.expr.ts
+                             ^^^^^
+                             source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                  ^
+                                  source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                   ^
+                                   source.ts punctuation.terminator.statement.ts
+                                    ^
+                                    source.ts
+                                     ^^
+                                     source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                       ^^^^^^
+                                       source.ts comment.line.double-slash.ts
+>const oct = 0o567, octBig = 0o567n; // 375, 375n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^^^^
+             source.ts meta.var.expr.ts constant.numeric.octal.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^^^^^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                           ^
+                           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.var.expr.ts
+                             ^^^^^
+                             source.ts meta.var.expr.ts constant.numeric.octal.ts
+                                  ^
+                                  source.ts meta.var.expr.ts constant.numeric.octal.ts storage.type.numeric.bigint.ts
+                                   ^
+                                   source.ts punctuation.terminator.statement.ts
+                                    ^
+                                    source.ts
+                                     ^^
+                                     source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                       ^^^^^^^^^^
+                                       source.ts comment.line.double-slash.ts
+>const hex = 0xC0B, hexBig = 0xC0Bn; // 3083, 3083n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^^^^
+             source.ts meta.var.expr.ts constant.numeric.hex.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^^^^^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                           ^
+                           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.var.expr.ts
+                             ^^^^^
+                             source.ts meta.var.expr.ts constant.numeric.hex.ts
+                                  ^
+                                  source.ts meta.var.expr.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                                   ^
+                                   source.ts punctuation.terminator.statement.ts
+                                    ^
+                                    source.ts
+                                     ^^
+                                     source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                       ^^^^^^^^^^^^
+                                       source.ts comment.line.double-slash.ts
+>const dec = 123,   decBig = 123n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                ^
+                source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                 ^^
+                 source.ts meta.var.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^^^^^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                           ^
+                           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.var.expr.ts
+                             ^^^
+                             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                ^
+                                source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>// Test literals whose values overflow a 53-bit integer
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>// These should be represented exactly in the emitted JS
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const largeBin = 0b10101010101010101010101010101010101010101010101010101010101n; // 384307168202282325n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                                                               ^
+                                                                               source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                                                                ^
+                                                                                source.ts punctuation.terminator.statement.ts
+                                                                                 ^
+                                                                                 source.ts
+                                                                                  ^^
+                                                                                  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                                                    ^^^^^^^^^^^^^^^^^^^^
+                                                                                    source.ts comment.line.double-slash.ts
+>const largeOct = 0o123456712345671234567n; // 1505852261029722487n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts constant.numeric.octal.ts
+                                         ^
+                                         source.ts meta.var.expr.ts constant.numeric.octal.ts storage.type.numeric.bigint.ts
+                                          ^
+                                          source.ts punctuation.terminator.statement.ts
+                                           ^
+                                           source.ts
+                                            ^^
+                                            source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                              ^^^^^^^^^^^^^^^^^^^^^
+                                              source.ts comment.line.double-slash.ts
+>const largeDec = 12345678091234567890n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^^^^^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                      ^
+                                      source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts
+>const largeHex = 0x1234567890abcdefn; // 1311768467294899695n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^^^^^^^^^^^^^^^^^^
+                  source.ts meta.var.expr.ts constant.numeric.hex.ts
+                                    ^
+                                    source.ts meta.var.expr.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                                     ^
+                                     source.ts punctuation.terminator.statement.ts
+                                      ^
+                                      source.ts
+                                       ^^
+                                       source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                         ^^^^^^^^^^^^^^^^^^^^^
+                                         source.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts
+>// Test literals with separators
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const separatedBin = 0b010_10_1n; // 21n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                ^
+                                source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
+                                  ^
+                                  source.ts
+                                   ^^
+                                   source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                     ^^^^
+                                     source.ts comment.line.double-slash.ts
+>const separatedOct = 0o1234_567n; // 342391n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.octal.ts
+                                ^
+                                source.ts meta.var.expr.ts constant.numeric.octal.ts storage.type.numeric.bigint.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
+                                  ^
+                                  source.ts
+                                   ^^
+                                   source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                     ^^^^^^^^
+                                     source.ts comment.line.double-slash.ts
+>const separatedDec = 123_456_789n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                 ^
+                                 source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                  ^
+                                  source.ts punctuation.terminator.statement.ts
+>const separatedHex = 0x0_abcdefn; // 11259375n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.hex.ts
+                                ^
+                                source.ts meta.var.expr.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
+                                  ^
+                                  source.ts
+                                   ^^
+                                   source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                     ^^^^^^^^^^
+                                     source.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts
+>// Test parsing literals of different bit sizes
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>// to ensure that parsePseudoBigInt() allocates enough space
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const zero         = 0b0n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+           ^^^^^^^^^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                         ^
+                         source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                          ^
+                          source.ts punctuation.terminator.statement.ts
+>const oneBit       = 0b1n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^^^^^^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                         ^
+                         source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                          ^
+                          source.ts punctuation.terminator.statement.ts
+>const twoBit       = 0b11n; // 3n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^^^^^^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                          ^
+                          source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                           ^
+                           source.ts punctuation.terminator.statement.ts
+                            ^
+                            source.ts
+                             ^^
+                             source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                               ^^^
+                               source.ts comment.line.double-slash.ts
+>const threeBit     = 0b111n; // 7n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^^^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                           ^
+                           source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                            ^
+                            source.ts punctuation.terminator.statement.ts
+                             ^
+                             source.ts
+                              ^^
+                              source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                ^^^
+                                source.ts comment.line.double-slash.ts
+>const fourBit      = 0b1111n; // 15n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^^^^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                            ^
+                            source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                             ^
+                             source.ts punctuation.terminator.statement.ts
+                              ^
+                              source.ts
+                               ^^
+                               source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                 ^^^^
+                                 source.ts comment.line.double-slash.ts
+>const fiveBit      = 0b11111n; // 31n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^^^^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                             ^
+                             source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                              ^
+                              source.ts punctuation.terminator.statement.ts
+                               ^
+                               source.ts
+                                ^^
+                                source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                  ^^^^
+                                  source.ts comment.line.double-slash.ts
+>const sixBit       = 0b111111n; // 63n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^^^^^^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                              ^
+                              source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+                                ^
+                                source.ts
+                                 ^^
+                                 source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                   ^^^^
+                                   source.ts comment.line.double-slash.ts
+>const sevenBit     = 0b1111111n; // 127n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^^^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                               ^
+                               source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+                                 ^
+                                 source.ts
+                                  ^^
+                                  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                    ^^^^^
+                                    source.ts comment.line.double-slash.ts
+>const eightBit     = 0b11111111n; // 255n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^^^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                ^
+                                source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
+                                  ^
+                                  source.ts
+                                   ^^
+                                   source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                     ^^^^^
+                                     source.ts comment.line.double-slash.ts
+>const nineBit      = 0b111111111n; // 511n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^^^^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                 ^
+                                 source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                  ^
+                                  source.ts punctuation.terminator.statement.ts
+                                   ^
+                                   source.ts
+                                    ^^
+                                    source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                      ^^^^^
+                                      source.ts comment.line.double-slash.ts
+>const tenBit       = 0b1111111111n; // 1023n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^^^^^^^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                  ^
+                                  source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                   ^
+                                   source.ts punctuation.terminator.statement.ts
+                                    ^
+                                    source.ts
+                                     ^^
+                                     source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                       ^^^^^^
+                                       source.ts comment.line.double-slash.ts
+>const elevenBit    = 0b11111111111n; // 2047n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                ^^^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                   ^
+                                   source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+                                     ^
+                                     source.ts
+                                      ^^
+                                      source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                        ^^^^^^
+                                        source.ts comment.line.double-slash.ts
+>const twelveBit    = 0b111111111111n; // 4095n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                ^^^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                    ^
+                                    source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                     ^
+                                     source.ts punctuation.terminator.statement.ts
+                                      ^
+                                      source.ts
+                                       ^^
+                                       source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                         ^^^^^^
+                                         source.ts comment.line.double-slash.ts
+>const thirteenBit  = 0b1111111111111n; // 8191n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                     ^
+                                     source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
+                                       ^
+                                       source.ts
+                                        ^^
+                                        source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                          ^^^^^^
+                                          source.ts comment.line.double-slash.ts
+>const fourteenBit  = 0b11111111111111n; // 16383n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                      ^
+                                      source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts
+                                        ^
+                                        source.ts
+                                         ^^
+                                         source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                           ^^^^^^^
+                                           source.ts comment.line.double-slash.ts
+>const fifteenBit   = 0b111111111111111n; // 32767n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                 ^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                       ^
+                                       source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                        ^
+                                        source.ts punctuation.terminator.statement.ts
+                                         ^
+                                         source.ts
+                                          ^^
+                                          source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                            ^^^^^^^
+                                            source.ts comment.line.double-slash.ts
+>const sixteenBit   = 0b1111111111111111n; // 65535n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                 ^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                        ^
+                                        source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
+                                          ^
+                                          source.ts
+                                           ^^
+                                           source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                             ^^^^^^^
+                                             source.ts comment.line.double-slash.ts
+>const seventeenBit = 0b11111111111111111n; // 131071n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^^^^^^^^^^^^^^^^^^^
+                      source.ts meta.var.expr.ts constant.numeric.binary.ts
+                                         ^
+                                         source.ts meta.var.expr.ts constant.numeric.binary.ts storage.type.numeric.bigint.ts
+                                          ^
+                                          source.ts punctuation.terminator.statement.ts
+                                           ^
+                                           source.ts
+                                            ^^
+                                            source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                              ^^^^^^^^
+                                              source.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts
+>// Test negative literals
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const neg = -123n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+              ^^^
+              source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                 ^
+                 source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+>const negHex: -16n = -0x10n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                ^^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                       ^^^^
+                       source.ts meta.var.expr.ts constant.numeric.hex.ts
+                           ^
+                           source.ts meta.var.expr.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                            ^
+                            source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>// Test normalization of bigints -- all of these should succeed
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const negZero: 0n = -0n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                   ^
+                   source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                      ^
+                      source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+>const baseChange: 255n = 0xFFn;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                   ^^^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                        ^
+                        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.var.expr.ts
+                          ^^^^
+                          source.ts meta.var.expr.ts constant.numeric.hex.ts
+                              ^
+                              source.ts meta.var.expr.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+>const leadingZeros: 0xFFn = 0x000000FFn;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                     ^^^^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.hex.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                           ^
+                           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.var.expr.ts
+                             ^^^^^^^^^^
+                             source.ts meta.var.expr.ts constant.numeric.hex.ts
+                                       ^
+                                       source.ts meta.var.expr.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                                        ^
+                                        source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>// Plus not allowed on literals
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const unaryPlus = +123n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.var.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                    ^^^
+                    source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                       ^
+                       source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+>const unaryPlusHex = +0x123n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                       ^^^^^
+                       source.ts meta.var.expr.ts constant.numeric.hex.ts
+                            ^
+                            source.ts meta.var.expr.ts constant.numeric.hex.ts storage.type.numeric.bigint.ts
+                             ^
+                             source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>// Parsing errors
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>// In separate blocks because they each declare an "n" variable
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>{ const legacyOct = 0123n; }
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.block.ts
+   ^^^^^
+   source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^^^^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.block.ts meta.var.expr.ts
+                     ^^^^
+                     source.ts meta.block.ts meta.var.expr.ts constant.numeric.octal.ts
+                         ^
+                         source.ts meta.block.ts meta.var.expr.ts constant.numeric.octal.ts storage.type.numeric.bigint.ts
+                          ^
+                          source.ts meta.block.ts punctuation.terminator.statement.ts
+                           ^
+                           source.ts meta.block.ts
+                            ^
+                            source.ts meta.block.ts punctuation.definition.block.ts
+>{ const scientific = 1e2n; }
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.block.ts
+   ^^^^^
+   source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^^^^^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.block.ts meta.var.expr.ts
+                      ^^^
+                      source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                         ^
+                         source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                          ^
+                          source.ts meta.block.ts punctuation.terminator.statement.ts
+                           ^
+                           source.ts meta.block.ts
+                            ^
+                            source.ts meta.block.ts punctuation.definition.block.ts
+>{ const decimal = 4.1n; }
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.block.ts
+   ^^^^^
+   source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                ^
+                source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                 ^
+                 source.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.block.ts meta.var.expr.ts
+                   ^
+                   source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                    ^
+                    source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+                     ^
+                     source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                      ^
+                      source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                       ^
+                       source.ts meta.block.ts punctuation.terminator.statement.ts
+                        ^
+                        source.ts meta.block.ts
+                         ^
+                         source.ts meta.block.ts punctuation.definition.block.ts
+>{ const leadingDecimal = .1n; }
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.block.ts
+   ^^^^^
+   source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^^^^^^^^^^^^^^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                       ^
+                       source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.block.ts meta.var.expr.ts
+                          ^
+                          source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts meta.delimiter.decimal.period.ts
+                           ^
+                           source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                            ^
+                            source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                             ^
+                             source.ts meta.block.ts punctuation.terminator.statement.ts
+                              ^
+                              source.ts meta.block.ts
+                               ^
+                               source.ts meta.block.ts punctuation.definition.block.ts
+>const emptyBinary = 0bn; // should error but infer 0n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^^
+                    source.ts meta.var.expr.ts
+                      ^^
+                      source.ts meta.var.expr.ts variable.other.readwrite.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+                         ^
+                         source.ts
+                          ^^
+                          source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            source.ts comment.line.double-slash.ts
+>const emptyOct = 0on; // should error but infer 0n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^^
+                 source.ts meta.var.expr.ts
+                   ^^
+                   source.ts meta.var.expr.ts variable.other.readwrite.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+                      ^
+                      source.ts
+                       ^^
+                       source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         source.ts comment.line.double-slash.ts
+>const emptyHex = 0xn; // should error but infer 0n
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^^
+                 source.ts meta.var.expr.ts
+                   ^^
+                   source.ts meta.var.expr.ts variable.other.readwrite.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+                      ^
+                      source.ts
+                       ^^
+                       source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         source.ts comment.line.double-slash.ts
+>const leadingSeparator = _123n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                         ^
+                         source.ts meta.var.expr.ts
+                          ^^^^^
+                          source.ts meta.var.expr.ts variable.other.readwrite.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+>const trailingSeparator = 123_n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                         ^
+                         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.var.expr.ts
+                           ^^^^
+                           source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                               ^
+                               source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+>const doubleSeparator = 123_456__789n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.var.expr.ts
+                         ^^^^^^^^^^^^
+                         source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                     ^
+                                     source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>// Using literals as types
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>const oneTwoOrThree = (x: 1n | 2n | 3n): bigint => x ** 2n;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.arrow.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.arrow.ts meta.return.type.arrow.ts keyword.operator.type.annotation.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.arrow.ts meta.return.type.arrow.ts
+                                          ^^^^^^
+                                          source.ts meta.var.expr.ts meta.arrow.ts meta.return.type.arrow.ts support.type.primitive.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.arrow.ts meta.return.type.arrow.ts
+                                                 ^^
+                                                 source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                   ^
+                                                   source.ts meta.var.expr.ts meta.arrow.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                     ^
+                                                     source.ts meta.var.expr.ts
+                                                      ^
+                                                      source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                                                       ^
+                                                       source.ts meta.var.expr.ts keyword.operator.arithmetic.ts
+                                                        ^
+                                                        source.ts meta.var.expr.ts
+                                                         ^
+                                                         source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                                          ^
+                                                          source.ts meta.var.expr.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                                           ^
+                                                           source.ts punctuation.terminator.statement.ts
+>oneTwoOrThree(0n); oneTwoOrThree(1n); oneTwoOrThree(2n); oneTwoOrThree(3n);
+ ^^^^^^^^^^^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+              ^
+              source.ts meta.brace.round.ts
+               ^
+               source.ts constant.numeric.decimal.ts
+                ^
+                source.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                 ^
+                 source.ts meta.brace.round.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+                   ^
+                   source.ts
+                    ^^^^^^^^^^^^^
+                    source.ts meta.function-call.ts entity.name.function.ts
+                                 ^
+                                 source.ts meta.brace.round.ts
+                                  ^
+                                  source.ts constant.numeric.decimal.ts
+                                   ^
+                                   source.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                    ^
+                                    source.ts meta.brace.round.ts
+                                     ^
+                                     source.ts punctuation.terminator.statement.ts
+                                      ^
+                                      source.ts
+                                       ^^^^^^^^^^^^^
+                                       source.ts meta.function-call.ts entity.name.function.ts
+                                                    ^
+                                                    source.ts meta.brace.round.ts
+                                                     ^
+                                                     source.ts constant.numeric.decimal.ts
+                                                      ^
+                                                      source.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                                       ^
+                                                       source.ts meta.brace.round.ts
+                                                        ^
+                                                        source.ts punctuation.terminator.statement.ts
+                                                         ^
+                                                         source.ts
+                                                          ^^^^^^^^^^^^^
+                                                          source.ts meta.function-call.ts entity.name.function.ts
+                                                                       ^
+                                                                       source.ts meta.brace.round.ts
+                                                                        ^
+                                                                        source.ts constant.numeric.decimal.ts
+                                                                         ^
+                                                                         source.ts constant.numeric.decimal.ts storage.type.numeric.bigint.ts
+                                                                          ^
+                                                                          source.ts meta.brace.round.ts
+                                                                           ^
+                                                                           source.ts punctuation.terminator.statement.ts
+>oneTwoOrThree(0);  oneTwoOrThree(1);  oneTwoOrThree(2);  oneTwoOrThree(3);
+ ^^^^^^^^^^^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+              ^
+              source.ts meta.brace.round.ts
+               ^
+               source.ts constant.numeric.decimal.ts
+                ^
+                source.ts meta.brace.round.ts
+                 ^
+                 source.ts punctuation.terminator.statement.ts
+                  ^^
+                  source.ts
+                    ^^^^^^^^^^^^^
+                    source.ts meta.function-call.ts entity.name.function.ts
+                                 ^
+                                 source.ts meta.brace.round.ts
+                                  ^
+                                  source.ts constant.numeric.decimal.ts
+                                   ^
+                                   source.ts meta.brace.round.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+                                     ^^
+                                     source.ts
+                                       ^^^^^^^^^^^^^
+                                       source.ts meta.function-call.ts entity.name.function.ts
+                                                    ^
+                                                    source.ts meta.brace.round.ts
+                                                     ^
+                                                     source.ts constant.numeric.decimal.ts
+                                                      ^
+                                                      source.ts meta.brace.round.ts
+                                                       ^
+                                                       source.ts punctuation.terminator.statement.ts
+                                                        ^^
+                                                        source.ts
+                                                          ^^^^^^^^^^^^^
+                                                          source.ts meta.function-call.ts entity.name.function.ts
+                                                                       ^
+                                                                       source.ts meta.brace.round.ts
+                                                                        ^
+                                                                        source.ts constant.numeric.decimal.ts
+                                                                         ^
+                                                                         source.ts meta.brace.round.ts
+                                                                          ^
+                                                                          source.ts punctuation.terminator.statement.ts

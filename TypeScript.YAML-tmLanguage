@@ -15,19 +15,19 @@ variables:
   quotedStrings: (\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\`([^\`\\]|\\\`|\\)*\`)
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   label: ({{identifier}})\s*(:)
-  hexNumber: \b(?<!\$)0(x|X)[0-9a-fA-F][0-9a-fA-F_]*\b(?!\$)
-  binaryNumber: \b(?<!\$)0(b|B)[01][01_]*\b(?!\$)
-  octalNumber: \b(?<!\$)0(o|O)?[0-7][0-7_]*\b(?!\$)
+  hexNumber: \b(?<!\$)0(?:x|X)[0-9a-fA-F][0-9a-fA-F_]*(n)?\b(?!\$)
+  binaryNumber: \b(?<!\$)0(?:b|B)[01][01_]*(n)?\b(?!\$)
+  octalNumber: \b(?<!\$)0(?:o|O)?[0-7][0-7_]*(n)?\b(?!\$)
   decimalNumber: |-
     (?<!\$)(?:
-      (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)| # 1.1E+3
-      (?:\b[0-9][0-9_]*(\.)[eE][+-]?[0-9][0-9_]*\b)|             # 1.E+3
-      (?:\B(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)|             # .1E+3
-      (?:\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*\b)|                 # 1E+3
-      (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*\b)|                      # 1.1
-      (?:\b[0-9][0-9_]*(\.)\B)|                                  # 1.
-      (?:\B(\.)[0-9][0-9_]*\b)|                                  # .1
-      (?:\b[0-9][0-9_]*\b(?!\.))                                 # 1
+      (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\b)| # 1.1E+3
+      (?:\b[0-9][0-9_]*(\.)[eE][+-]?[0-9][0-9_]*(n)?\b)|             # 1.E+3
+      (?:\B(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\b)|             # .1E+3
+      (?:\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\b)|                 # 1E+3
+      (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*(n)?\b)|                      # 1.1
+      (?:\b[0-9][0-9_]*(\.)(n)?\B)|                                  # 1.
+      (?:\B(\.)[0-9][0-9_]*(n)?\b)|                                  # .1
+      (?:\b[0-9][0-9_]*(n)?\b(?!\.))                                 # 1
     )(?!\$)
   anyNumber: ({{hexNumber}})|({{binaryNumber}})|({{octalNumber}})|({{decimalNumber}})
   # any use of property name needs to ignore line breaks in regular expression because of decimal number regex (maintained for readability)
@@ -1576,21 +1576,35 @@ repository:
     patterns:
     - name: constant.numeric.hex.ts
       match: '{{hexNumber}}'
+      captures:
+        '1': { name: storage.type.numeric.bigint.ts }
     - name: constant.numeric.binary.ts
       match: '{{binaryNumber}}'
+      captures:
+        '1': { name: storage.type.numeric.bigint.ts }
     - name: constant.numeric.octal.ts
       match: '{{octalNumber}}'
+      captures:
+        '1': { name: storage.type.numeric.bigint.ts }
     - match: |-
         (?x)
         {{decimalNumber}}
       captures:
         '0': {name: constant.numeric.decimal.ts}
         '1': {name: meta.delimiter.decimal.period.ts}
-        '2': {name: meta.delimiter.decimal.period.ts}
+        '2': { name: storage.type.numeric.bigint.ts }
         '3': {name: meta.delimiter.decimal.period.ts}
-        '4': {name: meta.delimiter.decimal.period.ts}
+        '4': { name: storage.type.numeric.bigint.ts }
         '5': {name: meta.delimiter.decimal.period.ts}
-        '6': {name: meta.delimiter.decimal.period.ts}
+        '6': { name: storage.type.numeric.bigint.ts }
+        '7': { name: storage.type.numeric.bigint.ts }
+        '8': {name: meta.delimiter.decimal.period.ts}
+        '9': { name: storage.type.numeric.bigint.ts }
+        '10': {name: meta.delimiter.decimal.period.ts}
+        '11': { name: storage.type.numeric.bigint.ts }
+        '12': {name: meta.delimiter.decimal.period.ts}
+        '13': { name: storage.type.numeric.bigint.ts }
+        '14': { name: storage.type.numeric.bigint.ts }
 
   boolean-literal:
     patterns:
@@ -1630,8 +1644,8 @@ repository:
     # builtins
     - name: support.class.builtin.ts
       match: |-
-        (?x){{startOfIdentifier}}(Array|ArrayBuffer|Atomics|Boolean|DataView|Date|Float32Array|Float64Array|Function|Generator
-          |GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Proxy
+        (?x){{startOfIdentifier}}(Array|ArrayBuffer|Atomics|BigInt|BigInt64Array|BigUint64Array|Boolean|DataView|Date|Float32Array
+          |Float64Array|Function|Generator|GeneratorFunction|Int8Array|Int16Array|Int32Array|Intl|Map|Number|Object|Proxy
           |Reflect|RegExp|Set|SharedArrayBuffer|SIMD|String|Symbol|TypedArray
           |Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray|WeakMap|WeakSet)\b(?!\$)
     - name: support.class.error.ts
@@ -2107,7 +2121,7 @@ repository:
 
   type-primitive:
     name: support.type.primitive.ts
-    match: '{{startOfIdentifier}}(string|number|boolean|symbol|any|void|never|unknown){{endOfIdentifier}}'
+    match: '{{startOfIdentifier}}(string|number|bigint|boolean|symbol|any|void|never|unknown){{endOfIdentifier}}'
 
   type-builtin-literals:
     name: support.type.builtin.ts
