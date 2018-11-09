@@ -1,0 +1,72 @@
+original file
+-----------------------------------
+for (var i = 0 in collection) {
+    const x = 1; // Not classified
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>for (var i = 0 in collection) {
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^
+      source.ts meta.var.expr.ts storage.type.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^
+              source.ts meta.var.expr.ts constant.numeric.decimal.ts
+               ^
+               source.ts
+                ^^
+                source.ts keyword.operator.expression.in.ts
+                  ^
+                  source.ts
+                   ^^^^^^^^^^
+                   source.ts variable.other.readwrite.ts
+                             ^
+                             source.ts meta.brace.round.ts
+                              ^
+                              source.ts
+                               ^
+                               source.ts meta.block.ts punctuation.definition.block.ts
+>    const x = 1; // Not classified
+ ^^^^
+ source.ts meta.block.ts
+     ^^^^^
+     source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+          ^
+          source.ts meta.block.ts meta.var.expr.ts
+           ^
+           source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+            ^
+            source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.block.ts meta.var.expr.ts
+               ^
+               source.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+                ^
+                source.ts meta.block.ts punctuation.terminator.statement.ts
+                 ^
+                 source.ts meta.block.ts
+                  ^^
+                  source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                    ^^^^^^^^^^^^^^^
+                    source.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts

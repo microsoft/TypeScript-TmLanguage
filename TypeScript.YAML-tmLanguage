@@ -626,14 +626,14 @@ repository:
     - begin: (?<!=|!)(=)(?!=)(?=\s*\S)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=$|^|[,);}\]])
+      end: (?=$|^|[,);}\]]|(\s+(of|in)\s+))
       patterns:
       - include: '#expression'
     # if the expression doesnt start on same line do not use end of line as end of unless the complete line is blank
     - begin: (?<!=|!)(=)(?!=)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=[,);}\]])|(?=^\s*$)|(?<=\S)(?<!=)(?=\s*$)
+      end: (?=[,);}\]]|(\s+(of|in)\s+))|(?=^\s*$)|(?<=\S)(?<!=)(?=\s*$)
       patterns:
         - include: '#expression'
 
