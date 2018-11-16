@@ -4,9 +4,21 @@ trigger:
 
 jobs:
 
-# All tasks on Linux
+# All tasks on Windows
+- job: build_all_windows
+  displayName: Build all tasks using node 8 (Windows)
+  variables:
+    node_version: '8.x'
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+  - template: azure-pipelines-template.yml
+
+# All tasks on Windows
 - job: build_all_windows
   displayName: Build all tasks (Windows)
+  variables:
+    node_version: '11.x'
   pool:
     vmImage: vs2017-win2016
   steps:
@@ -15,6 +27,8 @@ jobs:
 # All tasks on Linux
 - job: build_all_linux
   displayName: Build all tasks (Linux)
+  variables:
+    node_version: '11.x'
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
@@ -23,6 +37,8 @@ jobs:
 # All tasks on macOS
 - job: build_all_darwin
   displayName: Build all tasks (macOS)
+  variables:
+    node_version: '11.x'
   pool:
     vmImage: macos-10.13
   steps:
