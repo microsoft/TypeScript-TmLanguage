@@ -4,13 +4,13 @@ trigger:
 
 jobs:
 
-# All tasks on Windows
-- job: build_all_windows_legacy
-  displayName: Build all tasks using node 8 (Windows)
+# All tasks on Linux
+- job: build_all_linux_legacy
+  displayName: Build all tasks using node 8 (Linux)
   variables:
     node_version: '8.x'
   pool:
-    vmImage: vs2017-win2016
+    vmImage: 'Ubuntu 16.04'
   steps:
   - template: azure-pipelines-template.yml
 
