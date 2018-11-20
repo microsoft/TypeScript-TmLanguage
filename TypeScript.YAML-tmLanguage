@@ -1456,7 +1456,7 @@ repository:
       begin: (?:(?<!\+\+|--)(?<={{lookBehindReturn}}|{{lookBehindThrow}}|{{lookBehindYield}}|{{lookBehindAwait}}|{{lookBehindDefault}}|[=(,:>*?\&\|\^]|[^_$[:alnum:]](?:\+\+|\-\-)|[^\+]\+|[^\-]\-))\s*(<)(?!<?\=)(?!\s*$)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
-      end: (\>)\s*
+      end: (\>)
       endCaptures:
         '1': { name: meta.brace.angle.ts }
       patterns:
@@ -1469,7 +1469,7 @@ repository:
       begin: (?:(?<=^))\s*(<)(?={{identifier}}\s*>)
       beginCaptures:
         '1': { name: meta.brace.angle.ts }
-      end: (\>)\s*
+      end: (\>)
       endCaptures:
         '1': { name: meta.brace.angle.ts }
       patterns:

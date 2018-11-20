@@ -1,0 +1,68 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has type assertion
+function f(p: string) {
+    return <number> <unknown> p;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has type assertion
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>function f(p: string) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+               ^^^^^^
+               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                     ^
+                     source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                      ^
+                      source.ts meta.function.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    return <number> <unknown> p;
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts cast.expr.ts
+            ^
+            source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+             ^^^^^^
+             source.ts meta.function.ts meta.block.ts cast.expr.ts support.type.primitive.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts cast.expr.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+                      ^^^^^^^
+                      source.ts meta.function.ts meta.block.ts cast.expr.ts support.type.primitive.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
