@@ -72,7 +72,7 @@ variables:
     # sure shot arrow functions even if => is on new line
     (
       {{typeParameters}}?
-      [(]\s*
+      [(]\s*({{inlineComment}}\s*)*
       (
         ([)]\s*:) |                                                                                       # ():
         ((\.\.\.\s*)?{{identifier}}\s*:)                                                                  # [(]param: | [(]...param:
@@ -84,7 +84,7 @@ variables:
     # arrow function possible to detect only with => on same line
     (
       {{typeParameters}}?                                                                                 # typeparameters
-      \(\s*(([_$[:alpha:]]|{{matchingBraces}}|{{matchingBrackets}}|(\.\.\.\s*[_$[:alpha:]]))([^()]|{{matchingParenthesis}})*)?\)   # parameters
+      \(\s*({{inlineComment}}\s*)*(([_$[:alpha:]]|{{matchingBraces}}|{{matchingBrackets}}|(\.\.\.\s*[_$[:alpha:]]))([^()]|{{matchingParenthesis}})*)?\)   # parameters
       (\s*:{{returnTypeOfArrow}})?                                                                        # return type
       \s*=>                                                                                               # arrow operator
     )
