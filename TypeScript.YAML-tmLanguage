@@ -498,6 +498,8 @@ repository:
     - include: '#binding-element-const'
     - include: '#punctuation-comma'
 
+  # When doing modication to parameter name, also modify expression-inside-possibly-arrow-parens where this is inlined so as to make 
+  # as optional operator only if it is not followed by assignment or type annotation
   parameter-name:
     patterns:
     - match: '{{startOfIdentifier}}(public|protected|private|readonly)\s+(?=(public|protected|private|readonly)\s+)'
@@ -837,6 +839,7 @@ repository:
     patterns:
     - include: '#function-parameters-body'
 
+  # When updating this, also update the expression-inside-possibly-arrow-parens where this is inlined so that parameter-name can also be inlined
   function-parameters-body:
     patterns:
     - include: '#comment'
@@ -1431,7 +1434,33 @@ repository:
   expression-inside-possibly-arrow-parens:
     patterns:
     - include: '#expressionWithoutIdentifiers'
-    - include: '#function-parameters-body'
+    - include: '#comment'
+    - include: '#string'
+    - include: '#decorator'
+    - include: '#destructuring-parameter'
+    - match: '{{startOfIdentifier}}(public|protected|private|readonly)\s+(?=(public|protected|private|readonly)\s+)'
+      captures:
+        '1': { name: storage.modifier.ts }
+    - match: |-
+        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?={{functionLikeAssignmentOrType}})
+      captures:
+        '1': { name: storage.modifier.ts }
+        '2': { name: keyword.operator.rest.ts }
+        '3': { name: entity.name.function.ts variable.language.this.ts }
+        '4': { name: entity.name.function.ts }
+        '5': { name: keyword.operator.optional.ts }
+    - match: |-
+        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?=\s*:)
+      captures:
+        '1': { name: storage.modifier.ts }
+        '2': { name: keyword.operator.rest.ts }
+        '3': { name: variable.parameter.ts variable.language.this.ts }
+        '4': { name: variable.parameter.ts }
+        '5': { name: keyword.operator.optional.ts }
+    - include: '#type-annotation'
+    - include: '#variable-initializer'
+    - name: punctuation.separator.parameter.ts
+      match: ','
     - include: '#identifiers'
     - include: '#expressionPunctuations'
 

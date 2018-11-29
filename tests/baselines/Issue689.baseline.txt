@@ -1,0 +1,156 @@
+original file
+-----------------------------------
+const x = 1;
+const y = (
+    x > x ? 2 :
+    x < x ? 3 :
+    4
+);
+const foo = y;
+const bar = `${x} ${y}`;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const x = 1;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts constant.numeric.decimal.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+>const y = (
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts meta.brace.round.ts
+>    x > x ? 2 :
+ ^^^^
+ source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.relational.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.ternary.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.ternary.ts
+>    x < x ? 3 :
+ ^^^^
+ source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.relational.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.ternary.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.ternary.ts
+>    4
+ ^^^^
+ source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts constant.numeric.decimal.ts
+>);
+ ^
+ source.ts meta.var.expr.ts meta.brace.round.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+>const foo = y;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts variable.other.readwrite.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>const bar = `${x} ${y}`;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+              ^^
+              source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                ^
+                source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                  ^
+                  source.ts meta.var.expr.ts string.template.ts
+                   ^^
+                   source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                     ^
+                     source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                       ^
+                       source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
