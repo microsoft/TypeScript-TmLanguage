@@ -2220,10 +2220,13 @@ repository:
   type-fn-type-parameters:
     patterns:
     # constructor type
-    - name: meta.type.constructor.ts
-      match: '{{startOfIdentifier}}(new)\b(?=\s*\<)'
-      captures:
-        '1': { name: keyword.control.new.ts }
+    - begin: '{{startOfIdentifier}}(new)\b(?=\s*\<)'
+      beginCaptures:
+        '1': { name: meta.type.constructor.ts keyword.control.new.ts }
+      end: (?<=>)
+      patterns:
+      - include: '#comment'
+      - include: '#type-parameters'
     - name: meta.type.constructor.ts
       begin: '{{startOfIdentifier}}(new)\b\s*(?=\()'
       beginCaptures:

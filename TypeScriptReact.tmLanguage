@@ -6574,18 +6574,29 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>name</key>
-            <string>meta.type.constructor.tsx</string>
-            <key>match</key>
+            <key>begin</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\b(?=\s*\&lt;)</string>
-            <key>captures</key>
+            <key>beginCaptures</key>
             <dict>
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.control.new.tsx</string>
+                <string>meta.type.constructor.tsx keyword.control.new.tsx</string>
               </dict>
             </dict>
+            <key>end</key>
+            <string>(?&lt;=&gt;)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#type-parameters</string>
+              </dict>
+            </array>
           </dict>
           <dict>
             <key>name</key>
