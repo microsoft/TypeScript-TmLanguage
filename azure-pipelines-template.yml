@@ -1,0 +1,24 @@
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '$(node_version)'
+  displayName: 'Install Node.js'
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '2.x'
+  displayName: 'Use python 2'
+
+- script: npm install
+  displayName: 'npm install'
+
+- script: npm run build
+  displayName: 'Build'
+
+- script: npm run test
+  displayName: 'Test'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/xunit.xml'    
+  condition: succeededOrFailed()

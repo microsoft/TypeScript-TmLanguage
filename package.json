@@ -9,7 +9,7 @@
     "build:grammar": "tsc -b build -v && node build/build.js",
     "build:tests": "tsc -b tests -v",
     "pretest": "npm run build",
-    "test": "mocha --full-trace tests/test.js",
+    "test": "mocha --full-trace tests/test.js  --reporter mocha-multi-reporters",
     "diff": "cross-env-shell $DIFF tests/baselines tests/generated",
     "accept": "cpx tests/generated/* tests/baselines"
   },
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "cpx": "^1.5.0",
-    "cross-env": "^5.1.1"
+    "cross-env": "^5.1.1",
+    "mocha-multi-reporters": "^1.1.7"
   }
 }
