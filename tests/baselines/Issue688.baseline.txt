@@ -1,0 +1,46 @@
+original file
+-----------------------------------
+/**
+ * @privateRemarks 
+ * Bla bla bla.
+ */
+const foo = 1
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+> * @privateRemarks 
+ ^^^
+ source.ts comment.block.documentation.ts
+    ^
+    source.ts comment.block.documentation.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+     ^^^^^^^^^^^^^^
+     source.ts comment.block.documentation.ts storage.type.class.jsdoc
+                   ^^
+                   source.ts comment.block.documentation.ts
+> * Bla bla bla.
+ ^^^^^^^^^^^^^^^^
+ source.ts comment.block.documentation.ts
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>const foo = 1
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts

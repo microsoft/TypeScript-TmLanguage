@@ -2900,6 +2900,11 @@ repository:
       captures:
         '1': { name: punctuation.definition.block.tag.jsdoc }
     - include: '#inline-tags'
+    # any tag
+    - match: ((@)(?:{{identifier}}))(?=\s+)
+      captures:
+        '1': { name: storage.type.class.jsdoc }
+        '2': { name: punctuation.definition.block.tag.jsdoc }
 
   brackets:
   # Balanced brackets (square or curly)

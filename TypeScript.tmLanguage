@@ -8448,6 +8448,23 @@
             <key>include</key>
             <string>#inline-tags</string>
           </dict>
+          <dict>
+            <key>match</key>
+            <string>((@)(?:[_$[:alpha:]][_$[:alnum:]]*))(?=\s+)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.class.jsdoc</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.tag.jsdoc</string>
+              </dict>
+            </dict>
+          </dict>
         </array>
       </dict>
       <key>brackets</key>
