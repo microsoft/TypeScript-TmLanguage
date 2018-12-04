@@ -1,0 +1,262 @@
+original file
+-----------------------------------
+export function isInOpenInterval(start: number, end: number) {
+  return tersible(a => a > start && a < end, () => `(${start}...${end})`)
+}
+export function isInClosedInterval(start: number, end: number) {
+  return tersible(a => a >= start && a <= end, () => `[${start}...${end}]`)
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export function isInOpenInterval(start: number, end: number) {
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                                 ^
+                                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                  ^^^^^
+                                  source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                        ^
+                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^^^^^^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                ^
+                                                source.ts meta.function.ts meta.parameters.ts
+                                                 ^^^
+                                                 source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                      ^^^^^^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                             ^
+                                                             source.ts meta.function.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  return tersible(a => a > start && a < end, () => `(${start}...${end})`)
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^^^^^^^^
+          source.ts meta.function.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.arrow.ts variable.parameter.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                     ^^
+                     source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts
+                            ^^^^^
+                            source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts
+                                  ^^
+                                  source.ts meta.function.ts meta.block.ts keyword.operator.logical.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts
+                                         ^^^
+                                         source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                 ^^
+                                                 source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.begin.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.block.ts string.template.ts
+                                                      ^^
+                                                      source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                                        ^^^^^
+                                                        source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                              ^^^
+                                                              source.ts meta.function.ts meta.block.ts string.template.ts
+                                                                 ^^
+                                                                 source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                                                   ^^^
+                                                                   source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                                                                      ^
+                                                                      source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                                       ^
+                                                                       source.ts meta.function.ts meta.block.ts string.template.ts
+                                                                        ^
+                                                                        source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>export function isInClosedInterval(start: number, end: number) {
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^^^^^^^^
+                 source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                                   ^
+                                   source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                    ^^^^^
+                                    source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                         ^
+                                         source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                          ^
+                                          source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                           ^^^^^^
+                                           source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.parameters.ts
+                                                   ^^^
+                                                   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                        ^^^^^^
+                                                        source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts support.type.primitive.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                               ^
+                                                               source.ts meta.function.ts
+                                                                ^
+                                                                source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  return tersible(a => a >= start && a <= end, () => `[${start}...${end}]`)
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^^^^^^^^
+          source.ts meta.function.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.arrow.ts variable.parameter.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                     ^^
+                     source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts
+                          ^^
+                          source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts
+                             ^^^^^
+                             source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts
+                                   ^^
+                                   source.ts meta.function.ts meta.block.ts keyword.operator.logical.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts
+                                        ^^
+                                        source.ts meta.function.ts meta.block.ts keyword.operator.relational.ts
+                                          ^
+                                          source.ts meta.function.ts meta.block.ts
+                                           ^^^
+                                           source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts punctuation.separator.comma.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                   ^^
+                                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.begin.ts
+                                                       ^
+                                                       source.ts meta.function.ts meta.block.ts string.template.ts
+                                                        ^^
+                                                        source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                                          ^^^^^
+                                                          source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                                ^^^
+                                                                source.ts meta.function.ts meta.block.ts string.template.ts
+                                                                   ^^
+                                                                   source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                                                     ^^^
+                                                                     source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                                                                        ^
+                                                                        source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.block.ts string.template.ts
+                                                                          ^
+                                                                          source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
+                                                                           ^
+                                                                           source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
