@@ -6301,6 +6301,16 @@
         <array>
           <dict>
             <key>include</key>
+            <string>#type-parameters-body</string>
+          </dict>
+        </array>
+      </dict>
+      <key>type-parameters-body</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
             <string>#comment</string>
           </dict>
           <dict>
@@ -6352,6 +6362,16 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>include</key>
+            <string>#type-arguments-body</string>
+          </dict>
+        </array>
+      </dict>
+      <key>type-arguments-body</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(_)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
             <key>captures</key>
@@ -6370,6 +6390,47 @@
           <dict>
             <key>include</key>
             <string>#punctuation-comma</string>
+          </dict>
+        </array>
+      </dict>
+      <key>type-parameters-or-type-arguments</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>meta.type.parameters.tsx</string>
+            <key>begin</key>
+            <string>(\&lt;)(?=\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*\&gt;)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.typeparameters.begin.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\&gt;</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.typeparameters.end.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-parameters-body</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#type-arguments</string>
           </dict>
         </array>
       </dict>
@@ -6399,7 +6460,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#type-arguments</string>
+            <string>#type-parameters</string>
           </dict>
           <dict>
             <key>include</key>
@@ -6986,6 +7047,88 @@
       <dict>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>begin</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(&lt;)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.type.module.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.tsx</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.tsx</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(&gt;)</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx</string>
+              </dict>
+            </dict>
+            <key>contentName</key>
+            <string>meta.type.parameters.tsx</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-arguments-body</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(&lt;)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.type.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(&gt;)</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx</string>
+              </dict>
+            </dict>
+            <key>contentName</key>
+            <string>meta.type.parameters.tsx</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type-arguments-body</string>
+              </dict>
+            </array>
+          </dict>
           <dict>
             <key>match</key>
             <string>([_$[:alpha:]][_$[:alnum:]]*)\s*(?:(\.)|(\?\.(?!\s*[[:digit:]])))</string>

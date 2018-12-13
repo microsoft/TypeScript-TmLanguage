@@ -2124,6 +2124,10 @@ repository:
     endCaptures:
       '0': { name: punctuation.definition.typeparameters.end.ts }
     patterns:
+    - include: '#type-arguments-body'
+
+  type-arguments-body:
+    patterns:
     - match: '{{startOfIdentifier}}(_){{endOfIdentifier}}'
       captures:
         '0': { name: keyword.operator.type.ts }
@@ -2138,7 +2142,7 @@ repository:
     - include: '#numeric-literal'
     - include: '#type-primitive'
     - include: '#type-builtin-literals'
-    - include: '#type-arguments'
+    - include: '#type-parameters'
     - include: '#type-tuple'
     - include: '#type-object'
     - include: '#type-conditional'
@@ -2342,9 +2346,31 @@ repository:
     name: keyword.operator.expression.is.ts
     match: '{{startOfIdentifier}}is{{endOfIdentifier}}'
 
-  #name of the type
+  #name of the type and type name followed by type arguments
   type-name:
     patterns:
+    - begin: '({{identifier}})\s*{{propertyAccess}}\s*(<)'
+      captures:
+        '1': { name: entity.name.type.module.ts }
+        '2': { name: punctuation.accessor.ts }
+        '3': { name: punctuation.accessor.optional.ts }
+        '4': { name: meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts }
+      end: '(>)'
+      endCaptures:
+        '1': { name: meta.type.parameters.ts punctuation.definition.typeparameters.end.ts }
+      contentName: meta.type.parameters.ts
+      patterns:
+      - include: '#type-arguments-body'
+    - begin: '({{identifier}})\s*(<)'
+      beginCaptures:
+        '1': { name: entity.name.type.ts }
+        '2': { name: meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts }
+      end: '(>)'
+      endCaptures:
+        '1': { name: meta.type.parameters.ts punctuation.definition.typeparameters.end.ts }
+      contentName: meta.type.parameters.ts
+      patterns:
+      - include: '#type-arguments-body'
     - match: ({{identifier}})\s*{{propertyAccess}}
       captures:
         '1': { name: entity.name.type.module.ts }
