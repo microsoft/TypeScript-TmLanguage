@@ -1,0 +1,126 @@
+original file
+-----------------------------------
+const children = [].map<Set<Map<number, string>>>(element => {
+	if (!this.identityProvider) {
+		return element;
+	}
+	return element;
+});
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const children = [].map<Set<Map<number, string>>>(element => {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                ^
+                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.array.literal.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.function-call.ts punctuation.accessor.ts
+                     ^^^
+                     source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                         ^^^
+                         source.ts meta.var.expr.ts meta.type.parameters.ts entity.name.type.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                             ^^^
+                             source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts entity.name.type.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                 ^^^^^^
+                                 source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts meta.type.parameters.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts meta.type.parameters.ts
+                                         ^^^^^^
+                                         source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts meta.type.parameters.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts meta.brace.round.ts
+                                                   ^^^^^^^
+                                                   source.ts meta.var.expr.ts meta.arrow.ts variable.parameter.ts
+                                                          ^
+                                                          source.ts meta.var.expr.ts meta.arrow.ts
+                                                           ^^
+                                                           source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                                                             ^
+                                                             source.ts meta.var.expr.ts meta.arrow.ts
+                                                              ^
+                                                              source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>	if (!this.identityProvider) {
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
+  ^^
+  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts keyword.control.conditional.ts
+    ^
+    source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
+     ^
+     source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+      ^
+      source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts keyword.operator.logical.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts variable.language.this.ts
+           ^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.accessor.ts
+            ^^^^^^^^^^^^^^^^
+            source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts variable.other.property.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>		return element;
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts
+          ^^^^^^^
+          source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.terminator.statement.ts
+>	}
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>	return element;
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
+  ^^^^^^
+  source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts keyword.control.flow.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+>});
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.brace.round.ts
+   ^
+   source.ts punctuation.terminator.statement.ts
