@@ -1,0 +1,74 @@
+original file
+-----------------------------------
+class Cl {
+    one?: string;
+    two!: string;
+}
+let x! = 1;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Cl {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^
+       source.ts meta.class.ts entity.name.type.class.ts
+         ^
+         source.ts meta.class.ts
+          ^
+          source.ts meta.class.ts punctuation.definition.block.ts
+>    one?: string;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+     ^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts keyword.operator.optional.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.class.ts punctuation.terminator.statement.ts
+>    two!: string;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+     ^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts keyword.operator.definiteassignment.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+           ^^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                 ^
+                 source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>let x! = 1;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts keyword.operator.definiteassignment.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts constant.numeric.decimal.ts
+           ^
+           source.ts punctuation.terminator.statement.ts

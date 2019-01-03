@@ -305,23 +305,26 @@ repository:
     patterns:
     - name: meta.var-single-variable.expr.ts
       begin: |-
-        (?x)({{identifier}})(?={{functionLikeAssignmentOrType}})
+        (?x)({{identifier}})(\!)?(?={{functionLikeAssignmentOrType}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts entity.name.function.ts }
+        '2': { name: keyword.operator.definiteassignment.ts }
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
-      begin: '{{constantVar}}'
+      begin: '{{constantVar}}(\!)?'
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
+        '2': { name: keyword.operator.definiteassignment.ts }
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
-      begin: ({{identifier}})
+      begin: ({{identifier}})(\!)?
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
+        '2': { name: keyword.operator.definiteassignment.ts }
       end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
@@ -599,10 +602,10 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(\?\s*)?(=|:|;|,|$))
+    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|$))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(\?\s*)?(=|:|;|,|$))))|(?<=\})
+    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|$))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
     - include: '#type-annotation'
@@ -613,14 +616,17 @@ repository:
     # function assignment |
     # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
     - match: |-
-        (?x)({{identifier}})(\?)?(?=(\?\s*)?{{functionLikeAssignmentOrType}})
+        (?x)({{identifier}})(?:(\?)|(\!))?(?=\s*{{functionLikeAssignmentOrType}})
       captures:
         '1': { name: meta.definition.property.ts entity.name.function.ts }
         '2': { name: keyword.operator.optional.ts }
+        '3': { name: keyword.operator.definiteassignment.ts }
     - name: meta.definition.property.ts variable.object.property.ts
       match: '{{identifier}}'
     - name: keyword.operator.optional.ts
       match: \?
+    - name: keyword.operator.definiteassignment.ts
+      match: \!
 
   variable-initializer:
     patterns:

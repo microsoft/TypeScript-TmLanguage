@@ -611,7 +611,7 @@
             <key>name</key>
             <string>meta.var-single-variable.expr.ts</string>
             <key>begin</key>
-            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?=\s*
+            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(\!)?(?=\s*
 # function assignment |
 (=\s*(
   ((async\s+)?(
@@ -691,6 +691,11 @@
                 <key>name</key>
                 <string>meta.definition.variable.ts entity.name.function.ts</string>
               </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.definiteassignment.ts</string>
+              </dict>
             </dict>
             <key>end</key>
             <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
@@ -706,7 +711,7 @@
             <key>name</key>
             <string>meta.var-single-variable.expr.ts</string>
             <key>begin</key>
-            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+            <string>([[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])(\!)?</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -714,6 +719,11 @@
                 <key>name</key>
                 <string>meta.definition.variable.ts variable.other.constant.ts</string>
               </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.definiteassignment.ts</string>
+              </dict>
             </dict>
             <key>end</key>
             <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
@@ -729,13 +739,18 @@
             <key>name</key>
             <string>meta.var-single-variable.expr.ts</string>
             <key>begin</key>
-            <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)(\!)?</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
               <dict>
                 <key>name</key>
                 <string>meta.definition.variable.ts variable.other.readwrite.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.definiteassignment.ts</string>
               </dict>
             </dict>
             <key>end</key>
@@ -1813,7 +1828,7 @@
   (?:\b[0-9][0-9_]*(\.)(n)?\B)|                                  # 1.
   (?:\B(\.)[0-9][0-9_]*(n)?\b)|                                  # .1
   (?:\b[0-9][0-9_]*(n)?\b(?!\.))                                 # 1
-)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\`([^\`\\]|\\\`|\\)*\`)|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:|;|,|$))</string>
+)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\`([^\`\\]|\\\`|\\)*\`)|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|$))</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -1832,7 +1847,7 @@
   (?:\b[0-9][0-9_]*(\.)(n)?\B)|                                  # 1.
   (?:\B(\.)[0-9][0-9_]*(n)?\b)|                                  # .1
   (?:\b[0-9][0-9_]*(n)?\b(?!\.))                                 # 1
-)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\`([^\`\\]|\\\`|\\)*\`)|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(\?\s*)?(=|:|;|,|$))))|(?&lt;=\})</string>
+)(?!\$))|([_$[:alpha:]][_$[:alnum:]]*)|(\'([^\'\\]|\\\'|\\)*\')|(\"([^\"\\]|\\\"|\\)*\")|(\`([^\`\\]|\\\`|\\)*\`)|(\[([^\[\]]|\[[^\[\]]*\])+\]))\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|$))))|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -1861,7 +1876,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(\?)?(?=(\?\s*)?\s*
+            <string>(?x)([_$[:alpha:]][_$[:alnum:]]*)(?:(\?)|(\!))?(?=\s*\s*
 # function assignment |
 (=\s*(
   ((async\s+)?(
@@ -1946,6 +1961,11 @@
                 <key>name</key>
                 <string>keyword.operator.optional.ts</string>
               </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.definiteassignment.ts</string>
+              </dict>
             </dict>
           </dict>
           <dict>
@@ -1959,6 +1979,12 @@
             <string>keyword.operator.optional.ts</string>
             <key>match</key>
             <string>\?</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.definiteassignment.ts</string>
+            <key>match</key>
+            <string>\!</string>
           </dict>
         </array>
       </dict>
