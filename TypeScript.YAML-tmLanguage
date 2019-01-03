@@ -631,7 +631,7 @@ repository:
   variable-initializer:
     patterns:
     # if it is assignment with expression on same line, use end of line as end of scope
-    - begin: (?<!=|!)(=)(?!=)(?=\s*\S)
+    - begin: (?<!=|!)(=)(?!=)(?=\s*\S)(?!\s*.*=>\s*$)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
       end: (?=$|^|[,);}\]]|(\s+(of|in)\s+))

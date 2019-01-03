@@ -1,0 +1,36 @@
+original file
+-----------------------------------
+const t = () =>
+`a`
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const t = () =>
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts meta.arrow.ts
+           ^
+           source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.var.expr.ts meta.arrow.ts
+              ^^
+              source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+>`a`
+ ^
+ source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+  ^
+  source.ts meta.var.expr.ts string.template.ts
+   ^
+   source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
