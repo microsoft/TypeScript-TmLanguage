@@ -2156,6 +2156,8 @@ repository:
     - include: '#type-fn-type-parameters'
     - include: '#type-paren-or-function-parameters'
     - include: '#type-function-return-type'
+    - name: storage.modifier.ts
+      match: '{{startOfIdentifier}}(readonly){{endOfIdentifier}}'
     - include: '#type-name'
 
   type-primitive:
