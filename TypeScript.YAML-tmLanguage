@@ -1280,13 +1280,19 @@ repository:
       - include: '#comment'
       - include: '#array-literal'
     - name: meta.object.member.ts meta.object-literal.key.ts
-      begin: (?=[\'\"])
-      end: (?=:)|((?<=[\'\"])(?=\s*[\(\<]))
+      begin: (?=[\'\"\`])
+      end: (?=:)|((?<=[\'\"\`])(?=((\s*[\(\<,}])|(\s+(as)\s+))))
       patterns:
       - include: '#comment'
       - include: '#string'
+    - name: meta.object.member.ts meta.object-literal.key.ts
+      begin: (?x)(?={{anyNumber}})
+      end: (?=:)|(?=\s*([\(\<,}])|(\s+as\s+))
+      patterns:
+      - include: '#comment'
+      - include: '#numeric-literal'
     - name: meta.method.declaration.ts
-      begin: (?<=[\]\'\"])(?=\s*[\(\<])
+      begin: (?<=[\]\'\"\`])(?=\s*[\(\<])
       end: (?=\}|;|,)|(?<=\})
       patterns:
       - include: '#function-body'
@@ -1316,6 +1322,18 @@ repository:
       match: ({{identifier}})\s*(?=,|\}|$|\/\/|\/\*)
       captures:
         '1': { name: variable.other.readwrite.ts }
+    - name: meta.object.member.ts
+      match: '{{startOfIdentifier}}(as)\s+(const)(?=\s*([,}]|$))'
+      captures:
+        '1': { name: keyword.control.as.ts }
+        '2': { name: storage.modifier.ts }
+    - name: meta.object.member.ts
+      begin: '{{startOfIdentifier}}(as)\s+'
+      beginCaptures:
+        '1': { name: keyword.control.as.ts }
+      end: (?=$|^|[,}]|({{startOfIdentifier}}(as)\s+))
+      patterns:
+      - include: '#type'
     - name: meta.object.member.ts
       begin: (?={{identifier}}\s*=)
       end: (?=,|\}|$|\/\/|\/\*)
@@ -1484,6 +1502,12 @@ repository:
   cast:
     patterns:
     - name: cast.expr.ts
+      match: \s*(<)\s*(const)\s*(>)
+      captures:
+        '1':  { name: meta.brace.angle.ts }
+        '2':  { name: storage.modifier.ts }
+        '3':  { name: meta.brace.angle.ts }
+    - name: cast.expr.ts
       # We need to differentiate between the relational '<' operator and the beginning of a type assertion/cast using the surrounding context.
       # If '<' is preceeded by 'return', 'throw', 'yield', or 'await', it's most likely a type assertion
       # If '=', '(', ',', ':', or '>' are followed by a '<', it is also likely a type assertion as otherwise it would be a syntax error
@@ -1541,6 +1565,10 @@ repository:
     - name: keyword.operator.expression.void.ts
       match: '{{startOfIdentifier}}void{{endOfIdentifier}}'
       #handle as operator specifically to be recognized only if it is 'as' followed by space
+    - match: '{{startOfIdentifier}}(as)\s+(const)(?=\s*($|[;,:})\]]))'
+      captures:
+        '1': { name: keyword.control.as.ts }
+        '2': { name: storage.modifier.ts }
     - begin: '{{startOfIdentifier}}(as)\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }

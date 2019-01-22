@@ -4123,9 +4123,9 @@
             <key>name</key>
             <string>meta.object.member.tsx meta.object-literal.key.tsx</string>
             <key>begin</key>
-            <string>(?=[\'\"])</string>
+            <string>(?=[\'\"\`])</string>
             <key>end</key>
-            <string>(?=:)|((?&lt;=[\'\"])(?=\s*[\(\&lt;]))</string>
+            <string>(?=:)|((?&lt;=[\'\"\`])(?=((\s*[\(\&lt;,}])|(\s+(as)\s+))))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4140,9 +4140,37 @@
           </dict>
           <dict>
             <key>name</key>
+            <string>meta.object.member.tsx meta.object-literal.key.tsx</string>
+            <key>begin</key>
+            <string>(?x)(?=(\b(?&lt;!\$)0(?:x|X)[0-9a-fA-F][0-9a-fA-F_]*(n)?\b(?!\$))|(\b(?&lt;!\$)0(?:b|B)[01][01_]*(n)?\b(?!\$))|(\b(?&lt;!\$)0(?:o|O)?[0-7][0-7_]*(n)?\b(?!\$))|((?&lt;!\$)(?:
+  (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\b)| # 1.1E+3
+  (?:\b[0-9][0-9_]*(\.)[eE][+-]?[0-9][0-9_]*(n)?\b)|             # 1.E+3
+  (?:\B(\.)[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\b)|             # .1E+3
+  (?:\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(n)?\b)|                 # 1E+3
+  (?:\b[0-9][0-9_]*(\.)[0-9][0-9_]*(n)?\b)|                      # 1.1
+  (?:\b[0-9][0-9_]*(\.)(n)?\B)|                                  # 1.
+  (?:\B(\.)[0-9][0-9_]*(n)?\b)|                                  # .1
+  (?:\b[0-9][0-9_]*(n)?\b(?!\.))                                 # 1
+)(?!\$)))</string>
+            <key>end</key>
+            <string>(?=:)|(?=\s*([\(\&lt;,}])|(\s+as\s+))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#numeric-literal</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
             <string>meta.method.declaration.tsx</string>
             <key>begin</key>
-            <string>(?&lt;=[\]\'\"])(?=\s*[\(\&lt;])</string>
+            <string>(?&lt;=[\]\'\"\`])(?=\s*[\(\&lt;])</string>
             <key>end</key>
             <string>(?=\}|;|,)|(?&lt;=\})</string>
             <key>patterns</key>
@@ -4269,6 +4297,48 @@
                 <string>variable.other.readwrite.tsx</string>
               </dict>
             </dict>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.object.member.tsx</string>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+(const)(?=\s*([,}]|$))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.as.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.object.member.tsx</string>
+            <key>begin</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.as.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$|^|[,}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
           </dict>
           <dict>
             <key>name</key>
@@ -4971,6 +5041,23 @@
             <string>keyword.operator.expression.void.tsx</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))void(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+(const)(?=\s*($|[;,:})\]]))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.as.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>begin</key>

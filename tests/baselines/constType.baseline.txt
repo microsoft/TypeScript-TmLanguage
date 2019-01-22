@@ -1,0 +1,194 @@
+original file
+-----------------------------------
+let r2 = { x: 20, y: 10 } as const;
+let r2 = {...p} as const;
+let p1 = { x: 10, y: 20 as const };
+let p2 = { 10 as const, 'foo' as const };
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let r2 = { x: 20, y: 10 } as const;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+               ^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                      ^^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.var.expr.ts
+                           ^^
+                           source.ts meta.var.expr.ts keyword.control.as.ts
+                             ^
+                             source.ts meta.var.expr.ts
+                              ^^^^^
+                              source.ts meta.var.expr.ts storage.modifier.ts
+                                   ^
+                                   source.ts punctuation.terminator.statement.ts
+>let r2 = {...p} as const;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+           ^^^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts keyword.operator.spread.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^^
+                 source.ts meta.var.expr.ts keyword.control.as.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^^^^^
+                    source.ts meta.var.expr.ts storage.modifier.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts
+>let p1 = { x: 10, y: 20 as const };
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+               ^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                      ^^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                         ^^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts keyword.control.as.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                            ^^^^^
+                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts storage.modifier.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                   ^
+                                   source.ts punctuation.terminator.statement.ts
+>let p2 = { 10 as const, 'foo' as const };
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+        ^
+        source.ts meta.var.expr.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts
+            ^^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts constant.numeric.decimal.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts
+               ^^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts keyword.control.as.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                  ^^^^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts storage.modifier.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                          ^^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.objectliteral.ts
+                               ^^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts keyword.control.as.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                                  ^^^^^
+                                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts storage.modifier.ts
+                                       ^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
