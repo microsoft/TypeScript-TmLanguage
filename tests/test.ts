@@ -1,12 +1,13 @@
 import fs = require('fs');
 import path = require('path');
 import chai = require('chai');
-import build = require('./build');
+const { Builder }  = require('./builder');
 
 const generatedFolder = path.join(__dirname, 'generated');
 const baselineFolder = path.join(__dirname, 'baselines');
 const casesFolder = path.join(__dirname, 'cases');
-
+  
+const testBuilder = new Builder()
 function ensureCleanGeneratedFolder() {
     if (fs.existsSync(generatedFolder)) {
         for (const fileName of fs.readdirSync(generatedFolder)) {
@@ -30,7 +31,7 @@ for (const fileName of fs.readdirSync(casesFolder)) {
 
     describe("Generating baseline for " + fileName, () => {
         before(() =>  {
-            const result = build.generateScopes(text, parsedFileName)
+            const result = testBuilder.generateScopes(text, parsedFileName)
             wholeBaseline = result.wholeBaseline;
             markerScopes = result.markerScopes;
         });
