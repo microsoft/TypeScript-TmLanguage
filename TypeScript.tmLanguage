@@ -2766,7 +2766,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#type-annotation</string>
+            <string>#parameter-type-annotation</string>
           </dict>
           <dict>
             <key>include</key>
@@ -6320,6 +6320,35 @@
             </dict>
             <key>end</key>
             <string>(?&lt;![:|&amp;])((?=[,);\}\]]|//)|(?==[^&gt;])|(?=^\s*$)|((?&lt;=\S)(?=\s*$))|((?&lt;=[\}&gt;\]\)]|[_$[:alpha:]])\s*(?=\{)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>parameter-type-annotation</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>meta.type.annotation.ts</string>
+            <key>begin</key>
+            <string>(:)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.type.annotation.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=[,)])|(?==[^&gt;])</string>
             <key>patterns</key>
             <array>
               <dict>
