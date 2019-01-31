@@ -11,7 +11,7 @@
     "pretest": "npm run build",
     "test": "mocha --full-trace tests/test.js  --reporter mocha-multi-reporters",
     "diff": "cross-env-shell $DIFF tests/baselines tests/generated",
-    "accept": "cpx tests/generated/* tests/baselines"
+    "accept": "copyfiles \"tests/generated/*\" tests/baselines"
   },
   "dependencies": {
     "chai": "latest",
@@ -26,7 +26,7 @@
     "@types/node": "latest"
   },
   "devDependencies": {
-    "cpx": "^1.5.0",
+    "copyfiles": "^2.1.0",
     "cross-env": "^5.1.1",
     "mocha-multi-reporters": "^1.1.7"
   }
