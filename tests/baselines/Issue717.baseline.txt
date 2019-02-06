@@ -1,0 +1,268 @@
+original file
+-----------------------------------
+/* regex? */
+function test() {
+   return /"/.test('xxx"xxx');
+}
+
+console.log(test());
+a = 3 /*test*/ / parseInt(/.+/.exec('3f23fg')[0]);
+console.log(a);
+
+b = 1
+a = () => b
+2 + (b=2), 3
+b = 6
+console.log(a(),b);
+(b)
+
+if (a === 1) {
+   b = 2
+} else if (a === 2) b = 3
+else b = 4
+c = 1
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>/* regex? */
+ ^^
+ source.ts comment.block.ts punctuation.definition.comment.ts
+   ^^^^^^^^
+   source.ts comment.block.ts
+           ^^
+           source.ts comment.block.ts punctuation.definition.comment.ts
+>function test() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.function.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>   return /"/.test('xxx"xxx');
+ ^^^
+ source.ts meta.function.ts meta.block.ts
+    ^^^^^^
+    source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+          ^
+          source.ts meta.function.ts meta.block.ts string.regexp.ts
+           ^
+           source.ts meta.function.ts meta.block.ts string.regexp.ts punctuation.definition.string.begin.ts
+            ^
+            source.ts meta.function.ts meta.block.ts string.regexp.ts
+             ^
+             source.ts meta.function.ts meta.block.ts string.regexp.ts punctuation.definition.string.end.ts
+              ^
+              source.ts meta.function.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+               ^^^^
+               source.ts meta.function.ts meta.block.ts meta.function-call.ts support.function.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                     ^^^^^^^
+                     source.ts meta.function.ts meta.block.ts string.quoted.single.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>console.log(test());
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^^^^
+             source.ts meta.function-call.ts entity.name.function.ts
+                 ^
+                 source.ts meta.brace.round.ts
+                  ^
+                  source.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.brace.round.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
+>a = 3 /*test*/ / parseInt(/.+/.exec('3f23fg')[0]);
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts constant.numeric.decimal.ts
+      ^
+      source.ts
+       ^^
+       source.ts comment.block.ts punctuation.definition.comment.ts
+         ^^^^
+         source.ts comment.block.ts
+             ^^
+             source.ts comment.block.ts punctuation.definition.comment.ts
+               ^
+               source.ts
+                ^
+                source.ts string.regexp.ts punctuation.definition.string.begin.ts
+                 ^^^^^^^^^
+                 source.ts string.regexp.ts
+                          ^
+                          source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+                           ^
+                           source.ts string.regexp.ts meta.group.regexp
+                            ^
+                            source.ts string.regexp.ts meta.group.regexp constant.other.character-class.regexp
+                             ^
+                             source.ts string.regexp.ts meta.group.regexp keyword.operator.quantifier.regexp
+                              ^
+                              source.ts string.regexp.ts meta.group.regexp
+                               ^
+                               source.ts string.regexp.ts meta.group.regexp constant.other.character-class.regexp
+                                ^^^^
+                                source.ts string.regexp.ts meta.group.regexp
+                                    ^
+                                    source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                                     ^^^^^^^^
+                                     source.ts string.regexp.ts meta.group.regexp meta.group.regexp
+                                             ^
+                                             source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                                              ^
+                                              source.ts string.regexp.ts meta.group.regexp constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                                               ^
+                                               source.ts string.regexp.ts meta.group.regexp constant.other.character-class.set.regexp
+                                                ^
+                                                source.ts string.regexp.ts meta.group.regexp constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                                                 ^
+                                                 source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+                                                  ^^
+                                                  source.ts string.regexp.ts
+>console.log(a);
+ ^^^^^^^
+ source.ts string.regexp.ts
+        ^
+        source.ts string.regexp.ts constant.other.character-class.regexp
+         ^^^
+         source.ts string.regexp.ts
+            ^
+            source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+             ^
+             source.ts string.regexp.ts meta.group.regexp
+              ^
+              source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+               ^^
+               source.ts string.regexp.ts
+>
+ ^
+ source.ts string.regexp.ts
+>b = 1
+ ^^^^^^
+ source.ts string.regexp.ts
+>a = () => b
+ ^^^^
+ source.ts string.regexp.ts
+     ^
+     source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+      ^
+      source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+       ^^^^^^
+       source.ts string.regexp.ts
+>2 + (b=2), 3
+ ^^
+ source.ts string.regexp.ts
+   ^
+   source.ts string.regexp.ts keyword.operator.quantifier.regexp
+    ^
+    source.ts string.regexp.ts
+     ^
+     source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+      ^^^
+      source.ts string.regexp.ts meta.group.regexp
+         ^
+         source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+          ^^^^
+          source.ts string.regexp.ts
+>b = 6
+ ^^^^^^
+ source.ts string.regexp.ts
+>console.log(a(),b);
+ ^^^^^^^
+ source.ts string.regexp.ts
+        ^
+        source.ts string.regexp.ts constant.other.character-class.regexp
+         ^^^
+         source.ts string.regexp.ts
+            ^
+            source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+             ^
+             source.ts string.regexp.ts meta.group.regexp
+              ^
+              source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+               ^
+               source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                ^^
+                source.ts string.regexp.ts meta.group.regexp
+                  ^
+                  source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+                   ^^
+                   source.ts string.regexp.ts
+>(b)
+ ^
+ source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+  ^
+  source.ts string.regexp.ts meta.group.regexp
+   ^
+   source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+>
+ ^
+ source.ts string.regexp.ts
+>if (a === 1) {
+ ^^^
+ source.ts string.regexp.ts
+    ^
+    source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+     ^^^^^^^
+     source.ts string.regexp.ts meta.group.regexp
+            ^
+            source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+             ^^^
+             source.ts string.regexp.ts
+>   b = 2
+ ^^^^^^^^^
+ source.ts string.regexp.ts
+>} else if (a === 2) b = 3
+ ^^^^^^^^^^
+ source.ts string.regexp.ts
+           ^
+           source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+            ^^^^^^^
+            source.ts string.regexp.ts meta.group.regexp
+                   ^
+                   source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+                    ^^^^^^^
+                    source.ts string.regexp.ts
+>else b = 4
+ ^^^^^^^^^^^
+ source.ts string.regexp.ts
+>c = 1
+ ^^^^^^
+ source.ts string.regexp.ts
