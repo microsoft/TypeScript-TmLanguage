@@ -880,9 +880,10 @@ repository:
   class-expression:
     name: meta.class.ts
     # allows anonymous class
-    begin: '{{startOfIdentifier}}(class)\b(?=\s+|[<{]|\/[\/*])'
+    begin: '{{startOfIdentifier}}(?:(abstract)\s+)?(class)\b(?=\s+|[<{]|\/[\/*])'
     beginCaptures:
-      '1': { name: storage.type.class.ts }
+      '1': { name: storage.modifier.ts }
+      '2': { name: storage.type.class.ts }
     end: (?<=\})
     patterns:
     - include: '#class-declaration-or-expression-patterns'

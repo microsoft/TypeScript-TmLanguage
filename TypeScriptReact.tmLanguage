@@ -2828,10 +2828,15 @@
         <key>name</key>
         <string>meta.class.tsx</string>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(class)\b(?=\s+|[&lt;{]|\/[\/*])</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(abstract)\s+)?(class)\b(?=\s+|[&lt;{]|\/[\/*])</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.tsx</string>
+          </dict>
+          <key>2</key>
           <dict>
             <key>name</key>
             <string>storage.type.class.tsx</string>

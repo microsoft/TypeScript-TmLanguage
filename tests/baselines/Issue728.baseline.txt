@@ -1,0 +1,32 @@
+original file
+-----------------------------------
+export default abstract class AbstractClass {}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export default abstract class AbstractClass {}
+ ^^^^^^
+ source.ts meta.export.default.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.default.ts
+        ^^^^^^^
+        source.ts meta.export.default.ts keyword.control.default.ts
+               ^
+               source.ts meta.export.default.ts
+                ^^^^^^^^
+                source.ts meta.export.default.ts meta.class.ts storage.modifier.ts
+                        ^
+                        source.ts meta.export.default.ts meta.class.ts
+                         ^^^^^
+                         source.ts meta.export.default.ts meta.class.ts storage.type.class.ts
+                              ^
+                              source.ts meta.export.default.ts meta.class.ts
+                               ^^^^^^^^^^^^^
+                               source.ts meta.export.default.ts meta.class.ts entity.name.type.class.ts
+                                            ^
+                                            source.ts meta.export.default.ts meta.class.ts
+                                             ^
+                                             source.ts meta.export.default.ts meta.class.ts punctuation.definition.block.ts
+                                              ^
+                                              source.ts meta.export.default.ts meta.class.ts punctuation.definition.block.ts
