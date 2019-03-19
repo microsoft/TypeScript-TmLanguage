@@ -4643,25 +4643,7 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#literal</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#support-objects</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#object-identifiers</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#punctuation-accessor</string>
-              </dict>
-              <dict>
-                <key>name</key>
-                <string>keyword.operator.expression.import.tsx</string>
-                <key>match</key>
-                <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))import(?=\s*[\(]\s*[\"\'\`]))</string>
+                <string>#support-function-call-identifiers</string>
               </dict>
               <dict>
                 <key>name</key>
@@ -4688,6 +4670,34 @@
           <dict>
             <key>include</key>
             <string>#paren-expression</string>
+          </dict>
+        </array>
+      </dict>
+      <key>support-function-call-identifiers</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#literal</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#support-objects</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#object-identifiers</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#punctuation-accessor</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator.expression.import.tsx</string>
+            <key>match</key>
+            <string>(?:(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))import(?=\s*[\(]\s*[\"\'\`]))</string>
           </dict>
         </array>
       </dict>
@@ -7517,6 +7527,40 @@
       <dict>
         <key>patterns</key>
         <array>
+          <dict>
+            <key>name</key>
+            <string>string.template.tsx</string>
+            <key>begin</key>
+            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\??\.\s*)*|(\??\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*)(&lt;\s*(((keyof|infer|typeof)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|typeof)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|typeof)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?`)</string>
+            <key>end</key>
+            <string>(?=`)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>begin</key>
+                <string>(?=(([_$[:alpha:]][_$[:alnum:]]*\s*\??\.\s*)*|(\??\.\s*)?)([_$[:alpha:]][_$[:alnum:]]*))</string>
+                <key>end</key>
+                <string>(?=(&lt;\s*(((keyof|infer|typeof)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|typeof)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|typeof)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?`)</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#support-function-call-identifiers</string>
+                  </dict>
+                  <dict>
+                    <key>name</key>
+                    <string>entity.name.function.tagged-template.tsx</string>
+                    <key>match</key>
+                    <string>([_$[:alpha:]][_$[:alnum:]]*)</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#type-arguments</string>
+              </dict>
+            </array>
+          </dict>
           <dict>
             <key>name</key>
             <string>string.template.tsx</string>

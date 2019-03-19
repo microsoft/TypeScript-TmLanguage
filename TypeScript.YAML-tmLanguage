@@ -1429,12 +1429,7 @@ repository:
       begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))
       end: (?={{functionCallLookup}})
       patterns:
-      - include: '#literal'
-      - include: '#support-objects'
-      - include: '#object-identifiers'
-      - include: '#punctuation-accessor'
-      - name: keyword.operator.expression.import.ts
-        match: (?:{{startOfIdentifier}}import(?=\s*[\(]\s*[\"\'\`]))
+      - include: '#support-function-call-identifiers'
       - name: entity.name.function.ts
         match: ({{identifier}})
     - include: '#comment'
@@ -1442,6 +1437,15 @@ repository:
       match: \?\.
     - include: '#type-arguments'
     - include: '#paren-expression'
+
+  support-function-call-identifiers:
+    patterns:
+    - include: '#literal'
+    - include: '#support-objects'
+    - include: '#object-identifiers'
+    - include: '#punctuation-accessor'
+    - name: keyword.operator.expression.import.ts
+      match: (?:{{startOfIdentifier}}import(?=\s*[\(]\s*[\"\'\`]))
 
   new-expr:
     name: new.expr.ts
@@ -2514,6 +2518,17 @@ repository:
 
   template:
     patterns:
+    - name: string.template.ts
+      begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}})({{typeArguments}}\s*)?`)
+      end: (?=`)
+      patterns:
+      - begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))
+        end: (?=({{typeArguments}}\s*)?`)
+        patterns:
+        - include: '#support-function-call-identifiers'
+        - name: entity.name.function.tagged-template.ts
+          match: ({{identifier}})
+      - include: '#type-arguments'
     - name: string.template.ts
       begin: ({{identifier}})\s*(?=({{typeArguments}}\s*)`)
       beginCaptures:
