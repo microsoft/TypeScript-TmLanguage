@@ -5843,9 +5843,9 @@
           <dict>
             <key>match</key>
             <string>(?x) (?:(\.)|(\?\.(?!\s*[[:digit:]]))) \s* (?:
-  (constructor|length|prototype|__proto__)
+  (?:(constructor|length|prototype|__proto__)\b(?!\$|\s*(&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*&gt;\s*)?\())
   |
-  (EPSILON|MAX_SAFE_INTEGER|MAX_VALUE|MIN_SAFE_INTEGER|MIN_VALUE|NEGATIVE_INFINITY|POSITIVE_INFINITY))\b(?!\$)</string>
+  (?:(EPSILON|MAX_SAFE_INTEGER|MAX_VALUE|MIN_SAFE_INTEGER|MIN_VALUE|NEGATIVE_INFINITY|POSITIVE_INFINITY)\b(?!\$)))</string>
             <key>captures</key>
             <dict>
               <key>1</key>

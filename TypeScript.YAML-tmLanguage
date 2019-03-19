@@ -1805,9 +1805,9 @@ repository:
     # DOM
     - match: |-
         (?x) {{propertyAccess}} \s* (?:
-          (constructor|length|prototype|__proto__)
+          (?:(constructor|length|prototype|__proto__)\b(?!\$|\s*{{typeParameters}}?\())
           |
-          (EPSILON|MAX_SAFE_INTEGER|MAX_VALUE|MIN_SAFE_INTEGER|MIN_VALUE|NEGATIVE_INFINITY|POSITIVE_INFINITY))\b(?!\$)
+          (?:(EPSILON|MAX_SAFE_INTEGER|MAX_VALUE|MIN_SAFE_INTEGER|MIN_VALUE|NEGATIVE_INFINITY|POSITIVE_INFINITY)\b(?!\$)))
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: punctuation.accessor.optional.ts }
