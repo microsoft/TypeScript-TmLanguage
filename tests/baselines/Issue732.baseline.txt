@@ -1,0 +1,78 @@
+original file
+-----------------------------------
+function validateEmail(e) {
+    if (true) /"/.test(e); return 1 + 1;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function validateEmail(e) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^^^^^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                       ^
+                       source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                        ^
+                        source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                         ^
+                         source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                          ^
+                          source.ts meta.function.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    if (true) /"/.test(e); return 1 + 1;
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^
+     source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+       ^
+       source.ts meta.function.ts meta.block.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+         ^^^^
+         source.ts meta.function.ts meta.block.ts constant.language.boolean.true.ts
+             ^
+             source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+              ^^
+              source.ts meta.function.ts meta.block.ts string.regexp.ts punctuation.definition.string.begin.ts
+                ^
+                source.ts meta.function.ts meta.block.ts string.regexp.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts string.regexp.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                   ^^^^
+                   source.ts meta.function.ts meta.block.ts meta.function-call.ts support.function.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts
+                            ^^^^^^
+                            source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts keyword.operator.arithmetic.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts

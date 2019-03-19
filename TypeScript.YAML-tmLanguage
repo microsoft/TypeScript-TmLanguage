@@ -123,6 +123,7 @@ variables:
     {{functionLikeType}} |
     (:\s*(=>|{{matchingParenthesis}}|(<[^<>]*>)|[^<>(),=])+={{functionOrArrowLookup}})
   arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
+  completeRegexp: \/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/[gimsuy]*(?!\s*[a-zA-Z0-9_$]))
 
 patterns:
 - include: '#directives'
@@ -177,6 +178,7 @@ repository:
       match: '{{startOfIdentifier}}(return){{endOfIdentifier}}'
     - name: keyword.control.switch.ts
       match: '{{startOfIdentifier}}(case|default|switch){{endOfIdentifier}}'
+    - include: '#if-statement'
     - name: keyword.control.conditional.ts
       match: '{{startOfIdentifier}}(else|if){{endOfIdentifier}}'
     - name: keyword.control.with.ts
@@ -1240,6 +1242,34 @@ repository:
       - include: '#var-expr'
       - include: '#expression'
       - include: '#punctuation-semicolon'
+
+  # Match if statement without block specially to handle regexp
+  if-statement:
+    patterns:
+    - begin: '{{startOfIdentifier}}(?=\bif\s*{{matchingParenthesis}}\s*(?!\{))'
+      end: (?=;|$)
+      patterns:
+      - include: '#comment'
+      - begin: '{{startOfIdentifier}}(if)\s*(\()'
+        beginCaptures:
+          '1': { name: keyword.control.conditional.ts }
+          '2': { name: meta.brace.round.ts }
+        end: \)
+        endCaptures:
+          '0': { name: meta.brace.round.ts }
+        patterns:
+        - include: '#expression'
+      - name: string.regexp.ts
+        begin: (?<=\))\s*{{completeRegexp}}
+        beginCaptures:
+          '0': { name: punctuation.definition.string.begin.ts }
+        end: (/)([gimsuy]*)
+        endCaptures:
+          '1': { name: punctuation.definition.string.end.ts }
+          '2': { name: keyword.other.ts }
+        patterns:
+        - include: '#regexp'
+      - include: '#statements'
 
   #blocks
   decl-block:
@@ -2531,7 +2561,7 @@ repository:
       - include: '#regexp'
     # Check if complete regexp syntax
     - name: string.regexp.ts
-      begin: (?<![_$[:alnum:])\]]|\+\+|--|}|\*\/)\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/[gimsuy]*(?!\s*[a-zA-Z0-9_$]))
+      begin: (?<![_$[:alnum:])\]]|\+\+|--|}|\*\/){{completeRegexp}}
       beginCaptures:
         '0': { name: punctuation.definition.string.begin.ts }
       end: (/)([gimsuy]*)
