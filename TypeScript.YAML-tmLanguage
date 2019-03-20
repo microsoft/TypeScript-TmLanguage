@@ -713,7 +713,7 @@ repository:
       - include: '#function-body'
     # new or call signature
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\s*\b(new)\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?)(?=\s*[\(\<])'
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\s*\b(new)\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?)(?=\s*({{typeParameters}})?[\(])'
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -726,7 +726,7 @@ repository:
       - include: '#function-body'
     # method, accessor
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*[\(\<])'
+      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*({{typeParameters}})?[\(])'
       beginCaptures:
         '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
         '2': { name: storage.modifier.ts } # captures keyword (abstract)
@@ -740,7 +740,7 @@ repository:
 
   object-literal-method-declaration:
     name: meta.method.declaration.ts
-    begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*[\(\<])'
+    begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*({{typeParameters}})?[\(])'
     beginCaptures:
       '1': { name: storage.modifier.async.ts } # captures keyword (async)
       '2': { name: storage.type.property.ts } # captures keyword (get|set)
@@ -749,7 +749,7 @@ repository:
     patterns:
     - include: '#method-declaration-name'
     - include: '#function-body'
-    - begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*[\(\<])'
+    - begin: '(?x){{startOfIdentifier}}(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*({{typeParameters}})?[\(])'
       beginCaptures:
         '1': { name: storage.modifier.async.ts } # captures keyword (async)
         '2': { name: storage.type.property.ts } # captures keyword (get|set)

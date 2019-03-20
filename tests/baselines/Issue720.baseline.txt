@@ -1,0 +1,166 @@
+original file
+-----------------------------------
+class Bar {
+  myFunc1 = () =>
+    1 < 2 &&
+    2 > 1 &&
+    FOO < FOOO;
+  myFunc2 = () =>
+    1 < 2 &&
+    2 > 1 &&
+    FOO < FOOO;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Bar {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts punctuation.definition.block.ts
+>  myFunc1 = () =>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts
+   ^^^^^^^
+   source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                ^^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+>    1 < 2 &&
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts
+       ^
+       source.ts meta.class.ts meta.field.declaration.ts keyword.operator.relational.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^^
+           source.ts meta.class.ts meta.field.declaration.ts keyword.operator.logical.ts
+>    2 > 1 &&
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts keyword.operator.relational.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts constant.numeric.decimal.ts
+          ^
+          source.ts meta.class.ts
+           ^^
+           source.ts meta.class.ts keyword.operator.logical.ts
+>    FOO < FOOO;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts variable.other.constant.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts keyword.operator.relational.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts punctuation.terminator.statement.ts
+>  myFunc2 = () =>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts
+   ^^^^^^^
+   source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                ^^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+>    1 < 2 &&
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts
+       ^
+       source.ts meta.class.ts meta.field.declaration.ts keyword.operator.relational.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^^
+           source.ts meta.class.ts meta.field.declaration.ts keyword.operator.logical.ts
+>    2 > 1 &&
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts keyword.operator.relational.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts constant.numeric.decimal.ts
+          ^
+          source.ts meta.class.ts
+           ^^
+           source.ts meta.class.ts keyword.operator.logical.ts
+>    FOO < FOOO;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts variable.other.constant.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts keyword.operator.relational.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts
+           ^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
