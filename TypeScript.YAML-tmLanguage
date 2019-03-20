@@ -951,6 +951,11 @@ repository:
     patterns:
     - include: '#comment'
     - include: '#decorator'
+    # The : could most probably be end of ternary expression so to avoid matching expression following it as field declaration, explicitly match it as expression
+    - begin: (?<=:)\s*
+      end: (?=\s|[;),}\]:\-\+]|{{endOfStatement}})
+      patterns:
+      - include: '#expression'
     - include: '#method-declaration'
     - include: '#indexer-declaration'
     - include: '#field-declaration'

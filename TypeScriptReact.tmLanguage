@@ -3058,6 +3058,19 @@
             <string>#decorator</string>
           </dict>
           <dict>
+            <key>begin</key>
+            <string>(?&lt;=:)\s*</string>
+            <key>end</key>
+            <string>(?=\s|[;),}\]:\-\+]|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
             <key>include</key>
             <string>#method-declaration</string>
           </dict>

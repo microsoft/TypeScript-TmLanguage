@@ -1,0 +1,334 @@
+original file
+-----------------------------------
+class C {
+
+  a(){return false}
+  b(){return false}
+
+  Works(){
+    return this.a()
+    ? true
+    : this.b()
+      ? false
+      : true;
+  }
+
+  doesNotWork = () =>
+    this.a()
+    ? true
+    : this.b()
+      ? false
+      : true; // fails for apparently any keyword, e.g. "undefined", "null", ...
+
+  alsoWorks = () =>
+    this.a() ? true : this.b() ? false : true;
+
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class C {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts meta.class.ts
+>  a(){return false}
+ ^^
+ source.ts meta.class.ts meta.method.declaration.ts
+   ^
+   source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+    ^
+    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+       ^^^^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+              ^^^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.boolean.false.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>  b(){return false}
+ ^^
+ source.ts meta.class.ts meta.method.declaration.ts
+   ^
+   source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+    ^
+    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+       ^^^^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+              ^^^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.boolean.false.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts meta.class.ts
+>  Works(){
+ ^^
+ source.ts meta.class.ts meta.method.declaration.ts
+   ^^^^^
+   source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    return this.a()
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+            ^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts variable.language.this.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+>    ? true
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.ternary.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+       ^^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.boolean.true.ts
+>    : this.b()
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.ternary.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+       ^^^^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts variable.language.this.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+>      ? false
+ ^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+       ^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.ternary.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.boolean.false.ts
+>      : true;
+ ^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+       ^
+       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.ternary.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.boolean.true.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>  }
+ ^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+   ^
+   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts meta.class.ts
+>  doesNotWork = () =>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts
+   ^^^^^^^^^^^
+   source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                    ^^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+>    this.a()
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+     ^^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts variable.language.this.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts punctuation.accessor.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts entity.name.function.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+>    ? true
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts keyword.operator.ternary.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^
+       source.ts meta.class.ts constant.language.boolean.true.ts
+>    : this.b()
+ ^^^^
+ source.ts meta.class.ts
+     ^
+     source.ts meta.class.ts keyword.operator.ternary.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^
+       source.ts meta.class.ts meta.function-call.ts variable.language.this.ts
+           ^
+           source.ts meta.class.ts meta.function-call.ts punctuation.accessor.ts
+            ^
+            source.ts meta.class.ts meta.function-call.ts entity.name.function.ts
+             ^
+             source.ts meta.class.ts meta.brace.round.ts
+              ^
+              source.ts meta.class.ts meta.brace.round.ts
+>      ? false
+ ^^^^^^
+ source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts keyword.operator.ternary.ts
+        ^
+        source.ts meta.class.ts
+         ^^^^^
+         source.ts meta.class.ts constant.language.boolean.false.ts
+>      : true; // fails for apparently any keyword, e.g. "undefined", "null", ...
+ ^^^^^^
+ source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts keyword.operator.ternary.ts
+        ^
+        source.ts meta.class.ts
+         ^^^^
+         source.ts meta.class.ts constant.language.boolean.true.ts
+             ^
+             source.ts meta.class.ts punctuation.terminator.statement.ts
+              ^
+              source.ts meta.class.ts
+               ^^
+               source.ts meta.class.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 source.ts meta.class.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts meta.class.ts
+>  alsoWorks = () =>
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts
+   ^^^^^^^^^
+   source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+                  ^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+>    this.a() ? true : this.b() ? false : true;
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+     ^^^^
+     source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts variable.language.this.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts punctuation.accessor.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts entity.name.function.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts keyword.operator.ternary.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^^^^
+                source.ts meta.class.ts meta.field.declaration.ts constant.language.boolean.true.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts keyword.operator.ternary.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts
+                       ^^^^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts variable.language.this.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts punctuation.accessor.ts
+                            ^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.function-call.ts entity.name.function.ts
+                             ^
+                             source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                               ^
+                               source.ts meta.class.ts meta.field.declaration.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts keyword.operator.ternary.ts
+                                 ^
+                                 source.ts meta.class.ts meta.field.declaration.ts
+                                  ^^^^^
+                                  source.ts meta.class.ts meta.field.declaration.ts constant.language.boolean.false.ts
+                                       ^
+                                       source.ts meta.class.ts meta.field.declaration.ts
+                                        ^
+                                        source.ts meta.class.ts meta.field.declaration.ts keyword.operator.ternary.ts
+                                         ^
+                                         source.ts meta.class.ts meta.field.declaration.ts
+                                          ^^^^
+                                          source.ts meta.class.ts meta.field.declaration.ts constant.language.boolean.true.ts
+                                              ^
+                                              source.ts meta.class.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts meta.class.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
