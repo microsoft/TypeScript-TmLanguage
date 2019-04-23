@@ -6809,10 +6809,16 @@
             <string>#type-function-return-type</string>
           </dict>
           <dict>
-            <key>name</key>
-            <string>storage.modifier.ts</string>
             <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(readonly)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(readonly)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))\s*</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>include</key>
