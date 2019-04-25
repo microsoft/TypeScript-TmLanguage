@@ -1252,7 +1252,7 @@ repository:
   if-statement:
     patterns:
     - begin: '{{startOfIdentifier}}(?=\bif\s*{{matchingParenthesis}}\s*(?!\{))'
-      end: (?=;|$)
+      end: (?=;|$|\})
       patterns:
       - include: '#comment'
       - begin: '{{startOfIdentifier}}(if)\s*(\()'

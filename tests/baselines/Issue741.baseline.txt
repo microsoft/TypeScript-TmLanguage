@@ -1,0 +1,130 @@
+original file
+-----------------------------------
+class CategoriesComponent {
+    x() {
+        subscribe(data => { if (data) console.log(1) })
+    }
+
+    private checkCompanyRole() {
+        return this
+    }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class CategoriesComponent {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^^^^^^^^^^^^^^^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+                          ^
+                          source.ts meta.class.ts
+                           ^
+                           source.ts meta.class.ts punctuation.definition.block.ts
+>    x() {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+      ^
+      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+       ^
+       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        subscribe(data => { if (data) console.log(1) })
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                   ^^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts variable.parameter.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts
+                        ^^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts
+                             ^^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts keyword.control.conditional.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                 ^^^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                       ^^^^^^^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.function-call.ts support.class.console.ts
+                                              ^
+                                              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                                               ^^^
+                                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.function-call.ts support.function.console.ts
+                                                  ^
+                                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                                   ^
+                                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts constant.numeric.decimal.ts
+                                                    ^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts
+                                                      ^
+                                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                                       ^
+                                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts meta.class.ts
+>    private checkCompanyRole() {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts
+             ^^^^^^^^^^^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        return this
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^^^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
