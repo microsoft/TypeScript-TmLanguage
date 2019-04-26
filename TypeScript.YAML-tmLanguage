@@ -2582,7 +2582,7 @@ repository:
       - include: '#regexp'
     # Check if complete regexp syntax
     - name: string.regexp.ts
-      begin: (?<![_$[:alnum:])\]]|\+\+|--|}|\*\/){{completeRegexp}}
+      begin: ((?<![_$[:alnum:])\]]|\+\+|--|}|\*\/)|((?<={{lookBehindReturn}}|{{lookBehindCase}}))\s*){{completeRegexp}}
       beginCaptures:
         '0': { name: punctuation.definition.string.begin.ts }
       end: (/)([gimsuy]*)

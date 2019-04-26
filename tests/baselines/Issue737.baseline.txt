@@ -1,0 +1,74 @@
+original file
+-----------------------------------
+function foo() {
+    return /(?:(Z))?/
+}
+
+export const bar = true
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function foo() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.function.ts
+                ^
+                source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    return /(?:(Z))?/
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^^
+           source.ts meta.function.ts meta.block.ts string.regexp.ts punctuation.definition.string.begin.ts
+             ^
+             source.ts meta.function.ts meta.block.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+              ^^
+              source.ts meta.function.ts meta.block.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp punctuation.definition.group.no-capture.regexp
+                ^
+                source.ts meta.function.ts meta.block.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                 ^
+                 source.ts meta.function.ts meta.block.ts string.regexp.ts meta.group.regexp meta.group.regexp
+                  ^
+                  source.ts meta.function.ts meta.block.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                   ^
+                   source.ts meta.function.ts meta.block.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+                    ^
+                    source.ts meta.function.ts meta.block.ts string.regexp.ts keyword.operator.quantifier.regexp
+                     ^
+                     source.ts meta.function.ts meta.block.ts string.regexp.ts punctuation.definition.string.end.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>export const bar = true
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^^^
+        source.ts meta.var.expr.ts storage.type.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^^^^
+                    source.ts meta.var.expr.ts constant.language.boolean.true.ts
