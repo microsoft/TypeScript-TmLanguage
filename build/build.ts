@@ -66,7 +66,7 @@ function getTsxGrammar() {
         }
         return variables;
     });
-    const tsxUpdates = updateGrammarVariables(tsxUpdatesBeforeTransformation, variables);
+    const tsxUpdates = updateGrammarVariables(tsxUpdatesBeforeTransformation, variables!);
 
     // Update name, file types, scope name and uuid
     grammar.name = tsxUpdates.name;

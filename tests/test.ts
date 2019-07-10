@@ -22,17 +22,24 @@ ensureCleanGeneratedFolder();
 
 // Generate the new baselines
 for (const fileName of fs.readdirSync(casesFolder)) {
-    const text = fs.readFileSync(path.join(casesFolder, fileName), 'utf8');
-    const parsedFileName = path.parse(fileName);
-
-    let wholeBaseline: string;
-    let markerScopes: string;
-
     describe("Generating baseline for " + fileName, () => {
-        before(() =>  {
-            const result = build.generateScopes(text, parsedFileName)
-            wholeBaseline = result.wholeBaseline;
-            markerScopes = result.markerScopes;
+        let wholeBaseline: string;
+        let markerScopes: string | undefined;
+        let parsedFileName: path.ParsedPath;
+
+        before(done => {
+            const text = fs.readFileSync(path.join(casesFolder, fileName), 'utf8');
+            parsedFileName  = path.parse(fileName);
+            build.generateScopes(text, parsedFileName).then(result => {
+                wholeBaseline = result.wholeBaseline;
+                markerScopes = result.markerScopes;
+                done();
+            })
+        });
+        after(() => {
+            wholeBaseline = undefined!;
+            markerScopes = undefined!;
+            parsedFileName = undefined!;
         });
 
         it('Comparing whole baseline', () => {

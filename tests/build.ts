@@ -1,12 +1,52 @@
 import * as vt from 'vscode-textmate/release/main';
 import path = require('path');
+import fs = require('fs');
 
-const tsGrammarFileName = "TypeScript.tmLanguage"
-const tsReactGrammarFileName = "TypeScriptReact.tmLanguage"
+enum GrammarKind {
+    ts = 'source.ts',
+    tsx = 'source.tsx'
+}
+const grammarFileNames: Record<GrammarKind, string> = {
+    [GrammarKind.ts]: "TypeScript.tmLanguage",
+    [GrammarKind.tsx]: "TypeScriptReact.tmLanguage"
+};
+function grammarPath(kind: GrammarKind) {
+    return path.join(__dirname, '..', grammarFileNames[kind]);
+}
+const grammarPaths = {
+    [GrammarKind.ts]: grammarPath(GrammarKind.ts),
+    [GrammarKind.tsx]: grammarPath(GrammarKind.tsx)
+};
 
-const register = new vt.Registry();
-const tsGrammar = register.loadGrammarFromPathSync(path.join(__dirname, '..', tsGrammarFileName));
-const tsReactGrammar = register.loadGrammarFromPathSync(path.join(__dirname, '..', tsReactGrammarFileName));
+const registery = new vt.Registry({
+    loadGrammar: function (scopeName: GrammarKind) {
+        const path = grammarPaths[scopeName];
+        if (path) {
+            return new Promise((resolve, reject) => {
+                fs.readFile(path, (error, content) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        const rawGrammar = vt.parseRawGrammar(content.toString(), path);
+                        resolve(rawGrammar);
+                    }
+                });
+            });
+        }
+
+        return Promise.resolve(null);
+    }
+});
+
+interface ThenableGrammar {
+    kind: GrammarKind;
+    grammar: vt.Thenable<vt.IGrammar>;
+}
+function thenableGrammar(kind: GrammarKind): ThenableGrammar {
+    return { kind, grammar: registery.loadGrammar(kind) };
+}
+const tsGrammar = thenableGrammar(GrammarKind.ts);
+const tsReactGrammar = thenableGrammar(GrammarKind.tsx);
 
 const marker = '^^';
 
@@ -31,24 +71,21 @@ function getInputFile(oriLines: string[]): string {
         "\n-----------------------------------\n\n";
 }
 
-function getGrammarInfo(grammarFileName: string) {
-    return "Grammar: " + grammarFileName + "\n-----------------------------------\n";
+function getGrammarInfo(kind: GrammarKind) {
+    return "Grammar: " + grammarFileNames[kind] + "\n-----------------------------------\n";
 }
 
-const tsGrammarInfo = getGrammarInfo(tsGrammarFileName);
-const tsReactGrammarInfo = getGrammarInfo(tsReactGrammarFileName);
-
 interface Grammar {
+    kind: GrammarKind;
     grammar: vt.IGrammar;
     ruleStack?: vt.StackElement;
 }
-
-function initGrammar(grammar: vt.IGrammar): Grammar {
-    return { grammar };
+function initGrammar(kind: GrammarKind, grammar: vt.IGrammar): Grammar {
+    return { kind, grammar };
 }
 
 function tokenizeLine(grammar: Grammar, line: string) {
-    const lineTokens = grammar.grammar.tokenizeLine(line, grammar.ruleStack);
+    const lineTokens = grammar.grammar.tokenizeLine(line, grammar.ruleStack!);
     grammar.ruleStack = lineTokens.ruleStack;
     return lineTokens.tokens;
 }
@@ -82,20 +119,29 @@ function hasDiffLineToken(first: vt.IToken, second: vt.IToken) {
 }
 
 function getBaseline(grammar: Grammar, outputLines: string[]) {
-    const grammarInfo = grammar.grammar === tsGrammar ? tsGrammarInfo : tsReactGrammarInfo;
-    return grammarInfo + outputLines.join('\n');
+    return getGrammarInfo(grammar.kind) + outputLines.join('\n');
 }
 
-export function generateScopes(text: string, parsedFileName: path.ParsedPath): { markerScopes: string, wholeBaseline: string } {
-    const grammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
+export function generateScopes(text: string, parsedFileName: path.ParsedPath) {
+    const mainGrammar = parsedFileName.ext === '.tsx' ? tsReactGrammar : tsGrammar;
     const oriLines = text.split(/\r\n|\r|\n/);
+    const otherGrammar = oriLines[0].search(/\/\/\s*@onlyOwnGrammar/i) < 0 ?
+        mainGrammar === tsGrammar ? tsReactGrammar : tsGrammar :
+        undefined;
 
-    let mainGrammar = initGrammar(grammar);
-    let otherGrammar: Grammar = null;
-    if (oriLines[0].search(/\/\/\s*@onlyOwnGrammar/i) < 0) {
-        otherGrammar = initGrammar(grammar === tsGrammar ? tsReactGrammar : tsGrammar);
-    }
+    return Promise.all([
+        mainGrammar.grammar,
+        otherGrammar ?
+            otherGrammar.grammar :
+            Promise.resolve(undefined)
+    ]).then(([mainIGrammar, otherIGrammar]) => generateScopesWorker(
+        initGrammar(mainGrammar.kind, mainIGrammar),
+        otherIGrammar && initGrammar(otherGrammar!.kind, otherIGrammar),
+        oriLines
+    ));
+}
 
+function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | undefined, oriLines: string[]): { markerScopes: string | undefined, wholeBaseline: string } {
     let outputLines: string[] = [];
     let cleanLines: string[] = [];
     let baselineLines: string[] = [];
@@ -136,9 +182,9 @@ export function generateScopes(text: string, parsedFileName: path.ParsedPath): {
         }
     }
 
-    const otherDiffBaseline = foundDiff ? "\n\n\n" + getBaseline(otherGrammar, otherBaselines) : "";
+    const otherDiffBaseline = foundDiff ? "\n\n\n" + getBaseline(otherGrammar!, otherBaselines) : "";
     return {
-        markerScopes: markers ? (getInputFile(oriLines) + getBaseline(mainGrammar, outputLines)) : null,
+        markerScopes: markers ? (getInputFile(oriLines) + getBaseline(mainGrammar, outputLines)) : undefined,
         wholeBaseline: getInputFile(cleanLines) + getBaseline(mainGrammar, baselineLines) + otherDiffBaseline
     };
 }
