@@ -249,7 +249,7 @@ repository:
     # let/var
     - name: meta.var.expr.ts
       begin: (?={{varExprStart}})
-      end: (?!{{varExprStart}})((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
+      end: (?!{{varExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
       patterns:
       - begin: '{{varExprStart}}\s*'
         beginCaptures:
@@ -264,7 +264,7 @@ repository:
       - begin: (,)\s*((?!\S)|(?=\/\/))
         beginCaptures:
           '1': { name: punctuation.separator.comma.ts }
-        end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
+        end: (?<!,)(((?==|;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
         patterns:
         - include: '#single-line-comment-consuming-line-ending'
         - include: '#comment'
@@ -279,7 +279,7 @@ repository:
         '1': { name: keyword.control.export.ts }
         '2': { name: storage.modifier.ts }
         '3': { name: storage.type.ts }
-      end: (?!{{constExprStart}})((?=;|}|(\s+(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindConst}})(?=\s*$)))
+      end: (?!{{constExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindConst}})(?=\s*$)))
       patterns:
       - begin: '{{constExprStart}}\s*'
         beginCaptures:
@@ -294,7 +294,7 @@ repository:
       - begin: (,)\s*((?!\S)|(?=\/\/))
         beginCaptures:
           '1': { name: punctuation.separator.comma.ts }
-        end: (?<!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
+        end: (?<!,)(((?==|;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
         patterns:
         - include: '#single-line-comment-consuming-line-ending'
         - include: '#comment'
@@ -311,7 +311,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts entity.name.function.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
@@ -319,7 +319,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
@@ -327,7 +327,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
 
@@ -338,14 +338,14 @@ repository:
         (?x)({{identifier}})(?={{functionLikeAssignmentOrType}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts }
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
       begin: ({{identifier}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#var-single-variable-type-annotation'
 
@@ -359,14 +359,14 @@ repository:
     patterns:
     - name: meta.object-binding-pattern-variable.ts
       begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\{)
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#object-binding-pattern'
       - include: '#type-annotation'
       - include: '#comment'
     - name: meta.array-binding-pattern-variable.ts
       begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\[)
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#array-binding-pattern'
       - include: '#type-annotation'
@@ -376,14 +376,14 @@ repository:
     patterns:
     - name: meta.object-binding-pattern-variable.ts
       begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\{)
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#object-binding-pattern-const'
       - include: '#type-annotation'
       - include: '#comment'
     - name: meta.array-binding-pattern-variable.ts
       begin: (?<!=|:|{{lookBehindOf}}|{{lookBehindIn}})\s*(?=\[)
-      end: (?=$|^|[;,=}]|(\s+(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#array-binding-pattern-const'
       - include: '#type-annotation'
@@ -642,14 +642,14 @@ repository:
     - begin: (?<!=|!)(=)(?!=)(?=\s*\S)(?!\s*.*=>\s*$)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=$|^|[,);}\]]|(\s+(of|in)\s+))
+      end: (?=$|^|[,);}\]]|({{startOfIdentifier}}(of|in)\s+))
       patterns:
       - include: '#expression'
     # if the expression doesnt start on same line do not use end of line as end of unless the complete line is blank
     - begin: (?<!=|!)(=)(?!=)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=[,);}\]]|(\s+(of|in)\s+))|(?=^\s*$)|(?<=\S)(?<!=)(?=\s*$)
+      end: (?=[,);}\]]|({{startOfIdentifier}}(of|in)\s+))|(?=^\s*$)|(?<=\S)(?<!=)(?=\s*$)
       patterns:
         - include: '#expression'
 

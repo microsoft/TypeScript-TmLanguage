@@ -409,7 +409,7 @@
             <key>begin</key>
             <string>(?=(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))</string>
             <key>end</key>
-            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|(\s+(of|in)\s+)|^\s*$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|^\s*$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -464,7 +464,7 @@
                   </dict>
                 </dict>
                 <key>end</key>
-                <string>(?&lt;!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$)))</string>
+                <string>(?&lt;!,)(((?==|;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$)))</string>
                 <key>patterns</key>
                 <array>
                   <dict>
@@ -519,7 +519,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|(\s+(of|in)\s+)|^\s*$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|^\s*$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -574,7 +574,7 @@
                   </dict>
                 </dict>
                 <key>end</key>
-                <string>(?&lt;!,)(((?==|;|}|(\s+(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$)))</string>
+                <string>(?&lt;!,)(((?==|;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$)))</string>
                 <key>patterns</key>
                 <array>
                   <dict>
@@ -702,7 +702,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -730,7 +730,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -758,7 +758,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -859,7 +859,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -882,7 +882,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -921,7 +921,7 @@
             <key>begin</key>
             <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\{)</string>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -944,7 +944,7 @@
             <key>begin</key>
             <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\[)</string>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -973,7 +973,7 @@
             <key>begin</key>
             <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\{)</string>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -996,7 +996,7 @@
             <key>begin</key>
             <string>(?&lt;!=|:|^of|[^\._$[:alnum:]]of|^in|[^\._$[:alnum:]]in)\s*(?=\[)</string>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2032,7 +2032,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[,);}\]]|(\s+(of|in)\s+))</string>
+            <string>(?=$|^|[,);}\]]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2053,7 +2053,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=[,);}\]]|(\s+(of|in)\s+))|(?=^\s*$)|(?&lt;=\S)(?&lt;!=)(?=\s*$)</string>
+            <string>(?=[,);}\]]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+))|(?=^\s*$)|(?&lt;=\S)(?&lt;!=)(?=\s*$)</string>
             <key>patterns</key>
             <array>
               <dict>

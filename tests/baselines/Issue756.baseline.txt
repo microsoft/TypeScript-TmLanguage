@@ -1,0 +1,72 @@
+original file
+-----------------------------------
+for (const [key, value]of dict) { // No highlighting after 'of'.
+  console.log('hello, world')
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>for (const [key, value]of dict) { // No highlighting after 'of'.
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^
+            source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+             ^^^
+             source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.definition.variable.ts variable.other.constant.ts
+                ^
+                source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.separator.comma.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts
+                  ^^^^^
+                  source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts meta.definition.variable.ts variable.other.constant.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.array-binding-pattern-variable.ts punctuation.definition.binding-pattern.array.ts
+                        ^^
+                        source.ts keyword.operator.expression.of.ts
+                          ^
+                          source.ts
+                           ^^^^
+                           source.ts variable.other.readwrite.ts
+                               ^
+                               source.ts meta.brace.round.ts
+                                ^
+                                source.ts
+                                 ^
+                                 source.ts meta.block.ts punctuation.definition.block.ts
+                                  ^
+                                  source.ts meta.block.ts
+                                   ^^
+                                   source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                     source.ts meta.block.ts comment.line.double-slash.ts
+>  console.log('hello, world')
+ ^^
+ source.ts meta.block.ts
+   ^^^^^^^
+   source.ts meta.block.ts meta.function-call.ts support.class.console.ts
+          ^
+          source.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+           ^^^
+           source.ts meta.block.ts meta.function-call.ts support.function.console.ts
+              ^
+              source.ts meta.block.ts meta.brace.round.ts
+               ^
+               source.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                ^^^^^^^^^^^^
+                source.ts meta.block.ts string.quoted.single.ts
+                            ^
+                            source.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                             ^
+                             source.ts meta.block.ts meta.brace.round.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
