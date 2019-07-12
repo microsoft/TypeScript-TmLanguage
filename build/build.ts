@@ -11,7 +11,7 @@ enum Language {
 enum Extension {
     TmLanguage = "tmLanguage",
     TmTheme = "tmTheme",
-    YamlTmLangauge = "YAML-tmLanguage",
+    YamlTmLanguage = "YAML-tmLanguage",
     YamlTmTheme = "YAML-tmTheme"
 }
 
@@ -58,7 +58,7 @@ function transformGrammarRepository(grammar: TmGrammar, propertyNames: string[],
 
 function getTsxGrammar() {
     let variables: MapLike<string>;
-    const tsxUpdatesBeforeTransformation = readYaml(file(Language.TypeScriptReact, Extension.YamlTmLangauge)) as TmGrammar;
+    const tsxUpdatesBeforeTransformation = readYaml(file(Language.TypeScriptReact, Extension.YamlTmLanguage)) as TmGrammar;
     const grammar = getTsGrammar(tsGrammarVariables => {
         variables = tsGrammarVariables;
         for (const variableName in tsxUpdatesBeforeTransformation.variables) {
@@ -96,7 +96,7 @@ function getTsxGrammar() {
 }
 
 function getTsGrammar(getVariables: (tsGrammarVariables: MapLike<string>) => MapLike<string>) {
-    const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLangauge)) as TmGrammar;
+    const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLanguage)) as TmGrammar;
     return updateGrammarVariables(tsGrammarBeforeTransformation, getVariables(tsGrammarBeforeTransformation.variables));
 }
 
