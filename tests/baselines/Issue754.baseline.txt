@@ -1,0 +1,66 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has jsx
+const b = <Element />;
+const a = /**/ <Element />;
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has jsx
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>const b = <Element />;
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.constant.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+          ^
+          source.tsx meta.var.expr.tsx
+           ^
+           source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+            ^^^^^^^
+            source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+                   ^
+                   source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx
+                    ^^
+                    source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                      ^
+                      source.tsx punctuation.terminator.statement.tsx
+>const a = /**/ <Element />;
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.constant.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+          ^
+          source.tsx meta.var.expr.tsx
+           ^^
+           source.tsx meta.var.expr.tsx comment.block.tsx punctuation.definition.comment.tsx
+             ^^
+             source.tsx meta.var.expr.tsx comment.block.tsx punctuation.definition.comment.tsx
+               ^
+               source.tsx meta.var.expr.tsx
+                ^
+                source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.begin.tsx
+                 ^^^^^^^
+                 source.tsx meta.var.expr.tsx meta.tag.tsx entity.name.tag.tsx support.class.component.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx meta.tag.tsx meta.tag.attributes.tsx
+                         ^^
+                         source.tsx meta.var.expr.tsx meta.tag.tsx punctuation.definition.tag.end.tsx
+                           ^
+                           source.tsx punctuation.terminator.statement.tsx
