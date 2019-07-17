@@ -1,0 +1,98 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - since this example has slightly different scopes because of how cast expression works and isnt supported in the tsx file
+const goodHighlighting = <T extends I>(
+  arg: T
+) => {
+  const a = arg
+  return a
+}
+-----------------------------------
+
+Grammar: TypeScriptReact.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - since this example has slightly different scopes because of how cast expression works and isnt supported in the tsx file
+ ^^
+ source.tsx comment.line.double-slash.tsx punctuation.definition.comment.tsx
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.tsx comment.line.double-slash.tsx
+>const goodHighlighting = <T extends I>(
+ ^^^^^
+ source.tsx meta.var.expr.tsx storage.type.tsx
+      ^
+      source.tsx meta.var.expr.tsx
+       ^^^^^^^^^^^^^^^^
+       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.constant.tsx entity.name.function.tsx
+                       ^
+                       source.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+                        ^
+                        source.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+                         ^
+                         source.tsx meta.var.expr.tsx meta.arrow.tsx
+                          ^
+                          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.begin.tsx
+                           ^
+                           source.tsx meta.var.expr.tsx meta.arrow.tsx meta.type.parameters.tsx entity.name.type.tsx
+                            ^
+                            source.tsx meta.var.expr.tsx meta.arrow.tsx meta.type.parameters.tsx
+                             ^^^^^^^
+                             source.tsx meta.var.expr.tsx meta.arrow.tsx meta.type.parameters.tsx storage.modifier.tsx
+                                    ^
+                                    source.tsx meta.var.expr.tsx meta.arrow.tsx meta.type.parameters.tsx
+                                     ^
+                                     source.tsx meta.var.expr.tsx meta.arrow.tsx meta.type.parameters.tsx entity.name.type.tsx
+                                      ^
+                                      source.tsx meta.var.expr.tsx meta.arrow.tsx meta.type.parameters.tsx punctuation.definition.typeparameters.end.tsx
+                                       ^
+                                       source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.begin.tsx
+>  arg: T
+ ^^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx
+   ^^^
+   source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx variable.parameter.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx keyword.operator.type.annotation.tsx
+       ^
+       source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx meta.type.annotation.tsx entity.name.type.tsx
+>) => {
+ ^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.parameters.tsx punctuation.definition.parameters.end.tsx
+  ^
+  source.tsx meta.var.expr.tsx meta.arrow.tsx
+   ^^
+   source.tsx meta.var.expr.tsx meta.arrow.tsx storage.type.function.arrow.tsx
+     ^
+     source.tsx meta.var.expr.tsx meta.arrow.tsx
+      ^
+      source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx punctuation.definition.block.tsx
+>  const a = arg
+ ^^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx
+   ^^^^^
+   source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx meta.var.expr.tsx storage.type.tsx
+        ^
+        source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx meta.var.expr.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx meta.definition.variable.tsx variable.other.constant.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx meta.var.expr.tsx meta.var-single-variable.expr.tsx
+           ^
+           source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx meta.var.expr.tsx keyword.operator.assignment.tsx
+            ^
+            source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx meta.var.expr.tsx
+             ^^^
+             source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx meta.var.expr.tsx variable.other.readwrite.tsx
+>  return a
+ ^^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx
+   ^^^^^^
+   source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx keyword.control.flow.tsx
+         ^
+         source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx
+          ^
+          source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx variable.other.readwrite.tsx
+>}
+ ^
+ source.tsx meta.var.expr.tsx meta.arrow.tsx meta.block.tsx punctuation.definition.block.tsx

@@ -1,12 +1,5 @@
 interface I {}
 
-const goodHighlighting = <T extends I>(
-  arg: T
-) => {
-  const a = arg
-  return a
-}
-
 const goodHighlighting2 = <
   T
 >(

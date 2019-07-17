@@ -68,6 +68,7 @@ variables:
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}(({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?<!=)\>))*(?<!=)\>)*(?<!=)>'
   functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
   returnTypeOfArrow: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
+  typeparamertStartOfArrow: ''
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (
@@ -78,9 +79,7 @@ variables:
         ((\.\.\.\s*)?{{identifier}}\s*:)                                                                  # [(]param: | [(]...param:
       )
     ) |
-    (
-      [<]\s*{{identifier}}\s+extends\s*[^=>]                                                              # < typeparam extends
-    ) |
+    {{typeparamertStartOfArrow}}
     # arrow function possible to detect only with => on same line
     (
       {{typeParameters}}?                                                                                 # typeparameters

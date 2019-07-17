@@ -1,0 +1,286 @@
+original file
+-----------------------------------
+// @onlyOwnGrammar - As this has type assertion
+type X = A | B;
+type A = string;
+type B = number;
+function foo<T extends X>(arg: T): T extends B ? number : string {
+  if (arg === "A") return <T extends B ? number : never>111;
+  return <T extends B ? never : string>"returning a string";
+}
+foo("A");
+foo(1);
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// @onlyOwnGrammar - As this has type assertion
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>type X = A | B;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^
+          source.ts meta.type.declaration.ts entity.name.type.ts
+           ^
+           source.ts meta.type.declaration.ts
+            ^
+            source.ts meta.type.declaration.ts keyword.operator.type.ts
+             ^
+             source.ts meta.type.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts entity.name.type.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+>type A = string;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^^^^^^
+          source.ts meta.type.declaration.ts support.type.primitive.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+>type B = number;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^^^^^^
+          source.ts meta.type.declaration.ts support.type.primitive.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+>function foo<T extends X>(arg: T): T extends B ? number : string {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.type.parameters.ts entity.name.type.ts
+               ^
+               source.ts meta.function.ts meta.type.parameters.ts
+                ^^^^^^^
+                source.ts meta.function.ts meta.type.parameters.ts storage.modifier.ts
+                       ^
+                       source.ts meta.function.ts meta.type.parameters.ts
+                        ^
+                        source.ts meta.function.ts meta.type.parameters.ts entity.name.type.ts
+                         ^
+                         source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                          ^
+                          source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                           ^^^
+                           source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                              ^
+                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                ^
+                                source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                 ^
+                                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                  ^
+                                  source.ts meta.function.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                   ^
+                                   source.ts meta.function.ts meta.return.type.ts
+                                    ^
+                                    source.ts meta.function.ts meta.return.type.ts entity.name.type.ts
+                                     ^
+                                     source.ts meta.function.ts meta.return.type.ts
+                                      ^^^^^^^
+                                      source.ts meta.function.ts meta.return.type.ts storage.modifier.ts
+                                             ^
+                                             source.ts meta.function.ts meta.return.type.ts
+                                              ^
+                                              source.ts meta.function.ts meta.return.type.ts entity.name.type.ts
+                                               ^
+                                               source.ts meta.function.ts meta.return.type.ts
+                                                ^
+                                                source.ts meta.function.ts meta.return.type.ts keyword.operator.ternary.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.return.type.ts
+                                                  ^^^^^^
+                                                  source.ts meta.function.ts meta.return.type.ts support.type.primitive.ts
+                                                        ^
+                                                        source.ts meta.function.ts meta.return.type.ts
+                                                         ^
+                                                         source.ts meta.function.ts meta.return.type.ts keyword.operator.ternary.ts
+                                                          ^
+                                                          source.ts meta.function.ts meta.return.type.ts
+                                                           ^^^^^^
+                                                           source.ts meta.function.ts meta.return.type.ts support.type.primitive.ts
+                                                                 ^
+                                                                 source.ts meta.function.ts meta.return.type.ts
+                                                                  ^
+                                                                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  if (arg === "A") return <T extends B ? number : never>111;
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^
+   source.ts meta.function.ts meta.block.ts keyword.control.conditional.ts
+     ^
+     source.ts meta.function.ts meta.block.ts
+      ^
+      source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+       ^^^
+       source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.function.ts meta.block.ts
+           ^^^
+           source.ts meta.function.ts meta.block.ts keyword.operator.comparison.ts
+              ^
+              source.ts meta.function.ts meta.block.ts
+               ^
+               source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                ^
+                source.ts meta.function.ts meta.block.ts string.quoted.double.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.brace.round.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts
+                    ^^^^^^
+                    source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts cast.expr.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts cast.expr.ts entity.name.type.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts cast.expr.ts
+                              ^^^^^^^
+                              source.ts meta.function.ts meta.block.ts cast.expr.ts storage.modifier.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts cast.expr.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts cast.expr.ts entity.name.type.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts cast.expr.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts cast.expr.ts keyword.operator.ternary.ts
+                                         ^
+                                         source.ts meta.function.ts meta.block.ts cast.expr.ts
+                                          ^^^^^^
+                                          source.ts meta.function.ts meta.block.ts cast.expr.ts support.type.primitive.ts
+                                                ^
+                                                source.ts meta.function.ts meta.block.ts cast.expr.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.block.ts cast.expr.ts keyword.operator.ternary.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.block.ts cast.expr.ts
+                                                   ^^^^^
+                                                   source.ts meta.function.ts meta.block.ts cast.expr.ts support.type.primitive.ts
+                                                        ^
+                                                        source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+                                                         ^^^
+                                                         source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>  return <T extends B ? never : string>"returning a string";
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts cast.expr.ts
+          ^
+          source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+           ^
+           source.ts meta.function.ts meta.block.ts cast.expr.ts entity.name.type.ts
+            ^
+            source.ts meta.function.ts meta.block.ts cast.expr.ts
+             ^^^^^^^
+             source.ts meta.function.ts meta.block.ts cast.expr.ts storage.modifier.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts cast.expr.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts cast.expr.ts entity.name.type.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts cast.expr.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts cast.expr.ts keyword.operator.ternary.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts cast.expr.ts
+                         ^^^^^
+                         source.ts meta.function.ts meta.block.ts cast.expr.ts support.type.primitive.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts cast.expr.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts cast.expr.ts keyword.operator.ternary.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts cast.expr.ts
+                                 ^^^^^^
+                                 source.ts meta.function.ts meta.block.ts cast.expr.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts cast.expr.ts meta.brace.angle.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                         ^^^^^^^^^^^^^^^^^^
+                                         source.ts meta.function.ts meta.block.ts string.quoted.double.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.block.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>foo("A");
+ ^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^
+     source.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+      ^
+      source.ts string.quoted.double.ts
+       ^
+       source.ts string.quoted.double.ts punctuation.definition.string.end.ts
+        ^
+        source.ts meta.brace.round.ts
+         ^
+         source.ts punctuation.terminator.statement.ts
+>foo(1);
+ ^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^
+     source.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.brace.round.ts
+       ^
+       source.ts punctuation.terminator.statement.ts
