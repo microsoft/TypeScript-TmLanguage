@@ -67,7 +67,7 @@ variables:
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}(({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?<!=)\>))*(?<!=)\>)*(?<!=)>'
   functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
-  returnTypeOfArrow: \s*([^<>\(\)\{\}]|\<[^<>]+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
+  returnTypeOfArrow: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
     (
@@ -1411,6 +1411,7 @@ repository:
           '0': { name: meta.brace.round.ts }
         patterns:
         - include: '#expression-inside-possibly-arrow-parens'
+      - include: '#possibly-arrow-return-type'
       - include: '#expression'
     - include: '#punctuation-comma'
 
