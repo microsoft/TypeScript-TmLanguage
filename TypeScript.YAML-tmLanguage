@@ -1647,6 +1647,12 @@ repository:
     - name: keyword.operator.arithmetic.ts
       match: '%|\*|/|-|\+'
     # capture the arithmetic sign followed by variable or parenthesized expression so that it is not interpreted as regex
+    - begin: (?<=[_$[:alnum:])\]])\s*(?=({{inlineComment}}\s*)+(/)(?![/*]))
+      end: (/)(?!\*([^\*]|(\*[^\/]))*\*\/)
+      endCaptures:
+        '1': { name: keyword.operator.arithmetic.ts }
+      patterns:
+      - include: '#comment'
     - match: (?<=[_$[:alnum:])\]])\s*(/)(?![/*])
       captures:
         '1': { name: keyword.operator.arithmetic.ts }

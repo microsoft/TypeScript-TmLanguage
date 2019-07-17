@@ -123,146 +123,262 @@ Grammar: TypeScript.tmLanguage
                ^
                source.ts
                 ^
-                source.ts string.regexp.ts punctuation.definition.string.begin.ts
-                 ^^^^^^^^^
-                 source.ts string.regexp.ts
+                source.ts keyword.operator.arithmetic.ts
+                 ^
+                 source.ts
+                  ^^^^^^^^
+                  source.ts meta.function-call.ts support.function.ts
                           ^
-                          source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+                          source.ts meta.brace.round.ts
                            ^
-                           source.ts string.regexp.ts meta.group.regexp
+                           source.ts string.regexp.ts punctuation.definition.string.begin.ts
                             ^
-                            source.ts string.regexp.ts meta.group.regexp constant.other.character-class.regexp
+                            source.ts string.regexp.ts constant.other.character-class.regexp
                              ^
-                             source.ts string.regexp.ts meta.group.regexp keyword.operator.quantifier.regexp
+                             source.ts string.regexp.ts keyword.operator.quantifier.regexp
                               ^
-                              source.ts string.regexp.ts meta.group.regexp
+                              source.ts string.regexp.ts punctuation.definition.string.end.ts
                                ^
-                               source.ts string.regexp.ts meta.group.regexp constant.other.character-class.regexp
+                               source.ts meta.function-call.ts punctuation.accessor.ts
                                 ^^^^
-                                source.ts string.regexp.ts meta.group.regexp
+                                source.ts meta.function-call.ts support.function.ts
                                     ^
-                                    source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
-                                     ^^^^^^^^
-                                     source.ts string.regexp.ts meta.group.regexp meta.group.regexp
+                                    source.ts meta.brace.round.ts
+                                     ^
+                                     source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                      ^^^^^^
+                                      source.ts string.quoted.single.ts
+                                            ^
+                                            source.ts string.quoted.single.ts punctuation.definition.string.end.ts
                                              ^
-                                             source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+                                             source.ts meta.brace.round.ts
                                               ^
-                                              source.ts string.regexp.ts meta.group.regexp constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                                              source.ts meta.array.literal.ts meta.brace.square.ts
                                                ^
-                                               source.ts string.regexp.ts meta.group.regexp constant.other.character-class.set.regexp
+                                               source.ts meta.array.literal.ts constant.numeric.decimal.ts
                                                 ^
-                                                source.ts string.regexp.ts meta.group.regexp constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                                                source.ts meta.array.literal.ts meta.brace.square.ts
                                                  ^
-                                                 source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-                                                  ^^
-                                                  source.ts string.regexp.ts
+                                                 source.ts meta.brace.round.ts
+                                                  ^
+                                                  source.ts punctuation.terminator.statement.ts
 >console.log(a);
  ^^^^^^^
- source.ts string.regexp.ts
+ source.ts meta.function-call.ts support.class.console.ts
         ^
-        source.ts string.regexp.ts constant.other.character-class.regexp
+        source.ts meta.function-call.ts punctuation.accessor.ts
          ^^^
-         source.ts string.regexp.ts
+         source.ts meta.function-call.ts support.function.console.ts
             ^
-            source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+            source.ts meta.brace.round.ts
              ^
-             source.ts string.regexp.ts meta.group.regexp
+             source.ts variable.other.readwrite.ts
               ^
-              source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-               ^^
-               source.ts string.regexp.ts
+              source.ts meta.brace.round.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
 >
  ^
- source.ts string.regexp.ts
+ source.ts
 >b = 1
- ^^^^^^
- source.ts string.regexp.ts
->a = () => b
- ^^^^
- source.ts string.regexp.ts
-     ^
-     source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-      ^
-      source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-       ^^^^^^
-       source.ts string.regexp.ts
->2 + (b=2), 3
- ^^
- source.ts string.regexp.ts
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
    ^
-   source.ts string.regexp.ts keyword.operator.quantifier.regexp
+   source.ts keyword.operator.assignment.ts
     ^
-    source.ts string.regexp.ts
+    source.ts
      ^
-     source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-      ^^^
-      source.ts string.regexp.ts meta.group.regexp
+     source.ts constant.numeric.decimal.ts
+>a = () => b
+ ^
+ source.ts entity.name.function.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts meta.arrow.ts
+     ^
+     source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+      ^
+      source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+       ^
+       source.ts meta.arrow.ts
+        ^^
+        source.ts meta.arrow.ts storage.type.function.arrow.ts
+          ^
+          source.ts meta.arrow.ts
+           ^
+           source.ts variable.other.readwrite.ts
+>2 + (b=2), 3
+ ^
+ source.ts constant.numeric.decimal.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.arithmetic.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^
+      source.ts variable.other.readwrite.ts
+       ^
+       source.ts keyword.operator.assignment.ts
+        ^
+        source.ts constant.numeric.decimal.ts
          ^
-         source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-          ^^^^
-          source.ts string.regexp.ts
+         source.ts meta.brace.round.ts
+          ^
+          source.ts punctuation.separator.comma.ts
+           ^
+           source.ts
+            ^
+            source.ts constant.numeric.decimal.ts
 >b = 6
- ^^^^^^
- source.ts string.regexp.ts
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts constant.numeric.decimal.ts
 >console.log(a(),b);
  ^^^^^^^
- source.ts string.regexp.ts
+ source.ts meta.function-call.ts support.class.console.ts
         ^
-        source.ts string.regexp.ts constant.other.character-class.regexp
+        source.ts meta.function-call.ts punctuation.accessor.ts
          ^^^
-         source.ts string.regexp.ts
+         source.ts meta.function-call.ts support.function.console.ts
             ^
-            source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+            source.ts meta.brace.round.ts
              ^
-             source.ts string.regexp.ts meta.group.regexp
+             source.ts meta.function-call.ts entity.name.function.ts
               ^
-              source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
+              source.ts meta.brace.round.ts
                ^
-               source.ts string.regexp.ts meta.group.regexp meta.group.regexp punctuation.definition.group.regexp
-                ^^
-                source.ts string.regexp.ts meta.group.regexp
+               source.ts meta.brace.round.ts
+                ^
+                source.ts punctuation.separator.comma.ts
+                 ^
+                 source.ts variable.other.readwrite.ts
                   ^
-                  source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-                   ^^
-                   source.ts string.regexp.ts
+                  source.ts meta.brace.round.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
 >(b)
  ^
- source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+ source.ts meta.brace.round.ts
   ^
-  source.ts string.regexp.ts meta.group.regexp
+  source.ts variable.other.readwrite.ts
    ^
-   source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
+   source.ts meta.brace.round.ts
 >
  ^
- source.ts string.regexp.ts
+ source.ts
 >if (a === 1) {
- ^^^
- source.ts string.regexp.ts
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
     ^
-    source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-     ^^^^^^^
-     source.ts string.regexp.ts meta.group.regexp
-            ^
-            source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-             ^^^
-             source.ts string.regexp.ts
->   b = 2
- ^^^^^^^^^
- source.ts string.regexp.ts
->} else if (a === 2) b = 3
- ^^^^^^^^^^
- source.ts string.regexp.ts
+    source.ts meta.brace.round.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^
+      source.ts
+       ^^^
+       source.ts keyword.operator.comparison.ts
+          ^
+          source.ts
            ^
-           source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-            ^^^^^^^
-            source.ts string.regexp.ts meta.group.regexp
+           source.ts constant.numeric.decimal.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts
+              ^
+              source.ts meta.block.ts punctuation.definition.block.ts
+>   b = 2
+ ^^^
+ source.ts meta.block.ts
+    ^
+    source.ts meta.block.ts variable.other.readwrite.ts
+     ^
+     source.ts meta.block.ts
+      ^
+      source.ts meta.block.ts keyword.operator.assignment.ts
+       ^
+       source.ts meta.block.ts
+        ^
+        source.ts meta.block.ts constant.numeric.decimal.ts
+>} else if (a === 2) b = 3
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts
+   ^^^^
+   source.ts keyword.control.conditional.ts
+       ^
+       source.ts
+        ^^
+        source.ts keyword.control.conditional.ts
+          ^
+          source.ts
+           ^
+           source.ts meta.brace.round.ts
+            ^
+            source.ts variable.other.readwrite.ts
+             ^
+             source.ts
+              ^^^
+              source.ts keyword.operator.comparison.ts
+                 ^
+                 source.ts
+                  ^
+                  source.ts constant.numeric.decimal.ts
                    ^
-                   source.ts string.regexp.ts meta.group.regexp punctuation.definition.group.regexp
-                    ^^^^^^^
-                    source.ts string.regexp.ts
+                   source.ts meta.brace.round.ts
+                    ^
+                    source.ts
+                     ^
+                     source.ts variable.other.readwrite.ts
+                      ^
+                      source.ts
+                       ^
+                       source.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts
+                         ^
+                         source.ts constant.numeric.decimal.ts
 >else b = 4
- ^^^^^^^^^^^
- source.ts string.regexp.ts
+ ^^^^
+ source.ts keyword.control.conditional.ts
+     ^
+     source.ts
+      ^
+      source.ts variable.other.readwrite.ts
+       ^
+       source.ts
+        ^
+        source.ts keyword.operator.assignment.ts
+         ^
+         source.ts
+          ^
+          source.ts constant.numeric.decimal.ts
 >c = 1
- ^^^^^^
- source.ts string.regexp.ts
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts constant.numeric.decimal.ts
