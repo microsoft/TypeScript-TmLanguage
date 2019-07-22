@@ -1,2 +1,2 @@
-^^await 1;
-^^awaiting 1;
+await 1;
+awaiting 1;

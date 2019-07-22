@@ -1,7 +1,7 @@
-^^abstract class Animal {
+abstract class Animal {
 	  public age: number;
 	  public yearsLeft() { return 20 - this.age; }
-	  ^^abstract makeSound(): string;
+	  abstract makeSound(): string;
 }
 
 class Cow extends Animal {

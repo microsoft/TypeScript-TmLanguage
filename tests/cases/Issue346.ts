@@ -8,7 +8,7 @@ function f()
 		let b = new Float64Array(e.data.bufferSize)
 		let s = e.data.sampleRate
 
-		for (let i = 0; i < b.length; i++) b[i] = Math.sin(TAU440 * t++^^/s * Math.sin(t++^^/s*.5))
+		for (let i = 0; i < b.length; i++) b[i] = Math.sin(TAU440 * t++/s * Math.sin(t++/s*.5))
 
 		postMessage(b)
 	}

@@ -1,8 +1,8 @@
 
-^^interface ^^TestInterface {
-  ^^testvar: ^^string;
-  ^^testfunc(): ^^string;
-^^}
+interface TestInterface {
+  testvar: string;
+  testfunc(): string;
+}
 
 /*
 	Testing Comments

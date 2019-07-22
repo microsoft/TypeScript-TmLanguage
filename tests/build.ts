@@ -48,23 +48,6 @@ function thenableGrammar(kind: GrammarKind): ThenableGrammar {
 const tsGrammar = thenableGrammar(GrammarKind.ts);
 const tsReactGrammar = thenableGrammar(GrammarKind.tsx);
 
-const marker = '^^';
-
-function deleteCharAt(index: number, str: string) {
-    return str.slice(0, index) + str.slice(index + marker.length);
-}
-
-function getMarkerLocations(str: string):  number[] {
-    let locations: number[] = [];
-    let markerLocation = str.indexOf(marker);
-    while (markerLocation >= 0) {
-        locations.push(markerLocation);
-        str = deleteCharAt(markerLocation, str);
-        markerLocation = str.indexOf(marker);
-    }
-    return locations;
-}
-
 function getInputFile(oriLines: string[]): string {
     return "original file\n-----------------------------------\n" +
         oriLines.join("\n") + 
@@ -141,33 +124,22 @@ export function generateScopes(text: string, parsedFileName: path.ParsedPath) {
     ));
 }
 
-function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | undefined, oriLines: string[]): { markerScopes: string | undefined, wholeBaseline: string } {
-    let outputLines: string[] = [];
+function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | undefined, oriLines: string[]): string {
     let cleanLines: string[] = [];
     let baselineLines: string[] = [];
     let otherBaselines: string[] = [];
     let markers = 0;
     let foundDiff = false;
     for (const i in oriLines) {
-        let oriLine = oriLines[i];
-        let markerLocations = getMarkerLocations(oriLine);
-        markers += markerLocations.length;
-        let line = oriLine.split(marker).join('');
+        let line = oriLines[i];
 
         const mainLineTokens = tokenizeLine(mainGrammar, line);
 
         cleanLines.push(line);
-        outputLines.push(">" + line);
         baselineLines.push(">" + line);
         otherBaselines.push(">" + line);
 
         for (let token of mainLineTokens) {
-            for (let markerLocation of markerLocations) {
-                if (token.startIndex <= markerLocation && markerLocation < token.endIndex) {
-                    writeTokenLine(token, '[' + (parseInt(i) + 1) + ', ' + (markerLocation + 1) + ']: ', ' ', outputLines);
-                }
-            }
-
             writeTokenLine(token, "", "", baselineLines);
         }
 
@@ -183,10 +155,7 @@ function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | unde
     }
 
     const otherDiffBaseline = foundDiff ? "\n\n\n" + getBaseline(otherGrammar!, otherBaselines) : "";
-    return {
-        markerScopes: markers ? (getInputFile(oriLines) + getBaseline(mainGrammar, outputLines)) : undefined,
-        wholeBaseline: getInputFile(cleanLines) + getBaseline(mainGrammar, baselineLines) + otherDiffBaseline
-    };
+    return getInputFile(cleanLines) + getBaseline(mainGrammar, baselineLines) + otherDiffBaseline;
 }
 
 function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForToken: string, outputLines: string[]) {

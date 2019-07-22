@@ -1,12 +1,12 @@
-var^^ letter;
-let^^ variable;
+var letter;
+let variable;
 
-var^^iable;
-let^^ter;
+variable;
+letter;
 
-var const^^enum^^ = 10;
-const^^enum^^ += 10;
-const^^ enum^^ E { }
+var constenum = 10;
+constenum += 10;
+const enum E { }
 
-var const^^able^^ = "I am rrrrrroyal!";
-const^^able^^ += " Royal, I say!";
+var constable = "I am rrrrrroyal!";
+constable += " Royal, I say!";
