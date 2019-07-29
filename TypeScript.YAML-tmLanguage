@@ -1372,7 +1372,7 @@ repository:
       begin: '{{startOfIdentifier}}(as)\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?=$|^|[,}]|({{startOfIdentifier}}(as)\s+))
+      end: (?=$|^|[,}]|\|\||\&\&|({{startOfIdentifier}}(as)\s+))
       patterns:
       - include: '#type'
     - name: meta.object.member.ts
@@ -1618,7 +1618,7 @@ repository:
     - begin: '{{startOfIdentifier}}(as)\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?=$|^|[;,:})\]]|({{startOfIdentifier}}(as)\s+)|(\s+\<))
+      end: (?=$|^|[;,:})\]]|\|\||\&\&|({{startOfIdentifier}}(as)\s+)|(\s+\<))
       patterns:
       - include: '#type'
     - name: keyword.operator.spread.ts
