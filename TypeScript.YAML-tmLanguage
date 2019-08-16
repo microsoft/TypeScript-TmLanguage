@@ -218,6 +218,7 @@ repository:
     - include: '#arrow-function'
     - include: '#paren-expression-possibly-arrow'
     - include: '#cast'
+    - include: '#nullish-coalesce'
     - include: '#ternary-expression'
     - include: '#new-expr'
     - include: '#instanceof-expr'
@@ -1413,6 +1414,12 @@ repository:
       - include: '#possibly-arrow-return-type'
       - include: '#expression'
     - include: '#punctuation-comma'
+
+  #nullish coalesce
+  nullish-coalesce:
+    patterns:
+      - name: keyword.operator.logical.ts
+        match: \?\?
 
   #ternary expression
   ternary-expression:
