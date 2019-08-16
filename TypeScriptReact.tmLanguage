@@ -329,10 +329,6 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#nullish-coalesce</string>
-          </dict>
-          <dict>
-            <key>include</key>
             <string>#ternary-expression</string>
           </dict>
           <dict>
@@ -4615,22 +4611,10 @@
           </dict>
         </array>
       </dict>
-      <key>nullish-coalesce</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>keyword.operator.logical.tsx</string>
-            <key>match</key>
-            <string>\?\?</string>
-          </dict>
-        </array>
-      </dict>
       <key>ternary-expression</key>
       <dict>
         <key>begin</key>
-        <string>(?!\?\.\s*[^[:digit:]])(\?)</string>
+        <string>(?!\?\.\s*[^[:digit:]])(\?)(?!\?)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
@@ -5289,7 +5273,7 @@
             <key>name</key>
             <string>keyword.operator.logical.tsx</string>
             <key>match</key>
-            <string>\!|&amp;&amp;|\|\|</string>
+            <string>\!|&amp;&amp;|\|\||\?\?</string>
           </dict>
           <dict>
             <key>name</key>
