@@ -1416,7 +1416,7 @@ repository:
 
   #ternary expression
   ternary-expression:
-    begin: (?!\?\.\s*[^[:digit:]])(\?)
+    begin: (?!\?\.\s*[^[:digit:]])(\?)(?!\?)
     beginCaptures:
       '1': { name: keyword.operator.ternary.ts }
     end: \s*(:)
@@ -1634,7 +1634,7 @@ repository:
     - name: keyword.operator.relational.ts
       match: <=|>=|<>|<|>
     - name: keyword.operator.logical.ts
-      match: \!|&&|\|\|
+      match: \!|&&|\|\||\?\?
     - name: keyword.operator.bitwise.ts
       match: \&|~|\^|\|
     - name: keyword.operator.assignment.ts
