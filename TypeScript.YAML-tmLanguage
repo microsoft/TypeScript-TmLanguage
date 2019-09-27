@@ -2442,8 +2442,22 @@ repository:
       match: '{{startOfIdentifier}}import(?=\s*\()'
 
   type-predicate-operator:
-    name: keyword.operator.expression.is.ts
-    match: '{{startOfIdentifier}}is{{endOfIdentifier}}'
+    patterns:
+    - match: '{{startOfIdentifier}}(?:(asserts)\s+)?(?!asserts)(?:(this)|({{identifier}}))\s(is){{endOfIdentifier}}'
+      captures:
+        '1': { name: keyword.operator.type.asserts.ts }
+        '2': { name: variable.parameter.ts variable.language.this.ts }
+        '3': { name: variable.parameter.ts }
+        '4': { name: keyword.operator.expression.is.ts }
+    - match: '{{startOfIdentifier}}(asserts)\s+(?!is)(?:(this)|({{identifier}})){{endOfIdentifier}}'
+      captures:
+        '1': { name: keyword.operator.type.asserts.ts }
+        '2': { name: variable.parameter.ts variable.language.this.ts }
+        '3': { name: variable.parameter.ts }
+    - name: keyword.operator.type.asserts.ts
+      match: '{{startOfIdentifier}}asserts{{endOfIdentifier}}'
+    - name: keyword.operator.expression.is.ts
+      match: '{{startOfIdentifier}}is{{endOfIdentifier}}'
 
   #name of the type and type name followed by type arguments
   type-name:
