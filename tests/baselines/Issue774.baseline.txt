@@ -1,0 +1,308 @@
+original file
+-----------------------------------
+import util from "util"
+import chalk from "chalk" // import
+
+const Levels = {
+    0: { label: "DEBUG", color: chalk.gray.bold },
+    1: { label: "INFO ", color: chalk.blueBright.bold },
+    2: { label: "WARN ", color: chalk.magenta.bold },
+    3: { label: "ERROR", color: chalk.red.bold },
+}
+type Level = keyof typeof Levels
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>import util from "util"
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^^^^
+        source.ts meta.import.ts variable.other.readwrite.alias.ts
+            ^
+            source.ts meta.import.ts
+             ^^^^
+             source.ts meta.import.ts keyword.control.from.ts
+                 ^
+                 source.ts meta.import.ts
+                  ^
+                  source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                   ^^^^
+                   source.ts meta.import.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+>import chalk from "chalk" // import
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^^^^^
+        source.ts meta.import.ts variable.other.readwrite.alias.ts
+             ^
+             source.ts meta.import.ts
+              ^^^^
+              source.ts meta.import.ts keyword.control.from.ts
+                  ^
+                  source.ts meta.import.ts
+                   ^
+                   source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                    ^^^^^
+                    source.ts meta.import.ts string.quoted.double.ts
+                         ^
+                         source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                          ^
+                          source.ts meta.import.ts
+                           ^^
+                           source.ts meta.import.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                             ^^^^^^^^
+                             source.ts meta.import.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts
+>const Levels = {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.var.expr.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+>    0: { label: "DEBUG", color: chalk.gray.bold },
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+          ^^^^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                  ^^^^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+                          ^^^^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                 ^^^^^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                       ^^^^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.property.ts
+                                           ^
+                                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                            ^^^^
+                                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.property.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+>    1: { label: "INFO ", color: chalk.blueBright.bold },
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+          ^^^^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                  ^^^^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+                          ^^^^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                 ^^^^^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                       ^^^^^^^^^^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.property.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                                  ^^^^
+                                                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.property.ts
+                                                      ^
+                                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                                       ^
+                                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                        ^
+                                                        source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+>    2: { label: "WARN ", color: chalk.magenta.bold },
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+          ^^^^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                  ^^^^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+                          ^^^^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                 ^^^^^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                       ^^^^^^^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.property.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                               ^^^^
+                                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.property.ts
+                                                   ^
+                                                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                     ^
+                                                     source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+>    3: { label: "ERROR", color: chalk.red.bold },
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+          ^^^^^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                  ^^^^^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.separator.comma.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts
+                          ^^^^^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                 ^^^^^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                       ^^^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.object.property.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts punctuation.accessor.ts
+                                           ^^^^
+                                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts variable.other.property.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts meta.object.member.ts
+                                                ^
+                                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+>type Level = keyof typeof Levels
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+           ^
+           source.ts meta.type.declaration.ts
+            ^
+            source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.type.declaration.ts
+              ^^^^^
+              source.ts meta.type.declaration.ts keyword.operator.expression.keyof.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^^^^^^
+                    source.ts meta.type.declaration.ts keyword.operator.expression.typeof.ts
+                          ^
+                          source.ts meta.type.declaration.ts
+                           ^^^^^^
+                           source.ts meta.type.declaration.ts entity.name.type.ts

@@ -1085,6 +1085,7 @@ repository:
         '5': { name: keyword.operator.assignment.ts }
       end: (?=;|$|^)
       patterns:
+        - include: '#single-line-comment-consuming-line-ending'
         - include: '#comment'
         - match: ({{identifier}})\s*{{propertyAccess}}
           captures:
@@ -1103,6 +1104,7 @@ repository:
       '3': { name: keyword.control.import.ts }
     end: (?<!{{lookBehindImport}})(?=;|$|^)
     patterns:
+    - include: '#single-line-comment-consuming-line-ending'
     - include: '#comment'
     - include: '#string'
     - begin: (?<={{lookBehindImport}})(?!\s*["'])
