@@ -1,0 +1,106 @@
+original file
+-----------------------------------
+interface SomeInterface {
+  onStart(callback: Function): void;
+  onError(callback: (obj: { videoPath: string }) => void): void;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>interface SomeInterface {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^^^^^^^^^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+                        ^
+                        source.ts meta.interface.ts
+                         ^
+                         source.ts meta.interface.ts punctuation.definition.block.ts
+>  onStart(callback: Function): void;
+ ^^
+ source.ts meta.interface.ts meta.method.declaration.ts
+   ^^^^^^^
+   source.ts meta.interface.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^^^^^^^^
+           source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts entity.name.function.ts
+                   ^
+                   source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                    ^
+                    source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                     ^^^^^^^^
+                     source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                             ^
+                             source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                              ^
+                              source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                               ^
+                               source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts
+                                ^^^^
+                                source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                                    ^
+                                    source.ts meta.interface.ts punctuation.terminator.statement.ts
+>  onError(callback: (obj: { videoPath: string }) => void): void;
+ ^^
+ source.ts meta.interface.ts meta.method.declaration.ts
+   ^^^^^^^
+   source.ts meta.interface.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^^^^^^^^
+           source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts entity.name.function.ts
+                   ^
+                   source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                    ^
+                    source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                     ^
+                     source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                      ^^^
+                      source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts variable.parameter.ts
+                         ^
+                         source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                          ^
+                          source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts
+                           ^
+                           source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                            ^
+                            source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+                             ^^^^^^^^^
+                             source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                                      ^
+                                      source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                       ^
+                                       source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                        ^^^^^^
+                                        source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                              ^
+                                              source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                               ^
+                                               source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+                                                ^
+                                                source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                 ^
+                                                 source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                                  ^^
+                                                  source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                    ^
+                                                    source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts
+                                                     ^^^^
+                                                     source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts meta.type.function.return.ts support.type.primitive.ts
+                                                         ^
+                                                         source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                          ^
+                                                          source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                                           ^
+                                                           source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts
+                                                            ^^^^
+                                                            source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                                                                ^
+                                                                source.ts meta.interface.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
