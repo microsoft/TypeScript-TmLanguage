@@ -1,0 +1,1 @@
+let a: { prop1, prop2 };
