@@ -66,7 +66,7 @@ variables:
   typeArgumentsStart: (((keyof|infer|typeof)\s+)|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}(({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?<!=)\>))*(?<!=)\>)*(?<!=)>'
-  functionCallLookup: \s*(\?\.\s*)?({{typeArguments}}\s*)?\(
+  functionCallLookup: \s*(?:(\?\.\s*)|(\!))?({{typeArguments}}\s*)?\(
   returnTypeOfArrow: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
   typeparamertStartOfArrow: ''
   arrowLookup: |-
@@ -1443,6 +1443,8 @@ repository:
     - include: '#comment'
     - name: meta.function-call.ts punctuation.accessor.optional.ts
       match: \?\.
+    - name: meta.function-call.ts keyword.operator.definiteassignment.ts
+      match: \!
     - include: '#type-arguments'
     - include: '#paren-expression'
 

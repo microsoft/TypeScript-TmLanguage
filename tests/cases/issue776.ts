@@ -1,0 +1,2 @@
+system.createHash()
+system.createHash!()
