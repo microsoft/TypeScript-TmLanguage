@@ -1,0 +1,30 @@
+original file
+-----------------------------------
+var a = '\u1234\u{1F600}'
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>var a = '\u1234\u{1F600}'
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+          ^^^^^^
+          source.ts meta.var.expr.ts string.quoted.single.ts constant.character.escape.ts
+                ^
+                source.ts meta.var.expr.ts string.quoted.single.ts
+                 ^^^^^^^^^
+                 source.ts meta.var.expr.ts string.quoted.single.ts constant.character.escape.ts
+                          ^
+                          source.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts

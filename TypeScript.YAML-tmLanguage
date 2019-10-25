@@ -507,7 +507,7 @@ repository:
     - include: '#binding-element-const'
     - include: '#punctuation-comma'
 
-  # When doing modication to parameter name, also modify expression-inside-possibly-arrow-parens where this is inlined so as to make 
+  # When doing modication to parameter name, also modify expression-inside-possibly-arrow-parens where this is inlined so as to make
   # as optional operator only if it is not followed by assignment or type annotation
   parameter-name:
     patterns:
@@ -2545,7 +2545,7 @@ repository:
 
   string-character-escape:
     name: constant.character.escape.ts
-    match: \\(x[0-9A-Fa-f]{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)
+    match: \\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|u\{[0-9A-Fa-f]+\}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.|$)
 
   template:
     patterns:
