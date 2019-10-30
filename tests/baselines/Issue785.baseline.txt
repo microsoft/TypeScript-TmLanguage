@@ -1,0 +1,250 @@
+original file
+-----------------------------------
+function getFoo() { return <T, P>(t: T) => {t}}
+
+const stuff = { foo: getFoo()<string, number>('ddd') }
+
+//const v = {
+//  title: ''
+//}
+
+console.log('highlight is broken unless object literal defined above')
+const a = ''
+function hello() {
+  return 10
+}
+
+interface Bar {
+  count: number
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function getFoo() { return <T, P>(t: T) => {t}}
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                  ^
+                  source.ts meta.function.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts
+                     ^^^^^^
+                     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+                           ^
+                           source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.type.parameters.ts entity.name.type.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.type.parameters.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.type.parameters.ts entity.name.type.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                  ^
+                                  source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
+                                      ^
+                                      source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                       ^
+                                       source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                        ^
+                                        source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                         ^^
+                                         source.ts meta.function.ts meta.block.ts meta.arrow.ts storage.type.function.arrow.ts
+                                           ^
+                                           source.ts meta.function.ts meta.block.ts meta.arrow.ts
+                                            ^
+                                            source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                             ^
+                                             source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
+                                              ^
+                                              source.ts meta.function.ts meta.block.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+                                               ^
+                                               source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>const stuff = { foo: getFoo()<string, number>('ddd') }
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts
+                 ^^^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                      ^^^^^^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.function-call.ts entity.name.function.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                               ^^^^^^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+                                       ^^^^^^
+                                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts support.type.primitive.ts
+                                             ^
+                                             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                              ^
+                                              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                               ^
+                                               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                                ^^^
+                                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts
+                                                   ^
+                                                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+                                                     ^
+                                                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                                                      ^
+                                                      source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>//const v = {
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>//  title: ''
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>//}
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^
+   source.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts
+>console.log('highlight is broken unless object literal defined above')
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              source.ts string.quoted.single.ts
+                                                                     ^
+                                                                     source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                                                      ^
+                                                                      source.ts meta.brace.round.ts
+>const a = ''
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+            ^
+            source.ts meta.var.expr.ts string.quoted.single.ts punctuation.definition.string.end.ts
+>function hello() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.function.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  return 10
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^^
+          source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>interface Bar {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+              ^
+              source.ts meta.interface.ts
+               ^
+               source.ts meta.interface.ts punctuation.definition.block.ts
+>  count: number
+ ^^
+ source.ts meta.interface.ts meta.field.declaration.ts
+   ^^^^^
+   source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+        ^
+        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^^^^^
+          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts

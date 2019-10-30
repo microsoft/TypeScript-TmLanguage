@@ -1434,8 +1434,8 @@ repository:
 
   #function call and new expression
   function-call:
-    begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}){{functionCallLookup}})
-    end: (?<=\))(?!(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}){{functionCallLookup}})
+    begin: (?=(((({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))|(?<=[\)])){{functionCallLookup}})
+    end: (?<=\))(?!(((({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))|(?<=[\)])){{functionCallLookup}})
     patterns:
     - name: meta.function-call.ts
       begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))
