@@ -67,7 +67,7 @@ variables:
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}(({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?<!=)\>))*(?<!=)\>)*(?<!=)>'
   functionCallLookup: \s*(?:(\?\.\s*)|(\!))?({{typeArguments}}\s*)?\(
-  returnTypeOfArrow: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
+  possiblyType: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
   typeparamertStartOfArrow: ''
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
@@ -84,11 +84,15 @@ variables:
     (
       {{typeParameters}}?                                                                                 # typeparameters
       \(\s*({{inlineComment}}\s*)*(([_$[:alpha:]]|{{matchingBraces}}|{{matchingBrackets}}|(\.\.\.\s*[_$[:alpha:]]))([^()]|{{matchingParenthesis}})*)?\)   # parameters
-      (\s*:{{returnTypeOfArrow}})?                                                                        # return type
+      (\s*:{{possiblyType}})?                                                                        # return type
       \s*=>                                                                                               # arrow operator
     )
   possiblyMultilineArrowExpressionBeforeEndOfLine: ((({{typeParameters}})?\()|(<))
-  possiblyMultilineArrow: ((<\s*$)|({{typeParameters}}?[\(]\s*([\{\[]\s*)?$))  # during lookup treat <typeparameters>?( followed by line end as arrow or < followed by new line
+  possiblyMultilineObjectBindingPattern: '{{matchingBraces}}\s*((:\s*\{?$)|(({{possiblyType}}\s*)?=\s*))'
+  possiblyMultilineArrayBindingPattern: '{{matchingBrackets}}\s*((:\s*\[?$)|(({{possiblyType}}\s*)?=\s*))'
+  possiblyMultilineArrowWParamters: '((([\{\[]\s*)?$)|({{possiblyMultilineObjectBindingPattern}})|({{possiblyMultilineArrayBindingPattern}}))'
+  possiblyMultilineArrowWithoutTypeParameters: '[\(]\s*{{possiblyMultilineArrowWParamters}}'
+  possiblyMultilineArrow: ((<\s*$)|({{typeParameters}}?{{possiblyMultilineArrowWithoutTypeParameters}}))  # during lookup treat <typeparameters>?( followed by line end as arrow or < followed by new line
   functionOrArrowLookup: |-
     \s*(
       ((async\s+)?(
@@ -1390,7 +1394,7 @@ repository:
         '0': { name: meta.object-literal.key.ts punctuation.separator.key-value.ts }
       end: (?=,|\})
       patterns:
-      - begin: '{{lookBehindOfObjectMemberPossiblyMultilineArrow}}\s*(async)?(?=\s*{{typeParameters}}\(\s*([\{\[]\s*)?$)'
+      - begin: '{{lookBehindOfObjectMemberPossiblyMultilineArrow}}\s*(async)?(?=\s*{{typeParameters}}\(\s*{{possiblyMultilineArrowWParamters}})'
         beginCaptures:
           '1': { name: storage.modifier.async.ts }
         end: (?<=\))
@@ -1404,7 +1408,7 @@ repository:
             '0': { name: meta.brace.round.ts }
           patterns:
           - include: '#expression-inside-possibly-arrow-parens'
-      - begin: '{{lookBehindOfObjectMemberPossiblyMultilineArrow}}\s*(async)?\s*(\()(?=\s*([\{\[]\s*)?$)'
+      - begin: '{{lookBehindOfObjectMemberPossiblyMultilineArrow}}\s*(async)?\s*(\()(?=\s*{{possiblyMultilineArrowWParamters}})'
         beginCaptures:
           '1': { name: storage.modifier.async.ts }
           '2': { name: meta.brace.round.ts }
@@ -1480,7 +1484,7 @@ repository:
   # but do this only from expression and as last resort
   paren-expression-possibly-arrow:
     patterns:
-    - begin: '{{lookBehindOfPossiblyMultilineArrowWithDestructuring}}\s*(async)?(?=\s*({{typeParameters}})?\(\s*[\{\[]\s*$)'
+    - begin: '{{lookBehindOfPossiblyMultilineArrowWithDestructuring}}\s*(async)?(?=\s*({{typeParameters}})?\(\s*{{possiblyMultilineArrowWParamters}})'
       beginCaptures:
         '1': { name: storage.modifier.async.ts }
       end: (?<=\))
@@ -2178,7 +2182,7 @@ repository:
 
   #This is the check if the exoression '): something =>'' can be matched as return type of arrow
   possibly-arrow-return-type:
-    begin: (?<=\)|^)\s*(:)(?={{returnTypeOfArrow}}\s*=>)
+    begin: (?<=\)|^)\s*(:)(?={{possiblyType}}\s*=>)
     beginCaptures:
       '1': { name: meta.arrow.ts meta.return.type.arrow.ts keyword.operator.type.annotation.ts }
     end: '{{arrowFunctionEnd}}'

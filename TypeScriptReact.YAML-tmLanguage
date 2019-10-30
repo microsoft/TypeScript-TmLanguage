@@ -15,7 +15,7 @@ variables:
       [<]\s*{{identifier}}\s+extends\s*[^=>]                                                              # < typeparam extends
     ) |
   #possiblyMultilineArrowExpressionBeforeEndOfLine: ({{typeParameters}})?\(
-  possiblyMultilineArrow: ((<\s*$)|([\(]\s*([\{\[]\s*)?$))  # during lookup treat ( followed by line end as arrow
+  possiblyMultilineArrow: ((<\s*$)|({{possiblyMultilineArrowWithoutTypeParameters}}))  # during lookup treat ( followed by line end as arrow
   jsxTagOrAtrributeIdentifier: '[_$[:alpha:]][-_$[:alnum:].]*'
   jsxTagNamespace: (?:({{jsxTagOrAtrributeIdentifier}})(?<!\.|-)(:))?
   jsxTagName: \s*{{jsxTagNamespace}}((?:[a-z][a-z0-9]*|({{jsxTagOrAtrributeIdentifier}}))(?<!\.|-))
