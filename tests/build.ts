@@ -118,7 +118,7 @@ export function generateScopes(text: string, parsedFileName: path.ParsedPath) {
             otherGrammar.grammar :
             Promise.resolve(undefined)
     ]).then(([mainIGrammar, otherIGrammar]) => generateScopesWorker(
-        initGrammar(mainGrammar.kind, mainIGrammar),
+        initGrammar(mainGrammar.kind, mainIGrammar!),
         otherIGrammar && initGrammar(otherGrammar!.kind, otherIGrammar),
         oriLines
     ));
