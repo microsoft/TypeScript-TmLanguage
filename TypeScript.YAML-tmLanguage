@@ -127,7 +127,8 @@ variables:
     {{functionLikeType}} |
     (:\s*(=>|{{matchingParenthesis}}|(<[^<>]*>)|[^<>(),=])+={{functionOrArrowLookup}})
   arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
-  completeRegexp: \/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/[gimsuy]*(?!\s*[a-zA-Z0-9_$]))
+  regexpTail: ([gimsuy]+|(?!\*))(?!\s*[a-zA-Z0-9_$])
+  completeRegexp: \/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/{{regexpTail}})
 
 patterns:
 - include: '#directives'
@@ -2600,7 +2601,7 @@ repository:
   regex:
     patterns:
     - name: string.regexp.ts
-      begin: (?<!\+\+|--|})(?<=[=(:,\[?+!]|{{lookBehindReturn}}|{{lookBehindCase}}|=>|&&|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[\()]|\\.|\[([^\]\\]|\\.)+\]|\(([^\)\\]|\\.)+\))+\/[gimsuy]*(?!\s*[a-zA-Z0-9_$]))
+      begin: (?<!\+\+|--|})(?<=[=(:,\[?+!]|{{lookBehindReturn}}|{{lookBehindCase}}|=>|&&|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[\()]|\\.|\[([^\]\\]|\\.)+\]|\(([^\)\\]|\\.)+\))+\/{{regexpTail}})
       beginCaptures:
         '1': { name: punctuation.definition.string.begin.ts }
       end: (/)([gimsuy]*)

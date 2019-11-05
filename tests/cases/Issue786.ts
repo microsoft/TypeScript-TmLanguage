@@ -1,0 +1,1 @@
+const a = "6" / 2; /*comment*/ const b = 5;
