@@ -3659,7 +3659,7 @@
             <key>name</key>
             <string>meta.export.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(export)\b(?!(\$)|(\s*:))((?=\s*[\{*])|((?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s|,))(?!\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b)))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(export)\b(?!(\$)|(\s*:))(?=(?:\s*type)??)((?=\s*(?:(?:type\s*)??\{|\*))|((?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s|,))(?!\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b)))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -3705,6 +3705,18 @@
           <dict>
             <key>include</key>
             <string>#import-export-clause</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?&lt;=^import|[^\._$[:alnum:]]import|^export|[^\._$[:alnum:]]export)\s+(type)(?!\s*from)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.type.ts</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>

@@ -51,6 +51,7 @@ variables:
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   lookBehindImport: '^import|{{nonPropertyLookBehind}}import'
+  lookBehindExport: '^export|{{nonPropertyLookBehind}}export'
   matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
@@ -1140,7 +1141,7 @@ repository:
       - include: '#interface-declaration'
       - include: '#expression'
     - name: meta.export.ts
-      begin: '{{startOfIdentifier}}(export)\b(?!(\$)|(\s*:))((?=\s*[\{*])|((?=\s*{{identifier}}(\s|,))(?!\s*{{constructsAndModifiers}})))'
+      begin: '{{startOfIdentifier}}(export)\b(?!(\$)|(\s*:))(?=(?:\s*type)??)((?=\s*(?:(?:type\s*)??\{|\*))|((?=\s*{{identifier}}(\s|,))(?!\s*{{constructsAndModifiers}})))'
       beginCaptures:
         '0': { name: keyword.control.export.ts }
       end: (?=$|{{endOfStatement}})
@@ -1155,6 +1156,9 @@ repository:
     - name: keyword.control.from.ts
       match: \bfrom\b
     - include: '#import-export-clause'
+    - match: '(?<={{lookBehindImport}}|{{lookBehindExport}})\s+(type)(?!\s*from)'
+      captures:
+        '1': { name: keyword.control.type.ts }
 
   import-export-block:
     name: meta.block.ts

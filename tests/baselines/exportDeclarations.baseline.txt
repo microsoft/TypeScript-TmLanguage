@@ -3,6 +3,9 @@ original file
 export { a as b, x };
 export * from "AnotherModule";
 export { k as m, l } from "AnotherModule";
+export type { T };
+export type { U } from "AnotherModule";
+
 -----------------------------------
 
 Grammar: TypeScript.tmLanguage
@@ -102,3 +105,60 @@ Grammar: TypeScript.tmLanguage
                                          source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
                                           ^
                                           source.ts punctuation.terminator.statement.ts
+>export type { T };
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^^^^
+        source.ts meta.export.ts keyword.control.type.ts
+            ^
+            source.ts meta.export.ts
+             ^
+             source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^
+               source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.export.ts meta.block.ts
+                 ^
+                 source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+>export type { U } from "AnotherModule";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^^^^
+        source.ts meta.export.ts keyword.control.type.ts
+            ^
+            source.ts meta.export.ts
+             ^
+             source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^
+               source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.export.ts meta.block.ts
+                 ^
+                 source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.export.ts
+                   ^^^^
+                   source.ts meta.export.ts keyword.control.from.ts
+                       ^
+                       source.ts meta.export.ts
+                        ^
+                        source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                         ^^^^^^^^^^^^^
+                         source.ts meta.export.ts string.quoted.double.ts
+                                      ^
+                                      source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
