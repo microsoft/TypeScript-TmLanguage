@@ -1530,7 +1530,7 @@ repository:
         '4': { name: entity.name.function.ts }
         '5': { name: keyword.operator.optional.ts }
     - match: |-
-        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?=\s*:)
+        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?=\s*[:,]|$)
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }

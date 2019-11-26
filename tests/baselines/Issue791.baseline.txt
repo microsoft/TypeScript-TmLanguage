@@ -1,0 +1,238 @@
+original file
+-----------------------------------
+const test = (foo, bar) => `${foo} ${bar}`
+
+const test2 = (
+  foo,
+  bar
+) => `${foo} ${bar}`
+
+function test3(foo, bar) {
+  return `${foo} ${bar}`
+}
+function test4(
+  foo,
+  bar
+) {
+  return `${foo} ${bar}`
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const test = (foo, bar) => `${foo} ${bar}`
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
+           ^
+           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+            ^
+            source.ts meta.var.expr.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.var.expr.ts meta.arrow.ts
+              ^
+              source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^^^
+               source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.separator.parameter.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts
+                    ^^^
+                    source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.arrow.ts
+                         ^^
+                         source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.arrow.ts
+                            ^
+                            source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+                             ^^
+                             source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                               ^^^
+                               source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                                  ^
+                                  source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                   ^
+                                   source.ts meta.var.expr.ts string.template.ts
+                                    ^^
+                                    source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                                      ^^^
+                                      source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                                         ^
+                                         source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                                          ^
+                                          source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+>
+ ^
+ source.ts
+>const test2 = (
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.assignment.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^
+               source.ts meta.var.expr.ts meta.brace.round.ts
+>  foo,
+ ^^
+ source.ts meta.var.expr.ts
+   ^^^
+   source.ts meta.var.expr.ts variable.parameter.ts
+      ^
+      source.ts meta.var.expr.ts punctuation.separator.parameter.ts
+>  bar
+ ^^
+ source.ts meta.var.expr.ts
+   ^^^
+   source.ts meta.var.expr.ts variable.parameter.ts
+>) => `${foo} ${bar}`
+ ^
+ source.ts meta.var.expr.ts meta.brace.round.ts
+  ^
+  source.ts meta.var.expr.ts
+   ^^
+   source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+     ^
+     source.ts meta.var.expr.ts meta.arrow.ts
+      ^
+      source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+       ^^
+       source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+         ^^^
+         source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+             ^
+             source.ts meta.var.expr.ts string.template.ts
+              ^^
+              source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                ^^^
+                source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.var.expr.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                    ^
+                    source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+>
+ ^
+ source.ts
+>function test3(foo, bar) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^^^
+                source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                    ^
+                    source.ts meta.function.ts meta.parameters.ts
+                     ^^^
+                     source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                        ^
+                        source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                         ^
+                         source.ts meta.function.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  return `${foo} ${bar}`
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.begin.ts
+           ^^
+           source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+             ^^^
+             source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts string.template.ts
+                  ^^
+                  source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                    ^^^
+                    source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>function test4(
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+>  foo,
+ ^^
+ source.ts meta.function.ts meta.parameters.ts
+   ^^^
+   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+      ^
+      source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+>  bar
+ ^^
+ source.ts meta.function.ts meta.parameters.ts
+   ^^^
+   source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+>) {
+ ^
+ source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+  ^
+  source.ts meta.function.ts
+   ^
+   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  return `${foo} ${bar}`
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^
+          source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.begin.ts
+           ^^
+           source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+             ^^^
+             source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts string.template.ts
+                  ^^
+                  source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                    ^^^
+                    source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts string.template.ts punctuation.definition.string.template.end.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
