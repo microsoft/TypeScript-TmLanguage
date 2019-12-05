@@ -51,7 +51,6 @@ variables:
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   lookBehindImport: '^import|{{nonPropertyLookBehind}}import'
-  lookBehindExport: '^export|{{nonPropertyLookBehind}}export'
   matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
@@ -1067,15 +1066,16 @@ repository:
   import-equals-declaration:
     patterns:
     - name: meta.import-equals.external.ts
-      begin: '{{startOfDeclaration}}\b(import)\s+({{identifier}})\s*(=)\s*(require)\s*(\()'
+      begin: '{{startOfDeclaration}}\b(import)(?:\s+(type))?\s+({{identifier}})\s*(=)\s*(require)\s*(\()'
       beginCaptures:
         '1': { name: keyword.control.export.ts }
         '2': { name: storage.modifier.ts }
         '3': { name: keyword.control.import.ts }
-        '4': { name: variable.other.readwrite.alias.ts }
-        '5': { name: keyword.operator.assignment.ts }
-        '6': { name: keyword.control.require.ts }
-        '7': { name: meta.brace.round.ts }
+        '4': { name: keyword.control.type.ts }
+        '5': { name: variable.other.readwrite.alias.ts }
+        '6': { name: keyword.operator.assignment.ts }
+        '7': { name: keyword.control.require.ts }
+        '8': { name: meta.brace.round.ts }
       end: \)
       endCaptures:
         '0': { name: meta.brace.round.ts }
@@ -1083,13 +1083,14 @@ repository:
         - include: '#comment'
         - include: '#string'
     - name: meta.import-equals.internal.ts
-      begin: '{{startOfDeclaration}}\b(import)\s+({{identifier}})\s*(=)\s*(?!require\b)'
+      begin: '{{startOfDeclaration}}\b(import)(?:\s+(type))?\s+({{identifier}})\s*(=)\s*(?!require\b)'
       beginCaptures:
         '1': { name: keyword.control.export.ts }
         '2': { name: storage.modifier.ts }
         '3': { name: keyword.control.import.ts }
-        '4': { name: variable.other.readwrite.alias.ts }
-        '5': { name: keyword.operator.assignment.ts }
+        '4': { name: keyword.control.type.ts }
+        '5': { name: variable.other.readwrite.alias.ts }
+        '6': { name: keyword.operator.assignment.ts }
       end: (?=;|$|^)
       patterns:
         - include: '#single-line-comment-consuming-line-ending'
@@ -1104,11 +1105,12 @@ repository:
 
   import-declaration:
     name: meta.import.ts
-    begin: '{{startOfDeclaration}}\b(import)(?!\s*[:\(]){{endOfIdentifier}}'
+    begin: '{{startOfDeclaration}}\b(import)(?:\s+(type)(?!\s+from))?(?!\s*[:\(]){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.control.export.ts }
       '2': { name: storage.modifier.ts }
       '3': { name: keyword.control.import.ts }
+      '4': { name: keyword.control.type.ts }
     end: (?<!{{lookBehindImport}})(?=;|$|^)
     patterns:
     - include: '#single-line-comment-consuming-line-ending'
@@ -1131,19 +1133,21 @@ repository:
         '3': { name: storage.type.namespace.ts }
         '4': { name: entity.name.type.module.ts }
     - name: meta.export.default.ts
-      begin: '{{startOfIdentifier}}(export)(?:(?:\s*(=))|(?:\s+(default)(?=\s+)))'
+      begin: '{{startOfIdentifier}}(export)(?:\s+(type))?(?:(?:\s*(=))|(?:\s+(default)(?=\s+)))'
       beginCaptures:
         '1': { name: keyword.control.export.ts }
-        '2': { name: keyword.operator.assignment.ts }
-        '3': { name: keyword.control.default.ts }
+        '2': { name: keyword.control.type.ts }
+        '3': { name: keyword.operator.assignment.ts }
+        '4': { name: keyword.control.default.ts }
       end: (?=$|{{endOfStatement}})
       patterns:
       - include: '#interface-declaration'
       - include: '#expression'
     - name: meta.export.ts
-      begin: '{{startOfIdentifier}}(export)\b(?!(\$)|(\s*:))((?=\s*(?:(?:type\s*)??\{|\*))|((?=\s*{{identifier}}(\s|,))(?!\s*{{constructsAndModifiers}})))'
+      begin: '{{startOfIdentifier}}(export)(?:\s+(type))?\b(?!(\$)|(\s*:))((?=\s*[\{*])|((?=\s*{{identifier}}(\s|,))(?!\s*{{constructsAndModifiers}})))'
       beginCaptures:
-        '0': { name: keyword.control.export.ts }
+        '1': { name: keyword.control.export.ts }
+        '2': { name: keyword.control.type.ts }
       end: (?=$|{{endOfStatement}})
       patterns:
       - include: '#import-export-declaration'
@@ -1156,9 +1160,6 @@ repository:
     - name: keyword.control.from.ts
       match: \bfrom\b
     - include: '#import-export-clause'
-    - match: '(?<={{lookBehindImport}}|{{lookBehindExport}})\s+(type)(?!\s*from)'
-      captures:
-        '1': { name: keyword.control.type.ts }
 
   import-export-block:
     name: meta.block.ts
