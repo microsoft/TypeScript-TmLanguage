@@ -1643,6 +1643,10 @@ repository:
       match: ===|!==|==|!=
     - name: keyword.operator.relational.ts
       match: <=|>=|<>|<|>
+    - match: (\!)\s*(/)(?![/*])
+      captures:
+        '1': { name: keyword.operator.logical.ts }
+        '2': { name: keyword.operator.arithmetic.ts }
     - name: keyword.operator.logical.ts
       match: \!|&&|\|\||\?\?
     - name: keyword.operator.bitwise.ts
