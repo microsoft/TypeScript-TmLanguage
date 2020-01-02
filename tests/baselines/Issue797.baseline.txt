@@ -1,0 +1,40 @@
+original file
+-----------------------------------
+class Foo {
+    declare baz: any;
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Foo {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts punctuation.definition.block.ts
+>    declare baz: any;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts meta.field.declaration.ts
+             ^^^
+             source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                     ^
+                     source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
