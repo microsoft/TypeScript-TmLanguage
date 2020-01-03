@@ -4608,6 +4608,56 @@
                 </array>
               </dict>
               <dict>
+                <key>begin</key>
+                <string>(?&lt;=:)\s*(async)?\s*(?=\&lt;\s*$)</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>storage.modifier.async.tsx</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?&lt;=\&gt;)</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#type-parameters</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>begin</key>
+                <string>(?&lt;=\&gt;)\s*(\()(?=\s*((([\{\[]\s*)?$)|((\{([^\{\}]|(\{[^\{\}]*\}))*\})\s*((:\s*\{?$)|((\s*([^&lt;&gt;\(\)\{\}]|\&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+\&gt;|\([^\(\)]+\)|\{[^\{\}]+\})+\s*)?=\s*)))|((\[([^\[\]]|(\[[^\[\]]*\]))*\])\s*((:\s*\[?$)|((\s*([^&lt;&gt;\(\)\{\}]|\&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+\&gt;|\([^\(\)]+\)|\{[^\{\}]+\})+\s*)?=\s*)))))</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.brace.round.tsx</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>\)</string>
+                <key>endCaptures</key>
+                <dict>
+                  <key>0</key>
+                  <dict>
+                    <key>name</key>
+                    <string>meta.brace.round.tsx</string>
+                  </dict>
+                </dict>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#expression-inside-possibly-arrow-parens</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
                 <key>include</key>
                 <string>#possibly-arrow-return-type</string>
               </dict>

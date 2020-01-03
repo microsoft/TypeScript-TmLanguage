@@ -1,0 +1,174 @@
+original file
+-----------------------------------
+const h = {
+  setSubProperty: <
+      T extends A,
+      K extends keyof T,
+      J extends keyof T[K]
+    >(
+      property: K,
+      key: J,
+      value: T[K][J]
+    ) =>  {}
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const h = {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+>  setSubProperty: <
+ ^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+   ^^^^^^^^^^^^^^
+   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts entity.name.function.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+>      T extends A,
+ ^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts entity.name.type.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts storage.modifier.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts entity.name.type.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts punctuation.separator.comma.ts
+>      K extends keyof T,
+ ^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts entity.name.type.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts storage.modifier.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+                 ^^^^^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts keyword.operator.expression.keyof.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts entity.name.type.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts punctuation.separator.comma.ts
+>      J extends keyof T[K]
+ ^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+       ^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts entity.name.type.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts storage.modifier.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+                 ^^^^^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts keyword.operator.expression.keyof.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts entity.name.type.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts meta.type.tuple.ts entity.name.type.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+>    >(
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+>      property: K,
+ ^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+       ^^^^^^^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts variable.parameter.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts entity.name.type.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts punctuation.separator.parameter.ts
+>      key: J,
+ ^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts variable.parameter.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts entity.name.type.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts punctuation.separator.parameter.ts
+>      value: T[K][J]
+ ^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+       ^^^^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts variable.parameter.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts entity.name.type.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                ^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.type.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+>    ) =>  {}
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.brace.round.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+       ^^
+       source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts storage.type.function.arrow.ts
+         ^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
