@@ -12,6 +12,8 @@ variables:
   propertyAccessPreIdentifier: \??\.\s*
   identifier: '[_$[:alpha:]][_$[:alnum:]]*'
   constantIdentifier: '[[:upper:]][_$[:digit:][:upper:]]*'
+  propertyIdentifier: '\#?{{identifier}}'
+  constantPropertyIdentifier: '\#?{{constantIdentifier}}'
   quotedStrings: (\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`)
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   label: ({{identifier}})\s*(:)
@@ -32,6 +34,7 @@ variables:
   anyNumber: ({{hexNumber}})|({{binaryNumber}})|({{octalNumber}})|({{decimalNumber}})
   # any use of property name needs to ignore line breaks in regular expression because of decimal number regex (maintained for readability)
   propertyName: ({{anyNumber}}|({{identifier}})|{{nonIdentifierPropertyName}})
+  propertyNameWithPrivate: ({{anyNumber}}|({{propertyIdentifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
   constructsAndModifiers: '(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b'
   endOfStatement: ';|(?:^\s*{{constructsAndModifiers}})'
@@ -615,10 +618,10 @@ repository:
 
   field-declaration:
     name: meta.field.declaration.ts
-    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyName}}\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|\}|$))
+    begin: (?x)(?<!\()(?:{{startOfIdentifier}}(readonly)\s+)?(?=\s*{{propertyNameWithPrivate}}\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|\}|$))
     beginCaptures:
       '1': { name: storage.modifier.ts }
-    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyName}}\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|$))))|(?<=\})
+    end: (?x)(?=\}|;|,|$|(^(?!\s*{{propertyNameWithPrivate}}\s*(?:(?:(\?)|(\!))\s*)?(=|:|;|,|$))))|(?<=\})
     patterns:
     - include: '#variable-initializer'
     - include: '#type-annotation'
@@ -629,13 +632,13 @@ repository:
     # function assignment |
     # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
     - match: |-
-        (?x)({{identifier}})(?:(\?)|(\!))?(?=\s*{{functionLikeAssignmentOrType}})
+        (?x)({{propertyIdentifier}})(?:(\?)|(\!))?(?=\s*{{functionLikeAssignmentOrType}})
       captures:
         '1': { name: meta.definition.property.ts entity.name.function.ts }
         '2': { name: keyword.operator.optional.ts }
         '3': { name: keyword.operator.definiteassignment.ts }
     - name: meta.definition.property.ts variable.object.property.ts
-      match: '{{identifier}}'
+      match: '{{propertyIdentifier}}'
     - name: keyword.operator.optional.ts
       match: \?
     - name: keyword.operator.definiteassignment.ts
@@ -1454,16 +1457,16 @@ repository:
 
   #function call and new expression
   function-call:
-    begin: (?=(((({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))|(?<=[\)])){{functionCallLookup}})
-    end: (?<=\))(?!(((({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))|(?<=[\)])){{functionCallLookup}})
+    begin: (?=(((({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}}))|(?<=[\)])){{functionCallLookup}})
+    end: (?<=\))(?!(((({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}}))|(?<=[\)])){{functionCallLookup}})
     patterns:
     - name: meta.function-call.ts
-      begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))
+      begin: (?=(({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}}))
       end: (?={{functionCallLookup}})
       patterns:
       - include: '#support-function-call-identifiers'
       - name: entity.name.function.ts
-        match: ({{identifier}})
+        match: ({{propertyIdentifier}})
     - include: '#comment'
     - name: meta.function-call.ts punctuation.accessor.optional.ts
       match: \?\.
@@ -2089,13 +2092,13 @@ repository:
         '2': { name: punctuation.accessor.optional.ts }
         '3': { name: entity.name.function.ts }
     # const properties
-    - match: '{{propertyAccess}}\s*{{constantVar}}'
+    - match: '{{propertyAccess}}\s*({{constantPropertyIdentifier}})(?![_$[:alnum:]])'
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: punctuation.accessor.optional.ts }
         '3': { name: variable.other.constant.property.ts }
     # properties
-    - match: '{{propertyAccess}}\s*({{identifier}})'
+    - match: '{{propertyAccess}}\s*({{propertyIdentifier}})'
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: punctuation.accessor.optional.ts }
@@ -2115,9 +2118,9 @@ repository:
     # object properties
     - match: |-
         (?x){{propertyAccess}}\s*(?:
-          ({{constantIdentifier}}) |
-          ({{identifier}})
-        )(?=\s*{{propertyAccessPreIdentifier}}{{identifier}})
+          ({{constantPropertyIdentifier}}) |
+          ({{propertyIdentifier}})
+        )(?=\s*{{propertyAccessPreIdentifier}}{{propertyIdentifier}})
       captures:
         '1': { name: punctuation.accessor.ts }
         '2': { name: punctuation.accessor.optional.ts }
@@ -2128,7 +2131,7 @@ repository:
         (?x)(?:
           ({{constantIdentifier}}) |
           ({{identifier}})
-        )(?=\s*{{propertyAccessPreIdentifier}}{{identifier}})
+        )(?=\s*{{propertyAccessPreIdentifier}}{{propertyIdentifier}})
       captures:
         '1': { name: variable.other.constant.object.ts }
         '2': { name: variable.other.object.ts }
