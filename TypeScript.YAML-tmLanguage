@@ -1383,7 +1383,7 @@ repository:
       match: '{{startOfIdentifier}}(as)\s+(const)(?=\s*([,}]|$))'
       captures:
         '1': { name: keyword.control.as.ts }
-        '2': { name: storage.modifier.ts }
+        '2': { name: storage.modifier.const.type.ts }
     - name: meta.object.member.ts
       begin: '{{startOfIdentifier}}(as)\s+'
       beginCaptures:
@@ -1583,7 +1583,7 @@ repository:
       match: \s*(<)\s*(const)\s*(>)
       captures:
         '1':  { name: meta.brace.angle.ts }
-        '2':  { name: storage.modifier.ts }
+        '2':  { name: storage.modifier.const.type.ts }
         '3':  { name: meta.brace.angle.ts }
     - name: cast.expr.ts
       # We need to differentiate between the relational '<' operator and the beginning of a type assertion/cast using the surrounding context.
@@ -1646,11 +1646,12 @@ repository:
     - match: '{{startOfIdentifier}}(as)\s+(const)(?=\s*($|[;,:})\]]))'
       captures:
         '1': { name: keyword.control.as.ts }
-        '2': { name: storage.modifier.ts }
+        '2': { name: storage.modifier.const.type.ts }
     - begin: '{{startOfIdentifier}}(as)\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }
       end: (?=$|^|[;,:})\]]|\|\||\&\&|({{startOfIdentifier}}(as)\s+)|(\s+\<))
+      contentName: meta.type.cast.ts
       patterns:
       - include: '#type'
     - name: keyword.operator.spread.ts
