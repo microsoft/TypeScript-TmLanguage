@@ -1465,6 +1465,8 @@ repository:
       end: (?={{functionCallLookup}})
       patterns:
       - include: '#support-function-call-identifiers'
+      - name: entity.name.function.property.ts
+        match: (?=\.)({{propertyIdentifier}})
       - name: entity.name.function.ts
         match: ({{propertyIdentifier}})
     - include: '#comment'
