@@ -1,0 +1,150 @@
+original file
+-----------------------------------
+const { loading, error, data } = useQuery<{
+  tasks: Array<Pick<Task, 'id' | 'title'>>
+}>(taskListQuery)
+
+if (loading) return true
+if (error)
+  return false
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const { loading, error, data } = useQuery<{
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+        ^
+        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.constant.ts
+                ^
+                source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                  ^^^^^
+                  source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.constant.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.separator.comma.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                         ^^^^
+                         source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts meta.definition.variable.ts variable.other.constant.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts punctuation.definition.binding-pattern.object.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.object-binding-pattern-variable.ts
+                                ^
+                                source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                                 ^
+                                 source.ts meta.var.expr.ts
+                                  ^^^^^^^^
+                                  source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                           ^
+                                           source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts punctuation.definition.block.ts
+>  tasks: Array<Pick<Task, 'id' | 'title'>>
+ ^^
+ source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts
+   ^^^^^
+   source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+        ^
+        source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^^^^
+          source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+               ^
+               source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                ^^^^
+                source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts entity.name.type.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                     ^^^^
+                     source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts entity.name.type.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                            ^^
+                            source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts keyword.operator.type.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                   ^^^^^
+                                   source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts
+                                        ^
+                                        source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                          ^
+                                          source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+>}>(taskListQuery)
+ ^
+ source.ts meta.var.expr.ts meta.type.parameters.ts meta.object.type.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+   ^
+   source.ts meta.var.expr.ts meta.brace.round.ts
+    ^^^^^^^^^^^^^
+    source.ts meta.var.expr.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>if (loading) return true
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^^^^^^^
+     source.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts
+              ^^^^^^
+              source.ts keyword.control.flow.ts
+                    ^
+                    source.ts
+                     ^^^^
+                     source.ts constant.language.boolean.true.ts
+>if (error)
+ ^^
+ source.ts keyword.control.conditional.ts
+   ^
+   source.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^^^^^
+     source.ts variable.other.readwrite.ts
+          ^
+          source.ts meta.brace.round.ts
+>  return false
+ ^^
+ source.ts
+   ^^^^^^
+   source.ts keyword.control.flow.ts
+         ^
+         source.ts
+          ^^^^^
+          source.ts constant.language.boolean.false.ts

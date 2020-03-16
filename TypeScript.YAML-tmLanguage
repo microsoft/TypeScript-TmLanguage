@@ -66,10 +66,11 @@ variables:
   typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*\>)*>\s*)
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
-  typeArgumentsStart: (((keyof|infer|typeof|readonly)\s+)|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|(\'[^\']*\')|(\"[^\"]*\")|(\`[^\`]*\`))(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
+  typeArgumentsStart: (((keyof|infer|typeof|readonly)\s+)|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|{{quotedStrings}})(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}(({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?<!=)\>))*(?<!=)\>)*(?<!=)>'
-  functionCallLookup: \s*(?:(\?\.\s*)|(\!))?({{typeArguments}}\s*)?\(
+  possiblyMultilineTypeArgumnet: (<\s*[\{\[\(]\s*$)
+  functionCallLookup: \s*(?:(\?\.\s*)|(\!))?((({{typeArguments}}\s*)?\()|{{possiblyMultilineTypeArgumnet}})
   possiblyType: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
   typeparamertStartOfArrow: ''
   arrowLookup: |-
