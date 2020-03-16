@@ -1,0 +1,120 @@
+original file
+-----------------------------------
+class Foo {
+    public foo(): boolean {
+        return !/[():\w]/.test('foo');
+    }
+
+    private bar(): void {}
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Foo {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts punctuation.definition.block.ts
+>    public foo(): boolean {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                   ^^^^^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        return !/[():\w]/.test('foo');
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.logical.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.regexp.ts punctuation.definition.string.begin.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.regexp.ts constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                   ^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.regexp.ts constant.other.character-class.set.regexp
+                      ^^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.regexp.ts constant.other.character-class.set.regexp constant.other.character-class.regexp
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.regexp.ts constant.other.character-class.set.regexp punctuation.definition.character-class.regexp
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.regexp.ts punctuation.definition.string.end.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                           ^^^^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts support.function.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                 ^^^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts meta.class.ts
+>    private bar(): void {}
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts
+             ^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                    ^^^^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
