@@ -1,0 +1,68 @@
+original file
+-----------------------------------
+;(false ? '' : ') =>') + ''
+console.log("hello");
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>;(false ? '' : ') =>') + ''
+ ^
+ source.ts punctuation.terminator.statement.ts
+  ^
+  source.ts meta.brace.round.ts
+   ^^^^^
+   source.ts constant.language.boolean.false.ts
+        ^
+        source.ts
+         ^
+         source.ts keyword.operator.ternary.ts
+          ^
+          source.ts
+           ^
+           source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+            ^
+            source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+             ^
+             source.ts
+              ^
+              source.ts keyword.operator.ternary.ts
+               ^
+               source.ts
+                ^
+                source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^^^
+                 source.ts string.quoted.single.ts
+                     ^
+                     source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                      ^
+                      source.ts meta.brace.round.ts
+                       ^
+                       source.ts
+                        ^
+                        source.ts keyword.operator.arithmetic.ts
+                         ^
+                         source.ts
+                          ^
+                          source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                           ^
+                           source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+>console.log("hello");
+ ^^^^^^^
+ source.ts meta.function-call.ts support.class.console.ts
+        ^
+        source.ts meta.function-call.ts punctuation.accessor.ts
+         ^^^
+         source.ts meta.function-call.ts support.function.console.ts
+            ^
+            source.ts meta.brace.round.ts
+             ^
+             source.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+              ^^^^^
+              source.ts string.quoted.double.ts
+                   ^
+                   source.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                    ^
+                    source.ts meta.brace.round.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts

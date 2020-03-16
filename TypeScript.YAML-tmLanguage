@@ -86,7 +86,7 @@ variables:
     # arrow function possible to detect only with => on same line
     (
       {{typeParameters}}?                                                                                 # typeparameters
-      \(\s*({{inlineComment}}\s*)*(([_$[:alpha:]]|{{matchingBraces}}|{{matchingBrackets}}|(\.\.\.\s*[_$[:alpha:]]))([^()]|{{matchingParenthesis}})*)?\)   # parameters
+      \(\s*({{inlineComment}}\s*)*(([_$[:alpha:]]|{{matchingBraces}}|{{matchingBrackets}}|(\.\.\.\s*[_$[:alpha:]]))([^()\'\"\`]|{{matchingParenthesis}}|{{quotedStrings}})*)?\)   # parameters
       (\s*:{{possiblyType}})?                                                                        # return type
       \s*=>                                                                                               # arrow operator
     )
