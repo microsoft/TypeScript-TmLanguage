@@ -1,0 +1,132 @@
+original file
+-----------------------------------
+let v1: awaited number;
+let v2: awaited Promise<number>;
+function f7<U>() {
+    let v0: awaited U;
+    let v1: awaited Promise<U>;
+
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let v1: awaited number;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.expression.awaited.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+>let v2: awaited Promise<number>;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+         ^^^^^^^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.expression.awaited.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                 ^^^^^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                         ^^^^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts support.type.primitive.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+>function f7<U>() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+            ^
+            source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+             ^
+             source.ts meta.function.ts meta.type.parameters.ts entity.name.type.ts
+              ^
+              source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.function.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    let v0: awaited U;
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^
+     source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+         ^^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+             ^^^^^^^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.expression.awaited.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>    let v1: awaited Promise<U>;
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^
+     source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+         ^^
+         source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+            ^
+            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+             ^^^^^^^
+             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.expression.awaited.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                     ^^^^^^^
+                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                            ^
+                            source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts entity.name.type.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                               ^
+                               source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts meta.function.ts meta.block.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
