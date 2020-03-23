@@ -69,8 +69,11 @@ variables:
   typeArgumentsStart: (((keyof|infer|awaited|typeof|readonly)\s+)|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|{{quotedStrings}})(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}(({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?<!=)\>))*(?<!=)\>)*(?<!=)>'
-  possiblyMultilineTypeArgumnet: (<\s*[\{\[\(]\s*$)
-  functionCallLookup: \s*(?:(\?\.\s*)|(\!))?((({{typeArguments}}\s*)?\()|{{possiblyMultilineTypeArgumnet}})
+  possiblyMultilineTypeArgument: (<\s*[\{\[\(]\s*$)
+  functionCallLookup: \s*(?:(\?\.\s*)|(\!))?(({{typeArguments}}\s*)?\()
+  functionCallNamedTarget: (({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}})
+  functionCallTarget: (({{functionCallNamedTarget}})|(?<=[\)]))
+  possiblyMultilineCallWithTypeArguments: \s*(?:(\?\.\s*)|(\!))?{{possiblyMultilineTypeArgument}}
   possiblyType: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
   typeparamertStartOfArrow: ''
   arrowLookup: |-
@@ -1458,23 +1461,43 @@ repository:
 
   #function call and new expression
   function-call:
-    begin: (?=(((({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}}))|(?<=[\)])){{functionCallLookup}})
-    end: (?<=\))(?!(((({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}}))|(?<=[\)])){{functionCallLookup}})
     patterns:
-    - name: meta.function-call.ts
-      begin: (?=(({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}}))
-      end: (?={{functionCallLookup}})
+    - begin: (?={{functionCallTarget}}{{functionCallLookup}})
+      end: (?<=\))(?!{{functionCallTarget}}{{functionCallLookup}})
       patterns:
-      - include: '#support-function-call-identifiers'
-      - name: entity.name.function.ts
-        match: ({{propertyIdentifier}})
-    - include: '#comment'
+      - name: meta.function-call.ts
+        begin: (?={{functionCallNamedTarget}})
+        end: (?={{functionCallLookup}})
+        patterns:
+        - include: '#function-call-target'
+      - include: '#comment'
+      - include: '#function-call-optionals'
+      - include: '#type-arguments'
+      - include: '#paren-expression'
+    - begin: (?={{functionCallTarget}}{{possiblyMultilineTypeArgument}})
+      end: (?<=\>)(?!{{functionCallTarget}}{{possiblyMultilineTypeArgument}})
+      patterns:
+      - name: meta.function-call.ts
+        begin: (?={{functionCallNamedTarget}})
+        end: (?={{possiblyMultilineTypeArgument}})
+        patterns:
+        - include: '#function-call-target'
+      - include: '#comment'
+      - include: '#function-call-optionals'
+      - include: '#type-arguments'
+
+  function-call-target:
+    patterns:
+    - include: '#support-function-call-identifiers'
+    - name: entity.name.function.ts
+      match: ({{propertyIdentifier}})
+
+  function-call-optionals:
+    patterns:
     - name: meta.function-call.ts punctuation.accessor.optional.ts
       match: \?\.
     - name: meta.function-call.ts keyword.operator.definiteassignment.ts
       match: \!
-    - include: '#type-arguments'
-    - include: '#paren-expression'
 
   support-function-call-identifiers:
     patterns:

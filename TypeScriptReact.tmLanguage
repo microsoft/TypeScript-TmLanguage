@@ -4730,37 +4730,106 @@
       </dict>
       <key>function-call</key>
       <dict>
-        <key>begin</key>
-        <string>(?=(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))\s*(?:(\?\.\s*)|(\!))?(((&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?\()|(&lt;\s*[\{\[\(]\s*$)))</string>
-        <key>end</key>
-        <string>(?&lt;=\))(?!(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))\s*(?:(\?\.\s*)|(\!))?(((&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?\()|(&lt;\s*[\{\[\(]\s*$)))</string>
         <key>patterns</key>
         <array>
           <dict>
-            <key>name</key>
-            <string>meta.function-call.tsx</string>
             <key>begin</key>
-            <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))</string>
+            <string>(?=(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))\s*(?:(\?\.\s*)|(\!))?((&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?\())</string>
             <key>end</key>
-            <string>(?=\s*(?:(\?\.\s*)|(\!))?(((&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?\()|(&lt;\s*[\{\[\(]\s*$)))</string>
+            <string>(?&lt;=\))(?!(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))\s*(?:(\?\.\s*)|(\!))?((&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?\())</string>
             <key>patterns</key>
             <array>
               <dict>
-                <key>include</key>
-                <string>#support-function-call-identifiers</string>
+                <key>name</key>
+                <string>meta.function-call.tsx</string>
+                <key>begin</key>
+                <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))</string>
+                <key>end</key>
+                <string>(?=\s*(?:(\?\.\s*)|(\!))?((&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))(([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;|\&lt;\s*(((keyof|infer|awaited|typeof|readonly)\s+)|(([_$[:alpha:]][_$[:alnum:]]*|(\{([^\{\}]|(\{[^\{\}]*\}))*\})|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(\[([^\[\]]|(\[[^\[\]]*\]))*\])|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))(?=\s*([\&lt;\&gt;\,\.\[]|=&gt;|&amp;(?!&amp;)|\|(?!\|)))))([^&lt;&gt;\(]|(\(([^\(\)]|(\([^\(\)]*\)))*\))|(?&lt;==)\&gt;)*(?&lt;!=)\&gt;))*(?&lt;!=)\&gt;)*(?&lt;!=)&gt;\s*)?\())</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#function-call-target</string>
+                  </dict>
+                </array>
               </dict>
               <dict>
-                <key>name</key>
-                <string>entity.name.function.tsx</string>
-                <key>match</key>
-                <string>(\#?[_$[:alpha:]][_$[:alnum:]]*)</string>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#function-call-optionals</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#type-arguments</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#paren-expression</string>
               </dict>
             </array>
           </dict>
           <dict>
-            <key>include</key>
-            <string>#comment</string>
+            <key>begin</key>
+            <string>(?=(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))(&lt;\s*[\{\[\(]\s*$))</string>
+            <key>end</key>
+            <string>(?&lt;=\&gt;)(?!(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))(&lt;\s*[\{\[\(]\s*$))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>name</key>
+                <string>meta.function-call.tsx</string>
+                <key>begin</key>
+                <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))</string>
+                <key>end</key>
+                <string>(?=(&lt;\s*[\{\[\(]\s*$))</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#function-call-target</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#function-call-optionals</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#type-arguments</string>
+              </dict>
+            </array>
           </dict>
+        </array>
+      </dict>
+      <key>function-call-target</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#support-function-call-identifiers</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function.tsx</string>
+            <key>match</key>
+            <string>(\#?[_$[:alpha:]][_$[:alnum:]]*)</string>
+          </dict>
+        </array>
+      </dict>
+      <key>function-call-optionals</key>
+      <dict>
+        <key>patterns</key>
+        <array>
           <dict>
             <key>name</key>
             <string>meta.function-call.tsx punctuation.accessor.optional.tsx</string>
@@ -4772,14 +4841,6 @@
             <string>meta.function-call.tsx keyword.operator.definiteassignment.tsx</string>
             <key>match</key>
             <string>\!</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#type-arguments</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#paren-expression</string>
           </dict>
         </array>
       </dict>
