@@ -124,6 +124,16 @@ export function generateScopes(text: string, parsedFileName: path.ParsedPath) {
     ));
 }
 
+function validateTokenScopeExtension(grammar: Grammar, token: vt.IToken) {
+    return !token.scopes.some(scope => !isValidScopeExtension(grammar, scope));
+}
+
+function isValidScopeExtension(grammar: Grammar, scope: string) {
+    return scope.endsWith(grammar.kind === GrammarKind.ts ? ".ts" : ".tsx") ||
+        scope.endsWith(".jsdoc") ||
+        scope.endsWith(".regexp");
+}
+
 function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | undefined, oriLines: string[]): string {
     let cleanLines: string[] = [];
     let baselineLines: string[] = [];
@@ -140,15 +150,16 @@ function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | unde
         otherBaselines.push(">" + line);
 
         for (let token of mainLineTokens) {
-            writeTokenLine(token, "", "", baselineLines);
+            writeTokenLine(mainGrammar, token, baselineLines);
         }
 
         if (otherGrammar) {
             const otherLineTokens = tokenizeLine(otherGrammar, line);
-            if (hasDiff(mainLineTokens, otherLineTokens, hasDiffLineToken)) {
+            if (otherLineTokens.some(token => !validateTokenScopeExtension(otherGrammar, token)) ||
+                hasDiff(mainLineTokens, otherLineTokens, hasDiffLineToken)) {
                 foundDiff = true;
                 for (let token of otherLineTokens) {
-                    writeTokenLine(token, "", "", otherBaselines);
+                    writeTokenLine(otherGrammar, token, otherBaselines);
                 }
             }
         }
@@ -158,7 +169,7 @@ function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | unde
     return getInputFile(cleanLines) + getBaseline(mainGrammar, baselineLines) + otherDiffBaseline;
 }
 
-function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForToken: string, outputLines: string[]) {
+function writeTokenLine(grammar: Grammar, token: vt.IToken, outputLines: string[]) {
     let startingSpaces = " ";
     for (let j = 0; j < token.startIndex; j++) {
         startingSpaces += " ";
@@ -169,5 +180,5 @@ function writeTokenLine(token: vt.IToken, preTextForToken: string, postTextForTo
         locatingString += "^";
     }
     outputLines.push(startingSpaces + locatingString);
-    outputLines.push(startingSpaces + preTextForToken + token.scopes.join(' ') + postTextForToken);
+    outputLines.push(`${startingSpaces}${token.scopes.join(' ')}${validateTokenScopeExtension(grammar, token) ? "" : " INCORRECT_SCOPE_EXTENSION"}`);
 }
