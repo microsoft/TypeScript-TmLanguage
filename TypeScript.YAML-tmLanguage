@@ -140,12 +140,15 @@ variables:
 patterns:
 - include: '#directives'
 - include: '#statements'
-- name: comment.line.shebang.ts
-  match: \A(#!).*(?=$)
-  captures:
-    '1': { name: punctuation.definition.comment.ts }
+- include: '#shebang'
 
 repository:
+  shebang:
+    name: comment.line.shebang.ts
+    match: \A(#!).*(?=$)
+    captures:
+      '1': { name: punctuation.definition.comment.ts }
+
   statements:
     patterns:
     - include: '#declaration'
