@@ -4512,7 +4512,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[,}]|\|\||\&amp;\&amp;|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+))</string>
+            <string>(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|^|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4892,7 +4892,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\))|(?=[;),}\]:\-\+]|\|\||\&amp;\&amp;|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))new(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
+        <string>(?&lt;=\))|(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))new(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -4922,7 +4922,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\))|(?=[;),}\]:?]|\|\||\&amp;\&amp;|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
+        <string>(?&lt;=\))|(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|(([\&amp;\~\^\|]\s*)?[_$[:alpha:]][_$[:alnum:]]*\s+instanceof(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -5384,7 +5384,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,:})\]]|\|\||\&amp;\&amp;|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+)|(\s+\&lt;))</string>
+            <string>(?=^|[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+)|(\s+\&lt;))</string>
             <key>patterns</key>
             <array>
               <dict>

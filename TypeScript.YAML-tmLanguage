@@ -54,6 +54,7 @@ variables:
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   lookBehindImport: '^import|{{nonPropertyLookBehind}}import'
+  lookAheadEndOfType: '[;),}\]:?\-\+\>]|\|\||\&\&|\!\=\=|$'
   matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
   matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
@@ -1395,7 +1396,7 @@ repository:
       begin: '{{startOfIdentifier}}(as)\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?=$|^|[,}]|\|\||\&\&|({{startOfIdentifier}}(as)\s+))
+      end: (?={{lookAheadEndOfType}}|^|({{startOfIdentifier}}(as)\s+))
       patterns:
       - include: '#type'
     - name: meta.object.member.ts
@@ -1516,7 +1517,7 @@ repository:
     begin: '{{startOfIdentifier}}(new){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.operator.new.ts }
-    end: (?<=\))|(?=[;),}\]:\-\+]|\|\||\&\&|$|({{startOfIdentifier}}new{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
+    end: (?<=\))|(?={{lookAheadEndOfType}}|({{startOfIdentifier}}new{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
     patterns:
     - include: '#paren-expression'
     - include: '#class-declaration'
@@ -1526,7 +1527,7 @@ repository:
     begin: '{{startOfIdentifier}}(instanceof){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.operator.expression.instanceof.ts }
-    end: (?<=\))|(?=[;),}\]:?]|\|\||\&\&|$|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
+    end: (?<=\))|(?={{lookAheadEndOfType}}|(([\&\~\^\|]\s*)?{{identifier}}\s+instanceof{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
     patterns:
     - include: '#type'
 
@@ -1677,7 +1678,7 @@ repository:
     - begin: '{{startOfIdentifier}}(as)\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?=$|^|[;,:})\]]|\|\||\&\&|({{startOfIdentifier}}(as)\s+)|(\s+\<))
+      end: (?=^|{{lookAheadEndOfType}}|({{startOfIdentifier}}(as)\s+)|(\s+\<))
       patterns:
       - include: '#type'
     - name: keyword.operator.spread.ts

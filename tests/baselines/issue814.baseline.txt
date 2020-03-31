@@ -1,0 +1,170 @@
+original file
+-----------------------------------
+class A{}
+class B{}
+
+const a = new A()
+const b = new B()
+
+a instanceof A !== b instanceof B
+a instanceof A > b instanceof B
+a instanceof A & b instanceof B
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class A{}
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>class B{}
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>const a = new A()
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^^^
+           source.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.var.expr.ts new.expr.ts
+               ^
+               source.ts meta.var.expr.ts new.expr.ts entity.name.type.ts
+                ^
+                source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                 ^
+                 source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+>const b = new B()
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^^^
+           source.ts meta.var.expr.ts new.expr.ts keyword.operator.new.ts
+              ^
+              source.ts meta.var.expr.ts new.expr.ts
+               ^
+               source.ts meta.var.expr.ts new.expr.ts entity.name.type.ts
+                ^
+                source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+                 ^
+                 source.ts meta.var.expr.ts new.expr.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>a instanceof A !== b instanceof B
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^^^^^^^^^^
+   source.ts keyword.operator.expression.instanceof.ts
+             ^
+             source.ts
+              ^
+              source.ts entity.name.type.ts
+               ^
+               source.ts
+                ^^^
+                source.ts keyword.operator.comparison.ts
+                   ^
+                   source.ts
+                    ^
+                    source.ts variable.other.readwrite.ts
+                     ^
+                     source.ts
+                      ^^^^^^^^^^
+                      source.ts keyword.operator.expression.instanceof.ts
+                                ^
+                                source.ts
+                                 ^
+                                 source.ts entity.name.type.ts
+>a instanceof A > b instanceof B
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^^^^^^^^^^
+   source.ts keyword.operator.expression.instanceof.ts
+             ^
+             source.ts
+              ^
+              source.ts entity.name.type.ts
+               ^
+               source.ts
+                ^
+                source.ts keyword.operator.relational.ts
+                 ^
+                 source.ts
+                  ^
+                  source.ts variable.other.readwrite.ts
+                   ^
+                   source.ts
+                    ^^^^^^^^^^
+                    source.ts keyword.operator.expression.instanceof.ts
+                              ^
+                              source.ts
+                               ^
+                               source.ts entity.name.type.ts
+>a instanceof A & b instanceof B
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^^^^^^^^^^
+   source.ts keyword.operator.expression.instanceof.ts
+             ^
+             source.ts
+              ^
+              source.ts entity.name.type.ts
+               ^
+               source.ts
+                ^
+                source.ts keyword.operator.bitwise.ts
+                 ^
+                 source.ts
+                  ^
+                  source.ts variable.other.readwrite.ts
+                   ^
+                   source.ts
+                    ^^^^^^^^^^
+                    source.ts keyword.operator.expression.instanceof.ts
+                              ^
+                              source.ts
+                               ^
+                               source.ts entity.name.type.ts
