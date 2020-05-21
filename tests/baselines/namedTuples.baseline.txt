@@ -1,0 +1,1100 @@
+original file
+-----------------------------------
+export type Segment = [length: number, count: number];
+export type SegmentAnnotated = [
+    /** 
+     * Size of message buffer segment handles
+     */
+    length: number,
+    /**
+     * Number of segments handled at once
+     */
+    count: number
+];
+declare var c: [number, number];
+declare var d: [a: number, b: number];
+export type WithOptAndRest = [first: number, second?: number, ...rest: string[]];
+export function useState<T>(initial: T): [value: T, setter: (T) => void] {
+    return null as any;
+}
+export type Iter = Func<[step: number, iterations: number]>;
+export function readSegment([length, count]: [number, number]) {}
+export type RecursiveTupleA = [initial: string, next: RecursiveTupleA];
+export type RecusiveRest = [first: string, ...rest: RecusiveRest[]];
+export type RecusiveRest2 = [string, ...RecusiveRest2[]];
+
+export type Segment1 = [length: number, number]; // partially named, disallowed
+export type List = [item: any, ...any];  // partially named, disallowed
+export type Pair = [item: any, any?];  // partially named, disallowed
+export type Opt = [element: string?]; // question mark on element disallowed
+export type Trailing = [first: string, rest: ...string[]]; // dots on element disallowed
+export type OptTrailing = [first: string, rest: ...string[]?]; // dots+question on element disallowed
+export type OptRest = [first: string, ...rest?: string[]]; // rest+optional disallowed
+export type NonArrayRest = [first: string, ...rest: number]; // non-arraylike rest, disallowed
+export type RecusiveRestUnlabeled = [string, ...RecusiveRestUnlabeled];
+export type RecusiveRest = [first: string, ...rest: RecusiveRest]; // marked as incorrect, same as above
+
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export type Segment = [length: number, count: number];
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                    ^
+                    source.ts meta.type.declaration.ts
+                     ^
+                     source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                      ^
+                      source.ts meta.type.declaration.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                        ^^^^^^
+                        source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                ^^^^^^
+                                source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                        ^^^^^
+                                        source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                              ^
+                                              source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                               ^^^^^^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                                     ^
+                                                     source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                      ^
+                                                      source.ts punctuation.terminator.statement.ts
+>export type SegmentAnnotated = [
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                             ^
+                             source.ts meta.type.declaration.ts
+                              ^
+                              source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                               ^
+                               source.ts meta.type.declaration.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+>    /** 
+ ^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts
+     ^^^
+     source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^
+        source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts
+>     * Size of message buffer segment handles
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts
+>     */
+ ^^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts
+      ^^
+      source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>    length: number,
+ ^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts
+     ^^^^^^
+     source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+           ^
+           source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.tuple.ts
+             ^^^^^^
+             source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+>    /**
+ ^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts
+     ^^^
+     source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>     * Number of segments handled at once
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts
+>     */
+ ^^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts
+      ^^
+      source.ts meta.type.declaration.ts meta.type.tuple.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>    count: number
+ ^^^^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts
+     ^^^^^
+     source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+          ^
+          source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+           ^
+           source.ts meta.type.declaration.ts meta.type.tuple.ts
+            ^^^^^^
+            source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+>];
+ ^
+ source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+>declare var c: [number, number];
+ ^^^^^^^
+ source.ts meta.var.expr.ts storage.modifier.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^^^
+         source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                 ^^^^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts
+                         ^^^^^^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+>declare var d: [a: number, b: number];
+ ^^^^^^^
+ source.ts meta.var.expr.ts storage.modifier.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^^^
+         source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.label.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.label.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts
+                    ^^^^^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts entity.name.label.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.label.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts
+                               ^^^^^^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
+>export type WithOptAndRest = [first: number, second?: number, ...rest: string[]];
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                           ^
+                           source.ts meta.type.declaration.ts
+                            ^
+                            source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                             ^
+                             source.ts meta.type.declaration.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                               ^^^^^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                      ^^^^^^
+                                      source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                              ^^^^^^
+                                              source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                                    ^
+                                                    source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.optional.ts
+                                                     ^
+                                                     source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                      ^
+                                                      source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                       ^^^^^^
+                                                       source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                                             ^
+                                                             source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                                              ^
+                                                              source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                               ^^^
+                                                               source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                                                  ^^^^
+                                                                  source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                                                      ^
+                                                                      source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                                       ^
+                                                                       source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                                        ^^^^^^
+                                                                        source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                                                              ^
+                                                                              source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                               ^
+                                                                               source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                                ^
+                                                                                source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                                 ^
+                                                                                 source.ts punctuation.terminator.statement.ts
+>export function useState<T>(initial: T): [value: T, setter: (T) => void] {
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^
+                 source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                         ^
+                         source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                          ^
+                          source.ts meta.function.ts meta.type.parameters.ts entity.name.type.ts
+                           ^
+                           source.ts meta.function.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                            ^
+                            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^^^^^^^
+                             source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                                    ^
+                                    source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                      ^
+                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                       ^
+                                       source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                        ^
+                                        source.ts meta.function.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                         ^
+                                         source.ts meta.function.ts meta.return.type.ts
+                                          ^
+                                          source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.brace.square.ts
+                                           ^^^^^
+                                           source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts entity.name.label.ts
+                                                ^
+                                                source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                 ^
+                                                 source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts
+                                                  ^
+                                                  source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts entity.name.type.ts
+                                                   ^
+                                                   source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                                    ^
+                                                    source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts
+                                                     ^^^^^^
+                                                     source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts entity.name.label.ts
+                                                           ^
+                                                           source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                            ^
+                                                            source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.type.function.ts meta.parameters.ts variable.parameter.ts
+                                                               ^
+                                                               source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                                ^
+                                                                source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts
+                                                                 ^^
+                                                                 source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                                                   ^
+                                                                   source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.type.function.return.ts
+                                                                    ^^^^
+                                                                    source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.type.function.return.ts support.type.primitive.ts
+                                                                        ^
+                                                                        source.ts meta.function.ts meta.return.type.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                         ^
+                                                                         source.ts meta.function.ts meta.return.type.ts
+                                                                          ^
+                                                                          source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    return null as any;
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^
+     source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+           ^
+           source.ts meta.function.ts meta.block.ts
+            ^^^^
+            source.ts meta.function.ts meta.block.ts constant.language.null.ts
+                ^
+                source.ts meta.function.ts meta.block.ts
+                 ^^
+                 source.ts meta.function.ts meta.block.ts keyword.control.as.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts
+                    ^^^
+                    source.ts meta.function.ts meta.block.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>export type Iter = Func<[step: number, iterations: number]>;
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^^^^
+                    source.ts meta.type.declaration.ts entity.name.type.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+                          ^^^^
+                          source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts entity.name.label.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts punctuation.separator.label.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts
+                                ^^^^^^
+                                source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts
+                                        ^^^^^^^^^^
+                                        source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts entity.name.label.ts
+                                                  ^
+                                                  source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                   ^
+                                                   source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts
+                                                    ^^^^^^
+                                                    source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts support.type.primitive.ts
+                                                          ^
+                                                          source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.tuple.ts meta.brace.square.ts
+                                                           ^
+                                                           source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                            ^
+                                                            source.ts punctuation.terminator.statement.ts
+>export function readSegment([length, count]: [number, number]) {}
+ ^^^^^^
+ source.ts meta.function.ts keyword.control.export.ts
+       ^
+       source.ts meta.function.ts
+        ^^^^^^^^
+        source.ts meta.function.ts storage.type.function.ts
+                ^
+                source.ts meta.function.ts
+                 ^^^^^^^^^^^
+                 source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                            ^
+                            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^
+                             source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts punctuation.definition.binding-pattern.array.ts
+                              ^^^^^^
+                              source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts variable.parameter.ts
+                                    ^
+                                    source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts punctuation.separator.comma.ts
+                                     ^
+                                     source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts
+                                      ^^^^^
+                                      source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts variable.parameter.ts
+                                           ^
+                                           source.ts meta.function.ts meta.parameters.ts meta.paramter.array-binding-pattern.ts punctuation.definition.binding-pattern.array.ts
+                                            ^
+                                            source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                             ^
+                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts
+                                              ^
+                                              source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                               ^^^^^^
+                                               source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                                                     ^
+                                                     source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                                      ^
+                                                      source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts
+                                                       ^^^^^^
+                                                       source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                                                             ^
+                                                             source.ts meta.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                                                              ^
+                                                              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                               ^
+                                                               source.ts meta.function.ts
+                                                                ^
+                                                                source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                                                 ^
+                                                                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>export type RecursiveTupleA = [initial: string, next: RecursiveTupleA];
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                            ^
+                            source.ts meta.type.declaration.ts
+                             ^
+                             source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                              ^
+                              source.ts meta.type.declaration.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                ^^^^^^^
+                                source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                         ^^^^^^
+                                         source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                 ^^^^
+                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                                     ^
+                                                     source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                      ^
+                                                      source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                       ^^^^^^^^^^^^^^^
+                                                       source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+                                                                      ^
+                                                                      source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                       ^
+                                                                       source.ts punctuation.terminator.statement.ts
+>export type RecusiveRest = [first: string, ...rest: RecusiveRest[]];
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                         ^
+                         source.ts meta.type.declaration.ts
+                          ^
+                          source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                           ^
+                           source.ts meta.type.declaration.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                             ^^^^^
+                             source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                    ^^^^^^
+                                    source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                            ^^^
+                                            source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                               ^^^^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                                   ^
+                                                   source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                    ^
+                                                    source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                     ^^^^^^^^^^^^
+                                                     source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+                                                                 ^
+                                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                  ^
+                                                                  source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                   ^
+                                                                   source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                    ^
+                                                                    source.ts punctuation.terminator.statement.ts
+>export type RecusiveRest2 = [string, ...RecusiveRest2[]];
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                          ^
+                          source.ts meta.type.declaration.ts
+                           ^
+                           source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.type.declaration.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                              ^^^^^^
+                              source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                      ^^^
+                                      source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                         ^^^^^^^^^^^^^
+                                         source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+                                                      ^
+                                                      source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                       ^
+                                                       source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                        ^
+                                                        source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                         ^
+                                                         source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>export type Segment1 = [length: number, number]; // partially named, disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                     ^
+                     source.ts meta.type.declaration.ts
+                      ^
+                      source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                       ^
+                       source.ts meta.type.declaration.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                         ^^^^^^
+                         source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                 ^^^^^^
+                                 source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                         ^^^^^^
+                                         source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                ^
+                                                source.ts punctuation.terminator.statement.ts
+                                                 ^
+                                                 source.ts
+                                                  ^^
+                                                  source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                    source.ts comment.line.double-slash.ts
+>export type List = [item: any, ...any];  // partially named, disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                     ^^^^
+                     source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.type.tuple.ts
+                           ^^^
+                           source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                ^^^
+                                source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                   ^^^
+                                   source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts
+                                        ^^
+                                        source.ts
+                                          ^^
+                                          source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                            source.ts comment.line.double-slash.ts
+>export type Pair = [item: any, any?];  // partially named, disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                 ^
+                 source.ts meta.type.declaration.ts
+                  ^
+                  source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                   ^
+                   source.ts meta.type.declaration.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                     ^^^^
+                     source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.type.tuple.ts
+                           ^^^
+                           source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                ^^^
+                                source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.ternary.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                     ^
+                                     source.ts punctuation.terminator.statement.ts
+                                      ^^
+                                      source.ts
+                                        ^^
+                                        source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                          source.ts comment.line.double-slash.ts
+>export type Opt = [element: string?]; // question mark on element disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                    ^^^^^^^
+                    source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.type.tuple.ts
+                             ^^^^^^
+                             source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.ternary.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                     ^
+                                     source.ts punctuation.terminator.statement.ts
+                                      ^
+                                      source.ts
+                                       ^^
+                                       source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                         source.ts comment.line.double-slash.ts
+>export type Trailing = [first: string, rest: ...string[]]; // dots on element disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                     ^
+                     source.ts meta.type.declaration.ts
+                      ^
+                      source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                       ^
+                       source.ts meta.type.declaration.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                         ^^^^^
+                         source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                ^^^^^^
+                                source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                        ^^^^
+                                        source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                              ^^^
+                                              source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                                 ^^^^^^
+                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                                       ^
+                                                       source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                        ^
+                                                        source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                         ^
+                                                         source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                          ^
+                                                          source.ts punctuation.terminator.statement.ts
+                                                           ^
+                                                           source.ts
+                                                            ^^
+                                                            source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                              source.ts comment.line.double-slash.ts
+>export type OptTrailing = [first: string, rest: ...string[]?]; // dots+question on element disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                        ^
+                        source.ts meta.type.declaration.ts
+                         ^
+                         source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                          ^
+                          source.ts meta.type.declaration.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                            ^^^^^
+                            source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                   ^^^^^^
+                                   source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                           ^^^^
+                                           source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                 ^^^
+                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                                    ^^^^^^
+                                                    source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                                          ^
+                                                          source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                           ^
+                                                           source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                            ^
+                                                            source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.ternary.ts
+                                                             ^
+                                                             source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                              ^
+                                                              source.ts punctuation.terminator.statement.ts
+                                                               ^
+                                                               source.ts
+                                                                ^^
+                                                                source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                                  source.ts comment.line.double-slash.ts
+>export type OptRest = [first: string, ...rest?: string[]]; // rest+optional disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                    ^
+                    source.ts meta.type.declaration.ts
+                     ^
+                     source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                      ^
+                      source.ts meta.type.declaration.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                        ^^^^^
+                        source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                              ^
+                              source.ts meta.type.declaration.ts meta.type.tuple.ts
+                               ^^^^^^
+                               source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                       ^^^
+                                       source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                          ^^^^
+                                          source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                              ^
+                                              source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.optional.ts
+                                               ^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                ^
+                                                source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                 ^^^^^^
+                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                                       ^
+                                                       source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                        ^
+                                                        source.ts meta.type.declaration.ts meta.type.tuple.ts meta.type.tuple.ts meta.brace.square.ts
+                                                         ^
+                                                         source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                          ^
+                                                          source.ts punctuation.terminator.statement.ts
+                                                           ^
+                                                           source.ts
+                                                            ^^
+                                                            source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                              source.ts comment.line.double-slash.ts
+>export type NonArrayRest = [first: string, ...rest: number]; // non-arraylike rest, disallowed
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                         ^
+                         source.ts meta.type.declaration.ts
+                          ^
+                          source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                           ^
+                           source.ts meta.type.declaration.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                             ^^^^^
+                             source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                    ^^^^^^
+                                    source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                            ^^^
+                                            source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                               ^^^^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                                   ^
+                                                   source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                    ^
+                                                    source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                     ^^^^^^
+                                                     source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                                           ^
+                                                           source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                            ^
+                                                            source.ts punctuation.terminator.statement.ts
+                                                             ^
+                                                             source.ts
+                                                              ^^
+                                                              source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                                source.ts comment.line.double-slash.ts
+>export type RecusiveRestUnlabeled = [string, ...RecusiveRestUnlabeled];
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                      ^^^^^^
+                                      source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                             ^
+                                             source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                              ^^^
+                                              source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                                 ^^^^^^^^^^^^^^^^^^^^^
+                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+                                                                      ^
+                                                                      source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                       ^
+                                                                       source.ts punctuation.terminator.statement.ts
+>export type RecusiveRest = [first: string, ...rest: RecusiveRest]; // marked as incorrect, same as above
+ ^^^^^^
+ source.ts meta.type.declaration.ts keyword.control.export.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^^^^
+        source.ts meta.type.declaration.ts storage.type.type.ts
+            ^
+            source.ts meta.type.declaration.ts
+             ^^^^^^^^^^^^
+             source.ts meta.type.declaration.ts entity.name.type.alias.ts
+                         ^
+                         source.ts meta.type.declaration.ts
+                          ^
+                          source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+                           ^
+                           source.ts meta.type.declaration.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                             ^^^^^
+                             source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                    ^^^^^^
+                                    source.ts meta.type.declaration.ts meta.type.tuple.ts support.type.primitive.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                           ^
+                                           source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                            ^^^
+                                            source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.rest.ts
+                                               ^^^^
+                                               source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.label.ts
+                                                   ^
+                                                   source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.label.ts
+                                                    ^
+                                                    source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                     ^^^^^^^^^^^^
+                                                     source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+                                                                 ^
+                                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                  ^
+                                                                  source.ts punctuation.terminator.statement.ts
+                                                                   ^
+                                                                   source.ts
+                                                                    ^^
+                                                                    source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                                      source.ts comment.line.double-slash.ts
+>
+ ^
+ source.ts
+>
+ ^
+ source.ts

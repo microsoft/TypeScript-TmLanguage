@@ -2332,6 +2332,13 @@ repository:
     endCaptures:
       '0': { name: meta.brace.square.ts }
     patterns:
+    - name: keyword.operator.rest.ts
+      match: \.\.\.
+    - match: '{{startOfIdentifier}}({{identifier}})\s*(\?)?\s*(:)'
+      captures:
+        '1': { name: entity.name.label.ts }
+        '2': { name: keyword.operator.optional.ts }
+        '3': { name: punctuation.separator.label.ts }
     - include: '#type'
     - include: '#punctuation-comma'
 
