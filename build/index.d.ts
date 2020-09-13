@@ -38,7 +38,7 @@ declare interface TmGrammar {
     scopeName: string;
     fileTypes: string[];
     uuid: string;
-    variables: MapLike<string>;
+    variables?: MapLike<string>;
     patterns?: AnyTmGrammarRule[];
     repository: MapLike<TmGrammarRepositaryRule>;
 }

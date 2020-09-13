@@ -97,7 +97,7 @@ function getTsxGrammar() {
 
 function getTsGrammar(getVariables: (tsGrammarVariables: MapLike<string>) => MapLike<string>) {
     const tsGrammarBeforeTransformation = readYaml(file(Language.TypeScript, Extension.YamlTmLanguage)) as TmGrammar;
-    return updateGrammarVariables(tsGrammarBeforeTransformation, getVariables(tsGrammarBeforeTransformation.variables));
+    return updateGrammarVariables(tsGrammarBeforeTransformation, getVariables(tsGrammarBeforeTransformation.variables as MapLike<string>));
 }
 
 function replacePatternVariables(pattern: string, variableReplacers: VariableReplacer[]) {
