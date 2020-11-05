@@ -55,9 +55,9 @@ variables:
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   lookBehindImport: '^import|{{nonPropertyLookBehind}}import'
   lookAheadEndOfType: '[;),}\]:?\-\+\>]|\|\||\&\&|\!\=\=|$'
-  matchingParenthesis: (\(([^\(\)]|(\([^\(\)]*\)))*\))
-  matchingBraces: (\{([^\{\}]|(\{[^\{\}]*\}))*\})
-  matchingBrackets: (\[([^\[\]]|(\[[^\[\]]*\]))*\])
+  matchingParenthesis: (\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))
+  matchingBraces: (\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})
+  matchingBrackets: (\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\])
   inlineComment: \/\*([^\*]|(\*[^\/]))*\*\/
   startOfDeclaration: '{{startOfIdentifier}}(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?'
   lookBehindOfPossiblyMultilineArrowWithDestructuring: (?<=[(=,])
