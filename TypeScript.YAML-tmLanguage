@@ -75,7 +75,7 @@ variables:
   functionCallNamedTarget: (({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}})
   functionCallTarget: (({{functionCallNamedTarget}})|(?<=[\)]))
   possiblyMultilineCallWithTypeArguments: \s*(?:(\?\.\s*)|(\!))?{{possiblyMultilineTypeArgument}}
-  possiblyType: \s*([^<>\(\)\{\}]|\<([^<>]|\<[^<>]+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
+  possiblyType: \s*([^<>\(\)\{\}]|\<([^<>]|\<([^<>]|\<[^<>]+\>)+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
   typeparamertStartOfArrow: ''
   arrowLookup: |-
     # sure shot arrow functions even if => is on new line
