@@ -136,7 +136,7 @@ variables:
     (:\s*(=>|{{matchingParenthesis}}|(<[^<>]*>)|[^<>(),=])+={{functionOrArrowLookup}})
   arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
   regexpTail: ([gimsuy]+|(?![\/\*])|(?=\/\*))(?!\s*[a-zA-Z0-9_$])
-  completeRegexp: \/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)+\])+\/{{regexpTail}})
+  completeRegexp: \/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)*\])+\/{{regexpTail}})
 
 patterns:
 - include: '#directives'
