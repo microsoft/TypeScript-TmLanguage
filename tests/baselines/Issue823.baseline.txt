@@ -1,0 +1,66 @@
+original file
+-----------------------------------
+function test(type, obj) {
+  return type in obj && 'broken';
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function test(type, obj) {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+               ^^^^
+               source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts punctuation.separator.parameter.ts
+                    ^
+                    source.ts meta.function.ts meta.parameters.ts
+                     ^^^
+                     source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                        ^
+                        source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                         ^
+                         source.ts meta.function.ts
+                          ^
+                          source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>  return type in obj && 'broken';
+ ^^
+ source.ts meta.function.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.function.ts meta.block.ts
+          ^^^^
+          source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.function.ts meta.block.ts
+               ^^
+               source.ts meta.function.ts meta.block.ts keyword.operator.expression.in.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts
+                  ^^^
+                  source.ts meta.function.ts meta.block.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts
+                      ^^
+                      source.ts meta.function.ts meta.block.ts keyword.operator.logical.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                          ^^^^^^
+                          source.ts meta.function.ts meta.block.ts string.quoted.single.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                 ^
+                                 source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
