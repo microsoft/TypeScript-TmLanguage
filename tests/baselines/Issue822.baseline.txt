@@ -1,0 +1,82 @@
+original file
+-----------------------------------
+const ComponentContainer = f({})<Pick<null, "a">>`
+`;
+
+const bla = 1;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const ComponentContainer = f({})<Pick<null, "a">>`
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                          ^
+                          source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                           ^
+                           source.ts meta.var.expr.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.brace.round.ts
+                              ^
+                              source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.brace.round.ts
+                                 ^
+                                 source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                  ^^^^
+                                  source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts entity.name.type.ts
+                                      ^
+                                      source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                       ^^^^
+                                       source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts support.type.builtin.ts
+                                           ^
+                                           source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                            ^
+                                            source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts
+                                             ^
+                                             source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                              ^
+                                              source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.double.ts
+                                               ^
+                                               source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                ^
+                                                source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                 ^
+                                                 source.ts meta.var.expr.ts string.template.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                  ^
+                                                  source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.begin.ts
+>`;
+ ^
+ source.ts meta.var.expr.ts string.template.ts punctuation.definition.string.template.end.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>const bla = 1;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
