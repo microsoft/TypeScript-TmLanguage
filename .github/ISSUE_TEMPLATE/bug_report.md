@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-**[TS and JS Grammar Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar) version:**  0.0.53 / latest
+**[TS and JS Grammar Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar) version:**  0.0.55 / latest
 
 **Code**
 
