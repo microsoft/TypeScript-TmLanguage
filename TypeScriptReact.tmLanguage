@@ -2739,6 +2739,18 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.as.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
             <key>include</key>
             <string>#type</string>
           </dict>
@@ -6920,7 +6932,7 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#string</string>
+            <string>#type-string</string>
           </dict>
           <dict>
             <key>include</key>
@@ -7878,6 +7890,56 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>include</key>
+            <string>#template-call</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>string.template.tsx</string>
+            <key>begin</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)?(`)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.tagged-template.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.template.begin.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>`</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.template.end.tsx</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#template-substitution-element</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#string-character-escape</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>template-call</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
             <key>name</key>
             <string>string.template.tsx</string>
             <key>begin</key>
@@ -7934,6 +7996,68 @@
               </dict>
             </array>
           </dict>
+        </array>
+      </dict>
+      <key>template-substitution-element</key>
+      <dict>
+        <key>name</key>
+        <string>meta.template.expression.tsx</string>
+        <key>begin</key>
+        <string>\$\{</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.template-expression.begin.tsx</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>\}</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.template-expression.end.tsx</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#expression</string>
+          </dict>
+        </array>
+        <key>contentName</key>
+        <string>meta.embedded.line.tsx</string>
+      </dict>
+      <key>type-string</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#qstring-single</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#qstring-double</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#template-type</string>
+          </dict>
+        </array>
+      </dict>
+      <key>template-type</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#template-call</string>
+          </dict>
           <dict>
             <key>name</key>
             <string>string.template.tsx</string>
@@ -7966,7 +8090,7 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#template-substitution-element</string>
+                <string>#template-type-substitution-element</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -7976,7 +8100,7 @@
           </dict>
         </array>
       </dict>
-      <key>template-substitution-element</key>
+      <key>template-type-substitution-element</key>
       <dict>
         <key>name</key>
         <string>meta.template.expression.tsx</string>
@@ -8004,7 +8128,7 @@
         <array>
           <dict>
             <key>include</key>
-            <string>#expression</string>
+            <string>#type</string>
           </dict>
         </array>
         <key>contentName</key>
