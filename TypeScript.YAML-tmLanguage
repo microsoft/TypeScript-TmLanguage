@@ -1726,8 +1726,12 @@ repository:
         '1': { name: keyword.operator.arithmetic.ts }
 
   typeof-operator:
-    name: keyword.operator.expression.typeof.ts
-    match: '{{startOfIdentifier}}typeof{{endOfIdentifier}}'
+    begin: '{{startOfIdentifier}}typeof{{endOfIdentifier}}'
+    beginCaptures:
+      '0': { name: keyword.operator.expression.typeof.ts }
+    end: (?=[,);}\]=]|$|{{endOfStatement}})
+    patterns:
+    - include: '#expression'
 
   #literals
   literal:
