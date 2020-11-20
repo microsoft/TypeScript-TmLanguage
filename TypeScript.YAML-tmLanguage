@@ -1074,6 +1074,13 @@ repository:
     patterns:
       - include: '#comment'
       - include: '#type-parameters'
+      - begin: '(=)\s*(intrinsic){{endOfIdentifier}}'
+        beginCaptures:
+          '1': { name: keyword.operator.assignment.ts }
+          '2': { name: keyword.control.intrinsic.ts }
+        end: (?=\}|{{endOfStatement}})
+        patterns:
+        - include: '#type'
       - begin: '(=)\s*'
         beginCaptures:
           '1': { name: keyword.operator.assignment.ts }

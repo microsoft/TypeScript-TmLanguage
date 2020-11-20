@@ -3411,6 +3411,32 @@
           </dict>
           <dict>
             <key>begin</key>
+            <string>(=)\s*(intrinsic)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.tsx</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.intrinsic.tsx</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\}|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
             <string>(=)\s*</string>
             <key>beginCaptures</key>
             <dict>
