@@ -1,0 +1,86 @@
+original file
+-----------------------------------
+function foo(): number { return 42; }
+let bar: ReturnType<typeof foo>;
+bar = 1;
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>function foo(): number { return 42; }
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.function.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.function.ts meta.return.type.ts
+                 ^^^^^^
+                 source.ts meta.function.ts meta.return.type.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.function.ts meta.return.type.ts
+                        ^
+                        source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.function.ts meta.block.ts
+                          ^^^^^^
+                          source.ts meta.function.ts meta.block.ts keyword.control.flow.ts
+                                ^
+                                source.ts meta.function.ts meta.block.ts
+                                 ^^
+                                 source.ts meta.function.ts meta.block.ts constant.numeric.decimal.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts
+                                     ^
+                                     source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>let bar: ReturnType<typeof foo>;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+          ^^^^^^^^^^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                     ^^^^^^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts keyword.operator.expression.typeof.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts
+                            ^^^
+                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts entity.name.type.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+>bar = 1;
+ ^^^
+ source.ts variable.other.readwrite.ts
+    ^
+    source.ts
+     ^
+     source.ts keyword.operator.assignment.ts
+      ^
+      source.ts
+       ^
+       source.ts constant.numeric.decimal.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
