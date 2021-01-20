@@ -195,7 +195,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=[;}]|$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <string>(?=[;}]|$|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -429,7 +429,7 @@
             <key>begin</key>
             <string>(?=(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))</string>
             <key>end</key>
-            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|^\s*$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -539,7 +539,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|^\s*$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|((?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2112,7 +2112,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|(?&lt;=\})</string>
+        <string>(?=;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3079,7 +3079,7 @@
             <key>begin</key>
             <string>(?&lt;=:)\s*</string>
             <key>end</key>
-            <string>(?=\s|[;),}\]:\-\+]|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <string>(?=\s|[;),}\]:\-\+]|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3319,7 +3319,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\})|(?=;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+        <string>(?&lt;=\})|(?=;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3376,7 +3376,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=\}|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+        <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3404,7 +3404,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\}|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3425,7 +3425,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\}|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3724,7 +3724,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <string>(?=$|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3756,7 +3756,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+            <string>(?=$|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -5633,7 +5633,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=[,);}\]=&gt;]|$|;|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
+        <string>(?=[,);}\]=&gt;]|$|;|^\s*$|(?:^\s*(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b))</string>
         <key>patterns</key>
         <array>
           <dict>

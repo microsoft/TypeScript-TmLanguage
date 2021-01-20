@@ -37,7 +37,7 @@ variables:
   propertyNameWithPrivate: ({{anyNumber}}|({{propertyIdentifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
   constructsAndModifiers: '(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b'
-  endOfStatement: ';|(?:^\s*{{constructsAndModifiers}})'
+  endOfStatement: ';|^\s*$|(?:^\s*{{constructsAndModifiers}})'
   varExprStart: '{{startOfDeclaration}}\b(var|let){{endOfIdentifier}}'
   constExprStart: '{{startOfDeclaration}}\b(const(?!\s+enum\b)){{endOfIdentifier}}'
   nonPropertyLookBehind: '[^\._$[:alnum:]]'
@@ -269,7 +269,7 @@ repository:
     # let/var
     - name: meta.var.expr.ts
       begin: (?={{varExprStart}})
-      end: (?!{{varExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
+      end: (?!{{varExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|{{endOfStatement}})|((?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
       patterns:
       - begin: '{{varExprStart}}\s*'
         beginCaptures:
@@ -299,7 +299,7 @@ repository:
         '1': { name: keyword.control.export.ts }
         '2': { name: storage.modifier.ts }
         '3': { name: storage.type.ts }
-      end: (?!{{constExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$|{{endOfStatement}})|((?<!{{lookBehindConst}})(?=\s*$)))
+      end: (?!{{constExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|{{endOfStatement}})|((?<!{{lookBehindConst}})(?=\s*$)))
       patterns:
       - begin: '{{constExprStart}}\s*'
         beginCaptures:
