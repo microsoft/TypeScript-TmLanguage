@@ -26,7 +26,7 @@ function writePlistFile(grammar: TmGrammar | TmTheme, fileName: string) {
 
 function readYaml(fileName: string) {
     const text = fs.readFileSync(fileName, "utf8");
-    return yaml.safeLoad(text);
+    return yaml.load(text);
 }
 
 function changeTsToTsx(str: string) {
