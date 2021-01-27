@@ -5480,7 +5480,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;=[_$[:alnum:]])(\!)\s*(/)(?![/*])</string>
+            <string>(?&lt;=[_$[:alnum:]])(\!)\s*(?:(/=)|(?:(/)(?![/*])))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -5489,6 +5489,11 @@
                 <string>keyword.operator.logical.tsx</string>
               </dict>
               <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.compound.tsx</string>
+              </dict>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.arithmetic.tsx</string>
@@ -5533,12 +5538,17 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?&lt;=[_$[:alnum:])\]])\s*(?=(\/\*([^\*]|(\*[^\/]))*\*\/\s*)+(/)(?![/*]))</string>
+            <string>(?&lt;=[_$[:alnum:])\]])\s*(?=(\/\*([^\*]|(\*[^\/]))*\*\/\s*)+(?:(/=)|(?:(/)(?![/*]))))</string>
             <key>end</key>
-            <string>(/)(?!\*([^\*]|(\*[^\/]))*\*\/)</string>
+            <string>(?:(/=)|(?:(/)(?!\*([^\*]|(\*[^\/]))*\*\/)))</string>
             <key>endCaptures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.compound.tsx</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.arithmetic.tsx</string>
@@ -5554,10 +5564,15 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(?&lt;=[_$[:alnum:])\]])\s*(/)(?![/*])</string>
+            <string>(?&lt;=[_$[:alnum:])\]])\s*(?:(/=)|(?:(/)(?![/*])))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.assignment.compound.tsx</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>keyword.operator.arithmetic.tsx</string>

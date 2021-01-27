@@ -1706,10 +1706,11 @@ repository:
       match: ===|!==|==|!=
     - name: keyword.operator.relational.ts
       match: <=|>=|<>|<|>
-    - match: (?<=[_$[:alnum:]])(\!)\s*(/)(?![/*])
+    - match: (?<=[_$[:alnum:]])(\!)\s*(?:(/=)|(?:(/)(?![/*])))
       captures:
         '1': { name: keyword.operator.logical.ts }
-        '2': { name: keyword.operator.arithmetic.ts }
+        '2': { name: keyword.operator.assignment.compound.ts }
+        '3': { name: keyword.operator.arithmetic.ts }
     - name: keyword.operator.logical.ts
       match: \!|&&|\|\||\?\?
     - name: keyword.operator.bitwise.ts
@@ -1723,15 +1724,17 @@ repository:
     - name: keyword.operator.arithmetic.ts
       match: '%|\*|/|-|\+'
     # capture the arithmetic sign followed by variable or parenthesized expression so that it is not interpreted as regex
-    - begin: (?<=[_$[:alnum:])\]])\s*(?=({{inlineComment}}\s*)+(/)(?![/*]))
-      end: (/)(?!\*([^\*]|(\*[^\/]))*\*\/)
+    - begin: (?<=[_$[:alnum:])\]])\s*(?=({{inlineComment}}\s*)+(?:(/=)|(?:(/)(?![/*]))))
+      end: (?:(/=)|(?:(/)(?!\*([^\*]|(\*[^\/]))*\*\/)))
       endCaptures:
-        '1': { name: keyword.operator.arithmetic.ts }
+        '1': { name: keyword.operator.assignment.compound.ts }
+        '2': { name: keyword.operator.arithmetic.ts }
       patterns:
       - include: '#comment'
-    - match: (?<=[_$[:alnum:])\]])\s*(/)(?![/*])
+    - match: (?<=[_$[:alnum:])\]])\s*(?:(/=)|(?:(/)(?![/*])))
       captures:
-        '1': { name: keyword.operator.arithmetic.ts }
+        '1': { name: keyword.operator.assignment.compound.ts }
+        '2': { name: keyword.operator.arithmetic.ts }
 
   typeof-operator:
     begin: '{{startOfIdentifier}}typeof{{endOfIdentifier}}'
