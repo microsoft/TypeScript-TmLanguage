@@ -7372,10 +7372,15 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\b(?=\s*\&lt;)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(abstract)\s+)?(new)\b(?=\s*\&lt;)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.type.constructor.tsx storage.modifier.tsx</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>meta.type.constructor.tsx keyword.control.new.tsx</string>
@@ -7399,10 +7404,15 @@
             <key>name</key>
             <string>meta.type.constructor.tsx</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\b\s*(?=\()</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(abstract)\s+)?(new)\b\s*(?=\()</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.tsx</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>keyword.control.new.tsx</string>

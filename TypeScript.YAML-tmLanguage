@@ -2443,17 +2443,19 @@ repository:
   type-fn-type-parameters:
     patterns:
     # constructor type
-    - begin: '{{startOfIdentifier}}(new)\b(?=\s*\<)'
+    - begin: '{{startOfIdentifier}}(?:(abstract)\s+)?(new)\b(?=\s*\<)'
       beginCaptures:
-        '1': { name: meta.type.constructor.ts keyword.control.new.ts }
+        '1': { name: meta.type.constructor.ts storage.modifier.ts } # captures keyword (abstract)
+        '2': { name: meta.type.constructor.ts keyword.control.new.ts } # captures keyword (new)
       end: (?<=>)
       patterns:
       - include: '#comment'
       - include: '#type-parameters'
     - name: meta.type.constructor.ts
-      begin: '{{startOfIdentifier}}(new)\b\s*(?=\()'
+      begin: '{{startOfIdentifier}}(?:(abstract)\s+)?(new)\b\s*(?=\()'
       beginCaptures:
-        '1': { name: keyword.control.new.ts }
+        '1': { name: storage.modifier.ts } # captures keyword (abstract)
+        '2': { name: keyword.control.new.ts } # captures keyword (new)
       end: (?<=\))
       patterns:
       - include: '#function-parameters'
