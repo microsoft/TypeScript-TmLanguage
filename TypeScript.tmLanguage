@@ -7424,10 +7424,15 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\b(?=\s*\&lt;)</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(abstract)\s+)?(new)\b(?=\s*\&lt;)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>meta.type.constructor.ts storage.modifier.ts</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>meta.type.constructor.ts keyword.control.new.ts</string>
@@ -7451,10 +7456,15 @@
             <key>name</key>
             <string>meta.type.constructor.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(new)\b\s*(?=\()</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(abstract)\s+)?(new)\b\s*(?=\()</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>keyword.control.new.ts</string>
