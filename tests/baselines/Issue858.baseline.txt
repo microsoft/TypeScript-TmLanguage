@@ -1,0 +1,394 @@
+original file
+-----------------------------------
+class Foo {
+    bar(): typeof Baz {
+        if (true) {
+            console.log('Hello World')
+        }
+        return
+    }
+}
+class X {
+    constructor() {
+        foo(false ? typeof defaultValue : undefined);
+    }
+    public foo() { }
+}
+let c: typeof a & [boolean][];
+type Foo = { [K in keyof typeof foo & keyof typeof bar]: 1 };
+const foo = {
+    get bar(): typeof foo['leet'] {
+        return this.leet;
+    },
+    leet: 1
+};
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Foo {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts punctuation.definition.block.ts
+>    bar(): typeof Baz {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+            ^^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.expression.typeof.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                   ^^^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.return.type.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        if (true) {
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.conditional.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+             ^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.boolean.true.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>            console.log('Hello World')
+ ^^^^^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+             ^^^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.function-call.ts support.class.console.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.function-call.ts punctuation.accessor.ts
+                     ^^^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.function-call.ts support.function.console.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                          ^^^^^^^^^^^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts meta.brace.round.ts
+>        }
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>        return
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>class X {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>    constructor() {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.type.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        foo(false ? typeof defaultValue : undefined);
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+             ^^^^^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.boolean.false.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.ternary.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                     ^^^^^^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.expression.typeof.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                            ^^^^^^^^^^^^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts variable.other.readwrite.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                         ^
+                                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts keyword.operator.ternary.ts
+                                          ^
+                                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                                           ^^^^^^^^^
+                                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts constant.language.undefined.ts
+                                                    ^
+                                                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.brace.round.ts
+                                                     ^
+                                                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    public foo() { }
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts
+            ^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>let c: typeof a & [boolean][];
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+        ^^^^^^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.expression.typeof.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                    ^^^^^^^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts support.type.primitive.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                            ^
+                            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                             ^
+                             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts meta.type.tuple.ts meta.brace.square.ts
+                              ^
+                              source.ts punctuation.terminator.statement.ts
+>type Foo = { [K in keyof typeof foo & keyof typeof bar]: 1 };
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^
+          source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.type.declaration.ts
+            ^
+            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+             ^
+             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+               ^
+               source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                 ^^
+                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.in.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                    ^^^^^
+                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                          ^^^^^^
+                          source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.typeof.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                                 ^^^
+                                 source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts variable.other.readwrite.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.type.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                                       ^^^^^
+                                       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.keyof.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                                             ^^^^^^
+                                             source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts keyword.operator.expression.typeof.ts
+                                                   ^
+                                                   source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts
+                                                    ^^^
+                                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts variable.other.readwrite.ts
+                                                       ^
+                                                       source.ts meta.type.declaration.ts meta.object.type.ts meta.indexer.mappedtype.declaration.ts meta.brace.square.ts
+                                                        ^
+                                                        source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                                         ^
+                                                         source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                                          ^
+                                                          source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts constant.numeric.decimal.ts
+                                                           ^
+                                                           source.ts meta.type.declaration.ts meta.object.type.ts meta.type.annotation.ts
+                                                            ^
+                                                            source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+                                                             ^
+                                                             source.ts punctuation.terminator.statement.ts
+>const foo = {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+>    get bar(): typeof foo['leet'] {
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts storage.type.property.ts
+        ^
+        source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts
+         ^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+            ^
+            source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+             ^
+             source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+              ^
+              source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts
+                ^^^^^^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.expression.typeof.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts
+                       ^^^
+                       source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts meta.array.literal.ts meta.brace.square.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                            ^^^^
+                            source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts meta.array.literal.ts string.quoted.single.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts meta.array.literal.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts meta.array.literal.ts meta.brace.square.ts
+                                  ^
+                                  source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts
+                                   ^
+                                   source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        return this.leet;
+ ^^^^^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts keyword.control.flow.ts
+               ^
+               source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+                ^^^^
+                source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts variable.language.this.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.accessor.ts
+                     ^^^^
+                     source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts variable.other.property.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>    },
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.separator.comma.ts
+>    leet: 1
+ ^^^^
+ source.ts meta.var.expr.ts meta.objectliteral.ts
+     ^^^^
+     source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts
+           ^
+           source.ts meta.var.expr.ts meta.objectliteral.ts meta.object.member.ts constant.numeric.decimal.ts
+>};
+ ^
+ source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
