@@ -1,0 +1,44 @@
+original file
+-----------------------------------
+class Foo {
+    override bar() { }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class Foo {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^^^
+       source.ts meta.class.ts entity.name.type.class.ts
+          ^
+          source.ts meta.class.ts
+           ^
+           source.ts meta.class.ts punctuation.definition.block.ts
+>    override bar() { }
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts
+              ^^^
+              source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

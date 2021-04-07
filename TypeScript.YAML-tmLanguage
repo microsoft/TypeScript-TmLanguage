@@ -531,11 +531,11 @@ repository:
   # as optional operator only if it is not followed by assignment or type annotation
   parameter-name:
     patterns:
-    - match: '{{startOfIdentifier}}(public|protected|private|readonly)\s+(?=(public|protected|private|readonly)\s+)'
+    - match: '{{startOfIdentifier}}(override|public|protected|private|readonly)\s+(?=(override|public|protected|private|readonly)\s+)'
       captures:
         '1': { name: storage.modifier.ts }
     - match: |-
-        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?={{functionLikeAssignmentOrType}})
+        (?x)(?:{{startOfIdentifier}}(override|public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?={{functionLikeAssignmentOrType}})
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
@@ -543,7 +543,7 @@ repository:
         '4': { name: entity.name.function.ts }
         '5': { name: keyword.operator.optional.ts }
     - match: |-
-        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)
+        (?x)(?:{{startOfIdentifier}}(override|public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
@@ -722,38 +722,41 @@ repository:
     patterns:
     # constructor signature
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?\s*\b(constructor)\b(?!:){{endOfIdentifier}}'
+      begin: '(?x){{startOfIdentifier}}(?:\b(override)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?\s*\b(constructor)\b(?!:){{endOfIdentifier}}'
       beginCaptures:
-        '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
-        '2': { name: storage.modifier.ts } # captures keyword (abstract)
-        '3': { name: storage.modifier.async.ts } # captures keyword (async)
-        '4': { name: storage.type.ts } # captures keyword (constructor)
+        '1': { name: storage.modifier.ts } # captures keyword (override)
+        '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+        '3': { name: storage.modifier.ts } # captures keyword (abstract)
+        '4': { name: storage.modifier.async.ts } # captures keyword (async)
+        '5': { name: storage.type.ts } # captures keyword (constructor)
       end: (?=\}|;|,|$)|(?<=\})
       patterns:
       - include: '#method-declaration-name'
       - include: '#function-body'
     # new or call signature
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\s*\b(new)\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?)(?=\s*({{typeParameters}})?[\(])'
+      begin: '(?x){{startOfIdentifier}}(?:\b(override)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:(?:\s*\b(new)\b(?!:){{endOfIdentifier}})|(?:(\*)\s*)?)(?=\s*({{typeParameters}})?[\(])'
       beginCaptures:
-        '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
-        '2': { name: storage.modifier.ts } # captures keyword (abstract)
-        '3': { name: storage.modifier.async.ts } # captures keyword (async)
-        '4': { name: keyword.operator.new.ts } # captures keyword (new)
-        '5': { name: keyword.generator.asterisk.ts } # captures keyword (*)
+        '1': { name: storage.modifier.ts } # captures keyword (override)
+        '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+        '3': { name: storage.modifier.ts } # captures keyword (abstract)
+        '4': { name: storage.modifier.async.ts } # captures keyword (async)
+        '5': { name: keyword.operator.new.ts } # captures keyword (new)
+        '6': { name: keyword.generator.asterisk.ts } # captures keyword (*)
       end: (?=\}|;|,|$)|(?<=\})
       patterns:
       - include: '#method-declaration-name'
       - include: '#function-body'
     # method, accessor
     - name: meta.method.declaration.ts
-      begin: '(?x){{startOfIdentifier}}(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*({{typeParameters}})?[\(])'
+      begin: '(?x){{startOfIdentifier}}(?:\b(override)\s+)?(?:\b(public|private|protected)\s+)?(?:\b(abstract)\s+)?(?:\b(async)\s+)?(?:\b(get|set)\s+)?(?:(\*)\s*)?(?=\s*({{propertyName}}\s*(\??))\s*({{typeParameters}})?[\(])'
       beginCaptures:
-        '1': { name: storage.modifier.ts } # captures keyword (public or private or protected)
-        '2': { name: storage.modifier.ts } # captures keyword (abstract)
-        '3': { name: storage.modifier.async.ts } # captures keyword (async)
-        '4': { name: storage.type.property.ts } # captures keyword (get|set)
-        '5': { name: keyword.generator.asterisk.ts } # captures keyword (*)
+        '1': { name: storage.modifier.ts } # captures keyword (override)
+        '2': { name: storage.modifier.ts } # captures keyword (public or private or protected)
+        '3': { name: storage.modifier.ts } # captures keyword (abstract)
+        '4': { name: storage.modifier.async.ts } # captures keyword (async)
+        '5': { name: storage.type.property.ts } # captures keyword (get|set)
+        '6': { name: keyword.generator.asterisk.ts } # captures keyword (*)
       end: (?=\}|;|,|$)|(?<=\})
       patterns:
       - include: '#method-declaration-name'
@@ -997,7 +1000,7 @@ repository:
 
   access-modifier:
     name: storage.modifier.ts
-    match: '{{startOfIdentifier}}(abstract|public|protected|private|readonly|static|declare){{endOfIdentifier}}'
+    match: '{{startOfIdentifier}}(abstract|declare|override|public|protected|private|readonly|static){{endOfIdentifier}}'
 
   property-accessor:
     name: storage.type.property.ts
@@ -1581,11 +1584,11 @@ repository:
     - include: '#string'
     - include: '#decorator'
     - include: '#destructuring-parameter'
-    - match: '{{startOfIdentifier}}(public|protected|private|readonly)\s+(?=(public|protected|private|readonly)\s+)'
+    - match: '{{startOfIdentifier}}(override|public|protected|private|readonly)\s+(?=(override|public|protected|private|readonly)\s+)'
       captures:
         '1': { name: storage.modifier.ts }
     - match: |-
-        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?={{functionLikeAssignmentOrType}})
+        (?x)(?:{{startOfIdentifier}}(override|public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?={{functionLikeAssignmentOrType}})
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
@@ -1593,7 +1596,7 @@ repository:
         '4': { name: entity.name.function.ts }
         '5': { name: keyword.operator.optional.ts }
     - match: |-
-        (?x)(?:{{startOfIdentifier}}(public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?=\s*[:,]|$)
+        (?x)(?:{{startOfIdentifier}}(override|public|private|protected|readonly)\s+)?(?:(\.\.\.)\s*)?(?<!=|:){{startOfIdentifier}}(?:(this)|({{identifier}})){{endOfIdentifier}}\s*(\??)(?=\s*[:,]|$)
       captures:
         '1': { name: storage.modifier.ts }
         '2': { name: keyword.operator.rest.ts }
