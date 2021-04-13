@@ -1,0 +1,134 @@
+original file
+-----------------------------------
+const a = [1]
+type Test<A> = {
+    2: 2;
+    3: 3;
+}[A extends typeof a ? 2 : 3];
+const foo = 30;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const a = [1]
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts meta.array.literal.ts
+           ^
+           source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+            ^
+            source.ts meta.var.expr.ts meta.array.literal.ts constant.numeric.decimal.ts
+             ^
+             source.ts meta.var.expr.ts meta.array.literal.ts meta.brace.square.ts
+>type Test<A> = {
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+          ^
+          source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+           ^
+           source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+             ^
+             source.ts meta.type.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.type.declaration.ts
+                ^
+                source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+>    2: 2;
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+        ^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts constant.numeric.decimal.ts
+         ^
+         source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+>    3: 3;
+ ^^^^
+ source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts
+     ^
+     source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts constant.numeric.decimal.ts
+      ^
+      source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+       ^
+       source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+        ^
+        source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts constant.numeric.decimal.ts
+         ^
+         source.ts meta.type.declaration.ts meta.object.type.ts punctuation.terminator.statement.ts
+>}[A extends typeof a ? 2 : 3];
+ ^
+ source.ts meta.type.declaration.ts meta.object.type.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+   ^
+   source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+    ^
+    source.ts meta.type.declaration.ts meta.type.tuple.ts
+     ^^^^^^^
+     source.ts meta.type.declaration.ts meta.type.tuple.ts storage.modifier.ts
+            ^
+            source.ts meta.type.declaration.ts meta.type.tuple.ts
+             ^^^^^^
+             source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.expression.typeof.ts
+                   ^
+                   source.ts meta.type.declaration.ts meta.type.tuple.ts
+                    ^
+                    source.ts meta.type.declaration.ts meta.type.tuple.ts variable.other.readwrite.ts
+                     ^
+                     source.ts meta.type.declaration.ts meta.type.tuple.ts
+                      ^
+                      source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.ternary.ts
+                       ^
+                       source.ts meta.type.declaration.ts meta.type.tuple.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.tuple.ts constant.numeric.decimal.ts
+                         ^
+                         source.ts meta.type.declaration.ts meta.type.tuple.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.type.tuple.ts keyword.operator.ternary.ts
+                           ^
+                           source.ts meta.type.declaration.ts meta.type.tuple.ts
+                            ^
+                            source.ts meta.type.declaration.ts meta.type.tuple.ts constant.numeric.decimal.ts
+                             ^
+                             source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                              ^
+                              source.ts punctuation.terminator.statement.ts
+>const foo = 30;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+          ^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+           ^
+           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^
+             source.ts meta.var.expr.ts constant.numeric.decimal.ts
+               ^
+               source.ts punctuation.terminator.statement.ts

@@ -1743,7 +1743,7 @@ repository:
     begin: '{{startOfIdentifier}}typeof{{endOfIdentifier}}'
     beginCaptures:
       '0': { name: keyword.operator.expression.typeof.ts }
-    end: (?=[,);}\]=>:&|{]|$|{{endOfStatement}})
+    end: (?=[,);}\]=>:&|{\?]|$|{{endOfStatement}})
     patterns:
     - include: '#expression'
 
