@@ -1205,21 +1205,25 @@ repository:
     patterns:
     - include: '#comment'
     #(default|*|name) as alias
-    - match: '{{startOfIdentifier}}(?:(\bdefault)|(\*)|(\b{{identifier}}))\s+(as)\s+(?:(default{{endOfIdentifier}})|({{identifier}}))'
+    - match: '{{startOfIdentifier}}(?:(?:(\btype)\s+)?(?:(\bdefault)|(\*)|(\b{{identifier}})))\s+(as)\s+(?:(default{{endOfIdentifier}})|({{identifier}}))'
       captures:
-        '1': { name: keyword.control.default.ts }
-        '2': { name: constant.language.import-export-all.ts }
-        '3': { name: variable.other.readwrite.ts }
-        '4': { name: keyword.control.as.ts }
-        '5': { name: keyword.control.default.ts }
-        '6': { name: variable.other.readwrite.alias.ts }
+        '1': { name: keyword.control.type.ts }
+        '2': { name: keyword.control.default.ts }
+        '3': { name: constant.language.import-export-all.ts }
+        '4': { name: variable.other.readwrite.ts }
+        '5': { name: keyword.control.as.ts }
+        '6': { name: keyword.control.default.ts }
+        '7': { name: variable.other.readwrite.alias.ts }
     - include: '#punctuation-comma'
     - name: constant.language.import-export-all.ts
       match: \*
     - name: keyword.control.default.ts
       match: \b(default)\b
-    - name: variable.other.readwrite.alias.ts
-      match: ({{identifier}})
+    - match: '(?:(\btype)\s+)?({{identifier}})'
+      captures:
+        '1': { name: keyword.control.type.ts }
+        '2': { name: variable.other.readwrite.alias.ts }
+      
 
   #control statements and loops
   switch-statement:
