@@ -6,6 +6,14 @@ import type * as types from "mod";
 import type from "mod";
 import type = require("mod");
 import type T = require("mod");
+import { type X } from "mod";
+import { X, type Y} from "mod";
+import type { type X } from "mod"; // grammar error
+import { type as foo } from "mod"; // not type-only
+import { type type } from "mod";
+import { type as as as } from "mod";
+import { type type as as } from "mod";
+import { type type as type } from "mod";
 
 -----------------------------------
 
@@ -114,11 +122,11 @@ Grammar: TypeScript.tmLanguage
        ^
        source.ts meta.import.ts
         ^^^^
-        source.ts meta.import.ts variable.other.readwrite.alias.ts
+        source.ts meta.import.ts keyword.control.type.ts
             ^
             source.ts meta.import.ts
              ^^^^
-             source.ts meta.import.ts keyword.control.from.ts
+             source.ts meta.import.ts variable.other.readwrite.alias.ts
                  ^
                  source.ts meta.import.ts
                   ^
@@ -127,66 +135,366 @@ Grammar: TypeScript.tmLanguage
                    source.ts meta.import.ts string.quoted.double.ts
                       ^
                       source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                       ^
-                       source.ts punctuation.terminator.statement.ts
+                       ^^
+                       source.ts meta.import.ts
 >import type = require("mod");
  ^^^^^^
- source.ts meta.import-equals.external.ts keyword.control.import.ts
+ source.ts meta.import.ts variable.other.readwrite.alias.ts
        ^
-       source.ts meta.import-equals.external.ts
+       source.ts meta.import.ts
         ^^^^
-        source.ts meta.import-equals.external.ts variable.other.readwrite.alias.ts
-            ^
-            source.ts meta.import-equals.external.ts
-             ^
-             source.ts meta.import-equals.external.ts keyword.operator.assignment.ts
-              ^
-              source.ts meta.import-equals.external.ts
+        source.ts meta.import.ts variable.other.readwrite.alias.ts
+            ^^^
+            source.ts meta.import.ts
                ^^^^^^^
-               source.ts meta.import-equals.external.ts keyword.control.require.ts
+               source.ts meta.import.ts variable.other.readwrite.alias.ts
                       ^
-                      source.ts meta.import-equals.external.ts meta.brace.round.ts
+                      source.ts meta.import.ts
                        ^
-                       source.ts meta.import-equals.external.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                       source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
                         ^^^
-                        source.ts meta.import-equals.external.ts string.quoted.double.ts
+                        source.ts meta.import.ts string.quoted.double.ts
                            ^
-                           source.ts meta.import-equals.external.ts string.quoted.double.ts punctuation.definition.string.end.ts
-                            ^
-                            source.ts meta.import-equals.external.ts meta.brace.round.ts
-                             ^
-                             source.ts punctuation.terminator.statement.ts
+                           source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                            ^^^
+                            source.ts meta.import.ts
 >import type T = require("mod");
  ^^^^^^
- source.ts meta.import-equals.external.ts keyword.control.import.ts
+ source.ts meta.import.ts variable.other.readwrite.alias.ts
        ^
-       source.ts meta.import-equals.external.ts
+       source.ts meta.import.ts
         ^^^^
-        source.ts meta.import-equals.external.ts keyword.control.type.ts
+        source.ts meta.import.ts keyword.control.type.ts
             ^
-            source.ts meta.import-equals.external.ts
+            source.ts meta.import.ts
              ^
-             source.ts meta.import-equals.external.ts variable.other.readwrite.alias.ts
-              ^
-              source.ts meta.import-equals.external.ts
-               ^
-               source.ts meta.import-equals.external.ts keyword.operator.assignment.ts
-                ^
-                source.ts meta.import-equals.external.ts
+             source.ts meta.import.ts variable.other.readwrite.alias.ts
+              ^^^
+              source.ts meta.import.ts
                  ^^^^^^^
-                 source.ts meta.import-equals.external.ts keyword.control.require.ts
+                 source.ts meta.import.ts variable.other.readwrite.alias.ts
                         ^
-                        source.ts meta.import-equals.external.ts meta.brace.round.ts
+                        source.ts meta.import.ts
                          ^
-                         source.ts meta.import-equals.external.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                         source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
                           ^^^
-                          source.ts meta.import-equals.external.ts string.quoted.double.ts
+                          source.ts meta.import.ts string.quoted.double.ts
                              ^
-                             source.ts meta.import-equals.external.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                             source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                              ^^^
+                              source.ts meta.import.ts
+>import { type X } from "mod";
+ ^^^^^^
+ source.ts meta.import.ts variable.other.readwrite.alias.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^
+          source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^
+               source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.import.ts meta.block.ts
+                 ^
+                 source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.import.ts
+                   ^^^^
+                   source.ts meta.import.ts keyword.control.from.ts
+                       ^
+                       source.ts meta.import.ts
+                        ^
+                        source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                         ^^^
+                         source.ts meta.import.ts string.quoted.double.ts
+                            ^
+                            source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                             ^
+                             source.ts punctuation.terminator.statement.ts
+>import { X, type Y} from "mod";
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^
+          source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+           ^
+           source.ts meta.import.ts meta.block.ts punctuation.separator.comma.ts
+            ^
+            source.ts meta.import.ts meta.block.ts
+             ^^^^
+             source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+                 ^
+                 source.ts meta.import.ts meta.block.ts
+                  ^
+                  source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                    ^
+                    source.ts meta.import.ts
+                     ^^^^
+                     source.ts meta.import.ts keyword.control.from.ts
+                         ^
+                         source.ts meta.import.ts
+                          ^
+                          source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                           ^^^
+                           source.ts meta.import.ts string.quoted.double.ts
                               ^
-                              source.ts meta.import-equals.external.ts meta.brace.round.ts
+                              source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
                                ^
                                source.ts punctuation.terminator.statement.ts
+>import type { type X } from "mod"; // grammar error
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^^^^
+        source.ts meta.import.ts keyword.control.type.ts
+            ^
+            source.ts meta.import.ts
+             ^
+             source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^^^^
+               source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts
+                    ^
+                    source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                     ^
+                     source.ts meta.import.ts meta.block.ts
+                      ^
+                      source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.import.ts
+                        ^^^^
+                        source.ts meta.import.ts keyword.control.from.ts
+                            ^
+                            source.ts meta.import.ts
+                             ^
+                             source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^
+                              source.ts meta.import.ts string.quoted.double.ts
+                                 ^
+                                 source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                  ^
+                                  source.ts punctuation.terminator.statement.ts
+                                   ^
+                                   source.ts
+                                    ^^
+                                    source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                      ^^^^^^^^^^^^^^
+                                      source.ts comment.line.double-slash.ts
+>import { type as foo } from "mod"; // not type-only
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^
+          source.ts meta.import.ts meta.block.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^^
+               source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+                 ^
+                 source.ts meta.import.ts meta.block.ts
+                  ^^^
+                  source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                     ^
+                     source.ts meta.import.ts meta.block.ts
+                      ^
+                      source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.import.ts
+                        ^^^^
+                        source.ts meta.import.ts keyword.control.from.ts
+                            ^
+                            source.ts meta.import.ts
+                             ^
+                             source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^
+                              source.ts meta.import.ts string.quoted.double.ts
+                                 ^
+                                 source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                  ^
+                                  source.ts punctuation.terminator.statement.ts
+                                   ^
+                                   source.ts
+                                    ^^
+                                    source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                                      ^^^^^^^^^^^^^^
+                                      source.ts comment.line.double-slash.ts
+>import { type type } from "mod";
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^
+          source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^^^^
+               source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts
+                    ^
+                    source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                     ^
+                     source.ts meta.import.ts
+                      ^^^^
+                      source.ts meta.import.ts keyword.control.from.ts
+                          ^
+                          source.ts meta.import.ts
+                           ^
+                           source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                            ^^^
+                            source.ts meta.import.ts string.quoted.double.ts
+                               ^
+                               source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+>import { type as as as } from "mod";
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^
+          source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^^
+               source.ts meta.import.ts meta.block.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.import.ts meta.block.ts
+                  ^^
+                  source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+                    ^
+                    source.ts meta.import.ts meta.block.ts
+                     ^^
+                     source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                       ^
+                       source.ts meta.import.ts meta.block.ts
+                        ^
+                        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                         ^
+                         source.ts meta.import.ts
+                          ^^^^
+                          source.ts meta.import.ts keyword.control.from.ts
+                              ^
+                              source.ts meta.import.ts
+                               ^
+                               source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                ^^^
+                                source.ts meta.import.ts string.quoted.double.ts
+                                   ^
+                                   source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+>import { type type as as } from "mod";
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^
+          source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^^^^
+               source.ts meta.import.ts meta.block.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts
+                    ^^
+                    source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+                      ^
+                      source.ts meta.import.ts meta.block.ts
+                       ^^
+                       source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                         ^
+                         source.ts meta.import.ts meta.block.ts
+                          ^
+                          source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                           ^
+                           source.ts meta.import.ts
+                            ^^^^
+                            source.ts meta.import.ts keyword.control.from.ts
+                                ^
+                                source.ts meta.import.ts
+                                 ^
+                                 source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                  ^^^
+                                  source.ts meta.import.ts string.quoted.double.ts
+                                     ^
+                                     source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                      ^
+                                      source.ts punctuation.terminator.statement.ts
+>import { type type as type } from "mod";
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^
+          source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^^^^
+               source.ts meta.import.ts meta.block.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts
+                    ^^
+                    source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+                      ^
+                      source.ts meta.import.ts meta.block.ts
+                       ^^^^
+                       source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                           ^
+                           source.ts meta.import.ts meta.block.ts
+                            ^
+                            source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                             ^
+                             source.ts meta.import.ts
+                              ^^^^
+                              source.ts meta.import.ts keyword.control.from.ts
+                                  ^
+                                  source.ts meta.import.ts
+                                   ^
+                                   source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                    ^^^
+                                    source.ts meta.import.ts string.quoted.double.ts
+                                       ^
+                                       source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                        ^
+                                        source.ts punctuation.terminator.statement.ts
 >
  ^
  source.ts
