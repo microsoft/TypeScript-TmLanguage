@@ -3028,6 +3028,17 @@ repository:
           # patterns:
           # - name: punctuation.delimiter.object.comma.jsdoc
           #   match: ','
+    # @template {Constraint} Foo
+    - begin: (?x)((@)template)\s+(?={)
+      beginCaptures:
+        '1': { name: storage.type.class.jsdoc }
+        '2': { name: punctuation.definition.block.tag.jsdoc }
+      end: (?=\s|\*/|[^{}\[\]A-Za-z_$])
+      patterns:
+      - include: '#jsdoctype'
+      - name: variable.other.jsdoc
+        # One valid identifier
+        match: ([A-Za-z_$][\w$.\[\]]*)
     # Tags followed by an identifier token
     # -  @<tag> identifier
     - match: |-

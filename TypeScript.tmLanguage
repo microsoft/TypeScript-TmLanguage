@@ -9097,6 +9097,38 @@
             </dict>
           </dict>
           <dict>
+            <key>begin</key>
+            <string>(?x)((@)template)\s+(?={)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.class.jsdoc</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.block.tag.jsdoc</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\s|\*/|[^{}\[\]A-Za-z_$])</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#jsdoctype</string>
+              </dict>
+              <dict>
+                <key>name</key>
+                <string>variable.other.jsdoc</string>
+                <key>match</key>
+                <string>([A-Za-z_$][\w$.\[\]]*)</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
             <key>match</key>
             <string>(?x)
 (
