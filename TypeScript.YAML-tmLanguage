@@ -2332,8 +2332,8 @@ repository:
     - include: '#type-parameters'
     - include: '#type-tuple'
     - include: '#type-object'
-    - include: '#type-conditional'
     - include: '#type-operators'
+    - include: '#type-conditional'
     - include: '#type-fn-type-parameters'
     - include: '#type-paren-or-function-parameters'
     - include: '#type-function-return-type'
@@ -2519,6 +2519,7 @@ repository:
   type-operators:
     patterns:
     - include: '#typeof-operator'
+    - include: '#type-infer'
     # Handle the object types followed by | or & operator as { can be used as end of Type in many places and this avoids tripping that
     - begin: ([&|])(?=\s*\{)
       beginCaptures:
@@ -2536,10 +2537,17 @@ repository:
       match: '{{startOfIdentifier}}keyof{{endOfIdentifier}}'
     - name: keyword.operator.ternary.ts
       match: (\?|\:)
-    - name: keyword.operator.expression.infer.ts
-      match: '{{startOfIdentifier}}infer(?=\s+[_$[:alpha:]])'
     - name: keyword.operator.expression.import.ts
       match: '{{startOfIdentifier}}import(?=\s*\()'
+
+  type-infer:
+    patterns:
+    - match: '{{startOfIdentifier}}(infer)\s+({{identifier}}){{endOfIdentifier}}(?:\s+(extends){{endOfIdentifier}})?'
+      name: meta.type.infer.ts
+      captures:
+        '1': { name: keyword.operator.expression.infer.ts }
+        '2': { name: entity.name.type.ts }
+        '3': { name: keyword.operator.expression.extends.ts }
 
   type-predicate-operator:
     patterns:

@@ -4,6 +4,8 @@ type ReturnType<T extends Function> = T extends ((...args: any[]) => infer R) | 
 type ArgumentType<T extends (x: any) => any> = T extends (a: infer A) => any ? A : any;
 type X1<T extends { x: any, y: any }> = T extends { x: infer X, y: infer Y } ? [X, Y] : any;
 type B1<S> = S extends A1<infer T, infer U> ? [T, U] : never;
+type C1<S> = S extends A1<infer T extends number, infer U extends string> ? [T, U] : never;
+
 -----------------------------------
 
 Grammar: TypeScript.tmLanguage
@@ -70,11 +72,11 @@ Grammar: TypeScript.tmLanguage
                                                                      ^
                                                                      source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts
                                                                       ^^^^^
-                                                                      source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts keyword.operator.expression.infer.ts
+                                                                      source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts meta.type.infer.ts keyword.operator.expression.infer.ts
                                                                            ^
-                                                                           source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts
+                                                                           source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts meta.type.infer.ts
                                                                             ^
-                                                                            source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts entity.name.type.ts
+                                                                            source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts meta.type.infer.ts entity.name.type.ts
                                                                              ^
                                                                              source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
                                                                               ^
@@ -114,11 +116,11 @@ Grammar: TypeScript.tmLanguage
                                                                                                          ^
                                                                                                          source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts
                                                                                                           ^^^^^
-                                                                                                          source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts keyword.operator.expression.infer.ts
+                                                                                                          source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts meta.type.infer.ts keyword.operator.expression.infer.ts
                                                                                                                ^
-                                                                                                               source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts
+                                                                                                               source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts meta.type.infer.ts
                                                                                                                 ^
-                                                                                                                source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts entity.name.type.ts
+                                                                                                                source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.type.function.return.ts meta.type.infer.ts entity.name.type.ts
                                                                                                                  ^
                                                                                                                  source.ts meta.type.declaration.ts meta.type.paren.cover.ts meta.brace.round.ts
                                                                                                                   ^
@@ -201,11 +203,11 @@ Grammar: TypeScript.tmLanguage
                                                              ^
                                                              source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts
                                                               ^^^^^
-                                                              source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.expression.infer.ts
+                                                              source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.infer.ts keyword.operator.expression.infer.ts
                                                                    ^
-                                                                   source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts
+                                                                   source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.infer.ts
                                                                     ^
-                                                                    source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                                                    source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts meta.type.infer.ts entity.name.type.ts
                                                                      ^
                                                                      source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
                                                                       ^
@@ -306,11 +308,11 @@ Grammar: TypeScript.tmLanguage
                                                        ^
                                                        source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
                                                         ^^^^^
-                                                        source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.expression.infer.ts
+                                                        source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.infer.ts keyword.operator.expression.infer.ts
                                                              ^
-                                                             source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                             source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.infer.ts
                                                               ^
-                                                              source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                              source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.infer.ts entity.name.type.ts
                                                                ^
                                                                source.ts meta.type.declaration.ts meta.object.type.ts punctuation.separator.comma.ts
                                                                 ^
@@ -322,11 +324,11 @@ Grammar: TypeScript.tmLanguage
                                                                    ^
                                                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
                                                                     ^^^^^
-                                                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.expression.infer.ts
+                                                                    source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.infer.ts keyword.operator.expression.infer.ts
                                                                          ^
-                                                                         source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                                                                         source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.infer.ts
                                                                           ^
-                                                                          source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts entity.name.type.ts
+                                                                          source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts meta.type.infer.ts entity.name.type.ts
                                                                            ^
                                                                            source.ts meta.type.declaration.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
                                                                             ^
@@ -391,21 +393,21 @@ Grammar: TypeScript.tmLanguage
                           ^
                           source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
                            ^^^^^
-                           source.ts meta.type.declaration.ts meta.type.parameters.ts keyword.operator.expression.infer.ts
+                           source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts keyword.operator.expression.infer.ts
                                 ^
-                                source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts
                                  ^
-                                 source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                                 source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts entity.name.type.ts
                                   ^
                                   source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
                                    ^
                                    source.ts meta.type.declaration.ts meta.type.parameters.ts
                                     ^^^^^
-                                    source.ts meta.type.declaration.ts meta.type.parameters.ts keyword.operator.expression.infer.ts
+                                    source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts keyword.operator.expression.infer.ts
                                          ^
-                                         source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                         source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts
                                           ^
-                                          source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                                          source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts entity.name.type.ts
                                            ^
                                            source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
                                             ^
@@ -436,3 +438,99 @@ Grammar: TypeScript.tmLanguage
                                                         source.ts meta.type.declaration.ts support.type.primitive.ts
                                                              ^
                                                              source.ts punctuation.terminator.statement.ts
+>type C1<S> = S extends A1<infer T extends number, infer U extends string> ? [T, U] : never;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+        ^
+        source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+         ^
+         source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+          ^
+          source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+           ^
+           source.ts meta.type.declaration.ts
+            ^
+            source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.type.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts entity.name.type.ts
+               ^
+               source.ts meta.type.declaration.ts
+                ^^^^^^^
+                source.ts meta.type.declaration.ts storage.modifier.ts
+                       ^
+                       source.ts meta.type.declaration.ts
+                        ^^
+                        source.ts meta.type.declaration.ts entity.name.type.ts
+                          ^
+                          source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                           ^^^^^
+                           source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts keyword.operator.expression.infer.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts entity.name.type.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts
+                                   ^^^^^^^
+                                   source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts keyword.operator.expression.extends.ts
+                                          ^
+                                          source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                           ^^^^^^
+                                           source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                                                 ^
+                                                 source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.separator.comma.ts
+                                                  ^
+                                                  source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                                   ^^^^^
+                                                   source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts keyword.operator.expression.infer.ts
+                                                        ^
+                                                        source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts
+                                                         ^
+                                                         source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts entity.name.type.ts
+                                                          ^
+                                                          source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts
+                                                           ^^^^^^^
+                                                           source.ts meta.type.declaration.ts meta.type.parameters.ts meta.type.infer.ts keyword.operator.expression.extends.ts
+                                                                  ^
+                                                                  source.ts meta.type.declaration.ts meta.type.parameters.ts
+                                                                   ^^^^^^
+                                                                   source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.primitive.ts
+                                                                         ^
+                                                                         source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                          ^
+                                                                          source.ts meta.type.declaration.ts
+                                                                           ^
+                                                                           source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                                                            ^
+                                                                            source.ts meta.type.declaration.ts
+                                                                             ^
+                                                                             source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                              ^
+                                                                              source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+                                                                               ^
+                                                                               source.ts meta.type.declaration.ts meta.type.tuple.ts punctuation.separator.comma.ts
+                                                                                ^
+                                                                                source.ts meta.type.declaration.ts meta.type.tuple.ts
+                                                                                 ^
+                                                                                 source.ts meta.type.declaration.ts meta.type.tuple.ts entity.name.type.ts
+                                                                                  ^
+                                                                                  source.ts meta.type.declaration.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                                   ^
+                                                                                   source.ts meta.type.declaration.ts
+                                                                                    ^
+                                                                                    source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                                                                     ^
+                                                                                     source.ts meta.type.declaration.ts
+                                                                                      ^^^^^
+                                                                                      source.ts meta.type.declaration.ts support.type.primitive.ts
+                                                                                           ^
+                                                                                           source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts

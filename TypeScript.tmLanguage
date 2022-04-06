@@ -7076,11 +7076,11 @@
           </dict>
           <dict>
             <key>include</key>
-            <string>#type-conditional</string>
+            <string>#type-operators</string>
           </dict>
           <dict>
             <key>include</key>
-            <string>#type-operators</string>
+            <string>#type-conditional</string>
           </dict>
           <dict>
             <key>include</key>
@@ -7631,6 +7631,10 @@
             <string>#typeof-operator</string>
           </dict>
           <dict>
+            <key>include</key>
+            <string>#type-infer</string>
+          </dict>
+          <dict>
             <key>begin</key>
             <string>([&amp;|])(?=\s*\{)</string>
             <key>beginCaptures</key>
@@ -7679,15 +7683,39 @@
           </dict>
           <dict>
             <key>name</key>
-            <string>keyword.operator.expression.infer.ts</string>
-            <key>match</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))infer(?=\s+[_$[:alpha:]])</string>
-          </dict>
-          <dict>
-            <key>name</key>
             <string>keyword.operator.expression.import.ts</string>
             <key>match</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))import(?=\s*\()</string>
+          </dict>
+        </array>
+      </dict>
+      <key>type-infer</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>match</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(infer)\s+([_$[:alpha:]][_$[:alnum:]]*)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))(?:\s+(extends)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))?</string>
+            <key>name</key>
+            <string>meta.type.infer.ts</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.expression.infer.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.type.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.expression.extends.ts</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>
