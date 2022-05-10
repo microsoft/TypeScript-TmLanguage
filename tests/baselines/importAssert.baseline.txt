@@ -1,0 +1,892 @@
+original file
+-----------------------------------
+import './0' assert { type: "json" }
+import { a, b } from './0' assert { "type": "json" }
+import * as foo from './0' assert { type: "json" }
+import { a, b } from './0' assert {}
+import { a as c, b as d } from './0' assert { a: "a", b: "b", c: "c" }
+export {} from './0' assert { type: "json" }
+export { a, b } from './0' assert { type: "json" }
+export * from './0' assert { type: "json" }
+export * as ns from './0' assert { type: "json" }
+export { a, b } from './0' assert {}
+export { a as c, b as d } from './0' assert { a: "a", b: "b", c: "c" }
+export type {} from './0' assert { type: "json" }
+export type { I } from './0' assert { type: "json" }
+import type { I } from './0'  assert { type: "json" }
+import type * as foo from './0' assert { type: "json" }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>import './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+         ^^^
+         source.ts meta.import.ts string.quoted.single.ts
+            ^
+            source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+             ^
+             source.ts meta.import.ts
+              ^^^^^^
+              source.ts meta.import.ts keyword.control.assert.ts
+                    ^
+                    source.ts meta.import.ts
+                     ^
+                     source.ts meta.import.ts punctuation.definition.block.ts
+                      ^
+                      source.ts meta.import.ts
+                       ^^^^
+                       source.ts meta.import.ts meta.object-literal.key.ts
+                           ^
+                           source.ts meta.import.ts punctuation.separator.key-value.ts
+                            ^
+                            source.ts meta.import.ts
+                             ^
+                             source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^^
+                              source.ts meta.import.ts string.quoted.double.ts
+                                  ^
+                                  source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                   ^
+                                   source.ts meta.import.ts
+                                    ^
+                                    source.ts meta.import.ts punctuation.definition.block.ts
+>import { a, b } from './0' assert { "type": "json" }
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^
+          source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+           ^
+           source.ts meta.import.ts meta.block.ts punctuation.separator.comma.ts
+            ^
+            source.ts meta.import.ts meta.block.ts
+             ^
+             source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^
+               source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.import.ts
+                 ^^^^
+                 source.ts meta.import.ts keyword.control.from.ts
+                     ^
+                     source.ts meta.import.ts
+                      ^
+                      source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                       ^^^
+                       source.ts meta.import.ts string.quoted.single.ts
+                          ^
+                          source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                           ^
+                           source.ts meta.import.ts
+                            ^^^^^^
+                            source.ts meta.import.ts keyword.control.assert.ts
+                                  ^
+                                  source.ts meta.import.ts
+                                   ^
+                                   source.ts meta.import.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.import.ts
+                                     ^
+                                     source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                      ^^^^
+                                      source.ts meta.import.ts string.quoted.double.ts
+                                          ^
+                                          source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                           ^
+                                           source.ts meta.import.ts punctuation.separator.key-value.ts
+                                            ^
+                                            source.ts meta.import.ts
+                                             ^
+                                             source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                              ^^^^
+                                              source.ts meta.import.ts string.quoted.double.ts
+                                                  ^
+                                                  source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                   ^
+                                                   source.ts meta.import.ts
+                                                    ^
+                                                    source.ts meta.import.ts punctuation.definition.block.ts
+>import * as foo from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts constant.language.import-export-all.ts
+         ^
+         source.ts meta.import.ts
+          ^^
+          source.ts meta.import.ts keyword.control.as.ts
+            ^
+            source.ts meta.import.ts
+             ^^^
+             source.ts meta.import.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.import.ts
+                 ^^^^
+                 source.ts meta.import.ts keyword.control.from.ts
+                     ^
+                     source.ts meta.import.ts
+                      ^
+                      source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                       ^^^
+                       source.ts meta.import.ts string.quoted.single.ts
+                          ^
+                          source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                           ^
+                           source.ts meta.import.ts
+                            ^^^^^^
+                            source.ts meta.import.ts keyword.control.assert.ts
+                                  ^
+                                  source.ts meta.import.ts
+                                   ^
+                                   source.ts meta.import.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.import.ts
+                                     ^^^^
+                                     source.ts meta.import.ts meta.object-literal.key.ts
+                                         ^
+                                         source.ts meta.import.ts punctuation.separator.key-value.ts
+                                          ^
+                                          source.ts meta.import.ts
+                                           ^
+                                           source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                            ^^^^
+                                            source.ts meta.import.ts string.quoted.double.ts
+                                                ^
+                                                source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                 ^
+                                                 source.ts meta.import.ts
+                                                  ^
+                                                  source.ts meta.import.ts punctuation.definition.block.ts
+>import { a, b } from './0' assert {}
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^
+          source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+           ^
+           source.ts meta.import.ts meta.block.ts punctuation.separator.comma.ts
+            ^
+            source.ts meta.import.ts meta.block.ts
+             ^
+             source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^
+               source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.import.ts
+                 ^^^^
+                 source.ts meta.import.ts keyword.control.from.ts
+                     ^
+                     source.ts meta.import.ts
+                      ^
+                      source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                       ^^^
+                       source.ts meta.import.ts string.quoted.single.ts
+                          ^
+                          source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                           ^
+                           source.ts meta.import.ts
+                            ^^^^^^
+                            source.ts meta.import.ts keyword.control.assert.ts
+                                  ^
+                                  source.ts meta.import.ts
+                                   ^
+                                   source.ts meta.import.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.import.ts punctuation.definition.block.ts
+>import { a as c, b as d } from './0' assert { a: "a", b: "b", c: "c" }
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^
+          source.ts meta.import.ts meta.block.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.import.ts meta.block.ts
+            ^^
+            source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^
+               source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.import.ts meta.block.ts punctuation.separator.comma.ts
+                 ^
+                 source.ts meta.import.ts meta.block.ts
+                  ^
+                  source.ts meta.import.ts meta.block.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts
+                    ^^
+                    source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+                      ^
+                      source.ts meta.import.ts meta.block.ts
+                       ^
+                       source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                        ^
+                        source.ts meta.import.ts meta.block.ts
+                         ^
+                         source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.import.ts
+                           ^^^^
+                           source.ts meta.import.ts keyword.control.from.ts
+                               ^
+                               source.ts meta.import.ts
+                                ^
+                                source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                 ^^^
+                                 source.ts meta.import.ts string.quoted.single.ts
+                                    ^
+                                    source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.import.ts
+                                      ^^^^^^
+                                      source.ts meta.import.ts keyword.control.assert.ts
+                                            ^
+                                            source.ts meta.import.ts
+                                             ^
+                                             source.ts meta.import.ts punctuation.definition.block.ts
+                                              ^
+                                              source.ts meta.import.ts
+                                               ^
+                                               source.ts meta.import.ts meta.object-literal.key.ts
+                                                ^
+                                                source.ts meta.import.ts punctuation.separator.key-value.ts
+                                                 ^
+                                                 source.ts meta.import.ts
+                                                  ^
+                                                  source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                   ^
+                                                   source.ts meta.import.ts string.quoted.double.ts
+                                                    ^
+                                                    source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                     ^^
+                                                     source.ts meta.import.ts
+                                                       ^
+                                                       source.ts meta.import.ts meta.object-literal.key.ts
+                                                        ^
+                                                        source.ts meta.import.ts punctuation.separator.key-value.ts
+                                                         ^
+                                                         source.ts meta.import.ts
+                                                          ^
+                                                          source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                           ^
+                                                           source.ts meta.import.ts string.quoted.double.ts
+                                                            ^
+                                                            source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                             ^^
+                                                             source.ts meta.import.ts
+                                                               ^
+                                                               source.ts meta.import.ts meta.object-literal.key.ts
+                                                                ^
+                                                                source.ts meta.import.ts punctuation.separator.key-value.ts
+                                                                 ^
+                                                                 source.ts meta.import.ts
+                                                                  ^
+                                                                  source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                                   ^
+                                                                   source.ts meta.import.ts string.quoted.double.ts
+                                                                    ^
+                                                                    source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                                     ^
+                                                                     source.ts meta.import.ts
+                                                                      ^
+                                                                      source.ts meta.import.ts punctuation.definition.block.ts
+>export {} from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.export.ts
+           ^^^^
+           source.ts meta.export.ts keyword.control.from.ts
+               ^
+               source.ts meta.export.ts
+                ^
+                source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                 ^^^
+                 source.ts meta.export.ts string.quoted.single.ts
+                    ^
+                    source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                     ^
+                     source.ts meta.export.ts
+                      ^^^^^^
+                      source.ts meta.export.ts keyword.control.assert.ts
+                            ^
+                            source.ts meta.export.ts
+                             ^
+                             source.ts meta.export.ts punctuation.definition.block.ts
+                              ^
+                              source.ts meta.export.ts
+                               ^^^^
+                               source.ts meta.export.ts meta.object-literal.key.ts
+                                   ^
+                                   source.ts meta.export.ts punctuation.separator.key-value.ts
+                                    ^
+                                    source.ts meta.export.ts
+                                     ^
+                                     source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                      ^^^^
+                                      source.ts meta.export.ts string.quoted.double.ts
+                                          ^
+                                          source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                           ^
+                                           source.ts meta.export.ts
+                                            ^
+                                            source.ts meta.export.ts punctuation.definition.block.ts
+>export { a, b } from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^
+          source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+           ^
+           source.ts meta.export.ts meta.block.ts punctuation.separator.comma.ts
+            ^
+            source.ts meta.export.ts meta.block.ts
+             ^
+             source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^
+               source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.export.ts
+                 ^^^^
+                 source.ts meta.export.ts keyword.control.from.ts
+                     ^
+                     source.ts meta.export.ts
+                      ^
+                      source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                       ^^^
+                       source.ts meta.export.ts string.quoted.single.ts
+                          ^
+                          source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                           ^
+                           source.ts meta.export.ts
+                            ^^^^^^
+                            source.ts meta.export.ts keyword.control.assert.ts
+                                  ^
+                                  source.ts meta.export.ts
+                                   ^
+                                   source.ts meta.export.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.export.ts
+                                     ^^^^
+                                     source.ts meta.export.ts meta.object-literal.key.ts
+                                         ^
+                                         source.ts meta.export.ts punctuation.separator.key-value.ts
+                                          ^
+                                          source.ts meta.export.ts
+                                           ^
+                                           source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                            ^^^^
+                                            source.ts meta.export.ts string.quoted.double.ts
+                                                ^
+                                                source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                 ^
+                                                 source.ts meta.export.ts
+                                                  ^
+                                                  source.ts meta.export.ts punctuation.definition.block.ts
+>export * from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts constant.language.import-export-all.ts
+         ^
+         source.ts meta.export.ts
+          ^^^^
+          source.ts meta.export.ts keyword.control.from.ts
+              ^
+              source.ts meta.export.ts
+               ^
+               source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                ^^^
+                source.ts meta.export.ts string.quoted.single.ts
+                   ^
+                   source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                    ^
+                    source.ts meta.export.ts
+                     ^^^^^^
+                     source.ts meta.export.ts keyword.control.assert.ts
+                           ^
+                           source.ts meta.export.ts
+                            ^
+                            source.ts meta.export.ts punctuation.definition.block.ts
+                             ^
+                             source.ts meta.export.ts
+                              ^^^^
+                              source.ts meta.export.ts meta.object-literal.key.ts
+                                  ^
+                                  source.ts meta.export.ts punctuation.separator.key-value.ts
+                                   ^
+                                   source.ts meta.export.ts
+                                    ^
+                                    source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                     ^^^^
+                                     source.ts meta.export.ts string.quoted.double.ts
+                                         ^
+                                         source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                          ^
+                                          source.ts meta.export.ts
+                                           ^
+                                           source.ts meta.export.ts punctuation.definition.block.ts
+>export * as ns from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts constant.language.import-export-all.ts
+         ^
+         source.ts meta.export.ts
+          ^^
+          source.ts meta.export.ts keyword.control.as.ts
+            ^
+            source.ts meta.export.ts
+             ^^
+             source.ts meta.export.ts variable.other.readwrite.alias.ts
+               ^
+               source.ts meta.export.ts
+                ^^^^
+                source.ts meta.export.ts keyword.control.from.ts
+                    ^
+                    source.ts meta.export.ts
+                     ^
+                     source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                      ^^^
+                      source.ts meta.export.ts string.quoted.single.ts
+                         ^
+                         source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                          ^
+                          source.ts meta.export.ts
+                           ^^^^^^
+                           source.ts meta.export.ts keyword.control.assert.ts
+                                 ^
+                                 source.ts meta.export.ts
+                                  ^
+                                  source.ts meta.export.ts punctuation.definition.block.ts
+                                   ^
+                                   source.ts meta.export.ts
+                                    ^^^^
+                                    source.ts meta.export.ts meta.object-literal.key.ts
+                                        ^
+                                        source.ts meta.export.ts punctuation.separator.key-value.ts
+                                         ^
+                                         source.ts meta.export.ts
+                                          ^
+                                          source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                           ^^^^
+                                           source.ts meta.export.ts string.quoted.double.ts
+                                               ^
+                                               source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                ^
+                                                source.ts meta.export.ts
+                                                 ^
+                                                 source.ts meta.export.ts punctuation.definition.block.ts
+>export { a, b } from './0' assert {}
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^
+          source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+           ^
+           source.ts meta.export.ts meta.block.ts punctuation.separator.comma.ts
+            ^
+            source.ts meta.export.ts meta.block.ts
+             ^
+             source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^
+               source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                ^
+                source.ts meta.export.ts
+                 ^^^^
+                 source.ts meta.export.ts keyword.control.from.ts
+                     ^
+                     source.ts meta.export.ts
+                      ^
+                      source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                       ^^^
+                       source.ts meta.export.ts string.quoted.single.ts
+                          ^
+                          source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                           ^
+                           source.ts meta.export.ts
+                            ^^^^^^
+                            source.ts meta.export.ts keyword.control.assert.ts
+                                  ^
+                                  source.ts meta.export.ts
+                                   ^
+                                   source.ts meta.export.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.export.ts punctuation.definition.block.ts
+>export { a as c, b as d } from './0' assert { a: "a", b: "b", c: "c" }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^
+          source.ts meta.export.ts meta.block.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.export.ts meta.block.ts
+            ^^
+            source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^
+               source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.export.ts meta.block.ts punctuation.separator.comma.ts
+                 ^
+                 source.ts meta.export.ts meta.block.ts
+                  ^
+                  source.ts meta.export.ts meta.block.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.export.ts meta.block.ts
+                    ^^
+                    source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+                      ^
+                      source.ts meta.export.ts meta.block.ts
+                       ^
+                       source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                        ^
+                        source.ts meta.export.ts meta.block.ts
+                         ^
+                         source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                          ^
+                          source.ts meta.export.ts
+                           ^^^^
+                           source.ts meta.export.ts keyword.control.from.ts
+                               ^
+                               source.ts meta.export.ts
+                                ^
+                                source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                                 ^^^
+                                 source.ts meta.export.ts string.quoted.single.ts
+                                    ^
+                                    source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                     ^
+                                     source.ts meta.export.ts
+                                      ^^^^^^
+                                      source.ts meta.export.ts keyword.control.assert.ts
+                                            ^
+                                            source.ts meta.export.ts
+                                             ^
+                                             source.ts meta.export.ts punctuation.definition.block.ts
+                                              ^
+                                              source.ts meta.export.ts
+                                               ^
+                                               source.ts meta.export.ts meta.object-literal.key.ts
+                                                ^
+                                                source.ts meta.export.ts punctuation.separator.key-value.ts
+                                                 ^
+                                                 source.ts meta.export.ts
+                                                  ^
+                                                  source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                   ^
+                                                   source.ts meta.export.ts string.quoted.double.ts
+                                                    ^
+                                                    source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                     ^^
+                                                     source.ts meta.export.ts
+                                                       ^
+                                                       source.ts meta.export.ts meta.object-literal.key.ts
+                                                        ^
+                                                        source.ts meta.export.ts punctuation.separator.key-value.ts
+                                                         ^
+                                                         source.ts meta.export.ts
+                                                          ^
+                                                          source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                           ^
+                                                           source.ts meta.export.ts string.quoted.double.ts
+                                                            ^
+                                                            source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                             ^^
+                                                             source.ts meta.export.ts
+                                                               ^
+                                                               source.ts meta.export.ts meta.object-literal.key.ts
+                                                                ^
+                                                                source.ts meta.export.ts punctuation.separator.key-value.ts
+                                                                 ^
+                                                                 source.ts meta.export.ts
+                                                                  ^
+                                                                  source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                                   ^
+                                                                   source.ts meta.export.ts string.quoted.double.ts
+                                                                    ^
+                                                                    source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                                     ^
+                                                                     source.ts meta.export.ts
+                                                                      ^
+                                                                      source.ts meta.export.ts punctuation.definition.block.ts
+>export type {} from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^^^^
+        source.ts meta.export.ts keyword.control.type.ts
+            ^
+            source.ts meta.export.ts
+             ^
+             source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+               ^
+               source.ts meta.export.ts
+                ^^^^
+                source.ts meta.export.ts keyword.control.from.ts
+                    ^
+                    source.ts meta.export.ts
+                     ^
+                     source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                      ^^^
+                      source.ts meta.export.ts string.quoted.single.ts
+                         ^
+                         source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                          ^
+                          source.ts meta.export.ts
+                           ^^^^^^
+                           source.ts meta.export.ts keyword.control.assert.ts
+                                 ^
+                                 source.ts meta.export.ts
+                                  ^
+                                  source.ts meta.export.ts punctuation.definition.block.ts
+                                   ^
+                                   source.ts meta.export.ts
+                                    ^^^^
+                                    source.ts meta.export.ts meta.object-literal.key.ts
+                                        ^
+                                        source.ts meta.export.ts punctuation.separator.key-value.ts
+                                         ^
+                                         source.ts meta.export.ts
+                                          ^
+                                          source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                           ^^^^
+                                           source.ts meta.export.ts string.quoted.double.ts
+                                               ^
+                                               source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                ^
+                                                source.ts meta.export.ts
+                                                 ^
+                                                 source.ts meta.export.ts punctuation.definition.block.ts
+>export type { I } from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^^^^
+        source.ts meta.export.ts keyword.control.type.ts
+            ^
+            source.ts meta.export.ts
+             ^
+             source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^
+               source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.export.ts meta.block.ts
+                 ^
+                 source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.export.ts
+                   ^^^^
+                   source.ts meta.export.ts keyword.control.from.ts
+                       ^
+                       source.ts meta.export.ts
+                        ^
+                        source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                         ^^^
+                         source.ts meta.export.ts string.quoted.single.ts
+                            ^
+                            source.ts meta.export.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                             ^
+                             source.ts meta.export.ts
+                              ^^^^^^
+                              source.ts meta.export.ts keyword.control.assert.ts
+                                    ^
+                                    source.ts meta.export.ts
+                                     ^
+                                     source.ts meta.export.ts punctuation.definition.block.ts
+                                      ^
+                                      source.ts meta.export.ts
+                                       ^^^^
+                                       source.ts meta.export.ts meta.object-literal.key.ts
+                                           ^
+                                           source.ts meta.export.ts punctuation.separator.key-value.ts
+                                            ^
+                                            source.ts meta.export.ts
+                                             ^
+                                             source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                              ^^^^
+                                              source.ts meta.export.ts string.quoted.double.ts
+                                                  ^
+                                                  source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                   ^
+                                                   source.ts meta.export.ts
+                                                    ^
+                                                    source.ts meta.export.ts punctuation.definition.block.ts
+>import type { I } from './0'  assert { type: "json" }
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^^^^
+        source.ts meta.import.ts keyword.control.type.ts
+            ^
+            source.ts meta.import.ts
+             ^
+             source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^
+               source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                ^
+                source.ts meta.import.ts meta.block.ts
+                 ^
+                 source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.import.ts
+                   ^^^^
+                   source.ts meta.import.ts keyword.control.from.ts
+                       ^
+                       source.ts meta.import.ts
+                        ^
+                        source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                         ^^^
+                         source.ts meta.import.ts string.quoted.single.ts
+                            ^
+                            source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                             ^^
+                             source.ts meta.import.ts
+                               ^^^^^^
+                               source.ts meta.import.ts keyword.control.assert.ts
+                                     ^
+                                     source.ts meta.import.ts
+                                      ^
+                                      source.ts meta.import.ts punctuation.definition.block.ts
+                                       ^
+                                       source.ts meta.import.ts
+                                        ^^^^
+                                        source.ts meta.import.ts meta.object-literal.key.ts
+                                            ^
+                                            source.ts meta.import.ts punctuation.separator.key-value.ts
+                                             ^
+                                             source.ts meta.import.ts
+                                              ^
+                                              source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                               ^^^^
+                                               source.ts meta.import.ts string.quoted.double.ts
+                                                   ^
+                                                   source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                    ^
+                                                    source.ts meta.import.ts
+                                                     ^
+                                                     source.ts meta.import.ts punctuation.definition.block.ts
+>import type * as foo from './0' assert { type: "json" }
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^^^^
+        source.ts meta.import.ts keyword.control.type.ts
+            ^
+            source.ts meta.import.ts
+             ^
+             source.ts meta.import.ts constant.language.import-export-all.ts
+              ^
+              source.ts meta.import.ts
+               ^^
+               source.ts meta.import.ts keyword.control.as.ts
+                 ^
+                 source.ts meta.import.ts
+                  ^^^
+                  source.ts meta.import.ts variable.other.readwrite.alias.ts
+                     ^
+                     source.ts meta.import.ts
+                      ^^^^
+                      source.ts meta.import.ts keyword.control.from.ts
+                          ^
+                          source.ts meta.import.ts
+                           ^
+                           source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                            ^^^
+                            source.ts meta.import.ts string.quoted.single.ts
+                               ^
+                               source.ts meta.import.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                ^
+                                source.ts meta.import.ts
+                                 ^^^^^^
+                                 source.ts meta.import.ts keyword.control.assert.ts
+                                       ^
+                                       source.ts meta.import.ts
+                                        ^
+                                        source.ts meta.import.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts meta.import.ts
+                                          ^^^^
+                                          source.ts meta.import.ts meta.object-literal.key.ts
+                                              ^
+                                              source.ts meta.import.ts punctuation.separator.key-value.ts
+                                               ^
+                                               source.ts meta.import.ts
+                                                ^
+                                                source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                                 ^^^^
+                                                 source.ts meta.import.ts string.quoted.double.ts
+                                                     ^
+                                                     source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                      ^
+                                                      source.ts meta.import.ts
+                                                       ^
+                                                       source.ts meta.import.ts punctuation.definition.block.ts

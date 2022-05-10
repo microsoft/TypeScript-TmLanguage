@@ -1188,7 +1188,24 @@ repository:
     - include: '#import-export-block'
     - name: keyword.control.from.ts
       match: \bfrom\b
+    - include: '#import-export-assert-clause'
     - include: '#import-export-clause'
+
+  import-export-assert-clause:
+    begin: '{{startOfIdentifier}}(assert)\s*(\{)'
+    beginCaptures:
+      '1': { name: keyword.control.assert.ts }
+      '2': { name: punctuation.definition.block.ts }
+    end: \}
+    endCaptures:
+      '0': { name: punctuation.definition.block.ts }
+    patterns:
+    - include: '#comment'
+    - include: '#string'
+    - name: meta.object-literal.key.ts
+      match: (?:{{identifier}})\s*(?=({{inlineComment}}\s*)*:)
+    - name: punctuation.separator.key-value.ts
+      match: ':'
 
   import-export-block:
     name: meta.block.ts
