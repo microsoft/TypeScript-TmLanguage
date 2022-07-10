@@ -54,7 +54,7 @@ variables:
   lookBehindTypeof: '^typeof|{{nonPropertyLookBehind}}typeof'
   lookBehindCase: '^case|{{nonPropertyLookBehind}}case'
   lookBehindImport: '^import|{{nonPropertyLookBehind}}import'
-  lookAheadEndOfType: '[;),}\]:?\-\+\>]|\|\||\&\&|\!\=\=|$'
+  lookAheadEndOfType: '[;),}\]:?\-\+\<\>\|\&\^]|\!\=\=|\=\=\=|\!\=|\=\=|$'
   matchingParenthesis: (\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))
   matchingBraces: (\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})
   matchingBrackets: (\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\])
@@ -1566,7 +1566,34 @@ repository:
       '1': { name: keyword.operator.expression.instanceof.ts }
     end: (?<=\))|(?={{lookAheadEndOfType}}|(([\&\~\^\|]\s*)?{{identifier}}\s+instanceof{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
     patterns:
-    - include: '#type'
+    - include: '#comment'
+    # match expressions before matching identifiers
+    - include: '#expressionWithoutIdentifiers'
+    - include: '#object-identifiers'
+    # function and method assignment
+    - match: |-
+        (?x)(?:{{propertyAccess}}\s*)?({{identifier}})(?=\s*={{functionOrArrowLookup}})
+      captures:
+        '1': { name: punctuation.accessor.ts }
+        '2': { name: punctuation.accessor.optional.ts }
+        '3': { name: entity.name.function.ts }
+    # const properties
+    - match: '{{propertyAccess}}\s*({{constantPropertyIdentifier}})(?![_$[:alnum:]])'
+      captures:
+        '1': { name: punctuation.accessor.ts }
+        '2': { name: punctuation.accessor.optional.ts }
+        '3': { name: variable.other.constant.property.ts }
+    # properties
+    - match: '{{propertyAccess}}\s*({{propertyIdentifier}})'
+      captures:
+        '1': { name: punctuation.accessor.ts }
+        '2': { name: punctuation.accessor.optional.ts }
+        '3': { name: variable.other.property.ts }
+    # vars
+    - name: entity.name.type.ts
+      match: '{{identifier}}'
+    # match punctuations of the expression
+    - include: '#expressionPunctuations'
 
   # when ( is followed by end of line, it could be arrow parameter decarations, so inside this match as if parameter falling back to expression
   # but do this only from expression and as last resort

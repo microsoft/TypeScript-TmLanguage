@@ -4631,7 +4631,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|^|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+))</string>
+            <string>(?=[;),}\]:?\-\+\&lt;\&gt;\|\&amp;\^]|\!\=\=|\=\=\=|\!\=|\=\=|$|^|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -5011,7 +5011,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\))|(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))new(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
+        <string>(?&lt;=\))|(?=[;),}\]:?\-\+\&lt;\&gt;\|\&amp;\^]|\!\=\=|\=\=\=|\!\=|\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))new(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -5033,12 +5033,122 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\))|(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|(([\&amp;\~\^\|]\s*)?[_$[:alpha:]][_$[:alnum:]]*\s+instanceof(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
+        <string>(?&lt;=\))|(?=[;),}\]:?\-\+\&lt;\&gt;\|\&amp;\^]|\!\=\=|\=\=\=|\!\=|\=\=|$|(([\&amp;\~\^\|]\s*)?[_$[:alpha:]][_$[:alnum:]]*\s+instanceof(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))function((\s+[_$[:alpha:]][_$[:alnum:]]*)|(\s*[\(]))))</string>
         <key>patterns</key>
         <array>
           <dict>
             <key>include</key>
-            <string>#type</string>
+            <string>#comment</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#expressionWithoutIdentifiers</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#object-identifiers</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?x)(?:(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*)?([_$[:alpha:]][_$[:alnum:]]*)(?=\s*=\s*(
+  ((async\s+)?(
+    (function\s*[(&lt;*]) |
+    (function\s+) |
+    ([_$[:alpha:]][_$[:alnum:]]*\s*=&gt;)
+  )) |
+  ((async\s*)?(
+    ((&lt;\s*$)|((&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*\&gt;)*&gt;\s*)?[\(]\s*((([\{\[]\s*)?$)|((\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})\s*((:\s*\{?$)|((\s*([^&lt;&gt;\(\)\{\}]|\&lt;([^&lt;&gt;]|\&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+\&gt;)+\&gt;|\([^\(\)]+\)|\{[^\{\}]+\})+\s*)?=\s*)))|((\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\])\s*((:\s*\[?$)|((\s*([^&lt;&gt;\(\)\{\}]|\&lt;([^&lt;&gt;]|\&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+\&gt;)+\&gt;|\([^\(\)]+\)|\{[^\{\}]+\})+\s*)?=\s*)))))) |
+    # sure shot arrow functions even if =&gt; is on new line
+(
+  (&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*\&gt;)*&gt;\s*)?
+  [(]\s*(\/\*([^\*]|(\*[^\/]))*\*\/\s*)*
+  (
+    ([)]\s*:) |                                                                                       # ():
+    ((\.\.\.\s*)?[_$[:alpha:]][_$[:alnum:]]*\s*:)                                                                  # [(]param: | [(]...param:
+  )
+) |
+
+# arrow function possible to detect only with =&gt; on same line
+(
+  (&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;]|\&lt;\s*([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\]))([^=&lt;&gt;]|=[^&lt;])*\&gt;)*\&gt;)*&gt;\s*)?                                                                                 # typeparameters
+  \(\s*(\/\*([^\*]|(\*[^\/]))*\*\/\s*)*(([_$[:alpha:]]|(\{([^\{\}]|(\{([^\{\}]|\{[^\{\}]*\})*\}))*\})|(\[([^\[\]]|(\[([^\[\]]|\[[^\[\]]*\])*\]))*\])|(\.\.\.\s*[_$[:alpha:]]))([^()\'\"\`]|(\(([^\(\)]|(\(([^\(\)]|\([^\(\)]*\))*\)))*\))|(\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`))*)?\)   # parameters
+  (\s*:\s*([^&lt;&gt;\(\)\{\}]|\&lt;([^&lt;&gt;]|\&lt;([^&lt;&gt;]|\&lt;[^&lt;&gt;]+\&gt;)+\&gt;)+\&gt;|\([^\(\)]+\)|\{[^\{\}]+\})+)?                                                                        # return type
+  \s*=&gt;                                                                                               # arrow operator
+)
+  ))
+))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.function.ts</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(\#?[[:upper:]][_$[:digit:][:upper:]]*)(?![_$[:alnum:]])</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.constant.property.ts</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(?:(\.)|(\?\.(?!\s*[[:digit:]])))\s*(\#?[_$[:alpha:]][_$[:alnum:]]*)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.optional.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.property.ts</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>entity.name.type.ts</string>
+            <key>match</key>
+            <string>[_$[:alpha:]][_$[:alnum:]]*</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#expressionPunctuations</string>
           </dict>
         </array>
       </dict>
@@ -5573,7 +5683,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=^|[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+)|(\s+\&lt;))</string>
+            <string>(?=^|[;),}\]:?\-\+\&lt;\&gt;\|\&amp;\^]|\!\=\=|\=\=\=|\!\=|\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+)|(\s+\&lt;))</string>
             <key>patterns</key>
             <array>
               <dict>
