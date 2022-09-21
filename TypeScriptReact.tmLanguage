@@ -4449,7 +4449,7 @@
             <key>begin</key>
             <string>(?=[\'\"\`])</string>
             <key>end</key>
-            <string>(?=:)|((?&lt;=[\'\"\`])(?=((\s*[\(\&lt;,}])|(\s+(as)\s+))))</string>
+            <string>(?=:)|((?&lt;=[\'\"\`])(?=((\s*[\(\&lt;,}])|(\s+(as|satisifies)\s+))))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4477,7 +4477,7 @@
   (?:\b[0-9][0-9_]*(n)?\b(?!\.))                                 # 1
 )(?!\$)))</string>
             <key>end</key>
-            <string>(?=:)|(?=\s*([\(\&lt;,}])|(\s+as\s+))</string>
+            <string>(?=:)|(?=\s*([\(\&lt;,}])|(\s+as|satisifies\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -4645,7 +4645,7 @@
             <key>name</key>
             <string>meta.object.member.tsx</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(as)|(satisfies))\s+</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -4653,9 +4653,14 @@
                 <key>name</key>
                 <string>keyword.control.as.tsx</string>
               </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.satisfies.tsx</string>
+              </dict>
             </dict>
             <key>end</key>
-            <string>(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|^|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+))</string>
+            <string>(?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|^|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as|satisifies)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -5509,7 +5514,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(as)|(satisfies))\s+</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -5517,9 +5522,14 @@
                 <key>name</key>
                 <string>keyword.control.as.tsx</string>
               </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.satisfies.tsx</string>
+              </dict>
             </dict>
             <key>end</key>
-            <string>(?=^|[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as)\s+)|(\s+\&lt;))</string>
+            <string>(?=^|[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as|satisifies)\s+)|(\s+\&lt;))</string>
             <key>patterns</key>
             <array>
               <dict>
