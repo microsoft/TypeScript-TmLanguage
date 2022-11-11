@@ -1,0 +1,110 @@
+original file
+-----------------------------------
+class C {
+    accessor a: number;
+    accessor b = 1;
+    abstract accessor c: number;
+    static accessor d = 1;
+}
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class C {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>    accessor a: number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^^
+     source.ts meta.class.ts storage.type.property.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^
+                       source.ts meta.class.ts punctuation.terminator.statement.ts
+>    accessor b = 1;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^^
+     source.ts meta.class.ts storage.type.property.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                   ^
+                   source.ts meta.class.ts punctuation.terminator.statement.ts
+>    abstract accessor c: number;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+             ^
+             source.ts meta.class.ts
+              ^^^^^^^^
+              source.ts meta.class.ts storage.type.property.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts
+                          ^^^^^^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                                ^
+                                source.ts meta.class.ts punctuation.terminator.statement.ts
+>    static accessor d = 1;
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts
+            ^^^^^^^^
+            source.ts meta.class.ts storage.type.property.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts constant.numeric.decimal.ts
+                          ^
+                          source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
