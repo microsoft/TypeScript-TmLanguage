@@ -1,6 +1,5 @@
 # TypeScript-TmLanguage
-[![Build Status](https://dev.azure.com/ms/TypeScript-TmLanguage/_apis/build/status/Microsoft.TypeScript-TmLanguage)](https://dev.azure.com/ms/TypeScript-TmLanguage/_build/latest?definitionId=15)
-[![Build status](https://travis-ci.org/Microsoft/TypeScript-TmLanguage.svg?branch=master)](https://travis-ci.org/Microsoft/TypeScript-TmLanguage)
+[![GitHub Actions CI](https://github.com/microsoft/TypeScript-TmLanguage/workflows/CI/badge.svg)](https://github.com/microsoft/TypeScript-TmLanguage/actions?query=workflow%3ACI)
 
 This repository contains TmLanguage files that are consumed by TypeScript editors and plugins such as [Visual Studio Code](https://github.com/Microsoft/vscode), [The TypeScript Sublime Plugin](https://github.com/Microsoft/TypeScript-Sublime-Plugin), [Atom TypeScript](https://github.com/TypeStrong/atom-typescript), and possibly others.
 

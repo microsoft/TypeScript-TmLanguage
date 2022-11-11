@@ -1,6 +1,7 @@
 import * as vt from 'vscode-textmate/release/main';
 import path = require('path');
 import fs = require('fs');
+import oniguruma = require('vscode-oniguruma');
 
 enum GrammarKind {
     ts = 'source.ts',
@@ -18,7 +19,16 @@ const grammarPaths = {
     [GrammarKind.tsx]: grammarPath(GrammarKind.tsx)
 };
 
+const wasmBin = fs.readFileSync(path.join(__dirname, '../node_modules/vscode-oniguruma/release/onig.wasm')).buffer;
+const vscodeOnigurumaLib: Promise<vt.IOnigLib> = oniguruma.loadWASM(wasmBin).then(() => {
+    return {
+        createOnigScanner(patterns) { return new oniguruma.OnigScanner(patterns); },
+        createOnigString(s) { return new oniguruma.OnigString(s); }
+    };
+});
+
 const registery = new vt.Registry({
+    onigLib: vscodeOnigurumaLib,
     loadGrammar: function (scopeName: GrammarKind) {
         const path = grammarPaths[scopeName];
         if (path) {
@@ -40,7 +50,7 @@ const registery = new vt.Registry({
 
 interface ThenableGrammar {
     kind: GrammarKind;
-    grammar: vt.Thenable<vt.IGrammar>;
+    grammar: Promise<vt.IGrammar | null>;
 }
 function thenableGrammar(kind: GrammarKind): ThenableGrammar {
     return { kind, grammar: registery.loadGrammar(kind) };
@@ -61,7 +71,7 @@ function getGrammarInfo(kind: GrammarKind) {
 interface Grammar {
     kind: GrammarKind;
     grammar: vt.IGrammar;
-    ruleStack?: vt.StackElement;
+    ruleStack?: vt.StateStack;
 }
 function initGrammar(kind: GrammarKind, grammar: vt.IGrammar): Grammar {
     return { kind, grammar };
@@ -134,7 +144,7 @@ function isValidScopeExtension(grammar: Grammar, scope: string) {
         scope.endsWith(".regexp");
 }
 
-function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | undefined, oriLines: string[]): string {
+function generateScopesWorker(mainGrammar: Grammar, otherGrammar: Grammar | null |undefined, oriLines: string[]): string {
     let cleanLines: string[] = [];
     let baselineLines: string[] = [];
     let otherBaselines: string[] = [];

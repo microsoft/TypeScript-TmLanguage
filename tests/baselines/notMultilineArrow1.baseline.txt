@@ -1,5 +1,6 @@
 original file
 -----------------------------------
+// @onlyOwnGrammar - As this has type assertion
                                 useResult =
                                     lastLocation.kind === SyntaxKind.Parameter ||
                                     (
@@ -11,6 +12,11 @@ original file
 
 Grammar: TypeScript.tmLanguage
 -----------------------------------
+>// @onlyOwnGrammar - As this has type assertion
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
 >                                useResult =
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  source.ts
@@ -116,44 +122,3 @@ Grammar: TypeScript.tmLanguage
 >
  ^
  source.ts
-
-
-Grammar: TypeScriptReact.tmLanguage
------------------------------------
->                                useResult =
->                                    lastLocation.kind === SyntaxKind.Parameter ||
->                                    (
->                                        lastLocation === (<FunctionLikeDeclaration>location).type &&
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- source.tsx
-                                         ^^^^^^^^^^^^
-                                         source.tsx variable.other.readwrite.tsx
-                                                     ^
-                                                     source.tsx
-                                                      ^^^
-                                                      source.tsx keyword.operator.comparison.tsx
-                                                         ^
-                                                         source.tsx
-                                                          ^
-                                                          source.tsx meta.brace.round.tsx
-                                                           ^
-                                                           source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.begin.tsx
-                                                            ^^^^^^^^^^^^^^^^^^^^^^^
-                                                            source.tsx meta.tag.without-attributes.tsx entity.name.tag.tsx support.class.component.tsx
-                                                                                   ^
-                                                                                   source.tsx meta.tag.without-attributes.tsx punctuation.definition.tag.end.tsx
-                                                                                    ^^^^^^^^^^^^^^^
-                                                                                    source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
-                                                                                                   ^
-                                                                                                   source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx invalid.illegal.bad-ampersand.tsx
-                                                                                                    ^
-                                                                                                    source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx invalid.illegal.bad-ampersand.tsx
->                                        result.valueDeclaration.kind === SyntaxKind.Parameter
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
->                                    );
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx
->
- ^
- source.tsx meta.tag.without-attributes.tsx meta.jsx.children.tsx

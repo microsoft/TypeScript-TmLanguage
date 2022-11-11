@@ -1,3 +1,4 @@
+// @onlyOwnGrammar - As this has type assertion
                                 useResult =
                                     lastLocation.kind === SyntaxKind.Parameter ||
                                     (

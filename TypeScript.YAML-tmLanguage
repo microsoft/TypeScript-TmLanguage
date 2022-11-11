@@ -95,7 +95,7 @@ variables:
       (\s*:{{possiblyType}})?                                                                        # return type
       \s*=>                                                                                               # arrow operator
     )
-  possiblyMultilineArrowExpressionBeforeEndOfLine: ((({{typeParameters}})?\()|(<))
+  possiblyMultilineArrowExpressionBeforeEndOfLine: ((({{typeParameters}})?\()|(<)|({{typeParameters}}))
   possiblyMultilineObjectBindingPattern: '{{matchingBraces}}\s*((:\s*\{?$)|(({{possiblyType}}\s*)?=\s*))'
   possiblyMultilineArrayBindingPattern: '{{matchingBrackets}}\s*((:\s*\[?$)|(({{possiblyType}}\s*)?=\s*))'
   possiblyMultilineArrowWParamters: '((([\{\[]\s*)?$)|({{possiblyMultilineObjectBindingPattern}})|({{possiblyMultilineArrayBindingPattern}}))'
@@ -1385,13 +1385,13 @@ repository:
       - include: '#array-literal'
     - name: meta.object.member.ts meta.object-literal.key.ts
       begin: (?=[\'\"\`])
-      end: (?=:)|((?<=[\'\"\`])(?=((\s*[\(\<,}])|(\s+(as)\s+))))
+      end: (?=:)|((?<=[\'\"\`])(?=((\s*[\(\<,}])|(\s+(as|satisifies)\s+))))
       patterns:
       - include: '#comment'
       - include: '#string'
     - name: meta.object.member.ts meta.object-literal.key.ts
       begin: (?x)(?={{anyNumber}})
-      end: (?=:)|(?=\s*([\(\<,}])|(\s+as\s+))
+      end: (?=:)|(?=\s*([\(\<,}])|(\s+as|satisifies\s+))
       patterns:
       - include: '#comment'
       - include: '#numeric-literal'
@@ -1432,10 +1432,11 @@ repository:
         '1': { name: keyword.control.as.ts }
         '2': { name: storage.modifier.ts }
     - name: meta.object.member.ts
-      begin: '{{startOfIdentifier}}(as)\s+'
+      begin: '{{startOfIdentifier}}(?:(as)|(satisfies))\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?={{lookAheadEndOfType}}|^|({{startOfIdentifier}}(as)\s+))
+        '2': { name: keyword.control.satisfies.ts }
+      end: (?={{lookAheadEndOfType}}|^|({{startOfIdentifier}}(as|satisifies)\s+))
       patterns:
       - include: '#type'
     - name: meta.object.member.ts
@@ -1564,7 +1565,7 @@ repository:
     begin: '{{startOfIdentifier}}(instanceof){{endOfIdentifier}}'
     beginCaptures:
       '1': { name: keyword.operator.expression.instanceof.ts }
-    end: (?<=\))|(?={{lookAheadEndOfType}}|(([\&\~\^\|]\s*)?{{identifier}}\s+instanceof{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
+    end: (?<=\))|(?={{lookAheadEndOfType}}|(===|!==|==|!=)|(([\&\~\^\|]\s*)?{{identifier}}\s+instanceof{{endOfIdentifier}})|({{startOfIdentifier}}function((\s+{{identifier}})|(\s*[\(]))))
     patterns:
     - include: '#type'
 
@@ -1712,10 +1713,11 @@ repository:
       captures:
         '1': { name: keyword.control.as.ts }
         '2': { name: storage.modifier.ts }
-    - begin: '{{startOfIdentifier}}(as)\s+'
+    - begin: '{{startOfIdentifier}}(?:(as)|(satisfies))\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }
-      end: (?=^|{{lookAheadEndOfType}}|({{startOfIdentifier}}(as)\s+)|(\s+\<))
+        '2': { name: keyword.control.satisfies.ts }
+      end: (?=^|{{lookAheadEndOfType}}|({{startOfIdentifier}}(as|satisifies)\s+)|(\s+\<))
       patterns:
       - include: '#type'
     - name: keyword.operator.spread.ts
