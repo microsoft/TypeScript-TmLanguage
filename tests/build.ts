@@ -71,7 +71,7 @@ function getGrammarInfo(kind: GrammarKind) {
 interface Grammar {
     kind: GrammarKind;
     grammar: vt.IGrammar;
-    ruleStack?: vt.StackElement;
+    ruleStack?: vt.StateStack;
 }
 function initGrammar(kind: GrammarKind, grammar: vt.IGrammar): Grammar {
     return { kind, grammar };
