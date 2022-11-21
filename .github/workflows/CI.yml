@@ -8,6 +8,11 @@ on:
     branches:
       - main
       - master
+      
+  workflow_run:
+    workflows: [Update package-lock.json]
+    types:
+      - completed
 
 jobs:
   tests:
