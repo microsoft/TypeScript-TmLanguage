@@ -71,14 +71,14 @@ function getGrammarInfo(kind: GrammarKind) {
 interface Grammar {
     kind: GrammarKind;
     grammar: vt.IGrammar;
-    ruleStack?: vt.StateStack;
+    ruleStack:  Parameters<vt.IGrammar["tokenizeLine"]>[1];
 }
 function initGrammar(kind: GrammarKind, grammar: vt.IGrammar): Grammar {
-    return { kind, grammar };
+    return { kind, grammar, ruleStack: null };
 }
 
 function tokenizeLine(grammar: Grammar, line: string) {
-    const lineTokens = grammar.grammar.tokenizeLine(line, grammar.ruleStack!);
+    const lineTokens = grammar.grammar.tokenizeLine(line, grammar.ruleStack);
     grammar.ruleStack = lineTokens.ruleStack;
     return lineTokens.tokens;
 }
