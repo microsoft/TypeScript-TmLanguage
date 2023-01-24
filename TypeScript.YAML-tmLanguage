@@ -64,7 +64,7 @@ variables:
   lookBehindOfPossiblyMultilineArrow: (?<=[(=,]|=>|{{lookBehindReturn}})
   lookBehindOfObjectMemberPossiblyMultilineArrow: (?<=:)
   # Identifier start | matching braces | matching parenthesis | matching square brackets
-  typeParamersStart: ([_$[:alpha:]]|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
+  typeParamersStart: (((const\s+)?[_$[:alpha:]])|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}})
   typeParameters: (<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<]|\<\s*{{typeParamersStart}}([^=<>]|=[^<])*\>)*\>)*>\s*)
   # Identifier start | matching braces | matching parenthesis | matching square brackets | matching strings
   typeArgumentsStart: (((keyof|infer|typeof|readonly)\s+)|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|{{quotedStrings}})(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
@@ -2314,7 +2314,7 @@ repository:
     patterns:
     - include: '#comment'
     - name: storage.modifier.ts
-      match: '{{startOfIdentifier}}(extends|in|out){{endOfIdentifier}}'
+      match: '{{startOfIdentifier}}(extends|in|out|const){{endOfIdentifier}}'
     - include: '#type'
     - include: '#punctuation-comma'
     - name: keyword.operator.assignment.ts
