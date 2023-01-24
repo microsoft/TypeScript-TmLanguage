@@ -1,0 +1,186 @@
+original file
+-----------------------------------
+/** @type {number} */
+const d1 = 42;
+
+/** @satisfies {number} */
+const d2 = 42;
+
+const e1 = /** @type {number} */(23);
+
+const e2 = /** @satisfies {number} */(23);
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>/** @type {number} */
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^
+    source.ts comment.block.documentation.ts
+     ^
+     source.ts comment.block.documentation.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+      ^^^^
+      source.ts comment.block.documentation.ts storage.type.class.jsdoc
+          ^
+          source.ts comment.block.documentation.ts
+           ^
+           source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.begin.jsdoc
+            ^^^^^^
+            source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+                  ^
+                  source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.end.jsdoc
+                   ^
+                   source.ts comment.block.documentation.ts
+                    ^^
+                    source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>const d1 = 42;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^
+            source.ts meta.var.expr.ts constant.numeric.decimal.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>/** @satisfies {number} */
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+    ^
+    source.ts comment.block.documentation.ts
+     ^
+     source.ts comment.block.documentation.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+      ^^^^^^^^^
+      source.ts comment.block.documentation.ts storage.type.class.jsdoc
+               ^
+               source.ts comment.block.documentation.ts
+                ^
+                source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.begin.jsdoc
+                 ^^^^^^
+                 source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+                       ^
+                       source.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.end.jsdoc
+                        ^
+                        source.ts comment.block.documentation.ts
+                         ^^
+                         source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>const d2 = 42;
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^
+            source.ts meta.var.expr.ts constant.numeric.decimal.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>const e1 = /** @type {number} */(23);
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^^
+            source.ts meta.var.expr.ts comment.block.documentation.ts punctuation.definition.comment.ts
+               ^
+               source.ts meta.var.expr.ts comment.block.documentation.ts
+                ^
+                source.ts meta.var.expr.ts comment.block.documentation.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+                 ^^^^
+                 source.ts meta.var.expr.ts comment.block.documentation.ts storage.type.class.jsdoc
+                     ^
+                     source.ts meta.var.expr.ts comment.block.documentation.ts
+                      ^
+                      source.ts meta.var.expr.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.begin.jsdoc
+                       ^^^^^^
+                       source.ts meta.var.expr.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+                             ^
+                             source.ts meta.var.expr.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.end.jsdoc
+                              ^
+                              source.ts meta.var.expr.ts comment.block.documentation.ts
+                               ^^
+                               source.ts meta.var.expr.ts comment.block.documentation.ts punctuation.definition.comment.ts
+                                 ^
+                                 source.ts meta.var.expr.ts meta.brace.round.ts
+                                  ^^
+                                  source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                    ^
+                                    source.ts meta.var.expr.ts meta.brace.round.ts
+                                     ^
+                                     source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>const e2 = /** @satisfies {number} */(23);
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+          ^
+          source.ts meta.var.expr.ts keyword.operator.assignment.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^^
+            source.ts meta.var.expr.ts comment.block.documentation.ts punctuation.definition.comment.ts
+               ^
+               source.ts meta.var.expr.ts comment.block.documentation.ts
+                ^
+                source.ts meta.var.expr.ts comment.block.documentation.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+                 ^^^^^^^^^
+                 source.ts meta.var.expr.ts comment.block.documentation.ts storage.type.class.jsdoc
+                          ^
+                          source.ts meta.var.expr.ts comment.block.documentation.ts
+                           ^
+                           source.ts meta.var.expr.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.begin.jsdoc
+                            ^^^^^^
+                            source.ts meta.var.expr.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+                                  ^
+                                  source.ts meta.var.expr.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.end.jsdoc
+                                   ^
+                                   source.ts meta.var.expr.ts comment.block.documentation.ts
+                                    ^^
+                                    source.ts meta.var.expr.ts comment.block.documentation.ts punctuation.definition.comment.ts
+                                      ^
+                                      source.ts meta.var.expr.ts meta.brace.round.ts
+                                       ^^
+                                       source.ts meta.var.expr.ts constant.numeric.decimal.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.brace.round.ts
+                                          ^
+                                          source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
