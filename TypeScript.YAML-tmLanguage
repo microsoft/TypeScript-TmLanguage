@@ -1240,7 +1240,7 @@ repository:
       captures:
         '1': { name: keyword.control.type.ts }
         '2': { name: variable.other.readwrite.alias.ts }
-      
+
 
   #control statements and loops
   switch-statement:
@@ -1717,7 +1717,7 @@ repository:
       beginCaptures:
         '1': { name: keyword.control.as.ts }
         '2': { name: keyword.control.satisfies.ts }
-      end: (?=^|{{lookAheadEndOfType}}|({{startOfIdentifier}}(as|satisifies)\s+)|(\s+\<))
+      end: (?=^|{{lookAheadEndOfType}}|({{startOfIdentifier}}(as|satisfies)\s+)|(\s+\<))
       patterns:
       - include: '#type'
     - name: keyword.operator.spread.ts
@@ -2703,7 +2703,7 @@ repository:
         '1': { name: entity.name.function.tagged-template.ts }
       end: (?=`)
       patterns:
-      - include: '#type-arguments'    
+      - include: '#type-arguments'
 
   template-substitution-element:
     name: meta.template.expression.ts
