@@ -1,0 +1,48 @@
+original file
+-----------------------------------
+let a = {} as const satisfies {};
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let a = {} as const satisfies {};
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+       ^
+       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^
+         source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.var.expr.ts meta.objectliteral.ts punctuation.definition.block.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^^
+            source.ts meta.var.expr.ts keyword.control.as.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^^^^^
+               source.ts meta.var.expr.ts entity.name.type.ts
+                    ^
+                    source.ts meta.var.expr.ts
+                     ^^^^^^^^^
+                     source.ts meta.var.expr.ts keyword.control.satisfies.ts
+                              ^
+                              source.ts meta.var.expr.ts
+                               ^
+                               source.ts meta.var.expr.ts meta.object.type.ts punctuation.definition.block.ts
+                                ^
+                                source.ts meta.var.expr.ts meta.object.type.ts punctuation.definition.block.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
