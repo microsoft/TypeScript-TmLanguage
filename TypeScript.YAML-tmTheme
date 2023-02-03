@@ -46,10 +46,11 @@ settings:
 - scope: entity.name.type.enum.ts
   settings: { vsclassificationtype: enum name }
 
-- scope: entity.name.type, meta.template.expression.ts, entity.other.inherited-class.ts
+- scope: meta.template.expression.ts, entity.other.inherited-class.ts
   settings: { vsclassificationtype: identifier }
+- scope: entity
 - scope: variable, meta.definition.variable.name, support.variable, entity.name.variable, constant.other.placeholder
-  settings: { vsclassificationtype: parameter name }
+  settings: { vsclassificationtype: local name }
 - scope: entity.name.function, support.function, support.constant.handlebars, source.powershell variable.other.member, entity.name.operator.custom-literal
   settings: { vsclassificationtype: method name }
 
