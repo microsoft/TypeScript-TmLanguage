@@ -5,10 +5,14 @@ name: TypeScript
 uuid: 91489F9C-F403-4CF0-993D-EAAF9149E40E
 
 settings:
-- scope: storage.modifier, storage.type, keyword.control, keyword.other, keyword.operator.expression, keyword.operator.new, keyword.generator.asterisk, punctuation.definition.template-expression
+- scope: storage.modifier, storage.type, keyword.other, keyword.operator.expression, keyword.operator.new, keyword.generator.asterisk, punctuation.definition.template-expression
   settings: { vsclassificationtype: keyword }
-- scope: support.type, constant.language, variable.language, variable.language variable.parameter
+- scope: constant.language, variable.language
   settings: { vsclassificationtype: keyword }
+- scope: keyword.control, keyword.operator.expression.delete, keyword.other.using, keyword.other.operator, entity.name.operator
+  settings: { vsclassificationtype: keyword - control }
+- scope: support.class, support.type, entity.name.type, entity.name.namespace, entity.other.attribute, entity.name.scope-resolution, entity.name.class
+  settings: { vsclassificationtype: type }
 
 - scope: string, punctuation.definition.string, constant.character
   settings: { vsclassificationtype: string }
@@ -42,8 +46,12 @@ settings:
 - scope: entity.name.type.enum.ts
   settings: { vsclassificationtype: enum name }
 
-- scope: entity.name.function, entity.name.type, meta.template.expression.ts, variable, entity.other.inherited-class.ts
+- scope: entity.name.type, meta.template.expression.ts, entity.other.inherited-class.ts
   settings: { vsclassificationtype: identifier }
+- scope: variable, meta.definition.variable.name, support.variable, entity.name.variable, constant.other.placeholder
+  settings: { vsclassificationtype: parameter name }
+- scope: entity.name.function, support.function, support.constant.handlebars, source.powershell variable.other.member, entity.name.operator.custom-literal
+  settings: { vsclassificationtype: method name }
 
 - scope: constant.language.undefined.ts, variable.language.arguments.ts, support.type.object
   settings: { vsclassificationtype: identifier }
@@ -54,6 +62,15 @@ settings:
 - scope: entity.other.attribute-name
   settings: { vsclassificationtype: HTML Attribute Name }
 
-- scope: meta.tag string.quoted, meta.tag string.quoted punctuation.definition.string, meta.tag string.quoted constant.character.escape
-  settings: { vsclassificationtype: HTML Attribute Value }
+- scope: meta.tag string.quoted, meta.tag string.quoted punctuation.definition.string, meta.tag string.quoted
+  settings: { vsclassificationtype: string }
+
+- scope: meta.object-literal.key
+  settings: { vsclassificationtype: parameter name }
+
+- scope: constant.character.escape
+  settings: { vsclassificationtype: string - escape character }
+
+- scope: entity.name.label
+  settings: { vsclassificationtype: label name }
 ...
