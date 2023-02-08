@@ -1,0 +1,158 @@
+original file
+-----------------------------------
+class A {
+  #a =
+      /** @param {MouseEvent} arg */
+      arg => {
+          const someV = 132
+          if (true) {
+              doSomething()
+          }
+          while(false) {
+              
+          }
+      }
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class A {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>  #a =
+ ^^
+ source.ts meta.class.ts meta.field.declaration.ts
+   ^^
+   source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+>      /** @param {MouseEvent} arg */
+ ^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+       ^^^
+       source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts punctuation.definition.comment.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+            ^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts storage.type.class.jsdoc
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.begin.jsdoc
+                   ^^^^^^^^^^
+                   source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts entity.name.type.instance.jsdoc
+                             ^
+                             source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.end.jsdoc
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts
+                               ^^^
+                               source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts variable.other.jsdoc
+                                  ^
+                                  source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts
+                                   ^^
+                                   source.ts meta.class.ts meta.field.declaration.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>      arg => {
+ ^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+       ^^^
+       source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts variable.parameter.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+           ^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>          const someV = 132
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+           ^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+                 ^^^^^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+                         ^^^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.var.expr.ts constant.numeric.decimal.ts
+>          if (true) {
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+           ^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts keyword.control.conditional.ts
+             ^
+             source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+               ^^^^
+               source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts constant.language.boolean.true.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+                     ^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>              doSomething()
+ ^^^^^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts
+               ^^^^^^^^^^^
+               source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts meta.function-call.ts entity.name.function.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts meta.brace.round.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts meta.brace.round.ts
+>          }
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>          while(false) {
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+           ^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts keyword.control.loop.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                 ^^^^^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts constant.language.boolean.false.ts
+                      ^
+                      source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.brace.round.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>              
+ ^^^^^^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts
+>          }
+ ^^^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts meta.block.ts punctuation.definition.block.ts
+>      }
+ ^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts
+       ^
+       source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts

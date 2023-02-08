@@ -669,7 +669,7 @@ repository:
     - begin: (?<!=|!)(=)(?!=)
       beginCaptures:
         '1': { name: keyword.operator.assignment.ts }
-      end: (?=[,);}\]]|({{startOfIdentifier}}(of|in)\s+))|(?=^\s*$)|(?<=\S)(?<!=)(?=\s*$)
+      end: (?=[,);}\]]|({{startOfIdentifier}}(of|in)\s+))|(?=^\s*$)|(?<!\*\/)(?<=\S)(?<!=)(?=\s*$)
       patterns:
         - include: '#expression'
 
