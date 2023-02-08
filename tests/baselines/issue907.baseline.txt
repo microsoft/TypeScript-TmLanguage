@@ -1,0 +1,52 @@
+original file
+-----------------------------------
+type A = typeof a extends number ? 0 : 1;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>type A = typeof a extends number ? 0 : 1;
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+       ^
+       source.ts meta.type.declaration.ts
+        ^
+        source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+         ^
+         source.ts meta.type.declaration.ts
+          ^^^^^^
+          source.ts meta.type.declaration.ts keyword.operator.expression.typeof.ts
+                ^
+                source.ts meta.type.declaration.ts
+                 ^
+                 source.ts meta.type.declaration.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.type.declaration.ts
+                   ^^^^^^^
+                   source.ts meta.type.declaration.ts storage.modifier.ts
+                          ^
+                          source.ts meta.type.declaration.ts
+                           ^^^^^^
+                           source.ts meta.type.declaration.ts support.type.primitive.ts
+                                 ^
+                                 source.ts meta.type.declaration.ts
+                                  ^
+                                  source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                   ^
+                                   source.ts meta.type.declaration.ts
+                                    ^
+                                    source.ts meta.type.declaration.ts constant.numeric.decimal.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts keyword.operator.ternary.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts constant.numeric.decimal.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
