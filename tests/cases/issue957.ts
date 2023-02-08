@@ -1,0 +1,1 @@
+export type UseQuery<TData, TVariables> = typeof useQuery<TData, TVariables>

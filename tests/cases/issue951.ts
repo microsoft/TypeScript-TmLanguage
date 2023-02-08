@@ -1,0 +1,1 @@
+type thing = <T extends object>(what: T) => ReturnType<typeof generic<T>>

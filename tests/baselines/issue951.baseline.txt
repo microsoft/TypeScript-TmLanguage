@@ -1,0 +1,70 @@
+original file
+-----------------------------------
+type thing = <T extends object>(what: T) => ReturnType<typeof generic<T>>
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>type thing = <T extends object>(what: T) => ReturnType<typeof generic<T>>
+ ^^^^
+ source.ts meta.type.declaration.ts storage.type.type.ts
+     ^
+     source.ts meta.type.declaration.ts
+      ^^^^^
+      source.ts meta.type.declaration.ts entity.name.type.alias.ts
+           ^
+           source.ts meta.type.declaration.ts
+            ^
+            source.ts meta.type.declaration.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.type.declaration.ts
+              ^
+              source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+               ^
+               source.ts meta.type.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                ^
+                source.ts meta.type.declaration.ts meta.type.parameters.ts
+                 ^^^^^^^
+                 source.ts meta.type.declaration.ts meta.type.parameters.ts storage.modifier.ts
+                        ^
+                        source.ts meta.type.declaration.ts meta.type.parameters.ts
+                         ^^^^^^
+                         source.ts meta.type.declaration.ts meta.type.parameters.ts support.type.builtin.ts
+                               ^
+                               source.ts meta.type.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                ^
+                                source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                 ^^^^
+                                 source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts variable.parameter.ts
+                                     ^
+                                     source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                      ^
+                                      source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts
+                                       ^
+                                       source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                        ^
+                                        source.ts meta.type.declaration.ts meta.type.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                         ^
+                                         source.ts meta.type.declaration.ts
+                                          ^^
+                                          source.ts meta.type.declaration.ts meta.type.function.return.ts storage.type.function.arrow.ts
+                                            ^
+                                            source.ts meta.type.declaration.ts meta.type.function.return.ts
+                                             ^^^^^^^^^^
+                                             source.ts meta.type.declaration.ts meta.type.function.return.ts entity.name.type.ts
+                                                       ^
+                                                       source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                                        ^^^^^^
+                                                        source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts keyword.operator.expression.typeof.ts
+                                                              ^
+                                                              source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts
+                                                               ^^^^^^^
+                                                               source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts variable.other.readwrite.ts
+                                                                      ^
+                                                                      source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                                                                       ^
+                                                                       source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts meta.type.parameters.ts entity.name.type.ts
+                                                                        ^
+                                                                        source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                                                         ^
+                                                                         source.ts meta.type.declaration.ts meta.type.function.return.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
