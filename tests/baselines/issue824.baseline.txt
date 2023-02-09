@@ -1,0 +1,44 @@
+original file
+-----------------------------------
+export let a: string
+    | boolean | number;
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export let a: string
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^
+        source.ts meta.var.expr.ts storage.type.ts
+           ^
+           source.ts meta.var.expr.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+               ^^^^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+>    | boolean | number;
+ ^^^^
+ source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+     ^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.ts
+      ^
+      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+       ^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+               ^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                 ^^^^^^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts

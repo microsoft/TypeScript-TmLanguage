@@ -2219,7 +2219,7 @@ repository:
       begin: (:)(?=\s*\S)
       beginCaptures:
         '1': { name: keyword.operator.type.annotation.ts }
-      end: (?<![:|&])((?=$|^|[,);\}\]]|//)|(?==[^>])|((?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)))
+      end: (?<![:|&])(?!\s*[|&]\s+)((?=^|[,);\}\]]|//)|(?==[^>])|((?<=[\}>\]\)]|[_$[:alpha:]])\s*(?=\{)))
       patterns:
       - include: '#type'
     # if type starts on next line use modified line endings as end of type annotation eg. complete empty line
