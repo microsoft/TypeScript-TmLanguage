@@ -1,0 +1,210 @@
+original file
+-----------------------------------
+export interface FeatureControl {
+    enableCompletionProvider?:
+    string
+    | {
+        processCompletions?(completion: CustomCompletionItem): vsc.CompletionItem[]
+    }
+}
+
+export interface RegisterLanguageSupportOptions {
+    /** handle requesting position in document */
+    pathAutoRename?: {
+        glob: string
+        isSpecCanBeUsed?(specName): boolean | string
+    }
+}
+
+export interface API {
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>export interface FeatureControl {
+ ^^^^^^
+ source.ts meta.interface.ts keyword.control.export.ts
+       ^
+       source.ts meta.interface.ts
+        ^^^^^^^^^
+        source.ts meta.interface.ts storage.type.interface.ts
+                 ^
+                 source.ts meta.interface.ts
+                  ^^^^^^^^^^^^^^
+                  source.ts meta.interface.ts entity.name.type.interface.ts
+                                ^
+                                source.ts meta.interface.ts
+                                 ^
+                                 source.ts meta.interface.ts punctuation.definition.block.ts
+>    enableCompletionProvider?:
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts
+     ^^^^^^^^^^^^^^^^^^^^^^^^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                             ^
+                             source.ts meta.interface.ts meta.field.declaration.ts keyword.operator.optional.ts
+                              ^
+                              source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+>    string
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+     ^^^^^^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+>    | {
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.ts
+      ^
+      source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+       ^
+       source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+>        processCompletions?(completion: CustomCompletionItem): vsc.CompletionItem[]
+ ^^^^^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts
+         ^^^^^^^^^^^^^^^^^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+                           ^
+                           source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts keyword.operator.optional.ts
+                            ^
+                            source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^^^^^^^^^^
+                             source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                                        ^
+                                        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts
+                                         ^^^^^^^^^^^^^^^^^^^^
+                                         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
+                                                             ^
+                                                             source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                              ^
+                                                              source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                                               ^
+                                                               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+                                                                ^^^
+                                                                source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.module.ts
+                                                                   ^
+                                                                   source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts punctuation.accessor.ts
+                                                                    ^^^^^^^^^^^^^^
+                                                                    source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+                                                                                  ^
+                                                                                  source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts meta.type.tuple.ts meta.brace.square.ts
+                                                                                   ^
+                                                                                   source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts meta.type.tuple.ts meta.brace.square.ts
+>    }
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>export interface RegisterLanguageSupportOptions {
+ ^^^^^^
+ source.ts meta.interface.ts keyword.control.export.ts
+       ^
+       source.ts meta.interface.ts
+        ^^^^^^^^^
+        source.ts meta.interface.ts storage.type.interface.ts
+                 ^
+                 source.ts meta.interface.ts
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  source.ts meta.interface.ts entity.name.type.interface.ts
+                                                ^
+                                                source.ts meta.interface.ts
+                                                 ^
+                                                 source.ts meta.interface.ts punctuation.definition.block.ts
+>    /** handle requesting position in document */
+ ^^^^
+ source.ts meta.interface.ts
+     ^^^
+     source.ts meta.interface.ts comment.block.documentation.ts punctuation.definition.comment.ts
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        source.ts meta.interface.ts comment.block.documentation.ts
+                                                ^^
+                                                source.ts meta.interface.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>    pathAutoRename?: {
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts
+     ^^^^^^^^^^^^^^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+                   ^
+                   source.ts meta.interface.ts meta.field.declaration.ts keyword.operator.optional.ts
+                    ^
+                    source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                     ^
+                     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts
+                      ^
+                      source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+>        glob: string
+ ^^^^^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+         ^^^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+             ^
+             source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+               ^^^^^^
+               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+>        isSpecCanBeUsed?(specName): boolean | string
+ ^^^^^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts
+         ^^^^^^^^^^^^^^^
+         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+                        ^
+                        source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts keyword.operator.optional.ts
+                         ^
+                         source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                          ^^^^^^^^
+                          source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                  ^
+                                  source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                   ^
+                                   source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                    ^
+                                    source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+                                     ^^^^^^^
+                                     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+                                            ^
+                                            source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+                                             ^
+                                             source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.ts
+                                              ^
+                                              source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts
+                                               ^^^^^^
+                                               source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts meta.method.declaration.ts meta.return.type.ts support.type.primitive.ts
+>    }
+ ^^^^
+ source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts
+     ^
+     source.ts meta.interface.ts meta.field.declaration.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>export interface API {
+ ^^^^^^
+ source.ts meta.interface.ts keyword.control.export.ts
+       ^
+       source.ts meta.interface.ts
+        ^^^^^^^^^
+        source.ts meta.interface.ts storage.type.interface.ts
+                 ^
+                 source.ts meta.interface.ts
+                  ^^^
+                  source.ts meta.interface.ts entity.name.type.interface.ts
+                     ^
+                     source.ts meta.interface.ts
+                      ^
+                      source.ts meta.interface.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
