@@ -1,0 +1,84 @@
+original file
+-----------------------------------
+class A {
+    f = () => 
+        false &&
+        (false) ||
+        (this.f);
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>class A {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>    f = () => 
+ ^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+     ^
+     source.ts meta.class.ts meta.field.declaration.ts meta.definition.property.ts entity.name.function.ts
+      ^
+      source.ts meta.class.ts meta.field.declaration.ts
+       ^
+       source.ts meta.class.ts meta.field.declaration.ts keyword.operator.assignment.ts
+        ^
+        source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+            ^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts storage.type.function.arrow.ts
+              ^^
+              source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+>        false &&
+ ^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts meta.arrow.ts
+         ^^^^^
+         source.ts meta.class.ts meta.field.declaration.ts constant.language.boolean.false.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts
+               ^^
+               source.ts meta.class.ts meta.field.declaration.ts keyword.operator.logical.ts
+>        (false) ||
+ ^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+          ^^^^^
+          source.ts meta.class.ts meta.field.declaration.ts constant.language.boolean.false.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts
+                 ^^
+                 source.ts meta.class.ts meta.field.declaration.ts keyword.operator.logical.ts
+>        (this.f);
+ ^^^^^^^^
+ source.ts meta.class.ts meta.field.declaration.ts
+         ^
+         source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+          ^^^^
+          source.ts meta.class.ts meta.field.declaration.ts variable.language.this.ts
+              ^
+              source.ts meta.class.ts meta.field.declaration.ts punctuation.accessor.ts
+               ^
+               source.ts meta.class.ts meta.field.declaration.ts variable.other.property.ts
+                ^
+                source.ts meta.class.ts meta.field.declaration.ts meta.brace.round.ts
+                 ^
+                 source.ts meta.class.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
