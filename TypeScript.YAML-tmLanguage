@@ -2674,22 +2674,21 @@ repository:
   template:
     patterns:
     - include: '#template-call'
-    - name: string.template.ts
+    - contentName: string.template.ts
       begin: '({{identifier}})?(`)'
       beginCaptures:
         '1': { name: entity.name.function.tagged-template.ts }
-        '2': { name: punctuation.definition.string.template.begin.ts }
+        '2': { name: string.template.ts punctuation.definition.string.template.begin.ts }
       end: '`'
       endCaptures:
-        '0': { name: punctuation.definition.string.template.end.ts}
+        '0': { name: string.template.ts punctuation.definition.string.template.end.ts}
       patterns:
        - include: '#template-substitution-element'
        - include: '#string-character-escape'
 
   template-call:
     patterns:
-    - name: string.template.ts
-      begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}})({{typeArguments}}\s*)?`)
+    - begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}})({{typeArguments}}\s*)?`)
       end: (?=`)
       patterns:
       - begin: (?=(({{identifier}}\s*{{propertyAccessPreIdentifier}})*|({{propertyAccessPreIdentifier}})?)({{identifier}}))
@@ -2699,8 +2698,7 @@ repository:
         - name: entity.name.function.tagged-template.ts
           match: ({{identifier}})
       - include: '#type-arguments'
-    - name: string.template.ts
-      begin: ({{identifier}})?\s*(?=({{typeArguments}}\s*)`)
+    - begin: ({{identifier}})?\s*(?=({{typeArguments}}\s*)`)
       beginCaptures:
         '1': { name: entity.name.function.tagged-template.ts }
       end: (?=`)
@@ -2728,14 +2726,14 @@ repository:
   template-type:
     patterns:
     - include: '#template-call'
-    - name: string.template.ts
+    - contentName: string.template.ts
       begin: '({{identifier}})?(`)'
       beginCaptures:
         '1': { name: entity.name.function.tagged-template.ts }
-        '2': { name: punctuation.definition.string.template.begin.ts }
+        '2': { name: string.template.ts punctuation.definition.string.template.begin.ts }
       end: '`'
       endCaptures:
-        '0': { name: punctuation.definition.string.template.end.ts}
+        '0': { name: string.template.ts punctuation.definition.string.template.end.ts}
       patterns:
        - include: '#template-type-substitution-element'
        - include: '#string-character-escape'
