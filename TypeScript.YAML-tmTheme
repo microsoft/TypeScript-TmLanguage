@@ -32,10 +32,8 @@ settings:
   settings: { vsclassificationtype: comment }
 - scope: comment.block.documentation.ts, other.meta.jsdoc, other.description.jsdoc
   settings: { vsclassificationtype: comment }
-- scope: entity.name.type.instance.jsdoc, variable.other.jsdoc
+- scope: entity.name.type.instance.jsdoc
   settings: { vsclassificationtype: identifier }
-- scope: storage.type.class.jsdoc
-  settings: { vsclassificationtype: xml doc comment - name }
 
 - scope: entity.name.type.class.ts
   settings: { vsclassificationtype: class name }
@@ -56,7 +54,7 @@ settings:
 - scope: constant.language.undefined.ts, variable.language.arguments.ts, support.type.object
   settings: { vsclassificationtype: identifier }
 
-- scope: entity.name.tag
+- scope: entity.name.tag.inline, entity.name.tag.directive
   settings: { vsclassificationtype: HTML Element Name }
 
 - scope: entity.other.attribute-name
