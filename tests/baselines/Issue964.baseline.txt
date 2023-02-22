@@ -1,0 +1,166 @@
+original file
+-----------------------------------
+({
+    foo():{}{
+        let bar;//This line is gray, because tokenization thinks it is inside an object literal scope.
+        //The issue goes away if a space is present between the return type and the method block.
+    },
+    foo: ():{}=>{
+        let bar;//This works fine.
+    }
+});
+let bar;
+function baz():{}{
+    let bar;//This also works fine.
+}
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>({
+ ^
+ source.ts meta.brace.round.ts
+  ^
+  source.ts meta.objectliteral.ts punctuation.definition.block.ts
+>    foo():{}{
+ ^^^^
+ source.ts meta.objectliteral.ts meta.method.declaration.ts
+     ^^^
+     source.ts meta.objectliteral.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+         ^
+         source.ts meta.objectliteral.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+          ^
+          source.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+           ^
+           source.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+            ^
+            source.ts meta.objectliteral.ts meta.method.declaration.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+             ^
+             source.ts meta.objectliteral.ts meta.block.ts punctuation.definition.block.ts
+>        let bar;//This line is gray, because tokenization thinks it is inside an object literal scope.
+ ^^^^^^^^
+ source.ts meta.objectliteral.ts meta.block.ts
+         ^^^
+         source.ts meta.objectliteral.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.objectliteral.ts meta.block.ts meta.var.expr.ts
+             ^^^
+             source.ts meta.objectliteral.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.objectliteral.ts meta.block.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.objectliteral.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   source.ts meta.objectliteral.ts meta.block.ts comment.line.double-slash.ts
+>        //The issue goes away if a space is present between the return type and the method block.
+ ^^^^^^^^
+ source.ts meta.objectliteral.ts meta.block.ts punctuation.whitespace.comment.leading.ts
+         ^^
+         source.ts meta.objectliteral.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           source.ts meta.objectliteral.ts meta.block.ts comment.line.double-slash.ts
+>    },
+ ^^^^
+ source.ts meta.objectliteral.ts meta.block.ts
+     ^
+     source.ts meta.objectliteral.ts meta.block.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.objectliteral.ts punctuation.separator.comma.ts
+>    foo: ():{}=>{
+ ^^^^
+ source.ts meta.objectliteral.ts
+     ^^^
+     source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts entity.name.function.ts
+        ^
+        source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+         ^
+         source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts
+          ^
+          source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^
+           source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+            ^
+            source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.return.type.arrow.ts keyword.operator.type.annotation.ts
+             ^
+             source.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.objectliteral.ts meta.object.member.ts meta.objectliteral.ts punctuation.definition.block.ts
+               ^^
+               source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts storage.type.function.arrow.ts
+                 ^
+                 source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>        let bar;//This works fine.
+ ^^^^^^^^
+ source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts
+         ^^^
+         source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+             ^^^
+             source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+                 ^^
+                 source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+                   ^^^^^^^^^^^^^^^^
+                   source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts comment.line.double-slash.ts
+>    }
+ ^^^^
+ source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>});
+ ^
+ source.ts meta.objectliteral.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.brace.round.ts
+   ^
+   source.ts punctuation.terminator.statement.ts
+>let bar;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+>function baz():{}{
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+               ^
+               source.ts meta.function.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                ^
+                source.ts meta.function.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                 ^
+                 source.ts meta.function.ts meta.return.type.ts meta.object.type.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.block.ts punctuation.definition.block.ts
+>    let bar;//This also works fine.
+ ^^^^
+ source.ts meta.block.ts
+     ^^^
+     source.ts meta.block.ts meta.var.expr.ts storage.type.ts
+        ^
+        source.ts meta.block.ts meta.var.expr.ts
+         ^^^
+         source.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.block.ts punctuation.terminator.statement.ts
+             ^^
+             source.ts meta.block.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+               ^^^^^^^^^^^^^^^^^^^^^
+               source.ts meta.block.ts comment.line.double-slash.ts
+>}
+ ^
+ source.ts meta.block.ts punctuation.definition.block.ts
