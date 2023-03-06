@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-**[JavaScript and TypeScript Nightly]([https://marketplace.visualstudio.com/items?itemName=ms-vscode.typescript-javascript-grammar](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)) version:**  
+**[JavaScript and TypeScript Nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next) version:**  
 
 **Code**
 
