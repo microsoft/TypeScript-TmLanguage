@@ -36,7 +36,7 @@ variables:
   propertyName: ({{anyNumber}}|({{identifier}})|{{nonIdentifierPropertyName}})
   propertyNameWithPrivate: ({{anyNumber}}|({{propertyIdentifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
-  constructsAndModifiers: '(?:abstract|async|class|const|declare|enum|export|function|import|interface|let|module|namespace|return|type|var)\b'
+  constructsAndModifiers: '(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b'
   endOfStatement: ';|^\s*$|(?:^\s*{{constructsAndModifiers}})'
   varExprStart: '{{startOfDeclaration}}\b(var|let){{endOfIdentifier}}'
   constExprStart: '{{startOfDeclaration}}\b(const(?!\s+enum\b)){{endOfIdentifier}}'
@@ -331,7 +331,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts entity.name.function.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
@@ -339,7 +339,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
@@ -347,7 +347,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
       patterns:
       - include: '#var-single-variable-type-annotation'
 
@@ -358,14 +358,14 @@ repository:
         (?x)({{identifier}})(?={{functionLikeAssignmentOrType}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
       begin: ({{identifier}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
       patterns:
       - include: '#var-single-variable-type-annotation'
 
