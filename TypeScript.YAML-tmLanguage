@@ -269,7 +269,7 @@ repository:
     # let/var
     - name: meta.var.expr.ts
       begin: (?={{varExprStart}})
-      end: (?!{{varExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|{{endOfStatement}})|((?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
+      end: (?!{{varExprStart}})((?=^|;|}|({{startOfIdentifier}}(of|in)\s+)|{{endOfStatement}})|((?<!{{lookBehindLet}}|{{lookBehindVar}})(?=\s*$)))
       patterns:
       - begin: '{{varExprStart}}\s*'
         beginCaptures:
@@ -281,7 +281,7 @@ repository:
       - include: '#var-single-variable'
       - include: '#variable-initializer'
       - include: '#comment'
-      - begin: (,)\s*((?!\S)|(?=\/\/))
+      - begin: (,)\s*(?=$|\/\/)
         beginCaptures:
           '1': { name: punctuation.separator.comma.ts }
         end: (?<!,)(((?==|;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
@@ -299,7 +299,7 @@ repository:
         '1': { name: keyword.control.export.ts }
         '2': { name: storage.modifier.ts }
         '3': { name: storage.type.ts }
-      end: (?!{{constExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|{{endOfStatement}})|((?<!{{lookBehindConst}})(?=\s*$)))
+      end: (?!{{constExprStart}})((?=^|;|}|({{startOfIdentifier}}(of|in)\s+)|{{endOfStatement}})|((?<!{{lookBehindConst}})(?=\s*$)))
       patterns:
       - begin: '{{constExprStart}}\s*'
         beginCaptures:
@@ -311,7 +311,7 @@ repository:
       - include: '#var-single-const'
       - include: '#variable-initializer'
       - include: '#comment'
-      - begin: (,)\s*((?!\S)|(?=\/\/))
+      - begin: (,)\s*(?=$|\/\/)
         beginCaptures:
           '1': { name: punctuation.separator.comma.ts }
         end: (?<!,)(((?==|;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
@@ -331,7 +331,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts entity.name.function.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+)|({{endOfStatement}}))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
@@ -339,7 +339,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+)|({{endOfStatement}}))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
@@ -347,7 +347,7 @@ repository:
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.readwrite.ts }
         '2': { name: keyword.operator.definiteassignment.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+)|({{endOfStatement}}))
       patterns:
       - include: '#var-single-variable-type-annotation'
 
@@ -358,14 +358,14 @@ repository:
         (?x)({{identifier}})(?={{functionLikeAssignmentOrType}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+)|({{endOfStatement}}))
       patterns:
       - include: '#var-single-variable-type-annotation'
     - name: meta.var-single-variable.expr.ts
       begin: ({{identifier}})
       beginCaptures:
         '1': { name: meta.definition.variable.ts variable.other.constant.ts }
-      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+))|({{endOfStatement}})
+      end: (?=$|^|[;,=}]|({{startOfIdentifier}}(of|in)\s+)|({{endOfStatement}}))
       patterns:
       - include: '#var-single-variable-type-annotation'
 

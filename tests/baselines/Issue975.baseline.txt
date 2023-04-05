@@ -1,0 +1,60 @@
+original file
+-----------------------------------
+let abc: string
+abc.prop
+
+let abc, def: string
+abc.prop
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let abc: string
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+          ^^^^^^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+>abc.prop
+ ^^^
+ source.ts variable.other.object.ts
+    ^
+    source.ts punctuation.accessor.ts
+     ^^^^
+     source.ts variable.other.property.ts
+>
+ ^
+ source.ts
+>let abc, def: string
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+        ^
+        source.ts meta.var.expr.ts punctuation.separator.comma.ts
+         ^
+         source.ts meta.var.expr.ts
+          ^^^
+          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+               ^^^^^^
+               source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts support.type.primitive.ts
+>abc.prop
+ ^^^
+ source.ts variable.other.object.ts
+    ^
+    source.ts punctuation.accessor.ts
+     ^^^^
+     source.ts variable.other.property.ts
