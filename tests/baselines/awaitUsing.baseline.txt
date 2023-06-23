@@ -1,0 +1,2474 @@
+original file
+-----------------------------------
+// await using as expression
+await using;
+await using = a;
+await using[x];
+await using[x] = a;
+await using.x;
+await using.x = a;
+[await using];
+[await using] = a;
+({x: await using});
+({x: await using} = a);
+a = await using;
+a = await using[x];
+a = [await using];
+a = {x: await using};
+async function f(a = await using) {}
+async () => await using;
+class C extends (await using) {}
+class C<using> {}
+class C { [await using]; }
+class C { static [await using]; }
+class C { readonly [await using]; }
+class C { declare [await using]; }
+class C { abstract [await using]; }
+class C { accessor [await using]; }
+class C { static accessor [await using]; }
+class C { readonly accessor [await using]; }
+class C { [await using]() {} }
+class C { static [await using]() {} }
+class C { abstract [await using]() }
+class C { get [await using]() {} }
+class C { static get [await using]() {} }
+class C { abstract get [await using](); }
+class C { set [await using]() {} }
+class C { static set [await using](v) {} }
+class C { abstract set [await using](v); }
+enum E { a = await using };
+switch (await using) {
+    case await using:
+}
+for (await using;;);
+for (await using[x];;);
+
+await using
+x = a;
+
+await
+using
+x = a;
+
+await using
+[x] = a;
+
+await
+using
+[x] = a;
+
+// await using as keyword
+await using x = a;
+await using x = a, y = b;
+
+await using x
+= a;
+
+await using x
+= a, y = b;
+
+await using x = a
+    , y = b;
+
+await using x = a,
+      y = b;
+
+for (await using x of a);
+for (await using x = a;;);
+for (await using x = a, y = b;;);
+
+for (await using x
+= a;;);
+
+for (await using x
+= a, y = b;;);
+
+for (await using x = a
+         , y = b;;);
+
+for (await using x = a,
+           y = b;;);
+
+function f() {
+    await using x = a;
+}
+
+(() => {
+    await using x = a;
+})
+
+namespace N {
+    await using x = a;
+}
+
+class C {
+    constructor() {
+        await using x = a;
+    }
+    method() {
+        await using x = a;
+    }
+    get p() {
+        await using x = a;
+    }
+    set p(v) {
+        await using x = a;
+    }
+    static {
+        await using x = a;
+    }
+}
+
+// await using as expression, illegal syntax
+await using {x};
+await using {x: y};
+
+// await using as keyword, illegal syntax
+await using x;
+await using x, y;
+await using x, [y];
+await using x, {y};
+await using x, {y: z};
+await using x = a, y;
+await using x = a, [y];
+await using x = a, {y};
+await using x = a, {y: z};
+declare await using x;
+declare await using x = a;
+export await using x;
+export await using x = a;
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>// await using as expression
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>await using;
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+>await using = a;
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+            ^
+            source.ts
+             ^
+             source.ts keyword.operator.assignment.ts
+              ^
+              source.ts
+               ^
+               source.ts variable.other.readwrite.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+>await using[x];
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.array.literal.ts meta.brace.square.ts
+             ^
+             source.ts meta.array.literal.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.array.literal.ts meta.brace.square.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+>await using[x] = a;
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.array.literal.ts meta.brace.square.ts
+             ^
+             source.ts meta.array.literal.ts variable.other.readwrite.ts
+              ^
+              source.ts meta.array.literal.ts meta.brace.square.ts
+               ^
+               source.ts
+                ^
+                source.ts keyword.operator.assignment.ts
+                 ^
+                 source.ts
+                  ^
+                  source.ts variable.other.readwrite.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>await using.x;
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.object.ts
+            ^
+            source.ts punctuation.accessor.ts
+             ^
+             source.ts support.variable.property.dom.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>await using.x = a;
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.object.ts
+            ^
+            source.ts punctuation.accessor.ts
+             ^
+             source.ts support.variable.property.dom.ts
+              ^
+              source.ts
+               ^
+               source.ts keyword.operator.assignment.ts
+                ^
+                source.ts
+                 ^
+                 source.ts variable.other.readwrite.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+>[await using];
+ ^
+ source.ts meta.array.literal.ts meta.brace.square.ts
+  ^^^^^
+  source.ts meta.array.literal.ts keyword.control.flow.ts
+       ^
+       source.ts meta.array.literal.ts
+        ^^^^^
+        source.ts meta.array.literal.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.array.literal.ts meta.brace.square.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>[await using] = a;
+ ^
+ source.ts meta.array.literal.ts meta.brace.square.ts
+  ^^^^^
+  source.ts meta.array.literal.ts keyword.control.flow.ts
+       ^
+       source.ts meta.array.literal.ts
+        ^^^^^
+        source.ts meta.array.literal.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.array.literal.ts meta.brace.square.ts
+              ^
+              source.ts
+               ^
+               source.ts keyword.operator.assignment.ts
+                ^
+                source.ts
+                 ^
+                 source.ts variable.other.readwrite.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+>({x: await using});
+ ^
+ source.ts meta.brace.round.ts
+  ^
+  source.ts meta.objectliteral.ts punctuation.definition.block.ts
+   ^
+   source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+    ^
+    source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts
+      ^^^^^
+      source.ts meta.objectliteral.ts meta.object.member.ts keyword.control.flow.ts
+           ^
+           source.ts meta.objectliteral.ts meta.object.member.ts
+            ^^^^^
+            source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.brace.round.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>({x: await using} = a);
+ ^
+ source.ts meta.brace.round.ts
+  ^
+  source.ts meta.objectliteral.ts punctuation.definition.block.ts
+   ^
+   source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+    ^
+    source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+     ^
+     source.ts meta.objectliteral.ts meta.object.member.ts
+      ^^^^^
+      source.ts meta.objectliteral.ts meta.object.member.ts keyword.control.flow.ts
+           ^
+           source.ts meta.objectliteral.ts meta.object.member.ts
+            ^^^^^
+            source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                  ^
+                  source.ts
+                   ^
+                   source.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts
+                     ^
+                     source.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.brace.round.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+>a = await using;
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^^^^^
+     source.ts keyword.control.flow.ts
+          ^
+          source.ts
+           ^^^^^
+           source.ts variable.other.readwrite.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+>a = await using[x];
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^^^^^
+     source.ts keyword.control.flow.ts
+          ^
+          source.ts
+           ^^^^^
+           source.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.array.literal.ts meta.brace.square.ts
+                 ^
+                 source.ts meta.array.literal.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.array.literal.ts meta.brace.square.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>a = [await using];
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts meta.array.literal.ts
+     ^
+     source.ts meta.array.literal.ts meta.brace.square.ts
+      ^^^^^
+      source.ts meta.array.literal.ts keyword.control.flow.ts
+           ^
+           source.ts meta.array.literal.ts
+            ^^^^^
+            source.ts meta.array.literal.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.array.literal.ts meta.brace.square.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+>a = {x: await using};
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts meta.objectliteral.ts
+     ^
+     source.ts meta.objectliteral.ts punctuation.definition.block.ts
+      ^
+      source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts
+       ^
+       source.ts meta.objectliteral.ts meta.object.member.ts meta.object-literal.key.ts punctuation.separator.key-value.ts
+        ^
+        source.ts meta.objectliteral.ts meta.object.member.ts
+         ^^^^^
+         source.ts meta.objectliteral.ts meta.object.member.ts keyword.control.flow.ts
+              ^
+              source.ts meta.objectliteral.ts meta.object.member.ts
+               ^^^^^
+               source.ts meta.objectliteral.ts meta.object.member.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.objectliteral.ts punctuation.definition.block.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+>async function f(a = await using) {}
+ ^^^^^
+ source.ts meta.function.ts storage.modifier.async.ts
+      ^
+      source.ts meta.function.ts
+       ^^^^^^^^
+       source.ts meta.function.ts storage.type.function.ts
+               ^
+               source.ts meta.function.ts
+                ^
+                source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                 ^
+                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^
+                  source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+                   ^
+                   source.ts meta.function.ts meta.parameters.ts
+                    ^
+                    source.ts meta.function.ts meta.parameters.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.function.ts meta.parameters.ts
+                      ^^^^^
+                      source.ts meta.function.ts meta.parameters.ts keyword.control.flow.ts
+                           ^
+                           source.ts meta.function.ts meta.parameters.ts
+                            ^^^^^
+                            source.ts meta.function.ts meta.parameters.ts variable.other.readwrite.ts
+                                 ^
+                                 source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                  ^
+                                  source.ts meta.function.ts
+                                   ^
+                                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>async () => await using;
+ ^^^^^
+ source.ts meta.arrow.ts storage.modifier.async.ts
+      ^
+      source.ts meta.arrow.ts
+       ^
+       source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+        ^
+        source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+         ^
+         source.ts meta.arrow.ts
+          ^^
+          source.ts meta.arrow.ts storage.type.function.arrow.ts
+            ^
+            source.ts meta.arrow.ts
+             ^^^^^
+             source.ts keyword.control.flow.ts
+                  ^
+                  source.ts
+                   ^^^^^
+                   source.ts variable.other.readwrite.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+>class C extends (await using) {}
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^^^^^^^
+         source.ts meta.class.ts storage.modifier.ts
+                ^
+                source.ts meta.class.ts
+                 ^
+                 source.ts meta.class.ts meta.brace.round.ts
+                  ^^^^^
+                  source.ts meta.class.ts keyword.control.flow.ts
+                       ^
+                       source.ts meta.class.ts
+                        ^^^^^
+                        source.ts meta.class.ts variable.other.readwrite.ts
+                             ^
+                             source.ts meta.class.ts meta.brace.round.ts
+                              ^
+                              source.ts meta.class.ts
+                               ^
+                               source.ts meta.class.ts punctuation.definition.block.ts
+                                ^
+                                source.ts meta.class.ts punctuation.definition.block.ts
+>class C<using> {}
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+         ^^^^^
+         source.ts meta.class.ts meta.type.parameters.ts entity.name.type.ts
+              ^
+              source.ts meta.class.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+               ^
+               source.ts meta.class.ts
+                ^
+                source.ts meta.class.ts punctuation.definition.block.ts
+                 ^
+                 source.ts meta.class.ts punctuation.definition.block.ts
+>class C { [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+           ^
+           source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+            ^^^^^
+            source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                  ^^^^^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                         ^
+                         source.ts meta.class.ts
+                          ^
+                          source.ts meta.class.ts punctuation.definition.block.ts
+>class C { static [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                   ^^^^^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                        ^
+                        source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                         ^^^^^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                               ^
+                               source.ts meta.class.ts punctuation.terminator.statement.ts
+                                ^
+                                source.ts meta.class.ts
+                                 ^
+                                 source.ts meta.class.ts punctuation.definition.block.ts
+>class C { readonly [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts meta.field.declaration.ts storage.modifier.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                     ^^^^^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                           ^^^^^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                 ^
+                                 source.ts meta.class.ts punctuation.terminator.statement.ts
+                                  ^
+                                  source.ts meta.class.ts
+                                   ^
+                                   source.ts meta.class.ts punctuation.definition.block.ts
+>class C { declare [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                  ^
+                  source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                    ^^^^^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                         ^
+                         source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                          ^^^^^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                               ^
+                               source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                ^
+                                source.ts meta.class.ts punctuation.terminator.statement.ts
+                                 ^
+                                 source.ts meta.class.ts
+                                  ^
+                                  source.ts meta.class.ts punctuation.definition.block.ts
+>class C { abstract [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                     ^^^^^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                           ^^^^^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                 ^
+                                 source.ts meta.class.ts punctuation.terminator.statement.ts
+                                  ^
+                                  source.ts meta.class.ts
+                                   ^
+                                   source.ts meta.class.ts punctuation.definition.block.ts
+>class C { accessor [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts storage.type.property.ts
+                   ^
+                   source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                    ^
+                    source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                     ^^^^^
+                     source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                           ^^^^^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                 ^
+                                 source.ts meta.class.ts punctuation.terminator.statement.ts
+                                  ^
+                                  source.ts meta.class.ts
+                                   ^
+                                   source.ts meta.class.ts punctuation.definition.block.ts
+>class C { static accessor [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts
+                  ^^^^^^^^
+                  source.ts meta.class.ts storage.type.property.ts
+                          ^
+                          source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                           ^
+                           source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                            ^^^^^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                                 ^
+                                 source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                                  ^^^^^
+                                  source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                       ^
+                                       source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                        ^
+                                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                                         ^
+                                         source.ts meta.class.ts
+                                          ^
+                                          source.ts meta.class.ts punctuation.definition.block.ts
+>class C { readonly accessor [await using]; }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                   ^
+                   source.ts meta.class.ts
+                    ^^^^^^^^
+                    source.ts meta.class.ts storage.type.property.ts
+                            ^
+                            source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                             ^
+                             source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                              ^^^^^
+                              source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                                   ^
+                                   source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts
+                                    ^^^^^
+                                    source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                         ^
+                                         source.ts meta.class.ts meta.field.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                          ^
+                                          source.ts meta.class.ts punctuation.terminator.statement.ts
+                                           ^
+                                           source.ts meta.class.ts
+                                            ^
+                                            source.ts meta.class.ts punctuation.definition.block.ts
+>class C { [await using]() {} }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+            ^^^^^
+            source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                  ^^^^^
+                  source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                             ^
+                             source.ts meta.class.ts
+                              ^
+                              source.ts meta.class.ts punctuation.definition.block.ts
+>class C { static [await using]() {} }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts meta.array.literal.ts
+                  ^
+                  source.ts meta.class.ts meta.array.literal.ts meta.brace.square.ts
+                   ^^^^^
+                   source.ts meta.class.ts meta.array.literal.ts keyword.control.flow.ts
+                        ^
+                        source.ts meta.class.ts meta.array.literal.ts
+                         ^^^^^
+                         source.ts meta.class.ts meta.array.literal.ts variable.other.readwrite.ts
+                              ^
+                              source.ts meta.class.ts meta.array.literal.ts meta.brace.square.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.class.ts
+                                     ^
+                                     source.ts meta.class.ts punctuation.definition.block.ts
+>class C { abstract [await using]() }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                     ^^^^^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                           ^^^^^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                 ^
+                                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts
+                                    ^
+                                    source.ts meta.class.ts punctuation.definition.block.ts
+>class C { get [await using]() {} }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^
+           source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                ^^^^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                      ^^^^^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                 ^
+                                 source.ts meta.class.ts
+                                  ^
+                                  source.ts meta.class.ts punctuation.definition.block.ts
+>class C { static get [await using]() {} }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts
+                  ^^^
+                  source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                       ^^^^^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                             ^^^^^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                        ^
+                                        source.ts meta.class.ts
+                                         ^
+                                         source.ts meta.class.ts punctuation.definition.block.ts
+>class C { abstract get [await using](); }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                         ^^^^^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                               ^^^^^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                       ^
+                                       source.ts meta.class.ts punctuation.terminator.statement.ts
+                                        ^
+                                        source.ts meta.class.ts
+                                         ^
+                                         source.ts meta.class.ts punctuation.definition.block.ts
+>class C { set [await using]() {} }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^
+           source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts
+               ^
+               source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                ^^^^^
+                source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                      ^^^^^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                           ^
+                           source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                             ^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts
+                               ^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                ^
+                                source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                 ^
+                                 source.ts meta.class.ts
+                                  ^
+                                  source.ts meta.class.ts punctuation.definition.block.ts
+>class C { static set [await using](v) {} }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^
+           source.ts meta.class.ts storage.modifier.ts
+                 ^
+                 source.ts meta.class.ts
+                  ^^^
+                  source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                       ^^^^^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                            ^
+                            source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                             ^^^^^
+                             source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                  ^
+                                  source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                   ^
+                                   source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                        ^
+                                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+                                         ^
+                                         source.ts meta.class.ts
+                                          ^
+                                          source.ts meta.class.ts punctuation.definition.block.ts
+>class C { abstract set [await using](v); }
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+          ^
+          source.ts meta.class.ts
+           ^^^^^^^^
+           source.ts meta.class.ts meta.method.declaration.ts storage.modifier.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts
+                    ^^^
+                    source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                         ^^^^^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts keyword.control.flow.ts
+                              ^
+                              source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts
+                               ^^^^^
+                               source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts variable.other.readwrite.ts
+                                    ^
+                                    source.ts meta.class.ts meta.method.declaration.ts meta.array.literal.ts meta.brace.square.ts
+                                     ^
+                                     source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                      ^
+                                      source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+                                       ^
+                                       source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                        ^
+                                        source.ts meta.class.ts punctuation.terminator.statement.ts
+                                         ^
+                                         source.ts meta.class.ts
+                                          ^
+                                          source.ts meta.class.ts punctuation.definition.block.ts
+>enum E { a = await using };
+ ^^^^
+ source.ts meta.enum.declaration.ts storage.type.enum.ts
+     ^
+     source.ts meta.enum.declaration.ts
+      ^
+      source.ts meta.enum.declaration.ts entity.name.type.enum.ts
+       ^
+       source.ts meta.enum.declaration.ts
+        ^
+        source.ts meta.enum.declaration.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.enum.declaration.ts
+          ^
+          source.ts meta.enum.declaration.ts variable.other.enummember.ts
+           ^
+           source.ts meta.enum.declaration.ts
+            ^
+            source.ts meta.enum.declaration.ts keyword.operator.assignment.ts
+             ^
+             source.ts meta.enum.declaration.ts
+              ^^^^^
+              source.ts meta.enum.declaration.ts keyword.control.flow.ts
+                   ^
+                   source.ts meta.enum.declaration.ts
+                    ^^^^^
+                    source.ts meta.enum.declaration.ts variable.other.readwrite.ts
+                         ^
+                         source.ts meta.enum.declaration.ts
+                          ^
+                          source.ts meta.enum.declaration.ts punctuation.definition.block.ts
+                           ^
+                           source.ts punctuation.terminator.statement.ts
+>switch (await using) {
+ ^^^^^^
+ source.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.switch.ts
+       ^
+       source.ts switch-statement.expr.ts switch-expression.expr.ts
+        ^
+        source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
+         ^^^^^
+         source.ts switch-statement.expr.ts switch-expression.expr.ts keyword.control.flow.ts
+              ^
+              source.ts switch-statement.expr.ts switch-expression.expr.ts
+               ^^^^^
+               source.ts switch-statement.expr.ts switch-expression.expr.ts variable.other.readwrite.ts
+                    ^
+                    source.ts switch-statement.expr.ts switch-expression.expr.ts meta.brace.round.ts
+                     ^
+                     source.ts switch-statement.expr.ts
+                      ^
+                      source.ts switch-statement.expr.ts switch-block.expr.ts punctuation.definition.block.ts
+>    case await using:
+ ^^^^
+ source.ts switch-statement.expr.ts switch-block.expr.ts
+     ^^^^
+     source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.switch.ts
+         ^
+         source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
+          ^^^^^
+          source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts keyword.control.flow.ts
+               ^
+               source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts
+                ^^^^^
+                source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts variable.other.readwrite.ts
+                     ^
+                     source.ts switch-statement.expr.ts switch-block.expr.ts case-clause.expr.ts punctuation.definition.section.case-statement.ts
+>}
+ ^
+ source.ts switch-statement.expr.ts punctuation.definition.block.ts
+>for (await using;;);
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^
+      source.ts keyword.control.flow.ts
+           ^
+           source.ts
+            ^^^^^
+            source.ts variable.other.readwrite.ts
+                 ^
+                 source.ts punctuation.terminator.statement.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+                   ^
+                   source.ts meta.brace.round.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
+>for (await using[x];;);
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^
+      source.ts keyword.control.flow.ts
+           ^
+           source.ts
+            ^^^^^
+            source.ts variable.other.readwrite.ts
+                 ^
+                 source.ts meta.array.literal.ts meta.brace.square.ts
+                  ^
+                  source.ts meta.array.literal.ts variable.other.readwrite.ts
+                   ^
+                   source.ts meta.array.literal.ts meta.brace.square.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+                      ^
+                      source.ts meta.brace.round.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await using
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+>x = a;
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^
+      source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await
+ ^^^^^
+ source.ts keyword.control.flow.ts
+>using
+ ^^^^^
+ source.ts variable.other.readwrite.ts
+>x = a;
+ ^
+ source.ts variable.other.readwrite.ts
+  ^
+  source.ts
+   ^
+   source.ts keyword.operator.assignment.ts
+    ^
+    source.ts
+     ^
+     source.ts variable.other.readwrite.ts
+      ^
+      source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await using
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+>[x] = a;
+ ^
+ source.ts meta.array.literal.ts meta.brace.square.ts
+  ^
+  source.ts meta.array.literal.ts variable.other.readwrite.ts
+   ^
+   source.ts meta.array.literal.ts meta.brace.square.ts
+    ^
+    source.ts
+     ^
+     source.ts keyword.operator.assignment.ts
+      ^
+      source.ts
+       ^
+       source.ts variable.other.readwrite.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await
+ ^^^^^
+ source.ts keyword.control.flow.ts
+>using
+ ^^^^^
+ source.ts variable.other.readwrite.ts
+>[x] = a;
+ ^
+ source.ts meta.array.literal.ts meta.brace.square.ts
+  ^
+  source.ts meta.array.literal.ts variable.other.readwrite.ts
+   ^
+   source.ts meta.array.literal.ts meta.brace.square.ts
+    ^
+    source.ts
+     ^
+     source.ts keyword.operator.assignment.ts
+      ^
+      source.ts
+       ^
+       source.ts variable.other.readwrite.ts
+        ^
+        source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>// await using as keyword
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>await using x = a;
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+>await using x = a, y = b;
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                       ^
+                       source.ts meta.var.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts variable.other.readwrite.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await using x
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+>= a;
+ ^
+ source.ts keyword.operator.assignment.ts
+  ^
+  source.ts
+   ^
+   source.ts variable.other.readwrite.ts
+    ^
+    source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await using x
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+>= a, y = b;
+ ^
+ source.ts keyword.operator.assignment.ts
+  ^
+  source.ts
+   ^
+   source.ts variable.other.readwrite.ts
+    ^
+    source.ts punctuation.separator.comma.ts
+     ^
+     source.ts
+      ^
+      source.ts variable.other.readwrite.ts
+       ^
+       source.ts
+        ^
+        source.ts keyword.operator.assignment.ts
+         ^
+         source.ts
+          ^
+          source.ts variable.other.readwrite.ts
+           ^
+           source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await using x = a
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+>    , y = b;
+ ^^^^
+ source.ts
+     ^
+     source.ts punctuation.separator.comma.ts
+      ^
+      source.ts
+       ^
+       source.ts variable.other.readwrite.ts
+        ^
+        source.ts
+         ^
+         source.ts keyword.operator.assignment.ts
+          ^
+          source.ts
+           ^
+           source.ts variable.other.readwrite.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>await using x = a,
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+>      y = b;
+ ^^^^^^
+ source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>for (await using x of a);
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^^
+                    source.ts keyword.operator.expression.of.ts
+                      ^
+                      source.ts
+                       ^
+                       source.ts variable.other.readwrite.ts
+                        ^
+                        source.ts meta.brace.round.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts
+>for (await using x = a;;);
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts variable.other.readwrite.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+                        ^
+                        source.ts punctuation.terminator.statement.ts
+                         ^
+                         source.ts meta.brace.round.ts
+                          ^
+                          source.ts punctuation.terminator.statement.ts
+>for (await using x = a, y = b;;);
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                        ^
+                        source.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                           ^
+                           source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                            ^
+                            source.ts meta.var.expr.ts
+                             ^
+                             source.ts meta.var.expr.ts variable.other.readwrite.ts
+                              ^
+                              source.ts punctuation.terminator.statement.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+                                ^
+                                source.ts meta.brace.round.ts
+                                 ^
+                                 source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>for (await using x
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+>= a;;);
+ ^
+ source.ts keyword.operator.assignment.ts
+  ^
+  source.ts
+   ^
+   source.ts variable.other.readwrite.ts
+    ^
+    source.ts punctuation.terminator.statement.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+      ^
+      source.ts meta.brace.round.ts
+       ^
+       source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>for (await using x
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+>= a, y = b;;);
+ ^
+ source.ts keyword.operator.assignment.ts
+  ^
+  source.ts
+   ^
+   source.ts variable.other.readwrite.ts
+    ^
+    source.ts punctuation.separator.comma.ts
+     ^
+     source.ts
+      ^
+      source.ts variable.other.readwrite.ts
+       ^
+       source.ts
+        ^
+        source.ts keyword.operator.assignment.ts
+         ^
+         source.ts
+          ^
+          source.ts variable.other.readwrite.ts
+           ^
+           source.ts punctuation.terminator.statement.ts
+            ^
+            source.ts punctuation.terminator.statement.ts
+             ^
+             source.ts meta.brace.round.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>for (await using x = a
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts variable.other.readwrite.ts
+>         , y = b;;);
+ ^^^^^^^^^
+ source.ts
+          ^
+          source.ts punctuation.separator.comma.ts
+           ^
+           source.ts
+            ^
+            source.ts variable.other.readwrite.ts
+             ^
+             source.ts
+              ^
+              source.ts keyword.operator.assignment.ts
+               ^
+               source.ts
+                ^
+                source.ts variable.other.readwrite.ts
+                 ^
+                 source.ts punctuation.terminator.statement.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+                   ^
+                   source.ts meta.brace.round.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>for (await using x = a,
+ ^^^
+ source.ts keyword.control.loop.ts
+    ^
+    source.ts
+     ^
+     source.ts meta.brace.round.ts
+      ^^^^^^^^^^^
+      source.ts meta.var.expr.ts storage.type.ts
+                 ^
+                 source.ts meta.var.expr.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                     ^
+                     source.ts meta.var.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts variable.other.readwrite.ts
+                       ^
+                       source.ts meta.var.expr.ts punctuation.separator.comma.ts
+>           y = b;;);
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts
+            ^
+            source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+              ^
+              source.ts meta.var.expr.ts keyword.operator.assignment.ts
+               ^
+               source.ts meta.var.expr.ts
+                ^
+                source.ts meta.var.expr.ts variable.other.readwrite.ts
+                 ^
+                 source.ts punctuation.terminator.statement.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+                   ^
+                   source.ts meta.brace.round.ts
+                    ^
+                    source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>function f() {
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+           ^
+           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.function.ts
+              ^
+              source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>    await using x = a;
+ ^^^^
+ source.ts meta.function.ts meta.block.ts
+     ^^^^^^^^^^^
+     source.ts meta.function.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                ^
+                source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.function.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.function.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.function.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>(() => {
+ ^
+ source.ts meta.brace.round.ts
+  ^
+  source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+   ^
+   source.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+    ^
+    source.ts meta.arrow.ts
+     ^^
+     source.ts meta.arrow.ts storage.type.function.arrow.ts
+       ^
+       source.ts meta.arrow.ts
+        ^
+        source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>    await using x = a;
+ ^^^^
+ source.ts meta.arrow.ts meta.block.ts
+     ^^^^^^^^^^^
+     source.ts meta.arrow.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                ^
+                source.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts meta.arrow.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.arrow.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.arrow.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.arrow.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+>})
+ ^
+ source.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>namespace N {
+ ^^^^^^^^^
+ source.ts meta.namespace.declaration.ts storage.type.namespace.ts
+          ^
+          source.ts meta.namespace.declaration.ts
+           ^
+           source.ts meta.namespace.declaration.ts entity.name.type.module.ts
+            ^
+            source.ts meta.namespace.declaration.ts
+             ^
+             source.ts meta.namespace.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    await using x = a;
+ ^^^^
+ source.ts meta.namespace.declaration.ts meta.block.ts
+     ^^^^^^^^^^^
+     source.ts meta.namespace.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                ^
+                source.ts meta.namespace.declaration.ts meta.block.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.namespace.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts meta.namespace.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts meta.namespace.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                    ^
+                    source.ts meta.namespace.declaration.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.namespace.declaration.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                      ^
+                      source.ts meta.namespace.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.namespace.declaration.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>class C {
+ ^^^^^
+ source.ts meta.class.ts storage.type.class.ts
+      ^
+      source.ts meta.class.ts
+       ^
+       source.ts meta.class.ts entity.name.type.class.ts
+        ^
+        source.ts meta.class.ts
+         ^
+         source.ts meta.class.ts punctuation.definition.block.ts
+>    constructor() {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.type.ts
+                ^
+                source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                 ^
+                 source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                  ^
+                  source.ts meta.class.ts meta.method.declaration.ts
+                   ^
+                   source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        await using x = a;
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    method() {
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts
+     ^^^^^^
+     source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        await using x = a;
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    get p() {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        await using x = a;
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    set p(v) {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^
+     source.ts meta.class.ts meta.method.declaration.ts storage.type.property.ts
+        ^
+        source.ts meta.class.ts meta.method.declaration.ts
+         ^
+         source.ts meta.class.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+          ^
+          source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+           ^
+           source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts variable.parameter.ts
+            ^
+            source.ts meta.class.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+             ^
+             source.ts meta.class.ts meta.method.declaration.ts
+              ^
+              source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>        await using x = a;
+ ^^^^^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+         ^^^^^^^^^^^
+         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                    ^
+                    source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.class.ts meta.method.declaration.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.method.declaration.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.method.declaration.ts meta.block.ts punctuation.definition.block.ts
+>    static {
+ ^^^^
+ source.ts meta.class.ts
+     ^^^^^^
+     source.ts meta.class.ts storage.modifier.ts
+           ^
+           source.ts meta.class.ts
+            ^
+            source.ts meta.class.ts meta.block.ts punctuation.definition.block.ts
+>        await using x = a;
+ ^^^^^^^^
+ source.ts meta.class.ts meta.block.ts
+         ^^^^^^^^^^^
+         source.ts meta.class.ts meta.block.ts meta.var.expr.ts storage.type.ts
+                    ^
+                    source.ts meta.class.ts meta.block.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.class.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.class.ts meta.block.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.class.ts meta.block.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.class.ts meta.block.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.class.ts meta.block.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts meta.class.ts meta.block.ts punctuation.terminator.statement.ts
+>    }
+ ^^^^
+ source.ts meta.class.ts meta.block.ts
+     ^
+     source.ts meta.class.ts meta.block.ts punctuation.definition.block.ts
+>}
+ ^
+ source.ts meta.class.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>// await using as expression, illegal syntax
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>await using {x};
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+            ^
+            source.ts
+             ^
+             source.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.block.ts variable.other.readwrite.ts
+               ^
+               source.ts meta.block.ts punctuation.definition.block.ts
+                ^
+                source.ts punctuation.terminator.statement.ts
+>await using {x: y};
+ ^^^^^
+ source.ts keyword.control.flow.ts
+      ^
+      source.ts
+       ^^^^^
+       source.ts variable.other.readwrite.ts
+            ^
+            source.ts
+             ^
+             source.ts meta.block.ts punctuation.definition.block.ts
+              ^
+              source.ts meta.block.ts entity.name.label.ts
+               ^
+               source.ts meta.block.ts punctuation.separator.label.ts
+                ^
+                source.ts meta.block.ts
+                 ^
+                 source.ts meta.block.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.block.ts punctuation.definition.block.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>// await using as keyword, illegal syntax
+ ^^
+ source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   source.ts comment.line.double-slash.ts
+>await using x;
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+>await using x, y;
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts punctuation.separator.comma.ts
+               ^
+               source.ts meta.var.expr.ts
+                ^
+                source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                 ^
+                 source.ts punctuation.terminator.statement.ts
+>await using x, [y];
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts punctuation.separator.comma.ts
+               ^^
+               source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>await using x, {y};
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts punctuation.separator.comma.ts
+               ^^
+               source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts
+                   ^
+                   source.ts punctuation.terminator.statement.ts
+>await using x, {y: z};
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts punctuation.separator.comma.ts
+               ^^
+               source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                   ^
+                   source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                     ^
+                     source.ts
+                      ^
+                      source.ts punctuation.terminator.statement.ts
+>await using x = a, y;
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+>await using x = a, [y];
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^^
+                   source.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+>await using x = a, {y};
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^^
+                   source.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+>await using x = a, {y: z};
+ ^^^^^^^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+              ^
+              source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+               ^
+               source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                ^
+                source.ts meta.var.expr.ts
+                 ^
+                 source.ts meta.var.expr.ts variable.other.readwrite.ts
+                  ^
+                  source.ts meta.var.expr.ts punctuation.separator.comma.ts
+                   ^^
+                   source.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                       ^
+                       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.type.annotation.ts entity.name.type.ts
+                         ^
+                         source.ts
+                          ^
+                          source.ts punctuation.terminator.statement.ts
+>declare await using x;
+ ^^^^^^^
+ source.ts meta.var.expr.ts storage.modifier.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^^^^^^^^^^^
+         source.ts meta.var.expr.ts storage.type.ts
+                    ^
+                    source.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts punctuation.terminator.statement.ts
+>declare await using x = a;
+ ^^^^^^^
+ source.ts meta.var.expr.ts storage.modifier.ts
+        ^
+        source.ts meta.var.expr.ts
+         ^^^^^^^^^^^
+         source.ts meta.var.expr.ts storage.type.ts
+                    ^
+                    source.ts meta.var.expr.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.var.expr.ts
+                         ^
+                         source.ts meta.var.expr.ts variable.other.readwrite.ts
+                          ^
+                          source.ts punctuation.terminator.statement.ts
+>export await using x;
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^^^^^^^^^
+        source.ts meta.var.expr.ts storage.type.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                     ^
+                     source.ts punctuation.terminator.statement.ts
+>export await using x = a;
+ ^^^^^^
+ source.ts meta.var.expr.ts keyword.control.export.ts
+       ^
+       source.ts meta.var.expr.ts
+        ^^^^^^^^^^^
+        source.ts meta.var.expr.ts storage.type.ts
+                   ^
+                   source.ts meta.var.expr.ts
+                    ^
+                    source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                     ^
+                     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                      ^
+                      source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                       ^
+                       source.ts meta.var.expr.ts
+                        ^
+                        source.ts meta.var.expr.ts variable.other.readwrite.ts
+                         ^
+                         source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
