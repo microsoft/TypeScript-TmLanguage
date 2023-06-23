@@ -36,10 +36,13 @@ variables:
   propertyName: ({{anyNumber}}|({{identifier}})|{{nonIdentifierPropertyName}})
   propertyNameWithPrivate: ({{anyNumber}}|({{propertyIdentifier}})|{{nonIdentifierPropertyName}})
   constantVar: ({{constantIdentifier}})(?![_$[:alnum:]])
-  constructsAndModifiers: '(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b'
+  usingKeyword: '(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)'
+  awaitUsingKeyword: '(?:\bawait\s+{{usingKeyword}}\b)'
+  constructsAndModifiers: '(?:abstract|async|{{awaitUsingKeyword}}|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|{{usingKeyword}}|var|while)\b'
   endOfStatement: ';|^\s*$|(?:^\s*{{constructsAndModifiers}})'
   varExprStart: '{{startOfDeclaration}}\b(var|let){{endOfIdentifier}}'
   constExprStart: '{{startOfDeclaration}}\b(const(?!\s+enum\b)){{endOfIdentifier}}'
+  usingExprStart: '{{startOfDeclaration}}\b({{usingKeyword}}|{{awaitUsingKeyword}}){{endOfIdentifier}}'
   nonPropertyLookBehind: '[^\._$[:alnum:]]'
   lookBehindReturn: '^return|{{nonPropertyLookBehind}}return'
   lookBehindThrow: '^throw|{{nonPropertyLookBehind}}throw'
@@ -48,6 +51,8 @@ variables:
   lookBehindDefault: '^default|{{nonPropertyLookBehind}}default'
   lookBehindConst: '^const|{{nonPropertyLookBehind}}const'
   lookBehindLet: '^let|{{nonPropertyLookBehind}}let'
+  lookBehindUsing: '^using|{{nonPropertyLookBehind}}using'
+  lookBehindAwaitUsing: '^await\s+using|{{nonPropertyLookBehind}}await\s+using'
   lookBehindVar: '^var|{{nonPropertyLookBehind}}var'
   lookBehindIn: '^in|{{nonPropertyLookBehind}}in'
   lookBehindOf: '^of|{{nonPropertyLookBehind}}of'
@@ -134,7 +139,7 @@ variables:
     # typeannotation is fn type: < | () | (... | (param: | (param, | (param? | (param= | (param) =>
     {{functionLikeType}} |
     (:\s*(=>|{{matchingParenthesis}}|(<[^<>]*>)|[^<>(),=])+={{functionOrArrowLookup}})
-  arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))
+  arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|{{usingKeyword}}|{{awaitUsingKeyword}}|const|import|enum|namespace|module|type|abstract|declare)\s+))
   regexpTail: ([dgimsuy]+|(?![\/\*])|(?=\/\*))(?!\s*[a-zA-Z0-9_$])
   completeRegexp: \/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)*\])+\/{{regexpTail}})
 
@@ -319,6 +324,34 @@ repository:
         - include: '#single-line-comment-consuming-line-ending'
         - include: '#comment'
         - include: '#destructuring-const'
+        - include: '#var-single-const'
+        - include: '#punctuation-comma'
+      - include: '#punctuation-comma'
+    # using/await using
+    - name: meta.var.expr.ts
+      begin: (?={{usingExprStart}})
+      beginCaptures:
+        '1': { name: keyword.control.export.ts }
+        '2': { name: storage.modifier.ts }
+        '3': { name: storage.type.ts }
+      end: (?!{{usingExprStart}})((?=;|}|({{startOfIdentifier}}(of|in)\s+)|{{endOfStatement}})|((?<!{{lookBehindUsing}}|{{lookBehindAwaitUsing}})(?=\s*$)))
+      patterns:
+      - begin: '{{usingExprStart}}\s*'
+        beginCaptures:
+          '1': { name: keyword.control.export.ts }
+          '2': { name: storage.modifier.ts }
+          '3': { name: storage.type.ts }
+        end: (?=\S)
+      - include: '#var-single-const'
+      - include: '#variable-initializer'
+      - include: '#comment'
+      - begin: (,)\s*((?!\S)|(?=\/\/))
+        beginCaptures:
+          '1': { name: punctuation.separator.comma.ts }
+        end: (?<!,)(((?==|;|}|({{startOfIdentifier}}(of|in)\s+)|^\s*$))|((?<=\S)(?=\s*$)))
+        patterns:
+        - include: '#single-line-comment-consuming-line-ending'
+        - include: '#comment'
         - include: '#var-single-const'
         - include: '#punctuation-comma'
       - include: '#punctuation-comma'

@@ -195,7 +195,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=[;}]|$|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+            <string>(?=[;}]|$|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -429,7 +429,7 @@
             <key>begin</key>
             <string>(?=(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))</string>
             <key>end</key>
-            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=^|;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))|((?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(var|let)(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=^|;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))|((?&lt;!^let|[^\._$[:alnum:]]let|^var|[^\._$[:alnum:]]var)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -539,7 +539,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=^|;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))|((?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b(const(?!\s+enum\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=^|;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))|((?&lt;!^const|[^\._$[:alnum:]]const)(?=\s*$)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -608,6 +608,108 @@
                   <dict>
                     <key>include</key>
                     <string>#destructuring-const</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#var-single-const</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#punctuation-comma</string>
+                  </dict>
+                </array>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#punctuation-comma</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>meta.var.expr.ts</string>
+            <key>begin</key>
+            <string>(?=(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b((?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.export.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>storage.modifier.ts</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?!(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b((?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.)))((?=;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))|((?&lt;!^using|[^\._$[:alnum:]]using|^await\s+using|[^\._$[:alnum:]]await\s+using)(?=\s*$)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>begin</key>
+                <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(\bexport)\s+)?(?:(\bdeclare)\s+)?\b((?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b))(?![_$[:alnum:]])(?:(?=\.\.\.)|(?!\.))\s*</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>keyword.control.export.ts</string>
+                  </dict>
+                  <key>2</key>
+                  <dict>
+                    <key>name</key>
+                    <string>storage.modifier.ts</string>
+                  </dict>
+                  <key>3</key>
+                  <dict>
+                    <key>name</key>
+                    <string>storage.type.ts</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?=\S)</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#var-single-const</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#variable-initializer</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>begin</key>
+                <string>(,)\s*((?!\S)|(?=\/\/))</string>
+                <key>beginCaptures</key>
+                <dict>
+                  <key>1</key>
+                  <dict>
+                    <key>name</key>
+                    <string>punctuation.separator.comma.ts</string>
+                  </dict>
+                </dict>
+                <key>end</key>
+                <string>(?&lt;!,)(((?==|;|}|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|^\s*$))|((?&lt;=\S)(?=\s*$)))</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#single-line-comment-consuming-line-ending</string>
+                  </dict>
+                  <dict>
+                    <key>include</key>
+                    <string>#comment</string>
                   </dict>
                   <dict>
                     <key>include</key>
@@ -719,7 +821,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b)))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -747,7 +849,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b)))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -775,7 +877,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b)))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -873,7 +975,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b)))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -896,7 +998,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b)))</string>
+            <string>(?=$|^|[;,=}]|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(of|in)\s+)|(;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b)))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2116,7 +2218,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))|(?&lt;=\})</string>
+        <string>(?=;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))|(?&lt;=\})</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -2574,7 +2676,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
+            <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3098,7 +3200,7 @@
             <key>begin</key>
             <string>(?&lt;=:)\s*</string>
             <key>end</key>
-            <string>(?=\s|[;),}\]:\-\+]|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+            <string>(?=\s|[;),}\]:\-\+]|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3338,7 +3440,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?&lt;=\})|(?=;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+        <string>(?&lt;=\})|(?=;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3395,7 +3497,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+        <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -3423,7 +3525,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+            <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3444,7 +3546,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+            <string>(?=\}|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3743,7 +3845,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+            <string>(?=$|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -3760,7 +3862,7 @@
             <key>name</key>
             <string>meta.export.ts</string>
             <key>begin</key>
-            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(export)(?:\s+(type))?\b(?!(\$)|(\s*:))((?=\s*[\{*])|((?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s|,))(?!\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b)))</string>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(export)(?:\s+(type))?\b(?!(\$)|(\s*:))((?=\s*[\{*])|((?=\s*[_$[:alpha:]][_$[:alnum:]]*(\s|,))(?!\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b)))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -3775,7 +3877,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+            <string>(?=$|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -5752,7 +5854,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?=[,);}\]=&gt;:&amp;|{\?]|(extends\s+)|$|;|^\s*$|(?:^\s*(?:abstract|async|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|var|while)\b))</string>
+        <string>(?=[,);}\]=&gt;:&amp;|{\?]|(extends\s+)|$|;|^\s*$|(?:^\s*(?:abstract|async|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|break|case|catch|class|const|continue|declare|do|else|enum|export|finally|function|for|goto|if|import|interface|let|module|namespace|switch|return|throw|try|type|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|var|while)\b))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -6945,7 +7047,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
+        <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -6967,7 +7069,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
+        <string>(?==&gt;|\{|(^\s*(export|function|class|interface|let|var|(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)|(?:\bawait\s+(?:\busing(?=\s+(?!in\b|of\b(?!\s*(?:of\b|=)))[_$[:alpha:]])\b)\b)|const|import|enum|namespace|module|type|abstract|declare)\s+))</string>
         <key>contentName</key>
         <string>meta.arrow.ts meta.return.type.arrow.ts</string>
         <key>patterns</key>
