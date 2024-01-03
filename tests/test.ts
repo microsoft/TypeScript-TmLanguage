@@ -1,6 +1,6 @@
 import fs = require('fs');
 import path = require('path');
-import chai = require('chai');
+import assert = require('assert');
 import build = require('./build');
 
 const generatedFolder = path.join(__dirname, 'generated');
@@ -51,8 +51,8 @@ function assertBaselinesMatch(file: string, generatedText: string) {
 
     const baselineFile = path.join(baselineFolder, file);
     if (fs.existsSync(baselineFile)) {
-        chai.assert.equal(generatedText, fs.readFileSync(baselineFile, 'utf8'), "Expected baselines to match: " + file);
+        assert.equal(generatedText, fs.readFileSync(baselineFile, 'utf8'), "Expected baselines to match: " + file);
     } else {
-        chai.assert(false, "New generated baseline");
+        assert.fail("New generated baseline");
     }
 }
