@@ -1,0 +1,54 @@
+original file
+-----------------------------------
+import foo from "./foo.json" with { type: "json" };
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>import foo from "./foo.json" with { type: "json" };
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^^^
+        source.ts meta.import.ts variable.other.readwrite.alias.ts
+           ^
+           source.ts meta.import.ts
+            ^^^^
+            source.ts meta.import.ts keyword.control.from.ts
+                ^
+                source.ts meta.import.ts
+                 ^
+                 source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                  ^^^^^^^^^^
+                  source.ts meta.import.ts string.quoted.double.ts
+                            ^
+                            source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                             ^
+                             source.ts meta.import.ts
+                              ^^^^
+                              source.ts meta.import.ts keyword.control.with.ts
+                                  ^
+                                  source.ts meta.import.ts
+                                   ^
+                                   source.ts meta.import.ts punctuation.definition.block.ts
+                                    ^
+                                    source.ts meta.import.ts
+                                     ^^^^
+                                     source.ts meta.import.ts meta.object-literal.key.ts
+                                         ^
+                                         source.ts meta.import.ts punctuation.separator.key-value.ts
+                                          ^
+                                          source.ts meta.import.ts
+                                           ^
+                                           source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                            ^^^^
+                                            source.ts meta.import.ts string.quoted.double.ts
+                                                ^
+                                                source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                                 ^
+                                                 source.ts meta.import.ts
+                                                  ^
+                                                  source.ts meta.import.ts punctuation.definition.block.ts
+                                                   ^
+                                                   source.ts punctuation.terminator.statement.ts

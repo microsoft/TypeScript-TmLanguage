@@ -3945,15 +3945,20 @@
       <key>import-export-assert-clause</key>
       <dict>
         <key>begin</key>
-        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(assert)\s*(\{)</string>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(with)|(assert))\s*(\{)</string>
         <key>beginCaptures</key>
         <dict>
           <key>1</key>
           <dict>
             <key>name</key>
-            <string>keyword.control.assert.tsx</string>
+            <string>keyword.control.with.tsx</string>
           </dict>
           <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.assert.tsx</string>
+          </dict>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>punctuation.definition.block.tsx</string>
