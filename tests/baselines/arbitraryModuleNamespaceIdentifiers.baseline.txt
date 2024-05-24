@@ -1,0 +1,412 @@
+original file
+-----------------------------------
+import { "a..." as a } from "./foo";
+import { type "b..." as b } from "./foo";
+
+export { a as "a..." };
+export { "b..." } from "./foo";
+export { "c..." as c } from "./foo";
+export { "d..." as "d..." } from "./foo";
+
+export { type a as "a..." };
+export { type "b..." } from "./foo";
+export { type "c..." as c } from "./foo";
+export { type "d..." as "d..." } from "./foo";
+
+export * as "a..." from "./foo";
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>import { "a..." as a } from "./foo";
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^^^
+          source.ts meta.import.ts meta.block.ts string.quoted.alias.ts
+                ^
+                source.ts meta.import.ts meta.block.ts
+                 ^^
+                 source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+                   ^
+                   source.ts meta.import.ts meta.block.ts
+                    ^
+                    source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                     ^
+                     source.ts meta.import.ts meta.block.ts
+                      ^
+                      source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.import.ts
+                        ^^^^
+                        source.ts meta.import.ts keyword.control.from.ts
+                            ^
+                            source.ts meta.import.ts
+                             ^
+                             source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^^^
+                              source.ts meta.import.ts string.quoted.double.ts
+                                   ^
+                                   source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+>import { type "b..." as b } from "./foo";
+ ^^^^^^
+ source.ts meta.import.ts keyword.control.import.ts
+       ^
+       source.ts meta.import.ts
+        ^
+        source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.import.ts meta.block.ts
+          ^^^^
+          source.ts meta.import.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.import.ts meta.block.ts
+               ^^^^^^
+               source.ts meta.import.ts meta.block.ts string.quoted.alias.ts
+                     ^
+                     source.ts meta.import.ts meta.block.ts
+                      ^^
+                      source.ts meta.import.ts meta.block.ts keyword.control.as.ts
+                        ^
+                        source.ts meta.import.ts meta.block.ts
+                         ^
+                         source.ts meta.import.ts meta.block.ts variable.other.readwrite.alias.ts
+                          ^
+                          source.ts meta.import.ts meta.block.ts
+                           ^
+                           source.ts meta.import.ts meta.block.ts punctuation.definition.block.ts
+                            ^
+                            source.ts meta.import.ts
+                             ^^^^
+                             source.ts meta.import.ts keyword.control.from.ts
+                                 ^
+                                 source.ts meta.import.ts
+                                  ^
+                                  source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                   ^^^^^
+                                   source.ts meta.import.ts string.quoted.double.ts
+                                        ^
+                                        source.ts meta.import.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>export { a as "a..." };
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^
+          source.ts meta.export.ts meta.block.ts variable.other.readwrite.ts
+           ^
+           source.ts meta.export.ts meta.block.ts
+            ^^
+            source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^^^^^^
+               source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                     ^
+                     source.ts meta.export.ts meta.block.ts
+                      ^
+                      source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts punctuation.terminator.statement.ts
+>export { "b..." } from "./foo";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^^^
+          source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                ^
+                source.ts meta.export.ts meta.block.ts
+                 ^
+                 source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.export.ts
+                   ^^^^
+                   source.ts meta.export.ts keyword.control.from.ts
+                       ^
+                       source.ts meta.export.ts
+                        ^
+                        source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                         ^^^^^
+                         source.ts meta.export.ts string.quoted.double.ts
+                              ^
+                              source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+>export { "c..." as c } from "./foo";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^^^
+          source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                ^
+                source.ts meta.export.ts meta.block.ts
+                 ^^
+                 source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+                   ^
+                   source.ts meta.export.ts meta.block.ts
+                    ^
+                    source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                     ^
+                     source.ts meta.export.ts meta.block.ts
+                      ^
+                      source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.export.ts
+                        ^^^^
+                        source.ts meta.export.ts keyword.control.from.ts
+                            ^
+                            source.ts meta.export.ts
+                             ^
+                             source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^^^
+                              source.ts meta.export.ts string.quoted.double.ts
+                                   ^
+                                   source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+>export { "d..." as "d..." } from "./foo";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^^^
+          source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                ^
+                source.ts meta.export.ts meta.block.ts
+                 ^^
+                 source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+                   ^
+                   source.ts meta.export.ts meta.block.ts
+                    ^^^^^^
+                    source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                          ^
+                          source.ts meta.export.ts meta.block.ts
+                           ^
+                           source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                            ^
+                            source.ts meta.export.ts
+                             ^^^^
+                             source.ts meta.export.ts keyword.control.from.ts
+                                 ^
+                                 source.ts meta.export.ts
+                                  ^
+                                  source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                   ^^^^^
+                                   source.ts meta.export.ts string.quoted.double.ts
+                                        ^
+                                        source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>export { type a as "a..." };
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^
+          source.ts meta.export.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^
+               source.ts meta.export.ts meta.block.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.export.ts meta.block.ts
+                 ^^
+                 source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+                   ^
+                   source.ts meta.export.ts meta.block.ts
+                    ^^^^^^
+                    source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                          ^
+                          source.ts meta.export.ts meta.block.ts
+                           ^
+                           source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                            ^
+                            source.ts punctuation.terminator.statement.ts
+>export { type "b..." } from "./foo";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^
+          source.ts meta.export.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^^^^^^
+               source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                     ^
+                     source.ts meta.export.ts meta.block.ts
+                      ^
+                      source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                       ^
+                       source.ts meta.export.ts
+                        ^^^^
+                        source.ts meta.export.ts keyword.control.from.ts
+                            ^
+                            source.ts meta.export.ts
+                             ^
+                             source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^^^
+                              source.ts meta.export.ts string.quoted.double.ts
+                                   ^
+                                   source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                    ^
+                                    source.ts punctuation.terminator.statement.ts
+>export { type "c..." as c } from "./foo";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^
+          source.ts meta.export.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^^^^^^
+               source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                     ^
+                     source.ts meta.export.ts meta.block.ts
+                      ^^
+                      source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+                        ^
+                        source.ts meta.export.ts meta.block.ts
+                         ^
+                         source.ts meta.export.ts meta.block.ts variable.other.readwrite.alias.ts
+                          ^
+                          source.ts meta.export.ts meta.block.ts
+                           ^
+                           source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                            ^
+                            source.ts meta.export.ts
+                             ^^^^
+                             source.ts meta.export.ts keyword.control.from.ts
+                                 ^
+                                 source.ts meta.export.ts
+                                  ^
+                                  source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                   ^^^^^
+                                   source.ts meta.export.ts string.quoted.double.ts
+                                        ^
+                                        source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                         ^
+                                         source.ts punctuation.terminator.statement.ts
+>export { type "d..." as "d..." } from "./foo";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+         ^
+         source.ts meta.export.ts meta.block.ts
+          ^^^^
+          source.ts meta.export.ts meta.block.ts keyword.control.type.ts
+              ^
+              source.ts meta.export.ts meta.block.ts
+               ^^^^^^
+               source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                     ^
+                     source.ts meta.export.ts meta.block.ts
+                      ^^
+                      source.ts meta.export.ts meta.block.ts keyword.control.as.ts
+                        ^
+                        source.ts meta.export.ts meta.block.ts
+                         ^^^^^^
+                         source.ts meta.export.ts meta.block.ts string.quoted.alias.ts
+                               ^
+                               source.ts meta.export.ts meta.block.ts
+                                ^
+                                source.ts meta.export.ts meta.block.ts punctuation.definition.block.ts
+                                 ^
+                                 source.ts meta.export.ts
+                                  ^^^^
+                                  source.ts meta.export.ts keyword.control.from.ts
+                                      ^
+                                      source.ts meta.export.ts
+                                       ^
+                                       source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                                        ^^^^^
+                                        source.ts meta.export.ts string.quoted.double.ts
+                                             ^
+                                             source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                              ^
+                                              source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>export * as "a..." from "./foo";
+ ^^^^^^
+ source.ts meta.export.ts keyword.control.export.ts
+       ^
+       source.ts meta.export.ts
+        ^
+        source.ts meta.export.ts constant.language.import-export-all.ts
+         ^
+         source.ts meta.export.ts
+          ^^
+          source.ts meta.export.ts keyword.control.as.ts
+            ^
+            source.ts meta.export.ts
+             ^^^^^^
+             source.ts meta.export.ts string.quoted.alias.ts
+                   ^
+                   source.ts meta.export.ts
+                    ^^^^
+                    source.ts meta.export.ts keyword.control.from.ts
+                        ^
+                        source.ts meta.export.ts
+                         ^
+                         source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                          ^^^^^
+                          source.ts meta.export.ts string.quoted.double.ts
+                               ^
+                               source.ts meta.export.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                ^
+                                source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
