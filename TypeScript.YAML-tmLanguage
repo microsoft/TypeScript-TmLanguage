@@ -140,7 +140,7 @@ variables:
     {{functionLikeType}} |
     (:\s*(=>|{{matchingParenthesis}}|(<[^<>]*>)|[^<>(),=])+={{functionOrArrowLookup}})
   arrowFunctionEnd: (?==>|\{|(^\s*(export|function|class|interface|let|var|{{usingKeyword}}|{{awaitUsingKeyword}}|const|import|enum|namespace|module|type|abstract|declare)\s+))
-  regexpTail: ([dgimsuy]+|(?![\/\*])|(?=\/\*))(?!\s*[a-zA-Z0-9_$])
+  regexpTail: ([dgimsuvy]+|(?![\/\*])|(?=\/\*))(?!\s*[a-zA-Z0-9_$])
   completeRegexp: \/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)*\])+\/{{regexpTail}})
 
 patterns:
@@ -1365,7 +1365,7 @@ repository:
         begin: (?<=\))\s*{{completeRegexp}}
         beginCaptures:
           '0': { name: punctuation.definition.string.begin.ts }
-        end: (/)([dgimsuy]*)
+        end: (/)([dgimsuvy]*)
         endCaptures:
           '1': { name: punctuation.definition.string.end.ts }
           '2': { name: keyword.other.ts }
@@ -2793,7 +2793,7 @@ repository:
       begin: (?<!\+\+|--|})(?<=[=(:,\[?+!]|{{lookBehindReturn}}|{{lookBehindCase}}|=>|&&|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[\()]|\\.|\[([^\]\\]|\\.)+\]|\(([^\)\\]|\\.)+\))+\/{{regexpTail}})
       beginCaptures:
         '1': { name: punctuation.definition.string.begin.ts }
-      end: (/)([dgimsuy]*)
+      end: (/)([dgimsuvy]*)
       endCaptures:
         '1': { name: punctuation.definition.string.end.ts }
         '2': { name: keyword.other.ts}
@@ -2804,7 +2804,7 @@ repository:
       begin: ((?<![_$[:alnum:])\]]|\+\+|--|}|\*\/)|((?<={{lookBehindReturn}}|{{lookBehindCase}}))\s*){{completeRegexp}}
       beginCaptures:
         '0': { name: punctuation.definition.string.begin.ts }
-      end: (/)([dgimsuy]*)
+      end: (/)([dgimsuvy]*)
       endCaptures:
         '1': { name: punctuation.definition.string.end.ts }
         '2': { name: keyword.other.ts }
