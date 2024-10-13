@@ -15,7 +15,6 @@ variables:
   propertyIdentifier: '\#?{{identifier}}'
   constantPropertyIdentifier: '\#?{{constantIdentifier}}'
   quotedStrings: (\'([^\'\\]|\\.)*\')|(\"([^\"\\]|\\.)*\")|(\`([^\`\\]|\\.)*\`)
-  aliasString: \'(?:[^\'\\]|\\.)*\'|\"(?:[^\"\\]|\\.)*\"
   nonIdentifierPropertyName: '{{quotedStrings}}|(\[([^\[\]]|\[[^\[\]]*\])+\])'
   label: ({{identifier}})\s*(:)
   hexNumber: \b(?<!\$)0(?:x|X)[0-9a-fA-F][0-9a-fA-F_]*(n)?\b(?!\$)
@@ -1258,23 +1257,23 @@ repository:
     patterns:
     - include: '#comment'
     #(default|*|name) as alias
-    - match: '{{startOfIdentifier}}(?:(?:(\btype)\s+)?(?:(\bdefault)|(\*)|(\b{{identifier}})|({{aliasString}})))\s+(as)\s+(?:(default{{endOfIdentifier}})|({{identifier}})|({{aliasString}}))'
+    - match: '{{startOfIdentifier}}(?:(?:(\btype)\s+)?(?:(\bdefault)|(\*)|(\b{{identifier}})|({{quotedStrings}})))\s+(as)\s+(?:(default{{endOfIdentifier}})|({{identifier}})|({{quotedStrings}}))'
       captures:
         '1': { name: keyword.control.type.ts }
         '2': { name: keyword.control.default.ts }
         '3': { name: constant.language.import-export-all.ts }
         '4': { name: variable.other.readwrite.ts }
         '5': { name: string.quoted.alias.ts }
-        '6': { name: keyword.control.as.ts }
-        '7': { name: keyword.control.default.ts }
-        '8': { name: variable.other.readwrite.alias.ts }
-        '9': { name: string.quoted.alias.ts }
+        '12': { name: keyword.control.as.ts }
+        '13': { name: keyword.control.default.ts }
+        '14': { name: variable.other.readwrite.alias.ts }
+        '15': { name: string.quoted.alias.ts }
     - include: '#punctuation-comma'
     - name: constant.language.import-export-all.ts
       match: \*
     - name: keyword.control.default.ts
       match: \b(default)\b
-    - match: '(?:(\btype)\s+)?(?:({{identifier}})|({{aliasString}}))'
+    - match: '(?:(\btype)\s+)?(?:({{identifier}})|({{quotedStrings}}))'
       captures:
         '1': { name: keyword.control.type.ts }
         '2': { name: variable.other.readwrite.alias.ts }
