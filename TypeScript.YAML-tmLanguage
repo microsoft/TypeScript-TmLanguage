@@ -1257,24 +1257,27 @@ repository:
     patterns:
     - include: '#comment'
     #(default|*|name) as alias
-    - match: '{{startOfIdentifier}}(?:(?:(\btype)\s+)?(?:(\bdefault)|(\*)|(\b{{identifier}})))\s+(as)\s+(?:(default{{endOfIdentifier}})|({{identifier}}))'
+    - match: '{{startOfIdentifier}}(?:(?:(\btype)\s+)?(?:(\bdefault)|(\*)|(\b{{identifier}})|({{quotedStrings}})))\s+(as)\s+(?:(default{{endOfIdentifier}})|({{identifier}})|({{quotedStrings}}))'
       captures:
         '1': { name: keyword.control.type.ts }
         '2': { name: keyword.control.default.ts }
         '3': { name: constant.language.import-export-all.ts }
         '4': { name: variable.other.readwrite.ts }
-        '5': { name: keyword.control.as.ts }
-        '6': { name: keyword.control.default.ts }
-        '7': { name: variable.other.readwrite.alias.ts }
+        '5': { name: string.quoted.alias.ts }
+        '12': { name: keyword.control.as.ts }
+        '13': { name: keyword.control.default.ts }
+        '14': { name: variable.other.readwrite.alias.ts }
+        '15': { name: string.quoted.alias.ts }
     - include: '#punctuation-comma'
     - name: constant.language.import-export-all.ts
       match: \*
     - name: keyword.control.default.ts
       match: \b(default)\b
-    - match: '(?:(\btype)\s+)?({{identifier}})'
+    - match: '(?:(\btype)\s+)?(?:({{identifier}})|({{quotedStrings}}))'
       captures:
         '1': { name: keyword.control.type.ts }
         '2': { name: variable.other.readwrite.alias.ts }
+        '3': { name: string.quoted.alias.ts }
 
 
   #control statements and loops
