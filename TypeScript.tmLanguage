@@ -8832,8 +8832,19 @@
             <key>patterns</key>
             <array>
               <dict>
-                <key>include</key>
-                <string>#docblock</string>
+                <key>contentName</key>
+                <string>comment.block.documentation.body.ts</string>
+                <key>begin</key>
+                <string>(?&lt;=/\*\*)([^*]|\*(?!/))*$</string>
+                <key>while</key>
+                <string>(^|\G)\s*\*(?!/)(?=([^*]|[*](?!/))*$)</string>
+                <key>patterns</key>
+                <array>
+                  <dict>
+                    <key>include</key>
+                    <string>#docblock</string>
+                  </dict>
+                </array>
               </dict>
             </array>
           </dict>
@@ -9804,12 +9815,6 @@
       <dict>
         <key>patterns</key>
         <array>
-          <dict>
-            <key>name</key>
-            <string>invalid.illegal.type.jsdoc</string>
-            <key>match</key>
-            <string>\G{(?:[^}*]|\*[^/}])+$</string>
-          </dict>
           <dict>
             <key>contentName</key>
             <string>entity.name.type.instance.jsdoc</string>
