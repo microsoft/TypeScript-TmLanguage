@@ -1,0 +1,176 @@
+original file
+-----------------------------------
+let var1;
+
+interface MyInterface {
+  func1<T extends Lowercase<'StringLiteral'>>(): T;
+  func2<T extends Lowercase<"StringLiteral">>(): T;
+  func3<T extends Lowercase<123>>(): T;
+}
+
+let var2;
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>let var1;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+         ^
+         source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
+>interface MyInterface {
+ ^^^^^^^^^
+ source.ts meta.interface.ts storage.type.interface.ts
+          ^
+          source.ts meta.interface.ts
+           ^^^^^^^^^^^
+           source.ts meta.interface.ts entity.name.type.interface.ts
+                      ^
+                      source.ts meta.interface.ts
+                       ^
+                       source.ts meta.interface.ts punctuation.definition.block.ts
+>  func1<T extends Lowercase<'StringLiteral'>>(): T;
+ ^^
+ source.ts meta.interface.ts meta.method.declaration.ts
+   ^^^^^
+   source.ts meta.interface.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+         ^
+         source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts entity.name.type.ts
+          ^
+          source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts
+           ^^^^^^^
+           source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts storage.modifier.ts
+                  ^
+                  source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts
+                   ^^^^^^^^^
+                   source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                            ^
+                            source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                             ^
+                             source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+                              ^^^^^^^^^^^^^
+                              source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts
+                                           ^
+                                           source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.single.ts punctuation.definition.string.end.ts
+                                            ^
+                                            source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                             ^
+                                             source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                              ^
+                                              source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                               ^
+                                               source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                ^
+                                                source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                                 ^
+                                                 source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts
+                                                  ^
+                                                  source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+                                                   ^
+                                                   source.ts meta.interface.ts punctuation.terminator.statement.ts
+>  func2<T extends Lowercase<"StringLiteral">>(): T;
+ ^^
+ source.ts meta.interface.ts meta.method.declaration.ts
+   ^^^^^
+   source.ts meta.interface.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+         ^
+         source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts entity.name.type.ts
+          ^
+          source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts
+           ^^^^^^^
+           source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts storage.modifier.ts
+                  ^
+                  source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts
+                   ^^^^^^^^^
+                   source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                            ^
+                            source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                             ^
+                             source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.double.ts punctuation.definition.string.begin.ts
+                              ^^^^^^^^^^^^^
+                              source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.double.ts
+                                           ^
+                                           source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts string.quoted.double.ts punctuation.definition.string.end.ts
+                                            ^
+                                            source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                             ^
+                                             source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                              ^
+                                              source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                               ^
+                                               source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                                ^
+                                                source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                                 ^
+                                                 source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts
+                                                  ^
+                                                  source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+                                                   ^
+                                                   source.ts meta.interface.ts punctuation.terminator.statement.ts
+>  func3<T extends Lowercase<123>>(): T;
+ ^^
+ source.ts meta.interface.ts meta.method.declaration.ts
+   ^^^^^
+   source.ts meta.interface.ts meta.method.declaration.ts meta.definition.method.ts entity.name.function.ts
+        ^
+        source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+         ^
+         source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts entity.name.type.ts
+          ^
+          source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts
+           ^^^^^^^
+           source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts storage.modifier.ts
+                  ^
+                  source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts
+                   ^^^^^^^^^
+                   source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts entity.name.type.ts
+                            ^
+                            source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
+                             ^^^
+                             source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts constant.numeric.decimal.ts
+                                ^
+                                source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                 ^
+                                 source.ts meta.interface.ts meta.method.declaration.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
+                                  ^
+                                  source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                                   ^
+                                   source.ts meta.interface.ts meta.method.declaration.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                                    ^
+                                    source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts keyword.operator.type.annotation.ts
+                                     ^
+                                     source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts
+                                      ^
+                                      source.ts meta.interface.ts meta.method.declaration.ts meta.return.type.ts entity.name.type.ts
+                                       ^
+                                       source.ts meta.interface.ts punctuation.terminator.statement.ts
+>}
+ ^
+ source.ts meta.interface.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
+>let var2;
+ ^^^
+ source.ts meta.var.expr.ts storage.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^^^^
+     source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.readwrite.ts
+         ^
+         source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
