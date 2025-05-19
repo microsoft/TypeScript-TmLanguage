@@ -1744,7 +1744,8 @@ repository:
       match: '{{startOfIdentifier}}instanceof{{endOfIdentifier}}'
     - name: keyword.operator.new.ts
       match: '{{startOfIdentifier}}new{{endOfIdentifier}}'
-    - include: '#typeof-operator'
+    - name: keyword.operator.typeof.ts
+      match: '{{startOfIdentifier}}typeof{{endOfIdentifier}}'
     - name: keyword.operator.expression.void.ts
       match: '{{startOfIdentifier}}void{{endOfIdentifier}}'
       #handle as operator specifically to be recognized only if it is 'as' followed by space
