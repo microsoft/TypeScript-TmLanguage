@@ -4380,7 +4380,7 @@
                 <key>name</key>
                 <string>string.regexp.ts</string>
                 <key>begin</key>
-                <string>(?&lt;=\))\s*\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)*\])+\/([dgimsuvy]+|(?![\/\*])|(?=\/\*))(?!\s*[a-zA-Z0-9_$]))</string>
+                <string>(?&lt;=\))\s*\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)*\])+\/(?!\*)([dgimsuvy]*)(?:(?=\s+(?:as|satisfies)\s)|(?!\s*/(?![/*])|\s*[a-zA-Z0-9_$])))</string>
                 <key>beginCaptures</key>
                 <dict>
                   <key>0</key>
@@ -8485,7 +8485,7 @@
             <key>name</key>
             <string>string.regexp.ts</string>
             <key>begin</key>
-            <string>(?&lt;!\+\+|--|})(?&lt;=[=(:,\[?+!]|^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[\()]|\\.|\[([^\]\\]|\\.)+\]|\(([^\)\\]|\\.)+\))+\/([dgimsuvy]+|(?![\/\*])|(?=\/\*))(?!\s*[a-zA-Z0-9_$]))</string>
+            <string>(?&lt;!\+\+|--|})(?&lt;=[=(:,\[?+!]|^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case|=&gt;|&amp;&amp;|\|\||\*\/)\s*(\/)(?![\/*])(?=(?:[^\/\\\[\()]|\\.|\[([^\]\\]|\\.)+\]|\(([^\)\\]|\\.)+\))+\/(?!\*)([dgimsuvy]*)(?:(?=\s+(?:as|satisfies)\s)|(?!\s*/(?![/*])|\s*[a-zA-Z0-9_$])))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -8495,7 +8495,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(/)([dgimsuvy]*)</string>
+            <string>(/)([dgimsuvy]*)|$</string>
             <key>endCaptures</key>
             <dict>
               <key>1</key>
@@ -8521,7 +8521,7 @@
             <key>name</key>
             <string>string.regexp.ts</string>
             <key>begin</key>
-            <string>((?&lt;![_$[:alnum:])\]]|\+\+|--|}|\*\/)|((?&lt;=^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case))\s*)\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)*\])+\/([dgimsuvy]+|(?![\/\*])|(?=\/\*))(?!\s*[a-zA-Z0-9_$]))</string>
+            <string>((?&lt;![_$[:alnum:])\]]|\+\+|--|}|\*\/)|((?&lt;=^return|[^\._$[:alnum:]]return|^case|[^\._$[:alnum:]]case))\s*)\/(?![\/*])(?=(?:[^\/\\\[]|\\.|\[([^\]\\]|\\.)*\])+\/(?!\*)([dgimsuvy]*)(?:(?=\s+(?:as|satisfies)\s)|(?!\s*/(?![/*])|\s*[a-zA-Z0-9_$])))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -8531,7 +8531,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(/)([dgimsuvy]*)</string>
+            <string>(/)([dgimsuvy]*)|$</string>
             <key>endCaptures</key>
             <dict>
               <key>1</key>
