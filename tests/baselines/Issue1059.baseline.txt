@@ -1,0 +1,140 @@
+original file
+-----------------------------------
+const a = async (params?: {
+  arg?: string | number;
+  arg2?: string | number;
+  arg3?: string | number;
+}) => {
+  return params;
+};
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const a = async (params?: {
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^^^^^
+           source.ts meta.var.expr.ts meta.arrow.ts storage.modifier.async.ts
+                ^
+                source.ts meta.var.expr.ts meta.arrow.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                  ^^^^^^
+                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts keyword.operator.optional.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+                          ^
+                          source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
+                           ^
+                           source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+>  arg?: string | number;
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+   ^^^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+      ^
+      source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts keyword.operator.optional.ts
+       ^
+       source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+         ^^^^^^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+               ^
+               source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                ^
+                source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                  ^^^^^^
+                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                        ^
+                        source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+>  arg2?: string | number;
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+   ^^^^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+       ^
+       source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts keyword.operator.optional.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^^^^^
+          source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                ^
+                source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                   ^^^^^^
+                   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+>  arg3?: string | number;
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts
+   ^^^^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.definition.property.ts variable.object.property.ts
+       ^
+       source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts keyword.operator.optional.ts
+        ^
+        source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
+         ^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+          ^^^^^^
+          source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                ^
+                source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                 ^
+                 source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts keyword.operator.type.ts
+                  ^
+                  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts
+                   ^^^^^^
+                   source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts meta.field.declaration.ts meta.type.annotation.ts support.type.primitive.ts
+                         ^
+                         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.terminator.statement.ts
+>}) => {
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts meta.object.type.ts punctuation.definition.block.ts
+  ^
+  source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+   ^
+   source.ts meta.var.expr.ts meta.arrow.ts
+    ^^
+    source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
+      ^
+      source.ts meta.var.expr.ts meta.arrow.ts
+       ^
+       source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+>  return params;
+ ^^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
+   ^^^^^^
+   source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts keyword.control.flow.ts
+         ^
+         source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts
+          ^^^^^^
+          source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts variable.other.readwrite.ts
+                ^
+                source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.terminator.statement.ts
+>};
+ ^
+ source.ts meta.var.expr.ts meta.arrow.ts meta.block.ts punctuation.definition.block.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
