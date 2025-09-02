@@ -83,13 +83,13 @@ variables:
   possiblyType: \s*([^<>\(\)\{\}]|\<([^<>]|\<([^<>]|\<[^<>]+\>)+\>)+\>|\([^\(\)]+\)|\{[^\{\}]+\})+
   typeparamertStartOfArrow: ''
   arrowLookup: |-
-    # sure shot arrow functions even if => is on new line
+    (?x)# sure shot arrow functions even if => is on new line
     (
       {{typeParameters}}?
       [(]\s*({{inlineComment}}\s*)*
       (
         ([)]\s*:) |                                                                                       # ():
-        ((\.\.\.\s*)?{{identifier}}\s*:)                                                                  # [(]param: | [(]...param:
+        ((\.\.\.\s*)?{{identifier}}\s*(?:\?\s*)?:)                                                                  # [(]param: | [(]...param:
       )
     ) |
     {{typeparamertStartOfArrow}}
