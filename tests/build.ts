@@ -1,4 +1,4 @@
-import * as vt from 'vscode-textmate/release/main';
+import * as vt from 'vscode-textmate';
 import path = require('path');
 import fs = require('fs');
 import oniguruma = require('vscode-oniguruma');
