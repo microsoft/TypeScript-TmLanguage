@@ -1,0 +1,74 @@
+original file
+-----------------------------------
+/**
+ * @param {{
+ *  z: number
+ * }} x
+ */
+function foo(x) { }
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>/**
+ ^^^
+ source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+> * @param {{
+ ^^
+ source.ts comment.block.documentation.ts comment.block.documentation.body.ts
+   ^
+   source.ts comment.block.documentation.ts comment.block.documentation.body.ts
+    ^
+    source.ts comment.block.documentation.ts comment.block.documentation.body.ts storage.type.class.jsdoc punctuation.definition.block.tag.jsdoc
+     ^^^^^
+     source.ts comment.block.documentation.ts comment.block.documentation.body.ts storage.type.class.jsdoc
+          ^
+          source.ts comment.block.documentation.ts comment.block.documentation.body.ts
+           ^
+           source.ts comment.block.documentation.ts comment.block.documentation.body.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.begin.jsdoc
+            ^
+            source.ts comment.block.documentation.ts comment.block.documentation.body.ts entity.name.type.instance.jsdoc
+> *  z: number
+ ^^
+ source.ts comment.block.documentation.ts comment.block.documentation.body.ts
+   ^^^^^^^^^^^^
+   source.ts comment.block.documentation.ts comment.block.documentation.body.ts entity.name.type.instance.jsdoc
+> * }} x
+ ^^
+ source.ts comment.block.documentation.ts comment.block.documentation.body.ts
+   ^
+   source.ts comment.block.documentation.ts comment.block.documentation.body.ts entity.name.type.instance.jsdoc
+    ^
+    source.ts comment.block.documentation.ts comment.block.documentation.body.ts entity.name.type.instance.jsdoc
+     ^
+     source.ts comment.block.documentation.ts comment.block.documentation.body.ts entity.name.type.instance.jsdoc punctuation.definition.bracket.curly.end.jsdoc
+      ^
+      source.ts comment.block.documentation.ts comment.block.documentation.body.ts
+       ^
+       source.ts comment.block.documentation.ts comment.block.documentation.body.ts variable.other.jsdoc
+> */
+ ^
+ source.ts comment.block.documentation.ts
+  ^^
+  source.ts comment.block.documentation.ts punctuation.definition.comment.ts
+>function foo(x) { }
+ ^^^^^^^^
+ source.ts meta.function.ts storage.type.function.ts
+         ^
+         source.ts meta.function.ts
+          ^^^
+          source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+             ^
+             source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+              ^
+              source.ts meta.function.ts meta.parameters.ts variable.parameter.ts
+               ^
+               source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                ^
+                source.ts meta.function.ts
+                 ^
+                 source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                  ^
+                  source.ts meta.function.ts meta.block.ts
+                   ^
+                   source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
