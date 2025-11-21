@@ -11,13 +11,13 @@
     "pretest": "npm run build",
     "test": "mocha --full-trace tests/test.js  --reporter mocha-multi-reporters",
     "diff": "cross-env-shell $DIFF tests/baselines tests/generated",
-    "accept": "copyfiles -u 2 \"tests/generated/*\" tests/baselines"
+    "accept": "cpx 'tests/generated/*' tests/baselines"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.10.1",
-    "copyfiles": "^2.4.1",
+    "cpx2": "^8.0.0",
     "cross-env": "^10.1.0",
     "js-yaml": "^4.1.1",
     "mocha": "^11.7.5",
