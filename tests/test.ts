@@ -1,6 +1,7 @@
 import fs = require('fs');
 import path = require('path');
 import assert = require('assert');
+import { describe, it, before, after } from 'node:test';
 import build = require('./build');
 
 const generatedFolder = path.join(__dirname, 'generated');
@@ -26,13 +27,10 @@ for (const fileName of fs.readdirSync(casesFolder)) {
         let wholeBaseline: string;
         let parsedFileName: path.ParsedPath;
 
-        before(done => {
+        before(async () => {
             const text = fs.readFileSync(path.join(casesFolder, fileName), 'utf8');
             parsedFileName  = path.parse(fileName);
-            build.generateScopes(text, parsedFileName).then(result => {
-                wholeBaseline = result;
-                done();
-            })
+            wholeBaseline = await build.generateScopes(text, parsedFileName);
         });
         after(() => {
             wholeBaseline = undefined!;
