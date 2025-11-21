@@ -3,30 +3,27 @@
   "version": "1.0.0",
   "private": true,
   "description": "TextMate grammar files for TypeScript for VS Code, Sublime Text, and Atom",
-  "main": "build/build.js",
   "scripts": {
     "build": "npm run build:grammar && npm run build:tests",
     "build:grammar": "tsc -b build -v && node build/build.js",
     "build:tests": "tsc -b tests -v",
     "pretest": "npm run build",
-    "test": "mocha --full-trace tests/test.js  --reporter mocha-multi-reporters",
+    "test": "node --test tests/test.js",
     "diff": "cross-env-shell $DIFF tests/baselines tests/generated",
-    "accept": "copyfiles -u 2 \"tests/generated/*\" tests/baselines"
-  },
-  "dependencies": {
-    "@types/js-yaml": "latest",
-    "@types/mocha": "latest",
-    "@types/node": "latest",
-    "js-yaml": "latest",
-    "mocha": "latest",
-    "plist": "latest",
-    "typescript": "latest",
-    "vscode-oniguruma": "latest",
-    "vscode-textmate": "latest"
+    "accept": "cpx 'tests/generated/*' tests/baselines"
   },
   "devDependencies": {
-    "copyfiles": "^2.3.0",
-    "cross-env": "^5.1.1",
-    "mocha-multi-reporters": "^1.1.7"
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.10.1",
+    "cpx2": "^8.0.0",
+    "cross-env": "^10.1.0",
+    "js-yaml": "^4.1.1",
+    "plist": "^3.1.0",
+    "typescript": "^5.9.3",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.2.1"
+  },
+  "engines": {
+    "node": ">= 20.9"
   }
 }
