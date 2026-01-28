@@ -1,0 +1,1 @@
+/// <reference path="../communication-api.d.ts" preserve="true" />
