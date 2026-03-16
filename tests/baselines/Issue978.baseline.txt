@@ -1,0 +1,48 @@
+original file
+-----------------------------------
+typeof x < ''; function f() {}
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>typeof x < ''; function f() {}
+ ^^^^^^
+ source.ts keyword.operator.typeof.ts
+       ^
+       source.ts
+        ^
+        source.ts variable.other.readwrite.ts
+         ^
+         source.ts
+          ^
+          source.ts keyword.operator.relational.ts
+           ^
+           source.ts
+            ^
+            source.ts string.quoted.single.ts punctuation.definition.string.begin.ts
+             ^
+             source.ts string.quoted.single.ts punctuation.definition.string.end.ts
+              ^
+              source.ts punctuation.terminator.statement.ts
+               ^
+               source.ts
+                ^^^^^^^^
+                source.ts meta.function.ts storage.type.function.ts
+                        ^
+                        source.ts meta.function.ts
+                         ^
+                         source.ts meta.function.ts meta.definition.function.ts entity.name.function.ts
+                          ^
+                          source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
+                           ^
+                           source.ts meta.function.ts meta.parameters.ts punctuation.definition.parameters.end.ts
+                            ^
+                            source.ts meta.function.ts
+                             ^
+                             source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+                              ^
+                              source.ts meta.function.ts meta.block.ts punctuation.definition.block.ts
+>
+ ^
+ source.ts
