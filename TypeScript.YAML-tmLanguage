@@ -2894,7 +2894,11 @@ repository:
       endCaptures:
         '0': { name: punctuation.definition.comment.ts }
       patterns:
-      - include: '#docblock'
+      - contentName: comment.block.documentation.body.ts
+        begin: (?<=/\*\*)([^*]|\*(?!/))*$
+        while: (^|\G)\s*\*(?!/)(?=([^*]|[*](?!/))*$)
+        patterns:
+        - include: '#docblock'
     - name: comment.block.ts
       begin: (/\*)(?:\s*((@)internal)(?=\s|(\*/)))?
       beginCaptures:
@@ -3313,9 +3317,6 @@ repository:
   jsdoctype:
   # {type}
     patterns:
-    # {unclosed
-    - name: invalid.illegal.type.jsdoc
-      match: \G{(?:[^}*]|\*[^/}])+$
     - contentName: entity.name.type.instance.jsdoc
       begin: \G({)
       beginCaptures:
