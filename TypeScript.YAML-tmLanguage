@@ -75,7 +75,7 @@ variables:
   typeArgumentsStart: (((keyof|infer|typeof|readonly)\s+)|(({{identifier}}|{{matchingBraces}}|{{matchingParenthesis}}|{{matchingBrackets}}|{{quotedStrings}})(?=\s*([\<\>\,\.\[]|=>|&(?!&)|\|(?!\|)))))
   typeArgumentsInnerExpressionPart: '[^<>\(]|{{matchingParenthesis}}|(?<==)\>'
   typeArguments: '<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}(({{typeArgumentsInnerExpressionPart}}|\<\s*{{typeArgumentsStart}}({{typeArgumentsInnerExpressionPart}})*(?<!=)\>))*(?<!=)\>)*(?<!=)>'
-  possiblyMultilineTypeArgument: (<\s*[\{\[\(]\s*$)
+  possiblyMultilineTypeArgument: (<\s*([\{\[\(]\s*)?$)
   functionCallLookup: \s*(?:(\?\.\s*)|(\!))?(({{typeArguments}}\s*)?\()
   functionCallNamedTarget: (({{identifier}})(\s*{{propertyAccessPreIdentifier}}({{propertyIdentifier}}))*)|({{propertyAccessPreIdentifier}}{{propertyIdentifier}})
   functionCallTarget: (({{functionCallNamedTarget}})|(?<=[\)]))
@@ -988,6 +988,10 @@ repository:
     - include: '#comment'
     - include: '#class-or-interface-heritage'
     - include: '#type-parameters'
+    # prevent expressionWithoutIdentifiers>function-call from claiming identifier<\n as a call target in heritage clauses
+    - match: '({{identifier}})(?=\s*<\s*$)'
+      captures:
+        '1': { name: entity.other.inherited-class.ts }
     # match expressions before matching identifiers
     - include: '#expressionWithoutIdentifiers'
     # identifiers are treated as inherited class
