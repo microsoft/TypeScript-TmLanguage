@@ -3143,6 +3143,18 @@
             <string>#type-parameters</string>
           </dict>
           <dict>
+            <key>match</key>
+            <string>([_$[:alpha:]][_$[:alnum:]]*)(?=\s*&lt;\s*$)</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>entity.other.inherited-class.tsx</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
             <key>include</key>
             <string>#expressionWithoutIdentifiers</string>
           </dict>
@@ -5057,9 +5069,9 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?=(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))(&lt;\s*[\{\[\(]\s*$))</string>
+            <string>(?=(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))(&lt;\s*([\{\[\(]\s*)?$))</string>
             <key>end</key>
-            <string>(?&lt;=\&gt;)(?!(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))(&lt;\s*[\{\[\(]\s*$))</string>
+            <string>(?&lt;=\&gt;)(?!(((([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))|(?&lt;=[\)]))(&lt;\s*([\{\[\(]\s*)?$))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -5068,7 +5080,7 @@
                 <key>begin</key>
                 <string>(?=(([_$[:alpha:]][_$[:alnum:]]*)(\s*\??\.\s*(\#?[_$[:alpha:]][_$[:alnum:]]*))*)|(\??\.\s*\#?[_$[:alpha:]][_$[:alnum:]]*))</string>
                 <key>end</key>
-                <string>(?=(&lt;\s*[\{\[\(]\s*$))</string>
+                <string>(?=(&lt;\s*([\{\[\(]\s*)?$))</string>
                 <key>patterns</key>
                 <array>
                   <dict>
