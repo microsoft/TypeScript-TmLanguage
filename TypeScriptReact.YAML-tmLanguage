@@ -12,7 +12,7 @@ variables:
   # because tsx cannot have cast expression, we can say <T extends starts the type parameter of arrow
   typeparamertStartOfArrow: |-
     (
-      [<]\s*{{identifier}}\s+extends\s*[^=>]                                                              # < typeparam extends
+      [<]\s*(const\s+)?{{identifier}}\s+extends\s*[^=>]                                                   # < typeparam extends (optional const modifier from TS 5.0)
     ) |
   #possiblyMultilineArrowExpressionBeforeEndOfLine: ({{typeParameters}})?\(
   possiblyMultilineArrow: ((<\s*$)|({{possiblyMultilineArrowWithoutTypeParameters}}))  # during lookup treat ( followed by line end as arrow
@@ -80,7 +80,7 @@ repository:
     begin: |-
       (?x)
         {{jsxLookBehindInExpression}}
-        (?!<\s*[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow
+        (?!<\s*(const\s+)?[_$[:alpha:]][_$[:alnum:]]*((\s+extends\s+[^=>])|,)) # look ahead is not type parameter of arrow (optional const modifier from TS 5.0)
         {{jsxTagStartLookahead}}
     end: (?!{{jsxTagStart}})
     patterns:
