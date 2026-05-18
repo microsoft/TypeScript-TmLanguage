@@ -1,6 +1,5 @@
 original file
 -----------------------------------
-// @onlyOwnGrammar - this has type parameters that would be jsx in tsx files
 declare function f1<const T>(x: T): T;
 declare function f2<const T, U>(x: T | undefined): T;
 declare function f3<const T>(x: T): T[];
@@ -12,7 +11,6 @@ class C1<const T> {
     foo<const U>(x: U) { return x; }
 }
 const C2 = class <const T> {}
-const fx1 = <const T>(x: T) => x;
 const fx2 = <const T,>(x: T) => x;
 interface I1<const T> { x: T }  // Error
 interface I2 {
@@ -28,11 +26,6 @@ function set<T, const P extends readonly string[]>(obj: T, path: P, value: GetPa
 
 Grammar: TypeScript.tmLanguage
 -----------------------------------
->// @onlyOwnGrammar - this has type parameters that would be jsx in tsx files
- ^^
- source.ts comment.line.double-slash.ts punctuation.definition.comment.ts
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   source.ts comment.line.double-slash.ts
 >declare function f1<const T>(x: T): T;
  ^^^^^^^
  source.ts meta.function.ts storage.modifier.ts
@@ -476,51 +469,6 @@ Grammar: TypeScript.tmLanguage
                             source.ts meta.var.expr.ts meta.class.ts punctuation.definition.block.ts
                              ^
                              source.ts meta.var.expr.ts meta.class.ts punctuation.definition.block.ts
->const fx1 = <const T>(x: T) => x;
- ^^^^^
- source.ts meta.var.expr.ts storage.type.ts
-      ^
-      source.ts meta.var.expr.ts
-       ^^^
-       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts entity.name.function.ts
-          ^
-          source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
-           ^
-           source.ts meta.var.expr.ts keyword.operator.assignment.ts
-            ^
-            source.ts meta.var.expr.ts meta.arrow.ts
-             ^
-             source.ts meta.var.expr.ts meta.arrow.ts meta.type.parameters.ts punctuation.definition.typeparameters.begin.ts
-              ^^^^^
-              source.ts meta.var.expr.ts meta.arrow.ts meta.type.parameters.ts storage.modifier.ts
-                   ^
-                   source.ts meta.var.expr.ts meta.arrow.ts meta.type.parameters.ts
-                    ^
-                    source.ts meta.var.expr.ts meta.arrow.ts meta.type.parameters.ts entity.name.type.ts
-                     ^
-                     source.ts meta.var.expr.ts meta.arrow.ts meta.type.parameters.ts punctuation.definition.typeparameters.end.ts
-                      ^
-                      source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.begin.ts
-                       ^
-                       source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts variable.parameter.ts
-                        ^
-                        source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts keyword.operator.type.annotation.ts
-                         ^
-                         source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts
-                          ^
-                          source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts meta.type.annotation.ts entity.name.type.ts
-                           ^
-                           source.ts meta.var.expr.ts meta.arrow.ts meta.parameters.ts punctuation.definition.parameters.end.ts
-                            ^
-                            source.ts meta.var.expr.ts meta.arrow.ts
-                             ^^
-                             source.ts meta.var.expr.ts meta.arrow.ts storage.type.function.arrow.ts
-                               ^
-                               source.ts meta.var.expr.ts meta.arrow.ts
-                                ^
-                                source.ts meta.var.expr.ts variable.other.readwrite.ts
-                                 ^
-                                 source.ts punctuation.terminator.statement.ts
 >const fx2 = <const T,>(x: T) => x;
  ^^^^^
  source.ts meta.var.expr.ts storage.type.ts

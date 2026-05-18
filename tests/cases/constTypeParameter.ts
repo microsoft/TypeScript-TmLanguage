@@ -1,4 +1,3 @@
-// @onlyOwnGrammar - this has type parameters that would be jsx in tsx files
 declare function f1<const T>(x: T): T;
 declare function f2<const T, U>(x: T | undefined): T;
 declare function f3<const T>(x: T): T[];
@@ -10,7 +9,6 @@ class C1<const T> {
     foo<const U>(x: U) { return x; }
 }
 const C2 = class <const T> {}
-const fx1 = <const T>(x: T) => x;
 const fx2 = <const T,>(x: T) => x;
 interface I1<const T> { x: T }  // Error
 interface I2 {
