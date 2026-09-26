@@ -5698,6 +5698,32 @@
           </dict>
           <dict>
             <key>begin</key>
+            <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(as)|(satisfies))(?=\s*$)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.as.ts</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.satisfies.ts</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?&lt;!\bas|\bsatisfies|[|&amp;])((?=[;),}\]:?\-\+\&gt;]|\|\||\&amp;\&amp;|\!\=\=|^\s*$|((?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(as|satisfies)\s+)|(\s+\&lt;))|((?&lt;=\S)(?=\s*$)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#type</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
             <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(?:(as)|(satisfies))\s+</string>
             <key>beginCaptures</key>
             <dict>
