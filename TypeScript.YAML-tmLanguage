@@ -1752,6 +1752,14 @@ repository:
       captures:
         '1': { name: keyword.control.as.ts }
         '2': { name: storage.modifier.ts }
+      # if type starts on next line use end of a non-empty line as end of type
+    - begin: '{{startOfIdentifier}}(?:(as)|(satisfies))(?=\s*$)'
+      beginCaptures:
+        '1': { name: keyword.control.as.ts }
+        '2': { name: keyword.control.satisfies.ts }
+      end: (?<!\bas|\bsatisfies|[|&])((?=[;),}\]:?\-\+\>]|\|\||\&\&|\!\=\=|^\s*$|({{startOfIdentifier}}(as|satisfies)\s+)|(\s+\<))|((?<=\S)(?=\s*$)))
+      patterns:
+      - include: '#type'
     - begin: '{{startOfIdentifier}}(?:(as)|(satisfies))\s+'
       beginCaptures:
         '1': { name: keyword.control.as.ts }

@@ -1,0 +1,184 @@
+original file
+-----------------------------------
+const a = b as
+  A | undefined
+
+const a = b satisfies
+  A | undefined
+
+const inlineSourceMap = convertSourceMap.fromSource(content)?.toObject() as
+  SourceMap | undefined
+foo(inlineSourceMap)
+
+const e = (f as
+  G);
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>const a = b as
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^
+             source.ts meta.var.expr.ts keyword.control.as.ts
+>  A | undefined
+ ^^
+ source.ts meta.var.expr.ts
+   ^
+   source.ts meta.var.expr.ts entity.name.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts keyword.operator.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^
+       source.ts meta.var.expr.ts support.type.builtin.ts
+>
+ ^
+ source.ts
+>const a = b satisfies
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts variable.other.readwrite.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^^^^^^^^^
+             source.ts meta.var.expr.ts keyword.control.satisfies.ts
+>  A | undefined
+ ^^
+ source.ts meta.var.expr.ts
+   ^
+   source.ts meta.var.expr.ts entity.name.type.ts
+    ^
+    source.ts meta.var.expr.ts
+     ^
+     source.ts meta.var.expr.ts keyword.operator.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^
+       source.ts meta.var.expr.ts support.type.builtin.ts
+>
+ ^
+ source.ts
+>const inlineSourceMap = convertSourceMap.fromSource(content)?.toObject() as
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^^^^^^^^^^^^^^^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+                      ^
+                      source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+                       ^
+                       source.ts meta.var.expr.ts keyword.operator.assignment.ts
+                        ^
+                        source.ts meta.var.expr.ts
+                         ^^^^^^^^^^^^^^^^
+                         source.ts meta.var.expr.ts meta.function-call.ts variable.other.object.ts
+                                         ^
+                                         source.ts meta.var.expr.ts meta.function-call.ts punctuation.accessor.ts
+                                          ^^^^^^^^^^
+                                          source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                                                    ^
+                                                    source.ts meta.var.expr.ts meta.brace.round.ts
+                                                     ^^^^^^^
+                                                     source.ts meta.var.expr.ts variable.other.readwrite.ts
+                                                            ^
+                                                            source.ts meta.var.expr.ts meta.brace.round.ts
+                                                             ^^
+                                                             source.ts meta.var.expr.ts meta.function-call.ts punctuation.accessor.optional.ts
+                                                               ^^^^^^^^
+                                                               source.ts meta.var.expr.ts meta.function-call.ts entity.name.function.ts
+                                                                       ^
+                                                                       source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                        ^
+                                                                        source.ts meta.var.expr.ts meta.brace.round.ts
+                                                                         ^
+                                                                         source.ts meta.var.expr.ts
+                                                                          ^^
+                                                                          source.ts meta.var.expr.ts keyword.control.as.ts
+>  SourceMap | undefined
+ ^^
+ source.ts meta.var.expr.ts
+   ^^^^^^^^^
+   source.ts meta.var.expr.ts entity.name.type.ts
+            ^
+            source.ts meta.var.expr.ts
+             ^
+             source.ts meta.var.expr.ts keyword.operator.type.ts
+              ^
+              source.ts meta.var.expr.ts
+               ^^^^^^^^^
+               source.ts meta.var.expr.ts support.type.builtin.ts
+>foo(inlineSourceMap)
+ ^^^
+ source.ts meta.function-call.ts entity.name.function.ts
+    ^
+    source.ts meta.brace.round.ts
+     ^^^^^^^^^^^^^^^
+     source.ts variable.other.readwrite.ts
+                    ^
+                    source.ts meta.brace.round.ts
+>
+ ^
+ source.ts
+>const e = (f as
+ ^^^^^
+ source.ts meta.var.expr.ts storage.type.ts
+      ^
+      source.ts meta.var.expr.ts
+       ^
+       source.ts meta.var.expr.ts meta.var-single-variable.expr.ts meta.definition.variable.ts variable.other.constant.ts
+        ^
+        source.ts meta.var.expr.ts meta.var-single-variable.expr.ts
+         ^
+         source.ts meta.var.expr.ts keyword.operator.assignment.ts
+          ^
+          source.ts meta.var.expr.ts
+           ^
+           source.ts meta.var.expr.ts meta.brace.round.ts
+            ^
+            source.ts meta.var.expr.ts variable.other.readwrite.ts
+             ^
+             source.ts meta.var.expr.ts
+              ^^
+              source.ts meta.var.expr.ts keyword.control.as.ts
+>  G);
+ ^^
+ source.ts meta.var.expr.ts
+   ^
+   source.ts meta.var.expr.ts entity.name.type.ts
+    ^
+    source.ts meta.var.expr.ts meta.brace.round.ts
+     ^
+     source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts
