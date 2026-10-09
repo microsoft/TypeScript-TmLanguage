@@ -1,0 +1,178 @@
+original file
+-----------------------------------
+String.raw`--some-flag=C:\Some\Windows\Path`;
+String.raw`"This is\nJSON text\u2757"`;
+String.raw`\`;
+`;
+String.raw`a\${not}b${sub}\`c`;
+String . raw`C:\path\${x}`;
+foo`C:\Some\Path`;
+`C:\Some\Path`;
+
+-----------------------------------
+
+Grammar: TypeScript.tmLanguage
+-----------------------------------
+>String.raw`--some-flag=C:\Some\Windows\Path`;
+ ^^^^^^
+ source.ts support.class.builtin.ts
+       ^
+       source.ts punctuation.accessor.ts
+        ^^^
+        source.ts entity.name.function.tagged-template.ts
+           ^
+           source.ts string.template.ts punctuation.definition.string.template.begin.ts
+            ^^^^^^^^^^^^^^
+            source.ts string.template.ts
+                          ^^
+                          source.ts string.template.ts
+                            ^^^
+                            source.ts string.template.ts
+                               ^^
+                               source.ts string.template.ts
+                                 ^^^^^^
+                                 source.ts string.template.ts
+                                       ^^
+                                       source.ts string.template.ts
+                                         ^^^
+                                         source.ts string.template.ts
+                                            ^
+                                            source.ts string.template.ts punctuation.definition.string.template.end.ts
+                                             ^
+                                             source.ts punctuation.terminator.statement.ts
+>String.raw`"This is\nJSON text\u2757"`;
+ ^^^^^^
+ source.ts support.class.builtin.ts
+       ^
+       source.ts punctuation.accessor.ts
+        ^^^
+        source.ts entity.name.function.tagged-template.ts
+           ^
+           source.ts string.template.ts punctuation.definition.string.template.begin.ts
+            ^^^^^^^^
+            source.ts string.template.ts
+                    ^^
+                    source.ts string.template.ts
+                      ^^^^^^^^^
+                      source.ts string.template.ts
+                               ^^
+                               source.ts string.template.ts
+                                 ^^^^^
+                                 source.ts string.template.ts
+                                      ^
+                                      source.ts string.template.ts punctuation.definition.string.template.end.ts
+                                       ^
+                                       source.ts punctuation.terminator.statement.ts
+>String.raw`\`;
+ ^^^^^^
+ source.ts support.class.builtin.ts
+       ^
+       source.ts punctuation.accessor.ts
+        ^^^
+        source.ts entity.name.function.tagged-template.ts
+           ^
+           source.ts string.template.ts punctuation.definition.string.template.begin.ts
+            ^^
+            source.ts string.template.ts
+              ^^
+              source.ts string.template.ts
+>`;
+ ^
+ source.ts string.template.ts punctuation.definition.string.template.end.ts
+  ^
+  source.ts punctuation.terminator.statement.ts
+>String.raw`a\${not}b${sub}\`c`;
+ ^^^^^^
+ source.ts support.class.builtin.ts
+       ^
+       source.ts punctuation.accessor.ts
+        ^^^
+        source.ts entity.name.function.tagged-template.ts
+           ^
+           source.ts string.template.ts punctuation.definition.string.template.begin.ts
+            ^
+            source.ts string.template.ts
+             ^^
+             source.ts string.template.ts
+               ^^^^^^
+               source.ts string.template.ts
+                     ^^
+                     source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.begin.ts
+                       ^^^
+                       source.ts string.template.ts meta.template.expression.ts meta.embedded.line.ts variable.other.readwrite.ts
+                          ^
+                          source.ts string.template.ts meta.template.expression.ts punctuation.definition.template-expression.end.ts
+                           ^^
+                           source.ts string.template.ts
+                             ^
+                             source.ts string.template.ts
+                              ^
+                              source.ts string.template.ts punctuation.definition.string.template.end.ts
+                               ^
+                               source.ts punctuation.terminator.statement.ts
+>String . raw`C:\path\${x}`;
+ ^^^^^^
+ source.ts support.class.builtin.ts
+       ^
+       source.ts
+        ^
+        source.ts punctuation.accessor.ts
+         ^
+         source.ts
+          ^^^
+          source.ts entity.name.function.tagged-template.ts
+             ^
+             source.ts string.template.ts punctuation.definition.string.template.begin.ts
+              ^^
+              source.ts string.template.ts
+                ^^
+                source.ts string.template.ts
+                  ^^^
+                  source.ts string.template.ts
+                     ^^
+                     source.ts string.template.ts
+                       ^^^
+                       source.ts string.template.ts
+                          ^
+                          source.ts string.template.ts punctuation.definition.string.template.end.ts
+                           ^
+                           source.ts punctuation.terminator.statement.ts
+>foo`C:\Some\Path`;
+ ^^^
+ source.ts entity.name.function.tagged-template.ts
+    ^
+    source.ts string.template.ts punctuation.definition.string.template.begin.ts
+     ^^
+     source.ts string.template.ts
+       ^^
+       source.ts string.template.ts constant.character.escape.ts
+         ^^^
+         source.ts string.template.ts
+            ^^
+            source.ts string.template.ts constant.character.escape.ts
+              ^^^
+              source.ts string.template.ts
+                 ^
+                 source.ts string.template.ts punctuation.definition.string.template.end.ts
+                  ^
+                  source.ts punctuation.terminator.statement.ts
+>`C:\Some\Path`;
+ ^
+ source.ts string.template.ts punctuation.definition.string.template.begin.ts
+  ^^
+  source.ts string.template.ts
+    ^^
+    source.ts string.template.ts constant.character.escape.ts
+      ^^^
+      source.ts string.template.ts
+         ^^
+         source.ts string.template.ts constant.character.escape.ts
+           ^^^
+           source.ts string.template.ts
+              ^
+              source.ts string.template.ts punctuation.definition.string.template.end.ts
+               ^
+               source.ts punctuation.terminator.statement.ts
+>
+ ^
+ source.ts

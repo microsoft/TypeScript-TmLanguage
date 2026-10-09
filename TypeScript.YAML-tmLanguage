@@ -2711,6 +2711,7 @@ repository:
 
   template:
     patterns:
+    - include: '#template-raw'
     - include: '#template-call'
     - contentName: string.template.ts
       begin: '({{identifier}})?(`)'
@@ -2723,6 +2724,25 @@ repository:
       patterns:
        - include: '#template-substitution-element'
        - include: '#string-character-escape'
+
+  # String.raw`...` : backslashes are not escape sequences here, but a backslash
+  # still prevents the following character (e.g. ` or $) from terminating the
+  # template or starting a substitution.
+  template-raw:
+    contentName: string.template.ts
+    begin: '{{startOfIdentifier}}(String)\s*(\.)\s*(raw)\s*(`)'
+    beginCaptures:
+      '1': { name: support.class.builtin.ts }
+      '2': { name: punctuation.accessor.ts }
+      '3': { name: entity.name.function.tagged-template.ts }
+      '4': { name: string.template.ts punctuation.definition.string.template.begin.ts }
+    end: '`'
+    endCaptures:
+      '0': { name: string.template.ts punctuation.definition.string.template.end.ts}
+    patterns:
+    - include: '#template-substitution-element'
+    # consume the backslash and the next character without scoping it as an escape
+    - match: \\(.|$)
 
   template-call:
     patterns:

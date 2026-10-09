@@ -8238,6 +8238,10 @@
         <array>
           <dict>
             <key>include</key>
+            <string>#template-raw</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#template-call</string>
           </dict>
           <dict>
@@ -8279,6 +8283,57 @@
                 <string>#string-character-escape</string>
               </dict>
             </array>
+          </dict>
+        </array>
+      </dict>
+      <key>template-raw</key>
+      <dict>
+        <key>contentName</key>
+        <string>string.template.ts</string>
+        <key>begin</key>
+        <string>(?&lt;![_$[:alnum:]])(?:(?&lt;=\.\.\.)|(?&lt;!\.))(String)\s*(\.)\s*(raw)\s*(`)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>support.class.builtin.ts</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.accessor.ts</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function.tagged-template.ts</string>
+          </dict>
+          <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>string.template.ts punctuation.definition.string.template.begin.ts</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>`</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>string.template.ts punctuation.definition.string.template.end.ts</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#template-substitution-element</string>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>\\(.|$)</string>
           </dict>
         </array>
       </dict>
